@@ -13,7 +13,9 @@ TRAP TABLE's pocket picture, the party's hold marks and the PC's box menu, scrol
                                                     #   2026-11-08). Refuses without --approved; --pick screen=A|B,...
                                                     #   writes a pick of its own instead.
 
-APPROVED and BUILT 2026-11-08 (the user: "Build all in A", with B SCORE for the area map). DRAFTED 2026-11-08, the second pass of T-530 (the user picked "Menus, second pass"). The sibling of tools/gbamenus.py
+APPROVED and BUILT 2026-11-08 (the user: "Build all in A", with B SCORE for the area map). TOUCH-UPS BUILT 2026-11-09
+(the user, 2026-11-09: menu touch-ups -- the three found filming pass 2): the AREA markers read (see INDEX below), the
+PC's scroll arrows outlined, and the PC's PARTY and CLOSE BOX buttons in A TERMINAL. DRAFTED 2026-11-08, the second pass of T-530 (the user picked "Menus, second pass"). The sibling of tools/gbamenus.py
 (the first pass, built and released in v11.343.5) and drawn in its family, A TERMINAL: slate rule, 45-degree corners,
 the teal bracket, paper, graph paper. Every pixel is drawn in code here: no AI image, nothing traced. The engine's
 files are read for their SHAPE only -- which tile id each tilemap puts where, which palette slot the code swaps or
@@ -55,10 +57,25 @@ RUN-TIME COLOUR WORK READ BEFORE DRAWING (each one kept; report() lists it):
            15, colour 0); the left ten columns are the overworld, seen through.
   INDEX    T-481 B writes the INDEX's BG row 0: the weekday on 8, the hour on 7. The map is drawn in row 0, so it keeps
            off 8; its sea stays on 7 (vanilla's sea is 7, and the sea darkening with the hour is kept on purpose). The
-           area markers are a sprite in (63,159,208)/(211,236,248): the land is drawn light so they read on it. Each
+           THE AREA MARKERS ARE AN OBJ WINDOW, NOT A COLOUR (src/pokedex_area_markers.c): marker.pal is never seen.
+           The sprite cuts a window through which BG1 shows -- filled with one tile of charbase 0 in palette row 0 --
+           alpha-blended 12/16 over the map at 8/16. Vanilla filled it with tile 0x00F, solid slot 14 (vanilla's red;
+           ours is the INDEX's ink), so on our light land a marker was the land at half brightness: faint. Touch-ups
+           (the user, 2026-11-09): the fill is tile 0x001, solid slot 5 (paper white; the engine's one-line change),
+           and SCORE's land a step down (AREA_LAND 11, its staff lines AREA_STAFF 12, towns sit on the land), so a
+           marker is a white glow on the land (255 on ~185) and a light one on the dark sea (212 on 43). Each
            icon's palette is loaded into BG row 1 when its row is chosen, which nothing else on the page uses.
   PCPARTS  misc2 is shared by the PAW (1,2,3,11,12), its shadow (8, 15), the scroll arrows (13,14,15) and the
-           waveform (4-8): only 4-7 and 13-14 are retinted, 8 and 15 kept. misc1 is the PAW in multi-move (1,2,3,11,12)
+           waveform (4-8): only 4-7 and 13-14 are retinted, 8 and 15 kept. Touch-ups: the arrows are a teal chevron
+           (13) ringed all round in near-black slate (14), so they read on every wallpaper; 15 is no longer drawn.
+           The PARTY button is party_menu.bin rows 20-21 in palette 1 (party_menu.pal, the party panel's): its face
+           14 is the button's alone (retinted slate), its letters' shadow 7 is CANCEL's too (retinted teal, both
+           buttons alike), its rims 1/3 and letters 8 are the panel's (kept). genstoragelabels.py stamps the label's
+           pixels (x 68-127 y 18-27, and the end tiles at 48,48 and 56,48) from upstream, so this pass draws only
+           outside them -- the teal bracket over the rim's top-left -- and asserts those pixels unchanged. CLOSE BOX is
+           close_box_button.bin (rows 0-1 at rest, 2-3 flashing) in palette 0: its 18 tiles are its alone and are
+           redrawn in place (a slate plate, 45-degree corners, the bracket; the letters' pixels kept), 8/9/11 its own
+           slots (face, teal, rule), 1/2/3 the DATA panel's slate and 14 the label's white, both kept. misc1 is the PAW in multi-move (1,2,3,11,12)
            and the box menu (4-7, text 15 on 14). The DATA panel's text prints in palette 3 (the scrolling backdrop's
            1/2/3, T-530's first pass kept them); pkmn_data.bin draws its label in row 0 with a mon shown and row 2
            without one.
@@ -93,6 +110,8 @@ RECOMMENDED = {"toolkit": "A", "shop": "A", "index": "A", "area": "B", "pouch": 
 #  The user, 2026-11-08: "Build all in A", with B SCORE for the INDEX's area map. --write --approved --all writes these,
 #  and the report exits 1 when the engine is not what that write makes (decoded, as tools/gbamenus.py compares).
 APPROVED = {"toolkit": "A", "shop": "A", "index": "A", "area": "B", "pouch": "A", "holds": "A", "pcparts": "A"}
+#  The user, 2026-11-09: menu touch-ups -- the three found filming pass 2, built into the same picks (area B, pcparts A):
+#  the AREA markers (AREA_MARKER_*, AREA_LAND/STAFF), the PC's scroll arrows, and the PARTY and CLOSE BOX buttons.
 
 GRAPH, GRID = (232, 236, 240), (206, 214, 222)      # the ground: graph paper, its rule every 8px
 STRIP, STRIP_LN, STRIP_DK = (44, 54, 68), (56, 68, 84), (24, 30, 40)
@@ -913,6 +932,57 @@ def icons_plate(direction, stems):
 
 
 # ================================================================================================ the AREA map
+#  The markers' colour (touch-ups, the user 2026-11-09): src/pokedex_area_markers.c fills BG1 with AREA_MARKER_TILE of
+#  charbase 0 (kanto_dex_bgtiles: tile 1 is solid slot 5, paper white) and blends it 12/16 over the map at 8/16, only
+#  inside the markers' OBJ window. Vanilla's tile 0x00F is solid 14, our ink. SCORE's land sits a step down so the
+#  white reads on it: AREA_LAND under AREA_STAFF's lines (both INDEX slots no run-time code writes).
+AREA_MARKER_TILE, AREA_MARKER_SLOT, AREA_MARKER_SLOT_VANILLA = 0x001, 5, 14
+AREA_LAND, AREA_STAFF = 11, 12
+AREA_BLEND = (12, 8)
+
+
+def area_marker_fill():
+    """(tile, slot) the engine fills the markers' window with, read from src/pokedex_area_markers.c."""
+    c = open(os.path.join(GBA, "src/pokedex_area_markers.c")).read()
+    m = re.search(r"FillBgTilemapBufferRect_Palette0\(1, (0x[0-9A-Fa-f]+), 0, 0, 30, 20\);(?:[ \t]*//[^\n]*)?\s*"
+                  r"CopyBgTilemapBufferToVram\(1\);\s*"
+                  r"ShowBg\(1\);\s*return taskId;", c)
+    return int(m.group(1), 16) if m else None
+
+
+def area_marker_fill_write():
+    """Set the markers' fill tile in src/pokedex_area_markers.c to AREA_MARKER_TILE (the one line of C the touch-ups
+    need; nothing else in the file is touched). Returns the path when it changed."""
+    path = os.path.join(GBA, "src/pokedex_area_markers.c")
+    c = open(path).read()
+    pat = re.compile(r"(FillBgTilemapBufferRect_Palette0\(1, )(0x[0-9A-Fa-f]+)(, 0, 0, 30, 20\);)(?:[ \t]*//[^\n]*)?"
+                     r"(\s*CopyBgTilemapBufferToVram\(1\);\s*ShowBg\(1\);\s*return taskId;)")
+    new, n = pat.subn(lambda m: m.group(1) + "0x%03X" % AREA_MARKER_TILE + m.group(3) + "   // T-530: tile 1, paper white "
+                      "(vanilla 0x00F, slot 14)" + m.group(4), c)
+    if n != 1:
+        sys.exit("gbamenus2: the markers' fill line is not where it was in src/pokedex_area_markers.c")
+    if new != c:
+        open(path, "w").write(new)
+        return path
+    return None
+
+
+def area_markers_on(im, x0, y0, rgb, places):
+    """Draw the markers as the GBA does: each marker's pixels are a window; under it, `rgb` (the fill tile's colour)
+    blended AREA_BLEND over what is already there, in 5-bit colour."""
+    a5 = [c >> 3 for c in rgb]
+    p = im.load()
+    for kind, mx, my in places:
+        mw, mh, _, mpx = png("pokedex/area_markers/marker_%d.png" % kind)
+        for y in range(mh):
+            for x in range(mw):
+                if mpx[y][x] & 15:
+                    X, Y = x0 + mx + x, y0 + my + y
+                    b5 = [c >> 3 for c in p[X, Y][:3]]
+                    v = [min(31, (AREA_BLEND[0] * a + AREA_BLEND[1] * b) // 16) for a, b in zip(a5, b5)]
+                    p[X, Y] = tuple((c << 3) | (c >> 2) for c in v) + ((255,) if im.mode == "RGBA" else ())
+
+
 AREA_MAPS = [("map_kanto", 96, 72), ("map_one_island", 32, 24), ("map_two_island", 32, 24),
              ("map_three_island", 32, 24), ("map_four_island", 32, 32), ("map_five_island", 32, 32),
              ("map_six_island", 32, 32), ("map_seven_island", 32, 32)]
@@ -976,12 +1046,12 @@ def area_draw(stem, direction):
                     g[y][x] = 12 if direction == "A" else 6           # the coast: a slate rule / an ink line
                 elif direction == "A":
                     g[y][x] = 11 if (x % 4 == 3 and y % 2 == 0) or (y % 4 == 3 and x % 2 == 0) else 9
-                else:
-                    g[y][x] = 11 if (y % 12) in (1, 3, 5, 7, 9) else 9  # SCORE: the land is staff lines
+                else:                                        # SCORE: the land is staff lines, a step down
+                    g[y][x] = AREA_STAFF if (y % 12) in (1, 3, 5, 7, 9) else AREA_LAND
             elif c == "R":
                 g[y][x] = 2 if direction == "A" else 14
             elif c == "T":
-                g[y][x] = 14 if direction == "A" else 9
+                g[y][x] = 14 if direction == "A" else AREA_LAND
     if direction == "A":                                     # a town: a slate square, its middle white
         for y in range(1, h - 1):
             for x in range(1, w - 1):
@@ -1009,7 +1079,7 @@ def area_draw(stem, direction):
                         if (u / 3.4) ** 2 + (vv / 2.4) ** 2 <= 1:
                             g[b][a] = 6
                         else:
-                            g[b][a] = 9
+                            g[b][a] = AREA_LAND                       # the notehead sits on the land
         for y in range(h):                                   # a barline across a road every 6px
             for x in range(w):
                 if cls[y][x] == "R":
@@ -1056,12 +1126,15 @@ def area_mock(direction):
     say(im, 43, 28, names.get("PIDGEY", "PIDGEY"), r0[1], r0[8])
     ic = M.icon("PIDGEY")
     im.paste(ic, (8, 16), ic)
-    mk = pal("pokedex/area_markers/marker.pal")
-    for (kind, mx, my) in ((2, 54, 32), (2, 54, 16), (1, 40, 28), (0, 51, 20)):
-        mw, mh, mp_, mpx = png("pokedex/area_markers/marker_%d.png" % kind)
-        mi = idx_rgba(low(mpx), mk)
-        im.paste(mi, (104 + mx, 64 + my), mi)
+    #  the markers as the GBA draws them (an OBJ window over BG1's fill tile, blended), not in marker.pal
+    slot = AREA_MARKER_SLOT_VANILLA if direction is None else AREA_MARKER_SLOT
+    area_markers_on(im, 100, 60, q5(r0[slot]), AREA_PLACES)   # the sprite at (104, 64), its 8x8 dummy's corner -4
     return im
+
+
+#  A daemon's places as sAreaMarkers puts them (ROUTE 1, ROUTE 2, ROUTE 22, VIRIDIAN FOREST), and two on the sea
+#  (ROUTE 20, ROUTE 19), so the mock shows a marker on land and on water.
+AREA_PLACES = ((2, 54, 32), (2, 54, 16), (1, 40, 28), (0, 51, 20), (3, 55, 58), (0, 78, 60))
 
 
 def area_family(direction):
@@ -1240,8 +1313,9 @@ def pc_pals(direction):
     # misc1: the box menu's 4 (paper) 5 (rule light) 6 (rule) 7 (rule dark), its text 15 on 14
     m1[4], m1[5], m1[6], m1[7] = PAPER, SLATE_LIGHT, SLATE_MID, SLATE_OUT
     m1[14], m1[15] = (200, 204, 208), (64, 72, 84)
-    # misc2: the scroll arrows' 13/14 (15 shared with the PAW's shadow: kept); the waveform's 4-7 (8 kept)
-    m2[13], m2[14] = TEAL, SLATE_LIGHT
+    # misc2: the scroll arrows' 13/14 (15 shared with the PAW's shadow: kept); the waveform's 4-7 (8 kept). Touch-ups
+    # (the user, 2026-11-09): 13 the chevron's teal, 14 its near-black ring -- dark on a light wallpaper, teal on a dark
+    m2[13], m2[14] = ARROW_FILL, ARROW_RING
     m2[4], m2[5], m2[6], m2[7] = (20, 34, 38), TEAL, (184, 240, 208), (40, 72, 64)
     return m1, m2
 
@@ -1281,26 +1355,31 @@ def box_menu_art(direction):
     return center, corners
 
 
+ARROW_FILL, ARROW_RING = (120, 220, 196), (20, 26, 36)
+
+
 def scroll_arrow_art(direction):
-    """box_scroll_arrow.png 8x32: frame 0 (tiles 0-1) points left, frame 1 (tiles 2-3) right. A: a 45-degree
-    chevron, teal (13) on a slate rule (14), outlined in 15 (kept)."""
+    """box_scroll_arrow.png 8x32: frame 0 (tiles 0-1) points left, frame 1 (tiles 2-3) right. A (touch-ups, the user
+    2026-11-09: pass 2's thin chevron was faint on the light wallpapers): a 45-degree chevron two pixels thick in teal
+    (13), ringed all round -- eight-neighbour, so the ring is unbroken on the diagonals -- in near-black slate (14).
+    misc2's 15 (the PAW's shadow's) is no longer drawn here."""
     if direction is None:
         return low(png(PS + "/box_scroll_arrow.png")[3])
     g = canvas(8, 32)
     for f, flip in ((0, False), (1, True)):
         y0 = f * 16
+        # frame 0 points left: the tip at x 1-2 on rows 7-8, each arm rising one row per column to x 6, ringed to 7
         for i in range(5):
             for t in (0, 1):
-                x = 2 + i + t
-                for yy in (y0 + 3 + i, y0 + 12 - i):
-                    if 0 <= x < 8:
-                        put(g, (7 - x) if not flip else x, yy, 13 if t == 0 else 14)
+                x = 1 + i + t
+                for yy in (y0 + 7 - i, y0 + 8 + i):
+                    put(g, (7 - x) if flip else x, yy, 13)
         snap = [r[:] for r in g[y0:y0 + 16]]
         for y in range(16):
             for x in range(8):
-                if snap[y][x] == 0 and any(0 <= x + dx < 8 and 0 <= y + dy < 16 and snap[y + dy][x + dx] in (13, 14)
-                                           for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1))):
-                    g[y0 + y][x] = 15
+                if snap[y][x] == 0 and any(0 <= x + dx < 8 and 0 <= y + dy < 16 and snap[y + dy][x + dx] == 13
+                                           for dx in (-1, 0, 1) for dy in (-1, 0, 1)):
+                    g[y0 + y][x] = 14
     return g
 
 
@@ -1368,6 +1447,60 @@ def data_panel_target(ents, sheet, per):
     return g
 
 
+#  The PC's two buttons (touch-ups, the user 2026-11-09: "still FireRed's green and blue"), in A TERMINAL like the box
+#  title and the DATA panel: a dark slate face, paper letters with a teal shadow, the teal bracket at the top-left.
+BUTTON_FACE = (56, 68, 84)
+PARTY_SLOTS = {14: BUTTON_FACE, 7: TEAL}             # party_menu.pal: 14 the face (the button's alone), 7 the shadow
+CLOSE_SLOTS = {8: BUTTON_FACE, 9: TEAL, 11: SLATE_MID}   # interface.pal: CLOSE BOX's own (face, teal, rule)
+#  genstoragelabels.py's pixels on menu.png (its OURS): the DATA label, the PARTY label, the PARTY button's end tiles.
+#  This pass never draws inside them -- they are stamped from upstream after any write of ours.
+LABEL_STAMPS = ((8, 79, 4, 13), (68, 127, 18, 27), (48, 63, 48, 55))
+
+
+def in_stamps(x, y):
+    return any(x0 <= x <= x1 and y0 <= y <= y1 for x0, x1, y0, y1 in LABEL_STAMPS)
+
+
+def close_box_target(sheet, per, ents):
+    """close_box_button.bin's 9x4 picture: rows 0-1 at rest, 2-3 flashing (UpdateCloseBoxButtonTilemap). Each state a
+    slate plate 70x14 inside a clear 1px margin (as vanilla's), 45-degree corners, a slate rim (3 then 1), the face 8,
+    the bracket in 9; the letters' pixels are vanilla's where they were -- at rest 14 (white) on a 9 shadow, flashing
+    9 alone (the letters dim to teal and back)."""
+    now = canvas(72, 32)
+    for i, (t, hf, vf, pn) in enumerate(ents):
+        blk = get_tile_low(sheet, t, per)
+        for y in range(8):
+            for x in range(8):
+                now[(i // 9) * 8 + y][(i % 9) * 8 + x] = blk[7 - y if vf else y][7 - x if hf else x]
+    g = canvas(72, 32)
+    for st in (0, 1):
+        y0 = 16 * st
+        cut_box(g, 1, y0 + 1, 70, 14, 2, [3, 1], 8)
+        bracket(g, 4, y0 + 4, 9, n=4)
+        for y in range(4, 13):
+            for x in range(12, 64):
+                v = now[y0 + y][x]
+                if (st == 0 and v in (14, 9)) or (st == 1 and v == 9):
+                    g[y0 + y][x] = v
+    return g
+
+
+def buttons_build(sheet, per):
+    """Redraw CLOSE BOX's 18 tiles in place and lay the PARTY button's bracket over its rim, outside the label's
+    stamped pixels (asserted). Returns the uses that differ from their vote."""
+    before = [r[:] for r in sheet]
+    cb = [(t - 256 if t >= 256 else t, hf, vf, pn) for t, hf, vf, pn in m16(PS + "/close_box_button.bin")]
+    miss = retile(sheet, per, [(cb, 9, close_box_target(sheet, per, cb))])
+    #  PARTY: party_menu.bin row 20's first tile is 0x128 at menu.png (64, 16); the rim's inner line is x 66-67 / y 16-17.
+    for i in range(6):
+        for x, y in ((66 + i, 17), (67, 17 + i)):
+            sheet[y][x] = (sheet[y][x] & 0xF0) | 7
+    bad = [(x, y) for y in range(len(sheet)) for x in range(len(sheet[0]))
+           if in_stamps(x, y) and sheet[y][x] != before[y][x]]
+    assert not bad, "gbamenus2: the buttons would draw over genstoragelabels' pixels at %r" % bad[:4]
+    return miss
+
+
 def get_tile_low(sheet, t, per):
     x0, y0 = (t % per) * 8, (t // per) * 8
     return [[sheet[y0 + y][x0 + x] & 15 for x in range(8)] for y in range(8)]
@@ -1385,11 +1518,38 @@ def data_build(direction):
     label = set(e[0] - 256 if e[0] >= 256 else e[0] for e in m16(PS + "/pkmn_data.bin"))
     sub = [e if (i % 32) < 10 and e[0] not in label else (0, 0, 0, 0) for i, e in enumerate(ents)]
     miss = retile(sheet, per, [(sub, 32, data_panel_target(ents, sheet, per))])
+    buttons_build(sheet, per)
     for k, v in DATA_SLOTS.items():
+        r0[k] = v
+    for k, v in CLOSE_SLOTS.items():
         r0[k] = v
     for k in (1, 2, 3):
         r2[k] = DATA_SLOTS[k]
     return sheet, per, r0, r2, ents, miss
+
+
+def party_pal(direction):
+    """party_menu.pal (BG palette 1: the party panel and the PARTY button), with the button's slots retinted."""
+    p = list(pal(PS + "/party_menu.pal"))
+    if direction is not None:
+        for k, v in PARTY_SLOTS.items():
+            p[k] = v
+    return p
+
+
+def buttons_layer(direction, flashing=False):
+    """The top strip's two buttons as InitSupplementalTilemaps places them: PARTY (party_menu.bin rows 20-21, palette
+    1) at tile (10, 0), CLOSE BOX (close_box_button.bin, palette 0; rows 2-3 while it flashes) at (21, 0)."""
+    sheet, per, r0, r2, ents, miss = data_build(direction)
+    rows = [r0, party_pal(direction), r2]
+    im = Image.new("RGBA", (240, 16), (0, 0, 0, 0))
+    pm = [(t - 256 if t >= 256 else t, hf, vf, pn) for t, hf, vf, pn in m16(PS + "/party_menu.bin")]
+    a = render_map(low(sheet), per, pm[240:264], 12, 2, rows)
+    im.paste(a, (80, 0), a)
+    cb = [(t - 256 if t >= 256 else t, hf, vf, pn) for t, hf, vf, pn in m16(PS + "/close_box_button.bin")]
+    b = render_map(low(sheet), per, cb[18:] if flashing else cb[:18], 9, 2, rows)
+    im.paste(b, (168, 0), b)
+    return im
 
 
 def data_layer(direction, shown=True):
@@ -1402,12 +1562,14 @@ def data_layer(direction, shown=True):
     return render_map(low(sheet), per, sub, 32, 20, rows)
 
 
-def pc_parts_mock(direction, popup=False):
+def pc_parts_mock(direction, popup=False, wall="FOREST", flashing=False):
     """The PC as T-530 built it (gbamenus A) with this pass's parts: the scroll arrows by the box title, the waveform
     at the panel's top, and (popup) the box menu up."""
-    im = M.pc_mock("A")
+    im = M.pc_mock("A", wall=wall)
     dl = data_layer(direction)
     im.paste(dl, (0, 0), dl)
+    bl = buttons_layer(direction, flashing)
+    im.paste(bl, (0, 0), bl)
     fr = M.front("EEVEE")
     im.paste(fr, (8, 16), fr)
     sp = png(PS + "/scrolling_bg.png")[2]                   # window 0: palette 3, the backdrop's 1/2/3
@@ -1495,6 +1657,7 @@ def outputs(screen, direction):
         out[PS + "/menu.png"] = _png(sheet, mp, 8)
         out[PS + "/interface.pal"] = ("pal", r0)
         out[PS + "/interface_no_display_mon.pal"] = ("pal", r2)
+        out[PS + "/party_menu.pal"] = ("pal", party_pal(direction))
     return out
 
 
@@ -1517,7 +1680,10 @@ NOTES = {
              "(KANTO at 1.5x and at real size, the seven islands at real size).",
              "Kept: every map's size and its pixel CLASSES where vanilla had them (the frame, sea, land, routes, "
              "towns), so each marker still lands on its place; drawn in the INDEX's row 0, off slot 8 (T-481 B's "
-             "weekday), the sea on 7 (the hour, as vanilla's sea)."],
+             "weekday), the sea on 7 (the hour, as vanilla's sea).",
+             "Touch-ups (the user, 2026-11-09): the markers are an OBJ window over BG1's fill tile, blended 12/8 -- now "
+             "tile 0x001 (paper white) for vanilla's 0x00F (our ink), and SCORE's land a step down (slots 11 and 12), "
+             "so a marker glows white on the land and light on the sea."],
     "pouch": ["Rows: the TRAP TABLE (T-530's first pass) with the pocket picture on its plinth; the picture at 2x.",
               "Kept: 64x64, its own palette, where the code places it (the plinth drawn for it in the first pass)."],
     "holds": ["Rows: the party screen (T-530), the first daemon holding an item, the third holding mail, the fifth an "
@@ -1528,7 +1694,10 @@ NOTES = {
                 "4-7 (the waveform) and 13/14 (the arrows) -- misc2 8 and 15 are the PAW's shadow's and stay; the PAW's "
                 "own slots untouched. The DATA panel: menu.png's 29 tiles of menu.bin columns 0-9 redrawn in place (the label's "
                 "16 tiles, pkmn_data's, are kept as drawn), interface.pal's 4/6/12/13 its own, 1/2/3 retinted to slate at "
-                "the same lightness (CLOSE BOX and the label share them)."],
+                "the same lightness (CLOSE BOX and the label share them).",
+                "Touch-ups (the user, 2026-11-09): the scroll arrows a teal chevron ringed in near-black (misc2 13/14); "
+                "PARTY (party_menu.pal 14 the face, 7 the letters' shadow -- CANCEL's too) and CLOSE BOX (its 18 tiles "
+                "redrawn, interface.pal 8/9/11) as slate plates with paper letters and the teal bracket."],
 }
 
 
@@ -1593,12 +1762,21 @@ def report():
             used |= set(v for r in g for v in r)
         print("  AREA %s: row-0 slots used %s%s" % (d, sorted(used), "  -- uses 8, T-481 B's weekday!" if 8 in used else ""))
     sheet, per, r0, r2, ents, (miss, n) = data_build("A")
-    print("  PCPARTS A: the DATA panel's %d tiles redrawn in place (%d uses differ); the label's 16 and CLOSE BOX's kept"
-          % (n, miss))
+    print("  PCPARTS A: the DATA panel's %d tiles redrawn in place (%d uses differ); the label's 16 kept, CLOSE BOX's 18 "
+          "redrawn, PARTY's bracket laid outside genstoragelabels' pixels" % (n, miss))
     m1, m2 = pc_pals("A")
     print("  PCPARTS A: box name %3.0f on %3.0f; misc2 8/15 kept %s/%s" % (lum(m1[15]), lum(m1[4]), m2[8], m2[15]))
+    print("  PCPARTS A: scroll arrows teal %3.0f ringed %3.0f; PARTY and CLOSE BOX letters %3.0f on face %3.0f"
+          % (lum(m2[13]), lum(m2[14]), lum(r0[14]), lum(BUTTON_FACE)))
+    t = area_marker_fill()
+    print("  AREA: the markers' window is filled with tile %s (%s)" % (
+        "0x%03X" % t if t is not None else "?", "slot %d, as drawn" % AREA_MARKER_SLOT if t == AREA_MARKER_TILE else
+        "NOT 0x%03X -- src/pokedex_area_markers.c is not the touch-ups' engine" % AREA_MARKER_TILE))
     print("  RUN-TIME: HALFTONE greys all of these; TOOLKIT rows 1/3 swap (shade); SHOP rows 0/1 as palettes 11/6; "
           "INDEX row 0 slots 7/8 (T-481 B); misc1/misc2 shared with the PAW")
+    if APPROVED.get("area") and area_marker_fill() != AREA_MARKER_TILE:
+        print("  the engine's markers are not filled with tile 0x%03X -- run --write --approved --all" % AREA_MARKER_TILE)
+        return 1
     if APPROVED:
         d = differs(APPROVED)
         if d:
@@ -1664,6 +1842,8 @@ def main():
                 sys.exit("gbamenus2: unknown pick %s=%s (offered: %r)" % (screen, d, OFFERED))
             for p in put_files(outputs(screen, d), G):
                 print("  wrote", os.path.relpath(p, ROOT))
+            if screen == "area" and area_marker_fill_write():
+                print("  wrote engineGba/src/pokedex_area_markers.c (the markers' fill tile)")
         print("  now: build all four ROMs")
         return 0
     if ARGS.draft:

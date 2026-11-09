@@ -145,3 +145,27 @@ C-310: the companion's INDEX shows each MUSAI in the season its edition keeps --
 C-311: the companion's confirmed faces (faces.json; eyes magenta, mouth orange) on CODEMUSAI, CAREMUSAI, SEEKMUSAI and LENSMUSAI -- the T-452 art they were placed on (left) and the new summer forms from T-532 and T-534 (right), where they no longer sit
 
 ![9Nov2026 - C311 - MUSAI faces on the old art and the new - 26](9Nov2026%20-%20C311%20-%20MUSAI%20faces%20on%20the%20old%20art%20and%20the%20new%20-%2026.png)
+
+### 9Nov2026 - T530 - touch-ups before and after - 27
+
+T-530 touch-ups (the user, 2026-11-09): before (pass 2's film, 8 Nov) and after (this build), real size from the ROM -- the INDEX AREA markers now a white glow on the land and the sea, the PC's scroll arrows a teal chevron ringed in near-black, PARTY and CLOSE BOX as slate plates with the teal bracket (CLOSE BOX flashing teal)
+
+![9Nov2026 - T530 - touch-ups before and after - 27](9Nov2026%20-%20T530%20-%20touch-ups%20before%20and%20after%20-%2027.png)
+
+### 9Nov2026 - T530 - touch-ups before and after - 28
+
+T-530 touch-ups (the user, 2026-11-09): before (pass 2's film, 8 Nov) and after (this build), real size from the ROM -- the INDEX AREA markers now a white glow on the land and the sea, the PC's scroll arrows a teal chevron ringed in near-black, PARTY and CLOSE BOX as slate plates with the teal bracket (CLOSE BOX flashing teal)
+
+![9Nov2026 - T530 - touch-ups before and after - 28](9Nov2026%20-%20T530%20-%20touch-ups%20before%20and%20after%20-%2028.png)
+
+### 9Nov2026 - T530 - touch-ups filmed - 29
+
+T-530 touch-ups filmed (tools/routes/t530_touchups.json, 2/2 ok): the INDEX AREA map for a land daemon and a sea daemon; the PC on FOREST and SEAFLOOR, the PAW on PARTY and CLOSE BOX (flashing), the party panel
+
+![9Nov2026 - T530 - touch-ups filmed - 29](9Nov2026%20-%20T530%20-%20touch-ups%20filmed%20-%2029.png)
+
+### 9Nov2026 - T530 - touch-ups filmed - 30
+
+T-530 touch-ups filmed (tools/routes/t530_touchups.json, 2/2 ok): the INDEX AREA map for a land daemon and a sea daemon; the PC on FOREST and SEAFLOOR, the PAW on PARTY and CLOSE BOX (flashing), the party panel
+
+![9Nov2026 - T530 - touch-ups filmed - 30](9Nov2026%20-%20T530%20-%20touch-ups%20filmed%20-%2030.png)
