@@ -34,3 +34,15 @@ def refuse_over_later_work(name, named=False):
                      "  %s writes anyway -- then read git diff before anything else."
                      % (name, len(files), "" if len(files) == 1 else "s", ", ".join(f.split(":", 1)[1] for f in files[:3]),
                         ", ..." if len(files) > 3 else "", known["why"], OVERRIDE))
+
+
+def refuse_lines(name, lines):
+    """A NAMED write refuses too, when a line it would overwrite carries later work (2026-11-09, port_dialogue).
+
+    The tool decides which lines those are -- each knows what its own output and vanilla look like -- and passes them
+    here as readable names; nothing is written. `--over-later-work` writes anyway."""
+    if "--write" not in sys.argv or OVERRIDE in sys.argv or not lines:
+        return
+    raise SystemExit("  refused: %s --write would overwrite %d line%s that carry later work (trap 32), and writes "
+                     "nothing:\n%s\n  %s writes anyway -- then read git diff before anything else."
+                     % (name, len(lines), "" if len(lines) == 1 else "s", "\n".join("    " + l for l in lines), OVERRIDE))

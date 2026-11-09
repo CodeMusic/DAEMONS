@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Carry the Game Boy build's WRITING into the GBA build.
 
-    python3 tools/port_dialogue.py [--write] [--min 0.55] [MapName ...]
+    python3 tools/port_dialogue.py [--write [--over-later-work]] [--min 0.55] [GameBoyTextFile ...]
 
 `port_vocab.py` made the GBA say DAEMON instead of POKéMON. It did not carry a
 single sentence we wrote. That lives in `engine/text/` -- 165 files, and the
@@ -21,8 +21,27 @@ vanilla text has drifted too far to be sure of (FireRed rewrote a great deal),
 and it does not invent a home for a Gen 1 block that has none. Both are
 reported, because an unported line we know about is worth more than a line
 dropped into the wrong mouth.
+
+SAFETY (2026-11-09, found by T-534): `--write CinnabarLabMetronomeRoom CeladonMansionRoofHouse
+SafariZoneNorthRestHouse` rewrote 27 engine files. Three causes, all fixed here:
+
+  1. port_vocab and port_oak were EXEC'D to borrow their convert() and rename(), with this tool's own argv --
+     so `--write` reached them and each ran its own whole-tree write (notebook.c, the layer headers, SSAnne_Deck's
+     "ball" ...). They are loaded with an empty argv now, in report mode, output discarded.
+  2. MANUAL_TEXT (CAIRN's merged mark speech) was added to every write, named or not. It goes in only when its
+     Gen 1 file (PewterGym_2) is named.
+  3. A named map's own lines were written whatever they held, so T-534's DRAFT lines went back to Gen 1's. Every
+     line is now read first: a line still vanilla (or vanilla through port_oak and port_vocab) is written, a line
+     already what this tool makes is left, and a line that is NEITHER carries later work -- the write refuses
+     (driftguard.refuse_lines), naming each one, and writes nothing. `--over-later-work` writes anyway.
+
+What it writes is the finished line: the Gen 1 writing through port_oak's rename and port_vocab's convert, then
+wrapped -- so no whole-tree port_vocab run is needed after it. A whole-tree --write refuses (generator_drift.json).
 """
 import difflib, os, re, subprocess, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work, refuse_lines, OVERRIDE  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GB, GBA = os.path.join(ROOT, "engine"), os.path.join(ROOT, "engineGba")
@@ -31,16 +50,6 @@ MIN = 0.48
 if "--min" in sys.argv:
     MIN = float(sys.argv[sys.argv.index("--min") + 1])
 ONLY = [a for a in sys.argv[1:] if not a.startswith("-") and not re.match(r'^[\d.]+$', a)]
-if WRITE and not ONLY:
-    #  engine.md trap 32, a second time (2026-09-25): later passes -- port_vocab, port_oak, and a great deal of
-    #  writing done in the GBA files directly -- have been layered on this tool's output, so re-writing EVERYTHING
-    #  reverts 89 files of that work. Name the Gen 1 text files to carry (e.g. pokedex_ratings ChampionsRoom).
-    raise SystemExit("  refused: --write re-writes all 158 files it owns and undoes later passes; name the files")
-if WRITE and any(o.lower() == "saffrongym" for o in ONLY) and "--over-later-work" not in sys.argv:
-    #  T-503 (engine ca737bf0f, 2026-10-31) rewrote GymGuyAdvice and PrestonIntro in SaffronCity_Gym/text.inc by hand,
-    #  and ExplainMarshBadgeTakeThis was hand-written before it: carrying SaffronGym.asm would map Gen 1 back over all
-    #  three (trap 32). This lived in generator_drift.json until --writes stopped seeing it (it names no file there).
-    raise SystemExit("  refused: SaffronGym's GBA text carries T-503's hand work; --over-later-work writes it anyway")
 BUDGET = 196
 MARGIN = 0.04   # the winner must beat the runner-up by this much
 SURE   = 0.85   # ...unless it is this good, when a tie is between twins
@@ -394,19 +403,26 @@ def _tool(name):
     spec = importlib.util.spec_from_file_location(
         name, os.path.join(ROOT, "tools/%s.py" % name))
     mod = importlib.util.module_from_spec(spec)
+    #  Both tools do their work at import. With THIS tool's argv, a `--write` here was a whole-tree --write there
+    #  (2026-11-09: 20 files of later work, notebook.c to SSAnne_Deck). They get an empty argv: report mode.
     out, sys.stdout = sys.stdout, open(os.devnull, "w")
+    argv, sys.argv = sys.argv, [spec.origin]
     try:
         spec.loader.exec_module(mod)
     except SystemExit:
         pass
     finally:
+        sys.argv = argv
         sys.stdout.close(); sys.stdout = out
     return mod
 
-VOCAB = _tool("port_vocab")
-# port_oak owns OAK -> CRYSTAL CLEAR and her pronouns; without it every line
-# whose only edit was the professor's name reads as unported writing.
-OAK = _tool("port_oak")
+VOCAB = OAK = None   # loaded by main(): port_vocab, and port_oak (OAK -> CRYSTAL CLEAR and her pronouns) --
+                     # without them every line whose only edit was a rename reads as unported writing.
+
+
+def finished(s):
+    """A line as the whole pipeline leaves it: port_oak's rename, then port_vocab's convert."""
+    return VOCAB.convert(OAK.rename(s))
 
 def vocabulary_only(vanilla_pages, our_pages):
     """Is our edit nothing but the rename the GBA already has?"""
@@ -447,87 +463,178 @@ def finish(pages, path, glbl, shaped):
             lines.append(line)
         if pending:
             lines.append(pending)
-        out.append(lines)
+        #  The finished words, before they are wrapped: a rename changes a line's width (FLASH is VERBOSE). Prose is
+        #  renamed as one run, so a name broken across Gen 1's narrow lines is still found; a panel keeps its lines.
+        out.append([finished(l) for l in lines] if shaped is keep_shape else [finished(join(lines))])
     body = shaped(out, BUDGET)
     tail = SOUND_TAIL.search(van)
     if tail and tail.group(1) not in body:
         body = body[:-1] + tail.group(1) + "$" if body.endswith("$") else body + tail.group(1)
     return body
 
-gb_files = subprocess.run(["git", "-C", GB, "diff", "--name-only", "upstream/master", "--", "text/"],
-                          capture_output=True, text=True).stdout.split()
-matched, unmatched, nomap, vocab_only, handled, edits = [], [], [], [], [], {}
 
-for rel in gb_files:
-    name = os.path.basename(rel)[:-4]
-    if ONLY and name not in ONLY:
-        continue
-    ours = gb_blocks(open(os.path.join(GB, rel), encoding="utf-8", errors="replace").read())
-    base = gb_blocks(show(GB, rel))
-    changed = {k: v for k, v in ours.items() if base.get(k) != v and v}
-    if not changed:
-        continue
-    maps = candidates(name)
-    if not maps:
-        nomap += [(name, k) for k in changed]
-        continue
-    pool = []   # (path, label, vanilla_flat)
-    for d in maps:
-        p = d if d.endswith(".inc") else "data/maps/%s/text.inc" % d
-        for lbl, body in gba_blocks(show(GBA, p)).items():
-            pool.append((p, lbl, flat(body)))
-            RAW[(p, lbl)] = body
-    for lbl, pages in changed.items():
-        if (name, lbl) in HANDLED:
-            handled.append((name, lbl)); continue
-        hand = MANUAL.get(name, {}).get(lbl)
-        if hand:
-            matched.append((name, lbl, hand[0], hand[1], 1.0))
-            shaped = keep_shape if panel(lbl, pages) else rewrap
-            hp = hand[0] if hand[0].endswith(".inc") else "data/maps/%s/text.inc" % hand[0]
-            if (hp, hand[1]) not in RAW:
-                RAW.update({(hp, l): b for l, b in gba_blocks(show(GBA, hp)).items()})
-            edits.setdefault(hand[0], {})[hand[1]] = finish(pages, hp, hand[1], shaped)
+#  Which Gen 1 file each MANUAL_TEXT block belongs to: it is written only when that file is named (2026-11-09 -- it
+#  used to go into every write, and put FLASH back over CAIRN's VERBOSE).
+MANUAL_TEXT_FROM = {("PewterCity_Gym", "PewterCity_Gym_Text_BrockDefeat"): "PewterGym_2"}
+
+
+def text_path(d):
+    return d if d.endswith(".inc") else "data/maps/%s/text.inc" % d
+
+
+def match(only):
+    """Pair our Gen 1 writing with Gen 3 blocks. Returns the counts' lists and {map: {label: finished body}}."""
+    gb_files = subprocess.run(["git", "-C", GB, "diff", "--name-only", "upstream/master", "--", "text/"],
+                              capture_output=True, text=True, check=True).stdout.split()
+    matched, unmatched, nomap, vocab_only, handled, edits = [], [], [], [], [], {}
+    known = {os.path.basename(rel)[:-4] for rel in gb_files}
+    for o in only:
+        if o not in known:
+            print("  !! %s is not a Game Boy text file that differs from vanilla -- nothing to carry from it" % o)
+    for rel in gb_files:
+        name = os.path.basename(rel)[:-4]
+        if only and name not in only:
             continue
-        want = flat(' '.join(' '.join(pg) for pg in base.get(lbl, [])))
-        if not want:
-            unmatched.append((name, lbl, 0.0)); continue
-        ranked = sorted(((difflib.SequenceMatcher(None, want, van, autojunk=False).ratio(),
-                          d, glbl) for d, glbl, van in pool), reverse=True)
-        score, best = (ranked[0][0], ranked[0][1:]) if ranked else (0.0, None)
-        second = ranked[1][0] if len(ranked) > 1 else 0.0
-        # A near-tie means two Gen 3 lines fit the Gen 1 line equally well, and
-        # putting our writing in the wrong NPC's mouth is worse than not
-        # porting it. MARGIN is what stops that; the threshold alone does not.
-        # The margin guards against a COIN FLIP, not against a strong match.
-        # Bill's two lines scored 0.94 and 0.98 and were thrown out for being
-        # near-ties -- but at that similarity the vanilla sentences are the same
-        # sentence, and the worst case is porting to one of two twins rather
-        # than putting our writing in a stranger's mouth.
-        if best and score >= MIN and (score - second >= MARGIN or score >= SURE):
-            matched.append((name, lbl, best[0], best[1], score))
-            shaped = keep_shape if panel(lbl, pages) else rewrap
-            edits.setdefault(best[0], {})[best[1]] = finish(pages, best[0], best[1], shaped)
-        elif vocabulary_only(base.get(lbl, []), pages):
-            vocab_only.append((name, lbl))
-        else:
-            unmatched.append((name, lbl, score))
+        ours = gb_blocks(open(os.path.join(GB, rel), encoding="utf-8", errors="replace").read())
+        base = gb_blocks(show(GB, rel))
+        changed = {k: v for k, v in ours.items() if base.get(k) != v and v}
+        if not changed:
+            continue
+        maps = candidates(name)
+        if not maps:
+            nomap += [(name, k) for k in changed]
+            continue
+        pool = []   # (path, label, vanilla_flat)
+        for d in maps:
+            p = text_path(d)
+            for lbl, body in gba_blocks(show(GBA, p)).items():
+                pool.append((p, lbl, flat(body)))
+                RAW[(p, lbl)] = body
+        for lbl, pages in changed.items():
+            if (name, lbl) in HANDLED:
+                handled.append((name, lbl)); continue
+            hand = MANUAL.get(name, {}).get(lbl)
+            if hand:
+                matched.append((name, lbl, hand[0], hand[1], 1.0))
+                shaped = keep_shape if panel(lbl, pages) else rewrap
+                hp = text_path(hand[0])
+                if (hp, hand[1]) not in RAW:
+                    RAW.update({(hp, l): b for l, b in gba_blocks(show(GBA, hp)).items()})
+                edits.setdefault(hand[0], {})[hand[1]] = finish(pages, hp, hand[1], shaped)
+                continue
+            want = flat(' '.join(' '.join(pg) for pg in base.get(lbl, [])))
+            if not want:
+                unmatched.append((name, lbl, 0.0)); continue
+            ranked = sorted(((difflib.SequenceMatcher(None, want, van, autojunk=False).ratio(),
+                              d, glbl) for d, glbl, van in pool), reverse=True)
+            score, best = (ranked[0][0], ranked[0][1:]) if ranked else (0.0, None)
+            second = ranked[1][0] if len(ranked) > 1 else 0.0
+            # A near-tie means two Gen 3 lines fit the Gen 1 line equally well, and
+            # putting our writing in the wrong NPC's mouth is worse than not
+            # porting it. MARGIN is what stops that; the threshold alone does not.
+            # The margin guards against a COIN FLIP, not against a strong match.
+            # Bill's two lines scored 0.94 and 0.98 and were thrown out for being
+            # near-ties -- but at that similarity the vanilla sentences are the same
+            # sentence, and the worst case is porting to one of two twins rather
+            # than putting our writing in a stranger's mouth.
+            if best and score >= MIN and (score - second >= MARGIN or score >= SURE):
+                matched.append((name, lbl, best[0], best[1], score))
+                shaped = keep_shape if panel(lbl, pages) else rewrap
+                edits.setdefault(best[0], {})[best[1]] = finish(pages, best[0], best[1], shaped)
+            elif vocabulary_only(base.get(lbl, []), pages):
+                vocab_only.append((name, lbl))
+            else:
+                unmatched.append((name, lbl, score))
+    for (d, glbl), body in MANUAL_TEXT.items():
+        if not only or MANUAL_TEXT_FROM.get((d, glbl)) in only:
+            p = text_path(d)
+            if (p, glbl) not in RAW:
+                RAW.update({(p, l): b for l, b in gba_blocks(show(GBA, p)).items()})
+            edits.setdefault(d, {})[glbl] = finished(body)
+    return matched, unmatched, nomap, vocab_only, handled, edits
 
-print("  matched   %d" % len(matched))
-print("  handled elsewhere %d   (new signs, and two merged into one Gen 3 block)" % len(handled))
-print("  vocabulary only %d   (already done by port_vocab; nothing to carry)" % len(vocab_only))
-print("  unmatched %d   (real writing, no Gen 3 counterpart above %.2f)" % (len(unmatched), MIN))
-print("  no map    %d" % len(nomap))
-if nomap:
-    print("    ", ", ".join(sorted({n for n, _ in nomap})[:12]))
 
-for (d, glbl), body in MANUAL_TEXT.items():
-    edits.setdefault(d, {})[glbl] = body
+def classify(edits):
+    """Read every line a write would touch, as the tree has it now. Four kinds:
 
-if WRITE:
+      write  still vanilla's line, or vanilla's through port_oak and port_vocab -- nothing later is on it
+      same   already this tool's line (exactly, or the same words broken differently -- the breaks are left alone)
+      later  NEITHER: something after this tool wrote it -- a draft, a hand edit, another pass. Never overwritten
+             without --over-later-work (trap 32; T-534's three DRAFT lines went back to Gen 1's this way).
+      gone   the label is not in the tree's file any more
+    """
+    out = {"write": [], "same": [], "later": [], "gone": []}
+    for d, subs in sorted(edits.items()):
+        p = text_path(d)
+        now = gba_blocks(open(os.path.join(GBA, p), encoding="utf-8").read())
+        for lbl, body in sorted(subs.items()):
+            cur, van = now.get(lbl), RAW.get((p, lbl), "")
+            if cur is None:
+                kind = "gone"
+            elif cur == body or flat(cur) == flat(body):
+                kind = "same"
+            elif van and (cur == van or flat(cur) in (flat(van), flat(finished(van)))):
+                kind = "write"
+            else:
+                kind = "later"
+            out[kind].append((d, lbl, cur or "", body))
+    return out
+
+
+def show_lines(rows, limit=None):
+    for d, lbl, cur, body in rows[:limit]:
+        print("     %s  %s" % (text_path(d), lbl))
+        print("       now   %s" % cur[:110])
+        print("       port  %s" % body[:110])
+    if limit is not None and len(rows) > limit:
+        print("     ... and %d more" % (len(rows) - limit))
+
+
+def main():
+    global VOCAB, OAK
+    if WRITE and not ONLY:
+        #  engine.md trap 32, a second time (2026-09-25): later passes -- port_vocab, port_oak, and a great deal of
+        #  writing done in the GBA files directly -- have been layered on this tool's output, so re-writing EVERYTHING
+        #  reverted 89 files of that work. Name the Gen 1 text files to carry (e.g. pokedex_ratings ChampionsRoom).
+        refuse_over_later_work("port_dialogue")
+        if OVERRIDE not in sys.argv:   # the record says why; this holds even if the record loses the entry
+            raise SystemExit("  refused: a whole-tree --write re-writes every file this tool owns over later work; "
+                             "name the Game Boy text files")
+    VOCAB, OAK = _tool("port_vocab"), _tool("port_oak")
+    matched, unmatched, nomap, vocab_only, handled, edits = match(ONLY)
+
+    print("  matched   %d" % len(matched))
+    print("  handled elsewhere %d   (new signs, and two merged into one Gen 3 block)" % len(handled))
+    print("  vocabulary only %d   (already done by port_vocab; nothing to carry)" % len(vocab_only))
+    print("  unmatched %d   (real writing, no Gen 3 counterpart above %.2f)" % (len(unmatched), MIN))
+    print("  no map    %d" % len(nomap))
+    if nomap:
+        print("    ", ", ".join(sorted({n for n, _ in nomap})[:12]))
+
+    kinds = classify(edits)
+    print("  the tree: %d line(s) would be written (still vanilla), %d already carried, %d carry LATER WORK, %d gone"
+          % (len(kinds["write"]), len(kinds["same"]), len(kinds["later"]), len(kinds["gone"])))
+    named = bool(ONLY)
+    if kinds["write"]:
+        print("   to write:")
+        show_lines(kinds["write"], None if named else 12)
+    if kinds["later"]:
+        print("   later work -- a --write refuses these (%s writes over them):" % OVERRIDE)
+        show_lines(kinds["later"], None if named else 12)
+    if kinds["gone"] and named:
+        print("   gone from the tree (not written):")
+        show_lines(kinds["gone"])
+
+    if not WRITE:
+        return 0
+    refuse_lines("port_dialogue", ["%s  %s" % (text_path(d), lbl) for d, lbl, _, _ in kinds["later"]])
+    todo = kinds["write"] + (kinds["later"] if OVERRIDE in sys.argv else [])
+    subs_by_map = {}
+    for d, lbl, _, body in todo:
+        subs_by_map.setdefault(d, {})[lbl] = body
     files = 0
-    for d, subs in edits.items():
-        p = os.path.join(GBA, d if d.endswith(".inc") else "data/maps/%s/text.inc" % d)
+    for d, subs in sorted(subs_by_map.items()):
+        p = os.path.join(GBA, text_path(d))
         lines = open(p, encoding="utf-8").read().split('\n')
         out, i, hit = [], 0, False
         while i < len(lines):
@@ -542,4 +649,9 @@ if WRITE:
             hit = True
         if hit:
             open(p, "w", encoding="utf-8").write('\n'.join(out)); files += 1
-    print("  written: %d files" % files)
+    print("  written: %d line(s) in %d file(s)" % (len(todo), files))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
