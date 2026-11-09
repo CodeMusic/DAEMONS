@@ -133,3 +133,9 @@ T-534 played on the DEBUG build, the season forced: one redrafted INDEX entry pe
 T-534 played on the DEBUG build: LENSMUSAI spring's control line, CAREMUSAI summer on two hulls under one deck, CODEMUSAI's chest lights 1101 in winter, spring, summer and autumn, each against its own kind (the lead keeps the debug party's first nickname) (DRAFT)
 
 ![9Nov2026 - T534 - MUSAI sprite notes in battle - 24](9Nov2026%20-%20T534%20-%20MUSAI%20sprite%20notes%20in%20battle%20-%2024.png)
+
+### 9Nov2026 - C310 - each MUSAI in its season in the companion INDEX - 25
+
+C-310: the companion's INDEX shows each MUSAI in the season its edition keeps -- autumn in CONTENT, spring in CONTEXT on 9 November -- with that season's entry and its name beside the number (a test save on a scratch site, DRAFT)
+
+![9Nov2026 - C310 - each MUSAI in its season in the companion INDEX - 25](9Nov2026%20-%20C310%20-%20each%20MUSAI%20in%20its%20season%20in%20the%20companion%20INDEX%20-%2025.png)
