@@ -37,3 +37,27 @@ C-309: LISTEN in THE SUBTLE LAYER's look -- its pink on its night paper, rounded
 C-309: the same module in PRINCIPLES OF MIND's look -- gold on paper, cut square, caps, the ✎, an even wave; NOW READING 2 OF 62; the library's frame in the book's ink. DRAFT
 
 ![9Nov2026 - C309 - the voice module in principles of mind - 6](9Nov2026%20-%20C309%20-%20the%20voice%20module%20in%20principles%20of%20mind%20-%206.png)
+
+### 9Nov2026 - T525 - batch 4 built - ITEMS valuables shards milk cookie - 9
+
+T-525 batch 4 built (the user, 2026-11-09: Build all): the ITEMS pocket in the built DEBUG ROM, NUGGET to LAVA COOKIE, each selected, stopped at LAVA COOKIE. tools/routes/t525_item_icons_batch4.json stop 1.
+
+![9Nov2026 - T525 - batch 4 built - ITEMS valuables shards milk cookie - 9](9Nov2026%20-%20T525%20-%20batch%204%20built%20-%20ITEMS%20valuables%20shards%20milk%20cookie%20-%209.png)
+
+### 9Nov2026 - T525 - batch 4 built - ITEMS mail and scarves - 10
+
+T-525 batch 4 built: the five MAILs and the four PARADE DAYS scarves in the ITEMS pocket, stopped at YELLOW SCARF. Route stop 2.
+
+![9Nov2026 - T525 - batch 4 built - ITEMS mail and scarves - 10](9Nov2026%20-%20T525%20-%20batch%204%20built%20-%20ITEMS%20mail%20and%20scarves%20-%2010.png)
+
+### 9Nov2026 - T525 - batch 4 built - TRAP TABLE berries - 11
+
+T-525 batch 4 built (Keep all 20): the TRAP TABLE's twenty berries on the plank, RAZZ to BELUE, stopped at BELUE. Route stop 4.
+
+![9Nov2026 - T525 - batch 4 built - TRAP TABLE berries - 11](9Nov2026%20-%20T525%20-%20batch%204%20built%20-%20TRAP%20TABLE%20berries%20-%2011.png)
+
+### 9Nov2026 - T525 - batch 4 built - KEY ITEMS - 12
+
+T-525 batch 4 built: KEY ITEMS with POWDER JAR and the three new key-item icons after the nine already held, stopped at METEORITE. Route stop 3.
+
+![9Nov2026 - T525 - batch 4 built - KEY ITEMS - 12](9Nov2026%20-%20T525%20-%20batch%204%20built%20-%20KEY%20ITEMS%20-%2012.png)

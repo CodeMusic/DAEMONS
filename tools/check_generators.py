@@ -60,9 +60,9 @@ ARGS = {
     #  T-524: the same shape; the user chose 2 Readout on 2026-11-06. The write copies gfx/drafts/t524_battle_ui/2 and
     #  splices tiles 66-70 into the elements sheet, so a sandboxed write changes nothing when the engine is right.
     "gbabattleui": [["--approved", "--main", "2"]],
-    #  T-525: --write refuses without --approved; the user said "Build all 41" and then "Build all 47" on 2026-11-07
-    #  (APPROVED is every icon in batches 1 and 2, and --all writes both), and the report exits 1 when the engine is not
-    #  what that write makes.
+    #  T-525: --write refuses without --approved; the user said "Build all 41", "Build all 47" and "Build all 57" on
+    #  2026-11-07 and "Build all" (batch 4, "Keep all 20" berries) on 2026-11-09 (APPROVED is every icon in batches 1-4,
+    #  and --all writes all four), and the report exits 1 when the engine is not what that write makes.
     "gbaitemicons": [["--approved", "--all"]],
     #  T-527: the same shape; the user picked "A outdoors, B indoors" on 2026-11-07 (APPROVED is all nine terrains,
     #  and --all writes them). The write copies each pick into graphics/battle_terrain and reruns gbabattlebg's write,

@@ -13,9 +13,10 @@
 DRAFT, 2026-11-07, the user away ("Item icons" next, from the vanilla-art census, gap 4). BUILT the same day: the user, "Build all
 41" -- and batch 2's forty-seven the same day too: the user, "Build all 47", and batch 3's fifty-seven (ICONS3, `--draft
 --batch 3`: the held items and the TRAP TABLE's TRAPs) the same day: the user, "Build all 57". APPROVED holds every icon of
-all three batches, `--all` writes all three, and the report exits 1 when the engine is not what that write makes. Batch 4
-(ICONS4, `--draft --batch 4`, 2026-11-09: the valuables, shards, MAIL, scarves, berries and four key items) is DRAFT, NOT
-in APPROVED, and `--all` leaves it out; `--write --approved ITEM ...` finds a batch-4 item by name once the user picks. Every pixel here is drawn in
+all three batches, and batch 4's forty-seven (ICONS4, `--draft --batch 4`, 2026-11-09: the valuables, shards, MAIL,
+scarves, berries and four key items) were approved 2026-11-09: the user, "Build all" and "Keep all 20" (the berries).
+APPROVED holds every icon of all four batches, `--all` writes all four, and the report exits 1 when the engine is not
+what that write makes. Every pixel here is drawn in
 code, by hand, on the 24x24 grid: no AI image, nothing traced. The engine's own icons are read only to show them
 beside ours on the sheet.
 
@@ -2239,8 +2240,8 @@ APPROVED = APPROVED + [e[0] for e in ICONS3]      # the user, 2026-11-07: "Build
 
 # ================================================================================================= batch 4
 #  Drafted 2026-11-09 (the user: "Icons batch 4"), the last of FireRed's icons a player can reach. `--draft --batch 4`
-#  draws them. NOT in APPROVED, and `--all` still means batches 1-3: nothing here reaches the engine until the user
-#  picks from the sheet (`--write --approved ITEM ...` finds a batch-4 item by name, as it finds any other).
+#  draws them. APPROVED 2026-11-09 (the user: "Build all", and "Keep all 20" for the berries), so `--all` writes them
+#  with batches 1-3 and the report exits 1 if the engine drifts from any of them.
 #  The ITEMS pocket's valuables, the four shards, the drinks and treats, the MAIL a player can be given and the four
 #  PARADE DAYS scarves; the TRAP TABLE's twenty berries that are still berries; four key items.
 #  Not drawn, because no player can get them (no gift, ball, hidden item, prize, mart, wild hold, Pickup or holiday
@@ -3018,7 +3019,7 @@ ICONS4 = [
     ("durin_berry", "DURIN BERRY", ["ITEM_DURIN_BERRY"], i_durin_berry, "own", "the plank: a thorned durian"),
     ("belue_berry", "BELUE BERRY", ["ITEM_BELUE_BERRY"], i_belue_berry, "own", "the plank: a glossy plum-black berry"),
 ]
-#  Not in APPROVED: batch 4 is a draft until the user picks.
+APPROVED = APPROVED + [e[0] for e in ICONS4]      # Build all 47, keep all 20 berries, 2026-11-09
 
 
 # ================================================================================================= the engine's files
@@ -3536,9 +3537,9 @@ def mocks4(out, made, texts):
 
 def report():
     rows, files, vfiles = table_rows(), symbol_files(), vanilla_files()
-    print("  T-525 item icons, batches 1-3: %d icons, %d approved (the user, 2026-11-07: \"Build all 41\", \"Build all 47\", \"Build all 57\")"
-          % (len(ICONS) + len(ICONS2) + len(ICONS3), len(APPROVED)))
-    for e in ICONS + ICONS2 + ICONS3:
+    print("  T-525 item icons, batches 1-4: %d icons, %d approved (the user, 2026-11-07: \"Build all 41\", \"Build all 47\", \"Build all 57\"; 2026-11-09: \"Build all\", \"Keep all 20\")"
+          % (len(ICONS) + len(ICONS2) + len(ICONS3) + len(ICONS4), len(APPROVED)))
+    for e in ICONS + ICONS2 + ICONS3 + ICONS4:
         key, name, items, _, mode, what = e
         idx, pal = make(e)
         stem = files[rows[items[0]][0]]
@@ -3546,7 +3547,6 @@ def report():
         target = {"own": "icons/d_%s.png" % key, "tmhm": "icons/tm_hm.png (in place)", "driver": "icons/driver.png"}[mode]
         used = len({v for row in idx for v in row} - {0})
         print("    %-14s %-20s now %-16s (%-6s) -> %-28s %2d colours" % (name, items[0], stem, state, target, used))
-    print("  batch 4: %d drafts (--draft --batch 4), none approved; --all leaves them out" % len(ICONS4))
     print("  --draft draws them and the sheet; --write --approved ITEM ... writes the named ones.")
 
 
@@ -3636,7 +3636,7 @@ def main():
         if not A.approved:
             print("  --write refuses without --approved: the user picks from the sheet first (T-525).")
             return 0
-        keys = [e[0] for e in ICONS + ICONS2 + ICONS3] if A.all else (A.items or APPROVED)
+        keys = [e[0] for e in ICONS + ICONS2 + ICONS3 + ICONS4] if A.all else (A.items or APPROVED)
         if not keys:
             print("  --write --approved names no items, and none is approved yet: nothing written.")
             return 0
@@ -3651,7 +3651,7 @@ def main():
             print("  the engine is NOT what the approved write makes: %d files (%s%s) -- run --write --approved --all"
                   % (len(d), ", ".join(d[:4]), " ..." if len(d) > 4 else ""))
             return 1
-        print("  the engine holds every approved icon (%d of %d)" % (len(APPROVED), len(ICONS) + len(ICONS2) + len(ICONS3)))
+        print("  the engine holds every approved icon (%d of %d)" % (len(APPROVED), len(ICONS) + len(ICONS2) + len(ICONS3) + len(ICONS4)))
     return 0
 
 
