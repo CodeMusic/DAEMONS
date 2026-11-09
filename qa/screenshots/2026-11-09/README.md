@@ -73,3 +73,27 @@ T-535 DRAFT: 18 item descriptions (valuables, mushrooms, HEART SCALE, shards, MO
 T-535 DRAFT: the 20 berries, each its own two lines, in the TRAP TABLE's own 200x32 two-line window at 1x and 3x; NOW is vanilla's one shared line. Nothing in the engine.
 
 ![9Nov2026 - T535 - berry descriptions DRAFT in the TRAP TABLE window - 14](9Nov2026%20-%20T535%20-%20berry%20descriptions%20DRAFT%20in%20the%20TRAP%20TABLE%20window%20-%2014.png)
+
+### 9Nov2026 - T535 - the BAG, valuables mushrooms shards milk - 15
+
+T-535 built: NUGGET to MOOMOO MILK in the BAG with their new lines, the ARCHIVIST named, the jokes kept (theatre, debug build, DRAFT)
+
+![9Nov2026 - T535 - the BAG, valuables mushrooms shards milk - 15](9Nov2026%20-%20T535%20-%20the%20BAG%2C%20valuables%20mushrooms%20shards%20milk%20-%2015.png)
+
+### 9Nov2026 - T535 - the BAG, five MAILs - 16
+
+T-535 built: the five MAILs, RETRO MAIL redrafted to match the four (theatre, debug build, DRAFT)
+
+![9Nov2026 - T535 - the BAG, five MAILs - 16](9Nov2026%20-%20T535%20-%20the%20BAG%2C%20five%20MAILs%20-%2016.png)
+
+### 9Nov2026 - T535 - TRAP TABLE, twenty berries - 17
+
+T-535 built: the twenty berries on the TRAP TABLE, each its own two lines, taste only (theatre, debug build, DRAFT)
+
+![9Nov2026 - T535 - TRAP TABLE, twenty berries - 17](9Nov2026%20-%20T535%20-%20TRAP%20TABLE%2C%20twenty%20berries%20-%2017.png)
+
+### 9Nov2026 - T535 - KEY ITEMS, POWDER JAR - 18
+
+T-535 built: POWDER JAR's line, no BERRY CRUSHER (theatre, debug build, DRAFT)
+
+![9Nov2026 - T535 - KEY ITEMS, POWDER JAR - 18](9Nov2026%20-%20T535%20-%20KEY%20ITEMS%2C%20POWDER%20JAR%20-%2018.png)

@@ -761,10 +761,8 @@ T526 = {
                            "bound wild DAEMON quickly grow",
                            "friendly."],
                           "'captured' is the one capture verb the vocabulary pass never had"),
-    "ITEM_RETRO_MAIL":   (["A piece of MAIL featuring a print",
-                           "of three cute DAEMONS. It is to",
-                           "be held by a DAEMON."],
-                          "the plural was read as one"),
+    #  RETRO MAIL was T-526's row ("the plural was read as one"); the user, 2026-11-09, had it redrafted to match
+    #  T-535's four MAILs, so it moved to T535 below and is approved there.
     "ITEM_SUBTLE_LAYER": (["THE SUBTLE LAYER. A USER's",
                            "handbook of the craft: read,",
                            "write and link."],
@@ -810,7 +808,7 @@ T526_BEFORE = {k: list(NAMED[k][1]) for k in T526_TWO_LINES}
 #  The user approves rows by name. The user, 2026-11-07: "Build all 16" -- every row above, with SUBTLE LAYER's
 #  USER (the book's cover follows: gensubtle.py, bookpdf.py), HOLT's ticket and the cookie's hot stone kept, and the
 #  scarves naming the day. The ten TRAP TABLE rows: the user, "Rewrite to 2 lines", 2026-11-07. Still DRAFT words,
-#  every one.
+#  every one. (RETRO MAIL has since moved to T535, redrafted, 2026-11-09.)
 T526_APPROVED = list(T526)
 for _k in T526_APPROVED:
     TEXT[_k] = T526[_k][0]
@@ -900,6 +898,11 @@ T535 = {
                            "too fine for what it will say.",
                            "A DAEMON will hold it."],
                           "'gorgeous, extravagant' is vanilla's"),
+    "ITEM_RETRO_MAIL":   (["MAIL printed with three small",
+                           "DAEMONS in old grey. Write on it,",
+                           "and a DAEMON will hold it."],
+                          "T-526's row, redrafted to the four MAILs' pattern (the user, 2026-11-09: 'match RETRO'); "
+                          "the icon's three grey daemons"),
     "ITEM_POWDER_JAR":   (["A jar for the BERRY POWDER made",
                            "by crushing BERRIES. DOLDRUM",
                            "CITY's medicine-maker wants it."],
@@ -967,8 +970,9 @@ T535 = {
                           "very soft; sour 40"),
 }
 T535_TWO_LINES = [k for k in T535 if k.endswith("_BERRY")]
-#  Empty until the user picks. An approved row goes here too, so the whole-table --write keeps it.
-T535_APPROVED = []
+#  The user, 2026-11-09: Build all 38; taste only; keep the jokes; name him; match RETRO. Every row above -- the 38 and
+#  RETRO MAIL, redrafted -- and still DRAFT words, every one. The drinks (question 4) were not asked to move.
+T535_APPROVED = list(T535)
 for _k in T535_APPROVED:
     TEXT[_k] = T535[_k][0]
     if _k in NAMED:

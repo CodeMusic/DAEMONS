@@ -1,9 +1,11 @@
 # T-535 — the second item-description sweep (DRAFT)
 
-*Drafted 2026-11-09 (the user picked "Item description sweep"). **Every line below is DRAFT, and nothing is in the
-engine.** The drafts are `T535` in `tools/port_item_text.py`. `T535_APPROVED` is empty, so a plain `--write` still
-changes nothing. To approve rows: `python3 tools/port_item_text.py --write --approved ITEM ...`, then add the same
-rows to `T535_APPROVED`.*
+**Built 2026-11-09.** The user's answers: build all 38; the berries say taste only, never BERRY POWDER; keep the
+jokes (NUGGET, STARDUST, TAMATO, HONDEW); keep naming the ROUTINE ARCHIVIST; and redraft RETRO MAIL to match the four
+new MAIL lines. RETRO MAIL moved from `T526` into `T535`, so it is a T-535 row now, and all 39 rows are in
+`T535_APPROVED` and the engine. The drinks (question 4) were left as they are. **Every word is still DRAFT.**
+
+*Drafted 2026-11-09 (the user picked "Item description sweep"). The drafts are `T535` in `tools/port_item_text.py`.*
 
 **The pictures** are in `qa/screenshots/2026-11-09/`:
 
@@ -55,6 +57,7 @@ fewer, and every berry is exactly two. Each draft is about as long as the line i
 | SHADOW MAIL | A piece of MAIL featuring / a cute FADING print. It is / to be held by a DAEMON. | MAIL printed with a FADING, half / gone into the paper. Write on it, / and a DAEMON will hold it. | The icon shows the print fading out. MASK NIGHT gives it. |
 | DREAM MAIL | A piece of MAIL to be held by a / DAEMON. It will bear the print of / the DAEMON holding it. | MAIL with an outline left blank. / It takes the print of the DAEMON / that holds it. | The meaning is vanilla's and the words are ours. The icon is a dashed outline, waiting. SIX ISLAND's mart sells it. |
 | FAB MAIL | A piece of MAIL featuring a / gorgeous, extravagant print. It / is to be held by a DAEMON. | MAIL in a gold lattice print, far / too fine for what it will say. / A DAEMON will hold it. | "Gorgeous, extravagant" is vanilla's. PAIRING DAY and a trade give it. |
+| RETRO MAIL (added at the build) | A piece of MAIL featuring a print / of three cute DAEMONS. It is to / be held by a DAEMON. (T-526's) | MAIL printed with three small / DAEMONS in old grey. Write on it, / and a DAEMON will hold it. | Redrafted to match the four MAILs above (the user, 2026-11-09). The icon is three small grey daemons. Widest line 183px. |
 | POWDER JAR | A jar for storing BERRY POWDER / made using a BERRY CRUSHER. | A jar for the BERRY POWDER made / by crushing BERRIES. DOLDRUM / CITY's medicine-maker wants it. | Nothing in the game is called a BERRY CRUSHER. The game has "a Wireless Adapter machine for crushing BERRIES" at the CHECKPOINTS' DIRECT CORNER, and the BERRY CRUSH minigame. BERRY POWDER keeps its name. The man who gives the jar and trades for the powder is in DOLDRUM CITY (`CeruleanCity_House5`). |
 
 ### The TRAP TABLE: the twenty berries (two lines each)
@@ -96,7 +99,7 @@ Where the berries come from:
 ## Checked, and kept as they stand
 
 - **METEORITE, PEER REVIEW and ENVELOPE** are already ours.
-- **T-526's 16 rows** (TOKEN CASE, the scarves, RETRO MAIL, LAVA COOKIE and the rest) are not redone.
+- **T-526's 16 rows** (TOKEN CASE, the scarves, LAVA COOKIE and the rest) are not redone, except RETRO MAIL (above).
 - **FRESH WATER, SODA POP and LEMONADE** are worded as in vanilla, but they say truly what the drinks are. T-526
   kept them on purpose, and the user approved that. They are a question below.
 - **TEA** is a key item in the story: the lady in VERDIGRIS makes it. It is left alone.
