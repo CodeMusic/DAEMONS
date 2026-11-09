@@ -13,7 +13,9 @@
 DRAFT, 2026-11-07, the user away ("Item icons" next, from the vanilla-art census, gap 4). BUILT the same day: the user, "Build all
 41" -- and batch 2's forty-seven the same day too: the user, "Build all 47", and batch 3's fifty-seven (ICONS3, `--draft
 --batch 3`: the held items and the TRAP TABLE's TRAPs) the same day: the user, "Build all 57". APPROVED holds every icon of
-all three batches, `--all` writes all three, and the report exits 1 when the engine is not what that write makes. Every pixel here is drawn in
+all three batches, `--all` writes all three, and the report exits 1 when the engine is not what that write makes. Batch 4
+(ICONS4, `--draft --batch 4`, 2026-11-09: the valuables, shards, MAIL, scarves, berries and four key items) is DRAFT, NOT
+in APPROVED, and `--all` leaves it out; `--write --approved ITEM ...` finds a batch-4 item by name once the user picks. Every pixel here is drawn in
 code, by hand, on the 24x24 grid: no AI image, nothing traced. The engine's own icons are read only to show them
 beside ours on the sheet.
 
@@ -2235,6 +2237,790 @@ ICONS3 = [
 APPROVED = APPROVED + [e[0] for e in ICONS3]      # the user, 2026-11-07: "Build all 57"
 
 
+# ================================================================================================= batch 4
+#  Drafted 2026-11-09 (the user: "Icons batch 4"), the last of FireRed's icons a player can reach. `--draft --batch 4`
+#  draws them. NOT in APPROVED, and `--all` still means batches 1-3: nothing here reaches the engine until the user
+#  picks from the sheet (`--write --approved ITEM ...` finds a batch-4 item by name, as it finds any other).
+#  The ITEMS pocket's valuables, the four shards, the drinks and treats, the MAIL a player can be given and the four
+#  PARADE DAYS scarves; the TRAP TABLE's twenty berries that are still berries; four key items.
+#  Not drawn, because no player can get them (no gift, ball, hidden item, prize, mart, wild hold, Pickup or holiday
+#  gives them): SHOAL SALT and SHOAL SHELL; FLUFFY TAIL (no mart sells it); ORANGE, HARBOR, MECH, WOOD, WAVE, BEAD
+#  and TROPIC MAIL; PINK SCARF ("like the ones handed out", and nothing hands it out); ENIGMA BERRY (an e-Reader's
+#  only); MACH BIKE, ACRO BIKE and the rest of Hoenn's key items (CONTEST PASS ... DEVON SCOPE). The SINKs are not
+#  here: their heat sink (sink.png, T-488) is already ours. MYSTICTICKET and AURORATICKET stay undrawn (batch 2).
+STARRED = ((250, 154, 150), (214, 72, 84), (130, 32, 46))        # STARDUST and STAR PIECE: "red", their words
+PEARLS = (W, (222, 224, 234), (176, 180, 198))                     # "a pretty silver color"
+IRON = ((132, 124, 118), (88, 82, 80), (50, 46, 48))              # the METEORITE: lumpy, hard
+CAP = ((216, 140, 104), (176, 84, 62), (108, 46, 38))            # the mushrooms' caps
+NAMED = {                                                         # a shard, a scarf: the colour is its name
+    "red": ramp((206, 64, 58), 0.4), "blue": ramp((64, 110, 206), 0.4),
+    "yellow": ramp((226, 192, 48), 0.4), "green": ramp((70, 156, 82), 0.4),
+}
+WAX = (TASSEL, TASSEL_D)                                          # a seal is wax, and wax is SECRET KEY's red
+
+
+def inside(pts, x, y):
+    """Is the pixel centre (x+.5, y+.5) inside the polygon?"""
+    px_, py_, n, hit = x + 0.5, y + 0.5, len(pts), False
+    for i in range(n):
+        (x0, y0), (x1, y1) = pts[i], pts[(i + 1) % n]
+        if (y0 > py_) != (y1 > py_) and px_ < x0 + (py_ - y0) * (x1 - x0) / (y1 - y0):
+            hit = not hit
+    return hit
+
+
+def poly(c, pts, col):
+    for y in range(N):
+        for x in range(N):
+            if inside(pts, x, y):
+                c.px(x, y, col(x, y) if callable(col) else col)
+
+
+def sphere(c, cx, cy, r, cols, hi=W, sy=1.0):
+    """A ball lit from the top left: light, middle and dark by how far each pixel faces the light; sy squashes it."""
+    L, M, D = cols
+    for y in range(N):
+        for x in range(N):
+            dx, dy = (x + 0.5 - cx) / r, (y + 0.5 - cy) / (r * sy)
+            if dx * dx + dy * dy <= 1.0:
+                z = math.sqrt(max(0.0, 1 - dx * dx - dy * dy))
+                lit = -0.55 * dx - 0.6 * dy + 0.58 * z
+                c.px(x, y, L if lit > 0.62 else M if lit > 0.05 else D)
+    if hi:
+        hx, hy = int(cx - r * 0.42), int(cy - r * sy * 0.45)
+        c.px(hx, hy, hi)
+        if r > 5:
+            c.px(hx + 1, hy, hi), c.px(hx, hy + 1, hi)
+
+
+def sparkle(c, x, y, col=W):
+    c.px(x, y, col), c.px(x - 1, y, col), c.px(x + 1, y, col), c.px(x, y - 1, col), c.px(x, y + 1, col)
+
+
+#  ---- the valuables, each the thing its description says, in its description's colour
+def i_nugget():
+    """A nugget of pure gold that gives off a lustrous gleam: a gold lump, its gleam."""
+    c = C()
+    c.ascii(3, 6, ["       MMMM       ",
+                   "     MMLLMMMM     ",
+                   "   MMLLWLLMMMD    ",
+                   "  MMLLLLLMMMMDD   ",
+                   " MMLLLLMMMMMMDDD  ",
+                   " MLLLMMMMMMMDMMDD ",
+                   "MMLLMMMMMMDDMMMDD ",
+                   "MMLMMMMMDDDMMMMDDD",
+                   "MMMMMMMDDMMMMMDDDD",
+                   " MMMMMMMMMMMMDDDD ",
+                   " DMMMMMMMMMDDDDD  ",
+                   "  DDMMMMMDDDDDD   ",
+                   "   DDDDDDDDDD     "], {"L": GOLD_L, "M": GOLD, "D": GOLD_D, "W": W})
+    c.outline()
+    sparkle(c, 19, 3)
+    return c
+
+
+def i_pearl():
+    """A relatively small pearl, sparkling silver."""
+    c = C()
+    sphere(c, 12, 13, 5.2, PEARLS, hi=None)
+    c.px(10, 11, W), c.px(9, 11, W2)
+    c.outline()
+    sparkle(c, 18, 6)
+    return c
+
+
+def i_big_pearl():
+    """A quite-large pearl: the PEARL, grown."""
+    c = C()
+    sphere(c, 11.5, 12.5, 8.6, PEARLS, hi=None)
+    c.rect(7, 7, 8, 8, W), c.px(9, 7, W2), c.px(7, 9, W2)
+    c.outline()
+    sparkle(c, 20, 3)
+    return c
+
+
+def i_stardust():
+    """A pretty red sand with a loose, silky feel: a little heap of red grains, a few loose, one catching the light."""
+    import random
+    rnd = random.Random(4)
+    L, M, D = STARRED
+    c = C()
+    for x in range(2, 22):
+        h = 7.5 * (1 - ((x - 11.5) / 10.0) ** 2)
+        for y in range(int(round(19 - h)), 20):
+            c.px(x, y, rnd.choice((M, M, L, D)) if y < 18 else rnd.choice((M, D, D)))
+    for x, y in ((5, 9), (17, 8), (9, 6), (20, 11), (3, 12)):
+        c.px(x, y, M)
+    c.outline()
+    sparkle(c, 15, 4)
+    c.px(8, 13, W), c.px(13, 12, W)
+    return c
+
+
+def i_star_piece():
+    """A shard of a gem that sparkles red: a faceted star, one arm broken off along a clean line."""
+    L, M, D = STARRED
+    c = C()
+    cx, cy = 11.5, 12.5
+    pts = []
+    for k in range(10):
+        r = 10.5 if k % 2 == 0 else 4.4
+        a = math.radians(90 + k * 36)
+        pts.append((cx + r * math.cos(a), cy - r * math.sin(a)))
+
+    def facet(x, y):
+        dx, dy = x + 0.5 - cx, y + 0.5 - cy
+        return L if (dx + dy < -1) else D if (dx > 1 and dy > 0) else M
+    poly(c, pts, facet)
+    for x in range(N):                                 # the break: the lower-right arm gone past a straight cut
+        for y in range(N):
+            if (x - cx) * 0.95 + (y - cy) * 0.31 > 4.6 and y > cy - 1:
+                c.px(x, y, None)
+    c.line(int(cx), int(cy), int(cx), 3, W)            # a ridge catching the light
+    c.outline()
+    sparkle(c, 20, 18)
+    return c
+
+
+def mushroom(cx, w, h, stem_w, stem_h, base):
+    L, M, D = CAP
+    c = C()
+    c.rect(cx - stem_w // 2, base - stem_h, cx - stem_w // 2 + stem_w - 1, base, PAPER)
+    c.vline(cx - stem_w // 2 + stem_w - 1, base - stem_h, base, PAPER2)
+    top = base - stem_h - h
+    for y in range(top, base - stem_h + 1):
+        t = (y - top + 0.5) / (h + 1)
+        half = w / 2 * math.sqrt(max(0.0, 1 - (1 - t) ** 2))
+        for x in range(int(round(cx - half)), int(round(cx + half))):
+            c.px(x, y, L if x < cx - half / 3 and y < top + h / 2 else D if x > cx + half / 2 else M)
+    c.hline(int(cx - w / 2) + 1, int(cx + w / 2) - 2, base - stem_h, D)     # the gills' shadow under the rim
+    return c, top
+
+
+def i_tiny_mushroom():
+    """A small and rare mushroom: one small mushroom, two pale spots."""
+    c, top = mushroom(12, 10, 5, 3, 5, 19)
+    c.px(10, top + 2, W), c.px(13, top + 1, W)
+    c.outline()
+    return c
+
+
+def i_big_mushroom():
+    """A large and rare mushroom: the same, large."""
+    c, top = mushroom(12, 20, 9, 6, 7, 21)
+    for x, y in ((7, top + 4), (12, top + 2), (16, top + 5), (10, top + 6)):
+        c.rect(x, y, x + 1, y + 1, W)
+    c.outline()
+    return c
+
+
+def i_heart_scale():
+    """A heart-shaped scale that glows faintly in the colours of a rainbow: a pale heart, a scale's growth lines, and
+    the faint sheen across it in four soft hues (none of them a type's or a state's: rainbow, not a label)."""
+    PINK = ((252, 222, 230), (236, 176, 196), (180, 112, 140))
+    SHEEN = [(214, 236, 252), (220, 246, 214), (252, 244, 196), (238, 214, 250)]
+    c = C()
+    cx, cy, s = 11.5, 11.0, 9.0
+    for y in range(N):
+        for x in range(N):
+            X, Y = (x + 0.5 - cx) / s, -(y + 0.5 - cy) / s * 1.1
+            if (X * X + Y * Y - 0.5) ** 3 - X * X * Y ** 3 * 0.9 <= 0 and y < 22:
+                c.px(x, y, PINK[1])
+    for y in range(N):
+        for x in range(N):
+            if c.get(x, y) == PINK[1]:
+                if c.get(x - 1, y - 1) is None or c.get(x, y - 1) is None:
+                    c.px(x, y, PINK[0])
+                elif c.get(x + 1, y + 1) is None or c.get(x, y + 1) is None:
+                    c.px(x, y, PINK[2])
+    for k, col in enumerate(SHEEN):                   # the sheen, one diagonal band of each soft hue
+        for y in range(N):
+            x = 4 + k * 2 + y // 2
+            if c.get(x, y) == PINK[1]:
+                c.px(x, y, col)
+    for y in range(N):                                # growth lines, arcs about the point
+        for x in range(N):
+            d = math.hypot(x - 11.5, y - 20.5)
+            if c.get(x, y) not in (None,) and (4.0 <= d <= 4.7 or 8.0 <= d <= 8.7) and y < 19:
+                c.px(x, y, PINK[2])
+    c.outline()
+    return c
+
+
+def shard(colour):
+    """A small shard from some tool made long ago: a broken piece, a worked groove across it (it was made, not
+    found), its broken edge jagged; the colour is the one its name says."""
+    L, M, D = NAMED[colour]
+    c = C()
+    pts = [(3, 21), (5, 9), (9, 2), (12, 7), (15, 4), (21, 11), (18, 15), (20, 21)]   # broken on every side
+
+    def face(x, y):                                     # three flat facets, as a fracture leaves them
+        return L if x < 9 and y < 15 else D if x > 13 and y > 9 else M
+    poly(c, pts, face)
+    c.line(4, 16, 19, 12, D), c.line(4, 17, 19, 13, L)  # the groove someone cut: it was made, not found
+    c.px(8, 5, W), c.px(7, 7, W), c.px(6, 10, W)
+    c.outline()
+    return c
+
+
+def i_red_shard(): return shard("red")
+def i_blue_shard(): return shard("blue")
+def i_yellow_shard(): return shard("yellow")
+def i_green_shard(): return shard("green")
+
+
+#  ---- the drinks and treats: as batch 2's drinks, HP's green where it gives back HP
+def i_moomoo_milk():
+    """Highly nutritious milk that restores HP: a milk bottle, opaque white to the shoulder, its cap the HP bar's
+    green (batch 2's drinks: HP green on a cap, a band, a straw, a window)."""
+    c = C()
+    c.rect(9, 1, 14, 3, HP), c.hline(9, 14, 1, HP_L), c.vline(14, 1, 3, HP_D)
+    c.rect(10, 4, 13, 7, GLASS)
+    for y in range(8, 22):
+        half = 3 + min(3, y - 8) if y < 11 else 6
+        c.hline(12 - half, 11 + half, y, GLASS if y < 10 else W)
+    for y in range(10, 22):
+        c.px(17, y, W2)
+    c.rect(7, 14, 16, 17, HP), c.hline(7, 16, 14, HP_L), c.hline(7, 16, 17, HP_D)     # the band
+    c.vline(8, 10, 20, W2)
+    c.outline()
+    c.px(8, 11, GLASS2)
+    return c
+
+
+def i_lava_cookie():
+    """A cookie baked on hot stone that ends every state: a round cookie on a grey stone slab, the heat rising
+    off it in grey, and five flecks in the five states' colours (ROLLBACK and HOTFIX wear all five for the same
+    reason). The stone is not ember: OVERHEATED's colour on it would say it ends only that."""
+    c = C()
+    c.rect(1, 18, 22, 21, G3), c.hline(1, 22, 18, G2), c.hline(1, 22, 21, G4)
+    for x in range(3, 22, 5):
+        c.px(x, 20, G4)
+    sphere(c, 11.5, 12.5, 7.4, (KRAFT_L, KRAFT, KRAFT_D), hi=None, sy=0.72)
+    for (x, y), col in zip(((8, 10), (13, 9), (16, 12), (10, 14), (14, 15)), FIVE):
+        c.rect(x, y, x + 1, y, col)
+    c.outline()
+    for x, y0 in ((4, 3), (19, 2)):                   # heat off the stone
+        waves_v = [0, 1, 1, 0, -1, -1, 0]
+        for k, d in enumerate(waves_v):
+            c.px(x + d, y0 + k, G2)
+    return c
+
+
+#  ---- the MAIL a player can be given: one sheet of stationery, its print in the box at its head. A daemon is
+#  coloured by its type (9.4), so a daemon's print wears its type's hue; the rest are neutrals and paper.
+def mail(draw):
+    c = C()
+    c.box(3, 1, 20, 22, PAPER)
+    for x in range(15, 21):                            # the top corner folded down
+        for y in range(1, 7):
+            if x - 15 > y - 1:
+                c.px(x, y, None)
+            elif x >= 15 and y <= 6 and x - 15 >= y - 2:
+                c.px(x, y, PAPER2)
+    c.rect(5, 4, 15, 12, W)
+    for y in (15, 17, 19):                             # the lines of the letter
+        c.hline(5, 18 if y < 19 else 12, y, G1)
+    draw(c)
+    c.outline()
+    return c
+
+
+def i_glitter_mail():
+    """A cute SPIKE print: SPIKE's jag in its type's hue (SIGNAL), glitter round it."""
+    L, M, D = tc("ELECTRIC")
+
+    def d(c):
+        c.ascii(7, 5, ["   XX ", "  XX  ", " XXXXX", "    XX", "   XX ", "  XX  ", " XX   ", " X    "],
+                {"X": M})
+        c.px(9, 5, L), c.px(8, 6, L), c.px(12, 7, D), c.px(11, 8, D)
+        for x, y in ((6, 5), (14, 6), (13, 11), (6, 10)):
+            c.px(x, y, G1)
+    return mail(d)
+
+
+def i_shadow_mail():
+    """A cute FADING print: FADING in its type's hue (LATENT), going out into the paper as it fades."""
+    L, M, D = tc("GHOST")
+
+    def d(c):
+        c.ascii(7, 5, ["  XXXX ", " XXXXXX", " XoXXoX", " XXXXXX", "XXXXXXX", "XXXXXX ", " X X X "],
+                {"X": M, "o": W})
+        for y in range(4, 13):                         # it fades to the right
+            for x in range(5, 16):
+                if c.get(x, y) == M and (x >= 12 and (x + y) % 2 or x >= 14):
+                    c.px(x, y, W)
+    return mail(d)
+
+
+def i_dream_mail():
+    """It will bear the print of the DAEMON holding it: the print box empty but for a dashed outline, waiting."""
+    def d(c):
+        for y in range(5, 12):
+            for x in range(6, 15):
+                e = (x - 10) ** 2 / 16.0 + (y - 8.5) ** 2 / 9.0
+                if 0.75 <= e <= 1.3 and (x + 2 * y) % 3 != 0:
+                    c.px(x, y, G2)
+    return mail(d)
+
+
+def i_fab_mail():
+    """A gorgeous, extravagant print: a lattice of gold diamonds, a gold rule under it."""
+    def d(c):
+        for y in range(4, 13):
+            for x in range(5, 16):
+                k = (x + y) % 4 == 0 or (x - y) % 4 == 0
+                c.px(x, y, GOLD if k else GOLD_L if (x + y) % 2 else W)
+        c.hline(5, 18, 14, GOLD_D)
+    return mail(d)
+
+
+def i_retro_mail():
+    """A print of three cute DAEMONS: three small round figures side by side, in grey (which three, it does not
+    say, so it gives them no type)."""
+    def d(c):
+        for x0 in (5, 9, 13):
+            c.ascii(x0, 5, [" X ", "XXX", "oXo", "XXX", "XXX", "X X"], {"X": G3, "o": W})
+    return mail(d)
+
+
+#  ---- the scarves: handed out on PARADE DAYS (and CLOVER DAY). One scarf, tied, its tails fringed and banded
+#  for the parade; the colour is its name. GREEN, the CLOVER DAY scarf, wears a clover at its knot.
+SCARF = ["                        ",
+         "                        ",
+         "     LLLLLLLLLLLLLL     ",
+         "   LLMMMMMMMMMMMMMMLL   ",
+         "  LMMMMMMMMMMMMMMMMMMD  ",
+         "  LMMDDDDDDDDDDDDDDMMD  ",
+         "  LMMD            DMMD  ",
+         "  LMMD            DMMD  ",
+         "   LMMD          DMMD   ",
+         "    LMMDD      DDMMD    ",
+         "     LMMMMLLLLMMMMD     ",
+         "       DMLLLLLLMD       ",
+         "        LMMMMMMD        ",
+         "        LMMDLMMD        ",
+         "       LMMD LMMMD       ",
+         "       LMMD  LMMD       ",
+         "      LMMD   LMMMD      ",
+         "      wwww    wwww      ",
+         "     LMMMD    LMMMD     ",
+         "     LMMMD    LMMMD     ",
+         "     M M M    M M M     ",
+         "     M M M    M M M     "]
+
+
+def scarf(colour, clover=False):
+    L, M, D = NAMED[colour]
+    c = C()
+    c.ascii(0, 0, SCARF, {"L": L, "M": M, "D": D, "w": W})
+    c.outline()
+    if clover:
+        c.ascii(10, 10, [" W  ", "WWW ", " W  ", "  W "], {"W": W})
+    return c
+
+
+def i_red_scarf(): return scarf("red")
+def i_blue_scarf(): return scarf("blue")
+def i_green_scarf(): return scarf("green", clover=True)
+def i_yellow_scarf(): return scarf("yellow")
+
+
+#  ---- the key items
+def i_peer_review():
+    """Signed and sealed, addressed to everyone who signed the first one: a sheet, a heading, row on row of
+    signatures, and a wax seal on a ribbon at its foot."""
+    c = C()
+    c.box(2, 1, 19, 22, PAPER)
+    c.hline(4, 13, 3, G3), c.hline(4, 9, 5, G1)
+    for y, x0, x1, per in ((8, 4, 12, 4.0), (11, 6, 16, 3.0), (14, 4, 11, 5.0)):   # signatures, each its own hand
+        waves(c, x0, x1, y, 1, G4, per)
+    c.hline(4, 12, 17, G4)
+    c.rect(14, 16, 15, 22, TASSEL_D), c.rect(18, 16, 19, 22, TASSEL_D)
+    c.outline()
+    c.disc(17, 16.5, 3.4, TASSEL)
+    c.px(16, 15, TASSEL_D), c.px(17, 16, TASSEL_D), c.px(18, 17, TASSEL_D), c.px(16, 14, (196, 96, 104))
+    c.outline()
+    return c
+
+
+def i_envelope():
+    """Sealed, addressed, and not addressed to you: an envelope, its flap closed under a wax seal, the address
+    written on its face."""
+    c = C()
+    c.box(1, 5, 22, 19, PAPER)
+    c.line(2, 6, 11, 12, PAPER2), c.line(21, 6, 12, 12, PAPER2)
+    c.line(2, 18, 9, 13, PAPER2), c.line(21, 18, 14, 13, PAPER2)
+    for y, x1 in ((15, 15), (17, 12)):
+        c.hline(5, x1, y, G3)
+    c.disc(11.5, 12, 2.6, TASSEL)
+    c.px(11, 11, (196, 96, 104)), c.px(12, 13, TASSEL_D)
+    c.rect(17, 7, 20, 10, G1), c.px(17, 7, W)          # a stamp, cancelled
+    c.outline()
+    return c
+
+
+def i_meteorite():
+    """Fell from space long ago; very lumpy and hard: a pitted lump of dark iron, a glint of bare metal."""
+    L, M, D = IRON
+    c = C()
+    c.ascii(2, 4, ["      MMMMMM      ",
+                   "    MMLLLMMMMM    ",
+                   "  MMLLLLMMMMMMMD  ",
+                   " MMLLLMMMDDMMMMMD ",
+                   " MLLLMMMDDDMMMMMDD",
+                   "MMLLMMMMDDMMMMMMDD",
+                   "MLLMMDDMMMMMMDDMDD",
+                   "MLMMDDDMMMMMDDDMMD",
+                   "MMMMMDDMMMMMMDDMDD",
+                   " MMMMMMMMDDMMMMMDD",
+                   " MMMMMMMDDDMMMMDD ",
+                   "  DMMMMMMDDMMMDDD ",
+                   "   DDMMMMMMMDDDD  ",
+                   "     DDDDDDDDD    "], {"L": L, "M": M, "D": D})
+    c.outline()
+    c.px(6, 7, W), c.px(7, 6, W2)
+    return c
+
+
+def i_powder_jar():
+    """A jar for storing BERRY POWDER: a glass jar, its lid screwed on, two thirds full of the powder."""
+    c = C()
+    c.rect(5, 2, 18, 5, G2), c.hline(5, 18, 2, G1), c.hline(5, 18, 5, G3)
+    for x in range(6, 18, 2):
+        c.px(x, 3, G3), c.px(x, 4, G3)
+    c.box(4, 6, 19, 22, GLASS)
+    c.rect(5, 12, 18, 21, KRAFT)
+    c.hline(5, 18, 12, KRAFT_L)
+    for x, y in ((7, 15), (11, 17), (15, 14), (9, 19), (16, 19)):
+        c.px(x, y, KRAFT_D)
+    c.vline(6, 7, 20, W)
+    c.rect(8, 8, 15, 10, W), c.hline(9, 14, 9, G2)    # its label
+    return c
+
+
+#  ---- the berries the TRAP TABLE still holds as berries: RAZZ to BELUE kept their names (port_names never renamed
+#  them, T-526 left them), and each is "ground up into a powder as an ingredient for medicine". So each is drawn as
+#  its fruit, resting on the TRAP TABLE's own wooden plank -- the TRAPs' board, without the bar or the plate: the
+#  family is the board, the fruit says which. Stems and crowns are grey, as the SPICY TRAP's chilli stem is, so no
+#  leaf is read as LEAKING's green.
+def plank(c):
+    c.rect(1, 17, 22, 20, WOOD), c.hline(1, 22, 17, WOOD_L), c.hline(1, 22, 20, WOOD_D)
+
+
+def berry(draw):
+    c = C()
+    plank(c)
+    c.outline()
+    draw(c)
+    c.outline()
+    return c
+
+
+def stem(c, x, y0, y1, leaf=None):
+    c.vline(x, y0, y1, G3)
+    if leaf:
+        c.hline(x + 1, x + leaf, y0 + 1, G2)
+
+
+def round_berry(cols, cx=11.5, cy=10.5, r=6.2, sy=1.0, top=None):
+    def d(c):
+        sphere(c, cx, cy, r, cols, sy=sy)
+        if top:
+            top(c)
+    return d
+
+
+def bumpy(c, cols, pitch=2):
+    """Drupelets or a net: every other pixel of the fruit's middle lifted to its light."""
+    L, M, D = cols
+    for y in range(N):
+        for x in range(N):
+            if c.get(x, y) == M and (x // pitch + y // pitch) % 2 == 0 and (x + y) % pitch == 0:
+                c.px(x, y, L)
+
+
+def i_razz_berry():
+    """A raspberry, red, its drupelets."""
+    cols = ((236, 110, 120), (196, 52, 74), (120, 26, 44))
+    def d(c):
+        round_berry(cols, r=6.4, sy=1.05)(c)
+        bumpy(c, cols)
+        stem(c, 11, 2, 4, 3)
+    return berry(d)
+
+
+def i_bluk_berry():
+    """A blueberry: dark blue, the star at its crown."""
+    cols = ((112, 132, 196), (58, 76, 140), (30, 38, 84))
+    def d(c):
+        round_berry(cols, r=6.8)(c)
+        c.ascii(10, 4, ["X X", " X ", "X X"], {"X": cols[2]})
+    return berry(d)
+
+
+def i_nanab_berry():
+    """A banana, curved."""
+    cols = ((250, 236, 150), (226, 196, 70), (156, 124, 30))
+    def d(c):
+        for t in range(0, 40):
+            a = math.radians(200 + t * 3.6)
+            x, y = 12 + 9 * math.cos(a), 5 - 9 * math.sin(a) * 1.0
+            for k in range(-2, 3):
+                c.px(int(round(x)), int(round(y + k)), cols[0] if k < -1 else cols[2] if k > 1 else cols[1])
+        stem(c, 3, 6, 9)
+        c.rect(20, 7, 21, 8, BITTER[2])
+    return berry(d)
+
+
+def i_wepear_berry():
+    """A pear: pale, narrow at the top, its stem."""
+    cols = ((236, 240, 176), (196, 208, 120), (128, 140, 66))
+    def d(c):
+        sphere(c, 12, 12, 5.6, cols)
+        sphere(c, 12, 6.5, 3.4, cols, hi=None)
+        stem(c, 12, 1, 3, 2)
+    return berry(d)
+
+
+def i_pinap_berry():
+    """A pineapple: a criss-cross of scales, a grey crown."""
+    cols = ((246, 214, 110), (214, 166, 48), (140, 98, 22))
+    def d(c):
+        sphere(c, 11.5, 12, 5.4, cols, hi=None, sy=1.0)
+        for y in range(N):
+            for x in range(N):
+                if c.get(x, y) in cols and ((x + y) % 4 == 0 or (x - y) % 4 == 0):
+                    c.px(x, y, cols[2])
+        c.ascii(8, 1, ["X  X  X", " X X X ", "  XXX  ", "  XXX  "], {"X": G3})
+    return berry(d)
+
+
+def i_pomeg_berry():
+    """A pomegranate: deep red, its crown."""
+    cols = ((226, 96, 96), (170, 40, 52), (100, 20, 34))
+    def d(c):
+        round_berry(cols, cy=11, r=6.6)(c)
+        c.ascii(9, 2, ["X X X", "XXXXX", " XXX "], {"X": cols[2]})
+    return berry(d)
+
+
+def i_kelpsy_berry():
+    """A root, long and tapering, blue."""
+    cols = ((150, 176, 226), (84, 116, 190), (44, 62, 120))
+    def d(c):
+        for y in range(4, 17):
+            half = 4.2 - (y - 4) * 0.3
+            for x in range(int(round(12 - half)), int(round(12 + half))):
+                c.px(x, y, cols[0] if x < 12 - half + 1.5 else cols[2] if x > 12 + half - 2 else cols[1])
+        for y in (7, 10, 13):
+            c.hline(11, 12, y, cols[2])
+        c.ascii(9, 0, ["X   X", " X X ", "  X  ", "  X  "], {"X": G3})
+    return berry(d)
+
+
+def i_qualot_berry():
+    """A round yellow fruit, dimpled."""
+    cols = ((250, 232, 140), (232, 186, 66), (160, 112, 30))
+    def d(c):
+        round_berry(cols, r=6.6, sy=0.9)(c)
+        c.ascii(9, 6, ["X   X", "     ", "  X  ", "     ", "X   X"], {"X": cols[2]})
+    return berry(d)
+
+
+def i_hondew_berry():
+    """A honeydew: pale, round, netted."""
+    cols = ((236, 246, 214), (196, 214, 166), (128, 146, 102))
+    def d(c):
+        round_berry(cols, r=7.0)(c)
+        for y in range(N):
+            for x in range(N):
+                if c.get(x, y) in cols[:2] and ((x + 2 * y) % 5 == 0 or (x - 2 * y) % 5 == 0):
+                    c.px(x, y, cols[2])
+    return berry(d)
+
+
+def i_grepa_berry():
+    """A bunch of small round fruit, pale gold."""
+    cols = ((250, 240, 170), (218, 196, 92), (148, 124, 40))
+    def d(c):
+        for cx, cy in ((8, 8), (13, 7), (10.5, 11.5), (15.5, 11), (8, 14), (13, 14.5)):
+            sphere(c, cx, cy, 2.9, cols, hi=None)
+            c.px(int(cx - 1), int(cy - 1), W)
+        stem(c, 11, 1, 4, 2)
+    return berry(d)
+
+
+def i_tamato_berry():
+    """A tomato: red, round, its sepals."""
+    cols = ((246, 120, 90), (216, 62, 44), (136, 30, 24))
+    def d(c):
+        round_berry(cols, cy=11, r=7.0, sy=0.88)(c)
+        c.ascii(8, 3, ["X  X  X", " XXXXX ", "  XXX  "], {"X": G3})
+    return berry(d)
+
+
+def i_cornn_berry():
+    """A cob of corn: its kernels in rows, a husk either side."""
+    cols = ((202, 140, 210), (150, 76, 160), (88, 40, 98))
+    def d(c):
+        for y in range(2, 17):
+            half = 3 if 3 < y < 15 else 2
+            for x in range(12 - half, 12 + half):
+                c.px(x, y, cols[0] if (x + y) % 2 == 0 else cols[1])
+            c.px(12 + half - 1, y, cols[2])
+        for y in range(8, 17):                          # the husk, a leaf either side, opening out
+            w = (y - 8) // 3
+            c.rect(8 - w, y, 8, y, KRAFT), c.rect(15, y, 15 + w, y, KRAFT_D)
+    return berry(d)
+
+
+def i_magost_berry():
+    """A mangosteen: a dark purple round, its thick crown of sepals."""
+    cols = ((176, 96, 150), (120, 44, 100), (66, 22, 58))
+    def d(c):
+        round_berry(cols, r=6.8)(c)
+        c.ascii(8, 2, [" X X X ", "XXXXXXX", " XXXXX "], {"X": G3})
+    return berry(d)
+
+
+def i_rabuta_berry():
+    """A rambutan: a round fruit, hairy all over."""
+    cols = ((238, 150, 96), (204, 90, 52), (128, 50, 30))
+    def d(c):
+        round_berry(cols, r=5.6)(c)
+        for k in range(16):
+            a = math.radians(k * 22.5)
+            x, y = 11.5 + 7.2 * math.cos(a), 10.5 - 7.2 * math.sin(a)
+            if y < 16:
+                c.px(int(round(x)), int(round(y)), cols[2] if k % 2 else cols[1])
+    return berry(d)
+
+
+def i_nomel_berry():
+    """A lemon: pale yellow, its two points."""
+    cols = ((252, 246, 170), (234, 220, 92), (166, 150, 40))
+    def d(c):
+        sphere(c, 11.5, 10.5, 6.6, cols, sy=0.8)
+        c.rect(4, 10, 4, 11, cols[1]), c.rect(19, 10, 19, 11, cols[2])
+    return berry(d)
+
+
+def i_spelon_berry():
+    """A long red fruit, spined."""
+    cols = ((246, 118, 98), (214, 56, 50), (130, 28, 30))
+    def d(c):
+        sphere(c, 11.5, 10, 5.0, cols, sy=1.35)
+        for y in range(4, 16, 3):
+            c.px(5 + (y % 2), y, cols[2]), c.px(18 - (y % 2), y, cols[2])
+        c.px(11, 2, cols[2]), c.px(12, 1, cols[2])
+    return berry(d)
+
+
+def i_pamtre_berry():
+    """A long pink fruit, banded."""
+    cols = ((238, 170, 214), (204, 106, 172), (130, 54, 110))
+    def d(c):
+        sphere(c, 11.5, 10, 5.2, cols, sy=1.25)
+        for y in (6, 9, 12, 15):
+            for x in range(N):
+                if c.get(x, y) == cols[1]:
+                    c.px(x, y, cols[2])
+        stem(c, 11, 1, 3)
+    return berry(d)
+
+
+def i_watmel_berry():
+    """A melon, round and big, striped."""
+    cols = ((252, 176, 192), (228, 110, 140), (150, 52, 80))
+    def d(c):
+        round_berry(cols, r=7.6, cy=9.6)(c)
+        for x in (7, 11, 15):
+            for y in range(N):
+                if c.get(x, y) in cols[:2]:
+                    c.px(x, y, cols[2])
+    return berry(d)
+
+
+def i_durin_berry():
+    """A durian: khaki, round, thorned all over."""
+    cols = ((198, 196, 120), (150, 148, 70), (92, 90, 36))
+    def d(c):
+        round_berry(cols, r=6.0)(c)
+        for y in range(N):
+            for x in range(N):
+                if c.get(x, y) == cols[1] and (x + 3 * y) % 5 == 0:
+                    c.px(x, y, cols[2])
+        for k in range(10):
+            a = math.radians(k * 36 + 18)
+            x, y = 11.5 + 7.0 * math.cos(a), 10.5 - 7.0 * math.sin(a)
+            if y < 16:
+                c.px(int(round(x)), int(round(y)), cols[2])
+    return berry(d)
+
+
+def i_belue_berry():
+    """A glossy dark berry, plum-black, a point at its foot."""
+    cols = ((150, 112, 172), (88, 52, 110), (46, 24, 62))
+    def d(c):
+        round_berry(cols, r=6.4, cy=10)(c)
+        c.px(11, 17, cols[2]), c.px(12, 17, cols[2])
+        stem(c, 12, 2, 3)
+    return berry(d)
+
+
+ICONS4 = [
+    ("nugget", "NUGGET", ["ITEM_NUGGET"], i_nugget, "own", "a lump of gold, its gleam"),
+    ("pearl", "PEARL", ["ITEM_PEARL"], i_pearl, "own", "a small pearl, silver, sparkling"),
+    ("big_pearl", "BIG PEARL", ["ITEM_BIG_PEARL"], i_big_pearl, "own", "the pearl, grown large"),
+    ("stardust", "STARDUST", ["ITEM_STARDUST"], i_stardust, "own", "a heap of red sand, loose grains, a glint"),
+    ("star_piece", "STAR PIECE", ["ITEM_STAR_PIECE"], i_star_piece, "own", "a red faceted star, one arm broken off"),
+    ("tiny_mushroom", "TINYMUSHROOM", ["ITEM_TINY_MUSHROOM"], i_tiny_mushroom, "own", "one small mushroom"),
+    ("big_mushroom", "BIG MUSHROOM", ["ITEM_BIG_MUSHROOM"], i_big_mushroom, "own", "the mushroom, large, spotted"),
+    ("heart_scale", "HEART SCALE", ["ITEM_HEART_SCALE"], i_heart_scale, "own", "a pale heart-shaped scale, growth lines, a soft rainbow sheen"),
+    ("red_shard", "RED SHARD", ["ITEM_RED_SHARD"], i_red_shard, "own", "a broken piece of an old tool, a cut groove; red"),
+    ("blue_shard", "BLUE SHARD", ["ITEM_BLUE_SHARD"], i_blue_shard, "own", "the shard; blue"),
+    ("yellow_shard", "YELLOW SHARD", ["ITEM_YELLOW_SHARD"], i_yellow_shard, "own", "the shard; yellow"),
+    ("green_shard", "GREEN SHARD", ["ITEM_GREEN_SHARD"], i_green_shard, "own", "the shard; green"),
+    ("moomoo_milk", "MOOMOO MILK", ["ITEM_MOOMOO_MILK"], i_moomoo_milk, "own", "a milk bottle, white; HP green cap and band"),
+    ("lava_cookie", "LAVA COOKIE", ["ITEM_LAVA_COOKIE"], i_lava_cookie, "own", "a cookie on a hot grey stone, five flecks: every state"),
+    ("glitter_mail", "GLITTER MAIL", ["ITEM_GLITTER_MAIL"], i_glitter_mail, "own", "a letter sheet, SPIKE's jag in SIGNAL's hue, glitter"),
+    ("shadow_mail", "SHADOW MAIL", ["ITEM_SHADOW_MAIL"], i_shadow_mail, "own", "the sheet, FADING in LATENT's hue, fading out"),
+    ("dream_mail", "DREAM MAIL", ["ITEM_DREAM_MAIL"], i_dream_mail, "own", "the sheet, its print a dashed outline, waiting"),
+    ("fab_mail", "FAB MAIL", ["ITEM_FAB_MAIL"], i_fab_mail, "own", "the sheet, a gold lattice print"),
+    ("retro_mail", "RETRO MAIL", ["ITEM_RETRO_MAIL"], i_retro_mail, "own", "the sheet, three small grey daemons"),
+    ("red_scarf", "RED SCARF", ["ITEM_RED_SCARF"], i_red_scarf, "own", "a parade scarf, tied, banded tails, fringe; red"),
+    ("blue_scarf", "BLUE SCARF", ["ITEM_BLUE_SCARF"], i_blue_scarf, "own", "the scarf; blue"),
+    ("green_scarf", "GREEN SCARF", ["ITEM_GREEN_SCARF"], i_green_scarf, "own", "the scarf; green, a clover at its knot (CLOVER DAY)"),
+    ("yellow_scarf", "YELLOW SCARF", ["ITEM_YELLOW_SCARF"], i_yellow_scarf, "own", "the scarf; yellow"),
+    ("peer_review", "PEER REVIEW", ["ITEM_DEVON_GOODS"], i_peer_review, "own", "a sheet of signatures, a wax seal on a ribbon"),
+    ("envelope", "ENVELOPE", ["ITEM_LETTER"], i_envelope, "own", "an envelope, wax-sealed, addressed, stamped"),
+    ("meteorite", "METEORITE", ["ITEM_METEORITE"], i_meteorite, "own", "a pitted lump of dark iron, a glint"),
+    ("powder_jar", "POWDER JAR", ["ITEM_POWDER_JAR"], i_powder_jar, "own", "a glass jar, lid on, two thirds powder, a label"),
+    ("razz_berry", "RAZZ BERRY", ["ITEM_RAZZ_BERRY"], i_razz_berry, "own", "on the TRAP TABLE's plank: a raspberry"),
+    ("bluk_berry", "BLUK BERRY", ["ITEM_BLUK_BERRY"], i_bluk_berry, "own", "the plank: a blueberry, its crown"),
+    ("nanab_berry", "NANAB BERRY", ["ITEM_NANAB_BERRY"], i_nanab_berry, "own", "the plank: a banana"),
+    ("wepear_berry", "WEPEAR BERRY", ["ITEM_WEPEAR_BERRY"], i_wepear_berry, "own", "the plank: a pear"),
+    ("pinap_berry", "PINAP BERRY", ["ITEM_PINAP_BERRY"], i_pinap_berry, "own", "the plank: a pineapple"),
+    ("pomeg_berry", "POMEG BERRY", ["ITEM_POMEG_BERRY"], i_pomeg_berry, "own", "the plank: a pomegranate"),
+    ("kelpsy_berry", "KELPSY BERRY", ["ITEM_KELPSY_BERRY"], i_kelpsy_berry, "own", "the plank: a blue root"),
+    ("qualot_berry", "QUALOT BERRY", ["ITEM_QUALOT_BERRY"], i_qualot_berry, "own", "the plank: a dimpled yellow round"),
+    ("hondew_berry", "HONDEW BERRY", ["ITEM_HONDEW_BERRY"], i_hondew_berry, "own", "the plank: a netted honeydew"),
+    ("grepa_berry", "GREPA BERRY", ["ITEM_GREPA_BERRY"], i_grepa_berry, "own", "the plank: a bunch, pale gold"),
+    ("tamato_berry", "TAMATO BERRY", ["ITEM_TAMATO_BERRY"], i_tamato_berry, "own", "the plank: a tomato"),
+    ("cornn_berry", "CORNN BERRY", ["ITEM_CORNN_BERRY"], i_cornn_berry, "own", "the plank: a purple cob in its husk"),
+    ("magost_berry", "MAGOST BERRY", ["ITEM_MAGOST_BERRY"], i_magost_berry, "own", "the plank: a mangosteen"),
+    ("rabuta_berry", "RABUTA BERRY", ["ITEM_RABUTA_BERRY"], i_rabuta_berry, "own", "the plank: a hairy rambutan"),
+    ("nomel_berry", "NOMEL BERRY", ["ITEM_NOMEL_BERRY"], i_nomel_berry, "own", "the plank: a lemon"),
+    ("spelon_berry", "SPELON BERRY", ["ITEM_SPELON_BERRY"], i_spelon_berry, "own", "the plank: a long red fruit, spined"),
+    ("pamtre_berry", "PAMTRE BERRY", ["ITEM_PAMTRE_BERRY"], i_pamtre_berry, "own", "the plank: a long pink fruit, banded"),
+    ("watmel_berry", "WATMEL BERRY", ["ITEM_WATMEL_BERRY"], i_watmel_berry, "own", "the plank: a big striped melon"),
+    ("durin_berry", "DURIN BERRY", ["ITEM_DURIN_BERRY"], i_durin_berry, "own", "the plank: a thorned durian"),
+    ("belue_berry", "BELUE BERRY", ["ITEM_BELUE_BERRY"], i_belue_berry, "own", "the plank: a glossy plum-black berry"),
+]
+#  Not in APPROVED: batch 4 is a draft until the user picks.
+
+
 # ================================================================================================= the engine's files
 def jasc_read(p):
     v = [int(t) for t in open(p).read().split()[3:]]
@@ -2438,7 +3224,7 @@ def item_texts():
 
 
 def draft(out, batch=1):
-    icons = {1: ICONS, 2: ICONS2, 3: ICONS3}[batch]
+    icons = {1: ICONS, 2: ICONS2, 3: ICONS3, 4: ICONS4}[batch]
     if batch != 1:
         out = os.path.join(out, "batch%d" % batch)
     os.makedirs(out, exist_ok=True)
@@ -2456,9 +3242,12 @@ def draft(out, batch=1):
     elif batch == 2:
         sheet(out, made, texts, icons, batch)
         mocks2(out, made, texts)
-    else:
+    elif batch == 3:
         sheet(out, made, texts, icons, batch)
         mocks3(out, made, texts)
+    else:
+        sheet(out, made, texts, icons, batch)
+        mocks4(out, made, texts)
     print("  drafted %d icons into %s, the sheet and the BAG mocks" % (len(made), os.path.relpath(out, ROOT)))
 
 
@@ -2478,6 +3267,9 @@ def sheet(out, made, texts, icons=None, batch=1):
                      "palette.", fill=(190, 190, 196), font=F)
     d.text((14, 54), ("Nothing is in the engine. Approve some or all: gbaitemicons.py --write --approved ITEM ... "
                       "(an unnamed item keeps its row).") if batch == 1 else
+           ("Batches 1-3 are built. Nothing here is in the engine. Families: shards, MAIL, scarves by their named "
+            "colour or print; berries on the TRAP TABLE's plank. Approve: --write --approved ITEM ...")
+           if batch == 4 else
            ("Batches 1 and 2 are built. Nothing here is in the engine. GAINs: one amplifier, the type's hue the only "
             "difference. TRAPs: the STATE's colour; flavours: HP + and a taste. Approve: --write --approved ITEM ...")
            if batch == 3 else
@@ -2702,6 +3494,46 @@ def mocks3(out, made, texts):
     frames[3][0].resize((480, 320), Image.NEAREST).save(os.path.join(out, "trap_table_mock_batch3_2x.png"))
 
 
+def mocks4(out, made, texts):
+    """Batch 4 at 240x160: the valuables, MAIL and scarves in the BAG's ITEMS pocket, four key items in KEY ITEMS, and
+    the berries in the TRAP TABLE; ours above the engine's now."""
+    by_name = {e[1]: e for e in ICONS4}
+
+    def ours(nm):
+        return rgba(*made[by_name[nm][0]])
+
+    def now(nm):
+        return engine_icon(by_name[nm][2][0])[0]
+
+    vals = [("NUGGET", 2), ("BIG PEARL", 1), ("STAR PIECE", 1), ("HEART SCALE", 1), ("RED SHARD", 3), ("MOOMOO MILK", 2)]
+    post = [("LAVA COOKIE", 3), ("GLITTER MAIL", 1), ("FAB MAIL", 1), ("RETRO MAIL", 1), ("GREEN SCARF", 1), ("RED SCARF", 1)]
+    keys = [("PEER REVIEW", 0), ("ENVELOPE", 0), ("METEORITE", 0), ("POWDER JAR", 0)]
+    berries = [(16, "RAZZ BERRY", 3), (17, "BLUK BERRY", 1), (19, "WEPEAR BERRY", 2), (20, "PINAP BERRY", 1),
+               (31, "SPELON BERRY", 1), (33, "WATMEL BERRY", 1)]
+    frames = []
+    for rows, s, pk, fr in ((vals, 0, "ITEMS", 0), (vals, 3, "ITEMS", 0), (post, 1, "ITEMS", 0),
+                            (post, 4, "ITEMS", 0), (keys, 0, "KEY ITEMS", 1), (keys, 2, "KEY ITEMS", 1)):
+        e = by_name[rows[s][0]]
+        desc = wrap208(texts[e[2][0]]["description_english"].replace("\\n", " "))
+        frames.append((bag_mock(ours, rows, s, desc, pk, fr), bag_mock(now, rows, s, desc, pk, fr)))
+    for s in (0, 3, 5):
+        e = by_name[berries[s][1]]
+        desc = texts[e[2][0]]["description_english"].split("\\n")
+        frames.append((pouch_mock(ours, berries, s, desc), pouch_mock(now, berries, s, desc)))
+    strip = Image.new("RGB", (3 * 248 + 8, 6 * 168 + 8 + 40), (28, 30, 36))
+    d = ImageDraw.Draw(strip)
+    d.text((8, 6), "Batch 4 at 240x160: ITEMS, KEY ITEMS, the TRAP TABLE's berries. Each pair ours above, the engine's",
+           fill=(220, 220, 224), font=label_font(12))
+    d.text((8, 22), "now below. Only the icon changes.", fill=(220, 220, 224), font=label_font(12))
+    for i, (a, b) in enumerate(frames):
+        x, y = 8 + (i % 3) * 248, 40 + (i // 3) * 2 * 168
+        strip.paste(a, (x, y))
+        strip.paste(b, (x, y + 168))
+    strip.save(os.path.join(out, "bag_mocks_batch4.png"))
+    frames[0][0].resize((480, 320), Image.NEAREST).save(os.path.join(out, "bag_mock_batch4_2x.png"))
+    frames[6][0].resize((480, 320), Image.NEAREST).save(os.path.join(out, "trap_table_mock_batch4_2x.png"))
+
+
 def report():
     rows, files, vfiles = table_rows(), symbol_files(), vanilla_files()
     print("  T-525 item icons, batches 1-3: %d icons, %d approved (the user, 2026-11-07: \"Build all 41\", \"Build all 47\", \"Build all 57\")"
@@ -2714,6 +3546,7 @@ def report():
         target = {"own": "icons/d_%s.png" % key, "tmhm": "icons/tm_hm.png (in place)", "driver": "icons/driver.png"}[mode]
         used = len({v for row in idx for v in row} - {0})
         print("    %-14s %-20s now %-16s (%-6s) -> %-28s %2d colours" % (name, items[0], stem, state, target, used))
+    print("  batch 4: %d drafts (--draft --batch 4), none approved; --all leaves them out" % len(ICONS4))
     print("  --draft draws them and the sheet; --write --approved ITEM ... writes the named ones.")
 
 
@@ -2728,7 +3561,7 @@ def _png_same(path, im):
 def plan(keys):
     """What a write of the named items makes: ({png path: image}, {text path: contents}, [what each is]).
     Nothing is written here, so the report can say whether the engine already holds it."""
-    chosen = [e for e in ICONS + ICONS2 + ICONS3 if e[0] in keys or e[1] in keys or any(i in keys for i in e[2])]
+    chosen = [e for e in ICONS + ICONS2 + ICONS3 + ICONS4 if e[0] in keys or e[1] in keys or any(i in keys for i in e[2])]
     pngs, texts, said = {}, {}, []
     items_h, graphics_h, table = open(ITEMS_H).read(), open(GRAPHICS_H).read(), open(TABLE).read()
     for e in chosen:
