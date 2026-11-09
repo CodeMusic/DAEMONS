@@ -306,7 +306,12 @@ def census_family(name):
     import importlib.util
     spec = importlib.util.spec_from_file_location("animcensus", os.path.join(ROOT, "tools/animcensus.py"))
     mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
-    return [r["move"][5:] for r in mod.census() if r["family"] == name]
+    rows = mod.census()
+    lender = {r["label"]: r["family"] for r in rows if r["label"] == "Move_" + r["move"][5:]}
+    #  A move that borrows ANOTHER family's script (T-532: CRYPTOPHASIA, LOGIC, plays CONTENT's Move_HYPER_VOICE) is the
+    #  lender's to draw, never its own family's -- redrawing it here would rewrite the lender's animation. A borrow
+    #  within the family (CONSENSUS) stays in the table, as it always has.
+    return [r["move"][5:] for r in rows if r["family"] == name and lender.get(r["label"], name) == name]
 
 
 SOUND_WAVE = {"GROWL", "SCREECH", "METAL_SOUND"}
