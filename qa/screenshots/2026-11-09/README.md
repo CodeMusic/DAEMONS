@@ -139,3 +139,9 @@ T-534 played on the DEBUG build: LENSMUSAI spring's control line, CAREMUSAI summ
 C-310: the companion's INDEX shows each MUSAI in the season its edition keeps -- autumn in CONTENT, spring in CONTEXT on 9 November -- with that season's entry and its name beside the number (a test save on a scratch site, DRAFT)
 
 ![9Nov2026 - C310 - each MUSAI in its season in the companion INDEX - 25](9Nov2026%20-%20C310%20-%20each%20MUSAI%20in%20its%20season%20in%20the%20companion%20INDEX%20-%2025.png)
+
+### 9Nov2026 - C311 - MUSAI faces on the old art and the new - 26
+
+C-311: the companion's confirmed faces (faces.json; eyes magenta, mouth orange) on CODEMUSAI, CAREMUSAI, SEEKMUSAI and LENSMUSAI -- the T-452 art they were placed on (left) and the new summer forms from T-532 and T-534 (right), where they no longer sit
+
+![9Nov2026 - C311 - MUSAI faces on the old art and the new - 26](9Nov2026%20-%20C311%20-%20MUSAI%20faces%20on%20the%20old%20art%20and%20the%20new%20-%2026.png)
