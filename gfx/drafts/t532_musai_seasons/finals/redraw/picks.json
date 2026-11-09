@@ -1,0 +1,109 @@
+{
+ "maskmusai_winter": {
+  "seed": 5330,
+  "by": "score",
+  "score": 0.5,
+  "score2": 0.5,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   19,
+   20
+  ],
+  "icon_palette": 2
+ },
+ "maskmusai_spring": {
+  "seed": 5329,
+  "by": "score",
+  "score": 0.34,
+  "score2": 0.34,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   19,
+   20
+  ],
+  "icon_palette": 2
+ },
+ "maskmusai_summer": {
+  "seed": 5330,
+  "by": "eye",
+  "score": 0.89,
+  "score2": 0.0,
+  "why": "5328 and 5329 drew the front again as the back (sil 1.0 / the visor shows); 5330's back is a real rear view with the crest and skis",
+  "icon_seed": 5341,
+  "icon_by": "score",
+  "follower_size": [
+   18,
+   20
+  ],
+  "icon_palette": 2
+ },
+ "maskmusai_autumn": {
+  "seed": 5328,
+  "by": "score",
+  "score": 0.41,
+  "score2": 0.41,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   19,
+   20
+  ],
+  "icon_palette": 2
+ },
+ "seekmusai_autumn": {
+  "seed": 5327,
+  "by": "score",
+  "score": 0.62,
+  "score2": 0.62,
+  "icon_seed": 5343,
+  "icon_by": "score",
+  "follower_size": [
+   21,
+   20
+  ],
+  "icon_palette": 0
+ },
+ "lensmusai_autumn": {
+  "seed": 5328,
+  "by": "score",
+  "score": 0.56,
+  "score2": 0.56,
+  "icon_seed": 5342,
+  "icon_by": "score",
+  "follower_size": [
+   22,
+   18
+  ],
+  "icon_palette": 1
+ },
+ "codemusai_winter": {
+  "seed": 5326,
+  "by": "eye",
+  "score": 0.37,
+  "score2": 0.07,
+  "why": "5325's back is its front again (sil 0.99, visor showing); 5326 is a real back with the big skis",
+  "icon_seed": 5341,
+  "icon_by": "score",
+  "follower_size": [
+   17,
+   20
+  ],
+  "icon_palette": 0
+ },
+ "codemusai_autumn": {
+  "seed": 5327,
+  "by": "eye",
+  "score": 0.31,
+  "score2": 0.0,
+  "why": "5325 and 5328 scored 0 because the back IS the front (visor showing); 5327 is a real back, tyres and roll bar",
+  "icon_seed": 5343,
+  "icon_by": "score",
+  "follower_size": [
+   16,
+   20
+  ],
+  "icon_palette": 0
+ }
+}

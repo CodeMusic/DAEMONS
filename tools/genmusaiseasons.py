@@ -54,7 +54,7 @@ finals/ that is not on that list stays a placeholder (the user, 2026-11-08: "Bui
 
   SUMMER      is the species' own art, gbasprite.py's, from gfx/daemons/<name>_{front,back,icon}.png. An APPROVED
               summer final is copied there by --write ("Yes, all five", 2026-11-08: CODEMUSAI, SEEKMUSAI, CAREMUSAI,
-              LENSMUSAI; MASKMUSAI's waits for its redraw; MUSAI's ROM art stands), and then reaches the ROM the way
+              LENSMUSAI; MASKMUSAI's, redrawn, "Put all 8 in"; MUSAI's ROM art stands), and then reaches the ROM the way
               every redrawn daemon does. A placeholder form is a copy of whatever the species' art is now.
 
 SWAPPING IN A REDRAW: put finals/<name>_<season>_{front,back,icon}.png in place, add (NAME, season) to APPROVED_FINAL,
@@ -104,8 +104,9 @@ def form_species():
 #  THE FINALS THE USER APPROVED (the user, 2026-11-08: "Build, redraw the weak"; and "Yes, all five" summers). A form
 #  is built from its drawing in finals/ ONLY if it is named here; anything else stays a placeholder (today's art) even
 #  when its files exist, so a redraw is swapped in by dropping it into finals/ and adding it here -- nothing else.
-#  Waiting on the redraw, 2026-11-08: MASKMUSAI's four (summer too), SEEKMUSAI autumn, LENSMUSAI autumn, CODEMUSAI
-#  winter and autumn. A SUMMER here is copied over the species' own drawings in gfx/daemons/ (gbasprite's sources):
+#  The redraw, 2026-11-08 (finals/redraw/: keyed grounds, so cleandraft kept the tyres and skis): MASKMUSAI's four
+#  (summer too), SEEKMUSAI autumn, LENSMUSAI autumn, CODEMUSAI winter and autumn -- the user, 2026-11-08: "Put all 8
+#  in". Every form now has its final. A SUMMER here is copied over the species' own drawings in gfx/daemons/ (gbasprite's sources):
 #  summer IS the species' art, so it reaches the ROM through gbasprite.py like every redrawn daemon (MUSAI's summer is
 #  its ROM art, which stands).
 APPROVED_FINAL = {
@@ -114,6 +115,9 @@ APPROVED_FINAL = {
     ("SEEKMUSAI", "winter"), ("SEEKMUSAI", "spring"), ("SEEKMUSAI", "summer"),
     ("CAREMUSAI", "winter"), ("CAREMUSAI", "spring"), ("CAREMUSAI", "summer"), ("CAREMUSAI", "autumn"),
     ("LENSMUSAI", "winter"), ("LENSMUSAI", "spring"), ("LENSMUSAI", "summer"),
+    #  the user, 2026-11-08: Put all 8 in
+    ("MASKMUSAI", "winter"), ("MASKMUSAI", "spring"), ("MASKMUSAI", "summer"), ("MASKMUSAI", "autumn"),
+    ("SEEKMUSAI", "autumn"), ("LENSMUSAI", "autumn"), ("CODEMUSAI", "winter"), ("CODEMUSAI", "autumn"),
 }
 SUMMER_KINDS = ("front", "back", "icon")                # finals/<name>_summer_<kind>.png -> gfx/daemons/<name>_<kind>.png
 

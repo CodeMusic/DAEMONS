@@ -211,3 +211,21 @@ T-532 final art, AUTUMN (DEBUG season): the party of six, then each MUSAI as the
 T-532: CODEMUSAI in the INDEX in spring, the spring form beside its spring entry
 
 ![8Nov2026 - T532 - CODEMUSAI spring INDEX entry - 35](8Nov2026%20-%20T532%20-%20CODEMUSAI%20spring%20INDEX%20entry%20-%2035.png)
+
+### 8Nov2026 - T532 - the eight redraws before and after - 36
+
+T-532 redraw (the user, 2026-11-08: Put all 8 in): MASKMUSAI's four seasons, SEEKMUSAI autumn, LENSMUSAI autumn, CODEMUSAI winter and autumn, before and after; keyed grounds kept the tyres and skis. DRAFT.
+
+![8Nov2026 - T532 - the eight redraws before and after - 36](8Nov2026%20-%20T532%20-%20the%20eight%20redraws%20before%20and%20after%20-%2036.png)
+
+### 8Nov2026 - T532 - the eight redraws in battle - 37
+
+T-532 redraw built (DEBUG, season forced): each of the eight in battle, its front as the foe and its back as the lead on the platforms; none floats or clips. The lead's name box reads the route's slot-0 nickname. DRAFT.
+
+![8Nov2026 - T532 - the eight redraws in battle - 37](8Nov2026%20-%20T532%20-%20the%20eight%20redraws%20in%20battle%20-%2037.png)
+
+### 8Nov2026 - T532 - the eight redraws following - 38
+
+T-532 redraw built (DEBUG, season forced): each of the eight as the follower on ROUTE 22. DRAFT.
+
+![8Nov2026 - T532 - the eight redraws following - 38](8Nov2026%20-%20T532%20-%20the%20eight%20redraws%20following%20-%2038.png)
