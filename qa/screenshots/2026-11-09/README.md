@@ -25,3 +25,15 @@ T-525 batch 4 DRAFT at 240x160: the ITEMS pocket, KEY ITEMS and the TRAP TABLE's
 T-525 batch 4 DRAFT at 240x160: the ITEMS pocket, KEY ITEMS and the TRAP TABLE's berries, ours above the engine's now; only the icon changes
 
 ![9Nov2026 - T525 - batch 4 drafted - 4](9Nov2026%20-%20T525%20-%20batch%204%20drafted%20-%204.png)
+
+### 9Nov2026 - C309 - the voice module in the subtle layer - 5
+
+C-309: LISTEN in THE SUBTLE LAYER's look -- its pink on its night paper, rounded, the ❀; its voice as a swell; the book as a ribbon of its 51 chapters, the one heard lit; NOW READING large in its italic. Scratch site, sound muted; DRAFT
+
+![9Nov2026 - C309 - the voice module in the subtle layer - 5](9Nov2026%20-%20C309%20-%20the%20voice%20module%20in%20the%20subtle%20layer%20-%205.png)
+
+### 9Nov2026 - C309 - the voice module in principles of mind - 6
+
+C-309: the same module in PRINCIPLES OF MIND's look -- gold on paper, cut square, caps, the ✎, an even wave; NOW READING 2 OF 62; the library's frame in the book's ink. DRAFT
+
+![9Nov2026 - C309 - the voice module in principles of mind - 6](9Nov2026%20-%20C309%20-%20the%20voice%20module%20in%20principles%20of%20mind%20-%206.png)
