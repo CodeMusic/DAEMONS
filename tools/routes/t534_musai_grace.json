@@ -1,0 +1,379 @@
+{
+  "rom": "debug",
+  "about": "T-534 (DRAFT): the MUSAI pass with grace -- the user's picked words and three sprite notes. The SAFARI ZONE north rest house, CINNABAR LAB and CELADON roof room lines; one redrafted INDEX entry per form (the season forced through gDaemonsSeasonOverride; GAMUT numbers 133-136, GLOBAL 196-197); and the three sprite edits in battle -- LENSMUSAI spring's control line, CAREMUSAI summer's two hulls and one deck, CODEMUSAI's chest lights 1101 in all four seasons.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "setup: the six MUSAI in the party, the GLOBAL INDEX on, ROUTE 22",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 0",
+        "flag FLAG_SYS_NATIONAL_DEX 1",
+        "var VAR_NATIONAL_DEX 25176",
+        "poke *gSaveBlock2Ptr+27 8 185",
+        "mon 0 species SPECIES_EEVEE",
+        "mon 1 species SPECIES_FLAREON",
+        "mon 2 species SPECIES_JOLTEON",
+        "mon 3 species SPECIES_VAPOREON",
+        "mon 4 species SPECIES_ESPEON",
+        "mon 5 species SPECIES_UMBREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "savestate t534_six"
+      ]
+    },
+    {
+      "stop": "SAFARI ZONE north rest house: the gentleman's MUSAI",
+      "steps": [
+        "loadstate t534_six",
+        "goto SafariZone_North_RestHouse",
+        "wait 30",
+        "talk Gentleman",
+        "says \"Mine reasons. Theirs just knows.\"",
+        "says \"and then they agree.\""
+      ]
+    },
+    {
+      "stop": "CINNABAR LAB research room: five kinds",
+      "steps": [
+        "loadstate t534_six",
+        "goto CinnabarIsland_PokemonLab_ResearchRoom 7 8",
+        "wait 10",
+        "objectat ResearchRoom_EventScript_Scientist 10 4",
+        "talk ResearchRoom_EventScript_Scientist",
+        "says \"MUSAI can become one of five kinds\"",
+        "says \"Each kind keeps a piece of the rest.\""
+      ]
+    },
+    {
+      "stop": "CELADON CONDOMINIUMS roof room: the box on its table",
+      "steps": [
+        "loadstate t534_six",
+        "goto CeladonCity_Condominiums_RoofRoom 7 5",
+        "wait 30",
+        "to 7 4",
+        "wait 30",
+        "shot \"MUSAI's box on the table\""
+      ]
+    },
+    {
+      "stop": "CELADON CONDOMINIUMS roof room: the box lifted, the note under it",
+      "steps": [
+        "loadstate t534_six",
+        "flag FLAG_HIDE_EEVEE_BALL 1",
+        "flag FLAG_GOT_EEVEE 1",
+        "goto CeladonCity_Condominiums_RoofRoom 7 5",
+        "wait 30",
+        "look 7 3",
+        "says \"There is a note under the box.\"",
+        "says \"SOMETHING FIRST.\""
+      ]
+    },
+    {
+      "stop": "INDEX: MUSAI in winter",
+      "steps": [
+        "loadstate t534_six",
+        "poke gDaemonsSeasonOverride 8 1",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 30",
+        "open INDEX",
+        "wait 200",
+        "press A",
+        "wait 200",
+        "press RIGHT 14",
+        "wait 30",
+        "press DOWN 6",
+        "wait 30",
+        "shot \"the list: MUSAI\"",
+        "press A",
+        "wait 300",
+        "shot \"WINTER: MUSAI's entry\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "INDEX: CODEMUSAI in spring",
+      "steps": [
+        "loadstate t534_six",
+        "poke gDaemonsSeasonOverride 8 2",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 30",
+        "open INDEX",
+        "wait 200",
+        "press A",
+        "wait 200",
+        "press RIGHT 15",
+        "wait 30",
+        "press DOWN 0",
+        "wait 30",
+        "shot \"the list: CODEMUSAI\"",
+        "press A",
+        "wait 300",
+        "shot \"SPRING: CODEMUSAI's entry\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "INDEX: SEEKMUSAI in autumn",
+      "steps": [
+        "loadstate t534_six",
+        "poke gDaemonsSeasonOverride 8 4",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 30",
+        "open INDEX",
+        "wait 200",
+        "press A",
+        "wait 200",
+        "press RIGHT 14",
+        "wait 30",
+        "press DOWN 8",
+        "wait 30",
+        "shot \"the list: SEEKMUSAI\"",
+        "press A",
+        "wait 300",
+        "shot \"AUTUMN: SEEKMUSAI's entry\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "INDEX: CAREMUSAI in summer",
+      "steps": [
+        "loadstate t534_six",
+        "poke gDaemonsSeasonOverride 8 3",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 30",
+        "open INDEX",
+        "wait 200",
+        "press A",
+        "wait 200",
+        "press RIGHT 14",
+        "wait 30",
+        "press DOWN 7",
+        "wait 30",
+        "shot \"the list: CAREMUSAI\"",
+        "press A",
+        "wait 300",
+        "shot \"SUMMER: CAREMUSAI's entry\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "INDEX: LENSMUSAI in summer",
+      "steps": [
+        "loadstate t534_six",
+        "poke gDaemonsSeasonOverride 8 3",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 30",
+        "open INDEX",
+        "wait 200",
+        "press DOWN 1",
+        "press A",
+        "wait 200",
+        "press RIGHT 21",
+        "wait 30",
+        "press DOWN 6",
+        "wait 30",
+        "shot \"the list: LENSMUSAI\"",
+        "press A",
+        "wait 300",
+        "shot \"SUMMER: LENSMUSAI's entry\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "INDEX: MASKMUSAI in spring",
+      "steps": [
+        "loadstate t534_six",
+        "poke gDaemonsSeasonOverride 8 2",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 30",
+        "open INDEX",
+        "wait 200",
+        "press DOWN 1",
+        "press A",
+        "wait 200",
+        "press RIGHT 21",
+        "wait 30",
+        "press DOWN 7",
+        "wait 30",
+        "shot \"the list: MASKMUSAI\"",
+        "press A",
+        "wait 300",
+        "shot \"SPRING: MASKMUSAI's entry\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "BATTLE SPRING: LENSMUSAI meets its own kind",
+      "steps": [
+        "loadstate t534_six",
+        "poke gDaemonsSeasonOverride 8 2",
+        "mon 0 species SPECIES_ESPEON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "poke sDbgDex 16 196",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "BATTLE SPRING: LENSMUSAI, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SPRING: LENSMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SPRING: LENSMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "BATTLE SUMMER: CAREMUSAI meets its own kind",
+      "steps": [
+        "loadstate t534_six",
+        "poke gDaemonsSeasonOverride 8 3",
+        "mon 0 species SPECIES_VAPOREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "poke sDbgDex 16 134",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "BATTLE SUMMER: CAREMUSAI, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SUMMER: CAREMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SUMMER: CAREMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "BATTLE WINTER: CODEMUSAI meets its own kind",
+      "steps": [
+        "loadstate t534_six",
+        "poke gDaemonsSeasonOverride 8 1",
+        "mon 0 species SPECIES_FLAREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "poke sDbgDex 16 136",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "BATTLE WINTER: CODEMUSAI, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"WINTER: CODEMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"WINTER: CODEMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "BATTLE SPRING: CODEMUSAI meets its own kind",
+      "steps": [
+        "loadstate t534_six",
+        "poke gDaemonsSeasonOverride 8 2",
+        "mon 0 species SPECIES_FLAREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "poke sDbgDex 16 136",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "BATTLE SPRING: CODEMUSAI, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SPRING: CODEMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SPRING: CODEMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "BATTLE SUMMER: CODEMUSAI meets its own kind",
+      "steps": [
+        "loadstate t534_six",
+        "poke gDaemonsSeasonOverride 8 3",
+        "mon 0 species SPECIES_FLAREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "poke sDbgDex 16 136",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "BATTLE SUMMER: CODEMUSAI, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"SUMMER: CODEMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"SUMMER: CODEMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    },
+    {
+      "stop": "BATTLE AUTUMN: CODEMUSAI meets its own kind",
+      "steps": [
+        "loadstate t534_six",
+        "poke gDaemonsSeasonOverride 8 4",
+        "mon 0 species SPECIES_FLAREON",
+        "goto Route22 15 9",
+        "wait 30",
+        "to 15 10",
+        "to 15 9",
+        "wait 30",
+        "poke sDbgDex 16 136",
+        "poke sDbgLevel 8 30",
+        "debug ENCOUNTER INVOKE"
+      ]
+    },
+    {
+      "stop": "BATTLE AUTUMN: CODEMUSAI, front and back",
+      "steps": [
+        "wait 200",
+        "shot \"AUTUMN: CODEMUSAI, the foe's front\"",
+        "wait 250",
+        "shot \"AUTUMN: CODEMUSAI, front and back on the platforms\"",
+        "win",
+        "wait 60",
+        "close"
+      ]
+    }
+  ]
+}

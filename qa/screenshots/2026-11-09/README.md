@@ -97,3 +97,39 @@ T-535 built: the twenty berries on the TRAP TABLE, each its own two lines, taste
 T-535 built: POWDER JAR's line, no BERRY CRUSHER (theatre, debug build, DRAFT)
 
 ![9Nov2026 - T535 - KEY ITEMS, POWDER JAR - 18](9Nov2026%20-%20T535%20-%20KEY%20ITEMS%2C%20POWDER%20JAR%20-%2018.png)
+
+### 9Nov2026 - T534 - MUSAI sprite notes before and after - 19
+
+T-534 sprite notes, before and after, decoded from the built graphics and palettes: LENSMUSAI spring's control line from a wingtip, CAREMUSAI summer on two hulls under one deck, CODEMUSAI's four chest lights reading 1101 in every season (DRAFT)
+
+![9Nov2026 - T534 - MUSAI sprite notes before and after - 19](9Nov2026%20-%20T534%20-%20MUSAI%20sprite%20notes%20before%20and%20after%20-%2019.png)
+
+### 9Nov2026 - T534 - MUSAI lines on the maps - 20
+
+T-534 played on the DEBUG build (route t534_musai_grace): the SAFARI ZONE north rest house gentleman, the CINNABAR LAB scientist, and the note under MUSAI's box in CELADON's roof room, read once the box is lifted (DRAFT)
+
+![9Nov2026 - T534 - MUSAI lines on the maps - 20](9Nov2026%20-%20T534%20-%20MUSAI%20lines%20on%20the%20maps%20-%2020.png)
+
+### 9Nov2026 - T534 - MUSAI lines on the maps - 21
+
+T-534 played on the DEBUG build (route t534_musai_grace): the SAFARI ZONE north rest house gentleman, the CINNABAR LAB scientist, and the note under MUSAI's box in CELADON's roof room, read once the box is lifted (DRAFT)
+
+![9Nov2026 - T534 - MUSAI lines on the maps - 21](9Nov2026%20-%20T534%20-%20MUSAI%20lines%20on%20the%20maps%20-%2021.png)
+
+### 9Nov2026 - T534 - MUSAI lines on the maps - 22
+
+T-534 played on the DEBUG build (route t534_musai_grace): the SAFARI ZONE north rest house gentleman, the CINNABAR LAB scientist, and the note under MUSAI's box in CELADON's roof room, read once the box is lifted (DRAFT)
+
+![9Nov2026 - T534 - MUSAI lines on the maps - 22](9Nov2026%20-%20T534%20-%20MUSAI%20lines%20on%20the%20maps%20-%2022.png)
+
+### 9Nov2026 - T534 - MUSAI seasonal INDEX entries - 23
+
+T-534 played on the DEBUG build, the season forced: one redrafted INDEX entry per form -- MUSAI winter, CODEMUSAI spring, SEEKMUSAI autumn, CAREMUSAI summer, LENSMUSAI summer, MASKMUSAI spring (DRAFT)
+
+![9Nov2026 - T534 - MUSAI seasonal INDEX entries - 23](9Nov2026%20-%20T534%20-%20MUSAI%20seasonal%20INDEX%20entries%20-%2023.png)
+
+### 9Nov2026 - T534 - MUSAI sprite notes in battle - 24
+
+T-534 played on the DEBUG build: LENSMUSAI spring's control line, CAREMUSAI summer on two hulls under one deck, CODEMUSAI's chest lights 1101 in winter, spring, summer and autumn, each against its own kind (the lead keeps the debug party's first nickname) (DRAFT)
+
+![9Nov2026 - T534 - MUSAI sprite notes in battle - 24](9Nov2026%20-%20T534%20-%20MUSAI%20sprite%20notes%20in%20battle%20-%2024.png)

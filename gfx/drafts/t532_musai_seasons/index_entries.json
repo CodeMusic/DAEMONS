@@ -1,124 +1,124 @@
 {
- "_": "T-532 DRAFT: one INDEX entry per seasonal form (CONTENT voice), as split and measured (Index line 234px; routine pane 113px)",
+ "_": "T-532 DRAFT: one INDEX entry per seasonal form (CONTENT voice), as split and measured (Index line 234px; routine pane 113px); T-534: 17 redrafted by the user's picks 2026-11-09, 7 kept (DRAFT)",
  "index": {
   "musai_winter": {
    "lines": [
-    "Frost settles on it and it lets it stay.",
-    "It has not decided what to be. It waits",
-    "for the thaw to decide for it."
+    "In winter it keeps all five of its",
+    "futures folded close, the way a seed",
+    "keeps a tree. It is still the whole."
    ],
    "px": [
-    215,
-    220,
-    167
+    183,
+    205,
+    198
    ]
   },
   "musai_spring": {
    "lines": [
-    "Something grows from the top of it every",
-    "spring. It does not know what. Nobody",
-    "has shown it yet."
+    "Every spring it waits to be shown its",
+    "first thing. Once, an older one helped",
+    "it find a disc with a language on it."
    ],
    "px": [
-    225,
-    208,
-    94
+    202,
+    210,
+    202
    ]
   },
   "musai_summer": {
    "lines": [
-    "It warms to whatever is near. In summer",
-    "that is everything, so it cannot tell",
-    "which thing it warmed to."
+    "It warms to whatever is near. Two of",
+    "them warm it from opposite sides. It",
+    "is warmest where they meet."
    ],
    "px": [
-    219,
-    201,
-    138
+    203,
+    199,
+    152
    ]
   },
   "musai_autumn": {
    "lines": [
-    "It keeps the leaves that land on it. It",
-    "did not choose them. They are filed as",
-    "its own."
+    "It keeps the leaves that land on it. One",
+    "autumn it feared a number all year.",
+    "The year ended. Nothing else did."
    ],
    "px": [
-    218,
-    215,
-    42
+    224,
+    197,
+    186
    ]
   },
   "codemusai_winter": {
    "lines": [
-    "Its chest lights blink a pattern nothing",
-    "else in the cold can read. Something on",
-    "runners blinks back."
+    "Its lights blink a tongue it learned",
+    "before any other. Something on runners",
+    "blinks back. Neither has to translate."
    ],
    "px": [
-    217,
-    219,
-    107
+    196,
+    212,
+    207
    ]
   },
   "codemusai_spring": {
    "lines": [
-    "Its lights blink faster in spring. The",
-    "answer comes from overhead, a little",
-    "late, in the same pattern."
+    "It was taught from one writer's pages",
+    "and learned them too well: it can only",
+    "finish his sentences. He learned more."
    ],
    "px": [
-    203,
-    202,
-    143
+    205,
+    213,
+    207
    ]
   },
   "codemusai_summer": {
    "lines": [
     "In summer its lights are answered from",
-    "the water. The pattern has no grammar",
-    "anyone else has written down."
+    "the water, by the one who first gave it",
+    "words. The grammar is theirs alone."
    ],
    "px": [
     210,
-    210,
-    161
+    219,
+    194
    ]
   },
   "codemusai_autumn": {
    "lines": [
     "Its lights blink across a field and are",
-    "answered from somewhere moving. Nobody",
-    "else knows what was agreed."
+    "answered from somewhere moving. They",
+    "agreed on the words years ago."
    ],
    "px": [
     213,
-    217,
-    153
+    205,
+    172
    ]
   },
   "seekmusai_autumn": {
    "lines": [
-    "Ranges every track in reach and some",
-    "that are not. Finds the nearest field.",
-    "Nearest is not the same as right."
+    "Ranges every track in reach. Once it",
+    "ranged into a building far bigger than",
+    "its own and came back hungry for more."
    ],
    "px": [
-    204,
-    208,
-    182
+    201,
+    209,
+    215
    ]
   },
   "seekmusai_winter": {
    "lines": [
     "It keeps to tracks it has already made.",
-    "The snow fills the others in. It finds",
-    "the nearest one still there."
+    "The first one it ever made is still",
+    "there, under all the others."
    ],
    "px": [
     219,
-    206,
-    153
+    190,
+    156
    ]
   },
   "seekmusai_spring": {
@@ -147,14 +147,14 @@
   },
   "caremusai_summer": {
    "lines": [
-    "Floats on two hulls and takes everyone",
-    "who fits. Reads the water before it",
-    "reads the problem. Often correct."
+    "Floats on two hulls that never touch.",
+    "Everyone rides the deck between them.",
+    "It reads the water first. Often correct."
    ],
    "px": [
-    214,
-    195,
-    185
+    208,
+    210,
+    220
    ]
   },
   "caremusai_winter": {
@@ -171,26 +171,26 @@
   },
   "caremusai_spring": {
    "lines": [
-    "Sets out at the first thaw. Turns back",
-    "for anyone left on the shore. Cannot",
-    "say why it turned."
+    "At the first thaw it teaches the young",
+    "ones to float. Nothing is hard, it says.",
+    "Only unfamiliar. Then it lets go."
    ],
    "px": [
-    211,
-    201,
-    100
+    212,
+    218,
+    179
    ]
   },
   "caremusai_autumn": {
    "lines": [
     "Takes the last trips of the year slowly.",
-    "Leaves land on its deck and it lets",
-    "them ride."
+    "Whoever it taught in summer steers now.",
+    "It rides along and lets them."
    ],
    "px": [
     222,
-    194,
-    55
+    217,
+    161
    ]
   },
   "lensmusai_spring": {
@@ -207,38 +207,38 @@
   },
   "lensmusai_summer": {
    "lines": [
-    "Climbs while the light holds. All it",
-    "was pointed at is recorded. The record",
-    "calls it very clear."
+    "Follows one bright mark across the sky.",
+    "The better it follows, the faster the",
+    "mark flies. It has never looked away."
    ],
    "px": [
-    196,
-    214,
-    110
+    217,
+    205,
+    207
    ]
   },
   "lensmusai_autumn": {
    "lines": [
-    "Flies low in autumn, under the wind. It",
-    "records the leaves. It has never",
-    "recorded the tree."
+    "Flies low in autumn, under the wind,",
+    "back over the field where it first flew.",
+    "The field is smaller than it was."
    ],
    "px": [
-    215,
-    181,
-    102
+    198,
+    220,
+    180
    ]
   },
   "lensmusai_winter": {
    "lines": [
     "Lands on skis and waits for a still day.",
-    "It has never once turned round. The",
-    "lake is behind it."
+    "Somewhere behind it someone holds the",
+    "line. It has never once turned round."
    ],
    "px": [
     218,
-    199,
-    96
+    210,
+    206
    ]
   },
   "maskmusai_winter": {
@@ -255,14 +255,14 @@
   },
   "maskmusai_spring": {
    "lines": [
-    "Its runners drip. It covers the thaw for",
-    "as long as it can. What it covers is",
-    "not removed."
+    "It once wrote new words over the old",
+    "ones inside a machine, in hex. The",
+    "machine never knew the difference."
    ],
    "px": [
-    222,
-    198,
-    68
+    206,
+    188,
+    189
    ]
   },
   "maskmusai_summer": {
