@@ -104,6 +104,12 @@ T-532 DRAFT: the six MUSAI x four seasons, concept fronts by arm C from each ROM
 
 ![8Nov2026 - T532 - MUSAI branch seasons concepts - 17](8Nov2026%20-%20T532%20-%20MUSAI%20branch%20seasons%20concepts%20-%2017.png)
 
+### 8Nov2026 - C308 - a dreams three lenses - 18
+
+C-308: the dream journal's lenses -- both lit, the dream made whole (purple); REASON alone, told in order (red); INSTINCT alone, told all at once (blue). Sample dreams for the test; DRAFT
+
+![8Nov2026 - C308 - a dreams three lenses - 18](8Nov2026%20-%20C308%20-%20a%20dreams%20three%20lenses%20-%2018.png)
+
 ### 8Nov2026 - T532 - MUSAI seasons proof build - 19
 
 T-532 plumbing on a PROOF build (placeholder forms tinted by season, icons dotted): CODEMUSAI's follower, party, summary, battle (with the season's background) and INDEX entry in each of the four seasons; summer is the species' own art
