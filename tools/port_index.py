@@ -16,13 +16,16 @@ in FireRed and LeafGreen, and 8.4 fixed both of ours to the same story.
 """
 import os, re, subprocess, sys, textwrap
 import daemonslib   # T-421: vanilla's copy of a file, one helper for every tool
+from driftguard import refuse_over_later_work
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GB, GBA = os.path.join(ROOT, "engine"), os.path.join(ROOT, "engineGba")
 WRITE = "--write" in sys.argv
 #  T-532: --seasons writes ONLY the seasonal entries below. Measured 2026-11-08: a whole --write here rewrites 30
-#  categories and entries in pokedex_text_fr.h / _lg.h from the Game Boy's text, over later work (gbacontext's pairs,
-#  later edits), and the report does not show it -- so write the seasons with --write --seasons.
+#  categories and entries in pokedex_entries.h / pokedex_text_fr.h / _lg.h from the Game Boy's text, over later work
+#  (gbacontext's CONTEXT pairs, the GBA's own last sentences, EKANS, EEVEE's UNSET). The Game Boy build is a frozen
+#  reference and the GBA's entries are the truth now, so a whole-tree --write REFUSES (driftguard, generator_drift.json)
+#  and the report names every row it would change. --write --seasons writes the seasonal header and nothing else.
 SEASONS_ONLY = "--seasons" in sys.argv
 WIDTH, LINES = 42, 3
 
@@ -48,93 +51,121 @@ def entries(text):
         out[name] = words
     return out
 
-ours_cat, van_cat = categories(open(os.path.join(GB, "data/pokemon/dex_entries.asm")).read()), \
-                    categories(upstream("data/pokemon/dex_entries.asm"))
-ours_txt, van_txt = entries(open(os.path.join(GB, "data/pokemon/dex_text.asm")).read()), \
-                    entries(upstream("data/pokemon/dex_text.asm"))
+def report(path, differs):
+    """Name each row a whole-tree --write would change -- information, not failure: the GBA's text is the later work."""
+    if differs:
+        print("    a --write would change %d in %s (the GBA's later text; a whole-tree --write refuses): %s"
+              % (len(differs), os.path.basename(path), ", ".join(differs)))
 
-changed_cat = {k: v for k, v in ours_cat.items() if van_cat.get(k) != v}
-changed_txt = {k: v for k, v in ours_txt.items() if van_txt.get(k) != v}
-print("  %d categories changed, %d entries changed" % (len(changed_cat), len(changed_txt)))
 
-rc = 0
-# --- categories ------------------------------------------------------------
-path = os.path.join(GBA, "src/data/pokemon/pokedex_entries.h")
-text = open(path).read()
-placed, missing = 0, []
-for name, cat in sorted(changed_cat.items()):
-    key = "NATIONAL_DEX_" + re.sub(r'(?<!^)(?=[A-Z])', '_', name).upper()
-    pat = re.compile(r'(\[%s\]\s*=\s*\{\s*\.categoryName = _\(")[^"]*("\))' % re.escape(key))
-    text, n = pat.subn(r'\g<1>%s\g<2>' % cat, text)
-    if n: placed += n
-    else: missing.append((name, key))
-for name, key in missing:
-    print("  !! category: no %s" % key); rc = 1
-print("  categories: %d/%d" % (placed, len(changed_cat)))
-if WRITE and not missing and not SEASONS_ONLY:
-    open(path, "w").write(text)
+def main():
+    ours_cat, van_cat = categories(open(os.path.join(GB, "data/pokemon/dex_entries.asm")).read()), \
+                        categories(upstream("data/pokemon/dex_entries.asm"))
+    ours_txt, van_txt = entries(open(os.path.join(GB, "data/pokemon/dex_text.asm")).read()), \
+                        entries(upstream("data/pokemon/dex_text.asm"))
 
-# --- entries ---------------------------------------------------------------
-for fname in ("pokedex_text_fr.h", "pokedex_text_lg.h"):
-    path = os.path.join(GBA, "src/data/pokemon", fname)
+    changed_cat = {k: v for k, v in ours_cat.items() if van_cat.get(k) != v}
+    changed_txt = {k: v for k, v in ours_txt.items() if van_txt.get(k) != v}
+    print("  %d categories changed, %d entries changed" % (len(changed_cat), len(changed_txt)))
+
+    rc, pending = 0, []
+    # --- categories ------------------------------------------------------------
+    path = os.path.join(GBA, "src/data/pokemon/pokedex_entries.h")
     text = open(path).read()
-    placed, missing, toolong = 0, [], []
-    for name, words in sorted(changed_txt.items()):
-        wrapped = textwrap.wrap(" ".join(words), WIDTH)
-        if len(wrapped) > LINES:
-            toolong.append((name, len(" ".join(words)))); continue
-        body = "\n".join('    "%s%s"' % (l, "\\n" if i < len(wrapped) - 1 else "")
-                         for i, l in enumerate(wrapped))
-        sym = "g%sPokedexText" % name
-        pat = re.compile(r'(const u8 %s\[\] = _\(\n).*?(\);)' % re.escape(sym), re.S)
-        text, n = pat.subn(lambda m: m.group(1) + body + ");", text)
+    placed, missing, differs = 0, [], []
+    for name, cat in sorted(changed_cat.items()):
+        key = "NATIONAL_DEX_" + re.sub(r'(?<!^)(?=[A-Z])', '_', name).upper()
+        pat = re.compile(r'(\[%s\]\s*=\s*\{\s*\.categoryName = _\(")[^"]*("\))' % re.escape(key))
+        m = pat.search(text)
+        if m and text[m.end(1):m.start(2)] != cat:
+            differs.append("%s (%s -> %s)" % (name, text[m.end(1):m.start(2)], cat))
+        text, n = pat.subn(r'\g<1>%s\g<2>' % cat, text)
         if n: placed += n
-        else: missing.append(sym)
-    for s in missing:
-        print("  !! entry: no %s in %s" % (s, fname)); rc = 1
-    for name, n in toolong:
-        print("  !! entry %s is %d chars, will not fit %d lines of %d" % (name, n, LINES, WIDTH)); rc = 1
-    print("  %s: %d/%d" % (fname, placed, len(changed_txt) - len(toolong)))
-    if WRITE and not missing and not toolong and not SEASONS_ONLY:
-        open(path, "w").write(text)
-# --- T-532: the MUSAI branch's seasonal entries ---------------------------------------------------------------------
-#  One entry per seasonal form, 24, both editions sharing them (the user, 2026-11-08: decision 5 A). The words are the
-#  drafted ones in gfx/drafts/t532_musai_seasons/index_entries.json, already split into the Index's lines and measured
-#  in the game's font; each line is checked against the 234px pane here, and written to pokedex_text_seasons.h, which
-#  src/daemons_seasons.c reads (DaemonsSeasonalIndexText): a MUSAI's page shows its season's form's entry. DRAFT.
-SEASON_SRC = os.path.join(ROOT, "gfx/drafts/t532_musai_seasons/index_entries.json")
-SEASON_OUT = os.path.join(GBA, "src/data/pokemon/pokedex_text_seasons.h")
-if os.path.exists(SEASON_SRC):
-    import json
-    entries_s = json.load(open(SEASON_SRC, encoding="utf-8"))["index"]
-    branch = [("musai", "EEVEE", "Eevee"), ("codemusai", "FLAREON", "Flareon"), ("seekmusai", "JOLTEON", "Jolteon"),
-              ("caremusai", "VAPOREON", "Vaporeon"), ("lensmusai", "ESPEON", "Espeon"), ("maskmusai", "UMBREON", "Umbreon")]
-    seasons = ["winter", "spring", "summer", "autumn"]
-    out = ["//  GENERATED by DAEMONS tools/port_index.py (T-532) -- do not edit; run the tool. DRAFT.",
-           "//  The MUSAI branch's INDEX entries, one per seasonal form, both editions (vision 9.34).", ""]
-    rows, bad = [], []
-    for name, const, sym in branch:
-        cells = []
-        for se in seasons:
-            e = entries_s["%s_%s" % (name, se)]
-            if len(e["lines"]) > LINES or max(e["px"]) > 234:
-                bad.append("%s_%s" % (name, se))
-            v = "s%sIndexText_%s" % (sym, se.capitalize())
-            body = "\\n\"\n    \"".join(l.replace('"', '\\"') for l in e["lines"])
-            out.append('static const u8 %s[] = _(\n    "%s");' % (v, body))
-            cells.append(v)
-        rows.append("    {SPECIES_%s, {%s}}," % (const, ", ".join(cells)))
-    out += ["", "static const struct MusaiSeasonText sMusaiSeasonTexts[] = {"] + rows + ["};", ""]
-    text = "\n".join(out)
-    for b in bad:
-        print("  !! seasonal entry %s will not fit %d lines of 234px" % (b, LINES)); rc = 1
-    old = open(SEASON_OUT, encoding="utf-8").read() if os.path.exists(SEASON_OUT) else None
-    print("  pokedex_text_seasons.h: %d entries, %s" % (len(rows) * 4, "current" if old == text else
-          "written" if WRITE and not bad else "would change"))
-    if WRITE and not bad and old != text:
-        open(SEASON_OUT + ".tmp", "w", encoding="utf-8").write(text)
-        os.replace(SEASON_OUT + ".tmp", SEASON_OUT)
+        else: missing.append((name, key))
+    for name, key in missing:
+        print("  !! category: no %s" % key); rc = 1
+    print("  categories: %d/%d" % (placed, len(changed_cat)))
+    report(path, differs)
+    if not missing:
+        pending.append((path, text))
 
-if WRITE:
-    print("  written" if rc == 0 else "  NOT written")
-sys.exit(rc)
+    # --- entries ---------------------------------------------------------------
+    for fname in ("pokedex_text_fr.h", "pokedex_text_lg.h"):
+        path = os.path.join(GBA, "src/data/pokemon", fname)
+        text = open(path).read()
+        placed, missing, toolong, differs = 0, [], [], []
+        for name, words in sorted(changed_txt.items()):
+            wrapped = textwrap.wrap(" ".join(words), WIDTH)
+            if len(wrapped) > LINES:
+                toolong.append((name, len(" ".join(words)))); continue
+            body = "\n".join('    "%s%s"' % (l, "\\n" if i < len(wrapped) - 1 else "")
+                             for i, l in enumerate(wrapped))
+            sym = "g%sPokedexText" % name
+            pat = re.compile(r'(const u8 %s\[\] = _\(\n).*?(\);)' % re.escape(sym), re.S)
+            m = pat.search(text)
+            if m and m.group(0) != m.group(1) + body + ");":
+                differs.append(name)
+            text, n = pat.subn(lambda m: m.group(1) + body + ");", text)
+            if n: placed += n
+            else: missing.append(sym)
+        for s in missing:
+            print("  !! entry: no %s in %s" % (s, fname)); rc = 1
+        for name, n in toolong:
+            print("  !! entry %s is %d chars, will not fit %d lines of %d" % (name, n, LINES, WIDTH)); rc = 1
+        print("  %s: %d/%d" % (fname, placed, len(changed_txt) - len(toolong)))
+        report(path, differs)
+        if not missing and not toolong:
+            pending.append((path, text))
+    #  The whole-tree write: refused (driftguard) unless --seasons, which leaves these files alone, or --over-later-work.
+    if WRITE and not SEASONS_ONLY:
+        refuse_over_later_work("port_index")
+        for path, text in pending:
+            if open(path).read() != text:
+                open(path + ".tmp", "w").write(text)
+                os.replace(path + ".tmp", path)
+    # --- T-532: the MUSAI branch's seasonal entries ---------------------------------------------------------------------
+    #  One entry per seasonal form, 24, both editions sharing them (the user, 2026-11-08: decision 5 A). The words are the
+    #  drafted ones in gfx/drafts/t532_musai_seasons/index_entries.json, already split into the Index's lines and measured
+    #  in the game's font; each line is checked against the 234px pane here, and written to pokedex_text_seasons.h, which
+    #  src/daemons_seasons.c reads (DaemonsSeasonalIndexText): a MUSAI's page shows its season's form's entry. DRAFT.
+    SEASON_SRC = os.path.join(ROOT, "gfx/drafts/t532_musai_seasons/index_entries.json")
+    SEASON_OUT = os.path.join(GBA, "src/data/pokemon/pokedex_text_seasons.h")
+    if os.path.exists(SEASON_SRC):
+        import json
+        entries_s = json.load(open(SEASON_SRC, encoding="utf-8"))["index"]
+        branch = [("musai", "EEVEE", "Eevee"), ("codemusai", "FLAREON", "Flareon"), ("seekmusai", "JOLTEON", "Jolteon"),
+                  ("caremusai", "VAPOREON", "Vaporeon"), ("lensmusai", "ESPEON", "Espeon"), ("maskmusai", "UMBREON", "Umbreon")]
+        seasons = ["winter", "spring", "summer", "autumn"]
+        out = ["//  GENERATED by DAEMONS tools/port_index.py (T-532) -- do not edit; run the tool. DRAFT.",
+               "//  The MUSAI branch's INDEX entries, one per seasonal form, both editions (vision 9.34).", ""]
+        rows, bad = [], []
+        for name, const, sym in branch:
+            cells = []
+            for se in seasons:
+                e = entries_s["%s_%s" % (name, se)]
+                if len(e["lines"]) > LINES or max(e["px"]) > 234:
+                    bad.append("%s_%s" % (name, se))
+                v = "s%sIndexText_%s" % (sym, se.capitalize())
+                body = "\\n\"\n    \"".join(l.replace('"', '\\"') for l in e["lines"])
+                out.append('static const u8 %s[] = _(\n    "%s");' % (v, body))
+                cells.append(v)
+            rows.append("    {SPECIES_%s, {%s}}," % (const, ", ".join(cells)))
+        out += ["", "static const struct MusaiSeasonText sMusaiSeasonTexts[] = {"] + rows + ["};", ""]
+        text = "\n".join(out)
+        for b in bad:
+            print("  !! seasonal entry %s will not fit %d lines of 234px" % (b, LINES)); rc = 1
+        old = open(SEASON_OUT, encoding="utf-8").read() if os.path.exists(SEASON_OUT) else None
+        print("  pokedex_text_seasons.h: %d entries, %s" % (len(rows) * 4, "current" if old == text else
+              "written" if WRITE and not bad else "would change"))
+        if WRITE and not bad and old != text:
+            open(SEASON_OUT + ".tmp", "w", encoding="utf-8").write(text)
+            os.replace(SEASON_OUT + ".tmp", SEASON_OUT)
+
+
+    if WRITE:
+        print("  written" if rc == 0 else "  NOT written")
+    return rc
+
+
+if __name__ == "__main__":
+    sys.exit(main())

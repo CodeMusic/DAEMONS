@@ -228,6 +228,14 @@
    "engine:data/text/fame_checker.inc"
   ]
  },
+ "port_index": {
+  "why": "STALE -- never --write it on the whole tree (2026-11-08): it reflows the Game Boy's frozen dex text into the GBA's INDEX, and the GBA's 30 entries were rewritten after it last ran -- the last sentences it cannot parse ('It remembers it.'), gbacontext's CONTEXT pairs in pokedex_text_lg.h, EKANS, EEVEE's category UNSET (it would set GENERAL). Its report names every row; --write --seasons writes only the T-532 seasonal header and is safe",
+  "files": [
+   "engine:src/data/pokemon/pokedex_entries.h",
+   "engine:src/data/pokemon/pokedex_text_fr.h",
+   "engine:src/data/pokemon/pokedex_text_lg.h"
+  ]
+ },
  "port_pronoun": {
   "why": "STALE: T-391 (c4d5edf8b) rewrote the PLUGINs' last vanilla routine descriptions by hand after this ran; a write restores the T-183 pronoun-only versions.",
   "files": [

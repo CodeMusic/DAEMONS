@@ -80,7 +80,7 @@ ARGS = {
     #  T-532: genmusaiseasons needs no flag (the user decided the build 2026-11-08): it writes the 18 seasonal forms --
     #  copies of today's art until gfx/drafts/t532_musai_seasons/finals/ holds a drawing NAMED IN ITS APPROVED_FINAL
     #  (the user's picks, 2026-11-08), the approved summers into gfx/daemons/, and its table and coordinates blocks --
-    #  and its report exits 0. port_index's whole-tree --write is not drift-safe; its seasonal header is --write --seasons.
+    #  and its report exits 0. port_index's whole-tree --write refuses (generator_drift.json); its seasonal header is --write --seasons.
     "genmusaiseasons": [[]],
 }
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
