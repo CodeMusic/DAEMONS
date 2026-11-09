@@ -4,7 +4,9 @@
     python3 tools/port_item_text.py [--write]       # report exits 1 when the engine is not what --write makes
     python3 tools/port_item_text.py --sheet OUT.png              # T-526: the drafts against the engine, in its font
     python3 tools/port_item_text.py --trap-sheet OUT.png         # T-526: the TRAP TABLE's rows in its two-line window
-    python3 tools/port_item_text.py --write --approved ITEM ...  # T-526: write only those DRAFT descriptions
+    python3 tools/port_item_text.py --write --approved ITEM ...  # T-526/T-535: write only those DRAFT descriptions
+    python3 tools/port_item_text.py --t535-sheet OUT.png         # T-535: the second sweep's BAG rows
+    python3 tools/port_item_text.py --t535-trap-sheet OUT.png    # T-535: the twenty berries in the TRAP TABLE
 
 This is not a port. The Game Boy build has no descriptions to carry over --
 Gen 1 stores none at all -- so these are new writing, and vision.md 9.3 named
@@ -816,7 +818,164 @@ for _k in T526_APPROVED:
         NAMED[_k] = (NAMED[_k][0], T526[_k][0])
 
 
-def _t526_sheet(out, engine_items, measure, trap=False):
+#  ---------------------------------------------------------------------------
+#  T-535 (2026-11-09) -- the second sweep, DRAFT, every line, and NOTHING here reaches the engine until the user
+#  approves it. T-526 kept these "on purpose" (an object stays an object); T-525 batch 4 then drew each one as what it
+#  IS, and in play they still read as FireRed: the valuables "sold at a high price", the mushrooms "popular among
+#  certain people", the shards "from some sort of a tool", POWDER JAR's BERRY CRUSHER (nothing here is called that:
+#  the machine is "for crushing BERRIES" at the DIRECT CORNER, and the medicine-maker is in DOLDRUM CITY), and the
+#  twenty berries sharing vanilla's one line. Each berry is the fruit its icon shows, with the taste and firmness
+#  src/berry.c gives it -- literal fruit, not TRAPs -- in two lines, because the TRAP TABLE's window shows two.
+#  Reachability as T-526 (2.10). docs/t535-item-descriptions-draft.md is the table.
+#
+#      python3 tools/port_item_text.py --t535-sheet OUT.png        # the BAG rows, its window, 1x and 2x
+#      python3 tools/port_item_text.py --t535-trap-sheet OUT.png   # the berries, the TRAP TABLE's window, 1x and 3x
+#      python3 tools/port_item_text.py --write --approved ITEM ... # writes T-526 or T-535 rows by name
+T535 = {
+    "ITEM_NUGGET":       (["A lump of pure gold. It does",
+                           "nothing at all, and every shop",
+                           "will pay a great deal for it."],
+                          "'It can be sold at a high price' is vanilla's; the joke sits under it, unsaid"),
+    "ITEM_PEARL":        (["A small pearl that sparkles a",
+                           "pretty silver. A shop will give",
+                           "a little for it."],
+                          "vanilla's words; the price kept as what a shop does"),
+    "ITEM_BIG_PEARL":    (["The same silver pearl, left to",
+                           "grow for longer. A shop will",
+                           "give a great deal for it."],
+                          "vanilla's words; a pearl's size is time"),
+    "ITEM_STARDUST":     (["A pretty red sand with a loose,",
+                           "silky feel. It sells for far",
+                           "more than sand should."],
+                          "'It can be sold at a high price' is vanilla's"),
+    "ITEM_STAR_PIECE":   (["A red gem cut as a star, one",
+                           "arm broken off. It sells for a",
+                           "great deal even so."],
+                          "vanilla's words; the icon's broken arm"),
+    "ITEM_TINY_MUSHROOM":(["A small, rare mushroom. The",
+                           "ROUTINE ARCHIVIST on TWO ISLAND",
+                           "takes two for one lesson."],
+                          "'certain people' is the ARCHIVIST on TWO ISLAND, who teaches a ROUTINE for two"),
+    "ITEM_BIG_MUSHROOM": (["A large, rare mushroom. The",
+                           "ROUTINE ARCHIVIST on TWO ISLAND",
+                           "takes it for one lesson."],
+                          "'certain people' is the ARCHIVIST on TWO ISLAND, who teaches a ROUTINE for one"),
+    "ITEM_HEART_SCALE":  (["A pale, heart-shaped scale with",
+                           "growth lines. It glows faintly in",
+                           "every color. PAIRING DAY gives it."],
+                          "vanilla's words; PAIRING DAY hands it out (daemons_holidays.h), and nothing uses it"),
+    "ITEM_RED_SHARD":    (["A small red piece with a groove",
+                           "cut to fit something. Whatever",
+                           "it fit was made long ago."],
+                          "'some sort of a tool' is vanilla's; the icon is a worked piece with a cut groove"),
+    "ITEM_BLUE_SHARD":   (["A small blue piece with a groove",
+                           "cut to fit something. Whatever",
+                           "it fit was made long ago."],
+                          "the same as the RED SHARD"),
+    "ITEM_YELLOW_SHARD": (["A small yellow piece with a",
+                           "groove cut to fit something.",
+                           "Whatever it fit was made long ago."],
+                          "the same as the RED SHARD"),
+    "ITEM_GREEN_SHARD":  (["A small green piece with a",
+                           "groove cut to fit something.",
+                           "Whatever it fit was made long ago."],
+                          "the same as the RED SHARD"),
+    "ITEM_MOOMOO_MILK":  (["Milk from TWO ISLAND, sold there",
+                           "by the bottle. It restores the HP",
+                           "of one DAEMON by 100 points."],
+                          "'Highly nutritious' is vanilla's; TWO ISLAND's shop sells it"),
+    "ITEM_GLITTER_MAIL": (["MAIL printed with a SPIKE in",
+                           "glitter. Write on it, and a",
+                           "DAEMON will hold it."],
+                          "'a cute SPIKE print' and 'It is to be held' are vanilla's"),
+    "ITEM_SHADOW_MAIL":  (["MAIL printed with a FADING, half",
+                           "gone into the paper. Write on it,",
+                           "and a DAEMON will hold it."],
+                          "'a cute FADING print' is vanilla's; the icon fades out"),
+    "ITEM_DREAM_MAIL":   (["MAIL with an outline left blank.",
+                           "It takes the print of the DAEMON",
+                           "that holds it."],
+                          "vanilla's meaning, our words; the icon's dashed outline, waiting"),
+    "ITEM_FAB_MAIL":     (["MAIL in a gold lattice print, far",
+                           "too fine for what it will say.",
+                           "A DAEMON will hold it."],
+                          "'gorgeous, extravagant' is vanilla's"),
+    "ITEM_POWDER_JAR":   (["A jar for the BERRY POWDER made",
+                           "by crushing BERRIES. DOLDRUM",
+                           "CITY's medicine-maker wants it."],
+                          "there is no BERRY CRUSHER here: the DIRECT CORNER's machine crushes BERRIES"),
+    #  The twenty berries. Two lines each (the TRAP TABLE's window). Taste and firmness are src/berry.c's own.
+    "ITEM_RAZZ_BERRY":   (["A red berry, hard as a pebble.",
+                           "It tastes spicy, then dry."],
+                          "very hard; spicy 10, dry 10"),
+    "ITEM_BLUK_BERRY":   (["A soft blueberry under a little",
+                           "crown. Dry first, then sweet."],
+                          "soft; dry 10, sweet 10"),
+    "ITEM_NANAB_BERRY":  (["A banana, very hard. Sweet, with",
+                           "something bitter under it."],
+                          "very hard; sweet 10, bitter 10"),
+    "ITEM_WEPEAR_BERRY": (["A pear harder than it looks.",
+                           "Bitter and sour all the way down."],
+                          "super hard; bitter 10, sour 10"),
+    "ITEM_PINAP_BERRY":  (["A small pineapple. Spicy and sour,",
+                           "and the leaves are not for eating."],
+                          "hard; spicy 10, sour 10"),
+    "ITEM_POMEG_BERRY":  (["A pomegranate, very hard. Spicy,",
+                           "sweet and bitter, all in one."],
+                          "very hard; spicy, sweet, bitter 10"),
+    "ITEM_KELPSY_BERRY": (["A blue root that grows like kelp.",
+                           "Dry, bitter and a little sour."],
+                          "hard; dry, bitter, sour 10"),
+    "ITEM_QUALOT_BERRY": (["A dimpled yellow round. Spicy,",
+                           "sweet and sour, by turns."],
+                          "hard; spicy, sweet, sour 10"),
+    "ITEM_HONDEW_BERRY": (["A netted honeydew. Spicy, dry and",
+                           "bitter, which melons rarely are."],
+                          "hard; spicy, dry, bitter 10"),
+    "ITEM_GREPA_BERRY":  (["A soft bunch of pale gold grapes.",
+                           "Dry, sweet and sour together."],
+                          "soft; dry, sweet, sour 10"),
+    "ITEM_TAMATO_BERRY": (["A soft, very red tomato. Spicier",
+                           "than a tomato has any right to be."],
+                          "soft; spicy 20, dry 10"),
+    "ITEM_CORNN_BERRY":  (["A purple cob in its husk. Mostly",
+                           "dry, with a little sweetness."],
+                          "hard; dry 20, sweet 10"),
+    "ITEM_MAGOST_BERRY": (["A mangosteen, hard-shelled. Sweet",
+                           "inside, and bitter at the rind."],
+                          "hard; sweet 20, bitter 10"),
+    "ITEM_RABUTA_BERRY": (["A hairy rambutan, soft to hold.",
+                           "Bitter, with a sour finish."],
+                          "soft; bitter 20, sour 10"),
+    "ITEM_NOMEL_BERRY":  (["A lemon, very large and very hard.",
+                           "Sour, as lemons are. A bit spicy."],
+                          "super hard, 285mm; sour 20, spicy 10"),
+    "ITEM_SPELON_BERRY": (["A long red fruit covered in spines.",
+                           "Fiercely spicy. Hold it carefully."],
+                          "soft; spicy 40"),
+    "ITEM_PAMTRE_BERRY": (["A long pink fruit in bands, so soft",
+                           "it bruises. Very dry."],
+                          "very soft; dry 40"),
+    "ITEM_WATMEL_BERRY": (["A big striped melon, soft and",
+                           "heavy. Very sweet."],
+                          "soft, 250mm; sweet 40"),
+    "ITEM_DURIN_BERRY":  (["A durian, thorned and hard. Very",
+                           "bitter, and it smells."],
+                          "hard; bitter 40"),
+    "ITEM_BELUE_BERRY":  (["A glossy plum-black berry, so soft",
+                           "it barely holds. Very sour."],
+                          "very soft; sour 40"),
+}
+T535_TWO_LINES = [k for k in T535 if k.endswith("_BERRY")]
+#  Empty until the user picks. An approved row goes here too, so the whole-table --write keeps it.
+T535_APPROVED = []
+for _k in T535_APPROVED:
+    TEXT[_k] = T535[_k][0]
+    if _k in NAMED:
+        NAMED[_k] = (NAMED[_k][0], T535[_k][0])
+
+
+def _t526_sheet(out, engine_items, measure, trap=False, ticket="T-526"):
     """Current against draft, in the engine's latin_normal sheet at its own pixels, one row per draft: the BAG's
     description window is 200x48 (src/bag.c, window 1) and the text starts at y=3, so that is what is drawn. With
     trap, the TRAP TABLE's rows in ITS window -- 200x32 (src/berry_pouch.c, window 1), text at y=2, two lines, so a
@@ -855,8 +1014,9 @@ def _t526_sheet(out, engine_items, measure, trap=False):
     except Exception:
         label = ImageFont.load_default()
     LEFT = 150
-    scales = (1, 3) if trap else (2,)
-    keys = list(T526_TWO_LINES) if trap else [k for k in T526 if k not in T526_TWO_LINES]
+    table, two = (T535, T535_TWO_LINES) if ticket == "T-535" else (T526, T526_TWO_LINES)
+    scales = (1, 3) if trap else ((1, 2) if ticket == "T-535" else (2,))
+    keys = list(two) if trap else [k for k in table if k not in two]
     ROW = max(H * max(scales), 40) + 18
     cols = [(sc, which) for sc in scales for which in ("NOW", "DRAFT")]
     xs, x = [], LEFT
@@ -865,10 +1025,11 @@ def _t526_sheet(out, engine_items, measure, trap=False):
         x += 200 * sc + 16
     sheet = Image.new("RGB", (x + 8, 44 + len(keys) * ROW), (28, 30, 36))
     d = ImageDraw.Draw(sheet)
-    d.text((8, 6), ("T-526 TRAP TABLE descriptions, DRAFT -- its own font and 200x32 window (two lines), at 1x (real "
-                    "size) and 3x. NOW is cut where the game cuts it." if trap else
-                    "T-526 item descriptions, DRAFT -- the BAG's own font and 200x48 window, at 2x. Left: the engine "
-                    "now. Right: the draft.") + " Dotted: the 198px budget.", fill=(220, 220, 224), font=label)
+    d.text((8, 6), (ticket + " TRAP TABLE descriptions, DRAFT -- its own font and 200x32 window (two lines), at 1x "
+                    "(real size) and 3x. NOW is cut where the game cuts it." if trap else
+                    ticket + " item descriptions, DRAFT -- the BAG's own font and 200x48 window, at %s. NOW: the "
+                    "engine. DRAFT: the draft." % " and ".join("%dx" % s for s in scales))
+           + " Dotted: the 198px budget.", fill=(220, 220, 224), font=label)
     for (sc, which), cx in zip(cols, xs):
         d.text((cx, 24), "%s %dx" % (which, sc), fill=(240, 200, 120) if which == "DRAFT" else (160, 160, 170),
                font=label)
@@ -877,7 +1038,7 @@ def _t526_sheet(out, engine_items, measure, trap=False):
         it = engine_items[k]
         d.text((8, y + 4), it["english"], fill=(230, 230, 234), font=label)
         d.text((8, y + 20), k.replace("ITEM_", ""), fill=(140, 140, 150), font=label)
-        new = T526[k][0]
+        new = table[k][0]
         #  the engine's words before T-526 wrote them: once written, NOW would show the draft twice
         now = T526_BEFORE.get(k, it["description_english"].split("\\n"))
         d.text((8, y + 36), "%dpx max" % max(measure(l) for l in new), fill=(140, 140, 150), font=label)
@@ -971,6 +1132,24 @@ def main():
         _t526_sheet(sys.argv[sys.argv.index("--sheet") + 1], engine_items, _measure)
     if "--trap-sheet" in sys.argv:
         _t526_sheet(sys.argv[sys.argv.index("--trap-sheet") + 1], engine_items, _measure, trap=True)
+    #  T-535: measured the same way, held to two lines on the TRAP TABLE, written only as --approved names them.
+    for item_id, (lines, _why) in T535.items():
+        if item_id not in engine_items:
+            print("  !! T-535 %s not in items.json" % item_id); rc = 1
+        if item_id in T526:
+            print("  !! T-535 %s is T-526's row" % item_id); rc = 1
+        if len(lines) > (2 if item_id in T535_TWO_LINES else 3):
+            print("  !! T-535 %s: %d lines, more than its window shows" % (item_id, len(lines))); rc = 1
+        for ln in lines:
+            if _measure(ln) > BUDGET:
+                print("  !! T-535 %s: %dpx > %d -- %s" % (item_id, _measure(ln), BUDGET, ln)); rc = 1
+    held = [k for k in T535 if engine_items.get(k, {}).get("description_english") == "\\n".join(T535[k][0])]
+    print("  T-535: %d DRAFT descriptions, %d approved, %d in the engine" % (len(T535), len(T535_APPROVED), len(held)))
+    if "--t535-sheet" in sys.argv:
+        _t526_sheet(sys.argv[sys.argv.index("--t535-sheet") + 1], engine_items, _measure, ticket="T-535")
+    if "--t535-trap-sheet" in sys.argv:
+        _t526_sheet(sys.argv[sys.argv.index("--t535-trap-sheet") + 1], engine_items, _measure, trap=True,
+                    ticket="T-535")
 
     if "--approved" in sys.argv:
         named = []
@@ -978,20 +1157,21 @@ def main():
             if a.startswith("--"):
                 break
             named.append(a if a.startswith("ITEM_") else "ITEM_" + a)
-        named = named or list(T526_APPROVED)
-        unknown = [k for k in named if k not in T526]
+        named = named or list(T526_APPROVED) + list(T535_APPROVED)
+        drafts = dict(T526, **T535)
+        unknown = [k for k in named if k not in drafts]
         if unknown:
-            print("  !! --approved names rows T-526 does not hold: %s" % " ".join(unknown)); sys.exit(1)
+            print("  !! --approved names rows neither T-526 nor T-535 holds: %s" % " ".join(unknown)); sys.exit(1)
         if not named:
             print("  --approved names no rows, and none is approved yet: nothing written.")
             sys.exit(rc)
         if "--write" not in sys.argv or rc:
-            print("  would write %d T-526 rows: %s" % (len(named), " ".join(named)))
+            print("  would write %d T-526/T-535 rows: %s" % (len(named), " ".join(named)))
             sys.exit(rc)
         #  ONLY those rows' descriptions, read fresh from the engine, so nothing else in the file moves.
         raw = open(PATH).read()
         for item_id in named:
-            body = json.dumps("\\n".join(T526[item_id][0]))[1:-1]
+            body = json.dumps("\\n".join(drafts[item_id][0]))[1:-1]
             pat = re.compile(r'("itemId": "%s".*?"description_english": ")(.*?)(")' % re.escape(item_id), re.S)
             raw, n = pat.subn(lambda m: m.group(1) + body + m.group(3), raw, count=1)
             if not n:
@@ -999,7 +1179,8 @@ def main():
         tmp = PATH + ".tmp"
         open(tmp, "w").write(raw)
         os.replace(tmp, PATH)
-        print("  written: %d T-526 rows -- add them to T526_APPROVED so a whole-table --write keeps them" % len(named))
+        print("  written: %d rows -- add them to T526_APPROVED / T535_APPROVED so a whole-table --write keeps them"
+              % len(named))
         sys.exit(0)
 
     #  T-526: the whole-table write is level with the engine (the TM lines, the 'they' pass, the species renames and

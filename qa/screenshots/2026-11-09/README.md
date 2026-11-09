@@ -61,3 +61,15 @@ T-525 batch 4 built (Keep all 20): the TRAP TABLE's twenty berries on the plank,
 T-525 batch 4 built: KEY ITEMS with POWDER JAR and the three new key-item icons after the nine already held, stopped at METEORITE. Route stop 3.
 
 ![9Nov2026 - T525 - batch 4 built - KEY ITEMS - 12](9Nov2026%20-%20T525%20-%20batch%204%20built%20-%20KEY%20ITEMS%20-%2012.png)
+
+### 9Nov2026 - T535 - item descriptions DRAFT in the BAG window - 13
+
+T-535 DRAFT: 18 item descriptions (valuables, mushrooms, HEART SCALE, shards, MOOMOO MILK, four MAILs, POWDER JAR), the engine's words beside the draft in the BAG's own font and 200x48 window at 1x and 2x; dotted line is the 198px budget. Nothing in the engine.
+
+![9Nov2026 - T535 - item descriptions DRAFT in the BAG window - 13](9Nov2026%20-%20T535%20-%20item%20descriptions%20DRAFT%20in%20the%20BAG%20window%20-%2013.png)
+
+### 9Nov2026 - T535 - berry descriptions DRAFT in the TRAP TABLE window - 14
+
+T-535 DRAFT: the 20 berries, each its own two lines, in the TRAP TABLE's own 200x32 two-line window at 1x and 3x; NOW is vanilla's one shared line. Nothing in the engine.
+
+![9Nov2026 - T535 - berry descriptions DRAFT in the TRAP TABLE window - 14](9Nov2026%20-%20T535%20-%20berry%20descriptions%20DRAFT%20in%20the%20TRAP%20TABLE%20window%20-%2014.png)
