@@ -223,3 +223,9 @@ T-536 C: the CORPUS HIDEOUT B4F -- a casting floor of sand
 T-536 C: the WAREHOUSE on FIVE ISLAND -- ingots on pallets, the spin arrows kept
 
 ![9Nov2026 - T536 - WAREHOUSE on FIVE ISLAND ingots on pallets - 39](9Nov2026%20-%20T536%20-%20WAREHOUSE%20on%20FIVE%20ISLAND%20ingots%20on%20pallets%20-%2039.png)
+
+### 9Nov2026 - C311 - the MUSAI faces as picked - 40
+
+C-311 done: the four MUSAI faces on their new pictures as the user picked them (CODEMUSAI's visor, CAREMUSAI's glint, SEEKMUSAI's two eyes, LENSMUSAI's lens glint; no mouths), each awake, asleep, glad and drowsy, drawn from the saved faces.json beside the old face
+
+![9Nov2026 - C311 - the MUSAI faces as picked - 40](9Nov2026%20-%20C311%20-%20the%20MUSAI%20faces%20as%20picked%20-%2040.png)
