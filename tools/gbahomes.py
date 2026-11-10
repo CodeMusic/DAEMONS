@@ -149,7 +149,7 @@ CENSUS_SETS = [
     ("gTileset_BurgledHouse", 3, "CERULEAN's burgled house"),
     ("gTileset_UndergroundPath", 3, "the UNDERGROUND PATH's two tunnels"),
     ("gTileset_Museum", "L", "SLATE's MUSEUM OF ERRATA (4.32), the WARDEN's house, FUCHSIA's house 2, the RESORT house: "
-                            "a landmark, drawn from the story"),
+                            "a landmark, drawn from the story by tools/gbamuseum.py (T-541)"),
     ("gTileset_SafariZoneBuilding", "S", "the SAFARI ZONE's entrance, office, rest houses and SECRET HOUSE, and "
                                         "LORELEI's house: held for the SAFARI redesign"),
     ("gTileset_CableClub", "-", "the link rooms (colosseum, trade centre, record corner): link only"),

@@ -223,3 +223,27 @@ T-538 batch 3, A THE KEEPING: THE TUNNEL north-south -- glazed tile rings, tiled
 T-538 batch 3, A THE KEEPING: THE TUNNEL east-west. DRAFT.
 
 ![10Nov2026 - T538 - batch 3 A THE KEEPING THE TUNNEL east-west - 38](10Nov2026%20-%20T538%20-%20batch%203%20A%20THE%20KEEPING%20THE%20TUNNEL%20east-west%20-%2038.png)
+
+### 10Nov2026 - T541 - ERRATA inside, three directions at 1x - 39
+
+T-541 DRAFT: SLATE's MUSEUM OF ERRATA inside, the WARDEN's house and SELPHY's house at 1x -- today beside A THE SLATE, B THE INDEX, C THE STRATA (redrawn in place, rows 8 9 10 only, no word anywhere)
+
+![10Nov2026 - T541 - ERRATA inside, three directions at 1x - 39](10Nov2026%20-%20T541%20-%20ERRATA%20inside%2C%20three%20directions%20at%201x%20-%2039.png)
+
+### 10Nov2026 - T541 - ERRATA details 3x, cores, slips, plinth - 40
+
+T-541 DRAFT, 3x: a CORE case with its blank card and the red caret on its foot, the errata slips on the wall, the OLD CORE's plinth and its blank card
+
+![10Nov2026 - T541 - ERRATA details 3x, cores, slips, plinth - 40](10Nov2026%20-%20T541%20-%20ERRATA%20details%203x%2C%20cores%2C%20slips%2C%20plinth%20-%2040.png)
+
+### 10Nov2026 - T541 - ERRATA details 3x, reflection, shuttle, warden - 41
+
+T-541 DRAFT, 3x: the REFLECTION and its blank tag, the SHUTTLE MODEL with its scale bar, the WARDEN's two cases (blank cards; his own shelf with no word) and his desk
+
+![10Nov2026 - T541 - ERRATA details 3x, reflection, shuttle, warden - 41](10Nov2026%20-%20T541%20-%20ERRATA%20details%203x%2C%20reflection%2C%20shuttle%2C%20warden%20-%2041.png)
+
+### 10Nov2026 - T541 - museum tiles 3x - 42
+
+T-541 DRAFT: the museum tileset at 3x, today and A, B, C, each tile in its home row
+
+![10Nov2026 - T541 - museum tiles 3x - 42](10Nov2026%20-%20T541%20-%20museum%20tiles%203x%20-%2042.png)
