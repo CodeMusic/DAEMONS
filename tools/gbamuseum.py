@@ -9,9 +9,9 @@
                                                     #   museum's tiles.png and rows 8, 9, 10 as .pal, and the contact
                                                     #   sheets (gfx/drafts/t541/)
     python3 tools/gbamuseum.py --write --approved --pick X
-                                                    # into the engine -- refused unless X is in APPROVED (empty: the
-                                                    #   user has not picked); once one is, the report exits 1 when
-                                                    #   the engine is not what that write makes (T-446's rule)
+                                                    # into the engine -- refused unless X is in APPROVED ({"A"}: the
+                                                    #   user, 2026-11-10, A The slate); the report exits 1 when the
+                                                    #   engine is not what that write makes (T-446's rule)
 
 THE ANSWER IT FOLLOWS (the user, 2026-11-10, "SLATE's museum"). T-538 held the museum out of its batches as a
 landmark, to be drawn T-447's way: from the story, not retinted. vision 4.32: SLATE MUSEUM OF RECORD became the
@@ -61,7 +61,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t541")
 #  The user's pick goes here ("A", "B" or "C"); --write refuses anything not in it.
-APPROVED = set()
+APPROVED = {"A"}                     # the user, 2026-11-10: A The slate
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS

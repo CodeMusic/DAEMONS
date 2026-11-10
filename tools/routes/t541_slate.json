@@ -1,0 +1,50 @@
+{
+ "rom": "debug",
+ "about": "T-541, A THE SLATE (the user, 2026-11-10), DRAFT: SLATE's MUSEUM OF ERRATA's tileset (secondary/museum) redrawn in place, its rows 8, 9, 10 recoloured (gbamuseum.py --write --approved --pick A); the same tiles furnish the WARDEN's house and SELPHY's. Each room warped to by name. Watch held at day. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "ERRATA 1F: the hall a writing slate ruled in chalk in an oak frame, pale SLATE flags, the oak vitrines of the copper CORES, the OLD CORE on its plinth, the errata slips with their red caret",
+   "steps": [
+    "goto PewterCity_Museum_1F",
+    "close",
+    "wait 60",
+    "shot ERRATA 1F: the hall a writing slate ruled in chalk in an oak frame, pale SLATE flags, the oak vitrines of the copper CORES, the OLD CORE on its plinth, the errata slips with their red caret"
+   ]
+  },
+  {
+   "stop": "ERRATA 2F, KNOWN FAULTS: the REFLECTION's case, the SHUTTLE MODEL with its scale bar, the blank cards and the red caret",
+   "steps": [
+    "goto PewterCity_Museum_2F",
+    "close",
+    "wait 60",
+    "shot ERRATA 2F, KNOWN FAULTS: the REFLECTION's case, the SHUTTLE MODEL with its scale bar, the blank cards and the red caret"
+   ]
+  },
+  {
+   "stop": "the WARDEN's house: his two cases on the rug, the blank card, his shelf a snow globe of the walled garden",
+   "steps": [
+    "goto FuchsiaCity_WardensHouse",
+    "close",
+    "wait 60",
+    "shot the WARDEN's house: his two cases on the rug, the blank card, his shelf a snow globe of the walled garden"
+   ]
+  },
+  {
+   "stop": "SELPHY's house in RESORT SUBLIME: the slate wall, the oak pilasters, the window",
+   "steps": [
+    "goto FiveIsland_ResortGorgeous_House",
+    "close",
+    "wait 60",
+    "shot SELPHY's house in RESORT SUBLIME: the slate wall, the oak pilasters, the window"
+   ]
+  }
+ ]
+}

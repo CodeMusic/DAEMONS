@@ -247,3 +247,27 @@ T-541 DRAFT, 3x: the REFLECTION and its blank tag, the SHUTTLE MODEL with its sc
 T-541 DRAFT: the museum tileset at 3x, today and A, B, C, each tile in its home row
 
 ![10Nov2026 - T541 - museum tiles 3x - 42](10Nov2026%20-%20T541%20-%20museum%20tiles%203x%20-%2042.png)
+
+### 10Nov2026 - T541 - ERRATA 1F built, A The slate - 43
+
+T-541 built, A THE SLATE (the user, 2026-11-10), DRAFT: SLATE's MUSEUM OF ERRATA, the hall -- the slate wall ruled in chalk in an oak frame, pale SLATE flags, the oak vitrines of the copper CORES, the errata slips with their red caret. Decoded from the engine's sources (engine worktree, before push).
+
+![10Nov2026 - T541 - ERRATA 1F built, A The slate - 43](10Nov2026%20-%20T541%20-%20ERRATA%201F%20built%2C%20A%20The%20slate%20-%2043.png)
+
+### 10Nov2026 - T541 - ERRATA 2F built, A The slate - 44
+
+T-541 built, A THE SLATE, DRAFT: ERRATA 2F, KNOWN FAULTS -- the REFLECTION's case, the SHUTTLE MODEL, the blank cards and the red caret.
+
+![10Nov2026 - T541 - ERRATA 2F built, A The slate - 44](10Nov2026%20-%20T541%20-%20ERRATA%202F%20built%2C%20A%20The%20slate%20-%2044.png)
+
+### 10Nov2026 - T541 - the WARDENs house built, A The slate - 45
+
+T-541 built, A THE SLATE, DRAFT: the WARDEN's house in THE WALLED GARDEN -- the same tileset: his two cases, the blank card, his shelf a snow globe of the walled garden.
+
+![10Nov2026 - T541 - the WARDENs house built, A The slate - 45](10Nov2026%20-%20T541%20-%20the%20WARDENs%20house%20built%2C%20A%20The%20slate%20-%2045.png)
+
+### 10Nov2026 - T541 - SELPHYs house built, A The slate - 46
+
+T-541 built, A THE SLATE, DRAFT: SELPHY's house in RESORT SUBLIME -- only the museum's wall, pilasters and window reach it.
+
+![10Nov2026 - T541 - SELPHYs house built, A The slate - 46](10Nov2026%20-%20T541%20-%20SELPHYs%20house%20built%2C%20A%20The%20slate%20-%2046.png)
