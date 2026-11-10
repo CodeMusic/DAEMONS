@@ -1,0 +1,1142 @@
+{
+ "ticket": "T-542",
+ "left": 210,
+ "anim": [
+  420,
+  421,
+  422,
+  423,
+  430,
+  431,
+  432,
+  433,
+  434,
+  435,
+  436,
+  437,
+  438,
+  439,
+  440,
+  441,
+  442,
+  443,
+  444,
+  445,
+  446,
+  447,
+  448,
+  449,
+  450,
+  451,
+  452,
+  453,
+  454,
+  455,
+  456,
+  457,
+  458,
+  459,
+  460,
+  461,
+  468,
+  469,
+  470,
+  471,
+  478,
+  479,
+  480,
+  481
+ ],
+ "flat": [
+  19,
+  21,
+  327,
+  343,
+  361,
+  401
+ ],
+ "unseen": [
+  90,
+  91,
+  232,
+  248,
+  249,
+  287,
+  334,
+  335
+ ],
+ "seen": 152,
+ "objects": [
+  {
+   "object": "the road gate's roof (ridge, slope, eave)",
+   "tiles": [
+    197,
+    198,
+    199,
+    213,
+    214,
+    215,
+    229,
+    230,
+    231
+   ],
+   "count": 9,
+   "blocks": [
+    "0x44",
+    "0x45",
+    "0x46",
+    "0x4C",
+    "0x4D",
+    "0x4E",
+    "0x54",
+    "0x55",
+    "0x56",
+    "0x67",
+    "0x183",
+    "0x184",
+    "0x185"
+   ],
+   "secondary_blocks_in": [
+    "lavender_town"
+   ],
+   "maps": 12,
+   "map_names": [
+    "Route11",
+    "Route12",
+    "Route15",
+    "Route16",
+    "Route18",
+    "Route2",
+    "Route5",
+    "Route6",
+    "Route7",
+    "Route8",
+    "SaffronCity",
+    "ViridianForest"
+   ],
+   "draws": 3744,
+   "behaviours": {},
+   "code": {},
+   "batch": 1
+  },
+  {
+   "object": "the road gate's front wall and its band",
+   "tiles": [
+    246,
+    233,
+    278
+   ],
+   "count": 3,
+   "blocks": [
+    "0x20",
+    "0x21",
+    "0x54",
+    "0x55",
+    "0x56",
+    "0x57",
+    "0x64",
+    "0x65",
+    "0x66",
+    "0x67",
+    "0x170",
+    "0x171",
+    "0x180",
+    "0x181",
+    "0x190",
+    "0x192",
+    "0x1B5",
+    "0x1B6",
+    "0x1B7"
+   ],
+   "secondary_blocks_in": [
+    "viridian_city",
+    "viridian_forest"
+   ],
+   "maps": 12,
+   "map_names": [
+    "Route11",
+    "Route12",
+    "Route15",
+    "Route16",
+    "Route18",
+    "Route2",
+    "Route5",
+    "Route6",
+    "Route7",
+    "Route8",
+    "SaffronCity",
+    "ViridianForest"
+   ],
+   "draws": 907,
+   "behaviours": {},
+   "code": {},
+   "batch": 1
+  },
+  {
+   "object": "the road gate's corner piers",
+   "tiles": [
+    245,
+    247,
+    261,
+    263,
+    277,
+    279
+   ],
+   "count": 6,
+   "blocks": [
+    "0x54",
+    "0x56",
+    "0x5C",
+    "0x5E",
+    "0x64",
+    "0x66",
+    "0x170",
+    "0x171",
+    "0x1B6",
+    "0x1B7"
+   ],
+   "secondary_blocks_in": [
+    "viridian_city"
+   ],
+   "maps": 12,
+   "map_names": [
+    "Route11",
+    "Route12",
+    "Route15",
+    "Route16",
+    "Route18",
+    "Route2",
+    "Route5",
+    "Route6",
+    "Route7",
+    "Route8",
+    "SaffronCity",
+    "ViridianForest"
+   ],
+   "draws": 1352,
+   "behaviours": {},
+   "code": {},
+   "batch": 1
+  },
+  {
+   "object": "the road gate's window strip",
+   "tiles": [
+    611,
+    612,
+    613,
+    614,
+    627,
+    628,
+    629,
+    630
+   ],
+   "count": 8,
+   "blocks": [
+    "0x1B5",
+    "0x1B6",
+    "0x1B7"
+   ],
+   "secondary_blocks_in": [],
+   "maps": 12,
+   "map_names": [
+    "Route11",
+    "Route12",
+    "Route15",
+    "Route16",
+    "Route18",
+    "Route2",
+    "Route5",
+    "Route6",
+    "Route7",
+    "Route8",
+    "SaffronCity",
+    "ViridianForest"
+   ],
+   "draws": 352,
+   "behaviours": {},
+   "code": {},
+   "batch": 1
+  },
+  {
+   "object": "the road gate's doorway, lintel and steps",
+   "tiles": [
+    388,
+    389,
+    390,
+    391,
+    402,
+    403,
+    404,
+    405,
+    406,
+    407
+   ],
+   "count": 10,
+   "blocks": [
+    "0x188",
+    "0x189",
+    "0x18A",
+    "0x190",
+    "0x191",
+    "0x192",
+    "0x198",
+    "0x199",
+    "0x19A"
+   ],
+   "secondary_blocks_in": [
+    "lavender_town",
+    "viridian_city",
+    "viridian_forest"
+   ],
+   "maps": 6,
+   "map_names": [
+    "Route12",
+    "Route2",
+    "Route5",
+    "Route6",
+    "SaffronCity",
+    "ViridianForest"
+   ],
+   "draws": 413,
+   "behaviours": {
+    "CAVE_DOOR": 1
+   },
+   "code": {},
+   "batch": 1
+  },
+  {
+   "object": "the east-west gates' side doors",
+   "tiles": [
+    212,
+    228,
+    244,
+    260,
+    276,
+    400
+   ],
+   "count": 6,
+   "blocks": [
+    "0x138",
+    "0x13C",
+    "0x140",
+    "0x144",
+    "0x148",
+    "0x14C",
+    "0x18D",
+    "0x18E",
+    "0x227"
+   ],
+   "secondary_blocks_in": [
+    "celadon_city"
+   ],
+   "maps": 7,
+   "map_names": [
+    "Route11",
+    "Route15",
+    "Route16",
+    "Route18",
+    "Route7",
+    "Route8",
+    "SaffronCity"
+   ],
+   "draws": 132,
+   "behaviours": {
+    "EAST_ARROW_WARP": 1,
+    "WEST_ARROW_WARP": 1
+   },
+   "code": {},
+   "batch": 1
+  },
+  {
+   "object": "the posts behind every gate",
+   "tiles": [
+    386,
+    387
+   ],
+   "count": 2,
+   "blocks": [
+    "0x178",
+    "0x179",
+    "0x17A"
+   ],
+   "secondary_blocks_in": [
+    "celadon_city",
+    "cerulean_city",
+    "fuchsia_city",
+    "indigo_plateau",
+    "lavender_town",
+    "sevii_islands_123",
+    "sevii_islands_45",
+    "sevii_islands_67",
+    "viridian_forest"
+   ],
+   "maps": 20,
+   "map_names": [
+    "BirthIsland_Exterior",
+    "CeladonCity",
+    "CeruleanCity",
+    "FiveIsland",
+    "FourIsland",
+    "FuchsiaCity",
+    "NavelRock_Exterior",
+    "OneIsland",
+    "Route12",
+    "Route2",
+    "Route23",
+    "Route5",
+    "SafariZone_Center",
+    "SaffronCity",
+    "SaffronCity_Connection",
+    "SevenIsland",
+    "SixIsland",
+    "ThreeIsland_Port",
+    "TwoIsland",
+    "ViridianForest"
+   ],
+   "draws": 154,
+   "behaviours": {
+    "SOUTH_ARROW_WARP": 1
+   },
+   "code": {},
+   "batch": 1
+  },
+  {
+   "object": "ROUTE 12's house: its last blue pieces",
+   "tiles": [
+    345,
+    346,
+    378,
+    557,
+    558,
+    573,
+    574
+   ],
+   "count": 7,
+   "blocks": [
+    "0x6",
+    "0x7",
+    "0x34",
+    "0x35",
+    "0x37",
+    "0x42",
+    "0x43"
+   ],
+   "secondary_blocks_in": [
+    "cerulean_city",
+    "viridian_city"
+   ],
+   "maps": 7,
+   "map_names": [
+    "CeladonCity",
+    "CeruleanCity",
+    "Route12",
+    "Route16",
+    "Route2",
+    "Route5",
+    "ViridianCity"
+   ],
+   "draws": 116,
+   "behaviours": {},
+   "code": {},
+   "batch": 1
+  },
+  {
+   "object": "the stone stairs (islands, SAFARI, DOLDRUM CAVE)",
+   "tiles": [
+    294,
+    295
+   ],
+   "count": 2,
+   "blocks": [
+    "0x89",
+    "0x91"
+   ],
+   "secondary_blocks_in": [],
+   "maps": 28,
+   "map_names": [
+    "BirthIsland_Exterior",
+    "CeruleanCave_1F",
+    "CeruleanCave_B1F",
+    "FiveIsland",
+    "FiveIsland_Meadow",
+    "FiveIsland_MemorialPillar",
+    "FourIsland",
+    "MtEmber_Exterior",
+    "MtEmber_Summit",
+    "NavelRock_Exterior",
+    "OneIsland",
+    "OneIsland_KindleRoad",
+    "SafariZone_East",
+    "SafariZone_North",
+    "SafariZone_West",
+    "SevenIsland",
+    "SevenIsland_SevaultCanyon",
+    "SevenIsland_SevaultCanyon_Entrance",
+    "SevenIsland_TanobyRuins",
+    "SevenIsland_TrainerTower",
+    "SixIsland",
+    "SixIsland_GreenPath",
+    "SixIsland_RuinValley",
+    "SixIsland_WaterPath",
+    "ThreeIsland_BondBridge",
+    "ThreeIsland_Port",
+    "TwoIsland",
+    "TwoIsland_CapeBrink"
+   ],
+   "draws": 1340,
+   "behaviours": {
+    "ROCK_STAIRS": 2
+   },
+   "code": {},
+   "batch": 1
+  },
+  {
+   "object": "BRAZEN's roofs lent from General (and 298/330, gbageneral's drift)",
+   "tiles": [
+    298,
+    299,
+    330,
+    331,
+    350,
+    351
+   ],
+   "count": 6,
+   "blocks": [
+    "0x2F",
+    "0x37"
+   ],
+   "secondary_blocks_in": [
+    "celadon_city",
+    "cerulean_city",
+    "lavender_town",
+    "saffron_city"
+   ],
+   "maps": 7,
+   "map_names": [
+    "CeladonCity",
+    "Route12",
+    "Route16",
+    "Route2",
+    "Route5",
+    "SaffronCity",
+    "SaffronCity_Connection"
+   ],
+   "draws": 340,
+   "behaviours": {},
+   "code": {},
+   "batch": 2
+  },
+  {
+   "object": "the blue house's pieces in DOLDRUM / CALLOW rows",
+   "tiles": [
+    344,
+    347,
+    360,
+    362,
+    363,
+    376,
+    377,
+    379,
+    552,
+    568
+   ],
+   "count": 10,
+   "blocks": [
+    "0x6",
+    "0x7",
+    "0x34",
+    "0x36",
+    "0x37",
+    "0x3C",
+    "0x3F",
+    "0x42",
+    "0x43"
+   ],
+   "secondary_blocks_in": [
+    "cerulean_city",
+    "pewter_city",
+    "sevii_islands_45",
+    "viridian_city"
+   ],
+   "maps": 9,
+   "map_names": [
+    "CeladonCity",
+    "FiveIsland_ResortGorgeous",
+    "PewterCity",
+    "Route12",
+    "Route16",
+    "Route2",
+    "Route25",
+    "Route5",
+    "ViridianCity"
+   ],
+   "draws": 129,
+   "behaviours": {},
+   "code": {},
+   "batch": 2
+  },
+  {
+   "object": "VERDIGRIS and LURID's buildings (row 12)",
+   "tiles": [
+    521,
+    522,
+    523,
+    524,
+    525,
+    526,
+    537,
+    538,
+    539,
+    540,
+    541,
+    542,
+    553,
+    554,
+    555,
+    556,
+    569,
+    570,
+    571,
+    583,
+    584,
+    585,
+    586,
+    587,
+    599,
+    600,
+    601,
+    602,
+    603
+   ],
+   "count": 29,
+   "blocks": [],
+   "secondary_blocks_in": [
+    "celadon_city",
+    "fuchsia_city",
+    "lavender_town",
+    "vermilion_city"
+   ],
+   "maps": 4,
+   "map_names": [
+    "CeladonCity",
+    "FuchsiaCity",
+    "LavenderTown",
+    "VermilionCity"
+   ],
+   "draws": 2110,
+   "behaviours": {},
+   "code": {},
+   "batch": 2
+  },
+  {
+   "object": "CALLOW and ONE ISLAND pieces (row 11 / 2)",
+   "tiles": [
+    516,
+    517,
+    519,
+    532,
+    533,
+    548,
+    549,
+    564,
+    565,
+    566
+   ],
+   "count": 10,
+   "blocks": [],
+   "secondary_blocks_in": [
+    "sevii_islands_123",
+    "viridian_city"
+   ],
+   "maps": 2,
+   "map_names": [
+    "ThreeIsland",
+    "ViridianCity"
+   ],
+   "draws": 102,
+   "behaviours": {},
+   "code": {},
+   "batch": 2
+  },
+  {
+   "object": "DOLDRUM and SLATE pieces",
+   "tiles": [
+    341,
+    520,
+    527,
+    543,
+    580,
+    581,
+    582,
+    596,
+    598
+   ],
+   "count": 9,
+   "blocks": [],
+   "secondary_blocks_in": [
+    "cerulean_city",
+    "fuchsia_city",
+    "pewter_city",
+    "saffron_city",
+    "sevii_islands_45",
+    "vermilion_city"
+   ],
+   "maps": 8,
+   "map_names": [
+    "CeruleanCity",
+    "FiveIsland_ResortGorgeous",
+    "FuchsiaCity",
+    "PewterCity",
+    "Route5",
+    "SaffronCity",
+    "SaffronCity_Connection",
+    "VermilionCity"
+   ],
+   "draws": 133,
+   "behaviours": {},
+   "code": {},
+   "batch": 2
+  },
+  {
+   "object": "ARDOR's pier",
+   "tiles": [
+    496,
+    497
+   ],
+   "count": 2,
+   "blocks": [],
+   "secondary_blocks_in": [
+    "vermilion_city"
+   ],
+   "maps": 1,
+   "map_names": [
+    "SSAnne_Exterior"
+   ],
+   "draws": 48,
+   "behaviours": {},
+   "code": {},
+   "batch": 2
+  },
+  {
+   "object": "SEVEN ISLAND's house",
+   "tiles": [
+    192,
+    193,
+    194,
+    195
+   ],
+   "count": 4,
+   "blocks": [],
+   "secondary_blocks_in": [
+    "sevii_islands_67"
+   ],
+   "maps": 1,
+   "map_names": [
+    "SevenIsland_TrainerTower"
+   ],
+   "draws": 6,
+   "behaviours": {},
+   "code": {},
+   "batch": 2
+  },
+  {
+   "object": "the cave mouth (CAVE_DOOR; SEVII row 12 too)",
+   "tiles": [
+    302,
+    303,
+    318,
+    319
+   ],
+   "count": 4,
+   "blocks": [
+    "0xA9"
+   ],
+   "secondary_blocks_in": [
+    "sevii_islands_123"
+   ],
+   "maps": 15,
+   "map_names": [
+    "CeruleanCity",
+    "FiveIsland_ResortGorgeous",
+    "FourIsland",
+    "MtEmber_Exterior",
+    "NavelRock_Exterior",
+    "OneIsland_KindleRoad",
+    "Route10",
+    "Route11",
+    "Route2",
+    "Route20",
+    "Route23",
+    "Route4",
+    "SevenIsland_SevaultCanyon",
+    "SixIsland_OutcastIsland",
+    "ThreeIsland_Port"
+   ],
+   "draws": 404,
+   "behaviours": {
+    "CAVE_DOOR": 1
+   },
+   "code": {},
+   "batch": 2
+  },
+  {
+   "object": "a cliff piece (SEVII row 12 too)",
+   "tiles": [
+    101
+   ],
+   "count": 1,
+   "blocks": [
+    "0x6A",
+    "0x82",
+    "0x9A",
+    "0x11F",
+    "0x217",
+    "0x27C"
+   ],
+   "secondary_blocks_in": [
+    "indigo_plateau",
+    "sevii_islands_123",
+    "sevii_islands_45",
+    "sevii_islands_67",
+    "vermilion_city"
+   ],
+   "maps": 45,
+   "map_names": [
+    "BirthIsland_Exterior",
+    "FiveIsland",
+    "FiveIsland_Meadow",
+    "FiveIsland_MemorialPillar",
+    "FiveIsland_ResortGorgeous",
+    "FourIsland",
+    "FuchsiaCity",
+    "LavenderTown",
+    "MtEmber_Exterior",
+    "NavelRock_Exterior",
+    "OneIsland",
+    "OneIsland_KindleRoad",
+    "OneIsland_TreasureBeach",
+    "Prototype_SeviiIsle_8",
+    "Route10",
+    "Route11",
+    "Route12",
+    "Route2",
+    "Route20",
+    "Route22",
+    "Route23",
+    "Route24",
+    "Route25",
+    "Route3",
+    "Route4",
+    "Route8",
+    "Route9",
+    "SafariZone_East",
+    "SafariZone_North",
+    "SafariZone_West",
+    "SevenIsland_SevaultCanyon",
+    "SevenIsland_SevaultCanyon_Entrance",
+    "SevenIsland_TanobyRuins",
+    "SevenIsland_TrainerTower",
+    "SixIsland",
+    "SixIsland_GreenPath",
+    "SixIsland_OutcastIsland",
+    "SixIsland_RuinValley",
+    "SixIsland_WaterPath",
+    "ThreeIsland",
+    "ThreeIsland_BondBridge",
+    "TwoIsland",
+    "TwoIsland_CapeBrink",
+    "VermilionCity",
+    "ViridianCity"
+   ],
+   "draws": 257,
+   "behaviours": {},
+   "code": {
+    "0x27C": [
+     "setmetatile in Nexus"
+    ]
+   },
+   "batch": 2
+  },
+  {
+   "object": "ground strays: sand edge, beach sand, grass edges, plants",
+   "tiles": [
+    4,
+    11,
+    27,
+    43,
+    59,
+    79,
+    94,
+    301,
+    503
+   ],
+   "count": 9,
+   "blocks": [
+    "0xA",
+    "0x12",
+    "0x13",
+    "0x1A",
+    "0x1B",
+    "0x22",
+    "0x23",
+    "0xA1",
+    "0xD0",
+    "0xD1",
+    "0xD2",
+    "0xD3",
+    "0xD5",
+    "0xE0",
+    "0xE1",
+    "0xE2",
+    "0xE3",
+    "0xE5",
+    "0x132",
+    "0x134",
+    "0x1D5",
+    "0x1D7",
+    "0x1E5",
+    "0x1E7",
+    "0x20F",
+    "0x217"
+   ],
+   "secondary_blocks_in": [
+    "berry_forest",
+    "celadon_city",
+    "cinnabar_island",
+    "fuchsia_city",
+    "lavender_town",
+    "saffron_city",
+    "sevii_islands_123",
+    "sevii_islands_45",
+    "sevii_islands_67",
+    "vermilion_city",
+    "viridian_forest"
+   ],
+   "maps": 59,
+   "map_names": [
+    "BirthIsland_Exterior",
+    "CeladonCity",
+    "CeruleanCity",
+    "CinnabarIsland",
+    "FiveIsland",
+    "FiveIsland_Meadow",
+    "FiveIsland_MemorialPillar",
+    "FiveIsland_ResortGorgeous",
+    "FiveIsland_WaterLabyrinth",
+    "FourIsland",
+    "FuchsiaCity",
+    "MtEmber_Exterior",
+    "OneIsland",
+    "OneIsland_KindleRoad",
+    "OneIsland_TreasureBeach",
+    "Prototype_SeviiIsle_8",
+    "Route1",
+    "Route10",
+    "Route11",
+    "Route12",
+    "Route14",
+    "Route15",
+    "Route16",
+    "Route17",
+    "Route18",
+    "Route2",
+    "Route22",
+    "Route23",
+    "Route24",
+    "Route25",
+    "Route3",
+    "Route4",
+    "Route5",
+    "Route6",
+    "Route7",
+    "Route8",
+    "Route9",
+    "SafariZone_Center",
+    "SafariZone_East",
+    "SafariZone_North",
+    "SafariZone_West",
+    "SaffronCity",
+    "SaffronCity_Connection",
+    "SevenIsland_SevaultCanyon",
+    "SevenIsland_SevaultCanyon_Entrance",
+    "SevenIsland_TrainerTower",
+    "SixIsland_GreenPath",
+    "SixIsland_PatternBush",
+    "SixIsland_RuinValley",
+    "SixIsland_WaterPath",
+    "ThreeIsland",
+    "ThreeIsland_BerryForest",
+    "ThreeIsland_BondBridge",
+    "ThreeIsland_Port",
+    "TwoIsland",
+    "TwoIsland_CapeBrink",
+    "VermilionCity",
+    "ViridianCity",
+    "ViridianForest"
+   ],
+   "draws": 2432,
+   "behaviours": {
+    "TALL_GRASS": 1,
+    "SAND": 2
+   },
+   "code": {
+    "0xA": [
+     "METATILE_General_ThinTreeTop_Grass"
+    ],
+    "0x13": [
+     "METATILE_General_ThinTreeTop_Mowed"
+    ],
+    "0x1E5": [
+     "setmetatile in Nexus"
+    ],
+    "0x20F": [
+     "setmetatile in Nexus"
+    ]
+   },
+   "batch": 3
+  },
+  {
+   "object": "the sea's edge (gbawater's to agree with)",
+   "tiles": [
+    173,
+    174,
+    189,
+    190,
+    617,
+    618
+   ],
+   "count": 6,
+   "blocks": [
+    "0x1CB",
+    "0x1CC",
+    "0x1CD",
+    "0x1CE",
+    "0x1CF",
+    "0x1D3",
+    "0x1D4"
+   ],
+   "secondary_blocks_in": [
+    "pallet_town"
+   ],
+   "maps": 25,
+   "map_names": [
+    "Breathverse",
+    "CinnabarIsland",
+    "FiveIsland",
+    "FiveIsland_Meadow",
+    "FiveIsland_MemorialPillar",
+    "FiveIsland_ResortGorgeous",
+    "FiveIsland_WaterLabyrinth",
+    "OneIsland",
+    "OneIsland_KindleRoad",
+    "OneIsland_TreasureBeach",
+    "Route12",
+    "Route13",
+    "Route18",
+    "Route19",
+    "Route20",
+    "Route21_North",
+    "Route21_South",
+    "SSAnne_Exterior",
+    "SevenIsland_TanobyRuins",
+    "SevenIsland_TrainerTower",
+    "SixIsland_GreenPath",
+    "SixIsland_OutcastIsland",
+    "SixIsland_WaterPath",
+    "ThreeIsland_BondBridge",
+    "VermilionCity"
+   ],
+   "draws": 2903,
+   "behaviours": {
+    "OCEAN_WATER": 7
+   },
+   "code": {},
+   "batch": 3
+  },
+  {
+   "object": "FOUR ISLAND's puddles",
+   "tiles": [
+    311,
+    326,
+    342,
+    358,
+    359
+   ],
+   "count": 5,
+   "blocks": [
+    "0x1A0",
+    "0x1A1",
+    "0x1A2",
+    "0x1A8",
+    "0x1AA",
+    "0x1B0",
+    "0x1B1",
+    "0x1B2"
+   ],
+   "secondary_blocks_in": [],
+   "maps": 1,
+   "map_names": [
+    "FourIsland"
+   ],
+   "draws": 59,
+   "behaviours": {
+    "PUDDLE": 8
+   },
+   "code": {},
+   "batch": 3
+  },
+  {
+   "object": "the sliding doors 0x62 / 0x15B (gbadoors re-runs after)",
+   "tiles": [
+    269,
+    285,
+    292,
+    293
+   ],
+   "count": 4,
+   "blocks": [
+    "0x62",
+    "0x15B"
+   ],
+   "secondary_blocks_in": [],
+   "maps": 20,
+   "map_names": [
+    "CeladonCity",
+    "CeruleanCity",
+    "CinnabarIsland",
+    "FiveIsland",
+    "FourIsland",
+    "FuchsiaCity",
+    "IndigoPlateau_Exterior",
+    "LavenderTown",
+    "PewterCity",
+    "Route10",
+    "Route22",
+    "Route4",
+    "SaffronCity",
+    "SaffronCity_Connection",
+    "SevenIsland",
+    "SixIsland",
+    "ThreeIsland",
+    "TwoIsland",
+    "VermilionCity",
+    "ViridianCity"
+   ],
+   "draws": 176,
+   "behaviours": {
+    "WARP_DOOR": 2
+   },
+   "code": {
+    "0x62": [
+     "field_door.c",
+     "METATILE_General_SlidingSingleDoor"
+    ],
+    "0x15B": [
+     "field_door.c",
+     "METATILE_General_SlidingDoubleDoor"
+    ]
+   },
+   "batch": 3
+  }
+ ]
+}

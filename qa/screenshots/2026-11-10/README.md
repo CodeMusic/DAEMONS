@@ -271,3 +271,45 @@ T-541 built, A THE SLATE, DRAFT: the WARDEN's house in THE WALLED GARDEN -- the 
 T-541 built, A THE SLATE, DRAFT: SELPHY's house in RESORT SUBLIME -- only the museum's wall, pilasters and window reach it.
 
 ![10Nov2026 - T541 - SELPHYs house built, A The slate - 46](10Nov2026%20-%20T541%20-%20SELPHYs%20house%20built%2C%20A%20The%20slate%20-%2046.png)
+
+### 10Nov2026 - T542 - batch 1 ROUTE 6 gate - 47
+
+T-542 batch 1 (DRAFT): BRAZEN's south gate on ROUTE 6 -- today, A HEARTH, B THE WAYMARK, C THE LATCH at 1x, and the gate at 3x
+
+![10Nov2026 - T542 - batch 1 ROUTE 6 gate - 47](10Nov2026%20-%20T542%20-%20batch%201%20ROUTE%206%20gate%20-%2047.png)
+
+### 10Nov2026 - T542 - batch 1 ROUTE 11 gate - 48
+
+T-542 batch 1 (DRAFT): ROUTE 11's east-west gate, a boulder and fences -- today and A/B/C at 1x, the gate at 3x
+
+![10Nov2026 - T542 - batch 1 ROUTE 11 gate - 48](10Nov2026%20-%20T542%20-%20batch%201%20ROUTE%2011%20gate%20-%2048.png)
+
+### 10Nov2026 - T542 - batch 1 ROUTE 2 gates and ledges - 49
+
+T-542 batch 1 (DRAFT): ROUTE 2's two gates among ledges -- today and A/B/C at 1x, a gate at 3x
+
+![10Nov2026 - T542 - batch 1 ROUTE 2 gates and ledges - 49](10Nov2026%20-%20T542%20-%20batch%201%20ROUTE%202%20gates%20and%20ledges%20-%2049.png)
+
+### 10Nov2026 - T542 - batch 1 BRAZEN north gate - 50
+
+T-542 batch 1 (DRAFT): BRAZEN CITY's north gate from inside, with the town's fences, signs and paving -- today and A/B/C at 1x, the gate at 3x
+
+![10Nov2026 - T542 - batch 1 BRAZEN north gate - 50](10Nov2026%20-%20T542%20-%20batch%201%20BRAZEN%20north%20gate%20-%2050.png)
+
+### 10Nov2026 - T542 - batch 1 ROUTE 12 blue house - 51
+
+T-542 batch 1 (DRAFT): ROUTE 12's blue house, its last vanilla pieces -- today and A/B/C at 1x and 3x
+
+![10Nov2026 - T542 - batch 1 ROUTE 12 blue house - 51](10Nov2026%20-%20T542%20-%20batch%201%20ROUTE%2012%20blue%20house%20-%2051.png)
+
+### 10Nov2026 - T542 - batch 1 FOUR ISLAND stairs - 52
+
+T-542 batch 1 (DRAFT): FOUR ISLAND's stone stairs -- today and A/B/C at 1x and 3x
+
+![10Nov2026 - T542 - batch 1 FOUR ISLAND stairs - 52](10Nov2026%20-%20T542%20-%20batch%201%20FOUR%20ISLAND%20stairs%20-%2052.png)
+
+### 10Nov2026 - T542 - batch 1 tiles at 3x - 53
+
+T-542 batch 1 (DRAFT): the 53 tiles at 3x by object -- today, A HEARTH, B THE WAYMARK, C THE LATCH
+
+![10Nov2026 - T542 - batch 1 tiles at 3x - 53](10Nov2026%20-%20T542%20-%20batch%201%20tiles%20at%203x%20-%2053.png)

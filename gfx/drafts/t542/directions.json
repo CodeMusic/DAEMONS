@@ -1,0 +1,46 @@
+{
+ "ticket": "T-542",
+ "batch": 1,
+ "status": "DRAFT -- not in the engine",
+ "approved": [],
+ "directions": {
+  "A": {
+   "title": "HEARTH",
+   "what": "the toll cottage: the road houses' HEARTH (T-538 A) carried out to their front -- thatch in row 5's straw, limewash, terracotta quarry-tile piers, leaded lights in oak, flagstone steps",
+   "tiles_redrawn": 51,
+   "new_tiles": 0,
+   "palettes_changed": 0,
+   "parts_moved_to_another_ramp": [
+    "door",
+    "pillar",
+    "post",
+    "roof",
+    "window"
+   ]
+  },
+  "B": {
+   "title": "THE WAYMARK",
+   "what": "the numbered road's office (3.2): slate roof, dressed ashlar, quoins, sash windows over a blank blue enamel band, milestones, slate treads -- every material kept on its own ramp",
+   "tiles_redrawn": 51,
+   "new_tiles": 0,
+   "palettes_changed": 0,
+   "parts_moved_to_another_ramp": [
+    "window"
+   ]
+  },
+  "C": {
+   "title": "THE LATCH",
+   "what": "the gate as a latch on the bus: a finned heat-sink roof on gold legs, a gold edge-connector, teal board piers with a copper trace, status lamps, a shutter door, header pins",
+   "tiles_redrawn": 51,
+   "new_tiles": 0,
+   "palettes_changed": 0,
+   "parts_moved_to_another_ramp": [
+    "pillar",
+    "post",
+    "roof",
+    "stairs",
+    "wing"
+   ]
+  }
+ }
+}
