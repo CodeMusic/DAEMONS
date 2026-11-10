@@ -1,0 +1,104 @@
+{
+ "rom": "debug",
+ "about": "T-538 batch 1, A HEARTH (the user, 2026-11-10), DRAFT: the road houses (generic_building_2), the COPYCAT's room (generic_building_1) and primary/building's 33 leftovers redrawn in place (gbahomes.py --write --approved --pick A). Each room warped to by name. Watch held at day. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "the forest gatehouse: quarry tiles, limewash, the gingham pelmet, oak counters",
+   "steps": [
+    "goto Route2_ViridianForest_SouthEntrance",
+    "close",
+    "wait 60",
+    "shot the forest gatehouse: quarry tiles, limewash, the gingham pelmet, oak counters"
+   ]
+  },
+  {
+   "stop": "ROUTE 11's gatehouse, 1F",
+   "steps": [
+    "goto Route11_EastEntrance_1F",
+    "close",
+    "wait 60",
+    "shot ROUTE 11's gatehouse, 1F"
+   ]
+  },
+  {
+   "stop": "ROUTE 11's gatehouse, 2F: leaded lights, the rag-rug runner, the brass coin-viewers",
+   "steps": [
+    "goto Route11_EastEntrance_2F",
+    "close",
+    "wait 60",
+    "shot ROUTE 11's gatehouse, 2F: leaded lights, the rag-rug runner, the brass coin-viewers"
+   ]
+  },
+  {
+   "stop": "ROUTE 16's gatehouse, 2F",
+   "steps": [
+    "goto Route16_NorthEntrance_2F",
+    "close",
+    "wait 60",
+    "shot ROUTE 16's gatehouse, 2F"
+   ]
+  },
+  {
+   "stop": "an UNDERGROUND PATH door house",
+   "steps": [
+    "goto UndergroundPath_NorthEntrance",
+    "close",
+    "wait 60",
+    "shot an UNDERGROUND PATH door house"
+   ]
+  },
+  {
+   "stop": "ROUTE 22's road house: the LEAGUE statue on its sandstone plinth",
+   "steps": [
+    "goto Route22_NorthEntrance",
+    "close",
+    "wait 60",
+    "shot ROUTE 22's road house: the LEAGUE statue on its sandstone plinth"
+   ]
+  },
+  {
+   "stop": "the COPYCAT's room: the pull-along wooden duck",
+   "steps": [
+    "goto SaffronCity_CopycatsHouse_2F",
+    "close",
+    "wait 60",
+    "shot the COPYCAT's room: the pull-along wooden duck"
+   ]
+  },
+  {
+   "stop": "FOUNDRY 9F: the beds' patchwork quilts",
+   "steps": [
+    "goto SilphCo_9F",
+    "close",
+    "wait 60",
+    "shot FOUNDRY 9F: the beds' patchwork quilts"
+   ]
+  },
+  {
+   "stop": "LORELEI's house: her bed",
+   "steps": [
+    "goto FourIsland_LoreleisHouse",
+    "close",
+    "wait 60",
+    "shot LORELEI's house: her bed"
+   ]
+  },
+  {
+   "stop": "the CINNABAR lab lounge: the rug border and side blinds",
+   "steps": [
+    "goto CinnabarIsland_PokemonLab_Lounge",
+    "close",
+    "wait 60",
+    "shot the CINNABAR lab lounge: the rug border and side blinds"
+   ]
+  }
+ ]
+}

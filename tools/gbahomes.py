@@ -9,8 +9,9 @@ vanilla pieces, redrawn in place in our own hand (T-538).
                                                     #   the two secondaries' tiles.png and rows as .pal, the primary
                                                     #   leftovers' tiles, and the contact sheets (gfx/drafts/t538/)
     python3 tools/gbahomes.py --write --approved --pick X
-                                                    # into the engine -- refused unless X is in APPROVED (empty: the
-                                                    #   user has not picked)
+                                                    # into the engine -- refused unless X is in APPROVED ({"A"}:
+                                                    #   the user, 2026-11-10). Report mode compares the engine with
+                                                    #   that write and exits 1 on a difference (T-446's rule)
 
 THE ANSWER IT FOLLOWS (the user, 2026-11-10, from the vanilla-art census, item 6): "the rest of the interiors". That is
 too much for one sheet -- about 800 vanilla tiles in a dozen secondary tilesets -- so it is split (BATCHES below) and
@@ -61,7 +62,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t538")
 #  The user's pick goes here ("A", "B" or "C"); --write refuses anything not in it.
-APPROVED = {"A"}                     # the user, 2026-11-10: "A HEARTH"
+APPROVED = {"A"}                                  # the user, 2026-11-10: A Hearth
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
@@ -1596,29 +1597,25 @@ def report():
 
 
 def check_engine():
-    """T-446's rule: with one direction approved, the engine must be exactly what `--write --approved --pick X` makes
-    (every tile of each set this tool writes, its own rows, and primary/building's leftovers); exit 1 on a difference"""
+    """T-446's rule: the engine's two secondaries (tiles and own rows) and primary/building's tiles.png against
+    `--write --approved --pick X` for the one approved X"""
     pick = next(iter(APPROVED))
-    D = STYLES[pick]
-    res = draw(D)
-    sets = res[0]
-    bad = 0
+    sets, prim, owner = draw(STYLES[pick])
+    off = []
     for key, S in SETS.items():
-        off = [t for t in range(len(S.cur)) if sets[key][0][t] != S.cur[t]]
-        rows = [r for r in S.rows
-                if [tuple(c) for c in sets[key][1][r]] != [tuple(c) for c in read_pal(os.path.join(GBA, S.dir, "palettes/%02d.pal" % r))]]
-        if off or rows:
-            print("  !! %s: the engine differs from `--write --approved --pick %s` in tiles %s rows %s -- find which side "
-                  "is right" % (S.dir.split("/")[-1], pick, off[:12], rows))
-            bad = 1
-    prim = res[1]
-    offp = [t for t, px in prim.items() if PTILES_NOW[t] != px]
-    if offp:
-        print("  !! primary/building: the engine differs from the write in leftovers %s" % offp[:12])
-        bad = 1
-    if not bad:
-        print("  the engine matches `--write --approved --pick %s` (the user, 2026-11-10)" % pick)
-    return bad
+        off += ["%s tile %d" % (key, t) for t in range(len(S.cur)) if sets[key][0][t] != S.cur[t]]
+        for r in S.rows:
+            now = read_pal(os.path.join(GBA, S.dir, "palettes", "%02d.pal" % r))
+            if [tuple(c) for c in now] != [tuple(c) for c in sets[key][1][r]]:
+                off.append("%s row %d" % (key, r))
+    off += ["primary tile %d" % t for t, px in prim.items() if px != PTILES_NOW[t]]
+    if off:
+        print("\n  !! the engine differs from `--write --approved --pick %s` in %d place%s (%s) -- find which side is "
+              "right" % (pick, len(off), "s" if len(off) > 1 else "", ", ".join(off[:12])))
+        return 1
+    print("\n  the engine matches `--write --approved --pick %s`: %d tiles, gb2 rows 7/8/9/12 and gb1 row 8 "
+          "(the user, 2026-11-10)" % (pick, len(owner)))
+    return 0
 
 
 def main():
@@ -1662,7 +1659,7 @@ def main():
         for p in contact_sheets(DRAFT, states):
             print("  sheet:", p)
     if len(APPROVED) == 1:
-        bad = check_engine() or bad
+        bad |= check_engine()
     return 1 if bad else 0
 
 
