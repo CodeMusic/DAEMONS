@@ -181,3 +181,45 @@ T-437 DRAFT rebuilt on today's engine (b1280ca99): FireRed's face left, SCREEN r
 T-437 DRAFT: SCREEN on real screens of the draft ROM, 2x
 
 ![10Nov2026 - T437 - SCREEN on real screens - 31](10Nov2026%20-%20T437%20-%20SCREEN%20on%20real%20screens%20-%2031.png)
+
+### 10Nov2026 - T538 - batch 3 A THE KEEPING ARDOR fan club - 32
+
+T-538 batch 3, A THE KEEPING (the user, 2026-11-10), decoded from the built engine (56327cb07): ARDOR's fan club in ochre limewash over oak boarding, terracotta quarry tiles, oxblood corduroy, the red gingham cloth. DRAFT.
+
+![10Nov2026 - T538 - batch 3 A THE KEEPING ARDOR fan club - 32](10Nov2026%20-%20T538%20-%20batch%203%20A%20THE%20KEEPING%20ARDOR%20fan%20club%20-%2032.png)
+
+### 10Nov2026 - T538 - batch 3 A THE KEEPING ROUTE 5 DAY-CARE - 33
+
+T-538 batch 3, A THE KEEPING: ROUTE 5's DAY-CARE -- duck-egg walls, the stencilled frieze, the gingham pelmet over leaded lights, the oak planter wall. DRAFT.
+
+![10Nov2026 - T538 - batch 3 A THE KEEPING ROUTE 5 DAY-CARE - 33](10Nov2026%20-%20T538%20-%20batch%203%20A%20THE%20KEEPING%20ROUTE%205%20DAY-CARE%20-%2033.png)
+
+### 10Nov2026 - T538 - batch 3 A THE KEEPING FOUR ISLAND DAY-CARE - 34
+
+T-538 batch 3, A THE KEEPING: FOUR ISLAND's DAY-CARE -- long oak boards, milking stools, the Wardian cases. DRAFT.
+
+![10Nov2026 - T538 - batch 3 A THE KEEPING FOUR ISLAND DAY-CARE - 34](10Nov2026%20-%20T538%20-%20batch%203%20A%20THE%20KEEPING%20FOUR%20ISLAND%20DAY-CARE%20-%2034.png)
+
+### 10Nov2026 - T538 - batch 3 A THE KEEPING INIT house - 35
+
+T-538 batch 3, A THE KEEPING: INIT's house in HALFTONE. DRAFT.
+
+![10Nov2026 - T538 - batch 3 A THE KEEPING INIT house - 35](10Nov2026%20-%20T538%20-%20batch%203%20A%20THE%20KEEPING%20INIT%20house%20-%2035.png)
+
+### 10Nov2026 - T538 - batch 3 A THE KEEPING DOLDRUM burgled house - 36
+
+T-538 batch 3, A THE KEEPING: DOLDRUM's burgled house -- the wall dug through to earth and a root, the oak dresser's drawers pulled, PAW prints in mud. DRAFT.
+
+![10Nov2026 - T538 - batch 3 A THE KEEPING DOLDRUM burgled house - 36](10Nov2026%20-%20T538%20-%20batch%203%20A%20THE%20KEEPING%20DOLDRUM%20burgled%20house%20-%2036.png)
+
+### 10Nov2026 - T538 - batch 3 A THE KEEPING THE TUNNEL north-south - 37
+
+T-538 batch 3, A THE KEEPING: THE TUNNEL north-south -- glazed tile rings, tiled treads, bulkhead lamps beside gbacaves' conduits and PACKET TRACE. DRAFT.
+
+![10Nov2026 - T538 - batch 3 A THE KEEPING THE TUNNEL north-south - 37](10Nov2026%20-%20T538%20-%20batch%203%20A%20THE%20KEEPING%20THE%20TUNNEL%20north-south%20-%2037.png)
+
+### 10Nov2026 - T538 - batch 3 A THE KEEPING THE TUNNEL east-west - 38
+
+T-538 batch 3, A THE KEEPING: THE TUNNEL east-west. DRAFT.
+
+![10Nov2026 - T538 - batch 3 A THE KEEPING THE TUNNEL east-west - 38](10Nov2026%20-%20T538%20-%20batch%203%20A%20THE%20KEEPING%20THE%20TUNNEL%20east-west%20-%2038.png)

@@ -7,9 +7,10 @@ pieces -- redrawn in place in our own hand (T-538).
     python3 tools/gbadwellings.py --draft [DIR]     # the three directions (A, B, C) drawn in full: per direction each
                                                     #   secondary's tiles.png and own rows as .pal, and the contact
                                                     #   sheets (gfx/drafts/t538_b3/)
-    python3 tools/gbadwellings.py --write --approved --pick X
-                                                    # into the engine -- refused unless X is in APPROVED (empty: the
-                                                    #   user has not picked)
+    python3 tools/gbadwellings.py --write --approved --pick A
+                                                    # into the engine -- refused unless X is in APPROVED ({"A"}: the
+                                                    #   user, 2026-11-10, A The keeping); the report exits 1 when the
+                                                    #   engine is not what that write makes
 
 THE ANSWER IT FOLLOWS (the user, 2026-11-10, "Other interiors", census item 6; "rest of interiors" for batch 3).
 gbahomes.py split the job into batches; batch 1 (gbahomes, A HEARTH) and batch 2 (gbaworkrooms.py, A THE WORKBENCH)
@@ -56,7 +57,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t538_b3")
 #  The user's pick goes here ("A", "B" or "C"); --write refuses anything not in it.
-APPROVED = set()
+APPROVED = {"A"}                     # the user, 2026-11-10: A The keeping
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
@@ -1600,7 +1601,7 @@ def check_engine():
                   "is right" % (S.dir.split("/")[-1], pick, off[:12], rows))
             bad = 1
     if not bad:
-        print("  the engine matches `--write --approved --pick %s`" % pick)
+        print("  the engine matches `--write --approved --pick %s` (the user, 2026-11-10)" % pick)
     return bad
 
 

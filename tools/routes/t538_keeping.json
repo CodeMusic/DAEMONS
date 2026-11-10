@@ -1,0 +1,77 @@
+{
+ "rom": "debug",
+ "about": "T-538 batch 3, A THE KEEPING (the user, 2026-11-10), DRAFT: fan_club_daycare (ARDOR's fan club, both DAY-CAREs, INIT's house), burgled_house (DOLDRUM's house) and underground_path (THE TUNNEL, beside gbacaves' nine tiles) redrawn in place (gbadwellings.py --write --approved --pick A). Each room warped to by name. Watch held at day. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "ARDOR's fan club: ochre limewash over oak boarding, terracotta quarry tiles, oxblood corduroy, the red gingham cloth, the rag rug",
+   "steps": [
+    "goto VermilionCity_PokemonFanClub",
+    "close",
+    "wait 60",
+    "shot ARDOR's fan club: ochre limewash over oak boarding, terracotta quarry tiles, oxblood corduroy, the red gingham cloth, the rag rug"
+   ]
+  },
+  {
+   "stop": "ROUTE 5's DAY-CARE: duck-egg walls, the stencilled frieze, the gingham pelmet over leaded lights, the oak planter wall",
+   "steps": [
+    "goto Route5_PokemonDayCare",
+    "close",
+    "wait 60",
+    "shot ROUTE 5's DAY-CARE: duck-egg walls, the stencilled frieze, the gingham pelmet over leaded lights, the oak planter wall"
+   ]
+  },
+  {
+   "stop": "FOUR ISLAND's DAY-CARE: long oak boards, milking stools, the Wardian cases of ferns",
+   "steps": [
+    "goto FourIsland_PokemonDayCare",
+    "close",
+    "wait 60",
+    "shot FOUR ISLAND's DAY-CARE: long oak boards, milking stools, the Wardian cases of ferns"
+   ]
+  },
+  {
+   "stop": "INIT's house in HALFTONE",
+   "steps": [
+    "goto LavenderTown_VolunteerPokemonHouse",
+    "close",
+    "wait 60",
+    "shot INIT's house in HALFTONE"
+   ]
+  },
+  {
+   "stop": "DOLDRUM's burgled house: the wall dug through to earth and a root, the oak dresser with its drawers pulled, PAW prints in mud",
+   "steps": [
+    "goto CeruleanCity_House2",
+    "close",
+    "wait 60",
+    "shot DOLDRUM's burgled house: the wall dug through to earth and a root, the oak dresser with its drawers pulled, PAW prints in mud"
+   ]
+  },
+  {
+   "stop": "THE TUNNEL, north-south: glazed tile rings, tiled treads, bulkhead lamps",
+   "steps": [
+    "goto UndergroundPath_NorthSouthTunnel",
+    "close",
+    "wait 60",
+    "shot THE TUNNEL, north-south: glazed tile rings, tiled treads, bulkhead lamps"
+   ]
+  },
+  {
+   "stop": "THE TUNNEL, east-west",
+   "steps": [
+    "goto UndergroundPath_EastWestTunnel",
+    "close",
+    "wait 60",
+    "shot THE TUNNEL, east-west"
+   ]
+  }
+ ]
+}
