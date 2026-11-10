@@ -121,26 +121,26 @@ T-538 batch 2 DRAFT: every redrawn tile at 3x in its home row, per direction
 T-538 batch 2 built in A THE WORKBENCH (DRAFT): the bike shop, HOLT's SEA COTTAGE, the lab's SALVAGE RIG, decoded from the engine's sources
 
 ![10Nov2026 - T538 - built A THE WORKBENCH workrooms - 21](10Nov2026%20-%20T538%20-%20built%20A%20THE%20WORKBENCH%20workrooms%20-%2021.png)
-### 10Nov2026 - T437 - SCREEN rebuilt, side by side with FireRed - 22
+### 10Nov2026 - T437 - SCREEN rebuilt, side by side with FireRed - 28
 
 T-437 DRAFT rebuilt on today's engine (b1280ca99): FireRed's face left, SCREEN right, the same screens at 3x -- dialogue, menus and the BAG, the summary and a battle
 
-![10Nov2026 - T437 - SCREEN rebuilt, side by side with FireRed - 22](10Nov2026%20-%20T437%20-%20SCREEN%20rebuilt%2C%20side%20by%20side%20with%20FireRed%20-%2022.png)
+![10Nov2026 - T437 - SCREEN rebuilt, side by side with FireRed - 28](10Nov2026%20-%20T437%20-%20SCREEN%20rebuilt%2C%20side%20by%20side%20with%20FireRed%20-%2028.png)
 
-### 10Nov2026 - T437 - SCREEN rebuilt, side by side with FireRed - 23
-
-T-437 DRAFT rebuilt on today's engine (b1280ca99): FireRed's face left, SCREEN right, the same screens at 3x -- dialogue, menus and the BAG, the summary and a battle
-
-![10Nov2026 - T437 - SCREEN rebuilt, side by side with FireRed - 23](10Nov2026%20-%20T437%20-%20SCREEN%20rebuilt%2C%20side%20by%20side%20with%20FireRed%20-%2023.png)
-
-### 10Nov2026 - T437 - SCREEN rebuilt, side by side with FireRed - 24
+### 10Nov2026 - T437 - SCREEN rebuilt, side by side with FireRed - 29
 
 T-437 DRAFT rebuilt on today's engine (b1280ca99): FireRed's face left, SCREEN right, the same screens at 3x -- dialogue, menus and the BAG, the summary and a battle
 
-![10Nov2026 - T437 - SCREEN rebuilt, side by side with FireRed - 24](10Nov2026%20-%20T437%20-%20SCREEN%20rebuilt%2C%20side%20by%20side%20with%20FireRed%20-%2024.png)
+![10Nov2026 - T437 - SCREEN rebuilt, side by side with FireRed - 29](10Nov2026%20-%20T437%20-%20SCREEN%20rebuilt%2C%20side%20by%20side%20with%20FireRed%20-%2029.png)
 
-### 10Nov2026 - T437 - SCREEN on real screens - 25
+### 10Nov2026 - T437 - SCREEN rebuilt, side by side with FireRed - 30
+
+T-437 DRAFT rebuilt on today's engine (b1280ca99): FireRed's face left, SCREEN right, the same screens at 3x -- dialogue, menus and the BAG, the summary and a battle
+
+![10Nov2026 - T437 - SCREEN rebuilt, side by side with FireRed - 30](10Nov2026%20-%20T437%20-%20SCREEN%20rebuilt%2C%20side%20by%20side%20with%20FireRed%20-%2030.png)
+
+### 10Nov2026 - T437 - SCREEN on real screens - 31
 
 T-437 DRAFT: SCREEN on real screens of the draft ROM, 2x
 
-![10Nov2026 - T437 - SCREEN on real screens - 25](10Nov2026%20-%20T437%20-%20SCREEN%20on%20real%20screens%20-%2025.png)
+![10Nov2026 - T437 - SCREEN on real screens - 31](10Nov2026%20-%20T437%20-%20SCREEN%20on%20real%20screens%20-%2031.png)

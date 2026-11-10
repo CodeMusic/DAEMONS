@@ -5,7 +5,7 @@
     python3 tools/gbafont.py --write --engine PATH  # write into that engine checkout (a draft worktree)
     python3 tools/gbafont.py --write                # write into engineGba (refused while DRAFT; approved 2026-11-10)
 
-APPROVED (the user, 2026-11-10, from the rebuilt sheets, qa 10Nov2026 T437 22-25: "Ship it as is"). The user chose
+APPROVED (the user, 2026-11-10, from the rebuilt sheets, qa 10Nov2026 T437 28-31: "Ship it as is"). The user chose
 the SCREEN direction on 2026-10-22 and asked for a draft ROM to judge before it shipped. DRAFT is now False: a
 --write writes engineGba. Were it set True again, a --write aimed at engineGba would refuse (and exit 0, writing
 nothing, so check_generators' sandboxed writes see no drift); a --write with --engine always writes the checkout
