@@ -3,13 +3,13 @@
 
     python3 tools/gbafont.py                       # report: what would change, and every glyph checked
     python3 tools/gbafont.py --write --engine PATH  # write into that engine checkout (a draft worktree)
-    python3 tools/gbafont.py --write                # write into engineGba -- refused while DRAFT (below)
+    python3 tools/gbafont.py --write                # write into engineGba (refused while DRAFT; approved 2026-11-10)
 
-DRAFT. Every glyph in gfx/fonts/screen_*.txt is new writing in pixels and unapproved: the user chose the SCREEN
-direction on 2026-10-22 and asked for a draft ROM to judge on a real screen before it ships. Until then DRAFT is
-True and a --write aimed at engineGba itself refuses (and exits 0, writing nothing, so check_generators' sandboxed
-writes see no drift); a --write with --engine writes the checkout named. Set DRAFT = False when the user signs it
-off.
+APPROVED (the user, 2026-11-10, from the rebuilt sheets, qa 10Nov2026 T437 22-25: "Ship it as is"). The user chose
+the SCREEN direction on 2026-10-22 and asked for a draft ROM to judge before it shipped. DRAFT is now False: a
+--write writes engineGba. Were it set True again, a --write aimed at engineGba would refuse (and exit 0, writing
+nothing, so check_generators' sandboxed writes see no drift); a --write with --engine always writes the checkout
+named.
 
 The glyphs are drawn by hand, from scratch, on a grid. Nothing is traced from Nintendo's sheets; this tool reads
 the existing sheets only to keep every cell it does not own exactly as it was.
@@ -34,7 +34,7 @@ Cells: index 0 outside the glyph, 3 the ground (advance wide, the ground rows ta
 """
 import os, re, struct, sys, zlib
 
-DRAFT = True
+DRAFT = False
 
 #  The user, 2026-10-22: "symbols keep FireRed's for now". These are drawn in the source files and are not written
 #  until that changes: the cells stay FireRed's. Letters, digits, é and the punctuation (with & + % ·) are SCREEN's.
@@ -223,7 +223,7 @@ def main():
         sys.exit("  !!  no graphics/fonts in %s" % gba)
     cm, tables = charmap(gba), all_glyph_widths(gba)
     res = reserved(gba)
-    print("  SCREEN (DRAFT, T-437) -> %s" % gba)
+    print("  SCREEN (T-437%s) -> %s" % (", DRAFT" if DRAFT else "", gba))
 
     plan, problems = [], []
     for face, (src, sheets, cw, per, ground, names) in FACES.items():
@@ -277,7 +277,7 @@ def main():
             print("    %s.png: %d pixels in %d cells written, read back at %d-bit; every other cell untouched"
                   % (sheet, changed, len(cells), bd2))
     if not write:
-        print("  (report only; pass --write --engine PATH)")
+        print("  (report only; pass --write%s)" % (" --engine PATH" if DRAFT else ""))
     return 0
 
 
