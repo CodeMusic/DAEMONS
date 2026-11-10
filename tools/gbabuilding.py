@@ -59,14 +59,19 @@ B = "data/tilesets/primary/building"
 PD = os.path.join(GBA, B)
 DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t438", "building")
 KEEP = set(range(262, 267))                  # CHECKPOINT 2F's pots (batch A); never touched
-#  T-537 (gbamachines.py, A FOUNDRY STOCK, the user 2026-11-09) draws these 97 tiles -- the desks and machines this
-#  batch left -- into the same tiles.png. They are its, not this tool's: no group here may draw them (draft_tiles skips
-#  them as it skips KEEP), and gbamachines.py's report fails if its own set and this one ever disagree.
-LATER = {134, 135, 136, 150, 151, 152, 157, 158, 159, 173, 174, 175, 185, 186, 189, 190, 191, 203, 204, 205, 206, 207,
+#  Tiles later tickets draw into the same tiles.png. They are theirs, not this tool's: no group here may draw them
+#  (draft_tiles skips LATER as it skips KEEP), and each owner's report fails if its own set and this one disagree.
+#  T-537 (gbamachines.py, A FOUNDRY STOCK, the user 2026-11-09): the 97 desks and machines this batch left.
+LATER_T537 = {134, 135, 136, 150, 151, 152, 157, 158, 159, 173, 174, 175, 185, 186, 189, 190, 191, 203, 204, 205, 206, 207,
          208, 209, 210, 213, 214, 219, 220, 223, 229, 230, 235, 236, 239, 243, 244, 245, 246, 247, 248, 249, 250, 251,
          252, 253, 254, 270, 271, 286, 287, 302, 303, 324, 325, 326, 340, 341, 342, 356, 357, 358, 370, 371, 372, 373,
          374, 461, 462, 463, 477, 478, 479, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 500, 501, 503,
          504, 505, 506, 507, 508, 610, 611, 638, 639}
+#  T-538 (gbahomes.py, batch 1, drafted 2026-11-10): the rest-room beds, the open doorways, the white partitions, the
+#  lab lounge's rug border and side blinds, and lab-lobby tile 368 -- the leftovers T-537 named.
+LATER_T538 = {512, 513, 514, 515, 528, 529, 530, 531, 544, 545, 546, 547, 522, 523, 524, 538, 539, 540, 554, 555, 556,
+              171, 180, 181, 187, 196, 197, 420, 421, 436, 432, 433, 368}
+LATER = LATER_T537 | LATER_T538
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
@@ -1220,9 +1225,10 @@ def summary(use, owner):
     for key, tiles, why in LEFT:
         ts = sorted(t for t in tiles if t in use and t not in owner and t not in LATER)
         left.append(dict(key=key, why=why, tiles=ts, draws=sum(use[t]["draws"] for t in ts)))
-    ts = sorted(t for t in LATER if t in use)
-    left.append(dict(key="T-537", why="the desks and machines: gbamachines.py draws them (LATER)", tiles=ts,
-                     draws=sum(use[t]["draws"] for t in ts)))
+    for who, s, why in (("T-537", LATER_T537, "the desks and machines: gbamachines.py draws them (LATER)"),
+                        ("T-538", LATER_T538, "beds, doorways, partitions, the lounge rug and blinds, 368: gbahomes.py (LATER)")):
+        ts = sorted(t for t in s if t in use)
+        left.append(dict(key=who, why=why, tiles=ts, draws=sum(use[t]["draws"] for t in ts)))
     known = set(owner) | {t for _, s, _ in LEFT for t in s} | KEEP | LATER
     stray = sorted(t for t in use if t not in known)
     return groups, left, stray

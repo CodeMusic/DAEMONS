@@ -1044,9 +1044,9 @@ def check_engine():
     pick = next(iter(APPROVED))
     new, owner, _ = draw(STYLES[pick])
     bad = 0
-    if set(owner) != GB.LATER:
-        print("\n  !! gbabuilding.LATER and this tool's tiles disagree: only here %s, only there %s"
-              % (sorted(set(owner) - GB.LATER), sorted(GB.LATER - set(owner))))
+    if set(owner) != GB.LATER_T537:
+        print("\n  !! gbabuilding.LATER_T537 and this tool's tiles disagree: only here %s, only there %s"
+              % (sorted(set(owner) - GB.LATER_T537), sorted(GB.LATER_T537 - set(owner))))
         bad = 1
     off = [t for t in range(NT) if new[t] != CUR[t]]
     if off:
