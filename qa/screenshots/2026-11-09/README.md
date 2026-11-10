@@ -229,3 +229,57 @@ T-536 C: the WAREHOUSE on FIVE ISLAND -- ingots on pallets, the spin arrows kept
 C-311 done: the four MUSAI faces on their new pictures as the user picked them (CODEMUSAI's visor, CAREMUSAI's glint, SEEKMUSAI's two eyes, LENSMUSAI's lens glint; no mouths), each awake, asleep, glad and drowsy, drawn from the saved faces.json beside the old face
 
 ![9Nov2026 - C311 - the MUSAI faces as picked - 40](9Nov2026%20-%20C311%20-%20the%20MUSAI%20faces%20as%20picked%20-%2040.png)
+
+### 9Nov2026 - T537 - desks and machines census - 41
+
+T-537 census: the 140 tiles of primary/building still vanilla; red the 97 this draft redraws (desks and machines), yellow the rest and why
+
+![9Nov2026 - T537 - desks and machines census - 41](9Nov2026%20-%20T537%20-%20desks%20and%20machines%20census%20-%2041.png)
+
+### 9Nov2026 - T537 - three directions in rooms - 42
+
+T-537 DRAFT: A FOUNDRY STOCK, B THE PORT'S FAMILY, C THE WIRELESS beside today, 1x, in FOUNDRY 5F and 11F, a lab and the SEA COTTAGE
+
+![9Nov2026 - T537 - three directions in rooms - 42](9Nov2026%20-%20T537%20-%20three%20directions%20in%20rooms%20-%2042.png)
+
+### 9Nov2026 - T537 - three directions objects - 43
+
+T-537 DRAFT: every desk and machine at 3x, vanilla | A | B | C
+
+![9Nov2026 - T537 - three directions objects - 43](9Nov2026%20-%20T537%20-%20three%20directions%20objects%20-%2043.png)
+
+### 9Nov2026 - T537 - direction A rooms - 44
+
+T-537 DRAFT direction A: nine rooms at 1x, today | draft (FOUNDRY 5F/11F/1F, two labs, SEA COTTAGE, BRAZEN house, bike shop, POWER PLANT)
+
+![9Nov2026 - T537 - direction A rooms - 44](9Nov2026%20-%20T537%20-%20direction%20A%20rooms%20-%2044.png)
+
+### 9Nov2026 - T537 - direction A detail - 45
+
+T-537 DRAFT direction A: 3x details, every object, the 97 tiles, and the optional blink frames
+
+![9Nov2026 - T537 - direction A detail - 45](9Nov2026%20-%20T537%20-%20direction%20A%20detail%20-%2045.png)
+
+### 9Nov2026 - T537 - direction B rooms - 46
+
+T-537 DRAFT direction B: nine rooms at 1x, today | draft (FOUNDRY 5F/11F/1F, two labs, SEA COTTAGE, BRAZEN house, bike shop, POWER PLANT)
+
+![9Nov2026 - T537 - direction B rooms - 46](9Nov2026%20-%20T537%20-%20direction%20B%20rooms%20-%2046.png)
+
+### 9Nov2026 - T537 - direction B detail - 47
+
+T-537 DRAFT direction B: 3x details, every object, the 97 tiles, and the optional blink frames
+
+![9Nov2026 - T537 - direction B detail - 47](9Nov2026%20-%20T537%20-%20direction%20B%20detail%20-%2047.png)
+
+### 9Nov2026 - T537 - direction C rooms - 48
+
+T-537 DRAFT direction C: nine rooms at 1x, today | draft (FOUNDRY 5F/11F/1F, two labs, SEA COTTAGE, BRAZEN house, bike shop, POWER PLANT)
+
+![9Nov2026 - T537 - direction C rooms - 48](9Nov2026%20-%20T537%20-%20direction%20C%20rooms%20-%2048.png)
+
+### 9Nov2026 - T537 - direction C detail - 49
+
+T-537 DRAFT direction C: 3x details, every object, the 97 tiles, and the optional blink frames
+
+![9Nov2026 - T537 - direction C detail - 49](9Nov2026%20-%20T537%20-%20direction%20C%20detail%20-%2049.png)

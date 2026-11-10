@@ -1,0 +1,344 @@
+{
+ "ticket": "T-537",
+ "status": "DRAFT -- not in the engine",
+ "approved": [],
+ "groups": [
+  {
+   "who": "T-537",
+   "key": "panel",
+   "what": "the instrument panel",
+   "tiles": [
+    203,
+    204,
+    219,
+    220,
+    235,
+    236
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "console",
+   "what": "the tall console",
+   "tiles": [
+    159,
+    175,
+    191,
+    207,
+    223,
+    239
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "cabinet",
+   "what": "the tall cabinet",
+   "tiles": [
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "till",
+   "what": "the till",
+   "tiles": [
+    270,
+    271,
+    286,
+    287,
+    302,
+    303
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "terminal",
+   "what": "the desk terminal",
+   "tiles": [
+    189,
+    190,
+    205,
+    206
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "ledger",
+   "what": "the ledger on the desk",
+   "tiles": [
+    157,
+    158,
+    173,
+    174
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "table_top",
+   "what": "the lab table's far rim",
+   "tiles": [
+    150,
+    151,
+    152
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "table",
+   "what": "the lab table",
+   "tiles": [
+    134,
+    135,
+    136
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "legs",
+   "what": "the desk front and legs",
+   "tiles": [
+    243,
+    244
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "small_desk",
+   "what": "the work desk",
+   "tiles": [
+    213,
+    214,
+    229,
+    230,
+    245,
+    246
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "papers",
+   "what": "the papers",
+   "tiles": [
+    208,
+    209
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "note",
+   "what": "the pinned note",
+   "tiles": [
+    210
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "rail",
+   "what": "the bench rail",
+   "tiles": [
+    185,
+    186
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "striped",
+   "what": "the striped desk",
+   "tiles": [
+    461,
+    462,
+    463,
+    477,
+    478,
+    479,
+    493,
+    494,
+    495
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "boardroom",
+   "what": "the boardroom table",
+   "tiles": [
+    484,
+    485,
+    486,
+    487,
+    488,
+    489,
+    490,
+    491,
+    492,
+    500,
+    501,
+    503,
+    504,
+    505,
+    506,
+    507,
+    508
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "ornament",
+   "what": "what stands on it",
+   "tiles": [
+    610,
+    611,
+    638,
+    639
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "reception",
+   "what": "the reception desk",
+   "tiles": [
+    324,
+    325,
+    326,
+    340,
+    341,
+    356,
+    357,
+    358,
+    370,
+    371,
+    372,
+    373,
+    374
+   ]
+  },
+  {
+   "who": "T-537",
+   "key": "reception_lab",
+   "what": "the lab's front desk",
+   "tiles": [
+    342
+   ]
+  },
+  {
+   "who": "left",
+   "key": "bed",
+   "what": "FOUNDRY 8F/9F's rest-room beds and LORELEI's house: furniture, not desks or machines",
+   "tiles": [
+    512,
+    513,
+    514,
+    515,
+    528,
+    529,
+    530,
+    531,
+    544,
+    545,
+    546,
+    547
+   ]
+  },
+  {
+   "who": "left",
+   "key": "doorway",
+   "what": "the open doorways to the back rooms: a door frame, gbadoors.py's kind",
+   "tiles": [
+    522,
+    523,
+    524,
+    538,
+    539,
+    540,
+    554,
+    555,
+    556
+   ]
+  },
+  {
+   "who": "left",
+   "key": "partition",
+   "what": "white partition walls seen from above (the labs, FOUNDRY): structure, not furniture",
+   "tiles": [
+    171,
+    180,
+    181,
+    187,
+    196,
+    197
+   ]
+  },
+  {
+   "who": "left",
+   "key": "stairs",
+   "what": "BRAZEN's copycat house: eleven stair tiles gbabuilding.py's stairs painter left vanilla (a batch D gap)",
+   "tiles": [
+    39,
+    49,
+    50,
+    54,
+    55,
+    65,
+    66,
+    67,
+    80,
+    81,
+    82
+   ]
+  },
+  {
+   "who": "left",
+   "key": "blinds",
+   "what": "the CINNABAR lab lounge's blinds",
+   "tiles": [
+    420,
+    421,
+    432,
+    433,
+    436
+   ]
+  },
+  {
+   "who": "left",
+   "key": "diary",
+   "what": "the MANSION's open diary: a landmark's (T-447)",
+   "tiles": [
+    602,
+    603,
+    618,
+    619
+   ]
+  },
+  {
+   "who": "left",
+   "key": "odd",
+   "what": "one tile of the lab lobby",
+   "tiles": [
+    368
+   ]
+  }
+ ],
+ "stray": [],
+ "blink": [
+  203,
+  204,
+  219,
+  220,
+  235,
+  236,
+  159,
+  207,
+  175,
+  223,
+  249,
+  250,
+  251,
+  252
+ ]
+}
