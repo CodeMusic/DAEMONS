@@ -61,7 +61,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t538")
 #  The user's pick goes here ("A", "B" or "C"); --write refuses anything not in it.
-APPROVED = set()
+APPROVED = {"A"}                     # the user, 2026-11-10: "A HEARTH"
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
@@ -1595,6 +1595,32 @@ def report():
     return bad
 
 
+def check_engine():
+    """T-446's rule: with one direction approved, the engine must be exactly what `--write --approved --pick X` makes
+    (every tile of each set this tool writes, its own rows, and primary/building's leftovers); exit 1 on a difference"""
+    pick = next(iter(APPROVED))
+    D = STYLES[pick]
+    res = draw(D)
+    sets = res[0]
+    bad = 0
+    for key, S in SETS.items():
+        off = [t for t in range(len(S.cur)) if sets[key][0][t] != S.cur[t]]
+        rows = [r for r in S.rows
+                if [tuple(c) for c in sets[key][1][r]] != [tuple(c) for c in read_pal(os.path.join(GBA, S.dir, "palettes/%02d.pal" % r))]]
+        if off or rows:
+            print("  !! %s: the engine differs from `--write --approved --pick %s` in tiles %s rows %s -- find which side "
+                  "is right" % (S.dir.split("/")[-1], pick, off[:12], rows))
+            bad = 1
+    prim = res[1]
+    offp = [t for t, px in prim.items() if PTILES_NOW[t] != px]
+    if offp:
+        print("  !! primary/building: the engine differs from the write in leftovers %s" % offp[:12])
+        bad = 1
+    if not bad:
+        print("  the engine matches `--write --approved --pick %s` (the user, 2026-11-10)" % pick)
+    return bad
+
+
 def main():
     if WRITE:
         if "--approved" not in ARGS or not PICK or PICK not in APPROVED:
@@ -1635,6 +1661,8 @@ def main():
                        directions=summary), open(os.path.join(DRAFT, "directions.json"), "w"), indent=1)
         for p in contact_sheets(DRAFT, states):
             print("  sheet:", p)
+    if len(APPROVED) == 1:
+        bad = check_engine() or bad
     return 1 if bad else 0
 
 

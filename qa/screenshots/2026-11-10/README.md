@@ -55,3 +55,21 @@ T-538 batch 2 DRAFT at 3x: the lab's cabinets and SALVAGE RIG, the founder's fra
 T-538 batch 2 DRAFT: every redrawn tile at 3x in its home row, per direction
 
 ![10Nov2026 - T538 - batch 2 tiles 3x - 9](10Nov2026%20-%20T538%20-%20batch%202%20tiles%203x%20-%209.png)
+
+### 10Nov2026 - T538 - built A HEARTH road houses - 10
+
+T-538 batch 1 built in A HEARTH (DRAFT): two road houses, the COPYCAT's room, the lab lounge, decoded from the engine's sources
+
+![10Nov2026 - T538 - built A HEARTH road houses - 10](10Nov2026%20-%20T538%20-%20built%20A%20HEARTH%20road%20houses%20-%2010.png)
+
+### 10Nov2026 - T538 - built A HEARTH beds 9F - 11
+
+T-538 batch 1 built in A HEARTH (DRAFT): FOUNDRY 9F's rest room, the patchwork beds and the doorways
+
+![10Nov2026 - T538 - built A HEARTH beds 9F - 11](10Nov2026%20-%20T538%20-%20built%20A%20HEARTH%20beds%209F%20-%2011.png)
+
+### 10Nov2026 - T538 - built A THE WORKBENCH workrooms - 12
+
+T-538 batch 2 built in A THE WORKBENCH (DRAFT): the bike shop, HOLT's SEA COTTAGE, the lab's SALVAGE RIG, decoded from the engine's sources
+
+![10Nov2026 - T538 - built A THE WORKBENCH workrooms - 12](10Nov2026%20-%20T538%20-%20built%20A%20THE%20WORKBENCH%20workrooms%20-%2012.png)
