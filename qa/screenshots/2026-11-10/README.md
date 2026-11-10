@@ -25,3 +25,33 @@ T-538 DRAFT batch 1 at 3x: the 2F window and coin-viewer, the 1F runner, the POR
 T-538 DRAFT batch 1's tiles at 3x: generic_building_2, generic_building_1 and primary/building's 33 leftovers, per direction
 
 ![10Nov2026 - T538 - batch 1 tiles 3x - 4](10Nov2026%20-%20T538%20-%20batch%201%20tiles%203x%20-%204.png)
+
+### 10Nov2026 - T538 - batch 2 rooms at 1x - 5
+
+T-538 batch 2 DRAFT: the bike shop, HOLT's SEA COTTAGE and the lab's SALVAGE RIG at 1x -- NOW, A THE WORKBENCH, B THE CLEAN ROOM, C THE SALVAGE YARD
+
+![10Nov2026 - T538 - batch 2 rooms at 1x - 5](10Nov2026%20-%20T538%20-%20batch%202%20rooms%20at%201x%20-%205.png)
+
+### 10Nov2026 - T538 - batch 2 rooms at 1x - 6
+
+T-538 batch 2 DRAFT: the lab's research room, lobby and THREE ISLAND's house at 1x, the four states
+
+![10Nov2026 - T538 - batch 2 rooms at 1x - 6](10Nov2026%20-%20T538%20-%20batch%202%20rooms%20at%201x%20-%206.png)
+
+### 10Nov2026 - T538 - batch 2 details 3x - 7
+
+T-538 batch 2 DRAFT at 3x: the racks and bicycles, the SEPARATION SYSTEM
+
+![10Nov2026 - T538 - batch 2 details 3x - 7](10Nov2026%20-%20T538%20-%20batch%202%20details%203x%20-%207.png)
+
+### 10Nov2026 - T538 - batch 2 details 3x - 8
+
+T-538 batch 2 DRAFT at 3x: the lab's cabinets and SALVAGE RIG, the founder's frame
+
+![10Nov2026 - T538 - batch 2 details 3x - 8](10Nov2026%20-%20T538%20-%20batch%202%20details%203x%20-%208.png)
+
+### 10Nov2026 - T538 - batch 2 tiles 3x - 9
+
+T-538 batch 2 DRAFT: every redrawn tile at 3x in its home row, per direction
+
+![10Nov2026 - T538 - batch 2 tiles 3x - 9](10Nov2026%20-%20T538%20-%20batch%202%20tiles%203x%20-%209.png)
