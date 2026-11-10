@@ -1,0 +1,48 @@
+{
+  "rom": "debug",
+  "about": "T-539 (DRAFT): THE UNITY BOOK's LENS page (THE CREASE, 11. The Lens) read WHOLE -- the picture whose old ')' marks are being redrawn. The book's pages are private: file the sheets with qashot --private. The theatre's debug scratch save; the watch and the lens put back.",
+  "stop_timeout": 600,
+  "stops": [
+    {
+      "stop": "THE CREASE's first entry, LENS, read WHOLE",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 1",
+        "poke gDaemonsDateOverride 8 0",
+        "poke gDaemonsWatchOverride 8 1",
+        "poke sUnityLens 8 0",
+        "flag FLAG_GOT_HERMETIC_LAYER 1",
+        "flag FLAG_GOT_EUDAIMON_LAYER 1",
+        "flag FLAG_UNITY_MENDED 1",
+        "keyitem ITEM_UNITY_BOOK",
+        "register ITEM_UNITY_BOOK",
+        "goto PalletTown 10 14",
+        "wait 60",
+        "press SELECT",
+        "wait 120",
+        "press A",
+        "wait 30",
+        "press B",
+        "wait 20",
+        "press LEFT",
+        "press DOWN 10",
+        "shot \"the contents on THE CREASE\"",
+        "press A",
+        "press A",
+        "wait 30",
+        "shot \"THE CREASE, LENS: WHOLE\"",
+        "press B",
+        "wait 20",
+        "press B",
+        "wait 20",
+        "press B",
+        "wait 20",
+        "press B",
+        "wait 60",
+        "poke sUnityLens 8 0",
+        "poke gDaemonsWatchOverride 8 0"
+      ]
+    }
+  ]
+}
