@@ -9,8 +9,9 @@
                                                     #   tiles.png and the optional blink frames, and the contact sheets
                                                     #   (gfx/drafts/t537/)
     python3 tools/gbamachines.py --write --approved --pick X
-                                                    # into the engine -- refused unless X is in APPROVED (empty: the
-                                                    #   user has not picked)
+                                                    # into the engine -- refused unless X is in APPROVED ({"A"}:
+                                                    #   the user, 2026-11-09). Report mode compares the engine with
+                                                    #   that write and exits 1 on a difference (T-446's rule)
 
 THE ANSWER IT FOLLOWS (the user, 2026-11-09, from the vanilla-art census): "the desks and machines" -- the pieces of
 primary/building that T-438 batch D (gbabuilding.py) left for later: SILPH's two-row reception desk, the striped
@@ -47,7 +48,7 @@ from PIL import Image, ImageDraw
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t537")
 #  The user's pick goes here ("A", "B" or "C"); --write refuses anything not in it.
-APPROVED = set()
+APPROVED = {"A"}                                  # the user, 2026-11-09: A Foundry stock, no blink
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
@@ -729,7 +730,8 @@ LEFT = [
     ("partition", {171, 172, 180, 181, 187, 188, 196, 197},
      "white partition walls seen from above (the labs, FOUNDRY): structure, not furniture"),
     ("stairs", {39, 49, 50, 54, 55, 65, 66, 67, 80, 81, 82},
-     "BRAZEN's copycat house: eleven stair tiles gbabuilding.py's stairs painter left vanilla (a batch D gap)"),
+     "BRAZEN's copycat house: eleven stair tiles batch D's stairs rule leaves pixel-identical -- drawn only in OUT and "
+     "the three woods, which it maps onto themselves; they are timber already through rows 0's approved palette"),
     ("blinds", {420, 421, 436, 432, 433}, "the CINNABAR lab lounge's blinds"),
     ("diary", {602, 603, 618, 619}, "the MANSION's open diary: a landmark's (T-447)"),
     ("odd", {368}, "one tile of the lab lobby"),
@@ -847,9 +849,9 @@ def census():
 
 def report():
     van, mine, rows, stray = census()
-    print("  T-537: primary/building -- %d drawn tiles are still vanilla's (one colour or KEEP excluded); this draft "
-          "redraws %d of them (and %d flat ones only the boardroom table places)" % (
-              len(van), len([t for t in mine if t in van]), len([t for t in mine if t not in van])))
+    print("  T-537: primary/building -- %d drawn tiles are still vanilla's (one colour or KEEP excluded); this ticket "
+          "owns %d tiles, %d of them still vanilla's (the rest drawn by --write --approved --pick %s)" % (
+              len(van), len(mine), len([t for t in mine if t in van]), "/".join(sorted(APPROVED)) or "?"))
     print("  scanned %d tiles placed by %d maps" % (len(USE), len({m for u in USE.values() for m in u["maps"]})))
     print("\n  %-6s %-11s %5s %5s %4s  %-40s %s" % ("", "object", "tiles", "draws", "maps", "blocks (first 6)", "what"))
     for who, key, title, ts in rows:
@@ -1036,6 +1038,26 @@ def tiles_png(tiles):
     return GB.tiles_png(tiles)
 
 
+def check_engine():
+    """T-446's rule: the engine's tiles.png against `--write --approved --pick X` for the one approved X; and the tiles
+    this tool owns against gbabuilding.LATER, so neither tool can draw over the other"""
+    pick = next(iter(APPROVED))
+    new, owner, _ = draw(STYLES[pick])
+    bad = 0
+    if set(owner) != GB.LATER:
+        print("\n  !! gbabuilding.LATER and this tool's tiles disagree: only here %s, only there %s"
+              % (sorted(set(owner) - GB.LATER), sorted(GB.LATER - set(owner))))
+        bad = 1
+    off = [t for t in range(NT) if new[t] != CUR[t]]
+    if off:
+        print("\n  !! the engine differs from `--write --approved --pick %s` in %d tile%s (%s) -- find which side is right"
+              % (pick, len(off), "s" if len(off) > 1 else "", off[:12]))
+        return 1
+    print("\n  the engine matches `--write --approved --pick %s`: %d tiles, no blink (the user, 2026-11-09)"
+          % (pick, len(owner)))
+    return bad
+
+
 def main():
     if WRITE and ("--approved" not in ARGS or PICK not in APPROVED):
         print("  --write refused: T-537 is a draft until the user has picked a direction (APPROVED = %s)."
@@ -1047,7 +1069,7 @@ def main():
     if WRITE:
         new, owner, _ = draw(STYLES[PICK])
         changed = [t for t in owner if new[t] != CUR[t]]
-        tiles_png(new).save(os.path.join(PD, "tiles.png"))
+        tiles_png(new).save(os.path.join(PD, "tiles.png"), bits=4)     # 4-bit, 16 colours, as the engine keeps it
         print("  wrote %d tiles of direction %s into %s/tiles.png" % (len(changed), PICK, BPATH))
         return 0
     if DRAFT is not None:
@@ -1079,6 +1101,8 @@ def main():
         print("  wrote %s" % census_sheet(DRAFT, rows))
         for p in sheets(DRAFT, drawn):
             print("  wrote %s" % p)
+    if len(APPROVED) == 1:
+        return check_engine()
     return 0
 
 

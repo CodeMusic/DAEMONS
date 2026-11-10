@@ -1,0 +1,77 @@
+{
+ "rom": "debug",
+ "about": "T-537 A FOUNDRY STOCK (the user, 2026-11-09: no blink), DRAFT: primary/building's desks and machines redrawn in place (gbamachines.py --write --approved --pick A). Each room that shows them, warped to by name. Watch held at day. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "FOUNDRY 5F: the panel, the console, the three cabinets, the striped desks",
+   "steps": [
+    "goto SilphCo_5F",
+    "close",
+    "wait 60",
+    "shot FOUNDRY 5F: the panel, the console, the three cabinets, the striped desks"
+   ]
+  },
+  {
+   "stop": "FOUNDRY 11F: the boardroom table",
+   "steps": [
+    "goto SilphCo_11F",
+    "close",
+    "wait 60",
+    "shot FOUNDRY 11F: the boardroom table"
+   ]
+  },
+  {
+   "stop": "FOUNDRY 1F: the reception desk",
+   "steps": [
+    "goto SilphCo_1F",
+    "close",
+    "wait 60",
+    "shot FOUNDRY 1F: the reception desk"
+   ]
+  },
+  {
+   "stop": "the CINNABAR lab: lab tables and work desks",
+   "steps": [
+    "goto CinnabarIsland_PokemonLab_ResearchRoom",
+    "close",
+    "wait 60",
+    "shot the CINNABAR lab: lab tables and work desks"
+   ]
+  },
+  {
+   "stop": "the CINNABAR lab: striped desks, the terminal, the ledger",
+   "steps": [
+    "goto CinnabarIsland_PokemonLab_ExperimentRoom",
+    "close",
+    "wait 60",
+    "shot the CINNABAR lab: striped desks, the terminal, the ledger"
+   ]
+  },
+  {
+   "stop": "the SEA COTTAGE: cabinets and terminals in a front room",
+   "steps": [
+    "goto Route25_SeaCottage",
+    "close",
+    "wait 60",
+    "shot the SEA COTTAGE: cabinets and terminals in a front room"
+   ]
+  },
+  {
+   "stop": "the POWER PLANT: panels and consoles in the walls",
+   "steps": [
+    "goto PowerPlant",
+    "close",
+    "wait 60",
+    "shot the POWER PLANT: panels and consoles in the walls"
+   ]
+  }
+ ]
+}

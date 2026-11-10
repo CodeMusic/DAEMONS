@@ -59,6 +59,14 @@ B = "data/tilesets/primary/building"
 PD = os.path.join(GBA, B)
 DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t438", "building")
 KEEP = set(range(262, 267))                  # CHECKPOINT 2F's pots (batch A); never touched
+#  T-537 (gbamachines.py, A FOUNDRY STOCK, the user 2026-11-09) draws these 97 tiles -- the desks and machines this
+#  batch left -- into the same tiles.png. They are its, not this tool's: no group here may draw them (draft_tiles skips
+#  them as it skips KEEP), and gbamachines.py's report fails if its own set and this one ever disagree.
+LATER = {134, 135, 136, 150, 151, 152, 157, 158, 159, 173, 174, 175, 185, 186, 189, 190, 191, 203, 204, 205, 206, 207,
+         208, 209, 210, 213, 214, 219, 220, 223, 229, 230, 235, 236, 239, 243, 244, 245, 246, 247, 248, 249, 250, 251,
+         252, 253, 254, 270, 271, 286, 287, 302, 303, 324, 325, 326, 340, 341, 342, 356, 357, 358, 370, 371, 372, 373,
+         374, 461, 462, 463, 477, 478, 479, 484, 485, 486, 487, 488, 489, 490, 491, 492, 493, 494, 495, 500, 501, 503,
+         504, 505, 506, 507, 508, 610, 611, 638, 639}
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
@@ -1119,7 +1127,7 @@ def draft_tiles(proposed=False):
         K = Canvas(layout, row)
         paint(K)
         for t, px in K.tiles().items():
-            if t in KEEP or t in owner:
+            if t in KEEP or t in LATER or t in owner:
                 continue
             # the footprint, exactly: transparent stays transparent, drawn stays drawn
             fixed = [(p if p else (BASE[t][k] or 1)) if BASE[t][k] else 0 for k, p in enumerate(px)]
@@ -1210,9 +1218,12 @@ def summary(use, owner):
                                                                         for b in use[t]["blocks"]})[:16]))
     left = []
     for key, tiles, why in LEFT:
-        ts = sorted(t for t in tiles if t in use and t not in owner)
+        ts = sorted(t for t in tiles if t in use and t not in owner and t not in LATER)
         left.append(dict(key=key, why=why, tiles=ts, draws=sum(use[t]["draws"] for t in ts)))
-    known = set(owner) | {t for _, s, _ in LEFT for t in s} | KEEP
+    ts = sorted(t for t in LATER if t in use)
+    left.append(dict(key="T-537", why="the desks and machines: gbamachines.py draws them (LATER)", tiles=ts,
+                     draws=sum(use[t]["draws"] for t in ts)))
+    known = set(owner) | {t for _, s, _ in LEFT for t in s} | KEEP | LATER
     stray = sorted(t for t in use if t not in known)
     return groups, left, stray
 
@@ -1246,7 +1257,7 @@ def report():
     for g in groups:
         print("  %-14s %-34s %3d %5d %5d %4d  %s" % (g["key"], g["title"][:34], g["row"], len(g["tiles"]), g["draws"],
                                                    g["nmaps"], g["first"] or "(no map)"))
-    print("\n  left as vanilla's drawing:")
+    print("\n  left as vanilla's drawing (or to a later tool):")
     for l in left:
         if l["tiles"]:
             print("  %-10s %3d tiles %5d draws  %s" % (l["key"], len(l["tiles"]), l["draws"], l["why"]))

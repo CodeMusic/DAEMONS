@@ -283,3 +283,45 @@ T-537 DRAFT direction C: nine rooms at 1x, today | draft (FOUNDRY 5F/11F/1F, two
 T-537 DRAFT direction C: 3x details, every object, the 97 tiles, and the optional blink frames
 
 ![9Nov2026 - T537 - direction C detail - 49](9Nov2026%20-%20T537%20-%20direction%20C%20detail%20-%2049.png)
+
+### 9Nov2026 - T537 - FOUNDRY 5F in A - 50
+
+T-537 built, A FOUNDRY STOCK (DRAFT): FOUNDRY 5F from the built ROM's sources -- the instrument panel, the tall console and the three cabinets in cast iron and bronze, the striped desks iron-framed with timber tops, among T-536's C rooms
+
+![9Nov2026 - T537 - FOUNDRY 5F in A - 50](9Nov2026%20-%20T537%20-%20FOUNDRY%205F%20in%20A%20-%2050.png)
+
+### 9Nov2026 - T537 - FOUNDRY 11F boardroom in A - 51
+
+T-537 built, A FOUNDRY STOCK (DRAFT): FOUNDRY 11F -- the boardroom table and what stands on it
+
+![9Nov2026 - T537 - FOUNDRY 11F boardroom in A - 51](9Nov2026%20-%20T537%20-%20FOUNDRY%2011F%20boardroom%20in%20A%20-%2051.png)
+
+### 9Nov2026 - T537 - FOUNDRY 1F reception in A - 52
+
+T-537 built, A FOUNDRY STOCK (DRAFT): FOUNDRY 1F -- the two-row reception desk, matched to rows 0 and 1 at once
+
+![9Nov2026 - T537 - FOUNDRY 1F reception in A - 52](9Nov2026%20-%20T537%20-%20FOUNDRY%201F%20reception%20in%20A%20-%2052.png)
+
+### 9Nov2026 - T537 - CINNABAR lab research room in A - 53
+
+T-537 built, A FOUNDRY STOCK (DRAFT): the CINNABAR lab's research room -- lab tables, work desks, the bench rail
+
+![9Nov2026 - T537 - CINNABAR lab research room in A - 53](9Nov2026%20-%20T537%20-%20CINNABAR%20lab%20research%20room%20in%20A%20-%2053.png)
+
+### 9Nov2026 - T537 - CINNABAR lab experiment room in A - 54
+
+T-537 built, A FOUNDRY STOCK (DRAFT): the CINNABAR lab's experiment room -- striped desks, the desk terminal, the ledger
+
+![9Nov2026 - T537 - CINNABAR lab experiment room in A - 54](9Nov2026%20-%20T537%20-%20CINNABAR%20lab%20experiment%20room%20in%20A%20-%2054.png)
+
+### 9Nov2026 - T537 - SEA COTTAGE in A - 55
+
+T-537 built, A FOUNDRY STOCK (DRAFT): the SEA COTTAGE -- the cabinets and terminals on its desks, in a front room
+
+![9Nov2026 - T537 - SEA COTTAGE in A - 55](9Nov2026%20-%20T537%20-%20SEA%20COTTAGE%20in%20A%20-%2055.png)
+
+### 9Nov2026 - T537 - POWER PLANT in A - 56
+
+T-537 built, A FOUNDRY STOCK (DRAFT): the POWER PLANT (cells 12,22 34x16) -- the panels and consoles in its walls; lights painted, no blink
+
+![9Nov2026 - T537 - POWER PLANT in A - 56](9Nov2026%20-%20T537%20-%20POWER%20PLANT%20in%20A%20-%2056.png)
