@@ -169,3 +169,21 @@ T-530 touch-ups filmed (tools/routes/t530_touchups.json, 2/2 ok): the INDEX AREA
 T-530 touch-ups filmed (tools/routes/t530_touchups.json, 2/2 ok): the INDEX AREA map for a land daemon and a sea daemon; the PC on FOREST and SEAFLOOR, the PAW on PARTY and CLOSE BOX (flashing), the party panel
 
 ![9Nov2026 - T530 - touch-ups filmed - 30](9Nov2026%20-%20T530%20-%20touch-ups%20filmed%20-%2030.png)
+
+### 9Nov2026 - T536 - FOUNDRY and CORPUS interiors three directions - 31
+
+T-536 DRAFT: FOUNDRY CO. and the CORPUS rooms redrawn in place, NOW and directions A BRASS AND STONE, B THE FORM, C THE FOUNDRY -- real rooms at 1x, details at 3x, the tileset at 3x; nothing in the engine
+
+![9Nov2026 - T536 - FOUNDRY and CORPUS interiors three directions - 31](9Nov2026%20-%20T536%20-%20FOUNDRY%20and%20CORPUS%20interiors%20three%20directions%20-%2031.png)
+
+### 9Nov2026 - T536 - FOUNDRY and CORPUS interiors three directions - 32
+
+T-536 DRAFT: FOUNDRY CO. and the CORPUS rooms redrawn in place, NOW and directions A BRASS AND STONE, B THE FORM, C THE FOUNDRY -- real rooms at 1x, details at 3x, the tileset at 3x; nothing in the engine
+
+![9Nov2026 - T536 - FOUNDRY and CORPUS interiors three directions - 32](9Nov2026%20-%20T536%20-%20FOUNDRY%20and%20CORPUS%20interiors%20three%20directions%20-%2032.png)
+
+### 9Nov2026 - T536 - FOUNDRY and CORPUS interiors three directions - 33
+
+T-536 DRAFT: FOUNDRY CO. and the CORPUS rooms redrawn in place, NOW and directions A BRASS AND STONE, B THE FORM, C THE FOUNDRY -- real rooms at 1x, details at 3x, the tileset at 3x; nothing in the engine
+
+![9Nov2026 - T536 - FOUNDRY and CORPUS interiors three directions - 33](9Nov2026%20-%20T536%20-%20FOUNDRY%20and%20CORPUS%20interiors%20three%20directions%20-%2033.png)
