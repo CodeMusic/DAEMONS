@@ -4295,12 +4295,13 @@ def u_seam():
 
 
 def u_lens():
-    """lens (to come) -- The lens over the page, one number true inside it, the Field faint outside it."""
+    """lens (to come) -- The lens over the page, one number true inside it, the Field faint outside it.
+    (Redrawn 2026-11-10, T-539 A PASSING: the Field is the FIELD page's own passing daemons, small, not ')' marks.)"""
     im = blank(PW, PH, "C_PAPER")
     usky(im, PH, seed=341)
     numpage(im, 4, 6, 91, 84, "C_HIGHLIGHT", 343, page="C_EDGE", edge="C_FAINT")
-    for x, y, s in ((14, 64, 1), (74, 14, 2), (80, 66, 3)):
-        motion(im, x, y, 3, "C_FAINT", s, 8)
+    for x, y, s, lead in ((24, 64, 1, "C_RING"), (86, 13, 2, "C_RULE"), (88, 67, 3, "C_MARGIN")):
+        passing(im, x, y, "C_FAINT", lead, s, n=3, ln=13)
     lens_glass(im, 46, 40, 16, rim="C_INK", handle=(1, 1), inside="C_EDGE_DARK")
     for k, n in enumerate((1, 0, 1)):
         digit(im, 41 + k * 4, 38, n, "C_INK")
