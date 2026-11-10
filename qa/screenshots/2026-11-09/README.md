@@ -187,3 +187,39 @@ T-536 DRAFT: FOUNDRY CO. and the CORPUS rooms redrawn in place, NOW and directio
 T-536 DRAFT: FOUNDRY CO. and the CORPUS rooms redrawn in place, NOW and directions A BRASS AND STONE, B THE FORM, C THE FOUNDRY -- real rooms at 1x, details at 3x, the tileset at 3x; nothing in the engine
 
 ![9Nov2026 - T536 - FOUNDRY and CORPUS interiors three directions - 33](9Nov2026%20-%20T536%20-%20FOUNDRY%20and%20CORPUS%20interiors%20three%20directions%20-%2033.png)
+
+### 9Nov2026 - T536 - FOUNDRY 1F lobby in C the foundry - 34
+
+T-536 C, THE FOUNDRY (DRAFT, built): FOUNDRY CO. 1F from the ROM's build -- cast-iron tread plate, bronze, the lobby's twin fountain now the dark plate cast into the floor, railed off
+
+![9Nov2026 - T536 - FOUNDRY 1F lobby in C the foundry - 34](9Nov2026%20-%20T536%20-%20FOUNDRY%201F%20lobby%20in%20C%20the%20foundry%20-%2034.png)
+
+### 9Nov2026 - T536 - FOUNDRY 5F in C the foundry - 35
+
+T-536 C: FOUNDRY CO. 5F -- the office floors, partitions and card-key gates redrawn in place
+
+![9Nov2026 - T536 - FOUNDRY 5F in C the foundry - 35](9Nov2026%20-%20T536%20-%20FOUNDRY%205F%20in%20C%20the%20foundry%20-%2035.png)
+
+### 9Nov2026 - T536 - FOUNDRY 11F in C the foundry - 36
+
+T-536 C: FOUNDRY CO. 11F
+
+![9Nov2026 - T536 - FOUNDRY 11F in C the foundry - 36](9Nov2026%20-%20T536%20-%20FOUNDRY%2011F%20in%20C%20the%20foundry%20-%2036.png)
+
+### 9Nov2026 - T536 - FOUNDRY lift car in C the foundry - 37
+
+T-536 C: the lift car (its door frames redrawn by gbadoors.py to match)
+
+![9Nov2026 - T536 - FOUNDRY lift car in C the foundry - 37](9Nov2026%20-%20T536%20-%20FOUNDRY%20lift%20car%20in%20C%20the%20foundry%20-%2037.png)
+
+### 9Nov2026 - T536 - HIDEOUT B4F casting floor - 38
+
+T-536 C: the CORPUS HIDEOUT B4F -- a casting floor of sand
+
+![9Nov2026 - T536 - HIDEOUT B4F casting floor - 38](9Nov2026%20-%20T536%20-%20HIDEOUT%20B4F%20casting%20floor%20-%2038.png)
+
+### 9Nov2026 - T536 - WAREHOUSE on FIVE ISLAND ingots on pallets - 39
+
+T-536 C: the WAREHOUSE on FIVE ISLAND -- ingots on pallets, the spin arrows kept
+
+![9Nov2026 - T536 - WAREHOUSE on FIVE ISLAND ingots on pallets - 39](9Nov2026%20-%20T536%20-%20WAREHOUSE%20on%20FIVE%20ISLAND%20ingots%20on%20pallets%20-%2039.png)

@@ -8,8 +8,8 @@
                                                     #   tiles.png, rows 07..12 as .pal, the fountain's four frames,
                                                     #   and the contact sheets (gfx/drafts/t536/)
     python3 tools/gbaoffice.py --write --approved --pick X
-                                                    # into the engine -- refused unless X is in APPROVED, which is
-                                                    #   EMPTY until the user picks (nothing is approved yet)
+                                                    # into the engine -- refused unless X is in APPROVED
+                                                    #   (the user, 2026-11-09: C, THE FOUNDRY)
 
 WHAT IT REDRAWS. gTileset_SilphCo has its own metatiles but draws with gTilesetTiles_Condominiums and its palettes
 (headers.h: "Shared by SilphCo"); gTileset_Condominiums itself is placed by no layout, so the 384 tiles and rows
@@ -71,8 +71,8 @@ MET = "data/tilesets/secondary/silph_co"          # the metatiles, attributes an
 PRI = "data/tilesets/primary/building"
 DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t536")
 ROWS = range(7, 13)                               # the secondary rows the office owns
-#  The user's picks go here ("A", "B" or "C"); --write refuses anything not in it. EMPTY: nothing approved yet.
-APPROVED = set()
+#  The user's picks go here ("A", "B" or "C"); --write refuses anything not in it.
+APPROVED = {"C"}                                  # the user, 2026-11-09: C The foundry
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
@@ -1395,14 +1395,14 @@ def save_indexed(path, tiles, pal, w=16):
     hgt = (n + w - 1) // w
     im = Image.new("P", (w * 8, hgt * 8))
     flat = []
-    for c in pal:
+    for c in list(pal)[:16]:
         flat += list(c)
-    im.putpalette(flat + [0] * (768 - len(flat)))
+    im.putpalette(flat + [0] * (48 - len(flat)))      # 16 colours, saved 4-bit as the engine's own sheets are
     px = im.load()
     for t in range(n):
         for k in range(64):
             px[(t % w) * 8 + k % 8, (t // w) * 8 + k // 8] = tiles[t][k]
-    im.save(path)
+    im.save(path, bits=4)
 
 
 def write_direction(base, S):
@@ -1485,6 +1485,30 @@ def main():
             print("  sheet:", p)
         for k in STYLES:
             print("  %s %-16s %d tiles redrawn" % (k, STYLES[k]["title"], summary[k]["tiles_redrawn"]))
+    if not WRITE and len(APPROVED) == 1:
+        #  T-446's rule, as gbadoors.py keeps it: report mode compares the engine with the approved write and exits 1
+        #  if they differ, so check_generators.py fails the day another pass draws over the office
+        pick = next(iter(APPROVED))
+        tiles, pals, frames, owner = draw(STYLES[pick])
+        want = {SEC + "/tiles.png": (tiles, VPAL[7], 16)}
+        for n, fr in enumerate(frames):
+            want[MET + "/anim/fountain/%d.png" % n] = (fr, pals[9], 2)
+        off = []
+        for rel, (ts, pal, w) in want.items():
+            path = os.path.join(GBA, rel)
+            if not os.path.exists(path) or tiles_of(Image.open(path)) != [list(t) for t in ts]:
+                off.append(rel)
+        for r in ROWS:
+            path = os.path.join(GBA, SEC, "palettes", "%02d.pal" % r)
+            if [tuple(c) for c in read_pal(path)] != [tuple(c) for c in pals[r]]:
+                off.append(SEC + "/palettes/%02d.pal" % r)
+        if off:
+            print("\n  !! the engine differs from `--write --approved --pick %s` (%d file%s) -- find which side is right:"
+                  % (pick, len(off), "s" if len(off) > 1 else ""))
+            for rel in off:
+                print("       " + rel)
+            return 1
+        print("\n  the engine matches `--write --approved --pick %s`: the tiles, rows 7..12 and the fountain's frames" % pick)
     if WRITE:
         pick = argval("--pick")
         if "--approved" not in ARGS or not pick or pick not in APPROVED:

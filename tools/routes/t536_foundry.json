@@ -1,0 +1,67 @@
+{
+ "rom": "debug",
+ "about": "T-536 C, THE FOUNDRY (the user, 2026-11-09), DRAFT: FOUNDRY CO.'s rooms redrawn in place (gbaoffice.py --write --approved --pick C) and the two lifts' door frames (gbadoors.py). Walk in at BRAZEN CITY's glass door, see the lobby and its plate, ride the lift to 5F and step out; then the HIDEOUT's B4F and the WAREHOUSE on FIVE ISLAND. Watch held at day. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "FOUNDRY CO.: in at the lobby door",
+   "steps": [
+    "goto SaffronCity 33 31",
+    "repel 999",
+    "close",
+    "wait 40",
+    "shot the door from BRAZEN CITY",
+    "warp MAP_SILPH_CO_1F",
+    "wait 60",
+    "shot the lobby: tread plate, bronze, the dark plate railed off"
+   ]
+  },
+  {
+   "stop": "FOUNDRY CO.: the lift, its door opening",
+   "steps": [
+    "warp MAP_SILPH_CO_ELEVATOR",
+    "wait 60",
+    "shot the lift car"
+   ]
+  },
+  {
+   "stop": "FOUNDRY CO.: up to 5F",
+   "steps": [
+    "look 0 2 1",
+    "choose \"5F\"",
+    "finish",
+    "wait 120",
+    "shot the car, arrived",
+    "to 2 4",
+    "press DOWN 2",
+    "wait 80",
+    "shot 5F, out of the lift"
+   ]
+  },
+  {
+   "stop": "the CORPUS HIDEOUT B4F: the casting floor",
+   "steps": [
+    "goto RocketHideout_B4F",
+    "close",
+    "wait 40",
+    "shot B4F by the lift"
+   ]
+  },
+  {
+   "stop": "the WAREHOUSE on FIVE ISLAND: ingots on pallets",
+   "steps": [
+    "goto FiveIsland_RocketWarehouse",
+    "close",
+    "wait 40",
+    "shot the WAREHOUSE"
+   ]
+  }
+ ]
+}

@@ -380,6 +380,9 @@ DOORS = {
     #  -- a slate room (1), the line of floor (9 / 10) and the lit sill (2). Left to the darkest colour, batch D's timber
     #  brown (building row 2, entry 9) and batch H's LURID magenta (fuchsia row 9, entry 10) became the room.
     "safari_zone":            dict(kind="slide2", leaf=(1, 0, 14, 14), room=(1, 10, 2)),
+    #  T-536 (the user, 2026-11-09: C, THE FOUNDRY): gbaoffice.py redraws the office these two lifts stand in (rows 8
+    #  and 12, the frame above the car); the cars themselves are primary/building's row 2, so the spec and the pinned
+    #  room are unchanged and --write --approved redraws both frames from the new closed blocks.
     "hideout_elevator":             dict(DEFAULT_1x2, room=(1, 9, 2)),
     "silph_co_elevator":            dict(DEFAULT_1x2, room=(1, 9, 2)),
     "trainer_tower_lobby_elevator": dict(DEFAULT_1x2, room=(1, 9, 2)),
