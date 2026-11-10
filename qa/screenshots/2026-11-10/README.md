@@ -121,6 +121,43 @@ T-538 batch 2 DRAFT: every redrawn tile at 3x in its home row, per direction
 T-538 batch 2 built in A THE WORKBENCH (DRAFT): the bike shop, HOLT's SEA COTTAGE, the lab's SALVAGE RIG, decoded from the engine's sources
 
 ![10Nov2026 - T538 - built A THE WORKBENCH workrooms - 21](10Nov2026%20-%20T538%20-%20built%20A%20THE%20WORKBENCH%20workrooms%20-%2021.png)
+
+### 10Nov2026 - T538 - batch 3 DRAFT fan club and day cares at 1x - 22
+
+T-538 batch 3 DRAFT: ARDOR's fan club, the two DAY-CAREs and INIT's house at 1x -- today beside A THE KEEPING, B THE REGISTER, C MAKE DO (redrawn in place, gbadwellings.py)
+
+![10Nov2026 - T538 - batch 3 DRAFT fan club and day cares at 1x - 22](10Nov2026%20-%20T538%20-%20batch%203%20DRAFT%20fan%20club%20and%20day%20cares%20at%201x%20-%2022.png)
+
+### 10Nov2026 - T538 - batch 3 DRAFT burgled house and THE TUNNEL at 1x - 23
+
+T-538 batch 3 DRAFT: DOLDRUM's burgled house and THE TUNNEL at 1x -- today beside A, B, C (the tunnel in gbacaves' approved colours)
+
+![10Nov2026 - T538 - batch 3 DRAFT burgled house and THE TUNNEL at 1x - 23](10Nov2026%20-%20T538%20-%20batch%203%20DRAFT%20burgled%20house%20and%20THE%20TUNNEL%20at%201x%20-%2023.png)
+
+### 10Nov2026 - T538 - batch 3 DRAFT details 3x fan club and day care - 24
+
+T-538 batch 3 DRAFT at 3x: the sofa, armchairs, table and rug; the window, lawn, low wall and case
+
+![10Nov2026 - T538 - batch 3 DRAFT details 3x fan club and day care - 24](10Nov2026%20-%20T538%20-%20batch%203%20DRAFT%20details%203x%20fan%20club%20and%20day%20care%20-%2024.png)
+
+### 10Nov2026 - T538 - batch 3 DRAFT details 3x burgled house - 25
+
+T-538 batch 3 DRAFT at 3x: the hole TEAM CORPUS dug; the strewn things and the LOOTER's paw prints
+
+![10Nov2026 - T538 - batch 3 DRAFT details 3x burgled house - 25](10Nov2026%20-%20T538%20-%20batch%203%20DRAFT%20details%203x%20burgled%20house%20-%2025.png)
+
+### 10Nov2026 - T538 - batch 3 DRAFT details 3x THE TUNNEL - 26
+
+T-538 batch 3 DRAFT at 3x: THE TUNNEL's stairs, lamps and floor
+
+![10Nov2026 - T538 - batch 3 DRAFT details 3x THE TUNNEL - 26](10Nov2026%20-%20T538%20-%20batch%203%20DRAFT%20details%203x%20THE%20TUNNEL%20-%2026.png)
+
+### 10Nov2026 - T538 - batch 3 DRAFT tiles 3x - 27
+
+T-538 batch 3 DRAFT: every tile at 3x in its home row, today and A, B, C
+
+![10Nov2026 - T538 - batch 3 DRAFT tiles 3x - 27](10Nov2026%20-%20T538%20-%20batch%203%20DRAFT%20tiles%203x%20-%2027.png)
+
 ### 10Nov2026 - T437 - SCREEN rebuilt, side by side with FireRed - 28
 
 T-437 DRAFT rebuilt on today's engine (b1280ca99): FireRed's face left, SCREEN right, the same screens at 3x -- dialogue, menus and the BAG, the summary and a battle

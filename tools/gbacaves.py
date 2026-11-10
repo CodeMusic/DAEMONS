@@ -1590,6 +1590,14 @@ def report():
         print("      " + "\n        ".join(_wrap(l, 108)))
 
 
+#  T-538 batch 3 (gbadwellings.py): THE TUNNEL's tiles this look leaves as vanilla drew them -- the floor's rings, the
+#  lit lane, the wall ends and corners, the stairs, the lamps -- are redrawn there, in this look's rows 7 and 8 (never
+#  written there). The write below keeps them as the engine has them, so it can never revert that batch; gbadwellings'
+#  report checks this set is exactly its own.
+T538_TUNNEL = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 29, 30, 31,
+               32, 34, 36, 37, 38, 41, 44, 45, 46, 47, 49}
+
+
 def write_engine():
     """every approved cave into the engine: the drawn ones' tiles.png and the rows their look changes; each palette
     split's rows 7..12 in its own folder beside its base (the Tileset header in headers.h names them), and OTHER CAVE's
@@ -1611,6 +1619,9 @@ def write_engine():
             print("  wrote %s: a palette split, rows 7..12 in %s" % (look["name"], ", ".join(r for r, _ in sets)))
             continue
         new, what = redraw(cave, key)
+        if ts == "underground_path":
+            for t in T538_TUNNEL:
+                new[t] = list(cave.now[t])           # gbadwellings' (T-538 batch 3), as the engine has them
         if any((a == 0) != (b == 0) for t in range(cave.n) for a, b in zip(new[t], cave.van[t])):
             raise SystemExit("  !! %s: a tile's footprint moved -- nothing written" % key)
         tiles_png(cave, new).save(os.path.join(cave.dir, "tiles.png"), bits=4)
