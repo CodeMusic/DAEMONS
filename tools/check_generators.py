@@ -80,6 +80,10 @@ ARGS = {
     #  T-537: the same shape; the user picked "A Foundry stock, no blink" on 2026-11-09. The write redraws gbabuilding's
     #  LATER tiles of primary/building's tiles.png, and the report exits 1 when the engine is not what that write makes.
     "gbamachines": [["--approved", "--pick", "A"]],
+    #  T-538 batch 1: the same shape; the user picked "A Hearth" on 2026-11-10. The write redraws generic_building_2's
+    #  and generic_building_1's tiles and own rows and gbabuilding's LATER_T538 tiles of primary/building's tiles.png,
+    #  and the report exits 1 when the engine is not what that write makes.
+    "gbahomes": [["--approved", "--pick", "A"]],
     #  T-532: genmusaiseasons needs no flag (the user decided the build 2026-11-08): it writes the 18 seasonal forms --
     #  copies of today's art until gfx/drafts/t532_musai_seasons/finals/ holds a drawing NAMED IN ITS APPROVED_FINAL
     #  (the user's picks, 2026-11-08), the approved summers into gfx/daemons/, and its table and coordinates blocks --

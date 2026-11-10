@@ -26,6 +26,60 @@ T-538 DRAFT batch 1's tiles at 3x: generic_building_2, generic_building_1 and pr
 
 ![10Nov2026 - T538 - batch 1 tiles 3x - 4](10Nov2026%20-%20T538%20-%20batch%201%20tiles%203x%20-%204.png)
 
+### 10Nov2026 - T538 - forest gatehouse in A - 6
+
+T-538 batch 1, A HEARTH (DRAFT): the VIRIDIAN FOREST south gatehouse -- quarry tiles, limewash, the gingham pelmet, oak counters
+
+![10Nov2026 - T538 - forest gatehouse in A - 6](10Nov2026%20-%20T538%20-%20forest%20gatehouse%20in%20A%20-%206.png)
+
+### 10Nov2026 - T538 - ROUTE 11 gatehouse 1F in A - 7
+
+T-538 A HEARTH (DRAFT): ROUTE 11's gatehouse, 1F
+
+![10Nov2026 - T538 - ROUTE 11 gatehouse 1F in A - 7](10Nov2026%20-%20T538%20-%20ROUTE%2011%20gatehouse%201F%20in%20A%20-%207.png)
+
+### 10Nov2026 - T538 - ROUTE 11 gatehouse 2F in A - 8
+
+T-538 A HEARTH (DRAFT): ROUTE 11's gatehouse, 2F -- leaded lights, the rag-rug runner, the coin-viewers
+
+![10Nov2026 - T538 - ROUTE 11 gatehouse 2F in A - 8](10Nov2026%20-%20T538%20-%20ROUTE%2011%20gatehouse%202F%20in%20A%20-%208.png)
+
+### 10Nov2026 - T538 - UNDERGROUND PATH door house in A - 9
+
+T-538 A HEARTH (DRAFT): an UNDERGROUND PATH entrance house
+
+![10Nov2026 - T538 - UNDERGROUND PATH door house in A - 9](10Nov2026%20-%20T538%20-%20UNDERGROUND%20PATH%20door%20house%20in%20A%20-%209.png)
+
+### 10Nov2026 - T538 - ROUTE 22 road house in A - 10
+
+T-538 A HEARTH (DRAFT): ROUTE 22's road house -- the LEAGUE statue (batch G's) on the redrawn plinth
+
+![10Nov2026 - T538 - ROUTE 22 road house in A - 10](10Nov2026%20-%20T538%20-%20ROUTE%2022%20road%20house%20in%20A%20-%2010.png)
+
+### 10Nov2026 - T538 - COPYCAT 2F in A - 11
+
+T-538 A HEARTH (DRAFT): the COPYCAT's room -- the console is a pull-along wooden duck
+
+![10Nov2026 - T538 - COPYCAT 2F in A - 11](10Nov2026%20-%20T538%20-%20COPYCAT%202F%20in%20A%20-%2011.png)
+
+### 10Nov2026 - T538 - FOUNDRY 9F beds in A - 12
+
+T-538 A HEARTH (DRAFT): FOUNDRY 9F -- the rest-room beds' patchwork quilts, the doorways and partitions
+
+![10Nov2026 - T538 - FOUNDRY 9F beds in A - 12](10Nov2026%20-%20T538%20-%20FOUNDRY%209F%20beds%20in%20A%20-%2012.png)
+
+### 10Nov2026 - T538 - LORELEI house in A - 13
+
+T-538 A HEARTH (DRAFT): LORELEI's house -- her bed (the house's own tiles wait for the SAFARI redesign)
+
+![10Nov2026 - T538 - LORELEI house in A - 13](10Nov2026%20-%20T538%20-%20LORELEI%20house%20in%20A%20-%2013.png)
+
+### 10Nov2026 - T538 - CINNABAR lab lounge in A - 14
+
+T-538 A HEARTH (DRAFT): the CINNABAR lab lounge -- the rug border and side blinds
+
+![10Nov2026 - T538 - CINNABAR lab lounge in A - 14](10Nov2026%20-%20T538%20-%20CINNABAR%20lab%20lounge%20in%20A%20-%2014.png)
+
 ### 10Nov2026 - T540 - walled garden key lines - 15
 
 T-540 DRAFT: THE WALLED GARDEN's key lines, A and B, in the game's message box and font at 3x, and the name in the 112px popup and the 104px name card. Nothing in the engine.
