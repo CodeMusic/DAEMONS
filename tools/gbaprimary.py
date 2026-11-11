@@ -29,8 +29,9 @@
                                                    #   the draft (everything but the doors is one drawing), the doors in
                                                    #   all three and opening as gbadoors draws them, the 24 tiles at 3x
     python3 tools/gbaprimary.py --write --batch 3 --approved --pick X
-                                                   # batch 3 into the engine: refused unless X is in APPROVED_B3 (empty:
-                                                   #   a draft); then gbadoors.py --write --approved for the door frames
+                                                   # batch 3 into the engine: refused unless X is in APPROVED_B3
+                                                   #   ({"A"}: the user, 2026-11-10, "A Clear pane"); then
+                                                   #   gbadoors.py --write --approved for the door frames
 
 WHAT IS LEFT (census item 7, re-measured on today's engine). T-438 batch C (gbageneral.py) re-surfaced General's
 ground -- the rock, the LEDGES, sand and paving -- and drew its motifs: the FENCES, the SIGNPOSTS, the bushes and the
@@ -1158,7 +1159,7 @@ def draft_b2(use):
 #  rows 4 and 6 index 1): batch 3 draws in rows 0, 1, 2, 3 and 5 (and PALLET's row 10 for the sea rock), never 4 or 6.
 #  The water itself is gbawater's and is never drawn here: the sea rock and the quay's foot sit ON its strips (a top
 #  layer over 416..419), so their drawing stops at their own silhouette and the animation runs on round them.
-APPROVED_B3 = set()                  # the user's pick goes here ("A", "B" or "C"); --write --batch 3 refuses until then
+APPROVED_B3 = {"A"}                  # the user, 2026-11-10: A Clear pane (--write --batch 3 refuses others)
 DRAFT_B3 = os.path.join(ROOT, "gfx", "drafts", "t542_b3")
 
 B3_STYLES = collections.OrderedDict([

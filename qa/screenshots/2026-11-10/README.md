@@ -637,3 +637,57 @@ The books' covers before and after reprinting against v11.345.12
 Ten pages of THE COMPANION, the companion's manual (the PDF is public)
 
 ![10Nov2026 - C321 - THE COMPANION pages - 110](10Nov2026%20-%20C321%20-%20THE%20COMPANION%20pages%20-%20110.png)
+
+### 10Nov2026 - T542 - FOUR ISLAND garden built - 111
+
+T-542 batch 3 built (A THE CLEAR PANE): FOUR ISLAND's garden -- the thin trees in every tree's lobed crown, the puddle banks lit lip, dark bank, wet foot. Decoded from the engine's sources. DRAFT.
+
+![10Nov2026 - T542 - FOUR ISLAND garden built - 111](10Nov2026%20-%20T542%20-%20FOUR%20ISLAND%20garden%20built%20-%20111.png)
+
+### 10Nov2026 - T542 - FOUR ISLAND south puddles built - 112
+
+T-542 batch 3 built: FOUR ISLAND's south puddles, the one-pixel banks as a symmetric run of small stones. DRAFT.
+
+![10Nov2026 - T542 - FOUR ISLAND south puddles built - 112](10Nov2026%20-%20T542%20-%20FOUR%20ISLAND%20south%20puddles%20built%20-%20112.png)
+
+### 10Nov2026 - T542 - ROUTE 20 sea rocks built - 113
+
+T-542 batch 3 built: ROUTE 20's sea rocks in the chunky pale stones of their twin, silhouette and foam rim kept; the water strips run on round them. DRAFT.
+
+![10Nov2026 - T542 - ROUTE 20 sea rocks built - 113](10Nov2026%20-%20T542%20-%20ROUTE%2020%20sea%20rocks%20built%20-%20113.png)
+
+### 10Nov2026 - T542 - ARDOR quay built - 114
+
+T-542 batch 3 built: ARDOR's quay edge, one more course of the paving's running bond over even ripples. DRAFT.
+
+![10Nov2026 - T542 - ARDOR quay built - 114](10Nov2026%20-%20T542%20-%20ARDOR%20quay%20built%20-%20114.png)
+
+### 10Nov2026 - T542 - ROUTE 12 islet built - 115
+
+T-542 batch 3 built: ROUTE 12's islet rim corners carrying the crenellated lip. DRAFT.
+
+![10Nov2026 - T542 - ROUTE 12 islet built - 115](10Nov2026%20-%20T542%20-%20ROUTE%2012%20islet%20built%20-%20115.png)
+
+### 10Nov2026 - T542 - CALLOW CENTRE door built, A - 116
+
+T-542 batch 3 built: CALLOW's CENTRE double door as A THE CLEAR PANE (sky-lit glass, two glints, a push bar and kick plate). DRAFT.
+
+![10Nov2026 - T542 - CALLOW CENTRE door built, A - 116](10Nov2026%20-%20T542%20-%20CALLOW%20CENTRE%20door%20built%2C%20A%20-%20116.png)
+
+### 10Nov2026 - T542 - CALLOW REPO door built, A - 117
+
+T-542 batch 3 built: CALLOW's REPO single door as A THE CLEAR PANE. DRAFT.
+
+![10Nov2026 - T542 - CALLOW REPO door built, A - 117](10Nov2026%20-%20T542%20-%20CALLOW%20REPO%20door%20built%2C%20A%20-%20117.png)
+
+### 10Nov2026 - T542 - DOLDRUM doors built, A - 118
+
+T-542 batch 3 built: DOLDRUM's CENTRE and REPO, the clear pane. DRAFT.
+
+![10Nov2026 - T542 - DOLDRUM doors built, A - 118](10Nov2026%20-%20T542%20-%20DOLDRUM%20doors%20built%2C%20A%20-%20118.png)
+
+### 10Nov2026 - T542 - water battle backgrounds follow - 119
+
+T-542 batch 3 knock-on: T-527's water and underwater battle backgrounds re-derived by gbabattleart --write --approved --all, which samples the sea rock from ONE ISLAND's beach (before | after, tiles in row 0's palette). Picks unchanged. DRAFT.
+
+![10Nov2026 - T542 - water battle backgrounds follow - 119](10Nov2026%20-%20T542%20-%20water%20battle%20backgrounds%20follow%20-%20119.png)

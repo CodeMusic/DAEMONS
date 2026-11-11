@@ -29,7 +29,7 @@ python3 tools/gbabudget.py --write   # and update the tables below
 | **IWRAM** | 32.0 KB | 29.6 KB | **2.4 KB** | 92.42% |
 | **ROM** | 16.0 MB | 11.2 MB | **4.8 MB** | 69.69% |
 
-***The ROM's row is the 16 MB file and what is in it, not the highest address used.*** *`gfx_data` is pinned where retail keeps it, so the 4.8 MB free is in two places: what comes before it grows into a 4.0 MB gap below it, and it grows into the 880.6 KB after it. The GBA addresses 32 MB, so the file itself could grow.*
+***The ROM's row is the 16 MB file and what is in it, not the highest address used.*** *`gfx_data` is pinned where retail keeps it, so the 4.8 MB free is in two places: what comes before it grows into a 4.0 MB gap below it, and it grows into the 880.5 KB after it. The GBA addresses 32 MB, so the file itself could grow.*
 
 *The debug ROM costs a further **176 bytes** of EWRAM and **48** of IWRAM.*
 
