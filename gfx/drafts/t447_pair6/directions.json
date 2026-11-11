@@ -1,0 +1,101 @@
+{
+ "ticket": "T-447",
+ "pair": 6,
+ "status": "DRAFT -- not in the engine",
+ "approved": {},
+ "directions": {
+  "A": {
+   "title": "THE FOUR VESSELS / THE INDEX CARD",
+   "lines": [
+    "LEAGUE: UMBRA's near-black stone carried inside, and the only colour in each hearing room its member's humour",
+    "as a fluid -- the pillars tall glass vessels filled with it, the ring a basin of it set in the floor, the wall",
+    "niches stoppered phials: pale phlegm (IV), yellow bile (II), black bile (III), red blood (I). AL CLEAR's room",
+    "CLEAR: white stone and glass, four empty vessels, a glass walk over the dark, a clear vessel with nothing in it.",
+    "HALL: the record as the INDEX keeps it, in sepia (8.6) -- a card catalogue for walls, the floor ruled into",
+    "fields, the pillars card cabinets, the emblem a blank date-stamp; the machine prints the card."
+   ],
+   "tiles_redrawn": {
+    "lg": 245,
+    "hof": 114
+   },
+   "new_tiles": 0,
+   "rows": {
+    "pokemon_league": [
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "hall_of_fame": [
+     7,
+     10,
+     11
+    ]
+   }
+  },
+  "B": {
+   "title": "THE HEARING / THE STAT SHEET",
+   "lines": [
+    "LEAGUE: the REVIEW BOARD as a hearing -- oak panelling and brass sconces, a parquet floor, the ring a round",
+    "dock (a carpet in the member's colour inside a brass rail, where the challenger stands to be heard), the",
+    "pillars stacks of case files bound in that colour, the niches pigeonholes. AL CLEAR's room THE INSTRUMENT:",
+    "steel panels ruled with ticks, graph-paper floor, the emblem a dial with every segment lit all the way round.",
+    "HALL: the record as numbers -- walls of ruled rows, graph-paper floor, the pillars bar meters, the emblem a",
+    "hexagon of six axes with a smaller hexagon plotted in it (a person as six stats); the machine a tabulator."
+   ],
+   "tiles_redrawn": {
+    "lg": 247,
+    "hof": 114
+   },
+   "new_tiles": 0,
+   "rows": {
+    "pokemon_league": [
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "hall_of_fame": [
+     7,
+     10,
+     11
+    ]
+   }
+  },
+  "C": {
+   "title": "THE SEASONS / THE CERTIFICATE",
+   "lines": [
+    "LEAGUE: each humour's season (8.679) -- limewashed rooms on pale flags, and over every floor the same litter",
+    "that is frost in IV's colours, sun in II's, leaves in III's, blossom in I's; the ring a wheel of four spokes",
+    "with the room's season risen over its horizon; the pillars urns glazed in the humour. AL CLEAR's room NO",
+    "WEATHER: a sealed glasshouse, his wheel all white -- every season's colour at once is white light (7.2).",
+    "HALL: the record as an official document (AL CLEAR's name is on it) -- an engraved guilloche border for walls,",
+    "parchment under a fine lattice, the pillars rolled diplomas in a ribbon, the emblem a blank foil seal."
+   ],
+   "tiles_redrawn": {
+    "lg": 246,
+    "hof": 114
+   },
+   "new_tiles": 0,
+   "rows": {
+    "pokemon_league": [
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ],
+    "hall_of_fame": [
+     7,
+     10,
+     11
+    ]
+   }
+  }
+ }
+}

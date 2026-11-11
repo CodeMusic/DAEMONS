@@ -188,6 +188,12 @@
    "engine:tileset_rules.mk"
   ]
  },
+ "gbatowns": {
+  "why": "KNOWN -- read before a whole-tree --write --approved: its batch C rule copies a redrawn general tile's drawing into a town's copy of it, and T-542 batch 2 (engine 2ec006aa1, 2026-11-10) redrew general tiles 552/568 (the blue house's timber corner posts) after gbatowns last wrote, so its write would carry the new post into FOUR ISLAND's two copies (sevii_islands_45 tiles 70/86, blocks 0x2B8/0x2BA, 13 pixels, one shade 9->8). The tool is the consistent side; the art is left as it is until the user wants FOUR ISLAND's houses to match (T-447 pair 6's finding, 2026-11-11)",
+  "files": [
+   "engine:data/tilesets/secondary/sevii_islands_45/tiles.png"
+  ]
+ },
  "genbacks": {
   "why": "STALE -- LOGIC's and INTUITION's back pictures were finished by hand after it ran (the paw, the collar line) and it cannot draw that (T-293)",
   "files": [

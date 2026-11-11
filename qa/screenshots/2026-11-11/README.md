@@ -277,3 +277,33 @@ T-447 pair 5: RIXY CHAMBER as A CARVED, NOT LIT -- sandstone courses, the chambe
 T-447 pair 5: VIAPOIS CHAMBER as A CARVED, NOT LIT -- sandstone courses, the chamber's own colour a band of pigment, a frieze of the unreadable script on the back wall and a line of it along every maze wall, doors into the dark; 2x (DRAFT)
 
 ![11Nov2026 - T447 - TANOBY VIAPOIS CHAMBER carved not lit 2x - 54](11Nov2026%20-%20T447%20-%20TANOBY%20VIAPOIS%20CHAMBER%20carved%20not%20lit%202x%20-%2054.png)
+
+### 11Nov2026 - T447 - pair 6 LEAGUE 1x - 55
+
+T-447 pair 6 DRAFT: the four hearing rooms (met IV, II, III, I) and AL CLEAR's room at 1x, today and A THE FOUR VESSELS, B THE HEARING, C THE SEASONS
+
+![11Nov2026 - T447 - pair 6 LEAGUE 1x - 55](11Nov2026%20-%20T447%20-%20pair%206%20LEAGUE%201x%20-%2055.png)
+
+### 11Nov2026 - T447 - pair 6 HALL 1x - 56
+
+T-447 pair 6 DRAFT: the HALL OF FAME at 1x, today and A THE INDEX CARD, B THE STAT SHEET, C THE CERTIFICATE; the UNION ROOM unchanged
+
+![11Nov2026 - T447 - pair 6 HALL 1x - 56](11Nov2026%20-%20T447%20-%20pair%206%20HALL%201x%20-%2056.png)
+
+### 11Nov2026 - T447 - pair 6 hearing rooms 3x - 57
+
+T-447 pair 6 DRAFT: the hearing rooms' door, ring and each member's pillars at 3x
+
+![11Nov2026 - T447 - pair 6 hearing rooms 3x - 57](11Nov2026%20-%20T447%20-%20pair%206%20hearing%20rooms%203x%20-%2057.png)
+
+### 11Nov2026 - T447 - pair 6 AL CLEAR and HALL 3x - 58
+
+T-447 pair 6 DRAFT: AL CLEAR's door and emblem, the RECORD's machine and the HALL's emblem at 3x
+
+![11Nov2026 - T447 - pair 6 AL CLEAR and HALL 3x - 58](11Nov2026%20-%20T447%20-%20pair%206%20AL%20CLEAR%20and%20HALL%203x%20-%2058.png)
+
+### 11Nov2026 - T447 - pair 6 tiles 3x - 59
+
+T-447 pair 6 DRAFT: both sets' tiles at 3x, the shared hearing tiles once per room's row
+
+![11Nov2026 - T447 - pair 6 tiles 3x - 59](11Nov2026%20-%20T447%20-%20pair%206%20tiles%203x%20-%2059.png)

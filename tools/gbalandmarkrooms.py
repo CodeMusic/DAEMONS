@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """The landmarks' rooms, drawn from the story, a pair at a time (T-447, pair 4: the MANSION and DAEMON TOWER; pair 5:
-KEEPALIVE PLANT and TANOBY).
+KEEPALIVE PLANT and TANOBY; pair 6: the LEAGUE and the HALL OF FAME).
 
     python3 tools/gbalandmarkrooms.py                 # report: the re-census of the seven landmarks still mostly
                                                       #   Nintendo's drawing, the proposed pairs, pair 4's groups, and
@@ -19,6 +19,11 @@ KEEPALIVE PLANT and TANOBY).
                                                       # into the engine (the user, 2026-11-11: PLANT B, TANOBY A,
                                                       #   B extended over the tiles its draft left bare); the report
                                                       #   then exits 1 on any difference from that write
+    python3 tools/gbalandmarkrooms.py --pair 6 --draft [DIR]
+                                                      # pair 6's directions (the LEAGUE + the HALL OF FAME, below),
+                                                      #   the same outputs in gfx/drafts/t447_pair6/
+    python3 tools/gbalandmarkrooms.py --pair 6 --write --approved
+                                                      # refused until APPROVED holds "lg" and/or "hof" (a DRAFT)
 
 THE JOB (the user, 2026-11-10, "The landmarks left"; census item 8). T-447 drew the landmarks' OUTSIDES from the story
 (pairs 1-3, tools/gbalandmarks.py). Seven landmarks are still mostly Nintendo's drawing INSIDE: the MANSION (and its
@@ -3406,6 +3411,1587 @@ def main5():
     return 1 if bad else 0
 
 
+# ============================================================================================ PAIR 6
+#  THE LEAGUE + THE HALL OF FAME -- the ending, walked straight through (pair 4's notes give the order): the REVIEW
+#  BOARD's four hearing rooms, met IV, II, III, I (vision 6: PHLEGMATIC, CHOLERIC, MELANCHOLIC, SANGUINE -- the
+#  humours, which were "literally colored fluids"), AL CLEAR's room (the incumbent: CONTENT-optimal, "mechanically
+#  excellent, philosophically wrong"), then the record (4.1: "she records you into a system that flattens you into
+#  stats"; 3386: the HALL OF FAME is where the institution records AL CLEAR's name).
+#
+#  pokemon_league  the four hearing rooms and AL CLEAR's room. All six of its own rows are this pair's: row 7 the
+#                  stone every room shares (walls, doors, AL CLEAR's steps), rows 8..11 the four hearing rooms (IV 8,
+#                  II 9, III 10, I 11 -- each room's own row draws the SAME floor, ring and wall-light tiles, so the
+#                  fifteen materials stand at the same index in all four and only their colours differ: that is how
+#                  each room carries its member's humour), row 12 AL CLEAR's. Tiles placed in primary/building's
+#                  rows (the door's round plate in row 3, AL CLEAR's stair and pillars in row 0, his runner in row 1,
+#                  the lights beside it in row 5) are redrawn in those rows' fixed colours. The engine names nine
+#                  blocks here (metatile_labels.h: the door 0x28E/0x296 OPEN, the entry 0x29D..0x2A7 CLOSED behind
+#                  the player, LANCE's floor shade 0x311): each keeps its id and still reads as what it is, and the
+#                  two tiles only those blocks draw (49, 51) are drawn with them. The statues in I's corridor are
+#                  primary/building's (batch G's LEAGUE statue, gbabuilding): never touched here.
+#  hall_of_fame    the HALL OF FAME. Its rows 7, 10, 11 are drawn by the HALL alone; the UNION ROOM (a link room)
+#                  shares the tileset but draws rows 8 and 9 and its own tiles, and the three tiles both rooms draw
+#                  (45..47, the floor's front edge, in primary row 5) are kept: the UNION ROOM does not change. The
+#                  RECORD's machine keeps its six lights where FLDEFF_HALL_OF_FAME_RECORD sets the six balls (field_
+#                  effect.c, 117,60); its monitor sprite is gbafieldfx's (hof_monitor), not these tiles.
+#
+#  The same rules as pairs 4 and 5: redrawn IN PLACE, every tile keeps its footprint, no block, layer, flip, palette
+#  row, behaviour or collision bit moves and no map is touched; 0 new tiles. Neither tileset has an animation (both
+#  callbacks NULL) and nothing recolours them at run time (no tileset test in fieldmap.c). gbatowns batch G drew 91
+#  LEAGUE and 38 HALL tiles by role (a DRAFT, 2026-10-28); gbatowns.LANDMARKS now holds all five LEAGUE rooms and the
+#  HALL (T-447 pair 6), so its write keeps every tile they draw as the engine has it, and this pair redraws them.
+#  No readable words anywhere: no letters, numerals or marks in any direction (the report checks the four secrets'
+#  words are nowhere in this file's art -- there is no text in it at all).
+
+DRAFT6_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t447_pair6")
+LG = G.Set("lg", "gTileset_PokemonLeague", [7, 8, 9, 10, 11, 12])
+HOF = G.Set("hof", "gTileset_HallOfFame", [7, 10, 11])
+SETS6 = {"lg": LG, "hof": HOF}
+G.SETS.update(SETS6)
+NAMES.update({"lg": "the LEAGUE", "hof": "the HALL OF FAME"})
+TODAY6 = {(k, r): [tuple(c) for c in read_pal(os.path.join(GBA, S.dir, "palettes/%02d.pal" % r))]
+          for k, S in SETS6.items() for r in range(16)}
+
+HEARING = [("PokemonLeague_LoreleisRoom", 8, "IV", "PHLEGMATIC"), ("PokemonLeague_BrunosRoom", 9, "II", "CHOLERIC"),
+           ("PokemonLeague_AgathasRoom", 10, "III", "MELANCHOLIC"), ("PokemonLeague_LancesRoom", 11, "I", "SANGUINE")]
+CHAMPION = "PokemonLeague_ChampionsRoom"
+HALL = "PokemonLeague_HallOfFame"
+UNION = "UnionRoom"
+LEAGUE_MAPS = [h[0] for h in HEARING] + [CHAMPION]
+#  the blocks the engine names (include/constants/metatile_labels.h), drawn whether or not a map places them
+NAMED6 = {0x28E: "Door_Top_Open", 0x296: "Door_Mid_Open", 0x29D: "Entry_TopLeft_Closed", 0x29E: "Entry_TopMid_Closed",
+          0x29F: "Entry_TopRight_Closed", 0x2A5: "Entry_BottomLeft_Closed", 0x2A6: "Entry_BottomMid_Closed",
+          0x2A7: "Entry_BottomRight_Closed", 0x311: "Floor_ShadeFull_Lance"}
+KEEP_HOF = {45, 46, 47}                              # the floor's front edge (primary row 5), the UNION ROOM's too
+
+#  what each tile is, by its vanilla drawing (read off the five rooms' blocks)
+def _kinds(spec):
+    out = {}
+    for kind, ts in spec:
+        for t in ts:
+            out[t] = kind
+    return out
+
+
+R = lambda a, b: list(range(a, b + 1))
+KIND_LG = _kinds([
+    ("walltop", [5, 6, 21, 22, 16]), ("wall", [7, 8, 9, 10, 23, 24, 25, 26, 32, 33, 48]),
+    ("door", [34, 35, 36, 47, 49, 50, 51, 63] + R(70, 79) + R(86, 95)), ("plate", R(80, 85)),
+    ("floor", [1, 2, 17, 18, 96, 154, 155, 170, 171]), ("kerb", [3, 4, 19, 20]),
+    ("ring", R(11, 15) + R(27, 31) + R(37, 46) + R(52, 62)),
+    ("light", R(156, 159) + R(172, 175)), ("lightwall", [126, 127, 142, 143]),
+    ("pillar", R(97, 125) + R(128, 135) + R(144, 149) + [152, 153, 164, 165, 168, 169]),
+    ("cfloor", [160, 161, 162, 176, 177, 178, 184, 186, 199]),
+    ("cwall", R(180, 183) + [185] + R(196, 198) + [200, 201] + R(212, 217) + R(228, 233) + R(244, 247) +
+     R(260, 263) + R(276, 281) + R(292, 295) + [308, 309, 324]),
+    ("cstep", R(224, 226) + R(234, 236) + R(248, 251) + R(264, 267)),
+    ("cemblem", [188, 202, 203, 204, 218, 219, 220]), ("cpillar", [189, 190, 205, 206, 221, 222]),
+    ("cdoor", R(240, 243) + R(256, 259) + R(272, 275) + R(288, 291)),
+    ("runner", [304, 307] + R(320, 323) + R(336, 339)), ("clight", [237, 238, 239, 253, 254, 255]),
+])
+KIND_HOF = _kinds([
+    ("wall", R(1, 10) + R(17, 26) + R(33, 40) + R(49, 56) + R(65, 68) + [71, 72] + R(81, 84) + [87, 88]),
+    ("machine", [41, 42] + R(57, 62) + R(73, 78) + R(89, 94) + [79] + R(95, 101) + R(110, 117) + R(122, 127)),
+    ("side", [64, 69, 70, 85, 86, 48]), ("floor", [16]), ("pillar", [11, 12, 13, 14, 27, 28, 29, 30, 43, 44]),
+    ("emblem", [128, 129, 130, 144, 145, 146, 160, 161, 162]),
+])
+KIND6 = {"lg": KIND_LG, "hof": KIND_HOF}
+
+
+def map_blocks(m):
+    lid = G.LAYOUT_OF_MAP[m]
+    l = next(x for x in G.LAYOUTS if x["id"] == lid)
+    bd = open(os.path.join(GBA, l["blockdata_filepath"]), "rb").read()
+    W = l["width"]
+    return [[struct.unpack_from("<H", bd, (y * W + x) * 2)[0] & 0x3FF for x in range(W)] for y in range(l["height"])]
+
+
+def region6(S, blocks, layer):
+    """a grid of block ids -> (layout of (tile, flip), the palette row of each tile) for one layer"""
+    lay, rg = [], []
+    for brow in blocks:
+        for half in (0, 1):
+            L, Rr = [], []
+            for b in brow:
+                if b is None or b < 640 or (b - 640 + 1) * 16 > len(S.mt):
+                    L += [None, None]
+                    Rr += [None, None]
+                    continue
+                ee = struct.unpack_from("<8H", S.mt, (b - 640) * 16)
+                for q in (half * 2, half * 2 + 1):
+                    e = ee[layer * 4 + q]
+                    t = e & 0x3FF
+                    if t < 640:
+                        L.append(None)
+                        Rr.append(None)
+                    else:
+                        L.append((t - 640, ("h" if (e >> 10) & 1 else "") + ("v" if (e >> 11) & 1 else "")))
+                        Rr.append(e >> 12)
+            lay.append(L)
+            rg.append(Rr)
+    return lay, rg
+
+
+def owned6(setkey):
+    """the tiles this pair draws: every tile the LEAGUE's five rooms place or its named blocks draw; the HALL's own
+    (never a tile the UNION ROOM draws, never the front edge)"""
+    S = SETS6[setkey]
+    if setkey == "lg":
+        ts = {t for t in S.use if t < S.nvan and any(S.van[t])}
+        for b in NAMED6:
+            for e in struct.unpack_from("<8H", S.mt, (b - 640) * 16):
+                if (e & 0x3FF) >= 640 and any(S.van[(e & 0x3FF) - 640]):
+                    ts.add((e & 0x3FF) - 640)
+        return sorted(ts)
+    return sorted(t for t in S.use if t < S.nvan and any(S.van[t]) and S.use[t]["maps"] == {HALL}
+                  and t not in KEEP_HOF)
+
+
+def rows_of6(setkey, t):
+    S = SETS6[setkey]
+    if t in S.use and S.use[t]["rows"]:
+        return dict(S.use[t]["rows"])
+    return {7: 1}                                     # 49, 51: only the CLOSED entry draws them, in row 7
+
+
+# ---------------------------------------------------------------------------------------- the scene
+class Scene:
+    """a room (or a named block) as one picture: both layers' kinds and vanilla colours, the components the painters
+    draw whole (pillars, the ring, the machine, the emblem)"""
+
+    def __init__(self, setkey, name, blocks, maprow=None):
+        self.setkey, self.name, self.blocks = setkey, name, blocks
+        S = SETS6[setkey]
+        self.layers = [region6(S, blocks, layer) for layer in (0, 1)]
+        self.th = len(self.layers[0][0])
+        self.tw = max(len(r) for r in self.layers[0][0])
+        self.w, self.h = self.tw * 8, self.th * 8
+        self.row = maprow
+        kinds = KIND6[setkey]
+        self.kindL = [[[None] * self.w for _ in range(self.h)] for _ in (0, 1)]
+        self.colL = [[[None] * self.w for _ in range(self.h)] for _ in (0, 1)]
+        self.ukind = [[None] * self.w for _ in range(self.h)]
+        self.L = 0
+        for layer in (0, 1):
+            lay, rg = self.layers[layer]
+            for ty, r in enumerate(lay):
+                for tx, spec in enumerate(r):
+                    if spec is None:
+                        continue
+                    t, fl = spec
+                    row = rg[ty][tx]
+                    pal = S.vpal[row] if row >= 7 else VPRI[row]
+                    for k in range(64):
+                        x, y = k % 8, k // 8
+                        sx = 7 - x if "h" in fl else x
+                        sy = 7 - y if "v" in fl else y
+                        vv = S.van[t][sy * 8 + sx]
+                        if vv == 0:
+                            continue
+                        X, Y = tx * 8 + x, ty * 8 + y
+                        self.kindL[layer][Y][X] = self.ukind[Y][X] = kinds.get(t, "misc")
+                        self.colL[layer][Y][X] = pal[vv]
+        self.comps = {}
+
+    @property
+    def kind(self):
+        """the kinds in the layer being painted (a layer-1 pillar over a floor tile leaves the floor a floor)"""
+        return self.kindL[self.L]
+
+    @property
+    def col(self):
+        return self.colL[self.L]
+
+    def comp(self, kind):
+        """the 8-connected components of one kind, as bounding boxes, largest first"""
+        if kind in self.comps:
+            return self.comps[kind]
+        seen, out = set(), []
+        for y in range(self.h):
+            for x in range(self.w):
+                if self.ukind[y][x] != kind or (x, y) in seen:
+                    continue
+                st, pts = [(x, y)], []
+                seen.add((x, y))
+                while st:
+                    a, b = st.pop()
+                    pts.append((a, b))
+                    for dx in (-1, 0, 1):
+                        for dy in (-1, 0, 1):
+                            u, v2 = a + dx, b + dy
+                            if 0 <= u < self.w and 0 <= v2 < self.h and (u, v2) not in seen and self.ukind[v2][u] == kind:
+                                seen.add((u, v2))
+                                st.append((u, v2))
+                xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+                out.append((min(xs), min(ys), max(xs), max(ys), len(pts)))
+        out.sort(key=lambda c: -c[4])
+        out = [c for c in out if c[4] >= 24]
+        if kind == "pillar":                          # I's horns stand touching: one vessel each
+            split = []
+            for c in out:
+                h = c[3] - c[1] + 1
+                n = max(1, int(round(h / 40.0))) if h > 52 else 1
+                for i in range(n):
+                    split.append((c[0], c[1] + i * h // n, c[2], c[1] + (i + 1) * h // n - 1, c[4] // n))
+            out = split
+        self.comps[kind] = out
+        return self.comps[kind]
+
+    def box_at(self, kind, x, y):
+        for c in self.comp(kind):
+            if c[0] <= x <= c[2] and c[1] <= y <= c[3]:
+                return c
+        return None
+
+    def lum(self, x, y):
+        c = self.col[y][x]
+        return 0.0 if c is None else (0.3 * c[0] + 0.59 * c[1] + 0.11 * c[2]) / 255.0
+
+
+def scenes6():
+    out = []
+    for m in LEAGUE_MAPS:
+        out.append(Scene("lg", m, map_blocks(m), dict(HEARING_ROW).get(m)))
+    out.append(Scene("lg", "the entry, CLOSED", [[0x29D, 0x29E, 0x29F], [0x2A5, 0x2A6, 0x2A7]], 11))
+    out.append(Scene("lg", "the door, OPEN", [[0x28E], [0x296]], 8))
+    out.append(Scene("lg", "LANCE's floor shade", [[0x311]], 11))
+    out.append(Scene("hof", HALL, map_blocks(HALL)))
+    return out
+
+
+HEARING_ROW = [(h[0], h[1]) for h in HEARING]
+
+
+# ---------------------------------------------------------------------------------------- materials, resolving
+#  each own row's fifteen materials (index 1..15). Rows 8..11 carry ONE list (the hearing rooms' shared tiles); the
+#  colours of H1..H4 (the humour), A1/A2 (its accent) and F1..F3 (the floor) are each room's own.
+ROWS6 = {("lg", 7): ["OUT", "GRY", "SIG", "W1", "W2", "W3", "W4", "LMP", "LMPD", "E1", "E2", "E3", "E4", "E5", "E6"],
+         ("lg", 12): ["INK", "SL1", "FL1", "FL0", "WHT", "GRY12", "WA1", "WA2", "FL2", "GD1", "Q1", "WA0", "GD0", "WA3",
+                      "BLK"]}
+for _r in (8, 9, 10, 11):
+    ROWS6["lg", _r] = ["WHT", "LG", "DG", "H1", "H2", "H3", "H4", "S1", "S2", "S3", "A1", "A2", "F1", "F2", "F3"]
+ROWS6["hof", 7] = ["OUT", "GRY", "P3", "WHT", "B1", "B2", "B3", "FL1", "FL2", "B0", "Y1", "Y2", "B4", "AMB", "B5"]
+ROWS6["hof", 10] = ["P1", "P2", "M1", "M2", "M3", "M4", "M5", "OUT", "GRY", "M0", "WHT", "M6", "M7", "AMB", "AMB2"]
+ROWS6["hof", 11] = ["OUT", "GRY", "C1", "WHT", "C2", "C3", "C4", "C5", "C6", "C0", "Y1", "Y2", "Y3", "Y4", "C7"]
+
+
+def pals6(D, setkey):
+    S = SETS6[setkey]
+    out = {}
+    for r in range(16):
+        if r in S.rows:
+            row = [TODAY6[setkey, r][0]]
+            over = D.get("rowcol", {}).get((setkey, r), {})
+            for n in ROWS6[setkey, r]:
+                row.append(tuple(over.get(n, D["mat"][n])))
+            out[r] = row
+        else:
+            out[r] = list(TODAY6[setkey, r])
+    for r in range(7):                                # primary/building's rows, as the engine has them (fixed)
+        out[r] = [tuple(c) for c in G.PPAL[r]]
+    return out
+
+
+def resolve6(mats, base, rows, D, pals, setkey):
+    """64 materials -> 64 indices for a tile placed in ROWS. A material its rows hold at one index takes it exactly;
+    anything else the nearest colour (weighted over the rows). The footprint is exact: 0 stays 0, a drawn pixel
+    stays drawn; None keeps vanilla's index."""
+    px, cache = [], {}
+    for k, m in enumerate(mats):
+        if base[k] == 0:
+            px.append(0)
+            continue
+        if m is None:
+            px.append(base[k])
+            continue
+        if m not in cache:
+            idx = {ROWS6[setkey, r].index(m) + 1 for r in rows if (setkey, r) in ROWS6 and m in ROWS6[setkey, r]}
+            if len(idx) == 1 and all((setkey, r) in ROWS6 and m in ROWS6[setkey, r] for r in rows):
+                cache[m] = idx.pop()
+            else:
+                cols = {}
+                for r in rows:
+                    over = D.get("rowcol", {}).get((setkey, r), {})
+                    cols[r] = tuple(over.get(m, D["mat"].get(m, (255, 0, 255))))
+                best, bd = 1, 1e18
+                for i in range(1, 16):
+                    d = 0
+                    for r, wgt in rows.items():
+                        d += wgt * sum((a - b) ** 2 for a, b in zip(pals[r][i], cols[r]))
+                    if d < bd:
+                        best, bd = i, d
+                cache[m] = best
+        px.append(cache[m])
+    return px
+
+
+def draw6(D, only=None):
+    """-> {setkey: (tiles, palettes)}, owner {(setkey, t): scene}"""
+    out = {k: ([t[:] for t in S.cur], pals6(D[k], k)) for k, S in SETS6.items()}
+    owner = {}
+    own = {k: set(owned6(k)) for k in SETS6}
+    for sc in SCENES6:
+        if only and sc.setkey != only:
+            continue
+        S = SETS6[sc.setkey]
+        DD = D[sc.setkey]
+        for layer in (0, 1):
+            lay, rg = sc.layers[layer]
+            if not any(s for r in lay for s in r):
+                continue
+            K = Cv(lay, sc.setkey)
+            K.layer, K.sc = layer, sc
+            sc.L = layer
+            f = DD["paint"]
+            K.fn(lambda x, y: f(sc, x, y, K))
+            for t, mats in K.tiles().items():
+                if (sc.setkey, t) in owner or t not in own[sc.setkey]:
+                    continue
+                out[sc.setkey][0][t] = resolve6(mats, S.van[t], rows_of6(sc.setkey, t), DD, out[sc.setkey][1],
+                                                sc.setkey)
+                owner[sc.setkey, t] = sc.name
+    return out, owner
+
+
+# ---------------------------------------------------------------------------------------- shared painting helpers
+def ramp(names, l):
+    """a luminance 0..1 onto a ramp of materials, light first"""
+    n = len(names)
+    return names[max(0, min(n - 1, int((1.0 - l) * n)))]
+
+
+def is_out(sc, x, y):
+    """vanilla's outline: its darkest ink"""
+    return sc.lum(x, y) < 0.36
+
+
+def hs(x, y, s=0):
+    return H(x, y, s) / 255.0
+
+
+# ------------------------------------------------------------------ the hearing rooms' geometry, read off vanilla
+def ring_geom(sc):
+    c = sc.comp("ring")
+    if not c:
+        return None
+    x0, y0, x1, y1, _ = c[0]
+    return (x0, y0, x1, y1, (x0 + x1 + 1) / 2.0, (y0 + y1 + 1) / 2.0)
+
+
+def pillar_box(sc, x, y):
+    return sc.box_at("pillar", x, y)
+
+
+def lg_paint(style):
+    """the LEAGUE's painter: each pixel by what vanilla had there (its kind) and where it stands in its room"""
+    def paint(sc, x, y, K):
+        kind = sc.kind[y][x]
+        if kind is None:
+            return None
+        if kind in ("wall", "walltop"):
+            return style["wall"](sc, x, y, kind)
+        if kind in ("door", "plate"):
+            return style["door"](sc, x, y, kind)
+        if kind in ("floor", "kerb"):
+            return style["floor"](sc, x, y, kind)
+        if kind == "ring":
+            return style["ring"](sc, x, y)
+        if kind in ("light", "lightwall"):
+            return style["light"](sc, x, y, kind)
+        if kind == "pillar":
+            return style["pillar"](sc, x, y)
+        if kind in ("cfloor", "cwall", "cstep", "cemblem", "cpillar", "cdoor", "runner", "clight"):
+            return style["champion"](sc, x, y, kind)
+        return ramp(["LG", "S2", "F2", "DG"], sc.lum(x, y))
+    return paint
+
+
+def door_parts(sc, x, y):
+    """(u, v) inside the door's 48x32 frame (the arch over the wall), or None"""
+    c = sc.box_at("door", x, y)
+    if not c:
+        return None
+    return x - c[0], y - c[1], c[2] - c[0] + 1, c[3] - c[1] + 1
+
+
+def champ_geom(sc):
+    """AL CLEAR's room: the floor's octagon, the emblem's centre"""
+    e = sc.comp("cemblem")
+    cx, cy = ((e[0][0] + e[0][2] + 1) / 2.0, (e[0][1] + e[0][3] + 1) / 2.0) if e else (sc.w / 2.0, sc.h / 2.0)
+    return cx, cy
+
+
+# ================================================================== LEAGUE A: THE FOUR VESSELS / CLEAR
+def A_wall(sc, x, y, kind):
+    l = sc.lum(x, y)
+    if is_out(sc, x, y):
+        return "OUT"
+    if l > 0.86:                                      # vanilla's round lamps on the wall: kept, dimmed
+        return "LMP"
+    if kind == "walltop":                             # the bench slab's edge: a lit lip, a shaded face
+        return "W1" if (y % 16) in (0, 1) else ("W2" if l > 0.62 else "W3")
+    #  near-black ashlar: courses of 8, joints every 16 offset per course, a faint grain
+    yy = y % 8
+    if yy == 7:
+        return "W4"
+    off = 8 if (y // 8) % 2 else 0
+    if (x + off) % 16 == 0:
+        return "W4"
+    if yy == 0:
+        return "W2"
+    return "W3" if hs(x // 2, y // 2, 3) > 0.12 else "W2"
+
+
+def A_door(sc, x, y, kind):
+    """the bench: a dark slab door, one seam, a round plate on it -- a vessel's mark, empty"""
+    if kind == "plate":
+        c = sc.box_at("plate", x, y)
+        if c:
+            u, v = x - c[0], y - c[1]
+            cx, cy = (c[2] - c[0]) / 2.0, (c[3] - c[1]) / 2.0
+            d = math.hypot(u - cx, v - cy)
+            if is_out(sc, x, y) and d > 6.5:
+                return "OUT"
+            if abs(d - 5.0) < 0.8:
+                return "LMPD"
+            if v > cy + 1 and d < 4.5:
+                return "SIG"                          # the level line: a vessel's fill, its colour left out
+            return "W2" if d < 4.5 else "W3"
+    if is_out(sc, x, y):
+        return "OUT"
+    l = sc.lum(x, y)
+    if l > 0.9:
+        return "SIG"
+    p = door_parts(sc, x, y)
+    if p:
+        u, v, w, h = p
+        if abs(u - w / 2.0) < 0.6:
+            return "W4"
+    return ramp(["W1", "W2", "W3", "W4"], l)
+
+
+def A_floor(sc, x, y, kind):
+    """UMBRA's floor: near-black flags, one per block, a lighter joint; vanilla's shade (the kerb, the shadows)
+    as the flag's darker face"""
+    l = sc.lum(x, y)
+    u, v = x % 16, y % 16
+    if kind == "kerb" or l < 0.55:
+        return "F3" if (u + v) % 4 else "F2"
+    if u == 15 or v == 15:
+        return "F3"
+    if u == 0 or v == 0:
+        return "F1"
+    return "F2" if hs(x, y, 7) > 0.08 else "F1"
+
+
+def A_ring(sc, x, y):
+    """the basin: vanilla's emblem becomes a round vessel set in the floor, its member's humour in it; the square
+    frame an inlaid line (a seat place)"""
+    g = ring_geom(sc)
+    x0, y0, x1, y1, cx, cy = g
+    d = math.hypot(x + 0.5 - cx, y + 0.5 - cy)
+    dy = y + 0.5 - cy
+    if d < RING_R:                                    # inside vanilla's circle (its tiles mirror left to right)
+        if d > RING_R - 1:
+            return "DG"                               # the rim's outer edge
+        if d > RING_R - 3:
+            return "S1" if dy < 0 else "S2"           # the stone lip, lit from above
+        if d > RING_R - 4.2:
+            return "DG" if dy < 0 else "H4"           # the inner wall: dark above, the fluid's deep below
+        if dy < -13:
+            return "H3"                               # the far side, in the lip's shadow
+        if abs(d - 15.5) < 0.6 and dy < -6:
+            return "H1"                               # the light on the surface, an arc
+        if abs(d - 8) < 0.55:
+            return "H1"                               # one ripple, standing
+        return "H2"
+    #  the frame: a fine inlay where vanilla drew its white line, the floor around it
+    if sc.lum(x, y) > 0.9:
+        return "A2"
+    return A_floor(sc, x, y, "floor")
+
+
+RING_R = 23.6         # vanilla's circle: 48 across, inside its own tiles
+
+
+def vessel(sc, x, y, fill="H2", hi="H1", deep="H3", glass="S2", glassl="S1", out="DG", foot=("F1", "F2"), level=0.3,
+           neck=0.0):
+    """a tall glass vessel in a pillar's footprint, filled to LEVEL (a fraction of its height from the top)"""
+    c = pillar_box(sc, x, y)
+    if not c:
+        return None
+    x0, y0, x1, y1, _ = c
+    w, h = x1 - x0 + 1, y1 - y0 + 1
+    u, v = x - x0, y - y0
+    cx = (w - 1) / 2.0
+    if is_out(sc, x, y):
+        return out
+    if v >= h - 6:                                    # the foot: a stone base
+        return foot[0] if v == h - 6 else foot[1]
+    top = int(h * level)
+    if v == top:
+        return hi                                     # the meniscus
+    if abs(u - cx) > cx - 1.2:
+        return glass                                  # the glass wall
+    if u < cx - 2 and u > cx - 4:
+        return glassl                                 # the highlight down the glass
+    if v < top:
+        return glassl if v < 3 else "LG" if v < top - 1 else glass
+    return deep if u > cx + 1 else fill
+
+
+def A_pillar(sc, x, y):
+    return vessel(sc, x, y)
+
+
+def A_light(sc, x, y, kind):
+    """the little wall niches: each a stoppered phial of the humour"""
+    if kind == "lightwall":
+        return "OUT" if is_out(sc, x, y) else ramp(["W2", "W3", "W4"], sc.lum(x, y))
+    c = sc.box_at("light", x, y)
+    if not c:
+        return "W3"
+    u, v = x - c[0], y - c[1]
+    w, h = c[2] - c[0] + 1, c[3] - c[1] + 1
+    if is_out(sc, x, y):
+        return "DG"
+    cx = (w - 1) / 2.0
+    if 2 <= v <= h - 3 and abs(u - cx) <= 2.5:
+        if v <= 3:
+            return "S1"                               # the stopper
+        if v == 4:
+            return "H1"
+        return "H3" if u > cx else "H2"
+    return "F3" if v < h - 2 else "F2"
+
+
+def A_champion(sc, x, y, kind):
+    """CLEAR: AL CLEAR's room with the four colours gone -- white stone, glass panes for the purple walls, four
+    empty vessels for the pillars, a glass walk over the dark, and in the floor a clear vessel with nothing in it."""
+    l = sc.lum(x, y)
+    if kind == "cplain":                              # the floor round the emblem: vanilla's arrows painted out
+        kind, l = "cfloor", 0.7
+    cx, cy = champ_geom(sc)
+    if kind == "cemblem":                             # a clear vessel with nothing in it (its tiles mirror four ways)
+        d = math.hypot(x + 0.5 - cx, y + 0.5 - cy)
+        if d > 13.6:
+            return A_champion(sc, x, y, "cplain")
+        if d > 12.6:
+            return "WA3"
+        if d > 11.4:
+            return "WHT"
+        if abs(d - 7) < 0.55:
+            return "WA1"
+        return "FL0"
+    if kind == "cwall":
+        if is_out(sc, x, y):
+            return "INK"
+        if x % 16 in (0, 15):
+            return "WA3"                              # the mullions
+        return ramp(["WA0", "WA1", "WA2", "WA3"], l)
+    if kind == "cstep":                               # the benches: pale glass, no black
+        return ramp(["E1", "E2", "E3", "E4"], l)
+    if kind == "cfloor":
+        if is_out(sc, x, y) and l != 0.7:
+            return "SL1"
+        u, v = x % 16, y % 16
+        if u == 0 or v == 0:
+            return "FL2"
+        return "FL0" if l > 0.8 else "FL1"
+    if kind == "cpillar":
+        return ramp(["WHT", "GRY12", "SL1", "INK"], l)
+    if kind == "cdoor":
+        if is_out(sc, x, y):
+            return "INK"
+        return ramp(["FL0", "FL1", "FL2", "SL1"], l)
+    if kind == "runner":                              # a glass walk over the dark: panes, a frame every block
+        if is_out(sc, x, y):
+            return "RNO"
+        if y % 16 in (0, 15) or x % 16 in (0, 15):
+            return "RN2"
+        return "RN3" if (x % 16 == 3 and y % 16 < 8) else "RN1"
+    if kind == "clight":
+        return ramp(["WHT", "GRY12", "SL1", "INK"], l)
+    return None
+
+
+# ================================================================== LEAGUE B: THE HEARING / THE INSTRUMENT
+def B_wall(sc, x, y, kind):
+    l = sc.lum(x, y)
+    if is_out(sc, x, y):
+        return "OUT"
+    if l > 0.86:
+        return "LMP"                                  # the sconces, in brass
+    if kind == "walltop":
+        return "W1" if (y % 16) < 2 else ("W2" if (y % 16) < 6 else "W3")
+    #  oak panelling: raised panels 16 wide, a moulding round each, a dado rail where vanilla's lamp line ran
+    u, v = x % 16, y % 16
+    if u in (0, 15) or v in (0, 15):
+        return "W4"
+    if u in (1, 14) or v in (1, 14):
+        return "W1" if (u == 1 or v == 1) else "W3"
+    return "W2" if (x + 2 * y) % 7 else "W3"
+
+
+def B_door(sc, x, y, kind):
+    """a panelled oak door, a brass seal on it -- blank"""
+    if kind == "plate":
+        c = sc.box_at("plate", x, y)
+        if c:
+            u, v = x - c[0], y - c[1]
+            cx, cy = (c[2] - c[0]) / 2.0, (c[3] - c[1]) / 2.0
+            d = math.hypot(u - cx, v - cy)
+            if is_out(sc, x, y) and d > 6.5:
+                return "OUT"
+            if d < 2.2:
+                return "LMPD"
+            return "LMP" if d < 5 else "SIG"
+    if is_out(sc, x, y):
+        return "OUT"
+    p = door_parts(sc, x, y)
+    l = sc.lum(x, y)
+    if l > 0.9:
+        return "SIG"
+    if p:
+        u, v, w, h = p
+        if (u % 8) in (0, 7):
+            return "W4"
+    return ramp(["W1", "W2", "W3", "W4"], l)
+
+
+def B_floor(sc, x, y, kind):
+    """parquet, short boards laid in pairs, turning every 8; the shade kept as the boards' darker grain"""
+    l = sc.lum(x, y)
+    u, v = x % 8, y % 8
+    turn = ((x // 8) + (y // 8)) % 2
+    a = v if turn else u
+    if kind == "kerb" or l < 0.55:
+        return "F3" if a % 4 == 3 else "F2"
+    if a % 4 == 3:
+        return "F3"
+    return "F1" if hs(x // 4, y // 4, 9) > 0.3 else "F2"
+
+
+def B_ring(sc, x, y):
+    """the dock: a round carpet in the member's colour where the challenger stands to be heard, a brass rail round
+    it; the square frame the bar of the hearing, a rail line"""
+    g = ring_geom(sc)
+    x0, y0, x1, y1, cx, cy = g
+    d = math.hypot(x + 0.5 - cx, y + 0.5 - cy)
+    if d < RING_R:
+        if d > RING_R - 1:
+            return "DG"
+        if d > RING_R - 3:
+            return "A1" if y + 0.5 < cy else "A2"     # the brass rail
+        if d > RING_R - 4:
+            return "H4"
+        if abs(d - 16) < 0.7:
+            return "H1"                               # the carpet's border
+        if 16.7 < d < 19.6:
+            return "H3"
+        return "H2"
+    if sc.lum(x, y) > 0.9:
+        return "A2"
+    return B_floor(sc, x, y, "floor")
+
+
+def B_pillar(sc, x, y):
+    """a stack of case files, bound in the member's colour, tied with tape"""
+    c = pillar_box(sc, x, y)
+    if not c:
+        return None
+    x0, y0, x1, y1, _ = c
+    w, h = x1 - x0 + 1, y1 - y0 + 1
+    u, v = x - x0, y - y0
+    if is_out(sc, x, y):
+        return "DG"
+    if v >= h - 5:
+        return "F3" if v > h - 3 else "F2"
+    band = v // 5
+    vv = v % 5
+    if vv == 4:
+        return "DG" if (u + band) % 3 else "S3"      # between the files
+    if vv == 0:
+        return "WHT" if u > 1 and u < w - 2 else "S1"    # the paper edge
+    if abs(u - (w - 1) / 2.0 + (band % 2) * 2 - 1) < 0.6:
+        return "S1"                                   # the tape
+    return "H2" if band % 2 else "H3"
+
+
+def B_light(sc, x, y, kind):
+    """the niches: pigeonholes, a rolled brief in each"""
+    if kind == "lightwall":
+        return "OUT" if is_out(sc, x, y) else ramp(["W2", "W3", "W4"], sc.lum(x, y))
+    c = sc.box_at("light", x, y)
+    if not c:
+        return "F3"
+    u, v = x - c[0], y - c[1]
+    w, h = c[2] - c[0] + 1, c[3] - c[1] + 1
+    if is_out(sc, x, y):
+        return "DG"
+    if 3 <= v <= 6 and 1 <= u <= w - 2:
+        return "WHT" if v < 5 else ("S1" if u % 3 else "H2")   # a roll of paper, a tie in the humour
+    return "F3"
+
+
+def B_champion(sc, x, y, kind):
+    """THE INSTRUMENT: AL CLEAR's room as a calibrated gauge -- steel panels ruled with ticks, a floor like graph
+    paper, the emblem a dial with every segment of its scale lit, all the way round: mechanically excellent"""
+    l = sc.lum(x, y)
+    if kind == "cplain":                              # the floor round the emblem: vanilla's arrows painted out
+        kind, l = "cfloor", 0.7
+    cx, cy = champ_geom(sc)
+    if kind == "cemblem":
+        dx, dy = x + 0.5 - cx, y + 0.5 - cy
+        d = math.hypot(dx, dy)
+        ang = math.atan2(dy, dx)
+        if d > 13.6:
+            return B_champion(sc, x, y, "cplain")
+        if d > 12.4:
+            return "INK"
+        if d > 8.5:                                   # the scale: every segment lit, a full reading all round
+            k = (ang + math.pi) / math.pi * 8
+            return "FL0" if abs(k - round(k)) < 0.12 else "GD0"
+        if d > 7.5:
+            return "WA3"
+        return "GD1" if d < 2 else "FL0"
+    if kind == "cwall":
+        if is_out(sc, x, y):
+            return "INK"
+        if x % 4 == 0 and (y % 16) < (6 if x % 16 == 0 else 3):
+            return "GD1"                              # calibration ticks along every panel
+        return ramp(["WA0", "WA1", "WA2", "WA3"], l)
+    if kind == "cstep":
+        return "OUT" if is_out(sc, x, y) else ramp(["E1", "E2", "E3", "E4"], l)
+    if kind == "cfloor":
+        if is_out(sc, x, y) and l != 0.7:
+            return "SL1"
+        if x % 4 == 0 or y % 4 == 0:
+            return "FL2" if (x % 16 == 0 or y % 16 == 0) else "FL1"
+        return "FL0"
+    if kind == "cpillar":
+        return ramp(["WHT", "GRY12", "SL1", "INK"], l)
+    if kind == "cdoor":
+        return "INK" if is_out(sc, x, y) else ramp(["FL0", "FL1", "FL2", "SL1"], l)
+    if kind == "runner":                              # a steel grating
+        if is_out(sc, x, y):
+            return "RNO"
+        return "RN2" if (x % 3 == 0 or y % 3 == 0) else "RN1"
+    if kind == "clight":
+        return ramp(["WHT", "GRY12", "SL1", "INK"], l)
+    return None
+
+
+# ================================================================== LEAGUE C: THE SEASONS / NO WEATHER
+def C_wall(sc, x, y, kind):
+    l = sc.lum(x, y)
+    if is_out(sc, x, y):
+        return "OUT"
+    if l > 0.86:
+        return "LMP"
+    if kind == "walltop":
+        return "W1" if (y % 16) < 2 else "W2"
+    #  limewashed plaster over a stone dado: smooth above, coursed below where vanilla's lamp line ran
+    v = y % 48
+    if y % 16 >= 12:
+        return "W3" if (x + (y // 4)) % 8 else "W4"
+    return "W1" if hs(x // 3, y // 3, 5) > 0.85 else "W2"
+
+
+def C_door(sc, x, y, kind):
+    if kind == "plate":
+        c = sc.box_at("plate", x, y)
+        if c:
+            u, v = x - c[0], y - c[1]
+            cx, cy = (c[2] - c[0]) / 2.0, (c[3] - c[1]) / 2.0
+            d = math.hypot(u - cx, v - cy)
+            if is_out(sc, x, y) and d > 6.5:
+                return "OUT"
+            #  a wheel of four quarters, none lit (the door is every room's)
+            if abs(u - cx) < 0.6 or abs(v - cy) < 0.6:
+                return "W4"
+            return "W2" if d < 5 else "W3"
+    if is_out(sc, x, y):
+        return "OUT"
+    l = sc.lum(x, y)
+    if l > 0.9:
+        return "SIG"
+    return ramp(["W1", "W2", "W3", "W4"], l)
+
+
+def C_floor(sc, x, y, kind):
+    """pale flags, and over them the season's litter -- the same specks in every room, frost in IV's colours, sun
+    in II's, leaves in III's, blossom in I's"""
+    l = sc.lum(x, y)
+    u, v = x % 16, y % 16
+    if kind == "kerb" or l < 0.55:
+        base = "F3"
+    elif u == 15 or v == 15:
+        return "F3"
+    else:
+        base = "F1" if (u + v) % 11 else "F2"
+    r = hs(x, y, 21)
+    if r > 0.93:
+        return "A1"
+    if r > 0.88:
+        return "A2"
+    return base
+
+
+def C_ring(sc, x, y):
+    """the season's wheel: four spokes round a hub, the upper half (the season risen over the horizon) in the room's
+    humour, the lower in the floor's stone -- the wheel's tiles are every room's, so it is the colour that turns it"""
+    g = ring_geom(sc)
+    x0, y0, x1, y1, cx, cy = g
+    dx, dy = x + 0.5 - cx, y + 0.5 - cy
+    d = math.hypot(dx, dy)
+    if d < RING_R:
+        if d > RING_R - 1.2:
+            return "DG"
+        if d < 4:
+            return "S3" if d > 3 else "WHT"
+        if abs(dx) < 0.8 or abs(dy) < 0.8:
+            return "S3"                               # the spokes, and the horizon
+        if dy < 0:                                    # the season, risen over the horizon
+            return "H1" if d > RING_R - 4 else "H2"
+        return "S1" if d > RING_R - 4 else "S2"
+    if sc.lum(x, y) > 0.9:
+        return "S3"
+    return C_floor(sc, x, y, "floor")
+
+
+def C_pillar(sc, x, y):
+    """an urn of the season: the humour glazed down a pale stone urn, a lip, a foot"""
+    c = pillar_box(sc, x, y)
+    if not c:
+        return None
+    x0, y0, x1, y1, _ = c
+    w, h = x1 - x0 + 1, y1 - y0 + 1
+    u, v = x - x0, y - y0
+    if is_out(sc, x, y):
+        return "DG"
+    cx = (w - 1) / 2.0
+    if v < 4:
+        return "S1" if v < 2 else "S2"                # the lip
+    if v >= h - 6:
+        return "S2" if v < h - 3 else "S3"
+    t = (v - 4) / max(1.0, h - 10)
+    if t > 0.25 + 0.15 * math.sin(u * 1.3):
+        return "H3" if u > cx + 1 else "H2" if u > cx - 3 else "H1"   # the glaze, run down from the shoulder
+    return "S1" if u < cx - 2 else "S2"
+
+
+def C_light(sc, x, y, kind):
+    if kind == "lightwall":
+        return "OUT" if is_out(sc, x, y) else ramp(["W2", "W3", "W4"], sc.lum(x, y))
+    c = sc.box_at("light", x, y)
+    if not c:
+        return "F3"
+    u, v = x - c[0], y - c[1]
+    w, h = c[2] - c[0] + 1, c[3] - c[1] + 1
+    if is_out(sc, x, y):
+        return "DG"
+    if 2 <= v <= h - 3 and 2 <= u <= w - 3:
+        return "A1" if (u + v) % 3 == 0 else "H2"     # a niche with the season in it
+    return "S3"
+
+
+def C_champion(sc, x, y, kind):
+    """NO WEATHER: AL CLEAR's room sealed like a glasshouse, and his wheel all white -- every season's colour at once,
+    which is white light (7.2: white is every wavelength): a room with no season in it"""
+    l = sc.lum(x, y)
+    if kind == "cplain":                              # the floor round the emblem: vanilla's arrows painted out
+        kind, l = "cfloor", 0.7
+    cx, cy = champ_geom(sc)
+    if kind == "cemblem":
+        dx, dy = x + 0.5 - cx, y + 0.5 - cy
+        d = math.hypot(dx, dy)
+        if d > 13.6:
+            return C_champion(sc, x, y, "cplain")
+        if d > 12.4:
+            return "SL1"
+        if d < 2.5:
+            return "GRY12"
+        if abs(dx) < 0.7 or abs(dy) < 0.7:
+            return "GRY12"
+        return "WHT"
+    if kind == "cwall":
+        if is_out(sc, x, y):
+            return "INK"
+        if x % 8 == 0 or y % 16 == 0:
+            return "WA3"                              # the glazing bars
+        return "WA0" if (x + y) % 13 == 0 else ramp(["WA0", "WA1", "WA2"], l)
+    if kind == "cstep":
+        return "OUT" if is_out(sc, x, y) else ramp(["E1", "E2", "E3", "E4"], l)
+    if kind == "cfloor":
+        if is_out(sc, x, y) and l != 0.7:
+            return "SL1"
+        u, v = x % 16, y % 16
+        return "FL2" if u == 15 or v == 15 else "FL0" if l > 0.8 else "FL1"
+    if kind == "cpillar":
+        return ramp(["WHT", "GRY12", "SL1", "INK"], l)
+    if kind == "cdoor":
+        return "INK" if is_out(sc, x, y) else ramp(["FL0", "FL1", "FL2", "SL1"], l)
+    if kind == "runner":                              # pale stone boards
+        return "RNO" if is_out(sc, x, y) else ("RN2" if y % 16 in (0, 15) else "RN1")
+    if kind == "clight":
+        return ramp(["WHT", "GRY12", "SL1", "INK"], l)
+    return None
+
+
+# ================================================================== the HALL OF FAME's painter
+def hof_paint(style):
+    def paint(sc, x, y, K):
+        kind = sc.kind[y][x]
+        if kind is None:
+            return None
+        return style[kind if kind in style else "misc"](sc, x, y)
+    return paint
+
+
+def hof_geom(sc, kind):
+    c = sc.comp(kind)
+    return c[0] if c else None
+
+
+def machine_px(sc, x, y, P):
+    """the RECORD's machine, drawn in place: the panel high on the wall, the console under it, the column with its
+    six lights where the six balls are set. P names the direction's materials."""
+    l = sc.lum(x, y)
+    if is_out(sc, x, y):
+        return P["out"]
+    c = sc.col[y][x]
+    #  vanilla's six orange lights (the balls' places): kept as six lights, in the direction's colour
+    if c and c[0] > 200 and c[1] < 180 and c[2] < 80:
+        return P["lamp"]
+    return P["ramp"](sc, x, y, l)
+
+
+def card_ramp(sc, x, y, l):
+    return ramp(["WHT", "B1", "B2", "B3"], l)
+
+
+# ------------------------------------------------------------------ HALL A: THE INDEX CARD (sepia)
+def HA_wall(sc, x, y):
+    """the wall a card catalogue: rows of drawer fronts, each with a pull and an empty label holder, in sepia"""
+    if is_out(sc, x, y):
+        return "OUT"
+    l = sc.lum(x, y)
+    u, v = x % 16, y % 8
+    if v == 7 or u == 15:
+        return "B3"
+    if v == 3 and 6 <= u <= 9:
+        return "B0"                                   # the pull
+    if v == 1 and 4 <= u <= 11:
+        return "WHT"                                  # the label holder, nothing in it
+    return "B1" if l > 0.7 else "B2"
+
+
+def HA_side(sc, x, y):
+    if is_out(sc, x, y):
+        return "OUT"
+    return "B3" if y % 8 == 7 else ("B0" if y % 8 == 3 and x % 2 else "B2")
+
+
+def HA_floor(sc, x, y):
+    """card stock ruled into fields: one field to a tile, the rule a faint ink"""
+    l = sc.lum(x, y)
+    u, v = x % 8, y % 8
+    if v == 7:
+        return "FL2"
+    if u == 7 and v % 2 == 0:
+        return "FL2"
+    return "FL1" if l > 0.45 else "FL2"
+
+
+def HA_pillar(sc, x, y):
+    """a narrow card cabinet: drawers stacked, a brass pull on each"""
+    c = sc.box_at("pillar", x, y)
+    if not c:
+        return "C3"
+    x0, y0, x1, y1, _ = c
+    u, v = x - x0, y - y0
+    w = x1 - x0 + 1
+    if is_out(sc, x, y):
+        return "OUT"
+    if v < 3:
+        return "C1" if v < 2 else "C2"
+    if v % 6 == 5:
+        return "C4"
+    if v % 6 == 2 and abs(u - (w - 1) / 2.0) < 1.6:
+        return "Y2"
+    return "C2" if u < w // 2 else "C3"
+
+
+def HA_emblem(sc, x, y):
+    """a round date-stamp, its rings and ticks blank"""
+    x0, y0, x1, y1, _ = hof_geom(sc, "emblem")
+    cx, cy = (x0 + x1 + 1) / 2.0, (y0 + y1 + 1) / 2.0
+    dx, dy = x + 0.5 - cx, y + 0.5 - cy
+    d = math.hypot(dx, dy)
+    if d > 17:
+        return HA_floor(sc, x, y)
+    if abs(d - 16) < 0.8 or abs(d - 10.5) < 0.7:
+        return "M5"
+    if 11.5 < d < 15 and abs((math.atan2(dy, dx) / math.pi * 8) % 1 - 0.5) > 0.42:
+        return "M5"                                   # the ticks between the rings
+    if d < 4:
+        return "M4"
+    return "M1" if d < 10 else "M2"
+
+
+def HA_machine(sc, x, y):
+    return machine_px(sc, x, y, dict(out="OUT", lamp="AMB", ramp=lambda sc, x, y, l: (
+        ramp(["P1", "M1", "M2", "M4", "M5"], l) if sc.kind[y][x] == "machine" else card_ramp(sc, x, y, l))))
+
+
+# ------------------------------------------------------------------ HALL B: THE STAT SHEET
+def HB_wall(sc, x, y):
+    """the wall a sheet of rows and columns: ruled bands, the header row darker"""
+    if is_out(sc, x, y):
+        return "OUT"
+    l = sc.lum(x, y)
+    if y % 8 == 0:
+        return "B3"
+    if x % 24 == 0:
+        return "B2"
+    return "B0" if l > 0.75 else "B1"
+
+
+def HB_side(sc, x, y):
+    if is_out(sc, x, y):
+        return "OUT"
+    return "B3" if y % 8 == 0 else "B1"
+
+
+def HB_floor(sc, x, y):
+    """graph paper: a fine line every four, a heavier one every eight"""
+    u, v = x % 8, y % 8
+    if u == 0 or v == 0:
+        return "FL2"
+    if u == 4 or v == 4:
+        return "B0" if (u == 4 and v == 4) else "FL1"
+    return "FL1"
+
+
+def HB_pillar(sc, x, y):
+    """a bar meter: a glass column, filled to a level"""
+    c = sc.box_at("pillar", x, y)
+    if not c:
+        return "C3"
+    x0, y0, x1, y1, _ = c
+    u, v = x - x0, y - y0
+    w, h = x1 - x0 + 1, y1 - y0 + 1
+    if is_out(sc, x, y):
+        return "OUT"
+    if v >= h - 4:
+        return "C4"
+    if u in (1, w - 2) or v < 2:
+        return "C2"
+    if v < h * 0.45:
+        return "C1" if (v % 4) else "C2"              # the empty part, its scale
+    return "Y1" if u < w // 2 else "Y2"
+
+
+def HB_emblem(sc, x, y):
+    """the record's shape: a hexagon of six axes, and inside it an uneven hexagon -- a person as six numbers"""
+    x0, y0, x1, y1, _ = hof_geom(sc, "emblem")
+    cx, cy = (x0 + x1 + 1) / 2.0, (y0 + y1 + 1) / 2.0
+    dx, dy = x + 0.5 - cx, y + 0.5 - cy
+    ang = math.atan2(dy, dx)
+    k = (ang + math.pi / 2) / (math.pi / 3)
+    sector = int(math.floor(k)) % 6
+    frac = k - math.floor(k)
+    def hexr(rad, a):
+        return rad * math.cos(math.pi / 6) / math.cos((a % (math.pi / 3)) - math.pi / 6)
+    d = math.hypot(dx, dy)
+    outer = hexr(17, ang + math.pi / 2)
+    if d > outer + 0.7:
+        return HB_floor(sc, x, y)
+    if d > outer - 0.8:
+        return "M5"
+    for i in range(6):
+        a = -math.pi / 2 + i * math.pi / 3
+        if abs(-dx * math.sin(a) + dy * math.cos(a)) < 0.55 and dx * math.cos(a) + dy * math.sin(a) > 0:
+            return "M4"                               # the axes
+    vals = [0.9, 0.55, 0.75, 0.4, 0.8, 0.6]
+    r = (vals[sector] * (1 - frac) + vals[(sector + 1) % 6] * frac) * outer
+    if d < r:
+        return "M2" if abs(d - r) > 1.2 else "M3"
+    return "M0"
+
+
+def HB_machine(sc, x, y):
+    return machine_px(sc, x, y, dict(out="OUT", lamp="AMB", ramp=lambda sc, x, y, l: (
+        ramp(["M0", "M1", "M2", "M4", "M5"], l) if sc.kind[y][x] == "machine" else ramp(["WHT", "B0", "B1", "B3"], l))))
+
+
+# ------------------------------------------------------------------ HALL C: THE CERTIFICATE
+def HC_wall(sc, x, y):
+    """the wall a certificate's engraved border: interlaced waves, a guilloche"""
+    if is_out(sc, x, y):
+        return "OUT"
+    w1 = 3.5 + 2.5 * math.sin(x * 0.55)
+    w2 = 3.5 + 2.5 * math.sin(x * 0.55 + math.pi)
+    v = y % 8
+    if abs(v - w1) < 0.6 or abs(v - w2) < 0.6:
+        return "B2"
+    return "B0" if sc.lum(x, y) > 0.6 else "B1"
+
+
+def HC_side(sc, x, y):
+    if is_out(sc, x, y):
+        return "OUT"
+    w = 3.5 + 2.5 * math.sin(y * 0.55)
+    return "B2" if abs(x % 8 - w) < 0.6 else "B1"
+
+
+def HC_floor(sc, x, y):
+    """parchment under a fine engraved lattice"""
+    u, v = x % 8, y % 8
+    if (u + v) % 8 == 0 or (u - v) % 8 == 0:
+        return "FL2"
+    return "FL1"
+
+
+def HC_pillar(sc, x, y):
+    """a rolled diploma stood on end, a ribbon round it"""
+    c = sc.box_at("pillar", x, y)
+    if not c:
+        return "C3"
+    x0, y0, x1, y1, _ = c
+    u, v = x - x0, y - y0
+    w, h = x1 - x0 + 1, y1 - y0 + 1
+    if is_out(sc, x, y):
+        return "OUT"
+    if v < 4:
+        return "C2" if (u + v) % 3 else "C3"          # the roll's end, a spiral
+    if h * 0.45 < v < h * 0.45 + 4:
+        return "Y2" if v % 2 else "Y1"                # the ribbon
+    return "C1" if u < w // 2 - 1 else "C2" if u < w - 2 else "C3"
+
+
+def HC_emblem(sc, x, y):
+    """a seal: a scalloped foil medallion, blank"""
+    x0, y0, x1, y1, _ = hof_geom(sc, "emblem")
+    cx, cy = (x0 + x1 + 1) / 2.0, (y0 + y1 + 1) / 2.0
+    dx, dy = x + 0.5 - cx, y + 0.5 - cy
+    d = math.hypot(dx, dy)
+    edge = 14.5 + 1.2 * math.cos(math.atan2(dy, dx) * 12)
+    if d > edge + 0.6:
+        return HC_floor(sc, x, y)
+    if d > edge - 0.8:
+        return "M5"
+    if abs(d - 9) < 0.7:
+        return "M4"
+    if d < 9:
+        return "M1" if dx + dy < -2 else "M2"
+    return "M2" if (int(math.atan2(dy, dx) * 6) % 2) else "M3"
+
+
+def HC_machine(sc, x, y):
+    return machine_px(sc, x, y, dict(out="OUT", lamp="AMB", ramp=lambda sc, x, y, l: (
+        ramp(["M1", "M2", "M3", "M4", "M5"], l) if sc.kind[y][x] == "machine" else ramp(["WHT", "B0", "B1", "B2"], l))))
+
+
+def hof_misc(sc, x, y):
+    return ramp(["WHT", "B1", "B2", "OUT"], sc.lum(x, y))
+
+
+# ================================================================== the directions
+HUMOURS = {   # (H1..H4, A1, A2) per hearing room's row: IV pale phlegm, II yellow bile, III black bile, I red blood
+    "A": {8: [(246, 246, 238), (214, 220, 210), (172, 182, 176), (126, 136, 134), (196, 204, 198), (100, 110, 110)],
+          9: [(255, 236, 130), (236, 196, 60), (196, 146, 30), (138, 96, 22), (226, 186, 70), (120, 84, 24)],
+          10: [(118, 110, 134), (62, 58, 72), (34, 30, 42), (14, 12, 20), (150, 140, 170), (40, 36, 48)],
+          11: [(248, 112, 100), (214, 52, 52), (164, 26, 38), (104, 14, 26), (232, 90, 84), (110, 20, 30)]},
+    "B": {8: [(228, 232, 226), (196, 204, 200), (156, 166, 166), (110, 120, 122), (236, 206, 120), (168, 128, 60)],
+          9: [(250, 222, 110), (224, 184, 56), (180, 136, 30), (124, 88, 20), (236, 206, 120), (168, 128, 60)],
+          10: [(98, 94, 106), (64, 60, 72), (42, 38, 48), (24, 22, 28), (236, 206, 120), (168, 128, 60)],
+          11: [(232, 96, 88), (196, 52, 52), (150, 30, 38), (98, 18, 26), (236, 206, 120), (168, 128, 60)]},
+    "C": {8: [(240, 246, 252), (204, 222, 236), (164, 190, 212), (120, 148, 176), (255, 255, 255), (180, 206, 228)],
+          9: [(255, 232, 120), (240, 190, 70), (206, 140, 40), (150, 96, 30), (255, 240, 170), (222, 170, 60)],
+          10: [(200, 140, 80), (160, 96, 50), (118, 64, 34), (76, 40, 24), (214, 150, 70), (140, 80, 40)],
+          11: [(255, 196, 210), (240, 150, 170), (196, 104, 128), (100, 150, 80), (255, 214, 224), (140, 190, 100)]},
+}
+
+
+def hearing_rowcol(k):
+    out = {}
+    for r, cols in HUMOURS[k].items():
+        out["lg", r] = dict(zip(["H1", "H2", "H3", "H4", "A1", "A2"], cols))
+    return out
+
+
+def direction6(name, title, lines, lg_mat, lg_style, hof_mat, hof_style):
+    D = dict(name=name, title=title, lines=lines)
+    D["lg"] = dict(mat=lg_mat, rowcol=hearing_rowcol(name), paint=lg_paint(lg_style))
+    D["hof"] = dict(mat=hof_mat, paint=hof_paint(hof_style))
+    return D
+
+
+A6 = direction6(
+    "A", "THE FOUR VESSELS / THE INDEX CARD",
+    ["LEAGUE: UMBRA's near-black stone carried inside, and the only colour in each hearing room its member's humour",
+     "as a fluid -- the pillars tall glass vessels filled with it, the ring a basin of it set in the floor, the wall",
+     "niches stoppered phials: pale phlegm (IV), yellow bile (II), black bile (III), red blood (I). AL CLEAR's room",
+     "CLEAR: white stone and glass, four empty vessels, a glass walk over the dark, a clear vessel with nothing in it.",
+     "HALL: the record as the INDEX keeps it, in sepia (8.6) -- a card catalogue for walls, the floor ruled into",
+     "fields, the pillars card cabinets, the emblem a blank date-stamp; the machine prints the card."],
+    dict(OUT=(18, 16, 24), GRY=(70, 68, 80), SIG=(214, 206, 186), W1=(92, 90, 104), W2=(68, 66, 80), W3=(48, 46, 58),
+         W4=(32, 30, 40), LMP=(232, 220, 184), LMPD=(150, 140, 118), E1=(226, 232, 238), E2=(184, 194, 206),
+         E3=(132, 142, 156), E4=(96, 104, 118), E5=(210, 180, 96), E6=(150, 120, 60),
+         WHT=(240, 240, 236), LG=(170, 170, 176), DG=(24, 22, 30), S1=(210, 220, 226), S2=(140, 150, 160),
+         S3=(82, 88, 100), F1=(66, 64, 76), F2=(50, 48, 60), F3=(36, 34, 44),
+         H1=(255, 255, 255), H2=(200, 200, 200), H3=(150, 150, 150), H4=(100, 100, 100), A1=(200, 200, 200),
+         A2=(100, 100, 100),
+         INK=(60, 66, 78), SL1=(140, 150, 164), FL1=(222, 228, 234), FL0=(246, 248, 250), GRY12=(176, 184, 196),
+         WA1=(214, 222, 232), WA2=(176, 188, 204), FL2=(196, 204, 214), GD1=(226, 196, 110), Q1=(160, 170, 186),
+         WA0=(236, 242, 248), GD0=(250, 230, 160), WA3=(128, 140, 160), BLK=(14, 12, 20),
+         RN1=(189, 230, 255), RN2=(139, 180, 222), RN3=(255, 255, 255), RNO=(82, 82, 106)),
+    dict(wall=A_wall, door=A_door, floor=A_floor, ring=A_ring, pillar=A_pillar, light=A_light, champion=A_champion),
+    dict(OUT=(52, 38, 28), GRY=(140, 120, 96), P3=(200, 180, 146), WHT=(244, 234, 210), B1=(176, 134, 88),
+         B2=(140, 100, 62), B3=(96, 66, 42), FL1=(232, 220, 192), FL2=(204, 186, 150), B0=(214, 176, 110),
+         Y1=(226, 190, 120), Y2=(184, 140, 72), B4=(120, 88, 58), AMB=(250, 196, 90), B5=(222, 204, 170),
+         P1=(236, 226, 200), P2=(212, 196, 162), M1=(220, 206, 176), M2=(188, 166, 128), M3=(160, 136, 100),
+         M4=(124, 98, 70), M5=(84, 62, 42), M0=(240, 232, 212), M6=(200, 184, 152), M7=(170, 150, 118),
+         AMB2=(200, 140, 60), C1=(214, 186, 140), C2=(170, 128, 84), C3=(130, 94, 60), C4=(90, 64, 42),
+         C5=(232, 220, 192), C6=(204, 186, 150), C0=(150, 120, 90), Y3=(150, 112, 60), Y4=(110, 80, 44),
+         C7=(196, 170, 130)),
+    dict(wall=HA_wall, side=HA_side, floor=HA_floor, pillar=HA_pillar, emblem=HA_emblem, machine=HA_machine,
+         misc=hof_misc))
+
+B6 = direction6(
+    "B", "THE HEARING / THE STAT SHEET",
+    ["LEAGUE: the REVIEW BOARD as a hearing -- oak panelling and brass sconces, a parquet floor, the ring a round",
+     "dock (a carpet in the member's colour inside a brass rail, where the challenger stands to be heard), the",
+     "pillars stacks of case files bound in that colour, the niches pigeonholes. AL CLEAR's room THE INSTRUMENT:",
+     "steel panels ruled with ticks, graph-paper floor, the emblem a dial with every segment lit all the way round.",
+     "HALL: the record as numbers -- walls of ruled rows, graph-paper floor, the pillars bar meters, the emblem a",
+     "hexagon of six axes with a smaller hexagon plotted in it (a person as six stats); the machine a tabulator."],
+    dict(OUT=(34, 22, 18), GRY=(110, 96, 84), SIG=(232, 196, 96), W1=(178, 128, 82), W2=(146, 98, 60),
+         W3=(112, 72, 44), W4=(80, 50, 32), LMP=(250, 226, 150), LMPD=(196, 156, 80), E1=(210, 214, 220),
+         E2=(160, 166, 176), E3=(110, 116, 128), E4=(70, 76, 88), E5=(250, 250, 246), E6=(60, 64, 72),
+         WHT=(250, 246, 232), LG=(214, 206, 186), DG=(40, 30, 26), S1=(232, 222, 196), S2=(196, 184, 156),
+         S3=(150, 136, 110), F1=(190, 170, 140), F2=(160, 140, 110), F3=(124, 106, 82),
+         H1=(255, 255, 255), H2=(200, 200, 200), H3=(150, 150, 150), H4=(100, 100, 100), A1=(236, 206, 120),
+         A2=(168, 128, 60),
+         INK=(30, 34, 40), SL1=(90, 98, 110), FL1=(226, 230, 226), FL0=(246, 248, 244), GRY12=(150, 156, 164),
+         WA1=(176, 184, 194), WA2=(134, 142, 154), FL2=(196, 202, 200), GD1=(64, 70, 82), Q1=(110, 118, 130),
+         WA0=(214, 220, 228), GD0=(24, 26, 30), WA3=(96, 104, 116), BLK=(14, 12, 20),
+         RN1=(180, 180, 164), RN2=(123, 123, 123), RN3=(213, 213, 172), RNO=(82, 82, 106)),
+    dict(wall=B_wall, door=B_door, floor=B_floor, ring=B_ring, pillar=B_pillar, light=B_light, champion=B_champion),
+    dict(OUT=(28, 36, 52), GRY=(120, 132, 150), P3=(176, 188, 204), WHT=(240, 246, 252), B1=(196, 210, 226),
+         B2=(150, 170, 196), B3=(96, 116, 146), FL1=(222, 232, 240), FL2=(176, 196, 216), B0=(210, 222, 236),
+         Y1=(120, 200, 196), Y2=(70, 150, 150), B4=(70, 88, 116), AMB=(250, 196, 90), B5=(160, 176, 196),
+         P1=(230, 238, 246), P2=(196, 208, 222), M1=(170, 188, 210), M2=(110, 190, 186), M3=(60, 140, 140),
+         M4=(120, 136, 160), M5=(50, 64, 90), M0=(226, 234, 244), M6=(150, 166, 190), M7=(100, 118, 146),
+         AMB2=(200, 140, 60), C1=(226, 236, 246), C2=(160, 178, 200), C3=(110, 128, 156), C4=(64, 80, 108),
+         C5=(200, 214, 230), C0=(140, 156, 180), C6=(180, 196, 216), Y3=(50, 120, 120), Y4=(30, 90, 96),
+         C7=(190, 204, 222)),
+    dict(wall=HB_wall, side=HB_side, floor=HB_floor, pillar=HB_pillar, emblem=HB_emblem, machine=HB_machine,
+         misc=hof_misc))
+
+C6 = direction6(
+    "C", "THE SEASONS / THE CERTIFICATE",
+    ["LEAGUE: each humour's season (8.679) -- limewashed rooms on pale flags, and over every floor the same litter",
+     "that is frost in IV's colours, sun in II's, leaves in III's, blossom in I's; the ring a wheel of four spokes",
+     "with the room's season risen over its horizon; the pillars urns glazed in the humour. AL CLEAR's room NO",
+     "WEATHER: a sealed glasshouse, his wheel all white -- every season's colour at once is white light (7.2).",
+     "HALL: the record as an official document (AL CLEAR's name is on it) -- an engraved guilloche border for walls,",
+     "parchment under a fine lattice, the pillars rolled diplomas in a ribbon, the emblem a blank foil seal."],
+    dict(OUT=(40, 36, 40), GRY=(130, 124, 120), SIG=(240, 236, 220), W1=(226, 218, 200), W2=(204, 194, 174),
+         W3=(174, 162, 142), W4=(138, 126, 108), LMP=(255, 246, 214), LMPD=(214, 196, 150), E1=(236, 240, 242),
+         E2=(200, 208, 212), E3=(160, 170, 176), E4=(120, 130, 138), E5=(180, 200, 190), E6=(120, 140, 132),
+         WHT=(252, 252, 248), LG=(200, 198, 192), DG=(52, 48, 50), S1=(210, 204, 194), S2=(176, 168, 156),
+         S3=(136, 128, 118), F1=(200, 194, 182), F2=(176, 170, 158), F3=(148, 142, 130),
+         H1=(255, 255, 255), H2=(200, 200, 200), H3=(150, 150, 150), H4=(100, 100, 100), A1=(200, 200, 200),
+         A2=(100, 100, 100),
+         INK=(50, 56, 60), SL1=(120, 130, 134), FL1=(214, 216, 212), FL0=(236, 238, 234), GRY12=(168, 172, 170),
+         WA1=(196, 204, 200), WA2=(160, 172, 168), FL2=(190, 192, 188), GD1=(240, 190, 70), Q1=(204, 222, 236),
+         WA0=(226, 234, 230), GD0=(240, 240, 236), WA3=(120, 134, 130), BLK=(14, 12, 20),
+         RN1=(226, 214, 200), RN2=(206, 190, 160), RN3=(230, 216, 190), RNO=(82, 82, 106)),
+    dict(wall=C_wall, door=C_door, floor=C_floor, ring=C_ring, pillar=C_pillar, light=C_light, champion=C_champion),
+    dict(OUT=(46, 40, 36), GRY=(150, 140, 126), P3=(214, 204, 180), WHT=(250, 244, 226), B1=(214, 204, 176),
+         B2=(120, 140, 110), B3=(80, 96, 76), FL1=(240, 230, 204), FL2=(218, 206, 174), B0=(236, 228, 204),
+         Y1=(70, 110, 150), Y2=(40, 74, 110), B4=(150, 160, 130), AMB=(250, 210, 110), B5=(226, 214, 186),
+         P1=(244, 236, 214), P2=(220, 208, 178), M1=(250, 226, 140), M2=(222, 184, 80), M3=(184, 140, 50),
+         M4=(140, 100, 36), M5=(100, 70, 30), M0=(244, 236, 214), M6=(200, 186, 150), M7=(170, 156, 122),
+         AMB2=(200, 150, 60), C1=(248, 242, 224), C2=(224, 214, 186), C3=(190, 176, 140), C4=(120, 104, 78),
+         C5=(236, 226, 200), C0=(160, 146, 116), C6=(210, 198, 168), Y3=(60, 96, 130), Y4=(30, 56, 86),
+         C7=(200, 188, 156)),
+    dict(wall=HC_wall, side=HC_side, floor=HC_floor, pillar=HC_pillar, emblem=HC_emblem, machine=HC_machine,
+         misc=hof_misc))
+STYLES6 = {"A": A6, "B": B6, "C": C6}
+SCENES6 = scenes6()
+
+
+# ---------------------------------------------------------------------------------------- pair 6's sheets
+ROOMS_LG = [(HEARING[0][0], "IV PHLEGMATIC (met 1st)"), (HEARING[1][0], "II CHOLERIC (2nd)"),
+            (HEARING[2][0], "III MELANCHOLIC (3rd)"), (HEARING[3][0], "I SANGUINE (4th)"),
+            (CHAMPION, "AL CLEAR's room")]
+ROOMS_HOF = [(HALL, "the HALL OF FAME"), (UNION, "the UNION ROOM (shares the set: unchanged)")]
+DETAILS6 = [(HEARING[0][0], (1, 1, 12, 10), "IV: the door, the pillars, the ring"),
+            (HEARING[1][0], (1, 2, 5, 10), "II's pillars"), (HEARING[2][0], (1, 2, 5, 10), "III's pillars"),
+            (HEARING[3][0], (1, 4, 5, 13), "I's pillars"),
+            (CHAMPION, (3, 0, 10, 4), "AL CLEAR: the door"), (CHAMPION, (3, 5, 10, 11), "AL CLEAR: the emblem"),
+            (HALL, (2, 0, 9, 5), "the RECORD's machine (six lights)"), (HALL, (1, 4, 10, 9), "the emblem, pillars")]
+
+
+def contact_sheets6(out_dir, states):
+    names = list(states)
+    titles = {"NOW": ("NOW", ["today: Nintendo's rooms, their floors and walls retinted by gbatowns batch G (a DRAFT);",
+                              "the rings, emblems, pillars, doors and the RECORD's machine as Nintendo drew them."])}
+    for k in STYLES6:
+        titles[k] = ("%s %s" % (k, STYLES6[k]["title"]), STYLES6[k]["lines"])
+    pad = 10
+    paths = []
+    for which, rooms in (("league", ROOMS_LG), ("hall", ROOMS_HOF)):
+        blocks = []
+        for k in names:
+            st = states[k]
+            ims = [(room(m, (st, None) if st else None), cap) for m, cap in rooms]
+            t, lines = titles[k]
+            th = 8 + 12 * len(lines) + 16
+            W = sum(i.width for i, _ in ims) + pad * (len(ims) + 1)
+            im = Image.new("RGB", (max(W, 1100), th + max(i.height for i, _ in ims) + pad), BG)
+            d = ImageDraw.Draw(im)
+            text(d, (pad, 6), t.split(" / ")[0], RED)
+            if " / " in t:
+                text(d, (pad, 18), "/ " + t.split(" / ")[1], RED)
+            for j, s in enumerate(lines):
+                text(d, (pad + 250, 6 + 12 * j), s)
+            x = pad
+            for i, cap in ims:
+                text(d, (x, th - 13), cap, SOFT)
+                im.paste(i, (x, th))
+                x += i.width + pad
+            blocks.append(im)
+        W = max(b.width for b in blocks)
+        sh = Image.new("RGB", (W, sum(b.height for b in blocks) + 30), BG)
+        d = ImageDraw.Draw(sh)
+        text(d, (pad, 8), "T-447 DRAFT, pair 6 -- %s, the real maps at 1x, three directions beside today's (redrawn in "
+                          "place: no block, collision or palette row moves; 0 new tiles)" %
+             ("the LEAGUE: the four hearing rooms in the order met, then AL CLEAR" if which == "league"
+              else "the HALL OF FAME"), INK)
+        y = 30
+        for b in blocks:
+            sh.paste(b, (0, y))
+            y += b.height
+        p = os.path.join(out_dir, "t447p6_%s_1x.png" % which)
+        sh.save(p)
+        paths.append(p)
+    for part, idxs in ((1, (0, 1, 2, 3)), (2, (4, 5, 6, 7))):
+        rowsim = []
+        for k in names:
+            crops = []
+            for i in idxs:
+                m, cr, cap = DETAILS6[i]
+                im = room(m, (states[k], None) if states[k] else None, cr)
+                crops.append((im.resize((im.width * 3, im.height * 3), Image.NEAREST), cap))
+            rowsim.append((k, crops))
+        cw = sum(c.width for c, _ in rowsim[0][1]) + pad * (len(idxs) + 1) + 130
+        ch = max(c.height for c, _ in rowsim[0][1]) + 24
+        det = Image.new("RGB", (cw, ch * len(names) + 30), BG)
+        d = ImageDraw.Draw(det)
+        text(d, (pad, 8), "T-447 DRAFT, pair 6 -- details at 3x (%s)" %
+             ("the hearing rooms" if part == 1 else "AL CLEAR's room and the HALL OF FAME"), INK)
+        y = 30
+        for k, crops in rowsim:
+            text(d, (pad, y + 6), titles[k][0][:18], RED)
+            x = 130
+            for c, cap in crops:
+                text(d, (x, y + 2), cap, SOFT)
+                det.paste(c, (x, y + 16))
+                x += c.width + pad
+            y += ch
+        p = os.path.join(out_dir, "t447p6_detail_3x_%d.png" % part)
+        det.save(p)
+        paths.append(p)
+    #  the tiles at 3x, each in its home row (the hearing rooms' shared tiles shown in each room's row)
+    cols = []
+    for k in names:
+        st = states[k]
+        imgs = []
+        for key, S in SETS6.items():
+            tiles, pals = st[key] if st else (S.cur, {r: (TODAY6[key, r] if r >= 7 else G.PPAL[r]) for r in range(16)})
+            own = set(owned6(key))
+            shows = [None] + ([8, 9, 10, 11] if key == "lg" else [])
+            for showrow in shows:
+                pick = sorted(t for t in own if showrow is None or set(rows_of6(key, t)) & {8, 9, 10, 11})
+                if showrow is not None:
+                    pick = [t for t in pick if all(r in (8, 9, 10, 11) for r in rows_of6(key, t))]
+                used_rows = sorted({t // 16 for t in pick})
+                strip = Image.new("RGB", (128, 8 * len(used_rows)), (236, 236, 236))
+                o = strip.load()
+                for j, rr in enumerate(used_rows):
+                    for t in range(rr * 16, rr * 16 + 16):
+                        if t not in pick:
+                            continue
+                        rws = rows_of6(key, t)
+                        hr = showrow if showrow is not None else max(rws, key=rws.get)
+                        for q in range(64):
+                            vv = tiles[t][q]
+                            o[(t % 16) * 8 + q % 8, j * 8 + q // 8] = tuple(pals[hr][vv]) if vv else (200, 200, 200)
+                lab = S.dir.split("/")[-1] + (" (home rows)" if showrow is None else " (shared, in row %d)" % showrow)
+                imgs.append((lab, strip))
+        hh = sum(i.height * 3 + 16 for _, i in imgs)
+        col = Image.new("RGB", (384, hh), BG)
+        y = 0
+        dd = ImageDraw.Draw(col)
+        for lab, i in imgs:
+            dd.text((0, y), lab, fill=SOFT)
+            col.paste(i.resize((i.width * 3, i.height * 3), Image.NEAREST), (0, y + 14))
+            y += i.height * 3 + 16
+        cols.append((titles[k][0], col))
+    W = sum(c.width + pad for _, c in cols) + pad
+    sh = Image.new("RGB", (W, max(c.height for _, c in cols) + 50), BG)
+    d = ImageDraw.Draw(sh)
+    text(d, (pad, 6), "T-447 DRAFT, pair 6 -- the tiles at 3x (grey: transparent); the hearing rooms' shared tiles "
+                      "once per room's row", INK)
+    x = pad
+    for t, c in cols:
+        text(d, (x, 26), t[:44], RED)
+        sh.paste(c, (x, 42))
+        x += c.width + pad
+    p = os.path.join(out_dir, "t447p6_tiles_3x.png")
+    sh.save(p)
+    paths.append(p)
+    return paths
+
+
+# ---------------------------------------------------------------------------------------- pair 6's report
+def report6():
+    bad = 0
+    picks = {k: APPROVED[k] for k in SETS6 if k in APPROVED}
+    print("\n  pair 6 (the LEAGUE + the HALL OF FAME) -- DRAFT, %s" %
+          ("APPROVED %s" % picks if picks else "not approved: `--pair 6 --write --approved` refuses"))
+    for key, S in SETS6.items():
+        own = owned6(key)
+        van = [t for t in own if S.cur[t] == S.van[t] and len(set(S.van[t])) > 1]
+        rows = sorted({r for t in own for r in rows_of6(key, t)})
+        print("    %-16s %3d tiles drawn here, %d still Nintendo's drawing; rows placed %s, own %s" %
+              (NAMES[key], len(own), len(van), rows, S.rows))
+    print("    scenes: %s" % ", ".join(sc.name for sc in SCENES6))
+    print("    named blocks kept by id: %s" % ", ".join("0x%03X %s" % kv for kv in sorted(NAMED6.items())))
+    #  the UNION ROOM shares the HALL's set: none of its tiles and none of its rows may move
+    union = {t for t in HOF.use if UNION in HOF.use[t]["maps"]}
+    urows = sorted({r for t in union for r in HOF.use[t]["rows"]})
+    if union & set(owned6("hof")) or set(urows) & set(HOF.rows):
+        print("  !! the UNION ROOM draws a tile or row this pair redraws")
+        bad = 1
+    else:
+        print("    the UNION ROOM: its %d tiles and rows %s are not this pair's (the front edge 45..47 kept)" %
+              (len(union), urows))
+    #  gbatowns must keep every tile these rooms draw
+    towns = _literal(os.path.join(ROOT, "tools", "gbatowns.py"), "LANDMARKS") or {}
+    boxed = {b[0] for b in towns.get("pokemon_league", [])} | {b[0] for b in towns.get("hall_of_fame", [])}
+    if boxed != set(LEAGUE_MAPS) | {HALL}:
+        print("  !! gbatowns.LANDMARKS does not hold the five LEAGUE rooms and the HALL (%s): its write could redraw them"
+              % sorted(set(LEAGUE_MAPS) | {HALL} - boxed))
+        bad = 1
+    else:
+        print("    gbatowns.LANDMARKS holds the five LEAGUE rooms and the HALL: its write keeps every tile they draw")
+    print("    gbafieldfx: the RECORD's monitor sprite (hof_monitor) -- a sprite, not these tiles; the six lights are "
+          "kept where FLDEFF_HALL_OF_FAME_RECORD sets the balls; the statues in I's corridor are primary/building's")
+    known = {"gbatowns.py", "gbafieldfx.py", "port_dialogue.py", "port_hearsay.py", "check_generators.py"}
+    found = set()
+    me = os.path.basename(__file__)
+    for f in sorted(glob.glob(os.path.join(ROOT, "tools", "*.py"))):
+        if os.path.basename(f) == me:
+            continue
+        if re.search(r"pokemon_league|PokemonLeague|hall_of_fame|HallOfFame",
+                     open(f, encoding="utf-8", errors="ignore").read()):
+            found.add(os.path.basename(f))
+    if found - known:
+        print("  !! a tool this one does not know names these tilesets: %s -- read it before a write" %
+              sorted(found - known))
+        bad = 1
+    for k, D in STYLES6.items():
+        sets, owner = draw6(D)
+        for key, S in SETS6.items():
+            tiles, pals = sets[key]
+            moved = [t for t in range(S.nvan) if any((a == 0) != (b == 0) for a, b in zip(tiles[t], S.cur[t]))]
+            if moved:
+                print("  !! %s %s: tiles %s change their footprint" % (k, key, moved[:10]))
+                bad = 1
+            stray = [t for t in range(S.nvan) if tiles[t] != S.cur[t] and t not in set(owned6(key))]
+            if stray:
+                print("  !! %s %s: tiles %s that are not this pair's changed" % (k, key, stray[:10]))
+                bad = 1
+            missed = sorted(set(owned6(key)) - {t for (sk, t) in owner if sk == key})
+            if missed:
+                print("  !! %s %s: tiles %s in no scene" % (k, key, missed[:10]))
+                bad = 1
+            if any(pals[r] != TODAY6[key, r] for r in range(7, 16) if r not in S.rows):
+                print("  !! %s %s: a row this pair does not own changed" % (k, key))
+                bad = 1
+        n = {key: sum(1 for t in owned6(key) if sets[key][0][t] != SETS6[key].van[t]) for key in SETS6}
+        print("    %s %-38s redrawn: pokemon_league %d of %d, hall_of_fame %d of %d; 0 new tiles" %
+              (k, D["title"], n["lg"], len(owned6("lg")), n["hof"], len(owned6("hof"))))
+    return bad
+
+
+def check_engine6():
+    bad = 0
+    for bkey, pick in APPROVED.items():
+        if bkey not in SETS6:
+            continue
+        sets, _ = draw6(STYLES6[pick], only=bkey)
+        S = SETS6[bkey]
+        off = [t for t in range(len(S.cur)) if sets[bkey][0][t] != S.cur[t]]
+        rows = [r for r in S.rows if sets[bkey][1][r] != TODAY6[bkey, r]]
+        if off or rows:
+            print("  !! %s: the engine differs from `--pair 6 --write --approved` (%s) in tiles %s rows %s"
+                  % (NAMES[bkey], pick, off[:12], rows))
+            bad = 1
+    return bad
+
+
+def main6():
+    picks = {k: APPROVED[k] for k in SETS6 if k in APPROVED}
+    if WRITE:
+        if "--approved" not in ARGS or not picks:
+            print("  --write refused: T-447 pair 6 is a draft. APPROVED holds no pick for it (%s); the user picks a "
+                  "direction per\n  building first, it goes into APPROVED (\"lg\": X, \"hof\": Y), then "
+                  "`--pair 6 --write --approved` writes pokemon_league's\n  tiles and rows 7..12 and hall_of_fame's "
+                  "tiles and rows 7, 10, 11 (never a tile or row the UNION ROOM draws)." % (picks or "empty"))
+            return 1
+        for bkey, pick in picks.items():
+            sets, _ = draw6(STYLES6[pick], only=bkey)
+            S = SETS6[bkey]
+            G.save_like(os.path.join(GBA, S.dir, "tiles.png"), sets[bkey][0], os.path.join(GBA, S.dir, "tiles.png"))
+            for r in S.rows:
+                write_pal(os.path.join(GBA, S.dir, "palettes", "%02d.pal" % r), sets[bkey][1][r])
+            print("  written: %s, direction %s" % (NAMES[bkey], pick))
+        return 0
+    bad = report()
+    if DRAFT is not None:
+        out = DRAFT if DRAFT != DRAFT_DEFAULT else DRAFT6_DEFAULT
+        os.makedirs(out, exist_ok=True)
+        states = collections.OrderedDict()
+        states["NOW"] = None
+        summary = {}
+        for k, D in STYLES6.items():
+            sets, owner = draw6(D)
+            for key, S in SETS6.items():
+                dd = os.path.join(out, k, S.dir.split("/")[-1])
+                os.makedirs(os.path.join(dd, "palettes"), exist_ok=True)
+                G.save_like(os.path.join(GBA, S.dir, "tiles.png"), sets[key][0], os.path.join(dd, "tiles.png"))
+                for r in S.rows:
+                    write_pal(os.path.join(dd, "palettes", "%02d.pal" % r), sets[key][1][r])
+            states[k] = sets
+            ch = {key: sum(1 for t in owned6(key) if sets[key][0][t] != SETS6[key].van[t]) for key in SETS6}
+            summary[k] = dict(title=D["title"], lines=D["lines"], tiles_redrawn=ch, new_tiles=0,
+                              rows={"pokemon_league": LG.rows, "hall_of_fame": HOF.rows})
+        json.dump(dict(ticket="T-447", pair=6, status="DRAFT -- not in the engine", approved=picks,
+                       directions=summary), open(os.path.join(out, "directions.json"), "w"), indent=1)
+        for p in contact_sheets6(out, states):
+            print("  sheet:", p)
+    if APPROVED:
+        bad = check_engine() or bad
+    return 1 if bad else 0
+
+
 # ============================================================================================ report
 def claims():
     """every other tool that names these tilesets or the diary's tiles"""
@@ -3526,6 +5112,7 @@ def report():
     print("  scripted blocks: the switch 0x314/0x315/0x316 <-> 0x34D/0x34E/0x34F and the gates 0x2F8..0x372 keep "
           "their ids; their tiles are drawn as OFF/ON and SHUT (switch sheet)")
     bad |= report5()
+    bad |= report6()
     return bad
 
 
@@ -3545,6 +5132,7 @@ def check_engine():
                   % (NAMES[bkey], pick, off[:12], rows, dia))
             bad = 1
     bad |= check_engine5()
+    bad |= check_engine6()
     if APPROVED and not bad:
         print("  the engine matches `--write --approved` (%s)" % APPROVED)
     return bad
@@ -3553,6 +5141,8 @@ def check_engine():
 def main():
     if PAIR == "5":
         return main5()
+    if PAIR == "6":
+        return main6()
     if WRITE:
         if "--approved" not in ARGS or not APPROVED:
             print("  --write refused: T-447 pair 4 is a draft. APPROVED is %s; the user picks a direction per building "
@@ -3562,7 +5152,7 @@ def main():
             return 1
         for bkey, pick in APPROVED.items():
             if bkey not in SETS:
-                continue                               # pair 5 writes only with --pair 5
+                continue                               # pairs 5 and 6 write only with --pair 5 / 6
             sets, prim, _ = draw(STYLES[pick], only=bkey)
             S = SETS[bkey]
             G.save_like(os.path.join(GBA, S.dir, "tiles.png"), sets[bkey][0], os.path.join(GBA, S.dir, "tiles.png"))

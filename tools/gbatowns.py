@@ -412,6 +412,16 @@ LANDMARKS = {
                      ("SevenIsland_TanobyRuins_ScufibChamber", 0, 0, 23, 17, "TANOBY, SCUFIB"),
                      ("SevenIsland_TanobyRuins_RixyChamber", 0, 0, 23, 17, "TANOBY, RIXY"),
                      ("SevenIsland_TanobyRuins_ViapoisChamber", 0, 0, 23, 17, "TANOBY, VIAPOIS")],
+    #  T-447's sixth pair (drafted 2026-11-11, gbalandmarkrooms.py --pair 6): the REVIEW BOARD's four hearing rooms and
+    #  AL CLEAR's, and the HALL OF FAME, whole -- batch G's floors and walls are kept as they stand until that pair is
+    #  built. Without this, the batch C copy rule found AL CLEAR's door-step tile 257 (a flat fill) equal to building
+    #  tile 529 (a bed piece T-538 redrew) and would have copied the bed into his room. The UNION ROOM stays this tool's.
+    "pokemon_league": [("PokemonLeague_LoreleisRoom", 0, 0, 13, 13, "IV, PHLEGMATIC"),
+                       ("PokemonLeague_BrunosRoom", 0, 0, 13, 13, "II, CHOLERIC"),
+                       ("PokemonLeague_AgathasRoom", 0, 0, 13, 13, "III, MELANCHOLIC"),
+                       ("PokemonLeague_LancesRoom", 0, 0, 28, 24, "I, SANGUINE"),
+                       ("PokemonLeague_ChampionsRoom", 0, 0, 13, 20, "AL CLEAR's room")],
+    "hall_of_fame": [("PokemonLeague_HallOfFame", 0, 0, 11, 13, "the HALL OF FAME")],
 }
 
 
