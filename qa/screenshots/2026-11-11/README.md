@@ -517,3 +517,15 @@ C-273: THE HERMETIC LAYER's MIND · BODY · SPIRIT on the site, phone width and 
 C-273: THE HERMETIC LAYER's MIND · BODY · SPIRIT on the site, phone width and wide; wide, the modes' column 240 so PAST · PRESENT · FUTURE keeps to one line (companion f94226e)
 
 ![11Nov2026 - C273 - THE HERMETIC LAYER cards, MIND BODY SPIRIT - 103](11Nov2026%20-%20C273%20-%20THE%20HERMETIC%20LAYER%20cards%2C%20MIND%20BODY%20SPIRIT%20-%20103.png)
+
+### 11Nov2026 - C296 - SPIRITS, the tone and THE MINDs card - 104
+
+C-296 (DRAFT): the same daemon in low spirits (darker), as it is, and in good spirits (lighter), the hue kept; THE MIND > NOW's SPIRITS card with the four totals (companion dca02e7)
+
+![11Nov2026 - C296 - SPIRITS, the tone and THE MINDs card - 104](11Nov2026%20-%20C296%20-%20SPIRITS%2C%20the%20tone%20and%20THE%20MINDs%20card%20-%20104.png)
+
+### 11Nov2026 - C296 - SPIRITS, the tone and THE MINDs card - 105
+
+C-296 (DRAFT): the same daemon in low spirits (darker), as it is, and in good spirits (lighter), the hue kept; THE MIND > NOW's SPIRITS card with the four totals (companion dca02e7)
+
+![11Nov2026 - C296 - SPIRITS, the tone and THE MINDs card - 105](11Nov2026%20-%20C296%20-%20SPIRITS%2C%20the%20tone%20and%20THE%20MINDs%20card%20-%20105.png)
