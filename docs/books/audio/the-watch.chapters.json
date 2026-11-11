@@ -1,0 +1,363 @@
+{
+ "book": "watch",
+ "voice": "pocket",
+ "blend": {
+  "af_sky": 0.6,
+  "bf_emma": 0.4
+ },
+ "speed": 1.02,
+ "sentence": 0.3,
+ "draft": "DRAFT \u00b7 every word, until it is approved",
+ "sources": "0ad34a947af2928a",
+ "duration": 1477.22,
+ "chapters": [
+  {
+   "kind": "section",
+   "title": "The Watch",
+   "start": 0.0,
+   "end": 10.95
+  },
+  {
+   "kind": "section",
+   "title": "The watch",
+   "start": 10.95,
+   "end": 106.62
+  },
+  {
+   "kind": "entry",
+   "title": "What you need",
+   "start": 106.62,
+   "end": 141.4
+  },
+  {
+   "kind": "section",
+   "title": "First steps",
+   "start": 141.4,
+   "end": 144.14
+  },
+  {
+   "kind": "entry",
+   "title": "Charging",
+   "start": 144.14,
+   "end": 169.33
+  },
+  {
+   "kind": "entry",
+   "title": "Starting it",
+   "start": 169.33,
+   "end": 187.6
+  },
+  {
+   "kind": "entry",
+   "title": "Linking it",
+   "start": 187.6,
+   "end": 242.63
+  },
+  {
+   "kind": "entry",
+   "title": "Teaching it your Wi-Fi",
+   "start": 242.63,
+   "end": 267.26
+  },
+  {
+   "kind": "entry",
+   "title": "Your daemon arrives",
+   "start": 267.26,
+   "end": 287.6
+  },
+  {
+   "kind": "entry",
+   "title": "The corner",
+   "start": 287.6,
+   "end": 317.49
+  },
+  {
+   "kind": "section",
+   "title": "Controls",
+   "start": 317.49,
+   "end": 320.16
+  },
+  {
+   "kind": "entry",
+   "title": "The crown",
+   "start": 320.16,
+   "end": 346.78
+  },
+  {
+   "kind": "entry",
+   "title": "Touch",
+   "start": 346.78,
+   "end": 373.38
+  },
+  {
+   "kind": "entry",
+   "title": "The wrist (Ultra)",
+   "start": 373.38,
+   "end": 395.73
+  },
+  {
+   "kind": "entry",
+   "title": "The buzz",
+   "start": 395.73,
+   "end": 410.12
+  },
+  {
+   "kind": "section",
+   "title": "The face",
+   "start": 410.12,
+   "end": 416.51
+  },
+  {
+   "kind": "entry",
+   "title": "Its faces",
+   "start": 416.51,
+   "end": 463.42
+  },
+  {
+   "kind": "entry",
+   "title": "On the face",
+   "start": 463.42,
+   "end": 477.17
+  },
+  {
+   "kind": "entry",
+   "title": "The strip under the face (Ultra)",
+   "start": 477.17,
+   "end": 530.84
+  },
+  {
+   "kind": "entry",
+   "title": "Always on (Ultra)",
+   "start": 530.84,
+   "end": 546.76
+  },
+  {
+   "kind": "section",
+   "title": "The pages",
+   "start": 546.76,
+   "end": 566.78
+  },
+  {
+   "kind": "entry",
+   "title": "TODAY",
+   "start": 566.78,
+   "end": 585.37
+  },
+  {
+   "kind": "entry",
+   "title": "Your daemon's page",
+   "start": 585.37,
+   "end": 602.37
+  },
+  {
+   "kind": "entry",
+   "title": "THE DAY",
+   "start": 602.37,
+   "end": 621.41
+  },
+  {
+   "kind": "entry",
+   "title": "SETTINGS",
+   "start": 621.41,
+   "end": 637.22
+  },
+  {
+   "kind": "entry",
+   "title": "WHO ANSWERS FIRST",
+   "start": 637.22,
+   "end": 656.24
+  },
+  {
+   "kind": "entry",
+   "title": "POWER",
+   "start": 656.24,
+   "end": 677.52
+  },
+  {
+   "kind": "section",
+   "title": "Caring for it",
+   "start": 677.52,
+   "end": 680.34
+  },
+  {
+   "kind": "entry",
+   "title": "CARE",
+   "start": 680.34,
+   "end": 725.16
+  },
+  {
+   "kind": "entry",
+   "title": "Its INDEX entry",
+   "start": 725.16,
+   "end": 742.66
+  },
+  {
+   "kind": "section",
+   "title": "Talking",
+   "start": 742.66,
+   "end": 774.1
+  },
+  {
+   "kind": "entry",
+   "title": "Telling it what to do",
+   "start": 774.1,
+   "end": 804.71
+  },
+  {
+   "kind": "section",
+   "title": "Nights and dreams",
+   "start": 804.71,
+   "end": 807.74
+  },
+  {
+   "kind": "entry",
+   "title": "A night",
+   "start": 807.74,
+   "end": 843.43
+  },
+  {
+   "kind": "entry",
+   "title": "The dream",
+   "start": 843.43,
+   "end": 870.15
+  },
+  {
+   "kind": "entry",
+   "title": "HOURS",
+   "start": 870.15,
+   "end": 913.51
+  },
+  {
+   "kind": "section",
+   "title": "Walking together",
+   "start": 913.51,
+   "end": 916.31
+  },
+  {
+   "kind": "entry",
+   "title": "Steps",
+   "start": 916.31,
+   "end": 936.74
+  },
+  {
+   "kind": "entry",
+   "title": "Where you walked (Ultra)",
+   "start": 936.74,
+   "end": 970.95
+  },
+  {
+   "kind": "section",
+   "title": "Books and the INDEX",
+   "start": 970.95,
+   "end": 973.98
+  },
+  {
+   "kind": "entry",
+   "title": "BOOKS",
+   "start": 973.98,
+   "end": 1048.51
+  },
+  {
+   "kind": "entry",
+   "title": "THE INDEX",
+   "start": 1048.51,
+   "end": 1064.75
+  },
+  {
+   "kind": "entry",
+   "title": "The memory card (Ultra)",
+   "start": 1064.75,
+   "end": 1095.16
+  },
+  {
+   "kind": "section",
+   "title": "Meetings and voice notes",
+   "start": 1095.16,
+   "end": 1098.54
+  },
+  {
+   "kind": "entry",
+   "title": "RECORD A MEETING",
+   "start": 1098.54,
+   "end": 1141.54
+  },
+  {
+   "kind": "entry",
+   "title": "VOICE NOTE",
+   "start": 1141.54,
+   "end": 1157.38
+  },
+  {
+   "kind": "entry",
+   "title": "SEND KEPT",
+   "start": 1157.38,
+   "end": 1167.71
+  },
+  {
+   "kind": "section",
+   "title": "Meeting others",
+   "start": 1167.71,
+   "end": 1170.51
+  },
+  {
+   "kind": "entry",
+   "title": "Nearby",
+   "start": 1170.51,
+   "end": 1217.27
+  },
+  {
+   "kind": "entry",
+   "title": "Cards and TOUCH (Ultra)",
+   "start": 1217.27,
+   "end": 1269.02
+  },
+  {
+   "kind": "section",
+   "title": "Play",
+   "start": 1269.02,
+   "end": 1271.39
+  },
+  {
+   "kind": "entry",
+   "title": "The CASINO",
+   "start": 1271.39,
+   "end": 1285.67
+  },
+  {
+   "kind": "entry",
+   "title": "MUSIC",
+   "start": 1285.67,
+   "end": 1312.42
+  },
+  {
+   "kind": "entry",
+   "title": "The TV",
+   "start": 1312.42,
+   "end": 1342.16
+  },
+  {
+   "kind": "section",
+   "title": "Looking after the watch",
+   "start": 1342.16,
+   "end": 1345.29
+  },
+  {
+   "kind": "entry",
+   "title": "The battery",
+   "start": 1345.29,
+   "end": 1370.77
+  },
+  {
+   "kind": "entry",
+   "title": "Putting the software on",
+   "start": 1370.77,
+   "end": 1400.61
+  },
+  {
+   "kind": "entry",
+   "title": "When something is wrong",
+   "start": 1400.61,
+   "end": 1477.22
+  }
+ ]
+}

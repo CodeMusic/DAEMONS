@@ -1,0 +1,21 @@
+{
+ "rom": "debug",
+ "about": "T-447 pair 6 (tools/gbalandmarkrooms.py --pair 6 --write --approved, built 2026-11-11; the user: LEAGUE A The four vessels, HALL A The index card), DRAFT: the REVIEW BOARD's four hearing rooms, each in its member's humour (IV PHLEGMATIC, II CHOLERIC, III MELANCHOLIC, I SANGUINE) on the same floor, ring and wall lights; AL CLEAR's room; the HALL OF FAME as the record that files you. Redrawn in place: no block, palette row, behaviour or map moved; the doors and entries the engine names keep their ids, the RECORD's six lights stay where the balls are set, the UNION ROOM and the corridor statues untouched. Each map warped to by name, in the order a player meets them. Watch held at day. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {"stop": "the DEBUG build, continued", "steps": [
+   "load debug",
+   "poke gDaemonsWatchOverride 8 1", "poke gDaemonsWeatherOverride 8 1"]},
+  {"stop": "hearing room IV (PHLEGMATIC, row 8)", "steps": [
+   "goto PokemonLeague_LoreleisRoom", "close", "wait 60", "shot LEAGUE hearing room IV"]},
+  {"stop": "hearing room II (CHOLERIC, row 9)", "steps": [
+   "goto PokemonLeague_BrunosRoom", "close", "wait 60", "shot LEAGUE hearing room II"]},
+  {"stop": "hearing room III (MELANCHOLIC, row 10)", "steps": [
+   "goto PokemonLeague_AgathasRoom", "close", "wait 60", "shot LEAGUE hearing room III"]},
+  {"stop": "hearing room I (SANGUINE, row 11)", "steps": [
+   "goto PokemonLeague_LancesRoom", "close", "wait 60", "shot LEAGUE hearing room I"]},
+  {"stop": "AL CLEAR's room (row 12)", "steps": [
+   "goto PokemonLeague_ChampionsRoom", "close", "wait 60", "shot LEAGUE AL CLEAR's room"]},
+  {"stop": "the HALL OF FAME: the record", "steps": [
+   "goto PokemonLeague_HallOfFame", "close", "wait 60", "shot HALL OF FAME"]}
+ ]
+}

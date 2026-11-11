@@ -598,4 +598,4 @@ Both faces are written now, in the only hand that was never the author's or the 
 
 ^ As above, so below, so one.
 
-You have read a book that was torn, and mended it, and read it whole. Close it gently. The world will look the same in the morning and the same at night. It will not be, and it always was.
+You have read a book that was torn, and mended it, and read it whole. Close it gently. The world will look the same in the morning and the same at night. It will not be, and it always was. Look again, and you will see them both.

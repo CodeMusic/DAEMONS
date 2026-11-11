@@ -48,15 +48,18 @@ VOICES = {  # picked with the user from samples, 2026-11-01
     #  THE ORIGIN OF A DAEMON (T-533): MUSAI's own voice, the whole before it branched -- half a woman's voice and half a
     #  man's, even and unhurried; picked by the user from three samples, 2026-11-11 ("A: the whole")
     "musai": {"blend": {"af_river": 0.5, "am_echo": 0.5}, "speed": 0.92, "sentence": 0.4},
+    #  THE WATCH (C-326): bright and close, a little brisk, like something you carry -- picked by the user from three
+    #  samples, 2026-11-11 ("A: pocket")
+    "pocket": {"blend": {"af_sky": 0.6, "bf_emma": 0.4}, "speed": 1.02, "sentence": 0.3},
 }
 BOOK_VOICE = {"guide": "reason", "subtle": "instinct", "hermetic": "night", "eudaimon": "dawn", "unity": "whole",
               "textbook": "professor", "quick": "patient", "manual": "adventure", "companion": "friend",
-              "social": "together", "tiiny": "mind", "etymology": "elder", "origin": "musai"}
+              "social": "together", "tiiny": "mind", "etymology": "elder", "origin": "musai", "watch": "pocket"}
 FILE = {"guide": "guide", "subtle": "the-subtle-layer", "hermetic": "the-vault-audio", "eudaimon": "the-vault-audio-2",
         "unity": "the-vault-audio-3", "textbook": "principles-of-mind",   # -2, -3: the names the companion fetches (C-299)
         "quick": "quick-start", "manual": "the-players-manual", "companion": "the-companion",
         "social": "playing-together", "tiiny": "a-bigger-mind", "etymology": "the-old-word",
-        "origin": "the-origin-audio"}
+        "origin": "the-origin-audio", "watch": "the-watch"}
 #  a book with no voice on purpose; --check names any other book that has none (T-543: a new book is never left silent)
 UNVOICED = {"micro": "MICRO-START, the quick start in five pages, is not on the LIBRARY's shelf"}
 RATE = {"textbook": "48k"}       # a long book a little lighter, under GitHub's 50 MB; the rest 64k
@@ -117,6 +120,8 @@ MANUALS = {
     "tiiny": ("docs/manual-tiiny", "A Bigger Mind", f"A Bigger Mind. The Tiiny, set up for the companion. {DRAFTED}"),
     "etymology": ("docs/manual-etymology", "The Old Word",
                   f"The Old Word. How daimon branched, and why it is said DAY-mons. {DRAFTED}"),
+    "watch": ("docs/manual-watch", "The Watch",
+              f"The Watch. Your daemon on your wrist: the T-Watch Ultra and the T-Watch S3. {DRAFTED}"),
 }
 SAY = {"←": " left ", "→": " right ", "↑": " up ", "↓": " down ", "⟷": " to ", "½": " half", "°": " degrees",
        "−": "minus ", "⚙": "the gear", "…": "...", "✚": "", "✦": "", "•": "", "▼": "", "▶": "", "○": "", "✕": "",

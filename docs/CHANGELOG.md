@@ -5,22 +5,44 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
-## v11.349 — 2026-11-11
+## v11.351 — 2026-11-11
 
 - **The ending's two gates (T-552, the Fifth Review's third finding; the user by multiple choice).** 4.34's order gains step 2a, TANOBY's seventh chamber: it was the cave's second gate in the flags and in 0.7 and never in the ending's own table. The dream the unread cave wakes you from (T-254) now ends on one line in S.T.A.R.R.'s register, DRAFT: *SEVEN ISLAND. SEVEN CHAMBERS. / THE SEVENTH HAS NOT BEEN READ.* And 9.17 is corrected: in play the GLOBAL INDEX has come from the aide on `FLAG_CRYSTAL_GONE` alone since T-27, so the sixty-daemon count the bible, the Fourth Review and the Fifth all named as a gate was dead code on an unreachable path. The user dropped it outright; Act 2 opens on the REVIEW BOARD and only that.
 - **Decision log**: Settled.
 
-## v11.348 — 2026-11-11
+## v11.350 — 2026-11-11
 
 - **DURABLE holds from full HP (T-551, the Fifth Review's second finding).** 2.11, 5.3 and 5.3b said CAIRN's line "cannot be knocked out in one blow, at any level"; the ability was vanilla's STURDY, which in Gen 3 stops only the four one-hit-KO routines, so a strong hit took HEAP down in one and BENCHMARK 1 had no mechanic. The later generations' rule is built: a daemon with DURABLE at full HP survives any single hit with 1 HP left (ENDURE and FAILSAFE keep precedence; a SUBSTITUTE takes the hit; the one-hit-KO block stays). Its line, DRAFT: *did not go down to one hit!* Its description, DRAFT, in 2.11's register: *No one hit takes it from full.* The three sections say so; 5.3b's row 1 is amended.
 - **Decision log**: Settled.
 
-## v11.347 — 2026-11-11
+## v11.349 — 2026-11-11
 
 - **The record tidied (T-553, the Fifth Review's plans section).** No design moved; eight bodies were brought to what the build already does. 8.1's slice list says the chart is seventeen types, as it has been since 2026-09-10. 8.4's "trap to avoid" is read with 0.4's 2026-09-04 ruling and logged as **Reversed**: the pair is a pair on purpose, and neither entry reports a feeling. 8.6's "restraint clause holds at two" is logged as **Reversed** by the dozen meanings colour now carries; what survived is invariant 5 as practised, one meaning per colour and none explained. 4.5's ORPHAN is marked superseded on the GBA build (REMNANT to COREFILE, MISSINGNO's blank entry) and its open sequencing question answered by the build. 8.2a's "he is not the same" is reconciled with 4.37's "SCORN is unchanged": the staff's account and the fact. 4.1's opening row no longer says the thesis is stated. 4.3's "Ty is not in the endgame" survives as *not on the ladder*. 4.33's placement is settled (T-22); his name stays OPEN.
 - **8.7's accepted sweeps have a ticket at last**: T-554 carries the colour, tempo and SLEEP sweeps, Brazen's B-section, the small continuity faults, CONVICTION, Al's desaturating party and the INDEX sprite's fixed saturation.
 - **Outside the bible, the same ticket**: 21 open rows re-filed from under TODO's Closed heading, T-456, T-457 and T-433 struck, the PKRS question struck (MEME, T-258), the T-267 reservation cleared; CLAUDE.md no longer carries a bible version to drift (it said v11.296 for five weeks) and names the GBA fork in its first line; the READMEs and the wiki name v11.346.2; wiki/Editions says 398 entries; docs/README's dead PDF links gone, engine.md's "eight traps" forty-three, school.md and its row say built; `tools/check_todo.py` fails the push on an open row under Closed, a spent reservation or a stale release line.
 - **Decision log**: Settled, and two rows in Reversed.
+
+*v11.349 to v11.351 were the Fifth Review's three jobs on a branch, merged over main's v11.347 and v11.348 (below), which had taken the same numbers meanwhile.*
+
+## v11.348 — 2026-11-11
+
+- **4.40:** THE UNITY BOOK's last line, "Look again, and you will see them both.", finishes the sentences each torn half breaks off (T-519). The DUET's tune is DUET-1, E D D C D E over E F F G F E, which the user picked by ear from four drafts (T-528).
+- **9.29:** six landmark pairs are built. The user chose pair 6: the LEAGUE as THE FOUR VESSELS and the HALL OF FAME as THE INDEX CARD (T-447).
+- A Settled entry in section 10. Every word is DRAFT.
+
+## v11.347 — 2026-11-11
+
+- **The bible caught up with work built since v11.332 that it had never recorded.**
+  - **2.12 §1, the physical / special split (T-490):** marked DECIDED. Steps 1 and 2 are released. Under the user's rule, a move that touches the foe is physical. TAMPER, the CORRUPT row, CONSENSUS, PRIOR and WEATHER BALL are now SPECIAL. TRELLIS's SPAGHETTI is left as built for playtest.
+  - **4.38, a new part, "Placed where they can be heard":** the three-book review's fixes.
+    - T-502: CRYSTAL's lines play in the lab.
+    - T-503: MATTE reads and steers instead of bending spoons.
+    - T-504: MOM's ship line ends when the ship sails.
+    - T-510 to T-516: CLOSURE and the day's virtue, THE LOG's weekday, the INTERPRETER, "Not yet." under Ty's refusal, the USER card's bands, THE CARD HOME, and the four practices.
+  - **4.37:** SCORN's last admins in the Warehouse are 8.2a's remnants (T-505).
+  - **4.39:** the sign on OSRIC HATTER's hat (T-500).
+  - **4.40:** THE OLD WORD, the etymology book (T-517).
+- A Settled entry in section 10. Every word is DRAFT.
 
 ## v11.346 — 2026-11-10
 

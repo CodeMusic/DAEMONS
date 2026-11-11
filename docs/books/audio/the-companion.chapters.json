@@ -7,8 +7,8 @@
  },
  "speed": 0.96,
  "draft": "DRAFT \u00b7 every word, until it is approved",
- "sources": "f33906f417f594a2",
- "duration": 3497.05,
+ "sources": "c201451cbbd9e90a",
+ "duration": 3532.51,
  "chapters": [
   {
    "kind": "section",
@@ -296,307 +296,307 @@
    "kind": "entry",
    "title": "FOUND IN THE GAME",
    "start": 1605.33,
-   "end": 1721.95
+   "end": 1732.55
   },
   {
    "kind": "entry",
    "title": "MANUALS",
-   "start": 1721.95,
-   "end": 1766.64
+   "start": 1732.55,
+   "end": 1799.37
   },
   {
    "kind": "entry",
    "title": "HISTORY AND STUDY",
-   "start": 1766.64,
-   "end": 1812.03
+   "start": 1799.37,
+   "end": 1847.48
   },
   {
    "kind": "entry",
    "title": "YOUR OWN PAGES",
-   "start": 1812.03,
-   "end": 1856.76
+   "start": 1847.48,
+   "end": 1892.21
   },
   {
    "kind": "entry",
    "title": "Your instrument",
-   "start": 1856.76,
-   "end": 1899.76
+   "start": 1892.21,
+   "end": 1935.22
   },
   {
    "kind": "section",
    "title": "YOU, and your game",
-   "start": 1899.76,
-   "end": 1910.1
+   "start": 1935.22,
+   "end": 1945.55
   },
   {
    "kind": "entry",
    "title": "You as the game draws you",
-   "start": 1910.1,
-   "end": 1939.38
+   "start": 1945.55,
+   "end": 1974.83
   },
   {
    "kind": "entry",
    "title": "The facts",
-   "start": 1939.38,
-   "end": 1953.15
+   "start": 1974.83,
+   "end": 1988.6
   },
   {
    "kind": "entry",
    "title": "MARKS and ROOTS",
-   "start": 1953.15,
-   "end": 1989.9
+   "start": 1988.6,
+   "end": 2025.35
   },
   {
    "kind": "entry",
    "title": "GROVES",
-   "start": 1989.9,
-   "end": 2004.05
+   "start": 2025.35,
+   "end": 2039.51
   },
   {
    "kind": "entry",
    "title": "GAME EVENTS",
-   "start": 2004.05,
-   "end": 2018.78
+   "start": 2039.51,
+   "end": 2054.23
   },
   {
    "kind": "entry",
    "title": "THE ROAD AHEAD",
-   "start": 2018.78,
-   "end": 2041.81
+   "start": 2054.23,
+   "end": 2077.26
   },
   {
    "kind": "entry",
    "title": "TRADE",
-   "start": 2041.81,
-   "end": 2059.03
+   "start": 2077.26,
+   "end": 2094.49
   },
   {
    "kind": "section",
    "title": "The GAME tab",
-   "start": 2059.03,
-   "end": 2077.22
+   "start": 2094.49,
+   "end": 2112.67
   },
   {
    "kind": "entry",
    "title": "Your own copy",
-   "start": 2077.22,
-   "end": 2117.98
+   "start": 2112.67,
+   "end": 2153.43
   },
   {
    "kind": "entry",
    "title": "Playing",
-   "start": 2117.98,
-   "end": 2153.48
+   "start": 2153.43,
+   "end": 2188.93
   },
   {
    "kind": "entry",
    "title": "One save, synced as you play",
-   "start": 2153.48,
-   "end": 2198.48
+   "start": 2188.93,
+   "end": 2233.93
   },
   {
    "kind": "entry",
    "title": "The iPad on its side",
-   "start": 2198.48,
-   "end": 2228.31
+   "start": 2233.93,
+   "end": 2263.77
   },
   {
    "kind": "section",
    "title": "The CASINO",
-   "start": 2228.31,
-   "end": 2246.42
+   "start": 2263.77,
+   "end": 2281.87
   },
   {
    "kind": "entry",
    "title": "The reels",
-   "start": 2246.42,
-   "end": 2297.96
+   "start": 2281.87,
+   "end": 2333.42
   },
   {
    "kind": "entry",
    "title": "The coins are your game's money",
-   "start": 2297.96,
-   "end": 2320.91
+   "start": 2333.42,
+   "end": 2356.36
   },
   {
    "kind": "entry",
    "title": "The day's odds, and THE HOUSE",
-   "start": 2320.91,
-   "end": 2359.8
+   "start": 2356.36,
+   "end": 2395.26
   },
   {
    "kind": "section",
    "title": "Nearby, and away from home",
-   "start": 2359.8,
-   "end": 2363.03
+   "start": 2395.26,
+   "end": 2398.49
   },
   {
    "kind": "entry",
    "title": "NEARBY",
-   "start": 2363.03,
-   "end": 2411.67
+   "start": 2398.49,
+   "end": 2447.13
   },
   {
    "kind": "entry",
    "title": "MET NEARBY",
-   "start": 2411.67,
-   "end": 2454.93
+   "start": 2447.13,
+   "end": 2490.38
   },
   {
    "kind": "entry",
    "title": "Away from home",
-   "start": 2454.93,
-   "end": 2504.95
+   "start": 2490.38,
+   "end": 2540.4
   },
   {
    "kind": "section",
    "title": "PLACES and devices",
-   "start": 2504.95,
-   "end": 2521.34
+   "start": 2540.4,
+   "end": 2556.8
   },
   {
    "kind": "entry",
    "title": "THE HUB",
-   "start": 2521.34,
-   "end": 2557.84
+   "start": 2556.8,
+   "end": 2593.29
   },
   {
    "kind": "entry",
    "title": "YOUR DEVICES",
-   "start": 2557.84,
-   "end": 2604.41
+   "start": 2593.29,
+   "end": 2639.86
   },
   {
    "kind": "entry",
    "title": "EVERY DEVICE'S SETTINGS",
-   "start": 2604.41,
-   "end": 2644.73
+   "start": 2639.86,
+   "end": 2680.19
   },
   {
    "kind": "entry",
    "title": "Each device's own",
-   "start": 2644.73,
-   "end": 2677.87
+   "start": 2680.19,
+   "end": 2713.33
   },
   {
    "kind": "entry",
    "title": "The devices themselves",
-   "start": 2677.87,
-   "end": 2733.19
+   "start": 2713.33,
+   "end": 2768.64
   },
   {
    "kind": "entry",
    "title": "GLASSES",
-   "start": 2733.19,
-   "end": 2753.51
+   "start": 2768.64,
+   "end": 2788.96
   },
   {
    "kind": "entry",
    "title": "HOME, and the TV",
-   "start": 2753.51,
-   "end": 2788.63
+   "start": 2788.96,
+   "end": 2824.09
   },
   {
    "kind": "section",
    "title": "THE MIND",
-   "start": 2788.63,
-   "end": 2828.77
+   "start": 2824.09,
+   "end": 2864.22
   },
   {
    "kind": "entry",
    "title": "The minds",
-   "start": 2828.77,
-   "end": 2887.58
+   "start": 2864.22,
+   "end": 2923.04
   },
   {
    "kind": "entry",
    "title": "How far each may go",
-   "start": 2887.58,
-   "end": 2929.76
+   "start": 2923.04,
+   "end": 2965.21
   },
   {
    "kind": "entry",
    "title": "WHO ANSWERS WHEN YOU TALK",
-   "start": 2929.76,
-   "end": 2993.22
+   "start": 2965.21,
+   "end": 3028.68
   },
   {
    "kind": "entry",
    "title": "AN ENDPOINT OF YOUR OWN",
-   "start": 2993.22,
-   "end": 3020.8
+   "start": 3028.68,
+   "end": 3056.25
   },
   {
    "kind": "entry",
    "title": "THE HUB'S ENDPOINTS",
-   "start": 3020.8,
-   "end": 3057.0
+   "start": 3056.25,
+   "end": 3092.46
   },
   {
    "kind": "entry",
    "title": "THE MIND AT WORK",
-   "start": 3057.0,
-   "end": 3115.18
+   "start": 3092.46,
+   "end": 3150.63
   },
   {
    "kind": "entry",
    "title": "The voice, quickly",
-   "start": 3115.18,
-   "end": 3137.16
+   "start": 3150.63,
+   "end": 3172.61
   },
   {
    "kind": "section",
    "title": "Settings",
-   "start": 3137.16,
-   "end": 3151.85
+   "start": 3172.61,
+   "end": 3187.3
   },
   {
    "kind": "entry",
    "title": "On every screen",
-   "start": 3151.85,
-   "end": 3179.29
+   "start": 3187.3,
+   "end": 3214.75
   },
   {
    "kind": "entry",
    "title": "Your save",
-   "start": 3179.29,
-   "end": 3203.39
+   "start": 3214.75,
+   "end": 3238.84
   },
   {
    "kind": "entry",
    "title": "The world outside",
-   "start": 3203.39,
-   "end": 3216.73
+   "start": 3238.84,
+   "end": 3252.19
   },
   {
    "kind": "entry",
    "title": "On a phone",
-   "start": 3216.73,
-   "end": 3245.5
+   "start": 3252.19,
+   "end": 3280.96
   },
   {
    "kind": "entry",
    "title": "On the hub's own site",
-   "start": 3245.5,
-   "end": 3269.54
+   "start": 3280.96,
+   "end": 3305.0
   },
   {
    "kind": "entry",
    "title": "HOW TO PLAY and WHAT'S NEW",
-   "start": 3269.54,
-   "end": 3324.56
+   "start": 3305.0,
+   "end": 3360.02
   },
   {
    "kind": "section",
    "title": "When it goes wrong",
-   "start": 3324.56,
-   "end": 3442.61
+   "start": 3360.02,
+   "end": 3478.07
   },
   {
    "kind": "section",
    "title": "Coming next",
-   "start": 3442.61,
-   "end": 3497.05
+   "start": 3478.07,
+   "end": 3532.51
   }
  ]
 }

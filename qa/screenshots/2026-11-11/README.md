@@ -319,3 +319,69 @@ THE PLAYER'S MANUAL p42 and QUICK START p6: THE ORIGIN OF A DAEMON, on the bedro
 THE PLAYER'S MANUAL p42 and QUICK START p6: THE ORIGIN OF A DAEMON, on the bedroom shelf (DRAFT)
 
 ![11Nov2026 - T533 - the manuals tell the origin book - 64](11Nov2026%20-%20T533%20-%20the%20manuals%20tell%20the%20origin%20book%20-%2064.png)
+
+### 11Nov2026 - T447 - LEAGUE hearing room IV four vessels - 68
+
+T-447 pair 6 BUILT (DRAFT): hearing room IV, PHLEGMATIC (row 8) -- LEAGUE A The four vessels, decoded from the build
+
+![11Nov2026 - T447 - LEAGUE hearing room IV four vessels - 68](11Nov2026%20-%20T447%20-%20LEAGUE%20hearing%20room%20IV%20four%20vessels%20-%2068.png)
+
+### 11Nov2026 - T447 - LEAGUE hearing room II four vessels - 69
+
+T-447 pair 6 BUILT (DRAFT): hearing room II, CHOLERIC (row 9) -- the same floor, ring and lights, its own humour's colour
+
+![11Nov2026 - T447 - LEAGUE hearing room II four vessels - 69](11Nov2026%20-%20T447%20-%20LEAGUE%20hearing%20room%20II%20four%20vessels%20-%2069.png)
+
+### 11Nov2026 - T447 - LEAGUE hearing room III four vessels - 70
+
+T-447 pair 6 BUILT (DRAFT): hearing room III, MELANCHOLIC (row 10)
+
+![11Nov2026 - T447 - LEAGUE hearing room III four vessels - 70](11Nov2026%20-%20T447%20-%20LEAGUE%20hearing%20room%20III%20four%20vessels%20-%2070.png)
+
+### 11Nov2026 - T447 - LEAGUE hearing room I four vessels - 71
+
+T-447 pair 6 BUILT (DRAFT): hearing room I, SANGUINE (row 11), and the corridor to AL CLEAR (batch G's statues untouched)
+
+![11Nov2026 - T447 - LEAGUE hearing room I four vessels - 71](11Nov2026%20-%20T447%20-%20LEAGUE%20hearing%20room%20I%20four%20vessels%20-%2071.png)
+
+### 11Nov2026 - T447 - LEAGUE AL CLEAR room - 72
+
+T-447 pair 6 BUILT (DRAFT): AL CLEAR's room (row 12), the doors and entries the engine names kept by id
+
+![11Nov2026 - T447 - LEAGUE AL CLEAR room - 72](11Nov2026%20-%20T447%20-%20LEAGUE%20AL%20CLEAR%20room%20-%2072.png)
+
+### 11Nov2026 - T447 - HALL OF FAME index card - 73
+
+T-447 pair 6 BUILT (DRAFT): the HALL OF FAME as A The index card (rows 7, 10, 11); the RECORD's six lights where the balls are set, the UNION ROOM untouched
+
+![11Nov2026 - T447 - HALL OF FAME index card - 73](11Nov2026%20-%20T447%20-%20HALL%20OF%20FAME%20index%20card%20-%2073.png)
+
+### 11Nov2026 - C254 - THE MIND, its five parts - 74
+
+C-254 THE MIND (DRAFT) on a throwaway hub with a copy of the test save: the link under the den, NOW, BOTH DREAMS, VOICE, SELF and REMEMBERED.
+
+![11Nov2026 - C254 - THE MIND, its five parts - 74](11Nov2026%20-%20C254%20-%20THE%20MIND%2C%20its%20five%20parts%20-%2074.png)
+
+### 11Nov2026 - C327 - household together - 77
+
+C-327 (DRAFT): two household devices' daemons in one den on a scratch companion -- PIP on this phone, LABEL from a pretend T-Watch Ultra; then a feed from the watch, the fruit eaten down to crumbs in the middle
+
+![11Nov2026 - C327 - household together - 77](11Nov2026%20-%20C327%20-%20household%20together%20-%2077.jpg)
+
+### 11Nov2026 - C327 - household together - 78
+
+C-327 (DRAFT): two household devices' daemons in one den on a scratch companion -- PIP on this phone, LABEL from a pretend T-Watch Ultra; then a feed from the watch, the fruit eaten down to crumbs in the middle
+
+![11Nov2026 - C327 - household together - 78](11Nov2026%20-%20C327%20-%20household%20together%20-%2078.png)
+
+### 11Nov2026 - C326 - THE WATCH manual - 79
+
+THE WATCH (C-326, DRAFT): the cover and the controls
+
+![11Nov2026 - C326 - THE WATCH manual - 79](11Nov2026%20-%20C326%20-%20THE%20WATCH%20manual%20-%2079.png)
+
+### 11Nov2026 - C326 - THE WATCH manual - 80
+
+THE WATCH (C-326, DRAFT): the cover and the controls
+
+![11Nov2026 - C326 - THE WATCH manual - 80](11Nov2026%20-%20C326%20-%20THE%20WATCH%20manual%20-%2080.png)

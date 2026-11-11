@@ -37,7 +37,7 @@ sys.path.insert(0, os.path.join(ROOT, "wiki"))
 # the printed books: the shelf's id -> the PDF (the companion's app/state/manual.ts names them the same)
 PDFS = {"player": "DAEMONS-manual.pdf", "quick": "DAEMONS-quickstart.pdf", "social": "DAEMONS-social-manual.pdf",
         "tiiny": "DAEMONS-tiiny-manual.pdf", "word": "DAEMONS-etymology.pdf", "textbook": "DAEMONS-textbook.pdf",
-        "companion": "DAEMONS-companion-manual.pdf"}
+        "companion": "DAEMONS-companion-manual.pdf", "watch": "DAEMONS-watch-manual.pdf"}
 # the third book on the game's screen (app/ui/bookPicture.tsx ON_COVER and BAND, measured 2026-11-05/06)
 ON_COVER = {"hermetic": (50, 4, 188, 152), "eudaimon": (50, 4, 193, 154), "unity": (6, 4, 191, 154)}
 BAND = {"hermetic": (118, 18.5, 34, "#FFF7F7", "#846B94"), "eudaimon": (117, 18.5, 34, "#FFF7DE", "#8CADEF"),

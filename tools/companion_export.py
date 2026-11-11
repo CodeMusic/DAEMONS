@@ -336,6 +336,77 @@ def routines_table():
             "types": [types.get(t, t) for t in TYPE_ORDER], "moves": names}
 
 
+def battle_table():
+    """C-328: what the companion's own battles are fought from -- the type chart (src/battle_main.c gTypeEffectiveness,
+    the argument, byte-identical in both editions: [attacking, defending, x10] in the game's order; the entries after
+    `foresight` are skipped by FORESIGHT and ODOR SLEUTH), every routine's numbers (src/data/battle_moves.h: its power,
+    type, side, accuracy, PP, priority, effect and that effect's chance) and every species' experience yield."""
+    ids = {m.group(1): int(m.group(2)) for m in re.finditer(r"#define MOVE_(\w+)\s+(\d+)\b", read("include/constants/moves.h"))}
+    src = read("src/battle_main.c")
+    body = re.search(r"gTypeEffectiveness\[\d+\]\s*=\s*\{(.*?)\};", src, re.S).group(1)
+    mul = {"NO_EFFECT": 0, "NOT_EFFECTIVE": 5, "SUPER_EFFECTIVE": 20}
+    chart, foresight = [], None
+    for a, d, m in re.findall(r"TYPE_(\w+),\s*TYPE_(\w+),\s*TYPE_MUL_(\w+)", body):
+        if a == "ENDTABLE":
+            break
+        if a == "FORESIGHT":
+            foresight = len(chart)
+            continue
+        chart.append([TYPE_ORDER.index(a), TYPE_ORDER.index(d), mul[m]])
+    splits = {"PHYSICAL": 0, "SPECIAL": 1, "STATUS": 2}
+    moves = {}
+    for m in re.finditer(r"\[MOVE_(\w+)\]\s*=\s*\{(.*?)\n    \}", read("src/data/battle_moves.h"), re.S):
+        if m.group(1) not in ids or not ids[m.group(1)]:
+            continue
+        f = lambda k, pat=r"(-?\w+)": (re.search(r"\.%s\s*=\s*%s" % (k, pat), m.group(2)) or [None, None])[1]
+        t, sp = f("type", r"TYPE_(\w+)"), f("split", r"SPLIT_(\w+)")
+        moves[str(ids[m.group(1)])] = {
+            "power": int(f("power") or 0), "type": TYPE_ORDER.index(t) if t in TYPE_ORDER else 0,
+            "split": splits.get(sp, 2), "accuracy": int(f("accuracy") or 0), "pp": int(f("pp") or 0),
+            "priority": int(f("priority") or 0), "effect": (f("effect", r"EFFECT_(\w+)") or "HIT"),
+            "chance": int(f("secondaryEffectChance") or 0)}
+    sids = {m.group(1): int(m.group(2)) for m in re.finditer(r"#define SPECIES_(\w+)\s+(\d+)\b", read("include/constants/species.h"))}
+    exp = {}
+    for m in re.finditer(r"\[SPECIES_(\w+)\]\s*=\s*\{((?:(?!\[SPECIES_).)*)", read("src/data/pokemon/species_info.h"), re.S):
+        y = re.search(r"\.expYield\s*=\s*(\d+)", m.group(2))
+        if y and m.group(1) in sids:
+            exp[str(sids[m.group(1)])] = int(y.group(1))
+    # the game's own battle words (src/battle_message.c), its placeholders named for the companion: {atk} the one
+    # acting, {def} the one acted on, {eff} the one a state lands on, {buf1}/{buf2} the stat and how it moved, {foe}
+    wanted = ["AttackerUsedX", "AttackMissed", "PkmnProtectedItself", "ItDoesntAffect", "AttackerFainted", "TargetFainted",
+              "PkmnFellAsleep", "PkmnAlreadyAsleep", "PkmnWasntAffected", "PkmnWasPoisoned", "PkmnHurtByPoison",
+              "PkmnAlreadyPoisoned", "PkmnBadlyPoisoned", "PkmnEnergyDrained", "PkmnWasBurned", "PkmnHurtByBurn",
+              "PkmnAlreadyHasBurn", "PkmnWasFrozen", "PkmnIsFrozen", "PkmnWasDefrosted2", "PkmnWasParalyzed",
+              "PkmnIsParalyzed", "PkmnIsAlreadyParalyzed", "PkmnDreamEaten", "StatsWontIncrease", "StatsWontDecrease",
+              "PkmnIsConfused", "PkmnHealedConfusion", "PkmnWasConfused", "PkmnAlreadyConfused", "PkmnFlinched",
+              "PkmnRegainedHealth", "PkmnHPFull", "PkmnWentToSleep", "PkmnSleptHealthy", "PkmnHitWithRecoil", "PkmnSeeded",
+              "PkmnSappedByLeechSeed", "PkmnFastAsleep", "PkmnWokeUp", "PkmnMustRecharge", "PkmnBracedItself",
+              "PkmnEnduredHit", "PkmnCutHPMaxedAttack", "PkmnStatusNormal", "PkmnHasNoMovesLeft", "StatSharply",
+              "StatHarshly", "StatFell", "AttackersStatRose", "AttackersStatFell", "DefendersStatFell", "OneHitKO",
+              "ButNothingHappened", "ButItFailed", "ItHurtConfusion", "StatChangesGone", "BellChimed", "CriticalHit",
+              "NotVeryEffective", "SuperEffective", "HitXTimes", "PkmnGainedEXP", "PlayerDefeatedLinkTrainer",
+              "PlayerLostAgainstLinkTrainer", "LinkTrainerWantsToBattle", "LinkTrainerSentOutPkmn", "PkmnLaidCurse", "GetPumped"]
+    msg = read("src/battle_message.c")
+    texts = dict(re.findall(r"(?:static )?const u8 (?:sText|gBattleText|gText)_(\w+)\[\]\s*=\s*_\(\"((?:[^\"\\]|\\.)*)\"\);", msg))
+    names = {"B_ATK_NAME_WITH_PREFIX": "atk", "B_DEF_NAME_WITH_PREFIX": "def", "B_EFF_NAME_WITH_PREFIX": "eff",
+             "B_ACTIVE_NAME_WITH_PREFIX": "atk", "B_BUFF1": "buf1", "B_BUFF2": "buf2", "B_BUFF3": "buf3",
+             "B_LINK_OPPONENT1_NAME": "foe", "B_OPPONENT_MON1_NAME": "def", "B_PLAYER_NAME": "player"}
+    def plain(t):
+        t = re.sub(r"\{(PAUSE[^}]*|WAIT_SE|PAUSE_UNTIL_PRESS)\}", "", t)
+        t = re.sub(r"\\[pnl]", lambda m: "" if m.group(0) == "\\p" else " ", t)
+        return re.sub(r"\{(\w+)\}", lambda m: "{%s}" % names.get(m.group(1), m.group(1)), t).strip()
+    words = {k: plain(texts[k]) for k in wanted if k in texts}
+    words["Rose"] = plain(texts.get("Rose", "rose!"))
+    words["_missing"] = [k for k in wanted if k not in texts]
+    stats = [plain(texts[k]) for k in re.findall(r"sText_(\w+)", re.search(r"gStatNamesTable\[\]\s*=\s*\{(.*?)\};", msg, re.S).group(1))]
+    return {"_about": "C-328: the companion's battles -- chart: [attacking type, defending type, multiplier x10] in the "
+                      "game's order, types by TYPE_ORDER (routines.json names them), entries from `foresight` on are "
+                      "the ones FORESIGHT lifts; moves by move id (split 0 physical, 1 special, 2 status); exp: each "
+                      "species' experience yield",
+            "types": TYPE_ORDER, "chart": chart, "foresight": foresight, "moves": moves, "exp": exp,
+            "words": words, "stats": stats}
+
+
 def party_art(species):
     """C-18: each daemon as the game draws it -- its built front sprite (graphics/pokemon/<slot>/front.4bpp) in its
     normal palette, an indexed PNG whose palette the server rewrites per daemon (11..14, its routines). Only species
@@ -619,8 +690,14 @@ def notebook_table():
     flagnames = sorted({r[3] for r in rows} | {r[4] for r in rows if r[4] != "0"} | {d for d, n in led.values()})
     fv = flag_values(flagnames)
     abouts = {n: gba_string(b) for n, b in re.findall(r"static const u8 sNoteAbout_(\w+)\[\]\s*=\s*_\((.*?)\);", notes, re.S)}
-    # T-403: each page's SEEN number (unread until FLAG_NOTEBOOK_SEEN_0 + seen is set) and the map it was found on
-    seen0 = flag_values(["FLAG_NOTEBOOK_SEEN_0"])["FLAG_NOTEBOOK_SEEN_0"]
+    # T-403: each page's SEEN number (unread until its SEEN flag is set) and the map it was found on. The flag is
+    # notebook.c's SeenFlag: FLAG_NOTEBOOK_SEEN_0 + seen, and from NOTEBOOK_SEEN_BLOCK up the second block,
+    # FLAG_NOTEBOOK_SEEN_64 + seen - NOTEBOOK_SEEN_BLOCK (T-417 P2) -- until 2026-11-11 every page from 64 up was given
+    # SEEN_0 + seen, a song's or a grove's flag, so the companion marked it read or unread by the wrong thing.
+    sv = flag_values(["FLAG_NOTEBOOK_SEEN_0", "FLAG_NOTEBOOK_SEEN_64", "NOTEBOOK_SEEN_BLOCK"])
+    def seen_flag(n):
+        return (sv["FLAG_NOTEBOOK_SEEN_0"] + n if n < sv["NOTEBOOK_SEEN_BLOCK"]
+                else sv["FLAG_NOTEBOOK_SEEN_64"] + n - sv["NOTEBOOK_SEEN_BLOCK"])
     groups = {m: (int(n), int(g)) for m, n, g in
               re.findall(r"#define (MAP_\w+)\s+\((\d+) \| \((\d+) << 8\)\)", read("include/constants/map_groups.h"))}
     places = json.load(open(os.path.join(OUT, "maps.json"), encoding="utf-8")) if os.path.exists(os.path.join(OUT, "maps.json")) else {}
@@ -628,7 +705,7 @@ def notebook_table():
     found = {}
     for flag, seen, mp in re.findall(r"\{\s*(FLAG_\w+),\s*(\d+),\s*(MAP_\w+),", notes):
         g = groups.get(mp)
-        found[flag] = (seen0 + int(seen), places.get("%d.%d" % (g[1], g[0]), {}).get("place") if g else None)
+        found[flag] = (seen_flag(int(seen)), places.get("%d.%d" % (g[1], g[0]), {}).get("place") if g else None)
     # T-402: the song or post a page ends on, as its QR code says (sPageQr -> sQrCodes -> the URL above each code)
     qrc = read("src/data/qr_codes.h")
     urls = dict((n, u) for u, n in re.findall(r"//\s*(https?://\S+)\s*\nstatic const u8 (sQr_\w+)\[\]", qrc))
@@ -645,8 +722,9 @@ def notebook_table():
     fv.update(flag_values(sorted({t["heard"] for t in songs.values() if t.get("heard")})))
     pages = []
     for sec, kind, arg, flag, flag2, title, text in rows:
-        if kind == "NB_KIND_SONG" and not songs.get(arg[len("PLAY_SONG_"):], {}).get("notes", "?").split():
-            continue   # T-528 (f): a slot with no tune yet (the DUET) is never shown, so the companion has no page for it
+        if kind == "NB_KIND_SONG" and songs.get(arg[len("PLAY_SONG_"):], {}).get("shown"):
+            continue   # T-528 (f): a slot (the DUET) is held only under the conjugate light, which a save's flags do not
+                       # say; the companion has no page for it, tune or none, until its own half is decided
         words = None
         if kind in ("NB_KIND_TEXT", "NB_KIND_HER_DREAM", "NB_KIND_ITS_DREAM"):
             words = strings.get(text) if text in strings else labels.get(text)
@@ -698,7 +776,7 @@ def play_table():
     note sprites are the game's own (tools/genplaynotes.py draws them; ours): art/play_notes.png, art/play_small.png."""
     import genplaynotes
     songs = json.load(open(os.path.join(ROOT, "docs/play_songs.json"), encoding="utf-8"))["songs"]
-    songs = [t for t in songs if t["notes"].split()]   # T-528 (f): a slot waiting for its tune (the DUET) is left out
+    songs = [t for t in songs if not t.get("shown")]   # T-528 (f): a slot (the DUET) is left out, as on the NOTEBOOK
     fl = flag_values(["FLAG_GOT_INSTRUMENT"] + sorted({t[k] for t in songs for k in ("learned", "heard") if t.get(k)}))
     it = flag_values(["ITEM_HARP", "ITEM_FLUTE"], "constants/items.h")
     out = []
@@ -2286,7 +2364,8 @@ def main():
     files = {"species.json": species_table(), "charmap.json": charmap_table(), "week.json": week_table(),
              "seasons.json": seasons_table(), "streaks.json": streaks_table(), "moves.json": moves_table(),
              "profile_layout.json": profile_layout(), "maps.json": maps_table(), "margins.json": margins_table(),
-             "items.json": items_table(), "routines.json": routines_table(), "notebook.json": notebook_table(),
+             "items.json": items_table(), "routines.json": routines_table(), "battle.json": battle_table(),   # C-328
+             "notebook.json": notebook_table(),
              "marks.json": marks_table(), "regions.json": regions_table(),     # C-126, C-127
              "events.json": events_table(), "school.json": school_table(),
              "groves.json": groves_table(),                                     # T-408       # C-128, C-129

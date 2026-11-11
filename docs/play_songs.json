@@ -1,5 +1,5 @@
 {
- "about": "T-417 PLAY (the user, 2026-10-17): the songs PLAY listens for. O CHRISTMAS TREE, then the seven, one per MARK/ROOT pair -- each motif chosen by the user by ear from their own recordings (docs/private/draft-play-songs-2026-10-17.md; re-taken 2026-11-04 from the singing separated from the band, each the hook sung most, with the rhythm it is sung in -- the user: \"the others do not feel like a memorable song\"; docs/private/audio/motifs-2026-11-04/). 'notes' are as the game plays them when the song is HEARD (C4 is middle C; a sharp or flat may be written either way); 'key' is the major key it counts in (a minor tune is written in its relative major). 'beat' is the frames an ordinary note is held when it is heard or echoed and 'last' the final note's (or 'frames', one per note). 'title' and 'page' are in-game words, DRAFT. tools/genplaysongs.py writes engineGba/src/data/play_songs.h and fails if any song's shape (its intervals) sits inside another's, which would stop the longer one from ever being heard to its end. T-528 (f), vision 4.40 (the user, 2026-11-07): DUET is a ninth, a slot whose tune the user chooses by ear -- 'notes' the instrument held plays (CONTENT's HARP, CONTEXT's FLUTE), 'part' the other edition's line, heard faintly with it as it echoes ('part_frames' its own lengths). While 'notes' is empty the slot is never shown and never listened for, and the companion's export leaves it out. 'shown' names the engine's test for it: the SONGBOOK holds it, and PLAY listens for it, only while that is TRUE (the conjugate light: the book mended and a daemon from the other edition in the party). It is never learned: under the light it is simply there.",
+ "about": "T-417 PLAY (the user, 2026-10-17): the songs PLAY listens for. O CHRISTMAS TREE, then the seven, one per MARK/ROOT pair -- each motif chosen by the user by ear from their own recordings (docs/private/draft-play-songs-2026-10-17.md; re-taken 2026-11-04 from the singing separated from the band, each the hook sung most, with the rhythm it is sung in -- the user: \"the others do not feel like a memorable song\"; docs/private/audio/motifs-2026-11-04/). 'notes' are as the game plays them when the song is HEARD (C4 is middle C; a sharp or flat may be written either way); 'key' is the major key it counts in (a minor tune is written in its relative major). 'beat' is the frames an ordinary note is held when it is heard or echoed and 'last' the final note's (or 'frames', one per note). 'title' and 'page' are in-game words, DRAFT. tools/genplaysongs.py writes engineGba/src/data/play_songs.h and fails if any song's shape (its intervals) sits inside another's, which would stop the longer one from ever being heard to its end. T-528 (f), vision 4.40 (the user, 2026-11-07): DUET is a ninth, a slot whose tune the user chooses by ear -- 'notes' the instrument held plays (CONTENT's HARP, CONTEXT's FLUTE), 'part' the other edition's line, heard faintly with it as it echoes ('part_frames' its own lengths). While 'notes' is empty the slot is never shown and never listened for. The companion's export leaves a slot out, tune or none: the light is the party's, not a flag, and the companion's half of the duet is not decided. Every frame, the part's too, is 1 to 255. 'shown' names the engine's test for it: the SONGBOOK holds it, and PLAY listens for it, only while that is TRUE (the conjugate light: the book mended and a daemon from the other edition in the party). It is never learned: under the light it is simply there. Its tune was chosen by the user by ear on 2026-11-11 from four drafts (docs/private/audio/duet-2026-11-11/): DUET-1, the hook of Between the Worlds (Painted Reflection), the line sung most in it (12 times), with its mirror for the part (written) -- E D D C D E over E F F G F E, one note at the start and at the end and a fifth apart between, as the two feet of one field line.",
  "songs": [
   {
    "id": "FIR",
@@ -108,11 +108,12 @@
    "id": "DUET",
    "title": "DUET",
    "pair": "the conjugate light",
+   "motif": "DUET-1",
    "key": "C",
-   "notes": "",
-   "frames": [],
-   "part": "",
-   "part_frames": [],
+   "notes": "E4 D4 D4 C4 D4 E4",
+   "frames": [11, 22, 22, 22, 22, 30],
+   "part": "E4 F4 F4 G4 F4 E4",
+   "part_frames": [11, 22, 22, 22, 22, 30],
    "learned": "FLAG_SONG_DUET",
    "heard": null,
    "understanding": null,
