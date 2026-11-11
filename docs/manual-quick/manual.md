@@ -58,6 +58,9 @@ Somewhere in the world are two books you can find, and then read inside the game
 
 Both were written by the person who made the game, and rewritten for its world.
 
+One more is waiting at home from the very start: **THE ORIGIN OF A DAEMON**, on the shelf in your room. Most of its
+pages are blank when you take it. They fill in as you come to understand things.
+
 ::: rumour
 And some players whisper about a third book. The full player's manual tells what is said of it -- and that is all
 anyone will say.

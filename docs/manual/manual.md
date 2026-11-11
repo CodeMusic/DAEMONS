@@ -733,6 +733,9 @@ DAEMONS has two books to find and read: **THE PROGRAMMER'S GUIDE TO THE HUMAN MI
 are adapted from the author's own books and rewritten for the game's world, and every word of both is still a draft.
 Each stays hidden until you find it. The game never says where, and neither does this manual.
 
+One more book is not hidden at all: **THE ORIGIN OF A DAEMON** stands on the shelf in your own room from the very
+start. It is told [below](#origin).
+
 Once your save holds a book, you read it from your POOL's key items, a page at a time -- and the companion's LIBRARY
 opens it too, as a book: its cover, its contents, then each page in turn, with READ ALOUD.
 
@@ -836,6 +839,20 @@ page's own sentence; with the companion's hub and its AI board, the hub can put 
 asked on the companion only -- the game's copies are for reading. *All of this is new: built, and still being tried on
 the watches.*
 :::
+
+## THE ORIGIN OF A DAEMON {#origin}
+
+A daemon's own telling of how the first of its kind came to be, before it branched. It stands between the DAEMON books
+on the shelf in your room, the one with nothing on its spine. Take it, and read it from your POOL's key items as you
+read the others.
+
+**Only its first pages are written when you take it; the rest are blank.** Its chapters come back as your story goes on
+and you come to understand things out in the world -- one at a time, and always in order, whichever you understand
+first. A chapter that has not come back is not shown at all, not even its name, and the game never counts them for
+you. When one comes back, a line in the game tells you a page of it is no longer blank.
+
+The companion's LIBRARY carries it too, opened by the same save, as far as it has come back and never further. Every
+word of it is still a draft.
 
 ## THE HERMETIC LAYER, a rumour {#rumour}
 
@@ -1012,7 +1029,7 @@ earned, a place not yet found or a book not yet in your hands shows as *not yet*
 | **TODAY** | the day -- its note, its word, its virtue over its shadow, its centre and your edition's season ([the week](#week)) -- **THE ONE THING**, the next step, your daemon's care, and your game: where you saved, your MARKS, your money |
 | **DAEMON** | yours and its care, your party as the game draws it, the **INDEX** with each daemon's NATIVE line, **SOUNDINGS**, **DREAMS** and, once the book is held, **READS** |
 | **GOALS** | one goal, its steps and milestones, and walking |
-| **LIBRARY** | **THE PLAYER'S MANUAL** -- this book, kept on your phone -- CALLOW SCHOOL and your DIPLOMA, THE GUIDE and THE SUBTLE LAYER once found (each to read and to [ask](#books), and THE SUBTLE LAYER's [cards](#cards)), the NOTEBOOK, the SONGBOOK with your instrument, and STREAM's lessons |
+| **LIBRARY** | **THE PLAYER'S MANUAL** -- this book, kept on your phone -- CALLOW SCHOOL and your DIPLOMA, THE GUIDE and THE SUBTLE LAYER once found (each to read and to [ask](#books), and THE SUBTLE LAYER's [cards](#cards)), THE ORIGIN OF A DAEMON as far as it has [come back](#origin), the NOTEBOOK, the SONGBOOK with your instrument, and STREAM's lessons |
 | **YOU** | you as the game draws you, your MARKS and ROOTS, the region maps, the story so far, and **THE ROAD AHEAD** -- the next step, and never anything past it |
 | **PLACES** | your devices, which daemon each hosts, and your home |
 
