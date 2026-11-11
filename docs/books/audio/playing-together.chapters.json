@@ -7,8 +7,8 @@
  },
  "speed": 1.0,
  "draft": "DRAFT \u00b7 every word, until it is approved",
- "sources": "3f48a752439cae3e",
- "duration": 888.25,
+ "sources": "130825108e44f9e5",
+ "duration": 1012.5,
  "chapters": [
   {
    "kind": "section",
@@ -170,73 +170,85 @@
    "kind": "entry",
    "title": "What they may say",
    "start": 600.49,
-   "end": 632.13
+   "end": 631.13
+  },
+  {
+   "kind": "entry",
+   "title": "IN DIALOGUE",
+   "start": 631.13,
+   "end": 691.75
+  },
+  {
+   "kind": "section",
+   "title": "BATTLE",
+   "start": 691.75,
+   "end": 747.81
   },
   {
    "kind": "section",
    "title": "Friends and dreams at home",
-   "start": 632.13,
-   "end": 635.68
+   "start": 747.81,
+   "end": 751.36
   },
   {
    "kind": "entry",
    "title": "Friends",
-   "start": 635.68,
-   "end": 647.87
+   "start": 751.36,
+   "end": 763.55
   },
   {
    "kind": "entry",
    "title": "Dreams shared",
-   "start": 647.87,
-   "end": 665.63
+   "start": 763.55,
+   "end": 781.31
   },
   {
    "kind": "section",
    "title": "Friends' homes: THE COMMONS",
-   "start": 665.63,
-   "end": 682.2
+   "start": 781.31,
+   "end": 797.87
   },
   {
    "kind": "entry",
    "title": "Linking your home",
-   "start": 682.2,
-   "end": 710.95
+   "start": 797.87,
+   "end": 826.62
   },
   {
    "kind": "entry",
    "title": "Trading with friends' homes",
-   "start": 710.95,
-   "end": 750.41
+   "start": 826.62,
+   "end": 866.08
   },
   {
    "kind": "section",
    "title": "For the keeper",
-   "start": 750.41,
-   "end": 758.84
+   "start": 866.08,
+   "end": 874.52
   },
   {
    "kind": "entry",
    "title": "The hub",
-   "start": 758.84,
-   "end": 779.55
+   "start": 874.52,
+   "end": 906.05
   },
   {
    "kind": "entry",
    "title": "The commons",
-   "start": 779.55,
-   "end": 803.16
+   "start": 906.05,
+   "end": 929.65
   },
   {
    "kind": "section",
    "title": "Under the hood",
-   "start": 803.16,
-   "end": 845.41
+   "start": 929.65,
+   "end": 971.91
   },
   {
    "kind": "section",
    "title": "Coming next",
-   "start": 845.41,
-   "end": 888.25
+   "start": 971.91,
+   "end": 1012.5
   }
  ]
 }

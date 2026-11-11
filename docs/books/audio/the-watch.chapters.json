@@ -8,8 +8,8 @@
  "speed": 1.02,
  "sentence": 0.3,
  "draft": "DRAFT \u00b7 every word, until it is approved",
- "sources": "907fc42066f52686",
- "duration": 1493.25,
+ "sources": "ea8a6b95963f24c3",
+ "duration": 1504.87,
  "chapters": [
   {
    "kind": "section",
@@ -255,109 +255,109 @@
    "kind": "entry",
    "title": "BOOKS",
    "start": 980.45,
-   "end": 1062.37
+   "end": 1072.61
   },
   {
    "kind": "entry",
    "title": "THE INDEX",
-   "start": 1062.37,
-   "end": 1080.77
+   "start": 1072.61,
+   "end": 1091.01
   },
   {
    "kind": "entry",
    "title": "The memory card (Ultra)",
-   "start": 1080.77,
-   "end": 1111.18
+   "start": 1091.01,
+   "end": 1122.81
   },
   {
    "kind": "section",
    "title": "Meetings and voice notes",
-   "start": 1111.18,
-   "end": 1114.56
+   "start": 1122.81,
+   "end": 1126.19
   },
   {
    "kind": "entry",
    "title": "RECORD A MEETING",
-   "start": 1114.56,
-   "end": 1157.56
+   "start": 1126.19,
+   "end": 1169.19
   },
   {
    "kind": "entry",
    "title": "VOICE NOTE",
-   "start": 1157.56,
-   "end": 1173.4
+   "start": 1169.19,
+   "end": 1185.03
   },
   {
    "kind": "entry",
    "title": "SEND KEPT",
-   "start": 1173.4,
-   "end": 1183.73
+   "start": 1185.03,
+   "end": 1195.36
   },
   {
    "kind": "section",
    "title": "Meeting others",
-   "start": 1183.73,
-   "end": 1186.53
+   "start": 1195.36,
+   "end": 1198.16
   },
   {
    "kind": "entry",
    "title": "Nearby",
-   "start": 1186.53,
-   "end": 1233.29
+   "start": 1198.16,
+   "end": 1244.92
   },
   {
    "kind": "entry",
    "title": "Cards and TOUCH (Ultra)",
-   "start": 1233.29,
-   "end": 1285.04
+   "start": 1244.92,
+   "end": 1296.67
   },
   {
    "kind": "section",
    "title": "Play",
-   "start": 1285.04,
-   "end": 1287.41
+   "start": 1296.67,
+   "end": 1299.04
   },
   {
    "kind": "entry",
    "title": "The CASINO",
-   "start": 1287.41,
-   "end": 1301.7
+   "start": 1299.04,
+   "end": 1313.32
   },
   {
    "kind": "entry",
    "title": "MUSIC",
-   "start": 1301.7,
-   "end": 1328.44
+   "start": 1313.32,
+   "end": 1340.07
   },
   {
    "kind": "entry",
    "title": "The TV",
-   "start": 1328.44,
-   "end": 1358.18
+   "start": 1340.07,
+   "end": 1369.81
   },
   {
    "kind": "section",
    "title": "Looking after the watch",
-   "start": 1358.18,
-   "end": 1361.31
+   "start": 1369.81,
+   "end": 1372.93
   },
   {
    "kind": "entry",
    "title": "The battery",
-   "start": 1361.31,
-   "end": 1386.79
+   "start": 1372.93,
+   "end": 1398.42
   },
   {
    "kind": "entry",
    "title": "Putting the software on",
-   "start": 1386.79,
-   "end": 1416.63
+   "start": 1398.42,
+   "end": 1428.26
   },
   {
    "kind": "entry",
    "title": "When something is wrong",
-   "start": 1416.63,
-   "end": 1493.25
+   "start": 1428.26,
+   "end": 1504.87
   }
  ]
 }
