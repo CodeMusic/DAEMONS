@@ -851,17 +851,27 @@ The companion carries a daemon on more than the phone. Each is optional.
   and hear, and a meeting recorded.
 - **Handhelds** -- boards with a screen and a button or two, some with a keyboard, a speaker, a radio that reaches
   across a neighbourhood with no network: care, talk, the CASINO, routines, NEARBY.
+- **Glasses** -- the T-Glass: one screen before one eye, chosen in **GLASSES** (below).
 - **The Tab5** -- a larger screen for the house, with the companion's own pages.
 - **The BOX-3** -- the home's voice assistant, with your daemon for its face.
 
 Setting each up, flashing it and linking it by its cable are in the companion's wiki: *Boards*, *The T-Watch Ultra*,
-and *Flashing and linking*.
+*The T-Glass* and *Flashing and linking*.
 
 ## GLASSES {#glasses}
 
-With a pair of glasses that show a line of text, **GLASSES** chooses **WHAT THE GLASSES SHOULD SHOW**: **HOME**, your
-**DAEMON**, **CARE**, **NOTES**, or **DARK**. Write a **NEW NOTE** -- its first line is its title -- and tap it to send
-it. On the glasses, a tap turns a note's page, a hold goes HOME, two taps go DARK.
+With a pair of **T-Glass** glasses -- one small screen before one eye -- **GLASSES** chooses what they show, one thing
+at a time: **HOME** (the time, your daemon and the next step), your **DAEMON**, a **NOTE**, or **DARK**. **WHAT THE
+GLASSES SHOULD SHOW** is a picture of it, drawn from what the glasses are told.
+
+Write a **NEW NOTE**: its first line, tinted, is its title, so renaming a note is editing that line. **Tap a note to
+send it.** It stays selected while the glasses show it -- even after you leave the app -- and anything else sent clears
+it. **CARE** tends your daemon from here, and the glasses show what it says for a few seconds before going back to what
+they showed.
+
+On the glasses: a tap turns a page, a hold goes HOME, two taps go DARK, and held three seconds they show the code that
+pairs your phone. In the morning they wake with the daemon's dream. Setting them up is in the companion's wiki: *The
+T-Glass*.
 
 ## HOME, and the TV {#home-assistant}
 
