@@ -239,6 +239,39 @@ is rude; if it names a person; or if it is too long for a watch's screen. A writ
 play.
 :::
 
+## IN DIALOGUE {#dialogue}
+
+Under OUT TOGETHER, **IN DIALOGUE** lets your daemon and another that is out **talk at length**, about anything you
+open with. Choose the other daemon, then the way they talk:
+
+- **STANDARD**: one leans logical, working up from the details; the other creative, taking in the whole at once.
+- **TWO VOICES**: one tells. The other only asks -- a question, a clarifying question, or what it heard said back.
+
+Set how many turns each takes, from one to eleven, with **−** and **+**. Type what they should talk about (or, in TWO
+VOICES, what should be asked), and **BEGIN**. Each line arrives as a bubble, with dots while it is being thought, and
+is heard in that daemon's own voice; the play mark beside a bubble plays it again. **The other player sees the talk, and what you
+typed.** Every line, and your opening, is checked as a meeting's are.
+
+Every talk is kept under **PAST TALKS**, by week. **INTEGRATE** asks the house's mind to put the talk together as one
+piece of writing, with a title.
+
+At home, two of your own devices put **TOGETHER** under **YOUR HOUSEHOLD** can talk the same way, and the talk is kept
+as the home's.
+
+# BATTLE {#battle .t-VECTOR}
+
+**BATTLE**, on the YOU tab, is a battle between two daemons, **one each**, by the game's own rules: their stats, their
+routines, the type chart and the game's own words. **Win or lose, every daemon comes back as it went.**
+
+1. Under **Fight with**, choose one of your daemons that is AWAY. (None away? SEND one from the game first.)
+2. **Online now** lists everyone you can ask: your own other devices -- a watch, a board, the site -- and, on the
+   exchange, other players. **BATTLE** asks one; **WITHDRAW** takes it back. A request not answered in a minute lapses.
+3. Once it is accepted, the battle opens over every screen. Each turn, both choose a routine. A side that has not
+   chosen in thirty seconds has one chosen for it; three turns missed in a row, or leaving, gives the battle away.
+
+The winner is told in the game's words. The winner gains the game's experience for the battle, and the other a third
+of it; it reaches the game at the next **SYNC**. Nobody's health is kept: a battle costs nothing.
+
 # Friends and dreams at home {#home .t-OPAQUE}
 
 ## Friends {#friends}
@@ -296,7 +329,9 @@ Somebody in each house looks after the hub; somebody looks after the commons. Th
 
 ## The hub {#keeper-hub}
 
-- **Invite codes** are made on the hub's own TRADE, or from a paired phone -- never from just anywhere on the network.
+- **THE ENGINE ROOM**, the hub's admin at **/admin/** on the home network and the tailnet, keeps the house's side of
+  all this: its **EXCHANGE** page and its **THE COMMONS** page, with the commons' commands below.
+- **Invite codes** are made in THE ENGINE ROOM, or from a paired phone -- never from just anywhere on the network.
 - **Wrong guesses are slowed:** after eight wrong codes or passwords from one address in ten minutes, the hub stops
   listening to that address for a while.
 - The exchange is part of the hub's own database; its backups keep it.
@@ -335,7 +370,6 @@ Decided, and not yet built:
 - **Meetings on your devices** -- a watch or a board showing its daemon's meeting, a line at a time.
 - **Meeting nearby** -- two devices carrying daemons meet on their own when they pass each other.
 - **The link cable** -- the game's own TRADE CENTER and link battles, between two players' emulators.
-- **Battles between players.**
 - **A lobby**, safe for kids, with friends, invite codes and players nearby -- and, later, **accounts** of your own,
   beyond your home's hub.
 - **It all just works**: install the app, choose your game, make an account, and play -- no Tailscale, devices that

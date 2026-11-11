@@ -289,6 +289,27 @@ steps out over the card into its den, says *THINKING…* while its voice is made
 own voice, its mouth moving as it speaks. Then it shrinks back into the card. The INDEX entry stays as the record
 keeps it; this is the daemon's own telling, and only the app's.
 
+## A look inside {#its-mind}
+
+**THE MIND ›**, under its card on **Yours**, is a look around your daemon's mind:
+
+- **NOW**: its face, the colour of what it feels and the weather in its room. Tap a feeling for the words behind it,
+  and what made it so.
+- **BOTH DREAMS**: the last dream it had here, beside the one your save carries home to the game.
+- **VOICE**: the voice it speaks in -- its kind's, as it feels today, or one you gave it -- with a line to hear.
+- **SELF**: what a mind is given when your daemon answers, exactly as it is given.
+- **REMEMBERED**: what it keeps of yesterday, and of the month.
+
+## THE EASEL {#easel}
+
+Under its card on **Yours** is **THE EASEL ›**, when the companion is with a hub. Type what it should paint, under
+*What should it paint?*, and **PAINT**: your daemon walks to its easel and paints while you wait, the canvas filling a
+stroke at a time. It paints in a style of its own, from how it is today -- how it feels, what it needs, your goals,
+the weather on the way -- and gives the painting a title and a line about it. A painting takes a minute or two.
+
+**THE GALLERY**, under the easel, keeps every painting, a wall for each daemon, each one framed. Tap a painting to see
+it large; hold it to see **WHAT WAS ASKED**. **TAKE IT DOWN** takes one off the wall.
+
 ## SOUNDINGS {#soundings}
 
 **SOUNDINGS** is one quiet card for each daemon away: when it was last heard, and how it was doing then -- *No signal
@@ -376,6 +397,19 @@ at your home ([PLAYING TOGETHER](#together-pointer)).
 
 With no dreams yet, it says so: wear the watch to bed, or tuck the daemon in with **Sleep**, and the dream is here in
 the morning.
+
+## SLEEP SOUNDS {#sleepsounds}
+
+Above the dreams, **SLEEP SOUNDS** is music made for your daemon as it is tonight, to fall asleep to together. Its kind
+chooses the instruments, its feelings the key and the pace, and what it needs what the music carries -- rain for a
+thirsty one, a hearth for a hungry one. **MAKE TONIGHT'S** asks the hub for it; it takes about three minutes, and is
+kept on the phone once it comes.
+
+**PLAY 30 MINUTES** plays it for half an hour, fading away over the last ten. **MAKE ANOTHER** makes a new one, and
+**KEPT FROM OTHER NIGHTS** holds the ones before.
+
+**DRIFT DOWN** is for headphones: a slow beat between your ears under the music, easing from alpha to theta to delta
+as you fall asleep. Without headphones the music plays alone until they are on.
 
 ## The dream goes home {#dream-home}
 
@@ -645,7 +679,7 @@ is **WILD HERE** in your edition. **Nothing past the next step is ever shown.**
 ## TRADE {#together-pointer}
 
 At the foot of YOU is **TRADE**: joining your home's exchange, offering, lending and giving daemons, OUT TOGETHER,
-friends, dreams shared, and THE COMMONS. All of it is told in **PLAYING TOGETHER**, on the LIBRARY's MANUALS shelf.
+friends, dreams shared, THE COMMONS, **IN DIALOGUE** and **BATTLE**. All of it is told in **PLAYING TOGETHER**, on the LIBRARY's MANUALS shelf.
 
 # The GAME tab {#game .t-LATENT}
 
@@ -974,9 +1008,19 @@ ring. Its key stays on the hub and is never shown again; its dot says whether it
   given a time.
 - **NOW** and **BEFORE**: the tasks themselves. Tap one to see who asked, from which device, and on which mind. **Stop**
   stops one thinking; **Try again** runs one that failed; **Forget** removes it. **Clear finished** clears the list.
-- **MINE**, **EVERYONE**, or one player's name, at the top, chooses whose work is shown.
+- In the app it shows **MINE**: your own work. Everyone's is in **THE ENGINE ROOM**, below.
 
 {{pictures mind-at-work | THE MIND AT WORK: the minds on their ring, and the river of the day's work.}}
+
+## THE ENGINE ROOM {#engine-room}
+
+Everything that looks after the whole house, rather than one player, is in **THE ENGINE ROOM**: the hub's own admin,
+a web app the hub serves at **/admin/** on your home network and the tailnet, never from outside. It can be installed
+on a phone's home screen like an app, and is paired once with a code from the hub's screen.
+
+Its pages are **THE HUB**, **THE MIND** (everyone's work, and **LATER**), **THE HOUSE**, **VOICES**, **DEVICES**,
+**EXCHANGE** and **THE COMMONS**. Where the app used to hold one of these -- THE HOUSE, making the voices again,
+forgetting a device, invite codes, the commons' link -- it now says so, with **Open THE ENGINE ROOM ›**.
 
 ## The voice, quickly {#voice}
 

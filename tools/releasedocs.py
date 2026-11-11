@@ -32,6 +32,7 @@ where each one is already told.
 WHAT IS STALE, mechanically -- these are the gaps that count:
   * a README or wiki Home whose "newest release" line names an older release than ROM RELEASE/ holds
   * a manual PDF whose sources (docs/manual*/) were committed after it was printed, or changed and not committed
+  * a page of the companion app that no chapter of THE COMPANION covers (its pages.json, C-321)
   * the design bible's PDF missing for the version vision.md carries
   * (--online) a wiki whose published pages differ from its wiki/ folder at HEAD
   * a SET UP entry whose wiki page or HOW TO PLAY book does not name what it sets up
@@ -73,6 +74,7 @@ ROUTES = [
     ("companion", "firmware/", ["companion:wiki/Boards.md", "companion:docs/HARDWARE.md"]),
     ("companion", "hub/", ["companion:docs/HUB.md", "companion:wiki/The-hub-and-its-AI.md"]),
     ("companion", "app/", ["DAEMONS:docs/manual-companion/manual.md"]),
+    ("companion", "app/screens/you/", ["DAEMONS:docs/manual-social/manual.md"]),   # TRADE, BATTLE, IN DIALOGUE
     ("engine", "", ["DAEMONS:docs/manual/manual.md"]),
     ("DAEMONS", "ai/litellm/", ["companion:wiki/The-hub-and-its-AI.md"]),
     ("engineAi", "", ["engineAi:wiki/Home.md"]),
@@ -341,6 +343,18 @@ def manuals():
             continue
         out.append({"book": name, "pdf": pdf, "state": state,
                     "fix": "python3 tools/manual.py%s --write" % ("" if name == "main" else " --book " + name)})
+    # an app page no chapter covers (manual.py's app_pages, C-321): write of it, or name it in pages.json
+    listed, screens = os.path.join(ROOT, "docs/manual-companion/pages.json"), os.path.join(REPOS["companion"], "app/screens")
+    if os.path.exists(listed) and os.path.isdir(screens):
+        known = json.load(open(listed, encoding="utf-8"))
+        said = set(known.get("covered", {})) | set(known.get("not for players", []))
+        new = sorted(os.path.relpath(os.path.join(d, f), os.path.dirname(screens))
+                     for d, _, fs in os.walk(screens) for f in fs if f.endswith(".tsx"))
+        new = [f for f in new if f not in said]
+        if new:
+            out.append({"book": "companion", "pdf": "docs/manual-companion/pages.json",
+                        "state": "the app has %d page(s) no chapter covers: %s" % (len(new), ", ".join(new)),
+                        "fix": "write of them in THE COMPANION (or PLAYING TOGETHER), and name each in pages.json"})
     return out
 
 

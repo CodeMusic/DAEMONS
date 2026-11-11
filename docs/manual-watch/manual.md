@@ -348,8 +348,10 @@ BOOKS opens as **tiles**, four to a screen, each with its picture: an open book 
 asking, a card for the cards, four squares for THE INDEX, and, on the Ultra, a memory card for KEEP ON THE CARD.
 **Swipe** for the next four; **tap** a tile to open it.
 
-A book opens on its chapters, as tiles numbered 1, 2, 3 and on. Inside a chapter, **swipe** to turn the page, and **LISTEN** to have it read aloud, a
-paragraph at a time; a tap, a hold or the crown stops the reading.
+A book opens on its chapters, as tiles numbered 1, 2, 3 and on. Inside a chapter, **swipe** to turn the page, and
+**LISTEN** to have it read aloud; a tap, a hold or the crown stops the reading. THE GUIDE and THE SUBTLE LAYER are
+read in **the book's own voice**, the recording the app plays, a chapter at a time; a chapter with no recording yet is
+read a paragraph at a time, in the INDEX's voice.
 
 With a book found, BOOKS also lets you **ask** it, aloud:
 
@@ -372,7 +374,8 @@ margin, and **LISTEN**.
 ## The memory card (Ultra) {#sd}
 
 Put a microSD card in the Ultra, and it keeps what you read on it as you read it -- the books, THE INDEX and its
-pictures, and every reading once heard -- so they open **FROM THE CARD**, and are read aloud, away from any network.
+pictures, and every reading once heard, a book's own recording among them -- so they open **FROM THE CARD**, and are read aloud,
+away from any network.
 **KEEP ON THE CARD**, at the foot of BOOKS, keeps all of them at once while you are home: *KEPT 12 OF 40*, and so on.
 
 The card also holds what the watch could not send while it was away: walks and nights, meetings and voice notes. They
