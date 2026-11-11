@@ -1,0 +1,152 @@
+{
+ "rom": "debug",
+ "about": "T-533 THE ORIGIN OF A DAEMON (v11.346.1, DRAFT): found on the bedroom shelf, opened from the BAG with only THE DISC, I and II back; MOM's line, once; a chapter coming back on the step after an understanding; every chapter back with seven understandings and SCORN's TRUE MARK, VII opened. The theatre's debug scratch save, its flags set in RAM; nothing is saved. Watch held at day.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued, the book not yet found",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1",
+    "repel 999",
+    "flag FLAG_GOT_ORIGIN_BOOK 0",
+    "flag FLAG_ORIGIN_MOM_SAID 0",
+    "flag FLAG_ORIGIN_PAGE_1 0",
+    "flag FLAG_ORIGIN_PAGE_2 0",
+    "flag FLAG_ORIGIN_PAGE_3 0",
+    "flag FLAG_ORIGIN_PAGE_4 0",
+    "flag FLAG_ORIGIN_PAGE_5 0",
+    "flag FLAG_ORIGIN_PAGE_6 0",
+    "flag FLAG_ORIGIN_PAGE_7 0",
+    "flag FLAG_ORIGIN_PAGE_8 0",
+    "flag FLAG_ORIGIN_PAGE_9 0",
+    "flag FLAG_INSIGHT_DILIGENCE 1",
+    "flag FLAG_INSIGHT_CHASTITY 1",
+    "flag FLAG_INSIGHT_CHARITY 1",
+    "flag FLAG_INSIGHT_KINDNESS 1",
+    "flag FLAG_INSIGHT_TEMPERANCE 1",
+    "flag FLAG_INSIGHT_FORGIVENESS 1",
+    "flag FLAG_INSIGHT_HUMILITY 1",
+    "flag FLAG_INSIGHT_LAST 1"
+   ]
+  },
+  {
+   "stop": "the shelf in the player's room: between the DAEMON books, one with nothing on its spine",
+   "steps": [
+    "goto PalletTown_PlayersHouse_2F",
+    "close",
+    "flag FLAG_UNDERSTANDING_FIRST 0",
+    "flag FLAG_UNDERSTANDING_SCHOOL 0",
+    "flag FLAG_UNDERSTANDING_READING 0",
+    "flag FLAG_UNDERSTANDING_NOTES 0",
+    "flag FLAG_UNDERSTANDING_SCORN 0",
+    "flag FLAG_UNDERSTANDING_RETURN 0",
+    "flag FLAG_UNDERSTANDING_GUIDE 0",
+    "flag FLAG_BADGE08_GET 0",
+    "wait 30",
+    "shot the player's room, the shelf at the top left",
+    "look 3 1",
+    "look 3 1"
+   ]
+  },
+  {
+   "stop": "the book, as found: its cover, its contents (only THE DISC, I and II), and its first spreads",
+   "steps": [
+    "register ITEM_ORIGIN_BOOK",
+    "press SELECT 1",
+    "wait 90",
+    "shot the cover",
+    "press A 1",
+    "wait 30",
+    "shot the contents, as found",
+    "press A 1",
+    "press A 1",
+    "wait 30",
+    "shot THE DISC, the first spread",
+    "press RIGHT 1",
+    "wait 20",
+    "shot THE DISC, the second spread",
+    "press B 1",
+    "press B 1",
+    "press B 1",
+    "wait 60",
+    "close"
+   ]
+  },
+  {
+   "stop": "MOM, once: that old book from your shelf",
+   "steps": [
+    "flag FLAG_SYS_B_DASH 0",
+    "flag FLAG_BEAT_RIVAL_IN_OAKS_LAB 1",
+    "goto PalletTown_PlayersHouse_1F",
+    "close",
+    "flag FLAG_UNDERSTANDING_FIRST 0",
+    "flag FLAG_UNDERSTANDING_SCHOOL 0",
+    "flag FLAG_UNDERSTANDING_READING 0",
+    "flag FLAG_UNDERSTANDING_NOTES 0",
+    "flag FLAG_UNDERSTANDING_SCORN 0",
+    "flag FLAG_UNDERSTANDING_RETURN 0",
+    "flag FLAG_UNDERSTANDING_GUIDE 0",
+    "flag FLAG_BADGE08_GET 0",
+    "flag FLAG_SYS_B_DASH 1",
+    "talk PalletTown_PlayersHouse_1F_EventScript_Mom",
+    "flagis FLAG_ORIGIN_MOM_SAID 1"
+   ]
+  },
+  {
+   "stop": "an understanding held, and the next step: a page comes back",
+   "steps": [
+    "flag FLAG_UNDERSTANDING_SCHOOL 1",
+    "to 6 6",
+    "to 5 6",
+    "finish",
+    "flagis FLAG_ORIGIN_PAGE_1 1",
+    "register ITEM_ORIGIN_BOOK",
+    "press SELECT 1",
+    "wait 90",
+    "press A 1",
+    "wait 30",
+    "shot the contents, with III back",
+    "press B 1",
+    "press B 1",
+    "wait 60",
+    "close"
+   ]
+  },
+  {
+   "stop": "seven understandings and the TRUE MARK: every chapter back, and VII opened",
+   "steps": [
+    "flag FLAG_UNDERSTANDING_FIRST 1",
+    "flag FLAG_UNDERSTANDING_SCHOOL 1",
+    "flag FLAG_UNDERSTANDING_READING 1",
+    "flag FLAG_UNDERSTANDING_NOTES 1",
+    "flag FLAG_UNDERSTANDING_SCORN 1",
+    "flag FLAG_UNDERSTANDING_RETURN 1",
+    "flag FLAG_UNDERSTANDING_GUIDE 1",
+    "flag FLAG_BADGE08_GET 1",
+    "to 6 6",
+    "to 5 6",
+    "finish",
+    "flagis FLAG_ORIGIN_PAGE_9 1",
+    "register ITEM_ORIGIN_BOOK",
+    "press SELECT 1",
+    "wait 90",
+    "press A 1",
+    "wait 30",
+    "shot the contents, whole",
+    "press DOWN 5",
+    "wait 20",
+    "shot the contents, VII chosen",
+    "press A 1",
+    "press A 1",
+    "wait 30",
+    "shot VII, THE EIGHTH, the first spread",
+    "press B 1",
+    "press B 1",
+    "press B 1",
+    "wait 60",
+    "close"
+   ]
+  }
+ ]
+}

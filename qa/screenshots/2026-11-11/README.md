@@ -121,3 +121,33 @@ T-447 pair 5 DRAFT: TANOBY at 3x -- the back wall (cap, the chamber's band, the 
 T-447 pair 5 DRAFT: both tilesets' placed tiles at 3x in their home rows, today and A, B, C, and TANOBY's sixteen generated glyphs
 
 ![11Nov2026 - T447 - pair 5 tiles 3x and the script - 28](11Nov2026%20-%20T447%20-%20pair%205%20tiles%203x%20and%20the%20script%20-%2028.png)
+
+### 11Nov2026 - T533 - ORIGIN filmed, the book as found - 29
+
+T-533 filmed: the book opened from the field (registered to SELECT) -- the cover, the contents with only BEFORE (THE DISC, I and II), THE DISC's first spreads. DRAFT.
+
+![11Nov2026 - T533 - ORIGIN filmed, the book as found - 29](11Nov2026%20-%20T533%20-%20ORIGIN%20filmed%2C%20the%20book%20as%20found%20-%2029.png)
+
+### 11Nov2026 - T533 - ORIGIN filmed, the shelf - 30
+
+T-533 filmed in the running game (v11.346.1 debug, the theatre's scratch save): the shelf in the player's room -- Between the DAEMON books, one with nothing on its spine; THE ORIGIN OF A DAEMON, most of its pages blank; the ORIGIN BOOK to KEY ITEMS; then There is a gap where one was. DRAFT.
+
+![11Nov2026 - T533 - ORIGIN filmed, the shelf - 30](11Nov2026%20-%20T533%20-%20ORIGIN%20filmed%2C%20the%20shelf%20-%2030.png)
+
+### 11Nov2026 - T533 - ORIGIN filmed, MOM once - 31
+
+T-533 filmed: MOM, once, with the book held -- That old book from your shelf? It was here before you were. I could never read past the first pages. -- then her own lines as before. DRAFT.
+
+![11Nov2026 - T533 - ORIGIN filmed, MOM once - 31](11Nov2026%20-%20T533%20-%20ORIGIN%20filmed%2C%20MOM%20once%20-%2031.png)
+
+### 11Nov2026 - T533 - ORIGIN filmed, a page comes back - 32
+
+T-533 filmed: one understanding held and a step -- A page of THE ORIGIN OF A DAEMON is no longer blank. -- and III in the contents. DRAFT.
+
+![11Nov2026 - T533 - ORIGIN filmed, a page comes back - 32](11Nov2026%20-%20T533%20-%20ORIGIN%20filmed%2C%20a%20page%20comes%20back%20-%2032.png)
+
+### 11Nov2026 - T533 - ORIGIN filmed, every chapter back - 33
+
+T-533 filmed: seven understandings and SCORN's TRUE MARK -- Pages of THE ORIGIN OF A DAEMON are no longer blank. -- the whole contents, each section's heading and passages, and VII, The Eighth, opened on its plant. DRAFT.
+
+![11Nov2026 - T533 - ORIGIN filmed, every chapter back - 33](11Nov2026%20-%20T533%20-%20ORIGIN%20filmed%2C%20every%20chapter%20back%20-%2033.png)
