@@ -133,6 +133,7 @@ COVER_STRIP = ("PING", "NIBBLE", "CRAWLER", "PACKET", "SPIKE", "FORK", "HUNCH", 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import gbachart                                  # noqa: E402  the seventeen types, their relations and hues
 import companion_export                          # noqa: E402  the week, as the companion's TODAY shows it
+import manual_devices                            # noqa: E402  each cover's colour and its device (C-326)
 from PIL import Image                            # noqa: E402
 
 
@@ -512,11 +513,20 @@ def chapters(body):
 def page_html(build, body, toc, css, rel, date):
     sprites = "".join('<img src="%s" alt="">' % build.image("sprite:" + n, build.daemons.sprite(n), SPRITE_SCALE)
                       for n in BOOK["sprites"])
+    #  C-326: the book's own colour, and the device it is about in the middle, a daemon on its screen
+    name = next(k for k, v in BOOKS.items() if v is BOOK)
+    cover_style = ""
+    if name in manual_devices.COVER:
+        colour, kind, on = manual_devices.COVER[name]
+        sprites = manual_devices.KIND[kind](*[build.image("dev:" + n, build.daemons.sprite(n), SPRITE_SCALE) for n in on],
+                                            *([None] if len(on) == 1 else []))
+        cover_style = ' style="--cbg:%s"' % colour
+        build.digest.update((colour + kind + "".join(on) + sprites).encode())
     def band(t):
         r, g, b = build.hue.get(t, (128,) * 3)
         ink = "#16161a" if (0.299 * r + 0.587 * g + 0.114 * b) > 150 else "#fff"
         return ".t-%s{--tc:rgb(%d,%d,%d);--tink:%s}" % (t, r, g, b, ink)
-    style = "\n".join(band(t) for t in build.order)
+    style = "\n".join(band(t) for t in build.order) + "\n" + manual_devices.CSS
     strip = "".join('<img src="%s" alt="">' % build.image("sprite:" + n, build.daemons.sprite(n), SPRITE_SCALE)
                     for n in (BOOK["strip"] or COVER_STRIP))
     tag = '<div class="ctag">%s</div>' % H.escape(BOOK["tag"]) if BOOK.get("tag") else ""   # QUICK-START, large
@@ -541,14 +551,14 @@ def page_html(build, body, toc, css, rel, date):
     return """<!doctype html><html lang="en"><head><meta charset="utf-8"><title>%s</title>
 <style>%s
 %s</style></head><body>
-<section class="cover"><div class="ctop"><div class="ced">CONTEXT / CONTENT</div><div class="ctitle">DAEMONS</div>
+<section class="cover"%s><div class="ctop"><div class="ced">CONTEXT / CONTENT</div><div class="ctitle">DAEMONS</div>
 %s<div class="csub">%s</div></div>
 <div class="cspr">%s</div><div class="cstrip">%s</div>
 <div class="cbot"><div>For release <b>%s</b>%s &middot; every word quoted from the game is a DRAFT</div>
 <div>A fan project for the Game Boy Advance. No ROM is in it, or anywhere in DAEMONS.</div></div></section>
 %s
 %s
-</body></html>""" % (H.escape(BOOK["title"]), css, style, tag, H.escape(BOOK["sub"]), sprites, strip, rel,
+</body></html>""" % (H.escape(BOOK["title"]), css, style, cover_style, tag, H.escape(BOOK["sub"]), sprites, strip, rel,
                         (", " + date) if date else "", contents_page, body)
 
 
