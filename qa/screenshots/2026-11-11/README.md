@@ -151,3 +151,57 @@ T-533 filmed: one understanding held and a step -- A page of THE ORIGIN OF A DAE
 T-533 filmed: seven understandings and SCORN's TRUE MARK -- Pages of THE ORIGIN OF A DAEMON are no longer blank. -- the whole contents, each section's heading and passages, and VII, The Eighth, opened on its plant. DRAFT.
 
 ![11Nov2026 - T533 - ORIGIN filmed, every chapter back - 33](11Nov2026%20-%20T533%20-%20ORIGIN%20filmed%2C%20every%20chapter%20back%20-%2033.png)
+
+### 11Nov2026 - T447 - pair 4 filmed in the theatre - 34
+
+T-447 pair 4 filmed in the theatre on the v11.346.1 debug build: the MANSION A THE RACK HALL (1F breaker cabinet, 2F the LOG, 3F, B1F shutters), ROUTE 21's station, DAEMON TOWER A THE DOT SCREEN in grey and in colour, the stones in their floor, 5F. DRAFT.
+
+![11Nov2026 - T447 - pair 4 filmed in the theatre - 34](11Nov2026%20-%20T447%20-%20pair%204%20filmed%20in%20the%20theatre%20-%2034.png)
+
+### 11Nov2026 - T447 - pair 4 filmed in the theatre - 35
+
+T-447 pair 4 filmed in the theatre on the v11.346.1 debug build: the MANSION A THE RACK HALL (1F breaker cabinet, 2F the LOG, 3F, B1F shutters), ROUTE 21's station, DAEMON TOWER A THE DOT SCREEN in grey and in colour, the stones in their floor, 5F. DRAFT.
+
+![11Nov2026 - T447 - pair 4 filmed in the theatre - 35](11Nov2026%20-%20T447%20-%20pair%204%20filmed%20in%20the%20theatre%20-%2035.png)
+
+### 11Nov2026 - T447 - pair 4 filmed in the theatre - 36
+
+T-447 pair 4 filmed in the theatre on the v11.346.1 debug build: the MANSION A THE RACK HALL (1F breaker cabinet, 2F the LOG, 3F, B1F shutters), ROUTE 21's station, DAEMON TOWER A THE DOT SCREEN in grey and in colour, the stones in their floor, 5F. DRAFT.
+
+![11Nov2026 - T447 - pair 4 filmed in the theatre - 36](11Nov2026%20-%20T447%20-%20pair%204%20filmed%20in%20the%20theatre%20-%2036.png)
+
+### 11Nov2026 - T447 - pair 4 filmed in the theatre - 37
+
+T-447 pair 4 filmed in the theatre on the v11.346.1 debug build: the MANSION A THE RACK HALL (1F breaker cabinet, 2F the LOG, 3F, B1F shutters), ROUTE 21's station, DAEMON TOWER A THE DOT SCREEN in grey and in colour, the stones in their floor, 5F. DRAFT.
+
+![11Nov2026 - T447 - pair 4 filmed in the theatre - 37](11Nov2026%20-%20T447%20-%20pair%204%20filmed%20in%20the%20theatre%20-%2037.png)
+
+### 11Nov2026 - T447 - pair 4 filmed in the theatre - 38
+
+T-447 pair 4 filmed in the theatre on the v11.346.1 debug build: the MANSION A THE RACK HALL (1F breaker cabinet, 2F the LOG, 3F, B1F shutters), ROUTE 21's station, DAEMON TOWER A THE DOT SCREEN in grey and in colour, the stones in their floor, 5F. DRAFT.
+
+![11Nov2026 - T447 - pair 4 filmed in the theatre - 38](11Nov2026%20-%20T447%20-%20pair%204%20filmed%20in%20the%20theatre%20-%2038.png)
+
+### 11Nov2026 - T447 - pair 4 filmed in the theatre - 39
+
+T-447 pair 4 filmed in the theatre on the v11.346.1 debug build: the MANSION A THE RACK HALL (1F breaker cabinet, 2F the LOG, 3F, B1F shutters), ROUTE 21's station, DAEMON TOWER A THE DOT SCREEN in grey and in colour, the stones in their floor, 5F. DRAFT.
+
+![11Nov2026 - T447 - pair 4 filmed in the theatre - 39](11Nov2026%20-%20T447%20-%20pair%204%20filmed%20in%20the%20theatre%20-%2039.png)
+
+### 11Nov2026 - T447 - pair 4 filmed in the theatre - 40
+
+T-447 pair 4 filmed in the theatre on the v11.346.1 debug build: the MANSION A THE RACK HALL (1F breaker cabinet, 2F the LOG, 3F, B1F shutters), ROUTE 21's station, DAEMON TOWER A THE DOT SCREEN in grey and in colour, the stones in their floor, 5F. DRAFT.
+
+![11Nov2026 - T447 - pair 4 filmed in the theatre - 40](11Nov2026%20-%20T447%20-%20pair%204%20filmed%20in%20the%20theatre%20-%2040.png)
+
+### 11Nov2026 - T447 - pair 4 filmed in the theatre - 41
+
+T-447 pair 4 filmed in the theatre on the v11.346.1 debug build: the MANSION A THE RACK HALL (1F breaker cabinet, 2F the LOG, 3F, B1F shutters), ROUTE 21's station, DAEMON TOWER A THE DOT SCREEN in grey and in colour, the stones in their floor, 5F. DRAFT.
+
+![11Nov2026 - T447 - pair 4 filmed in the theatre - 41](11Nov2026%20-%20T447%20-%20pair%204%20filmed%20in%20the%20theatre%20-%2041.png)
+
+### 11Nov2026 - T447 - pair 4 filmed in the theatre - 42
+
+T-447 pair 4 filmed in the theatre on the v11.346.1 debug build: the MANSION A THE RACK HALL (1F breaker cabinet, 2F the LOG, 3F, B1F shutters), ROUTE 21's station, DAEMON TOWER A THE DOT SCREEN in grey and in colour, the stones in their floor, 5F. DRAFT.
+
+![11Nov2026 - T447 - pair 4 filmed in the theatre - 42](11Nov2026%20-%20T447%20-%20pair%204%20filmed%20in%20the%20theatre%20-%2042.png)
