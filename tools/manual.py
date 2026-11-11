@@ -13,6 +13,7 @@ everything has images from the game and really communicates everthing includes t
     python3 tools/manual.py --book etymology --write   # THE OLD WORD: how daimon branched, and why it is said DAY-mons
     python3 tools/manual.py --book textbook --write    # CALLOW SCHOOL's TEXTBOOK, as a university textbook
     python3 tools/manual.py --book companion --write   # THE COMPANION: the whole app, its pictures from the site (C-321)
+    python3 tools/manual.py --book watch --write       # THE WATCH: the T-Watch Ultra and S3 on the wrist (C-326)
 
 Rebuild it every release: the version, the patches and every daemon's picture and INDEX entry are read from the
 build, so a release that changes them changes the manual.
@@ -112,6 +113,15 @@ BOOKS = {
                   "sprites": ("ROVERBYTE", "ROVERCUB", "PING"),
                   "strip": ("ECHO", "HEARTBEAT", "PACKET", "INFERENCE", "RELAY", "KEEPER", "LOOKOUT", "SENTINEL"),
                   "app_pages": True},
+    # the ninth: THE WATCH, the T-Watch Ultra and the T-Watch S3 on the wrist (C-326; the user, 2026-11-11: "a manual
+    # specific to the t-watch"), read from the companion's firmware (firmware/esp32/src) and its wiki's watch pages; no
+    # screen of the watch is captured by any tool yet, so its pictures are drawings (diagrams/)
+    "watch": {"src": "docs/manual-watch", "out": "docs/DAEMONS-watch-manual.pdf", "title": "DAEMONS: the watch",
+              "tag": "THE WATCH", "sub": "Your daemon on your wrist: the T-Watch Ultra and the T-Watch S3",
+              "foot": "the watch",
+              "subject": "The DAEMONS companion on a watch: the T-Watch Ultra and the T-Watch S3",
+              "sprites": ("ROVERCUB", "HEARTBEAT", "PING"),
+              "strip": ("ECHO", "PACKET", "RELAY", "LOOKOUT", "SENTINEL", "KEEPER", "INFERENCE", "ROVERBYTE")},
 }
 BOOK = BOOKS["main"]
 THEATRE = os.path.join(ROOT, ".theatre/routes")

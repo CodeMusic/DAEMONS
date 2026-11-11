@@ -56,9 +56,11 @@ FILE = {"guide": "guide", "subtle": "the-subtle-layer", "hermetic": "the-vault-a
         "unity": "the-vault-audio-3", "textbook": "principles-of-mind",   # -2, -3: the names the companion fetches (C-299)
         "quick": "quick-start", "manual": "the-players-manual", "companion": "the-companion",
         "social": "playing-together", "tiiny": "a-bigger-mind", "etymology": "the-old-word",
-        "origin": "the-origin-audio"}
+        "origin": "the-origin-audio", "watch": "the-watch"}
 #  a book with no voice on purpose; --check names any other book that has none (T-543: a new book is never left silent)
-UNVOICED = {"micro": "MICRO-START, the quick start in five pages, is not on the LIBRARY's shelf"}
+UNVOICED = {"micro": "MICRO-START, the quick start in five pages, is not on the LIBRARY's shelf",
+            #  for now only: three samples are with the user (C-326, 2026-11-11); the pick goes in VOICES and this goes
+            "watch": "THE WATCH (C-326) waits on the user's pick of three voice samples"}
 RATE = {"textbook": "48k"}       # a long book a little lighter, under GitHub's 50 MB; the rest 64k
 SEALED = {"hermetic", "eudaimon", "unity",   # the torn book's three readings (the user, 2026-11-05: "Sealed, like the night")
           "origin"}                          # T-533 (the user, 2026-11-11): played whole only once every chapter is back
@@ -117,6 +119,8 @@ MANUALS = {
     "tiiny": ("docs/manual-tiiny", "A Bigger Mind", f"A Bigger Mind. The Tiiny, set up for the companion. {DRAFTED}"),
     "etymology": ("docs/manual-etymology", "The Old Word",
                   f"The Old Word. How daimon branched, and why it is said DAY-mons. {DRAFTED}"),
+    "watch": ("docs/manual-watch", "The Watch",
+              f"The Watch. Your daemon on your wrist: the T-Watch Ultra and the T-Watch S3. {DRAFTED}"),
 }
 SAY = {"←": " left ", "→": " right ", "↑": " up ", "↓": " down ", "⟷": " to ", "½": " half", "°": " degrees",
        "−": "minus ", "⚙": "the gear", "…": "...", "✚": "", "✦": "", "•": "", "▼": "", "▶": "", "○": "", "✕": "",
