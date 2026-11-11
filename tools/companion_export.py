@@ -619,8 +619,14 @@ def notebook_table():
     flagnames = sorted({r[3] for r in rows} | {r[4] for r in rows if r[4] != "0"} | {d for d, n in led.values()})
     fv = flag_values(flagnames)
     abouts = {n: gba_string(b) for n, b in re.findall(r"static const u8 sNoteAbout_(\w+)\[\]\s*=\s*_\((.*?)\);", notes, re.S)}
-    # T-403: each page's SEEN number (unread until FLAG_NOTEBOOK_SEEN_0 + seen is set) and the map it was found on
-    seen0 = flag_values(["FLAG_NOTEBOOK_SEEN_0"])["FLAG_NOTEBOOK_SEEN_0"]
+    # T-403: each page's SEEN number (unread until its SEEN flag is set) and the map it was found on. The flag is
+    # notebook.c's SeenFlag: FLAG_NOTEBOOK_SEEN_0 + seen, and from NOTEBOOK_SEEN_BLOCK up the second block,
+    # FLAG_NOTEBOOK_SEEN_64 + seen - NOTEBOOK_SEEN_BLOCK (T-417 P2) -- until 2026-11-11 every page from 64 up was given
+    # SEEN_0 + seen, a song's or a grove's flag, so the companion marked it read or unread by the wrong thing.
+    sv = flag_values(["FLAG_NOTEBOOK_SEEN_0", "FLAG_NOTEBOOK_SEEN_64", "NOTEBOOK_SEEN_BLOCK"])
+    def seen_flag(n):
+        return (sv["FLAG_NOTEBOOK_SEEN_0"] + n if n < sv["NOTEBOOK_SEEN_BLOCK"]
+                else sv["FLAG_NOTEBOOK_SEEN_64"] + n - sv["NOTEBOOK_SEEN_BLOCK"])
     groups = {m: (int(n), int(g)) for m, n, g in
               re.findall(r"#define (MAP_\w+)\s+\((\d+) \| \((\d+) << 8\)\)", read("include/constants/map_groups.h"))}
     places = json.load(open(os.path.join(OUT, "maps.json"), encoding="utf-8")) if os.path.exists(os.path.join(OUT, "maps.json")) else {}
@@ -628,7 +634,7 @@ def notebook_table():
     found = {}
     for flag, seen, mp in re.findall(r"\{\s*(FLAG_\w+),\s*(\d+),\s*(MAP_\w+),", notes):
         g = groups.get(mp)
-        found[flag] = (seen0 + int(seen), places.get("%d.%d" % (g[1], g[0]), {}).get("place") if g else None)
+        found[flag] = (seen_flag(int(seen)), places.get("%d.%d" % (g[1], g[0]), {}).get("place") if g else None)
     # T-402: the song or post a page ends on, as its QR code says (sPageQr -> sQrCodes -> the URL above each code)
     qrc = read("src/data/qr_codes.h")
     urls = dict((n, u) for u, n in re.findall(r"//\s*(https?://\S+)\s*\nstatic const u8 (sQr_\w+)\[\]", qrc))
@@ -645,8 +651,9 @@ def notebook_table():
     fv.update(flag_values(sorted({t["heard"] for t in songs.values() if t.get("heard")})))
     pages = []
     for sec, kind, arg, flag, flag2, title, text in rows:
-        if kind == "NB_KIND_SONG" and not songs.get(arg[len("PLAY_SONG_"):], {}).get("notes", "?").split():
-            continue   # T-528 (f): a slot with no tune yet (the DUET) is never shown, so the companion has no page for it
+        if kind == "NB_KIND_SONG" and songs.get(arg[len("PLAY_SONG_"):], {}).get("shown"):
+            continue   # T-528 (f): a slot (the DUET) is held only under the conjugate light, which a save's flags do not
+                       # say; the companion has no page for it, tune or none, until its own half is decided
         words = None
         if kind in ("NB_KIND_TEXT", "NB_KIND_HER_DREAM", "NB_KIND_ITS_DREAM"):
             words = strings.get(text) if text in strings else labels.get(text)
@@ -698,7 +705,7 @@ def play_table():
     note sprites are the game's own (tools/genplaynotes.py draws them; ours): art/play_notes.png, art/play_small.png."""
     import genplaynotes
     songs = json.load(open(os.path.join(ROOT, "docs/play_songs.json"), encoding="utf-8"))["songs"]
-    songs = [t for t in songs if t["notes"].split()]   # T-528 (f): a slot waiting for its tune (the DUET) is left out
+    songs = [t for t in songs if not t.get("shown")]   # T-528 (f): a slot (the DUET) is left out, as on the NOTEBOOK
     fl = flag_values(["FLAG_GOT_INSTRUMENT"] + sorted({t[k] for t in songs for k in ("learned", "heard") if t.get(k)}))
     it = flag_values(["ITEM_HARP", "ITEM_FLUTE"], "constants/items.h")
     out = []
