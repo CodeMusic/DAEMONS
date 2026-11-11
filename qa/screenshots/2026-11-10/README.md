@@ -619,3 +619,21 @@ T-542 batch 3 (DRAFT): both sliding doors opening (closed, ajar, half, open) as 
 T-542 batch 3 (DRAFT): the 24 tiles at 3x, today and A, B, C
 
 ![10Nov2026 - T542 - batch 3 the 24 tiles at 3x - 107](10Nov2026%20-%20T542%20-%20batch%203%20the%2024%20tiles%20at%203x%20-%20107.png)
+
+### 10Nov2026 - C320 - the LIBRARY as a bookcase - 108
+
+The LIBRARY as an antique bookcase: four shelves, every book by its cover (a test save)
+
+![10Nov2026 - C320 - the LIBRARY as a bookcase - 108](10Nov2026%20-%20C320%20-%20the%20LIBRARY%20as%20a%20bookcase%20-%20108.png)
+
+### 10Nov2026 - C320 - book covers reprinted - 109
+
+The books' covers before and after reprinting against v11.345.12
+
+![10Nov2026 - C320 - book covers reprinted - 109](10Nov2026%20-%20C320%20-%20book%20covers%20reprinted%20-%20109.png)
+
+### 10Nov2026 - C321 - THE COMPANION pages - 110
+
+Ten pages of THE COMPANION, the companion's manual (the PDF is public)
+
+![10Nov2026 - C321 - THE COMPANION pages - 110](10Nov2026%20-%20C321%20-%20THE%20COMPANION%20pages%20-%20110.png)
