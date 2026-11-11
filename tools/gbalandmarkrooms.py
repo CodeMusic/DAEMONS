@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """The landmarks' rooms, drawn from the story, a pair at a time (T-447, pair 4: the MANSION and DAEMON TOWER; pair 5:
-KEEPALIVE PLANT and TANOBY; pair 6: the LEAGUE and the HALL OF FAME).
+KEEPALIVE PLANT and TANOBY; pair 6: the LEAGUE and the HALL OF FAME; pair 7: the S.S. ANNE and its departure).
 
     python3 tools/gbalandmarkrooms.py                 # report: the re-census of the seven landmarks still mostly
                                                       #   Nintendo's drawing, the proposed pairs, pair 4's groups, and
@@ -25,6 +25,11 @@ KEEPALIVE PLANT and TANOBY; pair 6: the LEAGUE and the HALL OF FAME).
     python3 tools/gbalandmarkrooms.py --pair 6 --write --approved
                                                       # into the engine (the user, 2026-11-11: LEAGUE A, HALL A);
                                                       #   the report then exits 1 on any difference from that write
+    python3 tools/gbalandmarkrooms.py --pair 7 --draft [DIR]
+                                                      # pair 7's directions (the S.S. ANNE and its departure's smoke
+                                                      #   and wake, below), the same outputs in gfx/drafts/t447_pair7/
+    python3 tools/gbalandmarkrooms.py --pair 7 --write --approved
+                                                      # refused until APPROVED holds "ss" (the user's pick)
 
 THE JOB (the user, 2026-11-10, "The landmarks left"; census item 8). T-447 drew the landmarks' OUTSIDES from the story
 (pairs 1-3, tools/gbalandmarks.py). Seven landmarks are still mostly Nintendo's drawing INSIDE: the MANSION (and its
@@ -4994,6 +4999,1508 @@ def main6():
     return 1 if bad else 0
 
 
+# ============================================================================================ PAIR 7
+#  THE S.S. ANNE, alone (the largest set) -- and its departure's smoke and wake, so the liner is ours at the pier and
+#  leaving it. In the story she is the liner at ARDOR's pier: the player's brother is her captain (fond of boats, still
+#  seasick; DRIVER01 is his), the band leaves its sheet on the piano every voyage ("a key and no tune"), the lioness
+#  checks everything that comes aboard and asks the player to post a letter in the ship's post, a painting in the
+#  corridor holds words that will not hold still, and once she sails MOM gets a card with a ship's stamp on it and
+#  "Come back." ends (vision 9.17, T-493..T-496, T-504). The same sailor becomes the SEAGALLOP's.
+#
+#  ss_anne      25 rooms on nine layouts: the deck, four corridors (1F, 2F, 3F, B1F -- the hold's), the captain's
+#               office, the galley, and the two cabin layouts (7 and 11 rooms). Its primary is gTileset_General (not
+#               building). Own rows 7 (everything shared: walls, floors, rails, the hull, the stairs, the galley), 8
+#               (the cabins' wallpaper and carpets, the painting, the cabin portholes) and 9 (the deck's barrels);
+#               rows 10 and 12 are empty and stay so, row 11 keeps its one black (tile 1, the void). Every direction
+#               keeps each row's slot ROLES (1 the outline, 2..6 the neutrals, 7..9 and 10..12 two accents, 13..15
+#               the boards -- rows 7, 8 and 9 share the outline, the white and the boards), so a pixel vanilla drew
+#               in a role keeps it unless a motif redraws it; the motifs are drawn inside each tile's footprint.
+#               Tiles drawn in general's fixed rows 1, 2, 5 (the shelf, the potted palm, the rug, tiles 35/104) are
+#               kept as the engine has them; the tablecloth's checker (row 5) is re-laid in its own row's indices.
+#               The door (0x281, METATILE_SSAnne_Door: tiles 28, 29, 44, 45) is gbadoors' hinged door, whose frames
+#               are copied from the closed block: kept exactly. No animation (callback NULL), no run-time recolour.
+#  departure    graphics/ss_anne/smoke.png (16x72, four 16x16 frames) and wake.png (16x64, two 16x32 frames), still
+#               pret's drawing. src/ss_anne.c draws both in OBJ palette 10, PALSLOT_NPC_SPECIAL -- the S.S. ANNE's
+#               own palette, which genships.py (T-167) made ours. They were drawn in vanilla's indices 10 and 14 (a
+#               pale lavender and white in Nintendo's ship palette), which in genships' ANNE_PAL are the planking's
+#               dark brown and the porthole light: TODAY THE SMOKE IS BROWN AND BLUE. The drafts draw in ANNE_PAL's
+#               own indices (5 white, 6 white in shade, 7 grey, 13 the water's shadow, 14 the porthole light), so
+#               nothing in genships changes. NOTE: the smoke is set at the ship's centre +49 px (ss_anne.c), where
+#               vanilla's aft funnel stood; genships' one funnel is at +8..+20, so the smoke rises 30 px aft of it
+#               in every direction -- a drawing cannot move it (a 16x16 frame), only ss_anne.c's 49 or genships'
+#               funnel can (reported, not changed: the engine is read only for a draft).
+#
+#  The same rules as pairs 4-6: redrawn IN PLACE, every tile keeps its footprint, no block, layer, flip, palette row,
+#  behaviour or collision bit moves and no map is touched; 0 new tiles. gbatowns batch G drew the deck's teak, the
+#  bulkheads and the cabins' carpet by role (a DRAFT, 2026-10-28); gbatowns.LANDMARKS now holds all 25 rooms (the
+#  pair-5/6 precedent), so its write keeps every tile they draw as the engine has it, and this pair redraws them.
+#  No readable words anywhere: no letters, numerals or marks (the postmarks are rings and waves, the stamps pictures,
+#  the band's sheet five lines and nothing on them).
+
+DRAFT7_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t447_pair7")
+SS = G.Set("ss", "gTileset_SSAnne", [7, 8, 9])
+SETS7 = {"ss": SS}
+G.SETS.update(SETS7)
+NAMES.update({"ss": "the S.S. ANNE"})
+TODAY7 = {r: [tuple(c) for c in read_pal(os.path.join(GBA, SS.dir, "palettes/%02d.pal" % r))] for r in range(16)}
+GEN_SYM = "gTileset_General"
+GEN_NOW = G.tileset_data(GEN_SYM)
+SS_DOOR = {0x281: "METATILE_SSAnne_Door"}
+KEEP7 = {28, 29, 44, 45, 1}                         # the door (gbadoors' hinged door copies it), the void's black
+FIXED7_ROWS = (1, 2, 5)                             # general's rows: kept, but the tablecloth is re-laid in them
+CLOTH = {115, 116, 117, 131, 132, 133, 145, 146, 147, 148}
+SS_ROOMS = ["SSAnne_Deck", "SSAnne_CaptainsOffice", "SSAnne_Kitchen", "SSAnne_1F_Room1", "SSAnne_2F_Room1",
+            "SSAnne_B1F_Corridor", "SSAnne_1F_Corridor", "SSAnne_2F_Corridor", "SSAnne_3F_Corridor"]
+SS_MAPS = sorted(m for t in SS.use for m in SS.use[t]["maps"])
+SS_MAPS = sorted(set(SS_MAPS))
+ANNE_PAL = [(57, 115, 180), (16, 16, 40), (40, 56, 104), (72, 96, 152), (176, 48, 40), (248, 248, 240),
+            (208, 212, 224), (152, 160, 184), (32, 40, 64), (200, 160, 104), (152, 112, 72), (232, 168, 48),
+            (176, 112, 32), (40, 88, 152), (136, 200, 232), (8, 8, 16)]     # genships.ANNE_PAL (checked in report)
+
+#  each own row's slot roles (index 1..15); 1 = darkest in every ramp
+ROWS7 = {7: ["OUT", "N1", "N2", "N3", "N4", "WHT", "Y1", "Y2", "Y3", "B1", "B2", "B3", "W1", "W2", "W3"],
+         8: ["OUT", "M1", "M3", "WHT", "G1", "G2", "G3", "G4", "G5", "O1", "O2", "O3", "W1", "W2", "W3"],
+         9: ["OUT", "M1", "M3", "WHT", "F1", "C4", "C3", "C2", "C1", "F2", "F3", "F4", "W1", "W2", "W3"]}
+
+R7 = lambda a, b: list(range(a, b + 1))
+KIND7 = _kinds([
+    ("floor", [22, 23, 24, 25]), ("floork", [6, 7, 8, 9]),
+    ("deck", [160, 161, 169, 170, 185, 186, 197]), ("hull", [155, 156, 167, 171, 187, 202]),
+    ("roof", [206, 226]),
+    ("swall", [157, 158, 159, 172, 173, 174, 188, 189, 190, 204, 205, 207, 208, 209, 211, 212, 224, 225, 227, 228,
+               240, 241, 242, 243, 244]),
+    ("sport", [175, 176, 191]),
+    ("wall", [2, 18, 19, 36]), ("edge", [3, 4, 5, 12, 15, 20, 21, 31, 37, 47, 70]),
+    ("paper1", [16, 32]), ("paper2", [17, 33]), ("port", [10, 26, 92, 93, 108, 109]),
+    ("carpet1", [40, 41]), ("carpet2", [42, 43]), ("painting", R7(84, 87) + R7(100, 103)),
+    ("bed", R7(80, 83) + R7(96, 99)), ("book", [124, 125, 140, 141]),
+    ("barrel", [213, 214, 215, 216, 218, 219, 229, 230, 231, 232]),
+    ("counter", [118, 119, 120, 121, 134, 135, 136, 137, 150, 151]), ("plate", [152, 153, 154]), ("stove", [149]),
+    ("pillar", [14, 30, 46]), ("cloth", sorted(CLOTH)),
+])
+
+
+def owned7():
+    return sorted(t for t in SS.use if t < SS.nvan and any(SS.van[t]) and t not in KEEP7
+                  and all(r >= 7 for r in SS.use[t]["rows"]) or (t in CLOTH and t in SS.use))
+
+
+def rows_of7(t):
+    return dict(SS.use[t]["rows"]) if t in SS.use and SS.use[t]["rows"] else {7: 1}
+
+
+GEN_VPAL = [G.jasc(daemonslib.upstream(GBA, "data/tilesets/primary/general/palettes/%02d.pal" % r, binary=True))
+            for r in range(7)]
+
+
+class Scene7:
+    """a room as one picture: per layer, each pixel's tile kind and vanilla (row, index)"""
+
+    def __init__(self, name, blocks):
+        self.name, self.blocks = name, blocks
+        self.setkey = "ss"
+        self.layers = [region6(SS, blocks, layer) for layer in (0, 1)]
+        self.th = len(self.layers[0][0])
+        self.tw = max(len(r) for r in self.layers[0][0])
+        self.w, self.h = self.tw * 8, self.th * 8
+        mk = lambda: [[None] * self.w for _ in range(self.h)]
+        self.kindL, self.roleL, self.idxL, self.tileL = [mk(), mk()], [mk(), mk()], [mk(), mk()], [mk(), mk()]
+        self.ukind = mk()
+        self.L = 0
+        for layer in (0, 1):
+            lay, rg = self.layers[layer]
+            for ty, r in enumerate(lay):
+                for tx, spec in enumerate(r):
+                    if spec is None:
+                        continue
+                    t, fl = spec
+                    row = rg[ty][tx]
+                    for k in range(64):
+                        x, y = k % 8, k // 8
+                        sx = 7 - x if "h" in fl else x
+                        sy = 7 - y if "v" in fl else y
+                        vv = SS.van[t][sy * 8 + sx]
+                        if vv == 0:
+                            continue
+                        X, Y = tx * 8 + x, ty * 8 + y
+                        self.kindL[layer][Y][X] = self.ukind[Y][X] = KIND7.get(t, "misc")
+                        self.roleL[layer][Y][X] = ROWS7[row][vv - 1] if row in ROWS7 else None
+                        self.idxL[layer][Y][X] = vv
+                        self.tileL[layer][Y][X] = t
+        self.comps = {}
+
+    @property
+    def kind(self):
+        return self.kindL[self.L]
+
+    @property
+    def role(self):
+        return self.roleL[self.L]
+
+    def comp(self, kind, minsize=12):
+        if kind in self.comps:
+            return self.comps[kind]
+        seen, out = set(), []
+        for y in range(self.h):
+            for x in range(self.w):
+                if self.ukind[y][x] != kind or (x, y) in seen:
+                    continue
+                st, pts = [(x, y)], []
+                seen.add((x, y))
+                while st:
+                    a, b = st.pop()
+                    pts.append((a, b))
+                    for dx, dy in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                        u, w2 = a + dx, b + dy
+                        if 0 <= u < self.w and 0 <= w2 < self.h and (u, w2) not in seen and self.ukind[w2][u] == kind:
+                            seen.add((u, w2))
+                            st.append((u, w2))
+                xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+                out.append((min(xs), min(ys), max(xs), max(ys), len(pts)))
+        self.comps[kind] = [c for c in out if c[4] >= minsize]
+        return self.comps[kind]
+
+    def box(self, kind, x, y):
+        for c in self.comp(kind):
+            if c[0] <= x <= c[2] and c[1] <= y <= c[3]:
+                return c
+        return None
+
+    def shade(self, x, y):
+        """vanilla laid this board in shadow: its 3x3 is mostly the darkest board"""
+        n = 0
+        for dx in (-1, 0, 1):
+            for dy in (-1, 0, 1):
+                u, w2 = x + dx, y + dy
+                if 0 <= u < self.w and 0 <= w2 < self.h and self.role[w2][u] == "W1":
+                    n += 1
+        return n >= 6
+
+
+def scenes7():
+    return [Scene7(m, map_blocks(m)) for m in SS_ROOMS]
+
+
+SCENES7 = scenes7()
+
+
+def pals7(D):
+    out = {}
+    for r in range(16):
+        if r in SS.rows:
+            out[r] = [TODAY7[r][0]] + [tuple(D["mat"][n]) for n in ROWS7[r]]
+        else:
+            out[r] = list(TODAY7[r])
+    for r in range(7):
+        out[r] = [tuple(c) for c in GEN_NOW["pals"][r]]
+    return out
+
+
+def resolve7(mats, base, rows, D, pals):
+    """materials -> indices: a name its rows hold at one index takes it, anything else the nearest colour; ("i", n)
+    is an index in a fixed row; None keeps the engine's pixel"""
+    px, cache = [], {}
+    for k, m in enumerate(mats):
+        if base[k] == 0:
+            px.append(0)
+            continue
+        if m is None:
+            px.append(None)
+            continue
+        if isinstance(m, tuple):
+            px.append(m[1])
+            continue
+        if m not in cache:
+            idx = {ROWS7[r].index(m) + 1 for r in rows if r in ROWS7 and m in ROWS7[r]}
+            if len(idx) == 1 and all(r in ROWS7 and m in ROWS7[r] for r in rows):
+                cache[m] = idx.pop()
+            else:
+                col = tuple(D["mat"][m])
+                best, bd = 1, 1e18
+                for i in range(1, 16):
+                    d = sum(wgt * sum((a - b) ** 2 for a, b in zip(pals[r][i], col)) for r, wgt in rows.items())
+                    if d < bd:
+                        best, bd = i, d
+                cache[m] = best
+        px.append(cache[m])
+    return px
+
+
+def draw7(D):
+    """-> (tiles, palettes), owner {t: scene}"""
+    pals = pals7(D)
+    tiles = [t[:] for t in SS.cur]
+    owner = {}
+    own = set(owned7())
+    for sc in SCENES7:
+        for layer in (0, 1):
+            lay, rg = sc.layers[layer]
+            if not any(s for r in lay for s in r):
+                continue
+            K = Cv(lay, "ss")
+            sc.L = layer
+            f = D["paint"]
+            K.fn(lambda x, y: f(sc, x, y))
+            for t, mats in K.tiles().items():
+                if t in owner or t not in own:
+                    continue
+                if t in CLOTH:
+                    new = [m[1] if isinstance(m, tuple) else c for m, c in zip(mats, SS.cur[t])]
+                else:
+                    new = resolve7(mats, SS.van[t], rows_of7(t), D, pals)
+                    new = [c if n is None else n for n, c in zip(new, SS.cur[t])]
+                tiles[t] = new
+                owner[t] = sc.name
+    return (tiles, pals), owner
+
+
+# ---------------------------------------------------------------------------------------- shared painting
+def p7(style):
+    """the painter: a motif per kind, else the pixel keeps its vanilla role (that role's new colour)"""
+    def paint(sc, x, y):
+        kind = sc.kind[y][x]
+        if kind is None:
+            return None
+        role = sc.role[y][x]
+        if kind == "cloth":
+            return style["cloth"](sc, x, y, sc.idxL[sc.L][y][x])
+        if role is None:
+            return None
+        f = style.get(kind)
+        m = f(sc, x, y, role) if f else None
+        if m == "WALL":                                     # a porthole's corner: the wall it is set in
+            m = None
+            for dx in (8, -8, 16, -16):
+                if 0 <= x + dx < sc.w:
+                    k2 = sc.kind[y][x + dx]
+                    if k2 in ("wall", "paper1", "paper2", "swall"):
+                        m = style[k2](sc, x, y, role)
+                        break
+        return role if m is None else m
+    return paint
+
+
+def wave(x, y, period=8, amp=1.0, ph=0.0):
+    return math.sin((x + ph) * 2 * math.pi / period) * amp
+
+
+def ring_d(sc, kind, x, y):
+    """(distance from the component's centre / its radius, dx, dy) or None"""
+    c = sc.box(kind, x, y)
+    if not c:
+        return None
+    cx, cy = (c[0] + c[2] + 1) / 2.0, (c[1] + c[3] + 1) / 2.0
+    r = max(2.0, min(c[2] - c[0] + 1, c[3] - c[1] + 1) / 2.0 - 1.5)
+    return math.hypot(x + 0.5 - cx, y + 0.5 - cy) / r, x + 0.5 - cx, y + 0.5 - cy
+
+
+def rel(sc, kind, x, y):
+    """(u, v, w, h) inside the component's box"""
+    c = sc.box(kind, x, y)
+    if not c:
+        return None
+    return x - c[0], y - c[1], c[2] - c[0] + 1, c[3] - c[1] + 1
+
+
+def is_stripe(role):
+    return role in ("Y1", "Y2", "Y3", "B1", "B2", "B3")
+
+
+def board(sc, x, y, role, along, plank=4, run=24, seam="OUT", s=0, dotted=False):
+    """planks running ALONG ("x" or "y"), PLANK px wide, butt joints every RUN px staggered by plank"""
+    if role == "OUT":
+        return "OUT"
+    a, b = (x, y) if along == "x" else (y, x)
+    lane = b // plank
+    off = (lane * run // 2) % run                           # tiles repeat: every pattern divides the tile grid
+    lit = sc.shade(x, y)
+    if b % plank == plank - 1:
+        if dotted and a % 2:
+            return "W1" if lit else "W2"
+        return "W1"
+    if (a + off) % run == 0:
+        return "W1"
+    g = H(a % run // 3, lane % 4, s) % 7
+    if lit:
+        return "W1" if g == 0 else "W2"
+    return "W3" if g < 4 else "W2"
+
+
+# ================================================================== A: THE PACKET (the ship's post)
+#  The lioness posts a letter in the ship's post; MOM gets a card with a ship's stamp. A packet boat is the mail ship,
+#  and a packet is what a network carries: header, payload, a route. The liner as the mail packet: envelope-paper
+#  bulkheads with the airmail border where the rail stripe was, kraft boards with perforated seams, cabins carpeted in
+#  stamps and in envelope backs, portholes as postmarks, mail sacks on the deck, the galley's tables sorting frames.
+def A7_floor(sc, x, y, role):
+    return board(sc, x, y, role, "x", plank=4, run=16, dotted=True)
+
+
+def A7_floork(sc, x, y, role):
+    return board(sc, x, y, role, "y", plank=4, run=8, s=1, dotted=True)
+
+
+def A7_deck(sc, x, y, role):
+    if role in ("OUT", "N1", "N2", "N3", "N4", "WHT", "B1", "B2", "B3"):
+        return None
+    return board(sc, x, y, role, "x", plank=4, run=8, s=2, dotted=True)
+
+
+def airmail(x, y, light=False):
+    """the airmail border: red and blue bars on the slant with paper between"""
+    k = (x + y) % 8
+    if k < 3:
+        return "Y2"
+    if k in (3, 7):
+        return "WHT"
+    return "B2"
+
+
+def A7_wall(sc, x, y, role):
+    if is_stripe(role):
+        return airmail(x, y)
+    if role == "WHT" and x % 8 == 0:
+        return "N4"                                          # laid paper: its chain lines
+    if role in ("N2", "N3") and y % 8 == 4 and x % 2 == 0:
+        return "N1"                                          # a perforated rule along the deckhead
+    return None
+
+
+def A7_hull(sc, x, y, role):
+    if role in ("N1", "N2", "N3", "N4"):
+        return "N2" if y % 8 == 7 else "N3"                  # white plating in strakes
+    return None
+
+
+def A7_swall(sc, x, y, role):
+    return A7_wall(sc, x, y, role)
+
+
+def A7_roof(sc, x, y, role):
+    if role in ("B1", "B2", "B3"):
+        return "B1" if (x + y) % 8 == 0 else "B2"
+    return None
+
+
+def postmark(sc, kind, x, y, role):
+    r = ring_d(sc, kind, x, y)
+    if r is None:
+        return None
+    d, dx, dy = r
+    if role == "OUT" and d > 0.8:
+        return "OUT"
+    if 0.62 < d < 0.86:
+        return "N1"
+    if d <= 0.62:
+        if abs(dy - wave(dx, 0, 6, 1.2)) < 0.6 or abs(dy - 3 - wave(dx, 0, 6, 1.2)) < 0.6:
+            return "N1"                                   # the cancellation's waves
+        return "B3" if dy < 0 else "N4"
+    return "N4" if d < 1.0 else "WALL"
+
+
+def A7_port(sc, x, y, role):
+    return postmark(sc, "port", x, y, role)
+
+
+def A7_sport(sc, x, y, role):
+    return postmark(sc, "sport", x, y, role)
+
+
+def stamps(x, y, fill, ink, edge, paper):
+    """a field of stamps, one to a tile: a perforated paper edge, a picture of one wave under a sun"""
+    u, v = x % 8, y % 8
+    if u == 7 or v == 7:
+        return edge if (u + v) % 2 else paper               # the perforation
+    if u == 0 or v == 0:
+        return paper
+    if (u, v) == (4, 2):
+        return paper                                        # the sun
+    if v >= 5 - (u % 2 == 0 and v == 4):
+        return ink                                          # the sea, one wave
+    return fill
+
+
+def A7_carpet1(sc, x, y, role):
+    return stamps(x, y, "G4", "G2", "G3", "G5")
+
+
+def envelopes(x, y):
+    """envelope backs, one to a tile: the flap's V, lit above it"""
+    u, v = x % 8, y % 8
+    if v == 7:
+        return "O1"
+    f = abs(u - 3.5)
+    if abs(f - (3.5 - v)) < 0.6:
+        return "O1"
+    return "O3" if f > 3.5 - v else "O2"
+
+
+def A7_carpet2(sc, x, y, role):
+    return envelopes(x, y)
+
+
+def A7_paper1(sc, x, y, role):
+    if role == "OUT":
+        return None
+    return "N4" if (y % 4 == 3) else "WHT"                  # ruled writing paper
+
+
+def A7_paper2(sc, x, y, role):
+    if role == "OUT":
+        return None
+    return "G4" if abs((x % 8) - 3.5) + abs((y % 8) - 3.5) in (3.0, 4.0) else "G5"   # an envelope's lining
+
+
+def A7_painting(sc, x, y, role):
+    rr = rel(sc, "painting", x, y)
+    if rr is None:
+        return None
+    u, v, w, h = rr
+    if u < 2 or v < 2 or u >= w - 2 or v >= h - 2:
+        return None                                         # the frame
+    #  a postcard: a sea, a horizon, a liner's smoke; a stamp in the corner
+    if u >= w - 9 and v <= 7:
+        if u in (w - 9, w - 3) or v in (2, 7):
+            return "WHT" if (u + v) % 2 else "M3"
+        return "G2" if v > 4 else "O2"
+    if v < h * 0.45:
+        return "WHT" if (u * 3 + v * 7) % 23 == 0 else "M3"
+    if v < h * 0.45 + 1:
+        return "M1"
+    return "G2" if (u + 2 * v) % 6 else "G3"
+
+
+def A7_book(sc, x, y, role):
+    if role in ("WHT", "N4"):
+        return "N3" if y % 3 == 0 and x % 8 not in (0, 7) else "WHT"    # a log's ruled lines, nothing on them
+    return None
+
+
+def A7_barrel(sc, x, y, role):
+    u, v = x % 16, y % 16
+    if role == "OUT":
+        return None
+    if v < 4:
+        return "C3" if u % 3 else "C1"                      # the neck, gathered
+    if v == 4:
+        return "F2"                                         # the drawstring
+    if 7 <= v <= 9 and 3 <= u <= 6:
+        return "F1"                                         # a red tag
+    g = (u * 2 + H(u, v) % 3) % 8
+    return "C4" if g < 2 else "C3" if g < 6 else "C2"
+
+
+def A7_counter(sc, x, y, role):
+    if role in ("N3", "N4", "WHT", "N2"):
+        u, v = x % 8, y % 8
+        if u in (0, 7) or v == 7:
+            return "N1"
+        return "N2" if v < 3 else "N4"                      # pigeonholes: dark at the back, a letter's edge
+    return None
+
+
+def A7_plate(sc, x, y, role):
+    if role == "OUT":
+        return None
+    u, v = x % 16, y % 8
+    if v in (1, 6) or u % 16 in (2, 13):
+        return "N3"
+    if v == 3 or u == 8:
+        return "Y2"                                         # a bundle tied with red string
+    return "WHT"
+
+
+CLOTH_LIGHT, CLOTH_DARK = 6, 8                       # the checker's two indices in general's row 5
+
+
+def cloth(i, dark):
+    if i not in (CLOTH_LIGHT, CLOTH_DARK):
+        return None
+    return ("i", CLOTH_DARK if dark else CLOTH_LIGHT)
+
+
+def A7_cloth(sc, x, y, i):
+    return cloth(i, abs(x % 8 - 3.5) + abs(y % 8 - 3.5) in (3.0, 4.0))     # a lattice of envelopes' diamonds
+
+
+def A7_pillar(sc, x, y, role):
+    if role in ("B1", "B2", "B3"):
+        return airmail(x, y)
+    return None
+
+
+def A7_edge(sc, x, y, role):
+    return airmail(x, y) if is_stripe(role) else None
+
+
+def B7_edge(sc, x, y, role):
+    return staff(sc, x, y, role) if is_stripe(role) else None
+
+
+def C7_edge(sc, x, y, role):
+    return livery(x, y, role) if is_stripe(role) else None
+
+
+def A7_misc(sc, x, y, role):
+    if role in ("B1", "B2", "B3"):
+        return airmail(x, y) if role != "B1" else "B1"       # rails, stair rails, bins: the airmail bars
+    if role in ("W1", "W2", "W3"):
+        return {"W1": "W1", "W2": "W3", "W3": "W2"}[role] if (x + y) % 2 else role   # kraft, grained
+    return None
+
+
+def bed_cover(sc, x, y, role, f):
+    rr = rel(sc, "bed", x, y)
+    if rr is None or role not in ("WHT", "N4", "N3"):
+        return None
+    u, v, w, h = rr
+    if v < h * 0.38:
+        return None                                          # the pillow
+    return f(u, v - int(h * 0.38), role)
+
+
+def A7_bed(sc, x, y, role):
+    return bed_cover(sc, x, y, role, lambda u, v, r: airmail(u, v) if v < 2 else
+                     "N4" if abs(abs(u % 8 - 3.5) - (v % 8 - 2)) < 0.6 else "WHT")   # an envelope for a coverlet
+
+
+def B7_misc(sc, x, y, role):
+    if role in ("B1", "B2", "B3"):
+        return "Y2" if (x + y) % 6 == 0 else "B2" if role != "B1" else "B1"   # ebony, a brass glint
+    if role in ("Y1", "Y2", "Y3"):
+        return {"Y1": "B1", "Y2": "B2", "Y3": "B3"}[role]    # the seats lacquered black
+    return None
+
+
+def B7_bed(sc, x, y, role):
+    return bed_cover(sc, x, y, role, lambda u, v, r: "N3" if u % 4 == 3 else "WHT")   # a coverlet ruled like keys
+
+
+def C7_misc(sc, x, y, role):
+    if role in ("B1", "B2", "B3"):
+        return {"B1": "W1", "B2": "W2", "B3": "W3"}[role]    # teak rails and caps
+    if role in ("Y1", "Y2", "Y3"):
+        return {"Y1": "B1", "Y2": "B2", "Y3": "B2"}[role]    # navy upholstery
+    return None
+
+
+def C7_bed(sc, x, y, role):
+    return bed_cover(sc, x, y, role, lambda u, v, r: "B2" if v in (2, 3) else "N4" if v % 4 == 0 else "WHT")
+
+
+STYLE7_A = dict(misc=A7_misc, edge=A7_edge, floor=A7_floor, floork=A7_floork, deck=A7_deck, wall=A7_wall, hull=A7_hull, swall=A7_swall,
+                roof=A7_roof, port=A7_port, sport=A7_sport, carpet1=A7_carpet1, carpet2=A7_carpet2,
+                paper1=A7_paper1, paper2=A7_paper2, painting=A7_painting, bed=A7_bed, book=A7_book,
+                barrel=A7_barrel, counter=A7_counter, plate=A7_plate, cloth=A7_cloth, pillar=A7_pillar)
+
+
+# ================================================================== B: THE KEY, NO TUNE (the band)
+#  The band leaves its sheet on the piano every voyage: a key and no tune, and the tune is somewhere in ARDOR (the
+#  singing fir, THE NEXUS). A ship's band keeps time the way a clock does with no program loaded. The liner as the
+#  band's room: ivory panels with a five-line staff where the stripe was (nothing written on it, a brass bar line now
+#  and then), ebony rails, a herringbone floor, one cabin carpeted in keyboards and one in sound's rings on red
+#  velvet, portholes as brass cymbals, the deck's barrels drums, the galley's plates brass bowls.
+def B7_floor(sc, x, y, role):
+    """a basketweave parquet: each tile's three slats turned across its neighbour's"""
+    if role == "OUT":
+        return "OUT"
+    across = (x // 8 + y // 8) % 2
+    a = (y if across else x) % 8
+    lit = sc.shade(x, y)
+    if a in (2, 5) or (across and x % 8 == 7) or (not across and y % 8 == 7):
+        return "W1"
+    if lit:
+        return "W2" if a == 0 else "W1"
+    return "W3" if a in (0, 3, 6) else "W2"
+
+
+def B7_floork(sc, x, y, role):
+    return B7_floor(sc, y, x, role)
+
+
+def B7_deck(sc, x, y, role):
+    if role in ("OUT", "N1", "N2", "N3", "N4", "WHT", "B1", "B2", "B3"):
+        return None
+    if y % 4 == 3:
+        return "W1"
+    if x % 8 == (0 if (y // 4) % 2 else 4) and y % 4 == 1:
+        return "B2"                                         # an ebony peg at each butt, like a black key
+    return "W3" if (y // 4) % 2 else "W2"
+
+
+def staff(sc, x, y, role):
+    """five lines, no notes"""
+    return "B1" if y % 2 == 0 else "WHT"
+
+
+def B7_wall(sc, x, y, role):
+    if is_stripe(role):
+        return staff(sc, x, y, role)
+    if role in ("WHT", "N4"):
+        return "N3" if x % 8 == 0 else "N4" if x % 8 in (5, 6) else "WHT"     # fluted ivory
+    if role in ("N2", "N3") and y % 8 == 4:
+        return "Y2"                                          # a brass picture rail
+    return None
+
+
+def B7_swall(sc, x, y, role):
+    return B7_wall(sc, x, y, role)
+
+
+def B7_hull(sc, x, y, role):
+    if role in ("N1", "N2", "N3", "N4"):
+        return "N2" if y % 8 == 7 else "N3"
+    return None
+
+
+def B7_roof(sc, x, y, role):
+    if role in ("B1", "B2", "B3"):
+        return "B3" if (x + y) % 8 == 0 else "B2"           # lacquer, a glint on the slant
+    return None
+
+
+def cymbal(sc, kind, x, y, role):
+    r = ring_d(sc, kind, x, y)
+    if r is None:
+        return None
+    d, dx, dy = r
+    if role == "OUT" and d > 0.8:
+        return "OUT"
+    if d < 0.2:
+        return "Y1"
+    if d < 1.0:
+        k = int(d * 6)
+        return ["Y3", "Y2", "Y3", "Y2", "Y1", "Y2"][min(5, k)] if not (dx < -1 and dy < -1 and d < 0.7) else "WHT"
+    return "WALL"
+
+
+def B7_port(sc, x, y, role):
+    return cymbal(sc, "port", x, y, role)
+
+
+def B7_sport(sc, x, y, role):
+    return cymbal(sc, "sport", x, y, role)
+
+
+def keys(x, y, white, black, line, gap):
+    """a keyboard to every tile row: two white keys a tile, a black key over the gap between them"""
+    u, v = x % 8, y % 8
+    if v == 7:
+        return gap
+    if 2 <= u <= 4 and v < 4:
+        return black
+    if u in (3, 7):
+        return line
+    return white
+
+
+def B7_carpet1(sc, x, y, role):
+    return keys(x, y, "G5", "G1", "G3", "G2")
+
+
+def rings(x, y, a, b, c):
+    u, v = x % 8 - 3.5, y % 8 - 3.5
+    d = math.hypot(u, v)
+    return c if 2.2 < d < 3.2 else b if d < 1.0 else a
+
+
+def B7_carpet2(sc, x, y, role):
+    return rings(x, y, "O2", "O1", "O3")
+
+
+def B7_paper1(sc, x, y, role):
+    if role == "OUT":
+        return None
+    return "N3" if x % 8 == 0 else "WHT" if x % 8 < 5 else "N4"     # fluted ivory panels
+
+
+def B7_paper2(sc, x, y, role):
+    if role == "OUT":
+        return None
+    return "G3" if y % 4 == 0 else "G4"                     # the staff again, faint, in the cabin's paper
+
+
+def B7_painting(sc, x, y, role):
+    rr = rel(sc, "painting", x, y)
+    if rr is None:
+        return None
+    u, v, w, h = rr
+    if u < 2 or v < 2 or u >= w - 2 or v >= h - 2:
+        return None
+    #  the sea drawn as a staff: five long swells and nothing on them, a pale sky
+    if v < h * 0.45:
+        return "WHT" if v < h * 0.25 else "M3"
+    return "G1" if int(v - h * 0.45) % 2 == 0 else "G4"     # the swells ruled like a staff, nothing on it
+
+
+def B7_book(sc, x, y, role):
+    if role in ("WHT", "N4"):
+        return "B1" if y % 2 == 0 and 1 <= x % 8 <= 6 and (y // 2) % 4 < 3 else "WHT"   # staves, empty
+    return None
+
+
+def B7_barrel(sc, x, y, role):
+    u, v = x % 16, y % 16
+    if role == "OUT":
+        return None
+    if v < 4:
+        return "C4" if v < 3 else "C3"                       # the head
+    if v in (4, 14):
+        return "F2"                                          # the hoops, brass
+    if abs(((u + v * 0) % 6) - (v - 5) % 6) < 1:
+        return "C3"                                          # the rope's zigzag
+    return "C2" if u > 2 else "C1"
+
+
+def B7_counter(sc, x, y, role):
+    if role in ("N3", "N4", "WHT", "N2"):
+        return "B3" if y % 8 else "B2"                       # black lacquer, like a piano lid
+    return None
+
+
+def B7_plate(sc, x, y, role):
+    if role == "OUT":
+        return None
+    u, v = x % 16 - 7.5, (y % 8 - 3.5) * 2
+    d = math.hypot(u, v)
+    return "Y3" if d < 2 else "Y2" if int(d) % 3 else "Y1"
+
+
+def B7_cloth(sc, x, y, i):
+    return cloth(i, x % 4 == 3)                              # pinstripes, like the keys' edges
+
+
+def B7_pillar(sc, x, y, role):
+    if role in ("B1", "B2", "B3"):
+        return "B2" if x % 4 else "Y2"                       # ebony with brass flutes
+    return None
+
+
+STYLE7_B = dict(misc=B7_misc, edge=B7_edge, floor=B7_floor, floork=B7_floork, deck=B7_deck, wall=B7_wall, hull=B7_hull, swall=B7_swall,
+                roof=B7_roof, port=B7_port, sport=B7_sport, carpet1=B7_carpet1, carpet2=B7_carpet2,
+                paper1=B7_paper1, paper2=B7_paper2, painting=B7_painting, bed=B7_bed, book=B7_book,
+                barrel=B7_barrel, counter=B7_counter, plate=B7_plate, cloth=B7_cloth, pillar=B7_pillar)
+
+
+# ================================================================== C: THE LIVERY (the outside carried in)
+#  The captain has loved boats since before the player could walk, and keeps her the way a man who loves boats does.
+#  The liner at the pier is already ours (genships, T-167): navy hull, white superstructure, one amber funnel, a red
+#  boot-top, light in the portholes. Inside she is the same ship: white enamel bulkheads, riveted, a navy band with an
+#  amber pinstripe where the stripe was; teak paid with black caulking; brass portholes with four dogs and light in
+#  the glass; one cabin navy with amber compass roses, one red with a rope weave; teak casks with brass hoops; a
+#  stainless galley; and on the captain's wall a painting of the ship herself.
+def C7_floor(sc, x, y, role):
+    return board(sc, x, y, role, "x", plank=4, run=16, seam="OUT")
+
+
+def C7_floork(sc, x, y, role):
+    return board(sc, x, y, role, "y", plank=4, run=8, s=1)
+
+
+def C7_deck(sc, x, y, role):
+    if role in ("OUT", "N1", "N2", "N3", "N4", "WHT", "B1", "B2", "B3"):
+        return None
+    if y % 4 == 3:
+        return "OUT" if x % 4 else "W1"                      # black caulking, paid
+    return board(sc, x, y, role, "x", plank=4, run=8, s=2)
+
+
+def livery(x, y, role):
+    """a navy band with an amber pinstripe"""
+    if role in ("Y1", "Y2", "Y3"):
+        return "Y2"
+    return "B2" if role != "B3" else "B3"
+
+
+def C7_wall(sc, x, y, role):
+    if is_stripe(role):
+        return livery(x, y, role)
+    if role in ("N3", "N4", "WHT") and x % 8 == 3 and y % 8 == 3:
+        return "N2"                                          # a rivet
+    if role in ("N3", "N4", "WHT") and x % 8 == 3 and y % 8 == 4:
+        return "WHT"                                         # its glint
+    if role in ("N2", "N3") and y % 8 == 6:
+        return "B2"                                          # a navy rule under the deckhead
+    return None
+
+
+def C7_swall(sc, x, y, role):
+    return C7_wall(sc, x, y, role)
+
+
+def C7_hull(sc, x, y, role):
+    if role in ("N1", "N2", "N3", "N4"):
+        return "B1" if y % 8 == 7 else "B2"                  # the navy hull, in strakes
+    return None
+
+
+def C7_roof(sc, x, y, role):
+    if role in ("B1", "B2", "B3"):
+        return "N3" if x % 8 == 7 or y % 8 == 7 else "N4"    # white deckhead in panels
+    return None
+
+
+def brass_port(sc, kind, x, y, role):
+    r = ring_d(sc, kind, x, y)
+    if r is None:
+        return None
+    d, dx, dy = r
+    if d > 1.0:
+        return "WALL"
+    if role == "OUT" and d > 0.8:
+        return "OUT"
+    if d >= 0.62:
+        a = math.atan2(dy, dx)
+        dog = min(abs(((a - math.pi / 4) % (math.pi / 2)) - math.pi / 4), 9) < 0.25 and d > 0.85
+        return "Y1" if dog else "Y2" if dy < 0 else "Y1"
+    if dx < 0 and dy < 0 and abs(dx + dy + 2) < 0.8:
+        return "WHT"
+    return "B3"
+
+
+def C7_port(sc, x, y, role):
+    return brass_port(sc, "port", x, y, role)
+
+
+def C7_sport(sc, x, y, role):
+    return brass_port(sc, "sport", x, y, role)
+
+
+def C7_carpet1(sc, x, y, role):
+    u, v = x % 8, y % 8
+    if (u == 3 and 1 <= v <= 5) or (v == 3 and 1 <= u <= 5):
+        return "G5"                                          # a small compass star in every tile
+    return "G2" if v == 7 or u == 7 else "G3"
+
+
+def C7_carpet2(sc, x, y, role):
+    k = (x + y) % 4 if (y // 4) % 2 else (x - y) % 4
+    return "O3" if k == 0 else "O1" if k == 2 else "O2"      # a rope weave
+
+
+def C7_paper1(sc, x, y, role):
+    if role == "OUT":
+        return None
+    return "N3" if x % 8 == 7 else "WHT"                     # enamel panels
+
+
+def C7_paper2(sc, x, y, role):
+    if role == "OUT":
+        return None
+    return "G3" if y % 4 < 2 else "G2"                       # navy and a lighter navy, ticking
+
+
+def C7_painting(sc, x, y, role):
+    rr = rel(sc, "painting", x, y)
+    if rr is None:
+        return None
+    u, v, w, h = rr
+    if u < 2 or v < 2 or u >= w - 2 or v >= h - 2:
+        return None
+    #  the ship herself: sky, sea, a navy hull, a white house, one amber funnel
+    cx = w // 2
+    if h * 0.55 <= v <= h * 0.7 and w * 0.2 <= u <= w * 0.82 + (v - h * 0.55):
+        return "G1"
+    if h * 0.42 <= v < h * 0.55 and w * 0.32 <= u <= w * 0.72:
+        return "WHT"
+    if h * 0.25 <= v < h * 0.42 and cx - 1 <= u <= cx + 2:
+        return "O2"
+    if v > h * 0.62:
+        return "G3" if (u + v) % 5 else "G4"
+    return "M3"
+
+
+def C7_book(sc, x, y, role):
+    if role in ("WHT", "N4"):
+        return "N3" if y % 3 == 0 and x % 8 not in (0, 7) else "WHT"
+    return None
+
+
+def C7_barrel(sc, x, y, role):
+    u, v = x % 16, y % 16
+    if role == "OUT":
+        return None
+    if v in (4, 12):
+        return "F2"
+    if v < 4:
+        return "C4" if (u + v) % 4 else "C3"
+    return "C3" if u % 4 else "C2"
+
+
+def C7_counter(sc, x, y, role):
+    if role in ("N3", "N4", "WHT", "N2"):
+        return "N4" if (x + y) % 7 else "WHT"                # stainless, brushed
+    return None
+
+
+def C7_plate(sc, x, y, role):
+    if role == "OUT":
+        return None
+    u, v = x % 16 - 7.5, (y % 8 - 3.5) * 2
+    d = math.hypot(u, v)
+    return "B2" if 4.5 < d < 6 else "WHT"                    # white with a navy rim
+
+
+def C7_cloth(sc, x, y, i):
+    return cloth(i, x % 4 == 0 or y % 4 == 0)                # a sailcloth check
+
+
+def C7_pillar(sc, x, y, role):
+    if role in ("B1", "B2", "B3"):
+        return {"B1": "B1", "B2": "B2", "B3": "B3"}[role]
+    return None
+
+
+STYLE7_C = dict(misc=C7_misc, edge=C7_edge, floor=C7_floor, floork=C7_floork, deck=C7_deck, wall=C7_wall, hull=C7_hull, swall=C7_swall,
+                roof=C7_roof, port=C7_port, sport=C7_sport, carpet1=C7_carpet1, carpet2=C7_carpet2,
+                paper1=C7_paper1, paper2=C7_paper2, painting=C7_painting, bed=C7_bed, book=C7_book,
+                barrel=C7_barrel, counter=C7_counter, plate=C7_plate, cloth=C7_cloth, pillar=C7_pillar)
+
+
+# ---------------------------------------------------------------------------------------- the departure
+#  smoke.png: 16x72, frames 0..3 at rows 0, 16, 32, 48 (ANIMCMD_FRAME 0/4/8/12 for 10/20/20/30 ticks; it drifts
+#  right a pixel every 4 ticks), rows 64..71 a spare tile left blank. wake.png: 16x64, two 16x32 frames alternating
+#  every 12 ticks, set 80 px aft of the ship's centre and trailing to the right. Drawn in ANNE_PAL's indices.
+def smoke7(style):
+    im = Image.new("P", (16, 72), 0)
+    px = im.load()
+    for f in range(4):
+        y0 = f * 16
+        for y in range(16):
+            for x in range(16):
+                c = style(f, x, y)
+                if c:
+                    px[x, y0 + y] = c
+    return im
+
+
+def wake7(style):
+    im = Image.new("P", (16, 64), 0)
+    px = im.load()
+    for f in range(2):
+        for y in range(32):
+            for x in range(16):
+                c = style(f, x, y)
+                if c:
+                    px[x, f * 32 + y] = c
+    return im
+
+
+def puff(cx, cy, r, x, y):
+    return math.hypot(x + 0.5 - cx, (y + 0.5 - cy) * 1.15) <= r
+
+
+def SA_smoke(f, x, y):
+    """A: puffs with a postmark's waves through them, thinning to waves alone"""
+    r = [3.2, 4.6, 5.6, 6.2][f]
+    cy = [11, 9, 7, 6][f]
+    inside = puff(8, cy, r, x, y) or (f >= 1 and puff(5, cy + 2, r * 0.7, x, y)) or (f >= 2 and puff(11, cy - 2, r * 0.6, x, y))
+    if f == 3 and inside and H(x, y, 7) % 3 == 0:
+        inside = False
+    if not inside:
+        return 0
+    if abs((y - cy) - wave(x, 0, 6, 1.0)) < 0.6 or abs((y - cy - 3) - wave(x, 0, 6, 1.0)) < 0.6:
+        return 7
+    return 6 if y > cy + 1 else 5
+
+
+def SA_wake(f, x, y):
+    """A: the airmail's chevrons, opening aft"""
+    cy = 15.5
+    d = abs(y + 0.5 - cy)
+    if d > 4 + x * 0.7:
+        return 0
+    k = (x + int(d * 0.8) + f * 2) % 6
+    if x < 3:
+        return 5
+    return 5 if k < 2 else 14 if k < 4 else 13 if d < 3 else 0
+
+
+def SB_smoke(f, x, y):
+    """B: a ring, in time -- each frame the ring a beat wider and fainter"""
+    r = [2.5, 4.0, 5.5, 7.0][f]
+    d = math.hypot(x + 0.5 - 8, (y + 0.5 - [11, 9, 8, 7][f]) * 1.1)
+    if abs(d - r) < [1.6, 1.3, 1.0, 0.7][f]:
+        if f == 3 and (x + y) % 2:
+            return 0
+        return 7 if y > [11, 9, 8, 7][f] else 5
+    if f == 0 and d < r:
+        return 6
+    return 0
+
+
+def SB_wake(f, x, y):
+    """B: standing waves -- three sine lines that swap their crests each frame"""
+    for k, cy in enumerate((11.5, 15.5, 19.5)):
+        a = (1.5 + x * 0.12) * (1 if (k + f) % 2 else -1)
+        if abs(y + 0.5 - cy - math.sin(x * 2 * math.pi / 8) * a) < 0.75:
+            return 5 if k == 1 else 14
+    if x < 2 and 10 <= y <= 21:
+        return 5
+    return 0
+
+
+def SC_smoke(f, x, y):
+    """C: coal smoke off one funnel -- a billow that breaks up and greys as it goes"""
+    cy = [11, 9, 8, 7][f]
+    blobs = [(8, cy, [3.4, 4.2, 4.6, 4.4][f])]
+    if f >= 1:
+        blobs.append((5, cy + 1.5, 3.0))
+    if f >= 2:
+        blobs.append((11.5, cy - 1.5, 3.2))
+    inside = any(puff(a, b, r, x, y) for a, b, r in blobs)
+    if not inside or (f == 3 and H(x, y, 11) % 4 == 0):
+        return 0
+    edge = not any(puff(a, b, r - 1.1, x, y) for a, b, r in blobs)
+    if f >= 2:
+        return 7 if edge or y > cy else 6
+    return 6 if edge else 5 if y < cy + 1 else 6
+
+
+def SC_wake(f, x, y):
+    """C: white foam off the counter stern, light between, breaking up aft"""
+    cy = 15.5
+    d = abs(y + 0.5 - cy)
+    half = 3 + x * 0.6
+    if d > half:
+        return 0
+    if x < 4:
+        return 5 if d < half - 0.8 else 14
+    k = H(x // 2, int(d), f) % 5
+    if d > half - 1.2:
+        return 5 if k < 3 else 0
+    return 14 if k < 2 else 5 if k < 3 else 13 if x > 9 else 14
+
+
+SMOKE7 = {"A": (SA_smoke, SA_wake), "B": (SB_smoke, SB_wake), "C": (SC_smoke, SC_wake)}
+
+
+def mask(im):
+    m = Image.new("L", im.size, 0)
+    o, p = m.load(), im.load()
+    for y in range(im.height):
+        for x in range(im.width):
+            if p[x, y]:
+                o[x, y] = 255
+    return m
+
+
+def sprite_rgb(im, pal=ANNE_PAL, bg=None):
+    out = Image.new("RGB", im.size, bg or pal[0])
+    o, p = out.load(), im.load()
+    for y in range(im.height):
+        for x in range(im.width):
+            if p[x, y]:
+                o[x, y] = pal[p[x, y]]
+    return out
+
+
+def save_sprite(im, path):
+    im = im.copy()
+    flat = []
+    for c in ANNE_PAL:
+        flat += list(c)
+    im.putpalette(flat + [0] * (768 - len(flat)))
+    im.save(path, bits=4)
+
+
+# ---------------------------------------------------------------------------------------- the directions
+def direction7(name, title, lines, mat, style, smoke):
+    return dict(name=name, title=title, lines=lines, mat=mat, paint=p7(style), smoke=smoke)
+
+
+A7 = direction7(
+    "A", "THE PACKET",
+    ["the ship's post (T-494: the lioness posts a letter; MOM gets a card with a ship's stamp). A packet boat is the",
+     "mail ship, and a packet is what a network carries. Laid-paper bulkheads, the airmail border where the",
+     "stripe was, kraft boards with perforated seams; one cabin carpeted in stamps, one in envelope backs;",
+     "portholes as postmarks; mail sacks on the deck; the galley's tables sorting frames; a postcard on the wall.",
+     "Departure: puffs crossed by a postmark's waves; the wake as airmail chevrons."],
+    dict(OUT=(40, 36, 52), N1=(120, 112, 104), N2=(158, 150, 136), N3=(204, 196, 178), N4=(232, 226, 210),
+         WHT=(252, 250, 242), Y1=(150, 30, 36), Y2=(204, 52, 52), Y3=(236, 110, 96), B1=(30, 50, 110),
+         B2=(52, 84, 160), B3=(120, 170, 220), W1=(150, 112, 72), W2=(192, 154, 106), W3=(220, 190, 142),
+         M1=(120, 112, 104), M3=(214, 206, 190), G1=(40, 90, 80), G2=(70, 130, 110), G3=(120, 170, 140),
+         G4=(190, 214, 180), G5=(240, 240, 224), O1=(176, 140, 96), O2=(214, 184, 140), O3=(240, 222, 186),
+         C1=(110, 90, 60), C2=(150, 126, 88), C3=(190, 168, 124), C4=(226, 210, 170), F1=(204, 52, 52),
+         F2=(52, 84, 160), F3=(40, 36, 52), F4=(250, 246, 236)),
+    STYLE7_A, SMOKE7["A"])
+
+B7 = direction7(
+    "B", "THE KEY, NO TUNE",
+    ["the band's sheet (the captain: \"a key and no tune\"; the tune is somewhere in ARDOR -- the singing fir, THE",
+     "NEXUS). A band keeps time as a clock does with no program loaded. Fluted ivory panels with a staff where the",
+     "stripe was, nothing written on it, a brass picture rail; ebony rails; basketweave parquet; one",
+     "cabin carpeted in keyboards, one in sound's rings on red velvet; brass cymbals for portholes; drums on deck;",
+     "the sea in the painting five long swells. Departure: smoke rings in time; the wake standing waves."],
+    dict(OUT=(24, 20, 28), N1=(88, 80, 84), N2=(140, 130, 124), N3=(196, 186, 170), N4=(230, 222, 204),
+         WHT=(250, 246, 232), Y1=(150, 104, 40), Y2=(204, 156, 64), Y3=(240, 206, 120), B1=(20, 18, 24),
+         B2=(44, 40, 48), B3=(84, 78, 92), W1=(140, 88, 52), W2=(184, 130, 82), W3=(214, 170, 118),
+         M1=(110, 100, 100), M3=(220, 212, 196), G1=(20, 18, 24), G2=(60, 56, 62), G3=(180, 172, 160),
+         G4=(226, 220, 206), G5=(248, 244, 232), O1=(120, 40, 48), O2=(170, 64, 64), O3=(214, 120, 104),
+         C1=(120, 30, 36), C2=(170, 52, 52), C3=(220, 200, 160), C4=(248, 240, 220), F1=(204, 156, 64),
+         F2=(150, 104, 40), F3=(24, 20, 28), F4=(250, 246, 232)),
+    STYLE7_B, SMOKE7["B"])
+
+C7 = direction7(
+    "C", "THE LIVERY",
+    ["the outside carried in: the captain has loved boats since before you could walk, and the liner at the pier is",
+     "already ours (genships: navy hull, white house, one amber funnel, red boot-top, light in the portholes).",
+     "White enamel bulkheads, riveted, a navy band with an amber pinstripe; teak paid with black caulking; brass",
+     "portholes with four dogs; one cabin navy with amber compass roses, one red in a rope weave; teak casks with",
+     "brass hoops; a stainless galley; the ship herself in the painting. Departure: coal smoke; white foam."],
+    dict(OUT=(16, 16, 40), N1=(120, 126, 150), N2=(152, 160, 184), N3=(208, 212, 224), N4=(232, 234, 240),
+         WHT=(248, 248, 240), Y1=(176, 112, 32), Y2=(232, 168, 48), Y3=(250, 214, 120), B1=(24, 32, 64),
+         B2=(40, 56, 104), B3=(136, 200, 232), W1=(140, 98, 60), W2=(184, 140, 90), W3=(214, 178, 124),
+         M1=(120, 126, 150), M3=(208, 212, 224), G1=(16, 20, 48), G2=(32, 44, 88), G3=(52, 72, 130),
+         G4=(136, 200, 232), G5=(232, 168, 48), O1=(120, 30, 30), O2=(176, 48, 40), O3=(220, 110, 90),
+         C1=(110, 74, 44), C2=(152, 112, 72), C3=(200, 160, 104), C4=(230, 200, 150), F1=(176, 112, 32),
+         F2=(232, 168, 48), F3=(16, 16, 40), F4=(248, 248, 240)),
+    STYLE7_C, SMOKE7["C"])
+STYLES7 = {"A": A7, "B": B7, "C": C7}
+
+
+# ---------------------------------------------------------------------------------------- pair 7's sheets
+def render7(m, state=None, crop=None):
+    """a room as the engine draws it (general's primary), today or with STATE = (tiles, palettes)"""
+    lid = G.LAYOUT_OF_MAP[m]
+    l = next(x for x in G.LAYOUTS if x["id"] == lid)
+    p, s = G.tileset_data(l["primary_tileset"]), G.tileset_data(l["secondary_tileset"])
+    stiles, spals = s["tiles"], s["pals"]
+    if state is not None:
+        stiles, pl = state
+        spals = [pl[r] for r in range(16)]
+    pals = p["pals"][:7] + [spals[r] for r in range(7, 16)]
+    W, Hh = l["width"], l["height"]
+    bd = open(os.path.join(GBA, l["blockdata_filepath"]), "rb").read()
+    img = Image.new("RGB", (W * 16, Hh * 16))
+    o = img.load()
+    for yy in range(Hh):
+        for xx in range(W):
+            mm = struct.unpack_from("<H", bd, (yy * W + xx) * 2)[0] & 0x3FF
+            buf, k = (p["mt"], mm) if mm < 640 else (s["mt"], mm - 640)
+            ee = struct.unpack_from("<8H", buf, k * 16) if (k + 1) * 16 <= len(buf) else (0,) * 8
+            for layer in (0, 1):
+                for q in range(4):
+                    t = ee[layer * 4 + q]
+                    i = t & 0x3FF
+                    src = p["tiles"][i] if i < 640 else (stiles[i - 640] if i - 640 < len(stiles) else [0] * 64)
+                    pal = pals[(t >> 12) & 15]
+                    for ty in range(8):
+                        for tx in range(8):
+                            sx = 7 - tx if (t >> 10) & 1 else tx
+                            sy = 7 - ty if (t >> 11) & 1 else ty
+                            vv = src[sy * 8 + sx]
+                            if layer and vv == 0:
+                                continue
+                            o[xx * 16 + (q % 2) * 8 + tx, yy * 16 + (q // 2) * 8 + ty] = tuple(pal[vv])
+    if crop:
+        x0, y0, x1, y1 = crop
+        img = img.crop((x0 * 16, y0 * 16, x1 * 16, y1 * 16))
+    return img
+
+
+ROOMS_SS = [
+    [("SSAnne_Deck", "the deck", None), ("SSAnne_CaptainsOffice", "the captain's office", None),
+     ("SSAnne_Kitchen", "the galley", None)],
+    [("SSAnne_1F_Room1", "a cabin (7 rooms)", None), ("SSAnne_2F_Room1", "a cabin (11 rooms)", None),
+     ("SSAnne_B1F_Corridor", "B1F, the hold's corridor", None), ("SSAnne_1F_Corridor", "1F corridor (part)",
+                                                                  (0, 4, 16, 12))],
+]
+DETAILS7 = [("SSAnne_CaptainsOffice", (0, 1, 9, 6), "the captain's office: painting, desk, book"),
+            ("SSAnne_1F_Room1", (0, 0, 6, 4), "a cabin: door, porthole, carpet"),
+            ("SSAnne_2F_Room1", (3, 0, 6, 5), "the other cabin: porthole, bed"),
+            ("SSAnne_Kitchen", (0, 1, 8, 8), "the galley: porthole, a table"),
+            ("SSAnne_Deck", (13, 3, 24, 15), "the deck: barrels, the house, portholes"),
+            ("SSAnne_Deck", (0, 13, 10, 19), "the bow: rail, hull")]
+
+
+def departure_scene(ship, smoke, wake, frame=1, scale=1):
+    """the ship as the cutscene sets her up, a few seconds in: smoke at centre +49 (y 78), the wake at +80 (y 109).
+    The ship's centre is put at (88, 80) so smoke and wake fall on a 240x160 screen"""
+    sea = Image.new("RGB", (240, 160), ANNE_PAL[0])
+    sx, sy = 88, 80
+    sea.paste(sprite_rgb(ship), (sx - 64, sy - 32), mask(ship))
+    for i, (f, dx) in enumerate(((0, 0), (1, 6), (2, 14), (3, 24))):
+        fr = smoke.crop((0, f * 16, 16, f * 16 + 16))
+        sea.paste(sprite_rgb(fr), (sx + 49 - 8 + dx, 78 - 8 - i * 3), mask(fr))
+    wf = wake.crop((0, frame * 32, 16, frame * 32 + 32))
+    sea.paste(sprite_rgb(wf), (sx + 80 - 8 + 2, 109 - 16), mask(wf))
+    return sea.resize((240 * scale, 160 * scale), Image.NEAREST)
+
+
+def contact_sheets7(out_dir, states, sprites):
+    names = list(states)
+    titles = {"NOW": ("NOW", ["today: Nintendo's ship inside; gbatowns batch G laid the deck's teak, riveted the bulkheads",
+                              "and wove the cabins' carpet (a DRAFT, 2026-10-28); the portholes, painting, beds, barrels,",
+                              "galley and stripes as Nintendo drew them. The smoke and wake are pret's, drawn in",
+                              "indices that genships' palette makes brown and porthole-blue."])}
+    for k in STYLES7:
+        titles[k] = ("%s %s" % (k, STYLES7[k]["title"]), STYLES7[k]["lines"])
+    pad = 10
+    paths = []
+    for part, rooms in enumerate(ROOMS_SS, 1):
+        blocks = []
+        for k in names:
+            st = states[k]
+            ims = [(render7(m, st, cr), cap) for m, cap, cr in rooms]
+            t, lines = titles[k]
+            th = 8 + 12 * len(lines) + 16
+            W = sum(i.width for i, _ in ims) + pad * (len(ims) + 1)
+            im = Image.new("RGB", (max(W, 1100), th + max(i.height for i, _ in ims) + pad), BG)
+            d = ImageDraw.Draw(im)
+            text(d, (pad, 6), t, RED)
+            for j, s in enumerate(lines):
+                text(d, (pad + 200, 6 + 12 * j), s)
+            x = pad
+            for i, cap in ims:
+                text(d, (x, th - 13), cap, SOFT)
+                im.paste(i, (x, th))
+                x += i.width + pad
+            blocks.append(im)
+        W = max(b.width for b in blocks)
+        sh = Image.new("RGB", (W, sum(b.height for b in blocks) + 30), BG)
+        d = ImageDraw.Draw(sh)
+        text(d, (pad, 8), "T-447 DRAFT, pair 7 -- the S.S. ANNE (%d of 2), real rooms at 1x, three directions beside "
+                          "today's (redrawn in place: no block, collision or palette row moves; 0 new tiles)" %
+             part, INK)
+        y = 30
+        for b in blocks:
+            sh.paste(b, (0, y))
+            y += b.height
+        p = os.path.join(out_dir, "t447p7_rooms_1x_%d.png" % part)
+        sh.save(p)
+        paths.append(p)
+    for part, idxs in ((1, (0, 1, 2)), (2, (3, 4, 5))):
+        rowsim = []
+        for k in names:
+            crops = []
+            for i in idxs:
+                m, cr, cap = DETAILS7[i]
+                im = render7(m, states[k], cr)
+                crops.append((im.resize((im.width * 3, im.height * 3), Image.NEAREST), cap))
+            rowsim.append((k, crops))
+        cw = sum(c.width for c, _ in rowsim[0][1]) + pad * (len(idxs) + 1) + 130
+        ch = max(c.height for c, _ in rowsim[0][1]) + 24
+        det = Image.new("RGB", (cw, ch * len(names) + 30), BG)
+        d = ImageDraw.Draw(det)
+        text(d, (pad, 8), "T-447 DRAFT, pair 7 -- details at 3x (%d of 2)" % part, INK)
+        y = 30
+        for k, crops in rowsim:
+            text(d, (pad, y + 6), titles[k][0][:18], RED)
+            x = 130
+            for c, cap in crops:
+                text(d, (x, y + 2), cap, SOFT)
+                det.paste(c, (x, y + 16))
+                x += c.width + pad
+            y += ch
+        p = os.path.join(out_dir, "t447p7_detail_3x_%d.png" % part)
+        det.save(p)
+        paths.append(p)
+    #  the tiles at 3x, each in its home row
+    cols = []
+    own = set(owned7())
+    for k in names:
+        st = states[k]
+        tiles, pals = st if st else (SS.cur, TODAY7_ALL)
+        used_rows = sorted({t // 16 for t in own})
+        strip = Image.new("RGB", (128, 8 * len(used_rows)), (236, 236, 236))
+        o = strip.load()
+        for j, rr in enumerate(used_rows):
+            for t in range(rr * 16, rr * 16 + 16):
+                if t not in own:
+                    continue
+                rws = rows_of7(t)
+                hr = max(rws, key=rws.get)
+                for q in range(64):
+                    vv = tiles[t][q]
+                    o[(t % 16) * 8 + q % 8, j * 8 + q // 8] = tuple(pals[hr][vv]) if vv else (200, 200, 200)
+        cols.append((titles[k][0], strip.resize((384, strip.height * 3), Image.NEAREST)))
+    W = sum(c.width + pad for _, c in cols) + pad
+    sh = Image.new("RGB", (W, max(c.height for _, c in cols) + 50), BG)
+    d = ImageDraw.Draw(sh)
+    text(d, (pad, 6), "T-447 DRAFT, pair 7 -- the S.S. ANNE's tiles at 3x, each in its home row (grey: transparent; "
+                      "the door, the void and general's rows not shown)", INK)
+    x = pad
+    for t, c in cols:
+        text(d, (x, 26), t[:44], RED)
+        sh.paste(c, (x, 42))
+        x += c.width + pad
+    p = os.path.join(out_dir, "t447p7_tiles_3x.png")
+    sh.save(p)
+    paths.append(p)
+    #  the departure: the scene at 1x, and the frames at 6x
+    ship = Image.open(os.path.join(GBA, "graphics/object_events/pics/misc/ss_anne.png"))
+    blocks = []
+    for k in names:
+        sm, wk = sprites[k]
+        scene = departure_scene(ship, sm, wk)
+        frames = Image.new("RGB", (16 * 6 * 4 + 30 + 16 * 6 * 2 + 10, 32 * 6), BG)
+        for f in range(4):
+            fr = sprite_rgb(sm.crop((0, f * 16, 16, f * 16 + 16)))
+            frames.paste(fr.resize((96, 96), Image.NEAREST), (f * 96 + f * 2, 0))
+        for f in range(2):
+            fr = sprite_rgb(wk.crop((0, f * 32, 16, f * 32 + 32)))
+            frames.paste(fr.resize((96, 192), Image.NEAREST), (4 * 98 + 20 + f * 100, 0))
+        t, lines = titles[k]
+        im = Image.new("RGB", (240 + frames.width + 3 * pad, 160 + 2 * pad + 30), BG)
+        d = ImageDraw.Draw(im)
+        text(d, (pad, 4), t, RED)
+        text(d, (pad + 240 + pad, 4), "smoke, frames 1-4 (6x)                                      wake, frames 1-2 (6x)", SOFT)
+        im.paste(scene, (pad, 22))
+        im.paste(frames, (2 * pad + 240, 22))
+        blocks.append(im)
+    W = max(b.width for b in blocks)
+    sh = Image.new("RGB", (W, sum(b.height for b in blocks) + 44), BG)
+    d = ImageDraw.Draw(sh)
+    text(d, (pad, 6), "T-447 DRAFT, pair 7 -- the departure (src/ss_anne.c): smoke and wake in the S.S. ANNE's own "
+                      "palette (genships, unchanged), the ship as she stands", INK)
+    text(d, (pad, 20), "the smoke is set at the ship's centre +49 px, where vanilla's aft funnel stood; genships' funnel "
+                       "is 30 px forward of it (a code or genships question, reported)", SOFT)
+    y = 40
+    for b in blocks:
+        sh.paste(b, (0, y))
+        y += b.height
+    p = os.path.join(out_dir, "t447p7_departure.png")
+    sh.save(p)
+    paths.append(p)
+    return paths
+
+
+TODAY7_ALL = {r: (TODAY7[r] if r >= 7 else [tuple(c) for c in GEN_NOW["pals"][r]]) for r in range(16)}
+
+
+# ---------------------------------------------------------------------------------------- pair 7's report
+def report7():
+    bad = 0
+    picks = {k: APPROVED[k] for k in SETS7 if k in APPROVED}
+    print("\n  pair 7 (the S.S. ANNE + its departure) -- DRAFT, %s" %
+          ("APPROVED %s" % picks if picks else "not approved: `--pair 7 --write --approved` refuses"))
+    own = owned7()
+    placed = sorted(t for t in SS.use if t < SS.nvan and any(SS.cur[t]))
+    van = [t for t in placed if SS.cur[t] == SS.van[t] and len(set(SS.van[t])) > 1]
+    rows = sorted({r for t in placed for r in SS.use[t]["rows"]})
+    fixed = sorted(t for t in placed if any(r < 7 for r in SS.use[t]["rows"]) and t not in CLOTH)
+    print("    ss_anne: %d placed tiles on %d maps, %d still Nintendo's drawing; rows placed %s, own %s" %
+          (len(placed), len(SS_MAPS), len(van), rows, SS.rows))
+    print("    drawn here %d; kept: the door 0x281 (28, 29, 44, 45: gbadoors' hinged door), the void (1), and %d in "
+          "general's fixed rows %s" % (len(own), len(fixed), fixed))
+    print("    scenes: %s" % ", ".join(sc.name for sc in SCENES7))
+    #  gbatowns must keep every tile these rooms draw
+    towns = _literal(os.path.join(ROOT, "tools", "gbatowns.py"), "LANDMARKS") or {}
+    boxed = {b[0] for b in towns.get("ss_anne", [])}
+    want = {l["name"][:-len("_Layout")] for l in G.LAYOUTS if l.get("secondary_tileset") == SS.sym and G.MBL.get(l["id"])}
+    if boxed != want:
+        print("  !! gbatowns.LANDMARKS does not hold the S.S. ANNE's nine layouts (%s missing): its write could redraw "
+              "them" % sorted(want - boxed))
+        bad = 1
+    else:
+        print("    gbatowns.LANDMARKS holds the S.S. ANNE's %d layouts (all %d rooms): its write keeps every tile they "
+              "draw" % (len(want), len(SS_MAPS)))
+    #  the ship's palette the departure draws in is genships'
+    try:
+        gpal = [tuple(int(v) for v in l.split()) for l in
+                open(os.path.join(GBA, "graphics/object_events/palettes/ss_anne.pal")).read().split("\n")[3:19]]
+    except (OSError, ValueError):
+        gpal = None
+    if gpal != ANNE_PAL:
+        print("  !! graphics/object_events/palettes/ss_anne.pal is not the ANNE_PAL the smoke and wake are drawn in")
+        bad = 1
+    else:
+        print("    departure: smoke and wake drawn in genships' ANNE_PAL (PALSLOT_NPC_SPECIAL = OBJ palette 10); "
+              "today's vanilla frames show index 10 (planking, dark) and 14 (porthole light)")
+    known = {"gbatowns.py", "gbadoors.py", "genships.py", "companion_export.py", "check_reach.py", "gbagrove.py",
+             "gbanexusmap.py", "gbaprimary.py", "gbawater.py", "port_dialogue.py", "check_generators.py"}
+    found = set()
+    me = os.path.basename(__file__)
+    for f in sorted(glob.glob(os.path.join(ROOT, "tools", "*.py"))):
+        if os.path.basename(f) == me:
+            continue
+        if re.search(r"ss_anne|gTileset_SSAnne", open(f, encoding="utf-8", errors="ignore").read()):
+            found.add(os.path.basename(f))
+    if found - known:
+        print("  !! a tool this one does not know names the S.S. ANNE's tileset: %s -- read it before a write" %
+              sorted(found - known))
+        bad = 1
+    for k, D in STYLES7.items():
+        (tiles, pals), owner = draw7(D)
+        moved = [t for t in range(SS.nvan) if any((a == 0) != (b == 0) for a, b in zip(tiles[t], SS.cur[t]))]
+        stray = [t for t in range(SS.nvan) if tiles[t] != SS.cur[t] and t not in set(own)]
+        missed = sorted(set(own) - set(owner))
+        if moved or stray or missed:
+            print("  !! %s: footprint %s, not this pair's %s, in no scene %s" % (k, moved[:8], stray[:8], missed[:8]))
+            bad = 1
+        if any(pals[r] != TODAY7[r] for r in range(7, 16) if r not in SS.rows):
+            print("  !! %s: a row this pair does not own changed" % k)
+            bad = 1
+        n = sum(1 for t in own if tiles[t] != SS.van[t])
+        print("    %s %-20s redrawn %d of %d, the other %d recoloured in its rows (Nintendo's shapes: chairs, stairs, "
+              "rails, bins); + smoke 4 frames, wake 2; 0 new tiles, rows 7, 8, 9" % (k, D["title"], n, len(own),
+                                                                                    len(own) - n))
+    return bad
+
+
+def check_engine7():
+    bad = 0
+    pick = APPROVED.get("ss")
+    if pick:
+        (tiles, pals), _ = draw7(STYLES7[pick])
+        off = [t for t in range(len(SS.cur)) if tiles[t] != SS.cur[t]]
+        rows = [r for r in SS.rows if pals[r] != TODAY7[r]]
+        if off or rows:
+            print("  !! the S.S. ANNE: the engine differs from `--pair 7 --write --approved` (%s) in tiles %s rows %s"
+                  % (pick, off[:12], rows))
+            bad = 1
+    return bad
+
+
+def main7():
+    pick = APPROVED.get("ss")
+    if WRITE:
+        if "--approved" not in ARGS or not pick:
+            print("  --write refused: T-447 pair 7 is a draft. APPROVED holds no pick for the S.S. ANNE (\"ss\"); the "
+                  "user picks a\n  direction first, it goes into APPROVED (\"ss\": X), then `--pair 7 --write "
+                  "--approved` writes ss_anne's tiles and rows\n  7, 8, 9 and graphics/ss_anne/smoke.png and wake.png "
+                  "(never the door, the void, or general's rows).")
+            return 1
+        (tiles, pals), _ = draw7(STYLES7[pick])
+        G.save_like(os.path.join(GBA, SS.dir, "tiles.png"), tiles, os.path.join(GBA, SS.dir, "tiles.png"))
+        for r in SS.rows:
+            write_pal(os.path.join(GBA, SS.dir, "palettes", "%02d.pal" % r), pals[r])
+        sm, wk = STYLES7[pick]["smoke"]
+        save_sprite(smoke7(sm), os.path.join(GBA, "graphics/ss_anne/smoke.png"))
+        save_sprite(wake7(wk), os.path.join(GBA, "graphics/ss_anne/wake.png"))
+        print("  written: the S.S. ANNE, direction %s (tiles, rows 7, 8, 9, smoke, wake)" % pick)
+        return 0
+    bad = report()
+    if DRAFT is not None:
+        out = DRAFT if DRAFT != DRAFT_DEFAULT else DRAFT7_DEFAULT
+        os.makedirs(out, exist_ok=True)
+        states = collections.OrderedDict()
+        states["NOW"] = None
+        sprites = {"NOW": (Image.open(os.path.join(GBA, "graphics/ss_anne/smoke.png")),
+                           Image.open(os.path.join(GBA, "graphics/ss_anne/wake.png")))}
+        summary = {}
+        for k, D in STYLES7.items():
+            (tiles, pals), owner = draw7(D)
+            dd = os.path.join(out, k, "ss_anne")
+            os.makedirs(os.path.join(dd, "palettes"), exist_ok=True)
+            G.save_like(os.path.join(GBA, SS.dir, "tiles.png"), tiles, os.path.join(dd, "tiles.png"))
+            for r in SS.rows:
+                write_pal(os.path.join(dd, "palettes", "%02d.pal" % r), pals[r])
+            sm, wk = D["smoke"]
+            smi, wki = smoke7(sm), wake7(wk)
+            save_sprite(smi, os.path.join(out, k, "smoke.png"))
+            save_sprite(wki, os.path.join(out, k, "wake.png"))
+            states[k] = (tiles, pals)
+            sprites[k] = (smi, wki)
+            summary[k] = dict(title=D["title"], lines=D["lines"], new_tiles=0, rows=SS.rows,
+                              tiles_redrawn=sum(1 for t in owned7() if tiles[t] != SS.van[t]), of=len(owned7()))
+        json.dump(dict(ticket="T-447", pair=7, status="DRAFT -- not in the engine", approved={"ss": pick} if pick else {},
+                       directions=summary), open(os.path.join(out, "directions.json"), "w"), indent=1)
+        for p in contact_sheets7(out, states, sprites):
+            print("  sheet:", p)
+    return 1 if bad else 0
+
+
 # ============================================================================================ report
 def claims():
     """every other tool that names these tilesets or the diary's tiles"""
@@ -5115,6 +6622,7 @@ def report():
           "their ids; their tiles are drawn as OFF/ON and SHUT (switch sheet)")
     bad |= report5()
     bad |= report6()
+    bad |= report7()
     return bad
 
 
@@ -5135,6 +6643,7 @@ def check_engine():
             bad = 1
     bad |= check_engine5()
     bad |= check_engine6()
+    bad |= check_engine7()
     if APPROVED and not bad:
         print("  the engine matches `--write --approved` (%s)" % APPROVED)
     return bad
@@ -5145,6 +6654,8 @@ def main():
         return main5()
     if PAIR == "6":
         return main6()
+    if PAIR == "7":
+        return main7()
     if WRITE:
         if "--approved" not in ARGS or not APPROVED:
             print("  --write refused: T-447 pair 4 is a draft. APPROVED is %s; the user picks a direction per building "
@@ -5154,7 +6665,7 @@ def main():
             return 1
         for bkey, pick in APPROVED.items():
             if bkey not in SETS:
-                continue                               # pairs 5 and 6 write only with --pair 5 / 6
+                continue                               # pairs 5, 6 and 7 write only with --pair 5 / 6 / 7
             sets, prim, _ = draw(STYLES[pick], only=bkey)
             S = SETS[bkey]
             G.save_like(os.path.join(GBA, S.dir, "tiles.png"), sets[bkey][0], os.path.join(GBA, S.dir, "tiles.png"))

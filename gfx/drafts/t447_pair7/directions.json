@@ -1,0 +1,62 @@
+{
+ "ticket": "T-447",
+ "pair": 7,
+ "status": "DRAFT -- not in the engine",
+ "approved": {},
+ "directions": {
+  "A": {
+   "title": "THE PACKET",
+   "lines": [
+    "the ship's post (T-494: the lioness posts a letter; MOM gets a card with a ship's stamp). A packet boat is the",
+    "mail ship, and a packet is what a network carries. Laid-paper bulkheads, the airmail border where the",
+    "stripe was, kraft boards with perforated seams; one cabin carpeted in stamps, one in envelope backs;",
+    "portholes as postmarks; mail sacks on the deck; the galley's tables sorting frames; a postcard on the wall.",
+    "Departure: puffs crossed by a postmark's waves; the wake as airmail chevrons."
+   ],
+   "new_tiles": 0,
+   "rows": [
+    7,
+    8,
+    9
+   ],
+   "tiles_redrawn": 145,
+   "of": 206
+  },
+  "B": {
+   "title": "THE KEY, NO TUNE",
+   "lines": [
+    "the band's sheet (the captain: \"a key and no tune\"; the tune is somewhere in ARDOR -- the singing fir, THE",
+    "NEXUS). A band keeps time as a clock does with no program loaded. Fluted ivory panels with a staff where the",
+    "stripe was, nothing written on it, a brass picture rail; ebony rails; basketweave parquet; one",
+    "cabin carpeted in keyboards, one in sound's rings on red velvet; brass cymbals for portholes; drums on deck;",
+    "the sea in the painting five long swells. Departure: smoke rings in time; the wake standing waves."
+   ],
+   "new_tiles": 0,
+   "rows": [
+    7,
+    8,
+    9
+   ],
+   "tiles_redrawn": 140,
+   "of": 206
+  },
+  "C": {
+   "title": "THE LIVERY",
+   "lines": [
+    "the outside carried in: the captain has loved boats since before you could walk, and the liner at the pier is",
+    "already ours (genships: navy hull, white house, one amber funnel, red boot-top, light in the portholes).",
+    "White enamel bulkheads, riveted, a navy band with an amber pinstripe; teak paid with black caulking; brass",
+    "portholes with four dogs; one cabin navy with amber compass roses, one red in a rope weave; teak casks with",
+    "brass hoops; a stainless galley; the ship herself in the painting. Departure: coal smoke; white foam."
+   ],
+   "new_tiles": 0,
+   "rows": [
+    7,
+    8,
+    9
+   ],
+   "tiles_redrawn": 137,
+   "of": 206
+  }
+ }
+}

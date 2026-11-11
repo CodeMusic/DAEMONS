@@ -409,3 +409,39 @@ T-519, the torn lines: THE UNITY BOOK's last entry (LAST WORD), its final spread
 T-534: the MUSAI branch's followers drawn from the finals (DRAFT) -- all six forms in all four seasons, decoded from the built daemonsContent.gba (engine 27a29b6f7): each form's battle front beside its follower at 3x walking south, north, west and east (east mirrored, each with its 1px step hop, as daemons_follower.c draws it), in the form's own palette. Vehicles redrawn to read at 1x: runners, rugged wheels, pontoon floats, wings.
 
 ![11Nov2026 - T534 - MUSAI followers all 24 looks walking - 84](11Nov2026%20-%20T534%20-%20MUSAI%20followers%20all%2024%20looks%20walking%20-%2084.png)
+
+### 11Nov2026 - T447 - S.S. ANNE pair 7 rooms 1x deck office galley - 86
+
+T-447 pair 7 DRAFT: the S.S. ANNE's deck, the captain's office and the galley at 1x, today beside A THE PACKET, B THE KEY, NO TUNE and C THE LIVERY. Redrawn in place, 0 new tiles, rows 7-9 only. Not in the engine.
+
+![11Nov2026 - T447 - S.S. ANNE pair 7 rooms 1x deck office galley - 86](11Nov2026%20-%20T447%20-%20S.S.%20ANNE%20pair%207%20rooms%201x%20deck%20office%20galley%20-%2086.png)
+
+### 11Nov2026 - T447 - S.S. ANNE pair 7 rooms 1x cabins hold corridor - 87
+
+T-447 pair 7 DRAFT: both cabin layouts, the B1F corridor (the hold's) and part of 1F at 1x, today beside the three directions.
+
+![11Nov2026 - T447 - S.S. ANNE pair 7 rooms 1x cabins hold corridor - 87](11Nov2026%20-%20T447%20-%20S.S.%20ANNE%20pair%207%20rooms%201x%20cabins%20hold%20corridor%20-%2087.png)
+
+### 11Nov2026 - T447 - S.S. ANNE pair 7 details 3x office cabins - 88
+
+T-447 pair 7 DRAFT at 3x: the captain's office (painting, desk, book), a cabin's door, porthole and carpet, and the other cabin's bed.
+
+![11Nov2026 - T447 - S.S. ANNE pair 7 details 3x office cabins - 88](11Nov2026%20-%20T447%20-%20S.S.%20ANNE%20pair%207%20details%203x%20office%20cabins%20-%2088.png)
+
+### 11Nov2026 - T447 - S.S. ANNE pair 7 details 3x galley deck bow - 89
+
+T-447 pair 7 DRAFT at 3x: the galley (portholes, a table), the deck (barrels, the house, portholes) and the bow (rail, hull).
+
+![11Nov2026 - T447 - S.S. ANNE pair 7 details 3x galley deck bow - 89](11Nov2026%20-%20T447%20-%20S.S.%20ANNE%20pair%207%20details%203x%20galley%20deck%20bow%20-%2089.png)
+
+### 11Nov2026 - T447 - S.S. ANNE pair 7 tiles 3x - 90
+
+T-447 pair 7 DRAFT: the ss_anne tiles at 3x in their home rows, today and A, B, C (the door, the void and general's fixed rows not shown).
+
+![11Nov2026 - T447 - S.S. ANNE pair 7 tiles 3x - 90](11Nov2026%20-%20T447%20-%20S.S.%20ANNE%20pair%207%20tiles%203x%20-%2090.png)
+
+### 11Nov2026 - T447 - S.S. ANNE pair 7 departure smoke and wake - 91
+
+T-447 pair 7 DRAFT: the departure (src/ss_anne.c). Today the smoke and wake are pret's frames drawn in the ship's own palette (genships), which makes them brown and porthole-blue. A, B and C draw in that palette's own whites, greys and blues. The smoke appears 30 px aft of the funnel in all of them: that is set in code, not drawing.
+
+![11Nov2026 - T447 - S.S. ANNE pair 7 departure smoke and wake - 91](11Nov2026%20-%20T447%20-%20S.S.%20ANNE%20pair%207%20departure%20smoke%20and%20wake%20-%2091.png)
