@@ -10,6 +10,7 @@ docs, etc automatically get updated and rebuilt").
     python3 tools/releasedocs.py --online            # also compare each of the five wikis with what GitHub shows
     python3 tools/releasedocs.py --kind              # print major, minor or patch and nothing else (for scripts)
     python3 tools/releasedocs.py --audio-gate        # the push routine's book-audio check, by release kind (below)
+    python3 tools/releasedocs.py --audio-gate --defer-audio   # the same, when the user chose to record after release
     python3 tools/releasedocs.py --json              # everything above as JSON
 
 It only reports. What it finds is fixed by the release session in the same push (README and wiki words, a manual
@@ -48,7 +49,10 @@ is <major>.<minor>.<patch> and only a move in its first two numbers is a major o
 BOOK AUDIO (tools/bookaudio.py). `--audio-gate` fails on a book with no voice, always (T-543), and on a recording out
 of date only on a major or minor DAEMONS release; on a patch it names what is behind and defers it. On a minor or
 major release it prints the commands that regenerate exactly the books that are behind. Recordings are long and
-run on the Tiiny or roverbyteseer: report the plan to the user before running any.
+run on the Tiiny or roverbyteseer: report the plan to the user before running any. When the user has chosen to
+release first and record after (v11.351.1, 2026-11-11: "Release now, record after"), `--defer-audio` lets a minor
+or major release pass with recordings behind -- it still prints the plan, and still fails on a book with no voice --
+and the release session runs the plan straight after the release, by the user's choice, never on its own.
 """
 import ast, glob, json, os, re, subprocess, sys
 
@@ -449,7 +453,9 @@ def audio_plan(kind, behind, voiceless):
                      "(long; run on the Tiiny or roverbyteseer):" % (kind, len(behind)))
         for b in behind:
             lines.append("    python3 tools/bookaudio.py %s docs/books/audio      # %s, %s" % (b["book"], b["file"], b["state"]))
-    else:
+    if behind and kind in ("major", "minor") and "--defer-audio" in ARGS:
+        lines.append("  --defer-audio: the user chose to release first and record after -- run the plan above right after")
+    elif behind and kind not in ("major", "minor"):
         lines.append("  a patch release: %d recording(s) behind, deferred to the next minor release: %s"
                      % (len(behind), ", ".join(b["book"] for b in behind)))
     return lines
@@ -475,7 +481,7 @@ def main():
             return 1
         print("  release kind: %s (bible v%s, last release %s)" % (kind, bible_version(), newest_release()))
         print("\n".join(audio_plan(kind, behind, voiceless)))
-        return 1 if voiceless or (behind and kind in ("major", "minor")) else 0
+        return 1 if voiceless or (behind and kind in ("major", "minor") and "--defer-audio" not in ARGS) else 0
 
     since, items = (c_items[0], c_items[1]) if side == "companion" else daemons_since()
     surf = surfaces()
