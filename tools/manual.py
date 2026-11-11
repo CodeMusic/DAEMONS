@@ -12,6 +12,7 @@ everything has images from the game and really communicates everthing includes t
     python3 tools/manual.py --book micro --write    # MICRO-START: the same, in five pages at most
     python3 tools/manual.py --book etymology --write   # THE OLD WORD: how daimon branched, and why it is said DAY-mons
     python3 tools/manual.py --book textbook --write    # CALLOW SCHOOL's TEXTBOOK, as a university textbook
+    python3 tools/manual.py --book companion --write   # THE COMPANION: the whole app, its pictures from the site (C-321)
 
 Rebuild it every release: the version, the patches and every daemon's picture and INDEX entry are read from the
 build, so a release that changes them changes the manual.
@@ -56,18 +57,18 @@ OUT = os.path.join(ROOT, "docs/DAEMONS-manual.pdf")   # the companion app reads 
 #  specifically, still with diagrams and artwork"). --book NAME chooses; each has its own folder and PDF.
 BOOKS = {
     "main": {"src": "docs/manual", "out": "docs/DAEMONS-manual.pdf", "title": "DAEMONS: the player's manual",
-             "sub": "The player's manual", "foot": "the player's manual",
+             "tag": "PLAYER'S MANUAL", "sub": "Every way to play, and how it all works", "foot": "the player's manual",
              "subject": "How to play DAEMONS: CONTEXT / CONTENT, and every way to play it",
              "sprites": ("ROVERCUB", "LABEL", "CLUSTER"), "strip": None},
     "social": {"src": "docs/manual-social", "out": "docs/DAEMONS-social-manual.pdf", "title": "DAEMONS: playing together",
-               "sub": "Playing together", "foot": "playing together",
+               "tag": "PLAYING TOGETHER", "sub": "Trading, lending, gifts, meetings and friends' homes", "foot": "playing together",
                "subject": "DAEMONS with other players: trading, loans, gifts, meetings and friends' homes",
                "sprites": ("PENGUIN", "PENPHIN", "DOLPHIN"),
                "strip": ("ROVERCUB", "LABEL", "CLUSTER", "INFERENCE", "HAUNTPROC", "LEMMA MIND", "THEOREM", "PING")},
     # the third: THE TIINY, setting up the house's bigger mind for the companion (the user, 2026-10-31: "a short pdf for
     # how to set up the tiiny to a computer and have it communicate with the hub ... a bit daemon gamified")
     "tiiny": {"src": "docs/manual-tiiny", "out": "docs/DAEMONS-tiiny-manual.pdf", "title": "DAEMONS: a bigger mind",
-              "sub": "A bigger mind: the Tiiny", "foot": "a bigger mind",
+              "tag": "A BIGGER MIND", "sub": "The Tiiny, set up for the companion", "foot": "a bigger mind",
               "subject": "Setting up the Tiiny Pocket for the DAEMONS companion: the computer, the network and the hub",
               "sprites": ("ROVERBYTE", "INFERENCE", "MAINFRAME"),
               "strip": ("HUNCH", "CONJECTURE", "PROOF", "THEOREM", "LEMMA MIND", "HEATSINK", "DUALCORE", "ECHO")},
@@ -100,6 +101,17 @@ BOOKS = {
                  "subject": "CALLOW SCHOOL's TEXTBOOK as a university textbook: language, attention, memory, categories, "
                             "learning, bias and error",
                  "sprites": ("LABEL", "CLUSTER", "ROVERCUB"), "strip": None},
+    # the eighth: THE COMPANION, the whole app (C-321; the user, 2026-11-10: "a companion user manual pdf ... for the entire
+    # companion functionality -- built in a way as we evolve the app the manual can easily be update and rebuilt"). Its
+    # pictures are the site photographed by tools/companion_shots.py from docs/manual-companion/shots.json, so a rerun
+    # retakes every one; pages.json says which chapter covers each of the app's pages, and a page it does not name is
+    # said when the book is printed (app_pages).
+    "companion": {"src": "docs/manual-companion", "out": "docs/DAEMONS-companion-manual.pdf", "title": "DAEMONS: the companion",
+                  "tag": "THE COMPANION", "sub": "Your daemons AWAY: the app, the hub and the devices", "foot": "the companion",
+                  "subject": "The DAEMONS companion: the app, the site, the hub, the house's mind and the devices",
+                  "sprites": ("ROVERBYTE", "ROVERCUB", "PING"),
+                  "strip": ("ECHO", "HEARTBEAT", "PACKET", "INFERENCE", "RELAY", "KEEPER", "LOOKOUT", "SENTINEL"),
+                  "app_pages": True},
 }
 BOOK = BOOKS["main"]
 THEATRE = os.path.join(ROOT, ".theatre/routes")
@@ -609,6 +621,20 @@ def refresh_frames():
     print("  %d of %d frames copied from .theatre/routes/" % (got, len(frames)))
 
 
+def app_pages():
+    """C-321: every page of the companion app (its app/screens/**/*.tsx) that pages.json neither gives a chapter nor
+    calls not for players -- so a page added to the app is named the next time the book is printed."""
+    screens = os.path.join(ROOT, "companion", "app", "screens")
+    listed = os.path.join(SRC, "pages.json")
+    if not os.path.isdir(screens) or not os.path.exists(listed):
+        return []
+    known = json.load(open(listed, encoding="utf-8"))
+    said = set(known.get("covered", {})) | set(known.get("not for players", []))
+    found = sorted(os.path.relpath(os.path.join(d, f), os.path.dirname(screens))
+                   for d, _, fs in os.walk(screens) for f in fs if f.endswith(".tsx"))
+    return [f for f in found if f not in said]
+
+
 def main():
     global BOOK, SRC, OUT
     args = sys.argv[1:]
@@ -634,6 +660,11 @@ def main():
             print("  wrote %s (and its %d pictures beside it)" % (dest, len(b.images)))
             return 0
         current = printed_digest() == digest
+        if BOOK.get("app_pages"):
+            new = app_pages()
+            if new:
+                print("  !! the app has %d page(s) the book does not cover: %s -- write of them, or list them in %s/pages.json"
+                      % (len(new), ", ".join(new), BOOK["src"]))
         print("  release %s, design bible v%s; %d pictures (%d game screens); sources %s"
               % (rel, bible_version(), len(b.images), sum(k.startswith("frame:") for k in b.images), digest))
         if not write:
@@ -670,6 +701,9 @@ def main():
         with fitz.open(OUT) as doc:
             n = len(doc)
         print("  wrote %s: %d pages, %.1f MB" % (BOOK["out"], n, os.path.getsize(OUT) / 1e6))
+        #  C-320: its cover on the companion's LIBRARY shelf, from the page just printed
+        import shelfcovers
+        shelfcovers.main(only={k for k, v in shelfcovers.PDFS.items() if v == os.path.basename(OUT)})
     return 0
 
 

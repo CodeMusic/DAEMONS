@@ -22,6 +22,9 @@ img { image-rendering: pixelated; }
 }
 .ced { font: 600 10pt "Avenir Next", sans-serif; letter-spacing: .32em; color: #c7b6ec; }
 .ctitle { font: 800 46pt/1 "Avenir Next", sans-serif; letter-spacing: .04em; margin-top: 4mm; }
+/* the book's name, large, under the title (C-320: so the printed books differ on the LIBRARY's shelf) */
+.ctag { display: inline-block; font: 800 22pt/1 "Avenir Next", sans-serif; letter-spacing: .08em; color: #16161a;
+        background: #9fd6b3; padding: 2.2mm 4mm 2.6mm; border-radius: 2mm; margin-top: 5mm; }
 .csub { font: italic 15pt "Iowan Old Style", serif; color: #d9d4c4; margin-top: 3mm; }
 .cstrip { display: flex; justify-content: center; gap: 1.2mm; margin: 0 0 8mm; }
 .cstrip img { width: 13mm; height: 13mm; background: #2c2b33; border-radius: 1.5mm; }

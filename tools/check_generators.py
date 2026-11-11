@@ -109,6 +109,10 @@ ARGS = {
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
 SKIPPED = {name: "docs/private/notebook_docs.json is missing (private, not in git), and gbadocs without it is not a check"
            for name in ("gbadocs",) if ARGS.get(name) == []}
+#  C-321: companion_shots' write starts a throwaway hub and photographs the companion's site in Chrome (minutes, and the
+#  site exported first): its report is the check; its write is run when THE COMPANION is printed, not here.
+ARGS["companion_shots"] = []
+SKIPPED["companion_shots"] = "its write photographs the companion's site in Chrome against a throwaway hub; run by hand before printing THE COMPANION"
 
 
 def generators(only):
