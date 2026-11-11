@@ -535,3 +535,9 @@ C-296 (DRAFT): the same daemon in low spirits (darker), as it is, and in good sp
 T-447: the S.S. ANNE's departure wake, before (+80, y 109: through the flagstaff's notch) and after (+76, y 113: behind the hull, out at the waterline), drawn behind the ship as the game does, drift 0-22
 
 ![11Nov2026 - T447 - SS ANNE wake before and after - 106](11Nov2026%20-%20T447%20-%20SS%20ANNE%20wake%20before%20and%20after%20-%20106.png)
+
+### 11Nov2026 - T542 - batch 4 B THE TRACE built - 107
+
+T-542 batch 4 BUILT: the last three Nintendo edges in B THE TRACE (DRAFT) -- TREASURE BEACH's sand corners at 4x from the engine's built tiles
+
+![11Nov2026 - T542 - batch 4 B THE TRACE built - 107](11Nov2026%20-%20T542%20-%20batch%204%20B%20THE%20TRACE%20built%20-%20107.png)
