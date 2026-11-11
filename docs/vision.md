@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.347**
+**A total conversion — the living design bible, v11.348**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1928,7 +1928,7 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 | `LEVITATE` → **`NO ADDRESS`** | *not hit by STRATUM* | ***2.6's own clause, verbatim***: "the physical layer cannot reach what has no location" |
 | `TRACE` → **`INHERITS`** | *copies the foe's ability* | **it is on SUBSTRATE** — *the substrate takes on whatever runs on it*, which is that daemon's Index entry as a mechanic |
 | `SYNCHRONIZE` → **`MUTUAL`** | *passes your state to whoever inflicted it* | **ARTSAI already has it.** *Perspective-taking as a passive* |
-| `STURDY` → **`DURABLE`** | *negates one-hit knockouts* | **5.3 leans on this**: HEAP, STACK and MONOLITH cannot go down to one hit, ***which is Benchmark 1's creed as a rule in the damage calculation*** |
+| `STURDY` → **`DURABLE`** | *negates one-hit knockouts* — ***and, from 2026-11-11 (T-551), holds a daemon at 1 HP when one hit from full would take it down*** | **5.3 leans on this**: HEAP, STACK and MONOLITH cannot go down to one hit, ***which is Benchmark 1's creed as a rule in the damage calculation*** — *and for two months it was not: Gen 3's STURDY blocks only the four one-hit-KO routines, so a strong hit took HEAP down in one. The Fifth Review caught it; the later generations' rule is built now, and the line it prints is DRAFT:* `did not go down to one hit!` |
 
 #### The ones where the flag was already the joke
 
@@ -5155,7 +5155,7 @@ take off.*
 
 | # | Leader | The lever | Where it lives |
 |---|---|---|---|
-| 1 | **CAIRN** | party composition | *nothing was written* — the line already has DURABLE |
+| 1 | **CAIRN** | party composition | ~~*nothing was written* — the line already has DURABLE~~ *DURABLE held from full HP (T-551, 2026-11-11) — vanilla's ability stopped only the one-hit-KO routines, so until then nothing* was *written* |
 | 2 | **BASIN** | the room | `CeruleanCity_Gym/scripts.inc` + LEFTOVERS on the ace |
 | 3 | **GAUGE** | priority | every party member knows **FAST PATH** |
 | 4 | **TRELLIS** | party composition | four members, four shut-downs |
@@ -5227,7 +5227,7 @@ take off.*
 
 #### CAIRN already had a mechanic and nobody claimed it
 
-***His whole line has STURDY.*** **HEAP, STACK and MONOLITH cannot be knocked out in one blow, at any level** — and *that is "everything must be encoded in something physical" as a rule in the damage calculation.* **A record does not go down to one hit.** *Vanilla put it there and 5.1 never mentioned it.*
+***His whole line has STURDY.*** **HEAP, STACK and MONOLITH cannot be knocked out in one blow, at any level** — and *that is "everything must be encoded in something physical" as a rule in the damage calculation.* **A record does not go down to one hit.** *Vanilla put it there and 5.1 never mentioned it.* ***Corrected 2026-11-11 (T-551):*** *vanilla put* half *of it there. Gen 3's STURDY stops only the one-hit-KO routines; a hit for more than its HP still took HEAP down in one, so the sentence above was false for every player who out-levelled him, and the first lesson in the game was a wall with the lesson written on it (craft rule 5). **DURABLE now holds a daemon at 1 HP when a single hit from full would take it down** — the rule later generations gave the ability — and the sentence is true. 5.3b's row 1 ("nothing was written") is amended with it.*
 
 ---
 
@@ -9192,6 +9192,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **DURABLE holds from full HP (T-551, 2026-11-11)** — the Fifth Review found BENCHMARK 1's one mechanic was a misreading of Gen 3's STURDY (one-hit-KO routines only); the later generations' rule is in the damage calculation, with its own line (DRAFT) and a description in 2.11's register (DRAFT); ENDURE and FAILSAFE keep precedence, a SUBSTITUTE takes the hit (2.11, 5.3, 5.3b)
 - **The record tidied (T-553, 2026-11-11)** — the Fifth Review's sweep: 21 open rows re-filed from under Closed, three done tickets struck, the stale anchors (CLAUDE.md, the READMEs, the wiki, school.md) brought to the ROM, eight bible bodies amended to what was built (8.1's fifteen, 8.4's trap, 8.6's restraint clause, 4.5's ORPHAN, 8.2a against 4.37, 4.1's row, 4.3's Ty, 4.33's placement), 8.7's sweeps given T-554, and `tools/check_todo.py` so the record stays readable
 - **THE ORIGIN OF A DAEMON (T-533, 2026-11-10)** — a book MUSAI tells, how the first form came to be before it branched, as fable; it opens in the order the player understands (THE DISC, I and II found early; III to VI with the first four understandings; VII, THE EIGHTH, with SCORN's TRUE MARK; VIII to X with the last three; XI with X), hidden until then; found on the bedroom shelf, with three DRAFT lines about it (the shelf after, MOM once, a page filling); chapter VIII names RESONANT WISDOM and never explains it, and the rung after it is perspective thinking, PERSPECTIVE with a way back; every page read by the user before it was built in (9.35)
 - **The lioness, the user's words (T-493 to T-496, 2026-10-31)** — the painting IT'S REAL. IT'S YOURS.; the card IT GOT THERE.; the teacher's line passed on at the gangway; an orange ball on the deck only, the game's first wide graphics id (9.33)

@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.348 — 2026-11-11
+
+- **DURABLE holds from full HP (T-551, the Fifth Review's second finding).** 2.11, 5.3 and 5.3b said CAIRN's line "cannot be knocked out in one blow, at any level"; the ability was vanilla's STURDY, which in Gen 3 stops only the four one-hit-KO routines, so a strong hit took HEAP down in one and BENCHMARK 1 had no mechanic. The later generations' rule is built: a daemon with DURABLE at full HP survives any single hit with 1 HP left (ENDURE and FAILSAFE keep precedence; a SUBSTITUTE takes the hit; the one-hit-KO block stays). Its line, DRAFT: *did not go down to one hit!* Its description, DRAFT, in 2.11's register: *No one hit takes it from full.* The three sections say so; 5.3b's row 1 is amended.
+- **Decision log**: Settled.
+
 ## v11.347 — 2026-11-11
 
 - **The record tidied (T-553, the Fifth Review's plans section).** No design moved; eight bodies were brought to what the build already does. 8.1's slice list says the chart is seventeen types, as it has been since 2026-09-10. 8.4's "trap to avoid" is read with 0.4's 2026-09-04 ruling and logged as **Reversed**: the pair is a pair on purpose, and neither entry reports a feeling. 8.6's "restraint clause holds at two" is logged as **Reversed** by the dozen meanings colour now carries; what survived is invariant 5 as practised, one meaning per colour and none explained. 4.5's ORPHAN is marked superseded on the GBA build (REMNANT to COREFILE, MISSINGNO's blank entry) and its open sequencing question answered by the build. 8.2a's "he is not the same" is reconciled with 4.37's "SCORN is unchanged": the staff's account and the fact. 4.1's opening row no longer says the thesis is stated. 4.3's "Ty is not in the endgame" survives as *not on the ladder*. 4.33's placement is settled (T-22); his name stays OPEN.
