@@ -462,6 +462,14 @@ PAVING = {51, 52, 512, 513, 514, 515, 528, 529, 530, 531, 560, 561, 562, 563, 61
           634, 635, 306, 307, 322, 323, 338, 355, 576, 577, 578, 579, 592, 593, 594, 595, 608, 609, 610, 294, 295}
 PLANTS = {2, 3, 16, 18, 48, 49, 11, 12, 13, 28, 29, 27, 43, 90, 91, 44, 45, 92, 93, 53, 60, 59, 75, 393, 394, 409, 410}
 STAIRS = {294, 295}
+#  T-542 batch 2 (gbaprimary.py, THE TOWN PIECES): General's tiles the towns draw in their own rows, the cave mouth and
+#  a cliff piece. They are gbaprimary's, not this tool's: build() keeps them as the engine has them, so a write here
+#  can never draw over them (pass 3 had drifted onto 298 and 330), and gbaprimary's report fails if its own set and
+#  this one disagree -- as gbabuilding's LATER keeps T-537's and T-538's.
+LATER_T542 = {101, 192, 193, 194, 195, 298, 299, 302, 303, 318, 319, 330, 331, 341, 344, 347, 350, 351, 360, 362, 363,
+              376, 377, 379, 496, 497, 516, 517, 519, 520, 521, 522, 523, 524, 525, 526, 527, 532, 533, 537, 538, 539,
+              540, 541, 542, 543, 548, 549, 552, 553, 554, 555, 556, 564, 565, 566, 568, 569, 570, 571, 580, 581, 582,
+              583, 584, 585, 586, 587, 596, 598, 599, 600, 601, 602, 603}
 WATER = {78, 95, 173, 174, 189, 190, 191, 310, 311, 326, 342, 358, 359, 505, 506, 617, 618}
 
 GROUPS = [   # key, title, material -> texture
@@ -1754,8 +1762,8 @@ def build(use, vanilla, second, third=False):
         u = use[t]
         g = group_of(t, u)
         key = u["rows"].most_common(1)[0][0]
-        if g == "anim":
-            new = CUR[t]
+        if g == "anim" or t in LATER_T542:
+            new = CUR[t]                     # the strips' own, or T-542 batch 2's (gbaprimary): never drawn here
         else:
             new, notes = redraw(t, CUR[t], u["rows"], g)
             if second:

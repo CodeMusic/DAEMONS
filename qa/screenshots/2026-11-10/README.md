@@ -367,3 +367,105 @@ C-318: the WHAT'S NEW dialog on build 963, then build 955 picked on the timeline
 C-318: the WHAT'S NEW dialog on build 963, then build 955 picked on the timeline with TELL ME 955–963 (site, a throwaway hub; DRAFT)
 
 ![10Nov2026 - C318 - WHATS NEW dialog and timeline - 62](10Nov2026%20-%20C318%20-%20WHATS%20NEW%20dialog%20and%20timeline%20-%2062.jpg)
+
+### 10Nov2026 - T542 - batch 2 CALLOW green house - 66
+
+T-542 batch 2 (DRAFT): CALLOW CITY's green house, today beside the draft (one drawing in A, B and C) -- CALLOW's calmed standing seam, a lit ridge band, level boards, timber posts; 1x and 3x
+
+![10Nov2026 - T542 - batch 2 CALLOW green house - 66](10Nov2026%20-%20T542%20-%20batch%202%20CALLOW%20green%20house%20-%2066.png)
+
+### 10Nov2026 - T542 - batch 2 ROUTE 2 blue house - 67
+
+T-542 batch 2 (DRAFT): ROUTE 2's blue house, every route's house -- level boards, timber corner posts, the ribbed roof's hip
+
+![10Nov2026 - T542 - batch 2 ROUTE 2 blue house - 67](10Nov2026%20-%20T542%20-%20batch%202%20ROUTE%202%20blue%20house%20-%2067.png)
+
+### 10Nov2026 - T542 - batch 2 SLATE house corners - 68
+
+T-542 batch 2 (DRAFT): SLATE CITY, a house's wall corners in General's row 3 -- SLATE's dressed stone and DOLDRUM's boards (the tiles are shared)
+
+![10Nov2026 - T542 - batch 2 SLATE house corners - 68](10Nov2026%20-%20T542%20-%20batch%202%20SLATE%20house%20corners%20-%2068.png)
+
+### 10Nov2026 - T542 - batch 2 DOLDRUM long houses - 69
+
+T-542 batch 2 (DRAFT): DOLDRUM CITY's long houses' walls in DOLDRUM's siding, and a fence post
+
+![10Nov2026 - T542 - batch 2 DOLDRUM long houses - 69](10Nov2026%20-%20T542%20-%20batch%202%20DOLDRUM%20long%20houses%20-%2069.png)
+
+### 10Nov2026 - T542 - batch 2 ROUTE 5 house - 70
+
+T-542 batch 2 (DRAFT): ROUTE 5's house in DOLDRUM's rows -- the siding and the roof's hip
+
+![10Nov2026 - T542 - batch 2 ROUTE 5 house - 70](10Nov2026%20-%20T542%20-%20batch%202%20ROUTE%205%20house%20-%2070.png)
+
+### 10Nov2026 - T542 - batch 2 ARDOR walls - 71
+
+T-542 batch 2 (DRAFT): ARDOR CITY's walls in ARDOR's row 8 -- VERDIGRIS's tiles, so VERDIGRIS's patina runs show on the stucco
+
+![10Nov2026 - T542 - batch 2 ARDOR walls - 71](10Nov2026%20-%20T542%20-%20batch%202%20ARDOR%20walls%20-%2071.png)
+
+### 10Nov2026 - T542 - batch 2 ARDOR quay coping - 72
+
+T-542 batch 2 (DRAFT): ARDOR's pier, the quay's coping in ARDOR's sun-bleached stucco
+
+![10Nov2026 - T542 - batch 2 ARDOR quay coping - 72](10Nov2026%20-%20T542%20-%20batch%202%20ARDOR%20quay%20coping%20-%2072.png)
+
+### 10Nov2026 - T542 - batch 2 VERDIGRIS north row - 73
+
+T-542 batch 2 (DRAFT): VERDIGRIS CITY's north row -- bronze standing-seam roofs with bloom runs, patina walls, dark panes with a glint
+
+![10Nov2026 - T542 - batch 2 VERDIGRIS north row - 73](10Nov2026%20-%20T542%20-%20batch%202%20VERDIGRIS%20north%20row%20-%2073.png)
+
+### 10Nov2026 - T542 - batch 2 VERDIGRIS south row - 74
+
+T-542 batch 2 (DRAFT): VERDIGRIS CITY's south row, the same look
+
+![10Nov2026 - T542 - batch 2 VERDIGRIS south row - 74](10Nov2026%20-%20T542%20-%20batch%202%20VERDIGRIS%20south%20row%20-%2074.png)
+
+### 10Nov2026 - T542 - batch 2 BRAZEN roof hips - 75
+
+T-542 batch 2 (DRAFT): BRAZEN CITY's roof hips (298 and 330 were gbageneral's drift) -- the roof's standing seam down the hip, kept the shaded plane
+
+![10Nov2026 - T542 - batch 2 BRAZEN roof hips - 75](10Nov2026%20-%20T542%20-%20batch%202%20BRAZEN%20roof%20hips%20-%2075.png)
+
+### 10Nov2026 - T542 - batch 2 BRAZEN kiosk domes - 76
+
+T-542 batch 2 (DRAFT): BRAZEN's crossing, the kiosks' red domes in BRAZEN's rolled sheet
+
+![10Nov2026 - T542 - batch 2 BRAZEN kiosk domes - 76](10Nov2026%20-%20T542%20-%20batch%202%20BRAZEN%20kiosk%20domes%20-%2076.png)
+
+### 10Nov2026 - T542 - batch 2 LURID frontages - 77
+
+T-542 batch 2 (DRAFT): LURID CITY -- VERDIGRIS's tiles in LURID's row 12: grey seamed roofs over brick
+
+![10Nov2026 - T542 - batch 2 LURID frontages - 77](10Nov2026%20-%20T542%20-%20batch%202%20LURID%20frontages%20-%2077.png)
+
+### 10Nov2026 - T542 - batch 2 THREE ISLAND red house - 78
+
+T-542 batch 2 (DRAFT): THREE ISLAND -- CALLOW's roof tiles in General's red row
+
+![10Nov2026 - T542 - batch 2 THREE ISLAND red house - 78](10Nov2026%20-%20T542%20-%20batch%202%20THREE%20ISLAND%20red%20house%20-%2078.png)
+
+### 10Nov2026 - T542 - batch 2 SEVEN ISLAND eave - 79
+
+T-542 batch 2 (DRAFT): SEVEN ISLAND, the house's red eave in the islands' drying net
+
+![10Nov2026 - T542 - batch 2 SEVEN ISLAND eave - 79](10Nov2026%20-%20T542%20-%20batch%202%20SEVEN%20ISLAND%20eave%20-%2079.png)
+
+### 10Nov2026 - T542 - batch 2 cave mouth ROUTE 4 - 80
+
+T-542 batch 2 (DRAFT): the cave mouth, the real choice -- A THE ROCK'S OWN MOUTH, B THE ADIT, C THE PORTAL (ROUTE 4, General's row 1)
+
+![10Nov2026 - T542 - batch 2 cave mouth ROUTE 4 - 80](10Nov2026%20-%20T542%20-%20batch%202%20cave%20mouth%20ROUTE%204%20-%2080.png)
+
+### 10Nov2026 - T542 - batch 2 cave mouth FOUR ISLAND - 81
+
+T-542 batch 2 (DRAFT): the cave mouth in the islands' row 12 (FOUR ISLAND), A, B and C
+
+![10Nov2026 - T542 - batch 2 cave mouth FOUR ISLAND - 81](10Nov2026%20-%20T542%20-%20batch%202%20cave%20mouth%20FOUR%20ISLAND%20-%2081.png)
+
+### 10Nov2026 - T542 - batch 2 tiles at 3x - 82
+
+T-542 batch 2 (DRAFT): the 75 tiles at 3x in their two most-drawn rows, today and A, B, C (only the cave mouth differs)
+
+![10Nov2026 - T542 - batch 2 tiles at 3x - 82](10Nov2026%20-%20T542%20-%20batch%202%20tiles%20at%203x%20-%2082.png)
