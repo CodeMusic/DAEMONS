@@ -691,3 +691,39 @@ T-542 batch 3 built: DOLDRUM's CENTRE and REPO, the clear pane. DRAFT.
 T-542 batch 3 knock-on: T-527's water and underwater battle backgrounds re-derived by gbabattleart --write --approved --all, which samples the sea rock from ONE ISLAND's beach (before | after, tiles in row 0's palette). Picks unchanged. DRAFT.
 
 ![10Nov2026 - T542 - water battle backgrounds follow - 119](10Nov2026%20-%20T542%20-%20water%20battle%20backgrounds%20follow%20-%20119.png)
+
+### 10Nov2026 - T447 - pair 4 MANSION rooms 1x - 122
+
+T-447 pair 4 DRAFT: the MANSION 1F, B1F and ROUTE 21's station at 1x, today beside A THE RACK HALL, B ANNEALED, C QUICKSILVER (redrawn in place, 0 new tiles)
+
+![10Nov2026 - T447 - pair 4 MANSION rooms 1x - 122](10Nov2026%20-%20T447%20-%20pair%204%20MANSION%20rooms%201x%20-%20122.png)
+
+### 10Nov2026 - T447 - pair 4 DAEMON TOWER floors 1x - 123
+
+T-447 pair 4 DRAFT: DAEMON TOWER 2F grey and in colour, 5F, 7F grey, 1F at 1x, today beside A THE DOT SCREEN, B THE NICHES, C THE PROOF (T-249's stones kept)
+
+![10Nov2026 - T447 - pair 4 DAEMON TOWER floors 1x - 123](10Nov2026%20-%20T447%20-%20pair%204%20DAEMON%20TOWER%20floors%201x%20-%20123.png)
+
+### 10Nov2026 - T447 - pair 4 MANSION details 3x - 124
+
+T-447 pair 4 DRAFT: the MANSION at 3x -- the switch, a burned patch, the windows, the diary as the LOG, the runner and stairs
+
+![10Nov2026 - T447 - pair 4 MANSION details 3x - 124](10Nov2026%20-%20T447%20-%20pair%204%20MANSION%20details%203x%20-%20124.png)
+
+### 10Nov2026 - T447 - pair 4 DAEMON TOWER details 3x - 125
+
+T-447 pair 4 DRAFT: DAEMON TOWER at 3x -- 7F's panels, stones and pedestals in colour and grey, 5F's circle, 1F's desk
+
+![10Nov2026 - T447 - pair 4 DAEMON TOWER details 3x - 125](10Nov2026%20-%20T447%20-%20pair%204%20DAEMON%20TOWER%20details%203x%20-%20125.png)
+
+### 10Nov2026 - T447 - pair 4 tiles 3x - 126
+
+T-447 pair 4 DRAFT: every placed tile of pokemon_mansion and pokemon_tower and the diary's four primary tiles at 3x, today and A B C
+
+![10Nov2026 - T447 - pair 4 tiles 3x - 126](10Nov2026%20-%20T447%20-%20pair%204%20tiles%203x%20-%20126.png)
+
+### 10Nov2026 - T447 - pair 4 MANSION switch and gate 3x - 127
+
+T-447 pair 4 DRAFT: the MANSION's switch (vanilla's secret switch) OFF and ON and the gate it swaps, per direction, 3x
+
+![10Nov2026 - T447 - pair 4 MANSION switch and gate 3x - 127](10Nov2026%20-%20T447%20-%20pair%204%20MANSION%20switch%20and%20gate%203x%20-%20127.png)

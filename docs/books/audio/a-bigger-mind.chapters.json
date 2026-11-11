@@ -1,0 +1,165 @@
+{
+ "book": "tiiny",
+ "voice": "mind",
+ "blend": {
+  "af_nova": 0.6,
+  "af_alloy": 0.4
+ },
+ "speed": 0.95,
+ "tone": "highpass=f=120,treble=g=2:f=6000",
+ "draft": "DRAFT \u00b7 every word, until it is approved",
+ "sources": "502a711fe31d6924",
+ "duration": 980.35,
+ "chapters": [
+  {
+   "kind": "section",
+   "title": "A Bigger Mind",
+   "start": 0.0,
+   "end": 9.97
+  },
+  {
+   "kind": "section",
+   "title": "A bigger mind",
+   "start": 9.97,
+   "end": 79.67
+  },
+  {
+   "kind": "entry",
+   "title": "Where it lives",
+   "start": 79.67,
+   "end": 149.13
+  },
+  {
+   "kind": "section",
+   "title": "Step 1: Unbox",
+   "start": 149.13,
+   "end": 152.91
+  },
+  {
+   "kind": "entry",
+   "title": "What you need",
+   "start": 152.91,
+   "end": 191.29
+  },
+  {
+   "kind": "entry",
+   "title": "Measure it",
+   "start": 191.29,
+   "end": 230.4
+  },
+  {
+   "kind": "section",
+   "title": "Step 2: Awaken",
+   "start": 230.4,
+   "end": 234.04
+  },
+  {
+   "kind": "entry",
+   "title": "TiinyOS, on the computer",
+   "start": 234.04,
+   "end": 289.31
+  },
+  {
+   "kind": "section",
+   "title": "Step 3: Stock it",
+   "start": 289.31,
+   "end": 292.9
+  },
+  {
+   "kind": "entry",
+   "title": "Wi-Fi, or a cable",
+   "start": 292.9,
+   "end": 309.06
+  },
+  {
+   "kind": "entry",
+   "title": "The models",
+   "start": 309.06,
+   "end": 378.73
+  },
+  {
+   "kind": "section",
+   "title": "Step 4: Give it a road",
+   "start": 378.73,
+   "end": 382.64
+  },
+  {
+   "kind": "entry",
+   "title": "A fixed address",
+   "start": 382.64,
+   "end": 415.28
+  },
+  {
+   "kind": "entry",
+   "title": "Through LiteLLM, the usual way",
+   "start": 415.28,
+   "end": 447.63
+  },
+  {
+   "kind": "entry",
+   "title": "Or straight to the Tiiny",
+   "start": 447.63,
+   "end": 469.14
+  },
+  {
+   "kind": "section",
+   "title": "Step 5: First words",
+   "start": 469.14,
+   "end": 473.1
+  },
+  {
+   "kind": "entry",
+   "title": "Tell the hub",
+   "start": 473.1,
+   "end": 542.82
+  },
+  {
+   "kind": "entry",
+   "title": "Talk",
+   "start": 542.82,
+   "end": 581.98
+  },
+  {
+   "kind": "section",
+   "title": "What your daemon is told",
+   "start": 581.98,
+   "end": 639.47
+  },
+  {
+   "kind": "entry",
+   "title": "Numbers into words",
+   "start": 639.47,
+   "end": 685.18
+  },
+  {
+   "kind": "entry",
+   "title": "Three lengths",
+   "start": 685.18,
+   "end": 723.51
+  },
+  {
+   "kind": "entry",
+   "title": "Your own words for it",
+   "start": 723.51,
+   "end": 782.43
+  },
+  {
+   "kind": "section",
+   "title": "Step 6, for the maker: the plinth",
+   "start": 782.43,
+   "end": 853.66
+  },
+  {
+   "kind": "section",
+   "title": "When it goes wrong",
+   "start": 853.66,
+   "end": 918.34
+  },
+  {
+   "kind": "section",
+   "title": "Coming next",
+   "start": 918.34,
+   "end": 980.35
+  }
+ ]
+}

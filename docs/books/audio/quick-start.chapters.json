@@ -1,0 +1,165 @@
+{
+ "book": "quick",
+ "voice": "patient",
+ "blend": {
+  "af_heart": 0.7,
+  "af_sarah": 0.3
+ },
+ "speed": 0.88,
+ "sentence": 0.4,
+ "draft": "DRAFT \u00b7 every word, until it is approved",
+ "sources": "90fbb5e0023b6131",
+ "duration": 853.13,
+ "chapters": [
+  {
+   "kind": "section",
+   "title": "Quick Start",
+   "start": 0.0,
+   "end": 9.82
+  },
+  {
+   "kind": "section",
+   "title": "What DAEMONS is",
+   "start": 9.82,
+   "end": 27.49
+  },
+  {
+   "kind": "entry",
+   "title": "A world of creatures",
+   "start": 27.49,
+   "end": 80.71
+  },
+  {
+   "kind": "entry",
+   "title": "Your journey",
+   "start": 80.71,
+   "end": 114.26
+  },
+  {
+   "kind": "entry",
+   "title": "The stories underneath",
+   "start": 114.26,
+   "end": 148.28
+  },
+  {
+   "kind": "entry",
+   "title": "The books",
+   "start": 148.28,
+   "end": 191.54
+  },
+  {
+   "kind": "entry",
+   "title": "A few you may meet",
+   "start": 191.54,
+   "end": 200.46
+  },
+  {
+   "kind": "section",
+   "title": "Getting it going",
+   "start": 200.46,
+   "end": 222.43
+  },
+  {
+   "kind": "entry",
+   "title": "On an iPad or an iPhone",
+   "start": 222.43,
+   "end": 260.16
+  },
+  {
+   "kind": "entry",
+   "title": "In a web browser",
+   "start": 260.16,
+   "end": 304.26
+  },
+  {
+   "kind": "section",
+   "title": "How to play",
+   "start": 304.26,
+   "end": 318.82
+  },
+  {
+   "kind": "entry",
+   "title": "Step 1: The buttons",
+   "start": 318.82,
+   "end": 346.26
+  },
+  {
+   "kind": "entry",
+   "title": "Step 2: Reading what people say",
+   "start": 346.26,
+   "end": 381.07
+  },
+  {
+   "kind": "entry",
+   "title": "Step 3: A new game",
+   "start": 381.07,
+   "end": 419.34
+  },
+  {
+   "kind": "entry",
+   "title": "Step 4: Walking about",
+   "start": 419.34,
+   "end": 448.48
+  },
+  {
+   "kind": "entry",
+   "title": "Step 5: Your first DAEMON",
+   "start": 448.48,
+   "end": 484.47
+  },
+  {
+   "kind": "entry",
+   "title": "Step 6: A battle",
+   "start": 484.47,
+   "end": 530.46
+  },
+  {
+   "kind": "entry",
+   "title": "Step 7: Winning, and resting",
+   "start": 530.46,
+   "end": 573.72
+  },
+  {
+   "kind": "entry",
+   "title": "Step 8: Making friends with a new DAEMON",
+   "start": 573.72,
+   "end": 614.87
+  },
+  {
+   "kind": "entry",
+   "title": "Step 9: Resting at a CHECKPOINT",
+   "start": 614.87,
+   "end": 642.39
+  },
+  {
+   "kind": "entry",
+   "title": "Step 10: Saving your game",
+   "start": 642.39,
+   "end": 676.59
+  },
+  {
+   "kind": "section",
+   "title": "When you want more",
+   "start": 676.59,
+   "end": 684.9
+  },
+  {
+   "kind": "entry",
+   "title": "Little things worth knowing",
+   "start": 684.9,
+   "end": 723.44
+  },
+  {
+   "kind": "entry",
+   "title": "The full manual",
+   "start": 723.44,
+   "end": 768.25
+  },
+  {
+   "kind": "section",
+   "title": "Words to know",
+   "start": 768.25,
+   "end": 853.13
+  }
+ ]
+}

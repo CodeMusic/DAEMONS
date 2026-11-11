@@ -1,0 +1,201 @@
+{
+ "book": "etymology",
+ "voice": "elder",
+ "blend": {
+  "bm_daniel": 0.6,
+  "am_santa": 0.4
+ },
+ "speed": 0.9,
+ "sentence": 0.4,
+ "draft": "DRAFT \u00b7 every word, until it is approved",
+ "sources": "8f10c93b6069ce3d",
+ "duration": 658.36,
+ "chapters": [
+  {
+   "kind": "section",
+   "title": "The Old Word",
+   "start": 0.0,
+   "end": 10.74
+  },
+  {
+   "kind": "section",
+   "title": "One word, two roads",
+   "start": 10.74,
+   "end": 30.84
+  },
+  {
+   "kind": "entry",
+   "title": "The rule of this book",
+   "start": 30.84,
+   "end": 59.57
+  },
+  {
+   "kind": "entry",
+   "title": "The map",
+   "start": 59.57,
+   "end": 75.13
+  },
+  {
+   "kind": "section",
+   "title": "The Greeks: a spirit who gives each their share",
+   "start": 75.13,
+   "end": 79.7
+  },
+  {
+   "kind": "entry",
+   "title": "The word",
+   "start": 79.7,
+   "end": 102.77
+  },
+  {
+   "kind": "entry",
+   "title": "A power at work",
+   "start": 102.77,
+   "end": 120.45
+  },
+  {
+   "kind": "entry",
+   "title": "Hesiod's golden people",
+   "start": 120.45,
+   "end": 146.12
+  },
+  {
+   "kind": "entry",
+   "title": "Socrates' sign",
+   "start": 146.12,
+   "end": 177.62
+  },
+  {
+   "kind": "entry",
+   "title": "Between gods and people",
+   "start": 177.62,
+   "end": 200.35
+  },
+  {
+   "kind": "entry",
+   "title": "A good daimon",
+   "start": 200.35,
+   "end": 216.66
+  },
+  {
+   "kind": "section",
+   "title": "Rome: the daemon and the genius",
+   "start": 216.66,
+   "end": 220.61
+  },
+  {
+   "kind": "entry",
+   "title": "Two letters for one sound",
+   "start": 220.61,
+   "end": 236.75
+  },
+  {
+   "kind": "entry",
+   "title": "The genius",
+   "start": 236.75,
+   "end": 255.0
+  },
+  {
+   "kind": "entry",
+   "title": "Apuleius",
+   "start": 255.0,
+   "end": 283.25
+  },
+  {
+   "kind": "entry",
+   "title": "A ladder of spirits",
+   "start": 283.25,
+   "end": 302.84
+  },
+  {
+   "kind": "section",
+   "title": "The fork",
+   "start": 302.84,
+   "end": 305.49
+  },
+  {
+   "kind": "entry",
+   "title": "A word for the gods of others",
+   "start": 305.49,
+   "end": 338.55
+  },
+  {
+   "kind": "entry",
+   "title": "Augustine answers Apuleius",
+   "start": 338.55,
+   "end": 358.22
+  },
+  {
+   "kind": "entry",
+   "title": "The other word",
+   "start": 358.22,
+   "end": 382.45
+  },
+  {
+   "kind": "entry",
+   "title": "The old spelling, kept",
+   "start": 382.45,
+   "end": 407.35
+  },
+  {
+   "kind": "section",
+   "title": "Maxwell's sorting being",
+   "start": 407.35,
+   "end": 410.84
+  },
+  {
+   "kind": "entry",
+   "title": "A puzzle in a letter",
+   "start": 410.84,
+   "end": 470.16
+  },
+  {
+   "kind": "entry",
+   "title": "Its name",
+   "start": 470.16,
+   "end": 499.37
+  },
+  {
+   "kind": "entry",
+   "title": "The answer",
+   "start": 499.37,
+   "end": 535.58
+  },
+  {
+   "kind": "section",
+   "title": "Helpers in the background",
+   "start": 535.58,
+   "end": 539.06
+  },
+  {
+   "kind": "entry",
+   "title": "Project MAC",
+   "start": 539.06,
+   "end": 586.02
+  },
+  {
+   "kind": "entry",
+   "title": "Unix, and the d",
+   "start": 586.02,
+   "end": 621.73
+  },
+  {
+   "kind": "section",
+   "title": "DAEMONS",
+   "start": 621.73,
+   "end": 624.44
+  },
+  {
+   "kind": "entry",
+   "title": "One word, both meanings",
+   "start": 624.44,
+   "end": 644.44
+  },
+  {
+   "kind": "entry",
+   "title": "How to say it",
+   "start": 644.44,
+   "end": 658.36
+  }
+ ]
+}

@@ -1,0 +1,74 @@
+{
+ "ticket": "T-447",
+ "pair": 4,
+ "status": "DRAFT -- not in the engine",
+ "approved": {},
+ "directions": {
+  "A": {
+   "title": "THE RACK HALL / THE DOT SCREEN",
+   "tiles_redrawn": {
+    "man": 163,
+    "tow": 100,
+    "diary": 4
+   },
+   "new_tiles": 0,
+   "rows": {
+    "pokemon_mansion": [
+     7,
+     8,
+     12
+    ],
+    "pokemon_tower": [
+     7,
+     8,
+     9,
+     12
+    ]
+   }
+  },
+  "B": {
+   "title": "ANNEALED / THE NICHES",
+   "tiles_redrawn": {
+    "man": 163,
+    "tow": 100,
+    "diary": 4
+   },
+   "new_tiles": 0,
+   "rows": {
+    "pokemon_mansion": [
+     7,
+     8,
+     12
+    ],
+    "pokemon_tower": [
+     7,
+     8,
+     9,
+     12
+    ]
+   }
+  },
+  "C": {
+   "title": "QUICKSILVER / THE PROOF",
+   "tiles_redrawn": {
+    "man": 163,
+    "tow": 100,
+    "diary": 4
+   },
+   "new_tiles": 0,
+   "rows": {
+    "pokemon_mansion": [
+     7,
+     8,
+     12
+    ],
+    "pokemon_tower": [
+     7,
+     8,
+     9,
+     12
+    ]
+   }
+  }
+ }
+}
