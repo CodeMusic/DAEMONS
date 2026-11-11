@@ -21,6 +21,10 @@ of its normal one. An icon with no shiny.pal takes its normal set's palette. MEA
 writes each redrawn daemon's shiny.pal as a copy of its normal.pal, so only the vanilla-drawn few have shiny colours
 that differ -- and the set is written SPARSE: only the species whose shiny follower palette differs from its normal
 one, in a species list beside it (~1 KB, not ~14). A daemon that gains its own shiny.pal joins it on the next run.
+
+T-534 (the user, 2026-11-11: "Yes, draw them"): the MUSAI branch's followers are DRAWN in each form's own palette
+(tools/gbafollower.py's DRAWN), so for those 24 icon species there is nothing to remap: the follower's palette is
+normal.pal as it stands (and shiny.pal for the shiny set), index for index.
 """
 import os, re, sys
 
@@ -72,8 +76,16 @@ def remap(shared, front):
     return out
 
 
+def drawn_species():
+    """The icon species whose follower.png is drawn in its own palette (T-534) -- gbafollower.drawn()'s keys."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import gbafollower
+    return set(gbafollower.drawn())
+
+
 def build():
     rows, palidx, paths = icon_species()
+    own = drawn_species()
     shared = [read_pal(os.path.join(GBA, "graphics", "pokemon", "icon_palettes", "icon_palette_%d.pal" % i))
               for i in range(3)]
     entries, shinies, fell_back, shiny_fell_back = [], [], [], []
@@ -81,14 +93,18 @@ def build():
         base = shared[int(palidx.get(sp, 0))]
         path = paths.get(sym)
         fp = front_pal_for(path) if path else None
-        if fp:
+        if fp and sp in own:
+            pal = [base[0]] + read_pal(fp)[1:16]          # T-534: drawn in its own palette
+        elif fp:
             pal = remap(base, read_pal(fp))
         else:
             pal = base
             fell_back.append(sp)
         entries.append((sp, pal))
         sfp = front_pal_for(path, "shiny.pal") if path else None
-        if sfp:
+        if sfp and sp in own:
+            shinies.append((sp, [base[0]] + read_pal(sfp)[1:16]))
+        elif sfp:
             shinies.append((sp, remap(base, read_pal(sfp))))
         else:
             shinies.append((sp, pal))

@@ -403,3 +403,9 @@ T-528 (e), the last of it: TULIKKO's sparks, decoded from both built ROMs (v11.3
 T-519, the torn lines: THE UNITY BOOK's last entry (LAST WORD), its final spread laid out by gensubtle's own layout (book_reader.c's two 110px pages, 94px column, 13px pitch) in the game's font -- it now ends 'It will not be, and it always was. Look again, and you will see them both.', two lines carried onto the right page, the spread count unchanged. A layout from the build's sources, not a screenshot. DRAFT.
 
 ![11Nov2026 - T519 - THE UNITY BOOK last line - 83](11Nov2026%20-%20T519%20-%20THE%20UNITY%20BOOK%20last%20line%20-%2083.png)
+
+### 11Nov2026 - T534 - MUSAI followers all 24 looks walking - 84
+
+T-534: the MUSAI branch's followers drawn from the finals (DRAFT) -- all six forms in all four seasons, decoded from the built daemonsContent.gba (engine 27a29b6f7): each form's battle front beside its follower at 3x walking south, north, west and east (east mirrored, each with its 1px step hop, as daemons_follower.c draws it), in the form's own palette. Vehicles redrawn to read at 1x: runners, rugged wheels, pontoon floats, wings.
+
+![11Nov2026 - T534 - MUSAI followers all 24 looks walking - 84](11Nov2026%20-%20T534%20-%20MUSAI%20followers%20all%2024%20looks%20walking%20-%2084.png)
