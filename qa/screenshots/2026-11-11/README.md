@@ -499,3 +499,9 @@ T-445 census (DRAFT, 2026-11-11): every landmark's name card today beside Ninten
 T-445 DRAFT (2026-11-11): today's card beside each candidate at 2x and 1x -- KEEPALIVE PLANT growing untended A/B/C, TANOBY carved not lit A/B, the MANSION's rack hall A/B/C, DAEMON TOWER's dot screen A/B/C; nothing written
 
 ![11Nov2026 - T445 - Landmark cards candidates - 100](11Nov2026%20-%20T445%20-%20Landmark%20cards%20candidates%20-%20100.png)
+
+### 11Nov2026 - T445 - two landmark cards built - 101
+
+T-445 BUILT: KEEPALIVE PLANT growing untended (A) and TANOBY carved, not lit (A), with MONEAN's rose band, decoded from the built daemonsContent.gba at 2x (DRAFT)
+
+![11Nov2026 - T445 - two landmark cards built - 101](11Nov2026%20-%20T445%20-%20two%20landmark%20cards%20built%20-%20101.png)
