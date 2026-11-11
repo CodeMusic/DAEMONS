@@ -112,6 +112,9 @@ def check(songs):
             continue
         if len(s["frames"]) != n:
             errors.append("%s: %d frames for %d notes" % (s["id"], len(s["frames"]), n))
+        held = [f for f in s["frames"] + s["partFrames"] if not (isinstance(f, int) and 1 <= f <= 255)]
+        if held:   # a u8 in play.c: 0 sounds two notes at once, and past 255 the C silently wraps
+            errors.append("%s: frames must be whole numbers 1 to 255 (a note's own length): %s" % (s["id"], held))
         outside = [x for x in s["pcs"] if (x - s["keyNum"]) % 12 not in MAJOR]
         if outside:
             errors.append("%s: notes outside %s major: %s" % (s["id"], s["key"], outside))
