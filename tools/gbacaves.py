@@ -1596,6 +1596,13 @@ def report():
 #  report checks this set is exactly its own.
 T538_TUNNEL = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 21, 22, 23, 24, 25, 27, 28, 29, 30, 31,
                32, 34, 36, 37, 38, 41, 44, 45, 46, 47, 49}
+#  T-447 pair 5 (gbalandmarkrooms.py, drafted 2026-11-11): KEEPALIVE PLANT is a LANDMARK, drawn from the story there --
+#  every tile a map places but the void (tile 1). This look's colours stay (its rows 7 and 8 are kept exactly by that
+#  tool); the write below keeps these tiles as the engine has them, so it can never revert that pair's drawing, and
+#  gbalandmarkrooms' report checks this set is exactly its own.
+T447_PLANT = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+              31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
+              61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79}
 
 
 def write_engine():
@@ -1622,6 +1629,9 @@ def write_engine():
         if ts == "underground_path":
             for t in T538_TUNNEL:
                 new[t] = list(cave.now[t])           # gbadwellings' (T-538 batch 3), as the engine has them
+        if ts == "power_plant":
+            for t in T447_PLANT:
+                new[t] = list(cave.now[t])           # gbalandmarkrooms' (T-447 pair 5), as the engine has them
         if any((a == 0) != (b == 0) for t in range(cave.n) for a, b in zip(new[t], cave.van[t])):
             raise SystemExit("  !! %s: a tile's footprint moved -- nothing written" % key)
         tiles_png(cave, new).save(os.path.join(cave.dir, "tiles.png"), bits=4)

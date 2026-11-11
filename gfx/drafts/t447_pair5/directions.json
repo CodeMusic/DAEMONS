@@ -1,0 +1,113 @@
+{
+ "ticket": "T-447",
+ "pair": 5,
+ "status": "DRAFT -- not in the engine",
+ "approved": {},
+ "directions": {
+  "A": {
+   "title": "THE HEARTBEAT / CARVED, NOT LIT",
+   "lines": [
+    "PLANT: keepalive drawn literally -- every housing a cabinet whose conduit band is a dark screen carrying one",
+    "green trace with a beat in it, a status light on each cabinet; the coils emitters sending rings to nobody; the",
+    "drums battery cells, every one charged; the generator one ring and its light. gbacaves' colours, untouched.",
+    "TANOBY: an alphabet carved and never lit -- sandstone courses, the chamber's own colour as a band of pigment,",
+    "a frieze of the script cut into the back wall and one line of it along every maze wall; doors into the dark."
+   ],
+   "tiles_redrawn": {
+    "pp": 39,
+    "tan": 68
+   },
+   "new_tiles": 0,
+   "rows": {
+    "power_plant": [
+     7,
+     8
+    ],
+    "tanoby_ruins": [
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ]
+   }
+  },
+  "B": {
+   "title": "GROWING UNTENDED / THE READER CHANGED",
+   "lines": [
+    "PLANT: the PLANT's other meaning -- nobody tends it and it grows: ivy up every housing, thick at the foot and",
+    "thin at the cap, the status lights still green in the leaves; moss in the seams; the drums planters; a vine",
+    "round each coil. gbacaves' colours, untouched; three greens in row 8's free slots for the planters.",
+    "TANOBY: 4.24 -- the same pages, only the reader changed: every inscription has a second line under it, the",
+    "machine's reading as holes punched in a tape; the doors tablets with one column of holes; the flags a ruled page."
+   ],
+   "tiles_redrawn": {
+    "pp": 39,
+    "tan": 68
+   },
+   "new_tiles": 0,
+   "rows": {
+    "power_plant": [
+     7,
+     8
+    ],
+    "tanoby_ruins": [
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ]
+   }
+  },
+  "C": {
+   "title": "OPEN SESSIONS / STRATUM",
+   "lines": [
+    "PLANT: nobody connected -- every housing a patch panel, two rows of open ports each with its light listening,",
+    "a few leads plugged in and hanging to nothing; the walkways cable trays; the coils cable reels never unwound;",
+    "the drums transformers; the generator a switchboard of lit jacks (SENTINEL's MEAN LOOK: you may not DETACH).",
+    "TANOBY: STRATUM, TANOBY's lobe (the physical layer, memory laid down) -- every wall in bands of sediment, the",
+    "script surviving only in the oldest band at the foot and half worn away; the floor worn into shallow basins."
+   ],
+   "tiles_redrawn": {
+    "pp": 41,
+    "tan": 68
+   },
+   "new_tiles": 0,
+   "rows": {
+    "power_plant": [
+     7,
+     8
+    ],
+    "tanoby_ruins": [
+     7,
+     8,
+     9,
+     10,
+     11,
+     12
+    ]
+   }
+  }
+ },
+ "glyphs": [
+  "011011001000010",
+  "001111001000100",
+  "110010100101100",
+  "110110100000001",
+  "010011011000100",
+  "001010011100101",
+  "010011011100001",
+  "011010001001101",
+  "110100011000100",
+  "100010011001101",
+  "111010100100001",
+  "111110000001000",
+  "110111001000100",
+  "011001111000010",
+  "110010111000001",
+  "011111100000001"
+ ]
+}

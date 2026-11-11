@@ -91,3 +91,33 @@ T-447 pair 4 BUILT (A THE DOT SCREEN): DAEMON TOWER 5F in colour (as after INIT 
 T-447 pair 4 BUILT: DAEMON TOWER 5F in grey, each colour's luminance by DaemonsHalftoneLum's weights (0.3, 0.59, 0.1133), as the floor reads before it comes back into colour. DRAFT.
 
 ![11Nov2026 - T447 - DAEMON TOWER 5F dot screen grey - 23](11Nov2026%20-%20T447%20-%20DAEMON%20TOWER%205F%20dot%20screen%20grey%20-%2023.png)
+
+### 11Nov2026 - T447 - pair 5 KEEPALIVE PLANT three directions 1x - 24
+
+T-447 pair 5 DRAFT: KEEPALIVE PLANT, the whole floor at 1x -- today (gbacaves' STILL RUNNING colours) beside A THE HEARTBEAT, B GROWING UNTENDED, C OPEN SESSIONS; redrawn in place in gbacaves' colours, 0 new tiles, nothing in the engine
+
+![11Nov2026 - T447 - pair 5 KEEPALIVE PLANT three directions 1x - 24](11Nov2026%20-%20T447%20-%20pair%205%20KEEPALIVE%20PLANT%20three%20directions%201x%20-%2024.png)
+
+### 11Nov2026 - T447 - pair 5 TANOBY three directions 1x - 25
+
+T-447 pair 5 DRAFT: four of TANOBY's seven chambers at 1x, each in its own chamber colour -- today beside A CARVED NOT LIT, B THE READER CHANGED, C STRATUM; the script is generated and kept unreadable (no glyph within 4 cells of any letter, digit or mark)
+
+![11Nov2026 - T447 - pair 5 TANOBY three directions 1x - 25](11Nov2026%20-%20T447%20-%20pair%205%20TANOBY%20three%20directions%201x%20-%2025.png)
+
+### 11Nov2026 - T447 - pair 5 KEEPALIVE PLANT details 3x - 26
+
+T-447 pair 5 DRAFT: KEEPALIVE PLANT at 3x -- the entrance housings and a hatch, the drums and coils, a generator under its housing; today and A, B, C
+
+![11Nov2026 - T447 - pair 5 KEEPALIVE PLANT details 3x - 26](11Nov2026%20-%20T447%20-%20pair%205%20KEEPALIVE%20PLANT%20details%203x%20-%2026.png)
+
+### 11Nov2026 - T447 - pair 5 TANOBY details 3x - 27
+
+T-447 pair 5 DRAFT: TANOBY at 3x -- the back wall (cap, the chamber's band, the frieze, the doors), a maze wall's top and face, DILFORD's band in its own colour; today and A, B, C
+
+![11Nov2026 - T447 - pair 5 TANOBY details 3x - 27](11Nov2026%20-%20T447%20-%20pair%205%20TANOBY%20details%203x%20-%2027.png)
+
+### 11Nov2026 - T447 - pair 5 tiles 3x and the script - 28
+
+T-447 pair 5 DRAFT: both tilesets' placed tiles at 3x in their home rows, today and A, B, C, and TANOBY's sixteen generated glyphs
+
+![11Nov2026 - T447 - pair 5 tiles 3x and the script - 28](11Nov2026%20-%20T447%20-%20pair%205%20tiles%203x%20and%20the%20script%20-%2028.png)

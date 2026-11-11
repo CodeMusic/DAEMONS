@@ -403,6 +403,15 @@ LANDMARKS = {
     "indigo_plateau": [("IndigoPlateau_Exterior", 6, 0, 11, 7, "the REVIEW BOARD"),
                        ("IndigoPlateau_Exterior", 10, 7, 3, 2, "the REVIEW BOARD's porch")],
     "pewter_city": [("PewterCity", 12, 0, 16, 7, "ERRATA, the museum and its annex")],
+    #  T-447's fifth pair (drafted 2026-11-11, gbalandmarkrooms.py): TANOBY's seven chambers, whole -- batch G's
+    #  carving (2026-10-28) is kept as it stands until that pair is built
+    "tanoby_ruins": [("SevenIsland_TanobyRuins_MoneanChamber", 0, 0, 23, 17, "TANOBY, MONEAN"),
+                     ("SevenIsland_TanobyRuins_LiptooChamber", 0, 0, 23, 17, "TANOBY, LIPTOO"),
+                     ("SevenIsland_TanobyRuins_WeepthChamber", 0, 0, 23, 17, "TANOBY, WEEPTH"),
+                     ("SevenIsland_TanobyRuins_DilfordChamber", 0, 0, 23, 17, "TANOBY, DILFORD"),
+                     ("SevenIsland_TanobyRuins_ScufibChamber", 0, 0, 23, 17, "TANOBY, SCUFIB"),
+                     ("SevenIsland_TanobyRuins_RixyChamber", 0, 0, 23, 17, "TANOBY, RIXY"),
+                     ("SevenIsland_TanobyRuins_ViapoisChamber", 0, 0, 23, 17, "TANOBY, VIAPOIS")],
 }
 
 

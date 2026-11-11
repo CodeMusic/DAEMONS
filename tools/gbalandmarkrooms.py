@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""The landmarks' rooms, drawn from the story, a pair at a time (T-447, pair 4: the MANSION and DAEMON TOWER).
+"""The landmarks' rooms, drawn from the story, a pair at a time (T-447, pair 4: the MANSION and DAEMON TOWER; pair 5:
+KEEPALIVE PLANT and TANOBY).
 
     python3 tools/gbalandmarkrooms.py                 # report: the re-census of the seven landmarks still mostly
                                                       #   Nintendo's drawing, the proposed pairs, pair 4's groups, and
@@ -11,6 +12,11 @@
                                                       # into the engine -- refused unless APPROVED names a direction
                                                       #   per building (the user, 2026-11-10: A and A); the report
                                                       #   then exits 1 on any difference from that write
+    python3 tools/gbalandmarkrooms.py --pair 5 --draft [DIR]
+                                                      # pair 5's directions (KEEPALIVE PLANT + TANOBY, below), the
+                                                      #   same outputs in gfx/drafts/t447_pair5/
+    python3 tools/gbalandmarkrooms.py --pair 5 --write --approved
+                                                      # refused until APPROVED holds a pick for "pp" or "tan"
 
 THE JOB (the user, 2026-11-10, "The landmarks left"; census item 8). T-447 drew the landmarks' OUTSIDES from the story
 (pairs 1-3, tools/gbalandmarks.py). Seven landmarks are still mostly Nintendo's drawing INSIDE: the MANSION (and its
@@ -1865,6 +1871,1443 @@ def switch_sheet(out_dir, states):
     return p
 
 
+# ============================================================================================ PAIR 5
+#  KEEPALIVE PLANT + TANOBY -- the two places that outlived their users (the user, 2026-11-10: "The landmarks left";
+#  pair 4's notes give the order). A plant still running with nobody connected to it (vision "Named 2026-09-04 --
+#  KEEPALIVE PLANT", 4.25: SENTINEL, whose MEAN LOOK stops you DETACHing), and an alphabet nobody reads (4.24, T-21:
+#  seven chambers, seven accounts of one event, the event never named; reading the seventh sets THE FIRST).
+#
+#  power_plant    KEEPALIVE PLANT, one map. Its rows 7 and 8 are gbacaves.py's (T-438 batch E2 "STILL RUNNING",
+#                 approved 2026-10-23): every index that look names keeps its colour exactly (CAVES_PLANT), so a
+#                 direction here is drawing, not colour -- only row 8's six free slots (4, 7, 8, 9, 14, 15: no placed
+#                 tile draws them) and row 7's 15 (vanilla's white) may take a colour. Row 11 is the dark outside the
+#                 walls (tile 1, one black): never drawn. gbacaves.T447_PLANT names the tiles this pair draws and its
+#                 write keeps them as the engine has them (the T538_TUNNEL precedent), so neither tool undoes the
+#                 other. Its machines' consoles are primary/building tiles (gbamachines.py): not this tool's.
+#  tanoby_ruins   the seven TANOBY chambers. Its palettes are still vanilla's (gbacaves never drafted it: "with batch
+#                 G"); gbatowns.py batch G (2026-10-28, a DRAFT the user away) redrew 11 tiles' pixels (flags, wall
+#                 foot, brick) in those colours. gbatowns.LANDMARKS now holds the seven chambers, so its write keeps
+#                 every tile they draw exactly as it is. Rows 8..12 are one ladder drawn by the back wall's shared
+#                 tiles, each chamber picking its row (Weepth/Viapois 8, Scufib/Rixy 9, Liptoo 10, Monean 11,
+#                 Dilford 12) for one colour of its own at index 15 (and 14): those two slots are kept in every row,
+#                 and indices 1..13 stay equal across rows 8..12. The chamber name card (map_preview, T-445) is
+#                 gbapreviews' and is not touched.
+#
+#  The same rules as pair 4: redrawn IN PLACE, every tile keeps its footprint, no block, layer, flip, palette row,
+#  behaviour or collision bit moves, no map is touched. Neither tileset has an animation (both callbacks NULL) and the
+#  engine names none of their blocks (no METATILE_ labels, no setmetatile): only the plant's machine behaviour
+#  (MB 0x95, the generators) is read by code, and behaviours are not touched. No index of either set is recoloured at
+#  run time (no tileset test in fieldmap.c; the watch's tint is global). 0 new tiles.
+#
+#  TANOBY'S SCRIPT STAYS UNREADABLE. Every glyph is drawn from GLYPHS, generated in code on a 3x5 grid and kept only
+#  if it stands at least GLYPH_MIN cells away from every Latin letter and digit (upper and lower case, any of the
+#  eight turns and mirrors) in a 3x5 face -- so no glyph reads as a letter and no row of them reads as a word. The
+#  report checks every glyph again. The names stay transliterated (vision 6.x): nothing here translates them.
+
+PAIR = argval("--pair") or "4"
+DRAFT5_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t447_pair5")
+
+PP = G.Set("pp", "gTileset_PowerPlant", [7, 8])
+TAN = G.Set("tan", "gTileset_TanobyRuins", [7, 8, 9, 10, 11, 12])
+SETS5 = {"pp": PP, "tan": TAN}
+G.SETS.update(SETS5)
+NAMES.update({"pp": "KEEPALIVE PLANT", "tan": "TANOBY"})
+TODAY5 = {(k, r): [tuple(c) for c in read_pal(os.path.join(GBA, S.dir, "palettes/%02d.pal" % r))]
+          for k, S in SETS5.items() for r in range(16)}
+
+#  gbacaves' approved look on the plant: row -> the indices its MATERIALS["power_plant"] names (kept exactly)
+CAVES_PLANT = {7: list(range(1, 15)), 8: [1, 2, 3, 5, 6, 10, 11, 12, 13]}
+CHAMBER_ROWS = [8, 9, 10, 11, 12]
+CHAMBER_SLOTS = [14, 15]
+FIXED5 = {("pp", 7): CAVES_PLANT[7], ("pp", 8): CAVES_PLANT[8]}
+FIXED5.update({("tan", r): CHAMBER_SLOTS for r in CHAMBER_ROWS})
+VOID5 = {("pp", 1)}                                  # the dark outside the plant's walls (row 11): never drawn
+CHAMBERS = ["SevenIsland_TanobyRuins_MoneanChamber", "SevenIsland_TanobyRuins_LiptooChamber",
+            "SevenIsland_TanobyRuins_WeepthChamber", "SevenIsland_TanobyRuins_DilfordChamber",
+            "SevenIsland_TanobyRuins_ScufibChamber", "SevenIsland_TanobyRuins_RixyChamber",
+            "SevenIsland_TanobyRuins_ViapoisChamber"]
+
+#  each own row's fifteen materials (index 1..15). The plant's are gbacaves' roles by name: CR CG CB the three
+#  conduits (rust, green, blue), G3..G1 the girders dark..light, TRIM, LANE, PLATE, HB the housings' body, SEAM, HO
+#  their outline, HM their shade, LED the status light; row 8's K3..K1 the coils, L5 L6 the drums' lamps, Q* free.
+ROWMATS5 = {
+    ("pp", 7): ["CR", "CG", "CB", "G3", "G2", "G1", "TRIM", "LANE", "PLATE", "HB", "SEAM", "HO", "HM", "LED", "WHT"],
+    ("pp", 8): ["K3", "K2", "K1", "Q4", "L5", "L6", "Q7", "Q8", "Q9", "HB", "SEAM", "HO", "HM", "Q14", "Q15"],
+    ("tan", 7): ["OUT", "T1", "T2", "T3", "T4", "T5", "N1", "N2", "F1", "F2", "F3", "F4", "F5", "X1", "X2"],
+}
+for _r in CHAMBER_ROWS:
+    ROWMATS5["tan", _r] = ["OUT", "B1", "B2", "B3", "B4", "B5", "B6", "S1", "S2", "S3", "D1", "D2", "D3", "CH14",
+                           "CH15"]
+
+#  vanilla's (row, index) -> what it was FOR (the plant's are gbacaves' names for the same indices)
+ROLE5 = {
+    "pp": {7: dict(enumerate(ROWMATS5["pp", 7], 1)), 8: dict(enumerate(ROWMATS5["pp", 8], 1)), 11: {15: "VOID"}},
+    "tan": {7: {1: "OUT", 2: "grey", 3: "face", 4: "topD", 5: "top", 6: "crack", 7: "studR", 8: "stud", 9: "sand",
+                10: "sandD", 11: "sandG", 12: "flagL", 13: "flag", 14: "flagD", 15: "x"}},
+}
+for _r in CHAMBER_ROWS:
+    ROLE5["tan"][_r] = {1: "OUT", 2: "speck", 3: "brD", 4: "mortar", 5: "brL", 6: "brM", 7: "br", 8: "cap",
+                        9: "capS", 10: "olD", 11: "flagL", 12: "ol", 13: "dk", 14: "CH14", 15: "CH15"}
+
+
+def home5(S, t):
+    return S.home(t) if t in S.use else S.rows[0]
+
+
+def vrole5(K, x, y):
+    vi = K.vi(x, y)
+    if vi is None:
+        return None
+    spec = K.layout[y // 8][x // 8]
+    return ROLE5[K.setkey].get(home5(SETS5[K.setkey], spec[0]), {}).get(vi, "x")
+
+
+def ktile(K, x, y):
+    spec = K.layout[y // 8][x // 8]
+    return spec[0] if spec else None
+
+
+# ---------------------------------------------------------------------------------------- the script (TANOBY)
+#  a 3x5 face of the Latin letters and digits, upper and lower case and a bar: what no glyph may resemble
+LATIN = {
+    "A": "010101111101101", "B": "110101110101110", "C": "011100100100011", "D": "110101101101110",
+    "E": "111100110100111", "F": "111100110100100", "G": "011100101101011", "H": "101101111101101",
+    "I": "111010010010111", "J": "001001001101010", "K": "101101110101101", "L": "100100100100111",
+    "M": "101111111101101", "N": "110101101101101", "O": "010101101101010", "P": "110101110100100",
+    "Q": "010101101110011", "R": "110101110101101", "S": "011100010001110", "T": "111010010010010",
+    "U": "101101101101111", "V": "101101101101010", "W": "101101111111101", "X": "101101010101101",
+    "Y": "101101010010010", "Z": "111001010100111", "0": "111101101101111", "1": "010110010010111",
+    "2": "110001010100111", "3": "110001010001110", "4": "101101111001001", "5": "111100110001110",
+    "6": "011100110101010", "7": "111001010010010", "8": "010101010101010", "9": "010101011001110",
+    "a": "000011101101011", "b": "100110101101110", "c": "000011100100011", "d": "001011101101011",
+    "e": "000010111100011", "f": "011100110100100", "g": "011101011001110", "h": "100110101101101",
+    "i": "010000010010010", "j": "001000001001110", "k": "100101110101101", "l": "100100100100011",
+    "m": "000111111101101", "n": "000110101101101", "o": "000010101101010", "p": "000110101110100",
+    "q": "000011101011001", "r": "000011100100100", "s": "000011110011110", "t": "010111010010011",
+    "u": "000101101101011", "v": "000101101101010", "w": "000101101111111", "x": "000101010101101",
+    "y": "101101011001110", "z": "000111001100111", "|": "010010010010010", "-": "000000111000000",
+    #  and the marks a reader would take for punctuation
+    "!": "010010010000010", "?": "110001010000010", "/": "001001010100100", "\\": "100100010001001",
+    ";": "000010000010100", ":": "000010000010000", "+": "000010111010000", "=": "000111000111000",
+    "(": "001010010010001", ")": "100010010010100", "<": "001010100010001", ">": "100010001010100",
+    "%": "101001010100101", "*": "101010101000000", "^": "010101000000000", "~": "000110011000000",
+    "#": "101111101111101", "&": "010101010101011", ".": "000000000000010", ",": "000000000010100",
+}
+GLYPH_MIN = 4          # cells (of 15) every glyph keeps from every letter, in every turn and mirror
+
+
+def _turns(bits):
+    g = [[int(bits[y * 3 + x]) for x in range(3)] for y in range(5)]
+    out = []
+    for a in (g, [r[::-1] for r in g]):
+        for b in (a, a[::-1]):
+            out.append(b)
+    #  a quarter turn of a 3x5 face is 5x3: compared on the 5x5 square it sits in (centred)
+    sq = []
+    for b in list(out):
+        t = [[b[y][x] for y in range(5)] for x in range(3)]       # 3 rows of 5
+        sq.append(t)
+    return out, sq
+
+
+def glyph_distance(g):
+    """the fewest cells between glyph G (5 rows of 3) and any letter, in any of the eight turns and mirrors"""
+    best = 99
+    gs = [[g[y][x] for x in range(3)] for y in range(5)]
+    for name, bits in LATIN.items():
+        same, quarter = _turns(bits)
+        for L in same:
+            best = min(best, sum(gs[y][x] != L[y][x] for y in range(5) for x in range(3)))
+        #  the glyph turned a quarter (3 rows of 5) against the letter turned a quarter, on a 5x5 square
+        gq = [[gs[y][x] for y in range(5)] for x in range(3)]
+        for L in quarter:
+            best = min(best, sum(gq[y][x] != L[y][x] for y in range(3) for x in range(5)))
+    return best
+
+
+def make_glyphs(n=16, seed=4471):
+    """the script: n glyphs on a 3x5 grid, each one pen stroke from the top that turns at least twice -- a step
+    across and a step aslant -- ending in a hook, and a dot set apart from it; kept only far from every letter, digit
+    and mark, and no two alike"""
+    out, s = [], seed
+    while len(out) < n and s < seed + 200000:
+        s += 1
+        g = [[0] * 3 for _ in range(5)]
+        x, y = H(s, 1) % 3, 0
+        g[y][x] = 1
+        diag = across = False
+        for k in range(3 + H(s, 3) % 3):
+            dx, dy = (-1, 0, 1)[H(s, 10 + k) % 3], (0, 1, 1)[H(s, 20 + k) % 3]
+            if not dx and not dy:
+                continue
+            nx, ny = max(0, min(2, x + dx)), max(0, min(4, y + dy))
+            if (nx, ny) == (x, y):
+                continue
+            diag |= bool(nx != x and ny != y)
+            across |= bool(nx != x and ny == y)
+            x, y = nx, ny
+            g[y][x] = 1
+        dx, dy = H(s, 40) % 3, 2 + H(s, 41) % 3
+        if g[dy][dx] == 0 and all(g[yy][xx] == 0 for yy in range(max(0, dy - 1), min(5, dy + 2))
+                                  for xx in range(max(0, dx - 1), min(3, dx + 2)) if (yy, xx) != (dy, dx)):
+            g[dy][dx] = 1
+        else:
+            continue
+        cells = sum(map(sum, g))
+        if not (diag and across) or cells < 5 or cells > 8:
+            continue
+        if glyph_distance(g) < GLYPH_MIN:
+            continue
+        if any(sum(g[yy][xx] != o[yy][xx] for yy in range(5) for xx in range(3)) < 3 for o in out):
+            continue
+        out.append(g)
+    return out
+
+
+GLYPHS = make_glyphs()
+
+
+def glyph_at(gi, x, y, x0, y0):
+    """is (x, y) a cell of glyph gi drawn with its top-left at (x0, y0)?"""
+    gx, gy = x - x0, y - y0
+    if 0 <= gx < 3 and 0 <= gy < 5:
+        return GLYPHS[gi % len(GLYPHS)][gy][gx] == 1
+    return False
+
+
+# ---------------------------------------------------------------------------------------- the groups
+#  the objects first (their own coordinates), then every placed block by how often it is placed, each layer a 16x16
+#  canvas, so a tile is drawn in the block that shows it most and a motif runs on across its blocks
+OBJ_PP = [
+    ("housing", M([33, 33], [8, 8], [21, 21], [38, 38]), "the housings: cap, upper body, conduits, kick plate"),
+    ("panel",   M([3, 4], [19, 20]),                     "a housing's hatch"),
+    ("coil",    M([61, 62], [77, 78]),                   "the coils on the floor (0x2B5, 0x2B6)"),
+    ("drums",   M([48, 49], [64, 65], [50, 51], [64, 65], [66, 67]), "the drums, stacked (row 8)"),
+    ("gen",     M([52, 53, 54, h(54), h(53), h(52)], [68, 69, 70, h(70), h(69), h(68)],
+                  [55, 56, 57, h(57), h(56), h(55)], [71, 72, 73, h(73), h(72), h(71)],
+                  [58, 59, 60, h(60), h(59), h(58)], [74, 75, 76, h(76), h(75), h(74)]),
+     "the two generators (MB 0x95) and their crowns over the housing"),
+    ("floor",   M([10, 11], [26, 27]),                   "the floor plates (0x29F)"),
+]
+OBJ_TAN = [
+    ("frieze",  M([5, 6], [21, 22], [7, 8], [23, 24]),   "the back wall: its cap, the chamber's band, the courses"),
+    ("door",    M([9, h(9)], [25, h(25)], [10, h(10)], [26, h(26)], [12, 13]), "the back wall's doors"),
+    ("face",    M([39, 39], [43, 43]),                   "the maze walls' face (0x2B9)"),
+    ("face2",   M([62, 39], [60, 61]),                   "the face, its second run (0x2D6)"),
+    ("floor",   M([1, 2], [17, 18]),                     "the flags (0x288)"),
+]
+KIND_PP = {}
+for _k, _ts in (("floor", [10, 11, 26, 27, 12, 13, 28, 29, 37]), ("grate", [14, 15, 30, 31, 47, 63, 79]),
+                ("lane", [2, 16, 17, 18, 32]), ("base", [46]),
+                ("house", [33, 34, 8, 21, 38, 5, 6, 7, 22, 23, 24, 39, 40, 9, 25, 41, 35, 36, 3, 4, 19, 20])):
+    for _t in _ts:
+        KIND_PP[_t] = _k
+KIND_TAN = {}
+for _k, _ts in (("face", [39, 43, 44, 47, 60, 61, 62, 63]),
+                ("top", [28, 29, 32, 34, 35, 36, 38, 41, 42, 45, 46, 56, 57, 58, 59, 64, 65, 66, 67, 68, 69]),
+                ("floor", [1, 2, 3, 4, 17, 18, 19, 20, 70, 71, 72])):
+    for _t in _ts:
+        KIND_TAN[_t] = _k
+KIND5 = {"pp": KIND_PP, "tan": KIND_TAN}
+
+
+def placed_blocks(S):
+    """(block, count, its eight entries) for every block a map places, most placed first"""
+    cnt = collections.Counter()
+    for l in G.LAYOUTS:
+        if l.get("secondary_tileset") != S.sym or not G.MBL.get(l["id"]):
+            continue
+        bd = open(os.path.join(GBA, l["blockdata_filepath"]), "rb").read()
+        for k in range(0, len(bd) - 1, 2):
+            cnt[struct.unpack_from("<H", bd, k)[0] & 0x3FF] += 1
+    out = []
+    for b, n in cnt.most_common():
+        if b < 640 or (b - 640 + 1) * 16 > len(S.mt):
+            continue
+        out.append((b, n, struct.unpack_from("<8H", S.mt, (b - 640) * 16)))
+    return out
+
+
+def block_layout(ee):
+    rows = []
+    for q0 in (0, 2):
+        r = []
+        for e in ee[q0:q0 + 2]:
+            t = e & 0x3FF
+            if t < 640:
+                r.append(None)
+            else:
+                fl = ("h" if (e >> 10) & 1 else "") + ("v" if (e >> 11) & 1 else "")
+                r.append((t - 640, fl))
+        rows.append(r)
+    return rows
+
+
+def groups5():
+    """(key, setkey, layout, kind, what): the objects, then each placed block's two layers"""
+    out = []
+    for setkey, objs in (("pp", OBJ_PP), ("tan", OBJ_TAN)):
+        for key, lay, what in objs:
+            out.append((key, setkey, lay, "obj", what))
+        for b, n, ee in placed_blocks(SETS5[setkey]):
+            for layer in (0, 1):
+                lay = block_layout(ee[layer * 4:layer * 4 + 4])
+                if any(s is not None for r in lay for s in r):
+                    out.append(("b%03X.%d" % (b, layer), setkey, lay, "block", "block 0x%03X layer %d (%d placed)"
+                                % (b, layer, n)))
+    return out
+
+
+GROUPS5 = groups5()
+
+
+def paint5(K, D, key, kind):
+    """one group: an object goes to the direction's painter of that name; a block goes through its zones, its
+    kinds read per tile, a housing block placed low (it draws the kick plate, 38) a housing's lower half"""
+    if kind == "obj":
+        D[key](K)
+        return
+    tiles = {s[0] for r in K.layout for s in r if s}
+    K.hy = 16 if K.setkey == "pp" and 38 in tiles else 0
+    f = D["zone"]
+    kinds = KIND5[K.setkey]
+    K.fn(lambda x, y: f(kinds.get(ktile(K, x, y), "wall"), vrole5(K, x, y), x, y, K))
+
+
+# ---------------------------------------------------------------------------------------- resolving
+def mats5(D, setkey):
+    m = dict(D["mat"])
+    for (k, r), slots in FIXED5.items():
+        if k == setkey:
+            for i in slots:
+                m.setdefault(ROWMATS5[k, r][i - 1], tuple(TODAY5[k, r][i]))
+    return m
+
+
+def set_palettes5(D, S):
+    mat = mats5(D, S.key)
+    out = {}
+    for r in range(16):
+        if r in S.rows:
+            row = [tuple(TODAY5[S.key, r][0])]
+            for i, n in enumerate(ROWMATS5[S.key, r], 1):
+                row.append(tuple(TODAY5[S.key, r][i]) if i in FIXED5.get((S.key, r), ()) else tuple(mat[n]))
+            out[r] = row
+        else:
+            out[r] = list(TODAY5[S.key, r])
+    return out
+
+
+def resolve5(mats, base, rows, mat, pals, setkey):
+    """64 materials -> 64 indices for a tile placed in ROWS (weights). A material its rows hold at one index takes it
+    exactly; CH14/CH15 are the chamber's own slots; anything else the nearest colour, never a chamber slot. None
+    keeps vanilla's index there. The footprint is exact: 0 stays 0, a drawn pixel stays drawn."""
+    px, cache = [], {}
+    for k, m in enumerate(mats):
+        if base[k] == 0:
+            px.append(0)
+            continue
+        if m is None:
+            px.append(base[k])
+            continue
+        if m in ("CH14", "CH15"):
+            px.append(int(m[2:]))
+            continue
+        if m not in cache:
+            idx = {ROWMATS5[setkey, r].index(m) + 1 for r in rows if (setkey, r) in ROWMATS5
+                   and m in ROWMATS5[setkey, r]}
+            if len(idx) == 1 and all((setkey, r) in ROWMATS5 and m in ROWMATS5[setkey, r] for r in rows):
+                cache[m] = idx.pop()
+            else:
+                c = mat[m]
+                best, bd = 1, 1e18
+                for i in range(1, 16):
+                    if setkey == "tan" and i in CHAMBER_SLOTS and any(r in CHAMBER_ROWS for r in rows):
+                        continue
+                    d = 0
+                    for r, w in rows.items():
+                        col = pals[r][i] if r in pals else (0, 0, 0)
+                        d += w * sum((a - b) ** 2 for a, b in zip(col, c))
+                    if d < bd:
+                        best, bd = i, d
+                cache[m] = best
+        px.append(cache[m])
+    return px
+
+
+def draw5(D, only=None):
+    """-> {setkey: (tiles, palettes)}, owner {(setkey, t): group}. ONLY limits it to one building"""
+    out = {k: ([t[:] for t in S.cur], set_palettes5(D[k], S)) for k, S in SETS5.items()}
+    owner = {}
+    for key, setkey, layout, kind, what in GROUPS5:
+        if only and setkey != only:
+            continue
+        DD = D[setkey]
+        K = Cv(layout, setkey)
+        K.hy = 0
+        paint5(K, DD, key, kind)
+        S = SETS5[setkey]
+        mat = mats5(DD, setkey)
+        pals = out[setkey][1]
+        for t, mats in K.tiles().items():
+            if (setkey, t) in owner or (setkey, t) in VOID5 or t >= S.nvan or t not in S.use:
+                continue
+            rows = dict(S.use[t]["rows"])
+            out[setkey][0][t] = resolve5(mats, S.van[t], rows, mat, pals, setkey)
+            owner[setkey, t] = key
+    return out, owner
+
+
+def owned5(setkey):
+    """the tiles this pair draws in a set: every placed tile but the void"""
+    S = SETS5[setkey]
+    return sorted(t for t in S.use if t < S.nvan and any(S.van[t]) and (setkey, t) not in VOID5)
+
+
+# ---------------------------------------------------------------------------------------- the PLANT's directions
+def pp_keep(role):
+    """a role drawn as gbacaves drew it"""
+    return role if role not in (None, "x", "VOID") else None
+
+
+def ring_at(x, y, cx, cy, r, w=1.0):
+    return abs(math.hypot(x - cx, y - cy) - r) < w * 0.5 + 0.01
+
+
+# ------------------------------------------------------------------ PLANT A: THE HEARTBEAT (keepalive)
+def A_pp_zone(kind, role, x, y, K):
+    if role in (None, "VOID"):
+        return None
+    if kind == "floor" or kind == "grate":
+        return A_pp_floorpx(role, x % 16, y % 16, kind)
+    if kind == "lane":                                 # the walkways: a clean raised edge, a pin every plate
+        if role in ("SEAM",) and x % 8 == 3 and y % 8 == 3:
+            return "PLATE"
+        return pp_keep(role)
+    if kind == "house":
+        return A_pp_housepx(role, x % 8, y + K.hy, K)
+    return pp_keep(role)
+
+
+def A_pp_floorpx(role, x, y, kind):
+    """raised-floor plates, a pin at each plate's corner; the seams kept"""
+    if kind == "grate":
+        return pp_keep(role)
+    if role == "PLATE" and (x, y) in ((1, 1), (9, 9)):
+        return "SEAM"
+    return pp_keep(role)
+
+
+def A_pp_housepx(role, x, hy, K):
+    """a cabinet face: a dark screen band across the body carrying the trace, one status light per cabinet"""
+    if role in ("HO",) or hy < 8:
+        return pp_keep(role)
+    if 13 <= hy <= 19:                                 # the screen band, where the three conduits ran
+        trace = {0: 17, 1: 17, 2: 17, 3: 17, 4: 16, 5: 14, 6: 19, 7: 17}[x]
+        if hy == trace or (x == 5 and 14 <= hy <= 17) or (x == 6 and 17 <= hy <= 19):
+            return "LED"
+        if hy in (13, 19) and not (x == 6 and hy == 19):
+            return "HM"
+        return "HO"
+    if hy in (10, 11) and x in (2, 3):                 # the status light (on: green)
+        return "LED" if hy == 10 else "HO"
+    if role in ("CR", "CG", "CB"):
+        return "HB"
+    if 24 <= hy and role in ("G1", "G2") and x % 4 == 1 and 26 <= hy <= 29:
+        return "G3"                                    # the plinth's vent slots
+    return pp_keep(role)
+
+
+def A_pp_housing(K):
+    K.fn(lambda x, y: A_pp_housepx(vrole5(K, x, y), x % 8, y, K))
+
+
+def A_pp_panel(K):
+    """a hatch: a small screen with the trace on it"""
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r in ("PLATE", "TRIM") and 4 <= x <= 13 and 6 <= y <= 12:
+            if y == {4: 10, 5: 10, 6: 10, 7: 9, 8: 7, 9: 11, 10: 10, 11: 10, 12: 10, 13: 10}[x]:
+                return "LED"
+            return "HO"
+        return pp_keep(r)
+    K.fn(f)
+
+
+def A_pp_coil(K):
+    """a mast's emitter brought inside: rings sent out to nobody"""
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if K.edge(x, y):
+            return "HO"
+        d = math.hypot(x - 7.5, y - 8.0)
+        if d < 1.6:
+            return "LED"
+        if abs(d - 3.6) < 0.6:
+            return "G1"
+        if abs(d - 6.0) < 0.6:
+            return "G2"
+        return "HM" if d < 7 else "HO"
+    K.fn(f)
+
+
+def A_pp_drums(K):
+    """the drums as cells of a battery, every one charged: a window down each with its charge in bars"""
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r in ("L5", "L6") and y % 3 == 0:
+            return "HM"                                # the glow cut into charge bars
+        return pp_keep(r)
+    K.fn(f)
+
+
+def A_pp_gen(K):
+    """the generator: one great ring and its single light, still on"""
+    cx, cy = (K.w - 1) / 2.0, 22.0
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r in (None, "HO", "VOID"):
+            return pp_keep(r)
+        d = math.hypot(x - cx, y - cy)
+        if d < 2.2:
+            return "LED"
+        if abs(d - 6) < 0.7:
+            return "G1"
+        if abs(d - 10) < 0.7 and y < 30:
+            return "G2"
+        return pp_keep(r)
+    K.fn(f)
+
+
+def A_pp_floor(K):
+    K.fn(lambda x, y: A_pp_floorpx(vrole5(K, x, y), x, y, "floor"))
+
+
+# ------------------------------------------------------------------ PLANT B: GROWING UNTENDED (the second meaning)
+def leafy(x, y, s, density):
+    """a leaf cluster mask: small lobes, never speckle (period 16)"""
+    cx, cy = (x // 4) * 4 + H(x // 4, y // 4, s) % 3, (y // 4) * 4 + H(y // 4, x // 4, s + 1) % 3
+    if H(x // 4, y // 4, s + 2) % 10 >= density:
+        return 0
+    d = abs(x - cx) + abs(y - cy)
+    return 2 if d == 0 else 1 if d <= 1 else 0
+
+
+def B_pp_zone(kind, role, x, y, K):
+    if role in (None, "VOID"):
+        return None
+    if kind in ("floor", "grate"):
+        return B_pp_floorpx(role, x % 16, y % 16)
+    if kind == "lane":                                 # moss creeping along the walkways' edge
+        if role == "SEAM" and y % 8 == 5 and H(x // 3, y // 8, 7) % 4 == 0:
+            return "CG"
+        return pp_keep(role)
+    if kind == "house":
+        return B_pp_housepx(role, x, y + K.hy, K)
+    return pp_keep(role)
+
+
+def B_pp_floorpx(role, x, y):
+    """moss in the plates' lower seams, a sprout where two seams meet"""
+    if role == "SEAM" and y >= 14 and x % 3:
+        return "CG"
+    if role == "PLATE" and (x, y) in ((14, 13), (13, 14), (14, 14)):
+        return "CG"
+    return pp_keep(role)
+
+
+def ivy(xx, hy):
+    """two vines up an 8-pixel face from the floor (hy 31) -- one to the cap, one half way -- each wandering a pixel
+    either side, a leaf every third row on alternate sides"""
+    for sx, top in ((1, 9), (5, 19)):
+        if hy < top:
+            continue
+        wx = sx + (1 if (hy // 3) % 2 else 0)
+        if xx == wx:
+            return "CG"
+        side = 1 if ((hy + sx) // 3) % 2 else -1
+        if (hy + sx) % 3 == 0 and xx in (wx + side, wx + 2 * side):
+            return "LED" if xx == wx + 2 * side and hy % 2 else "CG"
+        if (hy + sx) % 3 == 1 and xx == wx + side:
+            return "CG"
+    return None
+
+
+def B_pp_housepx(role, x, hy, K):
+    """ivy up every housing from the floor, thick at the foot and thinning to the cap; the light still green in it"""
+    if role in (None, "HO"):
+        return pp_keep(role)
+    xx = x % 8
+    if hy in (10, 11) and xx in (2, 3):
+        return "LED" if hy == 10 else "HO"
+    m = ivy(xx, hy)
+    if m:
+        return m
+    if role in ("CR", "CB") and hy >= 13:
+        return "HB"                                    # the conduits under the leaves
+    return pp_keep(role)
+
+
+def B_pp_housing(K):
+    K.fn(lambda x, y: B_pp_housepx(vrole5(K, x, y), x % 8, y, K))
+
+
+def B_pp_panel(K):
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r not in (None, "HO"):
+            m = ivy(x % 8, y + 8)
+            if m:
+                return m
+        return pp_keep(r)
+    K.fn(f)
+
+
+def B_pp_coil(K):
+    """a coil wound round with a vine"""
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r is None:
+            return None
+        if K.edge(x, y):
+            return "HO"
+        if (x + y * 2) % 7 in (0, 1) and r not in ("HO",):
+            return "CG"
+        return pp_keep(r)
+    K.fn(f)
+
+
+def B_pp_drums(K):
+    """the drums as planters: the lamps' green gone to leaves, a shoot over each rim"""
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r is None:
+            return None
+        cy = y % 16
+        if r in ("L5", "L6", "K1"):
+            return "Q8" if (x + cy) % 4 else "Q9"
+        if r in ("HB",) and cy in (0, 1, 2, 3) and H(x, y, 3) % 3 == 0:
+            return "Q7"
+        return pp_keep(r)
+    K.fn(f)
+
+
+def B_pp_gen(K):
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r in (None, "HO") or y < 8:
+            return pp_keep(r)
+        m = ivy(x % 8, min(31, y))
+        if m and (x // 8) in (0, 5):
+            return m
+        return pp_keep(r)
+    K.fn(f)
+
+
+def B_pp_floor(K):
+    K.fn(lambda x, y: B_pp_floorpx(vrole5(K, x, y), x, y))
+
+
+# ------------------------------------------------------------------ PLANT C: OPEN SESSIONS (nobody connected)
+def C_pp_zone(kind, role, x, y, K):
+    if role in (None, "VOID"):
+        return None
+    if kind in ("floor", "grate"):
+        return C_pp_floorpx(role, x % 16, y % 16, kind)
+    if kind == "lane":                                 # the walkways are cable trays: two runs along them
+        if role == "SEAM":
+            return {2: "CR", 4: "CB"}.get(y % 8, "SEAM")
+        return pp_keep(role)
+    if kind == "house":
+        return C_pp_housepx(role, x, y + K.hy, K)
+    return pp_keep(role)
+
+
+def C_pp_floorpx(role, x, y, kind):
+    """the plates as they were: the leads are the housings'"""
+    return pp_keep(role)
+
+
+def C_pp_housepx(role, x, hy, K):
+    """a patch panel: two rows of ports, each with its light (green: listening), a few cables plugged in and hanging
+    down to nothing, the conduits drooping between the panels"""
+    if role in (None, "HO") or hy < 8:
+        return pp_keep(role)
+    xx = x % 8
+    for py in (9, 19):                                 # the two rows of ports
+        if py <= hy <= py + 2:
+            if xx in (1, 2, 5, 6):
+                return "LED" if hy == py and xx in (1, 5) else "HO"
+            return "HM"
+    if hy in (12, 13) and xx in (1, 2):                # a lead plugged into the first port, hanging down
+        return "CR"
+    if 22 <= hy <= 27 and xx in (5, 6):
+        return "CB" if hy < 27 else "HO"
+    if role in ("CR", "CG", "CB"):
+        return "HB"
+    return pp_keep(role)
+
+
+def C_pp_housing(K):
+    K.fn(lambda x, y: C_pp_housepx(vrole5(K, x, y), x % 8, y, K))
+
+
+def C_pp_panel(K):
+    """a hatch: a jack field, all ports open"""
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r in ("PLATE", "TRIM") and 4 <= x <= 13 and 6 <= y <= 13:
+            return "HO" if (x % 3 == 1 and y % 3 == 1) else "HM"
+        return pp_keep(r)
+    K.fn(f)
+
+
+def C_pp_coil(K):
+    """a cable reel, wound and never unwound"""
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r is None:
+            return None
+        if K.edge(x, y):
+            return "HO"
+        d = math.hypot(x - 7.5, y - 8.0)
+        if d < 1.8:
+            return "HO"
+        if d < 6:
+            return "CR" if int(d * 1.5) % 2 else "HM"
+        return "G2"
+    K.fn(f)
+
+
+def C_pp_drums(K):
+    """the drums as transformers, their leads unplugged and coiled on top"""
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r is None:
+            return None
+        cy = y % 16
+        if r in ("L5", "L6"):
+            return "HM" if cy % 2 else "HB"
+        if r in ("K1", "K2") and cy in (1, 2) and x % 3 == 0:
+            return "Q4"
+        return pp_keep(r)
+    K.fn(f)
+
+
+def C_pp_gen(K):
+    """the generator as a switchboard: rows of lit jacks round the crown"""
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r in (None, "HO"):
+            return pp_keep(r)
+        if 10 <= y <= 30 and x % 4 == 1 and y % 4 == 2 and r not in ("PLATE",):
+            return "LED"
+        return pp_keep(r)
+    K.fn(f)
+
+
+def C_pp_floor(K):
+    K.fn(lambda x, y: C_pp_floorpx(vrole5(K, x, y), x, y, "floor"))
+
+
+# ---------------------------------------------------------------------------------------- TANOBY's directions
+def tan_base(role, P):
+    """a role's material through the direction's role table P"""
+    if role in (None, "x"):
+        return None
+    if role in ("CH14", "CH15"):
+        return role
+    return P.get(role)
+
+
+def incised(x, y, gi, x0, y0, groove, lit):
+    """a carved glyph: the groove, and its lower lip catching the light"""
+    if glyph_at(gi, x, y, x0, y0):
+        return groove
+    if glyph_at(gi, x, y - 1, x0, y0):
+        return lit
+    return None
+
+
+def tan_frieze_glyphs(x, y, y0, seed, groove, lit):
+    """a line of the script, four glyphs a 16-pixel course (3 wide, a pixel between)"""
+    for k in range(4):
+        m = incised(x, y, seed + k, 4 * k, y0, groove, lit)
+        if m:
+            return m
+    return None
+
+
+# ------------------------------------------------------------------ TANOBY A: CARVED, NOT LIT
+PA = {"OUT": "OUT", "grey": "T4", "face": "T3", "topD": "T2", "top": "T1", "crack": "T4", "studR": "T3",
+      "stud": "T3", "sand": "F2", "sandD": "F3", "sandG": "F3", "flagL": "F1", "flag": "F2", "flagD": "F3",
+      "speck": "B3", "brD": "B4", "mortar": "B5", "brL": "B1", "brM": "B3", "br": "B2", "cap": "S1", "capS": "S2",
+      "olD": "D1", "ol": "D2", "dk": "D3"}
+
+
+def A_tan_zone(kind, role, x, y, K):
+    m = tan_base(role, PA)
+    if kind == "face" and role in ("face", "studR", "stud", "crack"):
+        return A_tan_facepx(x, y % 16, ktile(K, x, y))
+    if kind == "floor" and role in ("flagL", "flag", "flagD"):
+        return A_tan_flag(x % 16, y % 16)
+    return m
+
+
+FACE_GLYPHS = {39: 0, 62: 2, 60: 4, 61: 6, 43: 8, 47: 10, 63: 12, 44: 14}
+
+
+def face_glyph(x, y, t, y0, base=0):
+    """two glyphs a face tile (3 wide, a pixel apart): which glyph is at (x, y), or None"""
+    gi = FACE_GLYPHS.get(t, 0) + base
+    xx = x % 8
+    for k, x0 in enumerate((0, 4)):
+        if glyph_at(gi + k, xx, y, x0, y0):
+            return gi + k
+    return None
+
+
+def A_tan_facepx(x, y, t):
+    """the maze walls: dressed stone, and along the upper course one line of the script cut into it"""
+    if y < 8:
+        if face_glyph(x, y, t, 1) is not None:
+            return "T5"
+        if face_glyph(x, y - 1, t, 1) is not None:
+            return "T2"
+    if y in (8,):
+        return "T4"
+    if y >= 14:
+        return "T5"
+    return "T3"
+
+
+def A_tan_flag(x, y):
+    """flags laid in pairs, a course offset at each row"""
+    if y in (0, 8) or (x == 0 and y < 8) or (x == 8 and y >= 8):
+        return "F3"
+    return "F2" if (x, y) in ((5, 3), (12, 11)) else "F1"
+
+
+def A_tan_frieze(K):
+    """the back wall: a sandstone cap, the chamber's own colour as a band of pigment, a frieze of the script cut
+    into the stone, courses below"""
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r is None:
+            return None
+        if y < 4:
+            return "S1" if y else "S2"
+        if y == 4:
+            return "B4"
+        if 5 <= y <= 8:
+            return "CH15" if y >= 6 else "B5"
+        if 10 <= y <= 15:
+            m = tan_frieze_glyphs(x, y, 10, 2, "B5", "S1")
+            return m or "B2"
+        if y == 9 or y == 16:
+            return "B4"
+        cy = (y - 17) % 5
+        if cy == 4:
+            return "B4"
+        off = 0 if ((y - 17) // 5) % 2 == 0 else 4
+        return "B4" if (x + off) % 8 == 0 else ("B1" if cy == 0 else "B2")
+    K.fn(f)
+
+
+def A_tan_door(K):
+    """a door into the dark, under a stepped lintel"""
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r is None:
+            return None
+        if y >= 32:
+            return tan_base(r, PA)
+        if x in (0, 15):
+            return "OUT"
+        if y < 4:
+            return "S1" if y else "S2"
+        if y < 7:
+            return "B4" if (x < 3 + (y - 4) or x > 12 - (y - 4)) else "B1"
+        if 3 <= x <= 12 and y >= 9:
+            return "D3" if y > 10 else "D2"
+        if 3 <= x <= 12:
+            return "B5"
+        return "B2" if y % 5 else "B4"
+    K.fn(f)
+
+
+def A_tan_face(K):
+    K.fn(lambda x, y: A_tan_facepx(x, y, ktile(K, x, y)) if vrole5(K, x, y) in ("face", "studR", "stud", "crack")
+         else tan_base(vrole5(K, x, y), PA))
+
+
+def A_tan_floor(K):
+    K.fn(lambda x, y: A_tan_flag(x, y) if vrole5(K, x, y) in ("flagL", "flag", "flagD")
+         else tan_base(vrole5(K, x, y), PA))
+
+
+# ------------------------------------------------------------------ TANOBY B: THE READER CHANGED (interlinear)
+PB = dict(PA)
+
+
+def punch(x, gi):
+    """the machine's reading of glyph gi: a row of holes, one per column the glyph inks more than twice"""
+    g = GLYPHS[gi % len(GLYPHS)]
+    col = x % 4
+    return col < 3 and sum(g[y][col] for y in range(5)) >= 2
+
+
+def B_tan_zone(kind, role, x, y, K):
+    m = tan_base(role, PB)
+    if kind == "face" and role in ("face", "studR", "stud", "crack"):
+        return B_tan_facepx(x, y % 16, ktile(K, x, y))
+    if kind == "floor" and role in ("flagL", "flag", "flagD"):
+        return B_tan_flag(x % 16, y % 16)
+    return m
+
+
+def B_tan_facepx(x, y, t):
+    """every wall carries two lines: the script in ink, and under it the machine's reading of it as holes in a tape"""
+    xx = x % 8
+    if 1 <= y <= 5:
+        return "N1" if face_glyph(x, y, t, 1) is not None else "T3"
+    if 9 <= y <= 12:
+        if y in (9, 12):
+            return "N2"
+        gi = FACE_GLYPHS.get(t, 0) + (0 if xx < 4 else 1)
+        return "OUT" if (y == 10 and punch(xx % 4, gi)) else "X1"
+    if y >= 14:
+        return "T5"
+    return "T3"
+
+
+def B_tan_flag(x, y):
+    """the flags ruled like a page"""
+    if x in (0, 15) or y in (0, 15):
+        return "F3"
+    return "F2" if y % 4 == 3 and 2 <= x <= 13 else "F1"
+
+
+def B_tan_frieze(K):
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r is None:
+            return None
+        if y < 4:
+            return "S1" if y else "S2"
+        if y == 4:
+            return "B4"
+        if 5 <= y <= 8:
+            return "CH15" if y >= 6 else "B5"
+        if 10 <= y <= 14:
+            for k in range(4):
+                if glyph_at(6 + k, x, y, 4 * k, 10):
+                    return "D3"
+            return "B1"
+        if 17 <= y <= 20:                              # the tape: the machine's reading, the same four glyphs
+            if y in (17, 20):
+                return "D1"
+            return "D3" if (y == 18 and punch(x, 6 + x // 4)) else "S2"
+        if y in (9, 15, 16, 21):
+            return "B4"
+        return "B2" if (x + (y // 4) * 4) % 8 else "B4"
+    K.fn(f)
+
+
+def B_tan_door(K):
+    """a tablet in the door: one column of holes, read top to bottom"""
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r is None:
+            return None
+        if y >= 32:
+            return tan_base(r, PB)
+        if x in (0, 15):
+            return "OUT"
+        if y < 4:
+            return "S1" if y else "S2"
+        if 3 <= x <= 12 and 6 <= y <= 30:
+            if x in (7, 8) and y % 3 == 0 and H(y, 0, 5) % 3:
+                return "D3"
+            return "S2" if 4 <= x <= 11 else "D1"
+        return "B2" if y % 5 else "B4"
+    K.fn(f)
+
+
+def B_tan_face(K):
+    K.fn(lambda x, y: B_tan_facepx(x, y, ktile(K, x, y)) if vrole5(K, x, y) in ("face", "studR", "stud", "crack")
+         else tan_base(vrole5(K, x, y), PB))
+
+
+def B_tan_floor(K):
+    K.fn(lambda x, y: B_tan_flag(x, y) if vrole5(K, x, y) in ("flagL", "flag", "flagD")
+         else tan_base(vrole5(K, x, y), PB))
+
+
+# ------------------------------------------------------------------ TANOBY C: STRATUM (laid down, worn away)
+PC = dict(PA)
+STRATA = [("N1", 2), ("T2", 3), ("X1", 2), ("T4", 3), ("N2", 2), ("T3", 4)]    # top down: (material, rows)
+
+
+def stratum(y):
+    acc = 0
+    for m, n in STRATA:
+        acc += n
+        if y < acc:
+            return m
+    return "T5"
+
+
+def C_tan_zone(kind, role, x, y, K):
+    m = tan_base(role, PC)
+    if kind == "face" and role in ("face", "studR", "stud", "crack"):
+        return C_tan_facepx(x, y % 16, ktile(K, x, y))
+    if kind == "floor" and role in ("flagL", "flag", "flagD"):
+        return C_tan_flag(x % 16, y % 16)
+    if kind == "top" and role in ("top",):
+        return "N1" if y % 16 == 11 else "T1"
+    return m
+
+
+def C_tan_facepx(x, y, t):
+    """the maze walls as strata, the oldest layer at the foot holding what is left of the script: broken glyphs"""
+    if y >= 14:
+        return "T5"
+    if y >= 9:
+        gi = face_glyph(x, y, t, 9)
+        if gi is not None and H(x, y, gi) % 3:
+            return "T5"
+        return "T3"
+    return stratum(y)
+
+
+def C_tan_flag(x, y):
+    """every flag worn down into a shallow basin: its joint, the shadow under its upper lip, the lit lower lip"""
+    if x in (0, 15) or y in (0, 15):
+        return "F3"
+    if x == 1 or y == 1:
+        return "F2"
+    if x == 14 or y == 14:
+        return "N1"
+    return "F1"
+
+
+def C_tan_frieze(K):
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r is None:
+            return None
+        if y < 4:
+            return "S1" if y else "S2"
+        if 5 <= y <= 8:
+            return "CH15" if y >= 6 else "B5"
+        if y >= 26:                                    # the oldest course: glyphs half gone
+            for k in range(4):
+                if glyph_at(12 + k, x, y, 4 * k, 26) and H(x, y, k) % 3:
+                    return "B5"
+            return "B4"
+        band = ((y - 9) // 3) % 4
+        return ("B1", "B3", "B2", "B6")[band] if not (y == 4) else "B4"
+    K.fn(f)
+
+
+def C_tan_door(K):
+    def f(x, y):
+        r = vrole5(K, x, y)
+        if r is None:
+            return None
+        if y >= 32:
+            return tan_base(r, PC)
+        if x in (0, 15):
+            return "OUT"
+        if y < 4:
+            return "S1" if y else "S2"
+        if 4 <= x <= 11 and y >= 8:
+            return "D3"
+        return ("B1", "B3", "B2", "B6")[((y - 4) // 3) % 4]
+    K.fn(f)
+
+
+def C_tan_face(K):
+    K.fn(lambda x, y: C_tan_facepx(x, y, ktile(K, x, y)) if vrole5(K, x, y) in ("face", "studR", "stud", "crack")
+         else tan_base(vrole5(K, x, y), PC))
+
+
+def C_tan_floor(K):
+    K.fn(lambda x, y: C_tan_flag(x, y) if vrole5(K, x, y) in ("flagL", "flag", "flagD")
+         else tan_base(vrole5(K, x, y), PC))
+
+
+# ---------------------------------------------------------------------------------------- the directions' tables
+def direction5(name, title, lines, pp_mat, tan_mat, pp, tan):
+    D = dict(name=name, title=title, lines=lines)
+    D["pp"] = dict(mat=pp_mat, zone=pp["zone"], housing=pp["housing"], panel=pp["panel"], coil=pp["coil"],
+                   drums=pp["drums"], gen=pp["gen"], floor=pp["floor"])
+    D["tan"] = dict(mat=tan_mat, zone=tan["zone"], frieze=tan["frieze"], door=tan["door"], face=tan["face"],
+                    face2=tan["face"], floor=tan["floor"])
+    return D
+
+
+#  the plant's free slots: row 7's 15 (vanilla's white) and row 8's 4, 7, 8, 9, 14, 15
+PP_FREE = dict(WHT=(255, 255, 255), Q4=(156, 65, 65), Q7=(255, 0, 255), Q8=(255, 0, 255), Q9=(255, 0, 255),
+               Q14=(246, 238, 222), Q15=(255, 255, 255))
+
+A5 = direction5(
+    "A", "THE HEARTBEAT / CARVED, NOT LIT",
+    ["PLANT: keepalive drawn literally -- every housing a cabinet whose conduit band is a dark screen carrying one",
+     "green trace with a beat in it, a status light on each cabinet; the coils emitters sending rings to nobody; the",
+     "drums battery cells, every one charged; the generator one ring and its light. gbacaves' colours, untouched.",
+     "TANOBY: an alphabet carved and never lit -- sandstone courses, the chamber's own colour as a band of pigment,",
+     "a frieze of the script cut into the back wall and one line of it along every maze wall; doors into the dark."],
+    dict(PP_FREE),
+    dict(OUT=(58, 44, 40), T1=(232, 212, 168), T2=(206, 180, 134), T3=(176, 146, 104), T4=(140, 112, 80),
+         T5=(96, 74, 56), N1=(120, 96, 70), N2=(190, 160, 118), F1=(232, 218, 182), F2=(212, 194, 154),
+         F3=(184, 164, 126), F4=(160, 140, 106), F5=(132, 112, 84), X1=(120, 92, 64), X2=(220, 204, 166),
+         B1=(236, 214, 164), B2=(204, 176, 124), B3=(180, 150, 104), B4=(130, 102, 72), B5=(84, 62, 46),
+         B6=(156, 126, 88), S1=(244, 232, 200), S2=(220, 204, 166), S3=(196, 178, 140), D1=(70, 54, 44),
+         D2=(44, 34, 30), D3=(24, 18, 18)),
+    dict(zone=A_pp_zone, housing=A_pp_housing, panel=A_pp_panel, coil=A_pp_coil, drums=A_pp_drums, gen=A_pp_gen,
+         floor=A_pp_floor),
+    dict(zone=A_tan_zone, frieze=A_tan_frieze, door=A_tan_door, face=A_tan_face, floor=A_tan_floor))
+
+B5 = direction5(
+    "B", "GROWING UNTENDED / THE READER CHANGED",
+    ["PLANT: the PLANT's other meaning -- nobody tends it and it grows: ivy up every housing, thick at the foot and",
+     "thin at the cap, the status lights still green in the leaves; moss in the seams; the drums planters; a vine",
+     "round each coil. gbacaves' colours, untouched; three greens in row 8's free slots for the planters.",
+     "TANOBY: 4.24 -- the same pages, only the reader changed: every inscription has a second line under it, the",
+     "machine's reading as holes punched in a tape; the doors tablets with one column of holes; the flags a ruled page."],
+    dict(PP_FREE, Q7=(40, 88, 44), Q8=(82, 150, 70), Q9=(150, 210, 110)),
+    dict(OUT=(40, 44, 54), T1=(226, 228, 220), T2=(204, 206, 198), T3=(178, 182, 178), T4=(146, 150, 150),
+         T5=(98, 104, 112), N1=(52, 58, 76), N2=(70, 128, 140), F1=(232, 230, 218), F2=(206, 204, 192),
+         F3=(176, 176, 166), F4=(150, 150, 142), F5=(120, 122, 118), X1=(150, 196, 200), X2=(196, 120, 110),
+         B1=(232, 228, 214), B2=(206, 200, 184), B3=(184, 178, 162), B4=(140, 136, 124), B5=(92, 92, 92),
+         B6=(164, 158, 142), S1=(244, 242, 234), S2=(218, 222, 216), S3=(190, 196, 192), D1=(70, 128, 140),
+         D2=(52, 58, 76), D3=(30, 36, 48)),
+    dict(zone=B_pp_zone, housing=B_pp_housing, panel=B_pp_panel, coil=B_pp_coil, drums=B_pp_drums, gen=B_pp_gen,
+         floor=B_pp_floor),
+    dict(zone=B_tan_zone, frieze=B_tan_frieze, door=B_tan_door, face=B_tan_face, floor=B_tan_floor))
+
+C5 = direction5(
+    "C", "OPEN SESSIONS / STRATUM",
+    ["PLANT: nobody connected -- every housing a patch panel, two rows of open ports each with its light listening,",
+     "a few leads plugged in and hanging to nothing; the walkways cable trays; the coils cable reels never unwound;",
+     "the drums transformers; the generator a switchboard of lit jacks (SENTINEL's MEAN LOOK: you may not DETACH).",
+     "TANOBY: STRATUM, TANOBY's lobe (the physical layer, memory laid down) -- every wall in bands of sediment, the",
+     "script surviving only in the oldest band at the foot and half worn away; the floor worn into shallow basins."],
+    dict(PP_FREE, Q4=(206, 120, 70)),
+    dict(OUT=(50, 40, 40), T1=(226, 204, 160), T2=(198, 150, 104), T3=(150, 118, 96), T4=(120, 128, 112),
+         T5=(76, 64, 60), N1=(232, 214, 176), N2=(176, 96, 70), F1=(214, 196, 160), F2=(190, 170, 134),
+         F3=(160, 140, 110), F4=(140, 120, 94), F5=(110, 94, 76), X1=(156, 160, 140), X2=(168, 148, 116),
+         B1=(230, 206, 160), B2=(196, 150, 100), B3=(170, 112, 80), B4=(120, 96, 80), B5=(76, 60, 56),
+         B6=(138, 140, 120), S1=(240, 224, 190), S2=(214, 196, 160), S3=(186, 170, 136), D1=(80, 64, 56),
+         D2=(54, 42, 40), D3=(30, 24, 24)),
+    dict(zone=C_pp_zone, housing=C_pp_housing, panel=C_pp_panel, coil=C_pp_coil, drums=C_pp_drums, gen=C_pp_gen,
+         floor=C_pp_floor),
+    dict(zone=C_tan_zone, frieze=C_tan_frieze, door=C_tan_door, face=C_tan_face, floor=C_tan_floor))
+STYLES5 = {"A": A5, "B": B5, "C": C5}
+
+
+# ---------------------------------------------------------------------------------------- pair 5's sheets
+ROOMS_PP = [("PowerPlant", "KEEPALIVE PLANT, the whole floor", None)]
+ROOMS_TAN = [(CHAMBERS[0], "MONEAN (row 11's colour)", None), (CHAMBERS[3], "DILFORD (row 12)", None),
+             (CHAMBERS[4], "SCUFIB (row 9)", None), (CHAMBERS[2], "WEEPTH (row 8)", None)]
+DETAILS5 = [("PowerPlant", (0, 0, 10, 8), "the entrance housings, a hatch, the coils"),
+            ("PowerPlant", (35, 2, 49, 8), "the drums and the coils"),
+            ("PowerPlant", (24, 33, 35, 40), "a generator, its crown over the housing"),
+            (CHAMBERS[0], (0, 0, 10, 6), "the back wall: cap, band, frieze, doors"),
+            (CHAMBERS[0], (2, 3, 12, 9), "a maze wall: its top and face"),
+            (CHAMBERS[3], (10, 0, 20, 6), "DILFORD's band in its own colour")]
+
+
+def contact_sheets5(out_dir, states):
+    names = list(states)
+    titles = {"NOW": ("NOW", ["today: KEEPALIVE PLANT is Nintendo's drawing in gbacaves' STILL RUNNING colours",
+                              "(batch E2: only its status lights and the moss in one seam are drawn); TANOBY is",
+                              "Nintendo's drawing and colours, with gbatowns' batch G carving 11 tiles (a DRAFT)."])}
+    for k in STYLES5:
+        titles[k] = ("%s %s" % (k, STYLES5[k]["title"]), STYLES5[k]["lines"])
+    pad = 10
+    paths = []
+    for which, rooms in (("plant", ROOMS_PP), ("tanoby", ROOMS_TAN)):
+        blocks = []
+        for k in names:
+            st = states[k]
+            ims = [(room(m, (st, None) if st else None, cr), cap) for m, cap, cr in rooms]
+            t, lines = titles[k]
+            th = 8 + 12 * len(lines) + 16
+            W = sum(i.width for i, _ in ims) + pad * (len(ims) + 1)
+            im = Image.new("RGB", (max(W, 1000), th + max(i.height for i, _ in ims) + pad), BG)
+            d = ImageDraw.Draw(im)
+            text(d, (pad, 6), t.split(" / ")[0], RED)
+            if " / " in t:
+                text(d, (pad, 18), "/ " + t.split(" / ")[1], RED)
+            for j, s in enumerate(lines):
+                text(d, (pad + 250, 6 + 12 * j), s)
+            x = pad
+            for i, cap in ims:
+                text(d, (x, th - 13), cap, SOFT)
+                im.paste(i, (x, th))
+                x += i.width + pad
+            blocks.append(im)
+        W = max(b.width for b in blocks)
+        sh = Image.new("RGB", (W, sum(b.height for b in blocks) + 30), BG)
+        d = ImageDraw.Draw(sh)
+        text(d, (pad, 8), "T-447 DRAFT, pair 5 -- %s, the real map%s at 1x, three directions beside today's (redrawn in "
+                          "place: no block, collision or palette row moves; 0 new tiles)" %
+             (("KEEPALIVE PLANT", "") if which == "plant" else ("four of TANOBY's seven chambers", "s")), INK)
+        y = 30
+        for b in blocks:
+            sh.paste(b, (0, y))
+            y += b.height
+        p = os.path.join(out_dir, "t447p5_%s_1x.png" % which)
+        sh.save(p)
+        paths.append(p)
+    #  3x details
+    for part, idxs in ((1, (0, 1, 2)), (2, (3, 4, 5))):
+        rowsim = []
+        for k in names:
+            crops = []
+            for i in idxs:
+                m, cr, cap = DETAILS5[i]
+                im = room(m, (states[k], None) if states[k] else None, cr)
+                crops.append((im.resize((im.width * 3, im.height * 3), Image.NEAREST), cap))
+            rowsim.append((k, crops))
+        cw = sum(c.width for c, _ in rowsim[0][1]) + pad * (len(idxs) + 1) + 130
+        ch = max(c.height for c, _ in rowsim[0][1]) + 24
+        det = Image.new("RGB", (cw, ch * len(names) + 30), BG)
+        d = ImageDraw.Draw(det)
+        text(d, (pad, 8), "T-447 DRAFT, pair 5 -- details at 3x (%s)" %
+             ("KEEPALIVE PLANT" if part == 1 else "TANOBY"), INK)
+        y = 30
+        for k, crops in rowsim:
+            text(d, (pad, y + 6), titles[k][0][:18], RED)
+            x = 130
+            for c, cap in crops:
+                text(d, (x, y + 2), cap, SOFT)
+                det.paste(c, (x, y + 16))
+                x += c.width + pad
+            y += ch
+        p = os.path.join(out_dir, "t447p5_detail_3x_%d.png" % part)
+        det.save(p)
+        paths.append(p)
+    #  the tiles at 3x, each set in its home rows; and the script
+    cols = []
+    for k in names:
+        st = states[k]
+        imgs = []
+        for key, S in SETS5.items():
+            tiles, pals = st[key] if st else (S.cur, {r: TODAY5[key, r] for r in range(16)})
+            used_rows = sorted({t // 16 for t in owned5(key)})
+            strip = Image.new("RGB", (128, 8 * len(used_rows)), (236, 236, 236))
+            o = strip.load()
+            for j, rr in enumerate(used_rows):
+                for t in range(rr * 16, rr * 16 + 16):
+                    if t not in owned5(key):
+                        continue
+                    hr = home5(S, t)
+                    for q in range(64):
+                        vv = tiles[t][q]
+                        o[(t % 16) * 8 + q % 8, j * 8 + q // 8] = tuple(pals[hr][vv]) if vv else (200, 200, 200)
+            imgs.append((S.dir.split("/")[-1] + " (rows of the sheet that maps place)", strip))
+        hh = sum(i.height * 3 + 16 for _, i in imgs)
+        col = Image.new("RGB", (384, hh), BG)
+        y = 0
+        dd = ImageDraw.Draw(col)
+        for lab, i in imgs:
+            dd.text((0, y), lab, fill=SOFT)
+            col.paste(i.resize((i.width * 3, i.height * 3), Image.NEAREST), (0, y + 14))
+            y += i.height * 3 + 16
+        cols.append((titles[k][0], col))
+    #  the script itself, at 6x: every glyph, and its distance from the nearest letter
+    gs = Image.new("RGB", (len(GLYPHS) * 40 + 8, 56), BG)
+    go = gs.load()
+    for n, g in enumerate(GLYPHS):
+        for yy in range(5):
+            for xx in range(3):
+                if g[yy][xx]:
+                    for a in range(8):
+                        for b in range(8):
+                            go[8 + n * 40 + xx * 8 + a, 8 + yy * 8 + b] = (60, 44, 36)
+    W = max(sum(c.width + pad for _, c in cols) + pad, gs.width + 2 * pad)
+    sh = Image.new("RGB", (W, max(c.height for _, c in cols) + 50 + gs.height + 40), BG)
+    d = ImageDraw.Draw(sh)
+    text(d, (pad, 6), "T-447 DRAFT, pair 5 -- the tiles at 3x, each in its home row (grey: transparent; only the "
+                      "sheet's rows that maps place)", INK)
+    x = pad
+    for t, c in cols:
+        text(d, (x, 26), t[:44], RED)
+        sh.paste(c, (x, 42))
+        x += c.width + pad
+    y = 42 + max(c.height for _, c in cols) + 8
+    text(d, (pad, y), "TANOBY's script: %d glyphs, each at least %d cells from every letter and digit in any turn or "
+                      "mirror (nearest: %d)" % (len(GLYPHS), GLYPH_MIN, min(glyph_distance(g) for g in GLYPHS)), INK)
+    sh.paste(gs, (pad, y + 16))
+    p = os.path.join(out_dir, "t447p5_tiles_3x.png")
+    sh.save(p)
+    paths.append(p)
+    return paths
+
+
+# ---------------------------------------------------------------------------------------- pair 5's report
+def _literal(path, name):
+    """a module-level literal of another tool, read without importing it"""
+    import ast
+    tree = ast.parse(open(path, encoding="utf-8").read())
+    for node in tree.body:
+        if isinstance(node, ast.Assign) and any(isinstance(t, ast.Name) and t.id == name for t in node.targets):
+            return ast.literal_eval(node.value)
+    return None
+
+
+def report5():
+    bad = 0
+    print("\n  pair 5 (KEEPALIVE PLANT + TANOBY) -- DRAFT, %s" %
+          ("APPROVED %s" % {k: APPROVED[k] for k in SETS5 if k in APPROVED} if any(k in APPROVED for k in SETS5)
+           else "not approved: `--pair 5 --write --approved` refuses"))
+    for key, S in SETS5.items():
+        own = owned5(key)
+        van = [t for t in own if S.cur[t] == S.van[t] and len(set(S.van[t])) > 1]
+        rows = sorted({r for t in own for r in S.use[t]["rows"]})
+        changed = [r for r in range(16) if [tuple(c) for c in S.vpal[r]] != TODAY5[key, r]]
+        print("    %-16s %3d tiles drawn here, %d still Nintendo's drawing; rows placed %s, own %s; rows recoloured "
+              "since vanilla %s" % (NAMES[key], len(own), len(van), rows, S.rows, changed or "none"))
+    #  the groups
+    cnt = collections.Counter()
+    for key, setkey, lay, kind, what in GROUPS5:
+        if kind == "obj":
+            print("      %-4s %-8s %s" % (setkey, key, what))
+        else:
+            cnt[setkey] += 1
+    print("      and %d plant / %d TANOBY block layers, drawn through each direction's zones" % (cnt["pp"], cnt["tan"]))
+    #  the script
+    dmin = min(glyph_distance(g) for g in GLYPHS)
+    print("    TANOBY's script: %d glyphs, nearest to a letter or digit %d cells (needs %d)" % (len(GLYPHS), dmin,
+                                                                                         GLYPH_MIN))
+    if dmin < GLYPH_MIN or len(GLYPHS) < 16:
+        print("  !! the script has a glyph that could be read, or too few glyphs")
+        bad = 1
+    #  the guards in the other tools
+    caves = _literal(os.path.join(ROOT, "tools", "gbacaves.py"), "T447_PLANT")
+    if caves is None or set(caves) != set(owned5("pp")):
+        print("  !! gbacaves.T447_PLANT is not this pair's plant tiles (%d): its write could redraw them"
+              % len(owned5("pp")))
+        bad = 1
+    else:
+        print("    gbacaves.T447_PLANT names the plant's %d tiles: its write keeps them as the engine has them; its rows "
+              "7 and 8 are kept here (CAVES_PLANT)" % len(caves))
+    towns = _literal(os.path.join(ROOT, "tools", "gbatowns.py"), "LANDMARKS") or {}
+    boxed = {b[0] for b in towns.get("tanoby_ruins", [])}
+    if boxed != set(CHAMBERS):
+        print("  !! gbatowns.LANDMARKS does not hold all seven chambers (%s): its write could redraw TANOBY"
+              % sorted(set(CHAMBERS) - boxed))
+        bad = 1
+    else:
+        print("    gbatowns.LANDMARKS holds all seven chambers: its write keeps every TANOBY tile as it is")
+    print("    gbapreviews: the chamber's name card (T-445) and the plant's -- pictures, not these tiles; gbamachines: "
+          "the plant's consoles (primary/building); gbatowns: the chamber doors on SEVEN ISLAND (sevii_islands_67)")
+    known = {"gbacaves.py", "gbatowns.py", "gbamachines.py", "gbapreviews.py", "port_music.py"}
+    found = set()
+    me = os.path.basename(__file__)
+    for f in sorted(glob.glob(os.path.join(ROOT, "tools", "*.py"))):
+        if os.path.basename(f) == me:
+            continue
+        src = open(f, encoding="utf-8", errors="ignore").read()
+        if re.search(r"power_plant|PowerPlant|tanoby_ruins|TanobyRuins", src):
+            found.add(os.path.basename(f))
+    if found - known:
+        print("  !! a tool this one does not know names these tilesets: %s -- read it before a write" %
+              sorted(found - known))
+        bad = 1
+    #  each direction: footprints, gbacaves' colours, the chambers' slots, rows 8..12 one ladder
+    for k, D in STYLES5.items():
+        sets, own = draw5(D)
+        for key, S in SETS5.items():
+            tiles, pals = sets[key]
+            moved = [t for t in range(S.nvan) if any((a == 0) != (b == 0) for a, b in zip(tiles[t], S.cur[t]))]
+            if moved:
+                print("  !! %s %s: tiles %s change their footprint" % (k, key, moved[:10]))
+                bad = 1
+            for (sk, r), slots in FIXED5.items():
+                if sk == key and any(tuple(pals[r][i]) != TODAY5[sk, r][i] for i in slots):
+                    print("  !! %s %s row %d: a kept slot changed" % (k, key, r))
+                    bad = 1
+            if any(tiles[t] != S.cur[t] for t in range(S.nvan) if (key, t) in VOID5):
+                print("  !! %s: the void was drawn" % k)
+                bad = 1
+        tp = sets["tan"][1]
+        if any(tp[r][1:14] != tp[8][1:14] for r in CHAMBER_ROWS):
+            print("  !! %s: TANOBY rows 8..12 differ in 1..13 (the back wall's shared tiles)" % k)
+            bad = 1
+        n = {key: sum(1 for t in owned5(key) if sets[key][0][t] != SETS5[key].van[t]) for key in SETS5}
+        print("    %s %-38s redrawn: power_plant %d of %d, tanoby_ruins %d of %d; 0 new tiles; kept slots kept" %
+              (k, D["title"], n["pp"], len(owned5("pp")), n["tan"], len(owned5("tan"))))
+    return bad
+
+
+def check_engine5():
+    bad = 0
+    for bkey, pick in APPROVED.items():
+        if bkey not in SETS5:
+            continue
+        sets, _ = draw5(STYLES5[pick], only=bkey)
+        S = SETS5[bkey]
+        off = [t for t in range(len(S.cur)) if sets[bkey][0][t] != S.cur[t]]
+        rows = [r for r in S.rows if sets[bkey][1][r] != TODAY5[bkey, r]]
+        if off or rows:
+            print("  !! %s: the engine differs from `--pair 5 --write --approved` (%s) in tiles %s rows %s"
+                  % (NAMES[bkey], pick, off[:12], rows))
+            bad = 1
+    return bad
+
+
+def main5():
+    picks = {k: APPROVED[k] for k in SETS5 if k in APPROVED}
+    if WRITE:
+        if "--approved" not in ARGS or not picks:
+            print("  --write refused: T-447 pair 5 is a draft. APPROVED holds no pick for it (%s); the user picks a "
+                  "direction per\n  building first, it goes into APPROVED (\"pp\": X, \"tan\": Y), then "
+                  "`--pair 5 --write --approved` writes power_plant's\n  tiles and rows 7, 8 (gbacaves' slots kept) and "
+                  "tanoby_ruins' tiles and rows 7..12 (each chamber's slots kept)." % (picks or "empty"))
+            return 1
+        for bkey, pick in picks.items():
+            sets, _ = draw5(STYLES5[pick], only=bkey)
+            S = SETS5[bkey]
+            G.save_like(os.path.join(GBA, S.dir, "tiles.png"), sets[bkey][0], os.path.join(GBA, S.dir, "tiles.png"))
+            for r in S.rows:
+                write_pal(os.path.join(GBA, S.dir, "palettes", "%02d.pal" % r), sets[bkey][1][r])
+            print("  written: %s, direction %s" % (NAMES[bkey], pick))
+        return 0
+    bad = report()
+    if DRAFT is not None:
+        out = DRAFT if DRAFT != DRAFT_DEFAULT else DRAFT5_DEFAULT
+        os.makedirs(out, exist_ok=True)
+        states = collections.OrderedDict()
+        states["NOW"] = None
+        summary = {}
+        for k, D in STYLES5.items():
+            sets, owner = draw5(D)
+            for key, S in SETS5.items():
+                dd = os.path.join(out, k, S.dir.split("/")[-1])
+                os.makedirs(os.path.join(dd, "palettes"), exist_ok=True)
+                G.save_like(os.path.join(GBA, S.dir, "tiles.png"), sets[key][0], os.path.join(dd, "tiles.png"))
+                for r in S.rows:
+                    write_pal(os.path.join(dd, "palettes", "%02d.pal" % r), sets[key][1][r])
+            states[k] = sets
+            ch = {key: sum(1 for t in owned5(key) if sets[key][0][t] != SETS5[key].van[t]) for key in SETS5}
+            summary[k] = dict(title=D["title"], lines=D["lines"], tiles_redrawn=ch, new_tiles=0,
+                              rows={"power_plant": PP.rows, "tanoby_ruins": TAN.rows})
+        json.dump(dict(ticket="T-447", pair=5, status="DRAFT -- not in the engine",
+                       approved={k: APPROVED[k] for k in SETS5 if k in APPROVED}, directions=summary,
+                       glyphs=["".join(str(c) for r in g for c in r) for g in GLYPHS]),
+                  open(os.path.join(out, "directions.json"), "w"), indent=1)
+        for p in contact_sheets5(out, states):
+            print("  sheet:", p)
+    if APPROVED:
+        bad = check_engine() or bad
+    return 1 if bad else 0
+
+
 # ============================================================================================ report
 def claims():
     """every other tool that names these tilesets or the diary's tiles"""
@@ -1984,6 +3427,7 @@ def report():
     print("  every direction keeps the stones (but the floor around them), the stones' slots, and the station's sketch")
     print("  scripted blocks: the switch 0x314/0x315/0x316 <-> 0x34D/0x34E/0x34F and the gates 0x2F8..0x372 keep "
           "their ids; their tiles are drawn as OFF/ON and SHUT (switch sheet)")
+    bad |= report5()
     return bad
 
 
@@ -1991,6 +3435,8 @@ def check_engine():
     """with a pick approved, the engine must be exactly what `--write --approved` makes"""
     bad = 0
     for bkey, pick in APPROVED.items():
+        if bkey not in SETS:
+            continue                                   # pair 5's picks: check_engine5
         sets, prim, _ = draw(STYLES[pick], only=bkey)
         S = SETS[bkey]
         off = [t for t in range(len(S.cur)) if sets[bkey][0][t] != S.cur[t]]
@@ -2000,12 +3446,15 @@ def check_engine():
             print("  !! %s: the engine differs from `--write --approved` (%s) in tiles %s rows %s diary %s"
                   % (NAMES[bkey], pick, off[:12], rows, dia))
             bad = 1
+    bad |= check_engine5()
     if APPROVED and not bad:
         print("  the engine matches `--write --approved` (%s)" % APPROVED)
     return bad
 
 
 def main():
+    if PAIR == "5":
+        return main5()
     if WRITE:
         if "--approved" not in ARGS or not APPROVED:
             print("  --write refused: T-447 pair 4 is a draft. APPROVED is %s; the user picks a direction per building "
@@ -2014,6 +3463,8 @@ def main():
                   "tiles and rows 7, 8, 9, 12 (never the stones' slots)." % (APPROVED or "empty"))
             return 1
         for bkey, pick in APPROVED.items():
+            if bkey not in SETS:
+                continue                               # pair 5 writes only with --pair 5
             sets, prim, _ = draw(STYLES[pick], only=bkey)
             S = SETS[bkey]
             G.save_like(os.path.join(GBA, S.dir, "tiles.png"), sets[bkey][0], os.path.join(GBA, S.dir, "tiles.png"))
