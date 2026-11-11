@@ -71,7 +71,9 @@ LATER_T537 = {134, 135, 136, 150, 151, 152, 157, 158, 159, 173, 174, 175, 185, 1
 #  lab lounge's rug border and side blinds, and lab-lobby tile 368 -- the leftovers T-537 named.
 LATER_T538 = {512, 513, 514, 515, 528, 529, 530, 531, 544, 545, 546, 547, 522, 523, 524, 538, 539, 540, 554, 555, 556,
               171, 180, 181, 187, 196, 197, 420, 421, 436, 432, 433, 368}
-LATER = LATER_T537 | LATER_T538
+#  T-447 (gbalandmarkrooms.py, pair 4, drafted 2026-11-10): the MANSION's open diary, drawn from the story as the LOG.
+LATER_T447 = {602, 603, 618, 619}
+LATER = LATER_T537 | LATER_T538 | LATER_T447
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
@@ -1226,7 +1228,8 @@ def summary(use, owner):
         ts = sorted(t for t in tiles if t in use and t not in owner and t not in LATER)
         left.append(dict(key=key, why=why, tiles=ts, draws=sum(use[t]["draws"] for t in ts)))
     for who, s, why in (("T-537", LATER_T537, "the desks and machines: gbamachines.py draws them (LATER)"),
-                        ("T-538", LATER_T538, "beds, doorways, partitions, the lounge rug and blinds, 368: gbahomes.py (LATER)")):
+                        ("T-538", LATER_T538, "beds, doorways, partitions, the lounge rug and blinds, 368: gbahomes.py (LATER)"),
+                        ("T-447", LATER_T447, "the MANSION's diary: gbalandmarkrooms.py draws it (LATER)")):
         ts = sorted(t for t in s if t in use)
         left.append(dict(key=who, why=why, tiles=ts, draws=sum(use[t]["draws"] for t in ts)))
     known = set(owner) | {t for _, s, _ in LEFT for t in s} | KEEP | LATER
