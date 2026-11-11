@@ -13,6 +13,18 @@ set -euo pipefail
 ARG="${1:?usage: build-pdf.sh <version|file.md>   e.g. build-pdf.sh 1.2   |   build-pdf.sh lineage.md}"
 DOCS="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# Chrome can write the whole PDF and then crash on its way out (2026-11-11: a
+# teardown watchdog, exit 2), and under set -e that exit used to abort before the
+# mv, leaving no PDF and no message. Judge the run by the file, not the exit code.
+print_pdf() {
+  local out="$1" url="$2"
+  "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+    --headless --disable-gpu --no-sandbox \
+    --no-pdf-header-footer --print-to-pdf-no-header \
+    --print-to-pdf="$out" "$url" 2>/dev/null || true
+  [ -s "$out" ] || { echo "Chrome wrote no PDF for $url" >&2; exit 1; }
+}
+
 if [[ "$ARG" == *.html ]]; then
   # An html doc is already styled and already standalone -- Chrome prints it
   # directly, no pandoc and no style.css. This is how type-chart.pdf is cut.
@@ -22,9 +34,7 @@ if [[ "$ARG" == *.html ]]; then
   CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
   [ -x "$CHROME" ] || { echo "Chrome not found at $CHROME" >&2; exit 1; }
   TMPD="$(mktemp -d)"; trap 'rm -rf "$TMPD"' EXIT
-  "$CHROME" --headless --disable-gpu --no-sandbox \
-    --no-pdf-header-footer --print-to-pdf-no-header \
-    --print-to-pdf="$TMPD/out.pdf" "file://$SRC" 2>/dev/null
+  print_pdf "$TMPD/out.pdf" "file://$SRC"
   mv "$TMPD/out.pdf" "$OUT"
   echo "wrote $OUT"
   exit 0
@@ -56,9 +66,7 @@ pandoc "$SRC" \
   --include-in-header="$TMP/head.html" \
   --output="$TMP/bible.html"
 
-"$CHROME" --headless --disable-gpu --no-sandbox \
-  --no-pdf-header-footer --print-to-pdf-no-header \
-  --print-to-pdf="$TMP/out.pdf" "file://$TMP/bible.html" 2>/dev/null
+print_pdf "$TMP/out.pdf" "file://$TMP/bible.html"
 
 mv "$TMP/out.pdf" "$OUT"
 echo "wrote $OUT"
