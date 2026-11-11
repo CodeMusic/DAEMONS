@@ -469,3 +469,69 @@ T-542 batch 2 (DRAFT): the cave mouth in the islands' row 12 (FOUR ISLAND), A, B
 T-542 batch 2 (DRAFT): the 75 tiles at 3x in their two most-drawn rows, today and A, B, C (only the cave mouth differs)
 
 ![10Nov2026 - T542 - batch 2 tiles at 3x - 82](10Nov2026%20-%20T542%20-%20batch%202%20tiles%20at%203x%20-%2082.png)
+
+### 10Nov2026 - T542 - VERDIGRIS north built - 83
+
+T-542 batch 2 built (DRAFT), the user 2026-11-10: build as drawn; cave mouth A. Decoded from the engine's sources: VERDIGRIS CITY's north row -- bronze standing seams with bloom runs, patina walls, dark panes with a glint
+
+![10Nov2026 - T542 - VERDIGRIS north built - 83](10Nov2026%20-%20T542%20-%20VERDIGRIS%20north%20built%20-%2083.png)
+
+### 10Nov2026 - T542 - VERDIGRIS south built - 84
+
+T-542 batch 2 built (DRAFT), the user 2026-11-10: build as drawn; cave mouth A. Decoded from the engine's sources: VERDIGRIS CITY's south row
+
+![10Nov2026 - T542 - VERDIGRIS south built - 84](10Nov2026%20-%20T542%20-%20VERDIGRIS%20south%20built%20-%2084.png)
+
+### 10Nov2026 - T542 - CALLOW green house built - 85
+
+T-542 batch 2 built (DRAFT), the user 2026-11-10: build as drawn; cave mouth A. Decoded from the engine's sources: CALLOW CITY's green house -- the calmed standing seam, level boards, timber posts
+
+![10Nov2026 - T542 - CALLOW green house built - 85](10Nov2026%20-%20T542%20-%20CALLOW%20green%20house%20built%20-%2085.png)
+
+### 10Nov2026 - T542 - DOLDRUM long houses built - 86
+
+T-542 batch 2 built (DRAFT), the user 2026-11-10: build as drawn; cave mouth A. Decoded from the engine's sources: DOLDRUM CITY's long houses in siding, a fence post
+
+![10Nov2026 - T542 - DOLDRUM long houses built - 86](10Nov2026%20-%20T542%20-%20DOLDRUM%20long%20houses%20built%20-%2086.png)
+
+### 10Nov2026 - T542 - BRAZEN hips built - 87
+
+T-542 batch 2 built (DRAFT), the user 2026-11-10: build as drawn; cave mouth A. Decoded from the engine's sources: BRAZEN CITY's houses, the roof hips in the roof's own seam
+
+![10Nov2026 - T542 - BRAZEN hips built - 87](10Nov2026%20-%20T542%20-%20BRAZEN%20hips%20built%20-%2087.png)
+
+### 10Nov2026 - T542 - BRAZEN kiosks built - 88
+
+T-542 batch 2 built (DRAFT), the user 2026-11-10: build as drawn; cave mouth A. Decoded from the engine's sources: BRAZEN's crossing, the kiosks' domes in rolled sheet
+
+![10Nov2026 - T542 - BRAZEN kiosks built - 88](10Nov2026%20-%20T542%20-%20BRAZEN%20kiosks%20built%20-%2088.png)
+
+### 10Nov2026 - T542 - LURID built - 89
+
+T-542 batch 2 built (DRAFT), the user 2026-11-10: build as drawn; cave mouth A. Decoded from the engine's sources: LURID CITY, VERDIGRIS's drawing in LURID's grey roofs
+
+![10Nov2026 - T542 - LURID built - 89](10Nov2026%20-%20T542%20-%20LURID%20built%20-%2089.png)
+
+### 10Nov2026 - T542 - ARDOR walls built - 90
+
+T-542 batch 2 built (DRAFT), the user 2026-11-10: build as drawn; cave mouth A. Decoded from the engine's sources: ARDOR CITY's walls in VERDIGRIS's patina runs
+
+![10Nov2026 - T542 - ARDOR walls built - 90](10Nov2026%20-%20T542%20-%20ARDOR%20walls%20built%20-%2090.png)
+
+### 10Nov2026 - T542 - THREE ISLAND roof built - 91
+
+T-542 batch 2 built (DRAFT), the user 2026-11-10: build as drawn; cave mouth A. Decoded from the engine's sources: THREE ISLAND, CALLOW's roof drawn in General's red row
+
+![10Nov2026 - T542 - THREE ISLAND roof built - 91](10Nov2026%20-%20T542%20-%20THREE%20ISLAND%20roof%20built%20-%2091.png)
+
+### 10Nov2026 - T542 - ROUTE 2 blue house built - 92
+
+T-542 batch 2 built (DRAFT), the user 2026-11-10: build as drawn; cave mouth A. Decoded from the engine's sources: ROUTE 2's blue house (every route's house) -- level boards, timber posts, the seam down its hip
+
+![10Nov2026 - T542 - ROUTE 2 blue house built - 92](10Nov2026%20-%20T542%20-%20ROUTE%202%20blue%20house%20built%20-%2092.png)
+
+### 10Nov2026 - T542 - ROUTE 4 cave mouth built, A - 93
+
+T-542 batch 2 built (DRAFT), the user 2026-11-10: build as drawn; cave mouth A. Decoded from the engine's sources: ROUTE 4's cave mouth as A THE ROCK'S OWN MOUTH -- pass 3's chunky stones carried to the lip
+
+![10Nov2026 - T542 - ROUTE 4 cave mouth built, A - 93](10Nov2026%20-%20T542%20-%20ROUTE%204%20cave%20mouth%20built%2C%20A%20-%2093.png)

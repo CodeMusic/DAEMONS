@@ -23,7 +23,7 @@
                                                    #   three, and the 75 tiles at 3x
     python3 tools/gbaprimary.py --write --batch 2 --approved --pick X
                                                    # batch 2 into the engine: refused unless X is in APPROVED_B2
-                                                   #   (empty: the user has not picked)
+                                                   #   ({"A"}: the user, 2026-11-10, "build as drawn; cave mouth A")
 
 WHAT IS LEFT (census item 7, re-measured on today's engine). T-438 batch C (gbageneral.py) re-surfaced General's
 ground -- the rock, the LEDGES, sand and paving -- and drew its motifs: the FENCES, the SIGNPOSTS, the bushes and the
@@ -613,8 +613,9 @@ def check_engine(use):
         print("  !! general: the engine differs from `--write --approved --pick %s` in tiles %s%s -- find which side is "
               "right" % (pick, off[:12], ("; reserved indices drawn in %s" % reserved) if reserved else ""))
         return 1
-    print("  the engine matches `--write --approved --pick %s` (batch 1, %d tiles; no reserved index drawn)"
-          % (pick, len(BATCH1)))
+    print("  the engine matches `--write --approved --pick %s` (batch 1, %d tiles%s; no reserved index drawn)"
+          % (pick, len(BATCH1), (", and batch 2's --pick %s, %d tiles" % (next(iter(APPROVED_B2)), len(B2_TILES)))
+             if len(APPROVED_B2) == 1 else ""))
     return 0
 
 
@@ -627,7 +628,7 @@ def check_engine(use):
 #  material or nothing keeps vanilla's index (outline, silhouette, sill); an index no material names keeps vanilla's.
 #  A tile drawn in several towns' rows is ONE drawing: its ramps keep only indices whose light-to-dark order holds in
 #  every row it is drawn in, so it reads as the same drawing in each town's colours.
-APPROVED_B2 = set()                  # the user's pick for batch 2 ("A", "B" or "C"); --write --batch 2 refuses others
+APPROVED_B2 = {"A"}                  # the user, 2026-11-10: build as drawn; cave mouth A (--write --batch 2 refuses others)
 DRAFT_B2 = os.path.join(ROOT, "gfx", "drafts", "t542_b2")
 BATCH = argval("--batch")            # --draft: 2 unless given (batch 1 is built); --write: 1 unless given
 

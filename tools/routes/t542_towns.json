@@ -1,0 +1,104 @@
+{
+ "rom": "debug",
+ "about": "T-542 batch 2, THE TOWN PIECES (the user, 2026-11-10: build as drawn; cave mouth A), DRAFT: 66 of primary/general's tiles redrawn in place in each town's own look (gbaprimary.py --write --batch 2 --approved --pick A); no block, palette, behaviour or map moved. Each map warped to by name. Watch held at day. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "VERDIGRIS CITY: the buildings in bronze standing seams with bloom runs, patina walls, dark panes with a glint",
+   "steps": [
+    "goto CeladonCity",
+    "close",
+    "wait 60",
+    "shot VERDIGRIS CITY: the buildings in bronze standing seams with bloom runs, patina walls, dark panes with a glint"
+   ]
+  },
+  {
+   "stop": "CALLOW CITY: the green house -- the calmed standing seam, level boards, timber posts",
+   "steps": [
+    "goto ViridianCity",
+    "close",
+    "wait 60",
+    "shot CALLOW CITY: the green house -- the calmed standing seam, level boards, timber posts"
+   ]
+  },
+  {
+   "stop": "DOLDRUM CITY: the long houses' walls in siding, a fence post",
+   "steps": [
+    "goto CeruleanCity",
+    "close",
+    "wait 60",
+    "shot DOLDRUM CITY: the long houses' walls in siding, a fence post"
+   ]
+  },
+  {
+   "stop": "BRAZEN CITY: the houses' roof hips in the roof's own seam",
+   "steps": [
+    "goto SaffronCity",
+    "close",
+    "wait 60",
+    "shot BRAZEN CITY: the houses' roof hips in the roof's own seam"
+   ]
+  },
+  {
+   "stop": "BRAZEN's crossing: the kiosks' domes in rolled sheet",
+   "steps": [
+    "goto SaffronCity_Connection",
+    "close",
+    "wait 60",
+    "shot BRAZEN's crossing: the kiosks' domes in rolled sheet"
+   ]
+  },
+  {
+   "stop": "LURID CITY: VERDIGRIS's drawing in LURID's grey roofs",
+   "steps": [
+    "goto FuchsiaCity",
+    "close",
+    "wait 60",
+    "shot LURID CITY: VERDIGRIS's drawing in LURID's grey roofs"
+   ]
+  },
+  {
+   "stop": "ARDOR CITY: the walls in VERDIGRIS's patina, the quay's stucco coping (and its rain)",
+   "steps": [
+    "goto VermilionCity",
+    "close",
+    "wait 60",
+    "shot ARDOR CITY: the walls in VERDIGRIS's patina, the quay's stucco coping (and its rain)"
+   ]
+  },
+  {
+   "stop": "THREE ISLAND: CALLOW's roof drawn in General's red row",
+   "steps": [
+    "goto ThreeIsland",
+    "close",
+    "wait 60",
+    "shot THREE ISLAND: CALLOW's roof drawn in General's red row"
+   ]
+  },
+  {
+   "stop": "ROUTE 2: the blue house -- every route's house -- in level boards, timber posts, the seam down its hip",
+   "steps": [
+    "goto Route2",
+    "close",
+    "wait 60",
+    "shot ROUTE 2: the blue house -- every route's house -- in level boards, timber posts, the seam down its hip"
+   ]
+  },
+  {
+   "stop": "ROUTE 4: the cave mouth, A THE ROCK'S OWN MOUTH -- the chunky stones carried to the lip",
+   "steps": [
+    "goto Route4",
+    "close",
+    "wait 60",
+    "shot ROUTE 4: the cave mouth, A THE ROCK'S OWN MOUTH -- the chunky stones carried to the lip"
+   ]
+  }
+ ]
+}

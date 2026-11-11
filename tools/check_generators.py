@@ -97,8 +97,9 @@ ARGS = {
     "gbamuseum": [["--approved", "--pick", "A"]],
     #  T-542 batch 1: the same shape; the user picked "A Hearth" on 2026-11-10. The write redraws batch 1's 53 tiles of
     #  primary/general's tiles.png (THE ROAD GATES; never a palette, block or map), and the report exits 1 when the
-    #  engine is not what that write makes.
-    "gbaprimary": [["--approved", "--pick", "A"]],
+    #  engine is not what that write makes. Batch 2 (THE TOWN PIECES): the user, 2026-11-10, "build as drawn; cave
+    #  mouth A" -- its write is a second run, each sandboxed on its own; the report checks both batches either way.
+    "gbaprimary": [["--approved", "--pick", "A"], ["--batch", "2", "--approved", "--pick", "A"]],
     #  T-532: genmusaiseasons needs no flag (the user decided the build 2026-11-08): it writes the 18 seasonal forms --
     #  copies of today's art until gfx/drafts/t532_musai_seasons/finals/ holds a drawing NAMED IN ITS APPROVED_FINAL
     #  (the user's picks, 2026-11-08), the approved summers into gfx/daemons/, and its table and coordinates blocks --
