@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Put a workflow file onto one of the user's n8n servers, and switch it on (2026-10-07).
 
-    python3 ai/n8n/push.py internal "ai/n8n/DAEMONS - daemon_talk (internal).json"
-    python3 ai/n8n/push.py public   "ai/n8n/public-relay/DAEMONS Public - daemon_talk relay.json"
+    python3 ai/n8n/push.py internal "ai/n8n/DAEMONS - daemon_voice (internal).json"
+    python3 ai/n8n/push.py public   "ai/n8n/public-relay/DAEMONS Public - daemon_voice relay.json"
+
+(daemon/talk and daemon/hear are the companion's now: daemons-companion seer/n8n, pushed by its own push.py.)
     ... --off        import or update it, but leave it switched off
 
 A workflow already there under the same name is UPDATED in place (its id, and so its webhook, stays); otherwise it is

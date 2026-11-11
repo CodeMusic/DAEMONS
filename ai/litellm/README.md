@@ -203,8 +203,9 @@ streamed back as it comes. A request needs a key LiteLLM itself takes (it asks L
 remembers a hash of an accepted one for ten minutes); it reads no LiteLLM key of its own. Launch agent
 `ca.codemusic.daemons.tiinyvoice`, log `~/Library/Logs/daemons-tiiny-voice.log`.
 
-    scp -r ai/litellm/tiiny-voice-stream roverbyte@roverbyteseer:~/daemons-tiiny-voice
-    ssh roverbyte@roverbyteseer 'bash ~/daemons-tiiny-voice/install.sh'
+**Moved to the companion** (2026-11-11, companion C-340): it is now `seer/tiiny-voice/` in
+[daemons-companion's local cloud](https://github.com/CodeMusic/daemons-companion/tree/main/seer), installed with the rest by `seer/bindSeer.sh` (with a Tiiny), as are sleep
+sounds (C-334, :4002). This file keeps the AI-play harness's own LiteLLM notes.
 
 The hub uses it through its `tiiny.stream` setting (THE TIINY in the companion's settings): first words about 3 s after
 the hub is asked, where LiteLLM gave them at 13.

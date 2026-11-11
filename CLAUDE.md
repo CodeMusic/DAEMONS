@@ -313,7 +313,7 @@ sprites at `--size 512x512`; never run the paid AI playtester (a local one on th
 the user's personal story stays in `docs/private/` and reaches the game only as fable -- no real names, company,
 medical detail or emails; DAEMONS is said **DAY-mons** -- never write the frightening word it is taken for in
 anything a reader sees, and every line handed to a voice is respelled daymon(s) first (the companion's `sayable()`,
-`ai/n8n/make_workflows.py` `SAYABLE`, `tools/bookaudio.py`; its app/AGENTS.md lists every speech path).
+the companion's `seer/n8n/make_workflows.py` `SAYABLE`, `tools/bookaudio.py`; its app/AGENTS.md lists every speech path).
 
 ## Releasing ROMs
 
