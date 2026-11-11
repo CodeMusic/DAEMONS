@@ -6307,22 +6307,31 @@ def smoke_at():
     return (int(m.group(1)), int(m.group(2))) if m else (49, 78)
 
 
+def wake_at():
+    """(x offset from the ship's sprite x, screen y) where src/ss_anne.c sets the wake"""
+    src = open(os.path.join(GBA, "src/ss_anne.c")).read()
+    m = re.search(r"CreateWakeBehindBoat\(void\)\s*\{.*?x2 \+ (\d+);.*?sWakeSpriteTemplate, x, (\d+),", src, re.S)
+    return (int(m.group(1)), int(m.group(2))) if m else (80, 109)
+
+
 FUNNEL_MOUTH = (72, 84, 1)       # genships' funnel: its mouth's columns and top row in the 128x64 picture
 
 
 def departure_scene(ship, smoke, wake, frame=1, scale=1):
     """the ship as the cutscene sets her up: her sprite at (88, 80) -- the 128x64 object is drawn from subsprites at
     x -32/+32 and y -16/+16, so her picture spans (56..183, 64..127) -- the smoke where src/ss_anne.c sets it
-    (smoke_at(), each frame drifted right a pixel per 4 ticks), the wake at +80 (y 109)"""
+    (smoke_at(), each frame drifted right a pixel per 4 ticks), the wake where it sets that (wake_at()), behind her"""
     sea = Image.new("RGB", (240, 160), ANNE_PAL[0])
     sx, sy = 88, 80
+    #  the wake is drawn BEHIND the ship (subpriority 0xFF), so it goes down first and the ship over it
+    wf = wake.crop((0, frame * 32, 16, frame * 32 + 32))
+    wx, wy = wake_at()
+    sea.paste(sprite_rgb(wf), (sx + wx - 8 + 2, wy - 16), mask(wf))
     sea.paste(sprite_rgb(ship), (sx - 32, sy - 16), mask(ship))
     kx, ky = smoke_at()
     for i, (f, dx) in enumerate(((0, 0), (1, 2), (2, 7), (3, 12))):
         fr = smoke.crop((0, f * 16, 16, f * 16 + 16))
         sea.paste(sprite_rgb(fr), (sx + kx - 8 + dx, ky - 8), mask(fr))
-    wf = wake.crop((0, frame * 32, 16, frame * 32 + 32))
-    sea.paste(sprite_rgb(wf), (sx + 80 - 8 + 2, 109 - 16), mask(wf))
     return sea.resize((240 * scale, 160 * scale), Image.NEAREST)
 
 

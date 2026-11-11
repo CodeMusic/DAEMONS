@@ -529,3 +529,9 @@ C-296 (DRAFT): the same daemon in low spirits (darker), as it is, and in good sp
 C-296 (DRAFT): the same daemon in low spirits (darker), as it is, and in good spirits (lighter), the hue kept; THE MIND > NOW's SPIRITS card with the four totals (companion dca02e7)
 
 ![11Nov2026 - C296 - SPIRITS, the tone and THE MINDs card - 105](11Nov2026%20-%20C296%20-%20SPIRITS%2C%20the%20tone%20and%20THE%20MINDs%20card%20-%20105.png)
+
+### 11Nov2026 - T447 - SS ANNE wake before and after - 106
+
+T-447: the S.S. ANNE's departure wake, before (+80, y 109: through the flagstaff's notch) and after (+76, y 113: behind the hull, out at the waterline), drawn behind the ship as the game does, drift 0-22
+
+![11Nov2026 - T447 - SS ANNE wake before and after - 106](11Nov2026%20-%20T447%20-%20SS%20ANNE%20wake%20before%20and%20after%20-%20106.png)
