@@ -95,6 +95,10 @@ ARGS = {
     #  9, 10 (SLATE's MUSEUM OF ERRATA, the WARDEN's house, SELPHY's house), and the report exits 1 when the engine is
     #  not what that write makes.
     "gbamuseum": [["--approved", "--pick", "A"]],
+    #  T-542 batch 1: the same shape; the user picked "A Hearth" on 2026-11-10. The write redraws batch 1's 53 tiles of
+    #  primary/general's tiles.png (THE ROAD GATES; never a palette, block or map), and the report exits 1 when the
+    #  engine is not what that write makes.
+    "gbaprimary": [["--approved", "--pick", "A"]],
     #  T-532: genmusaiseasons needs no flag (the user decided the build 2026-11-08): it writes the 18 seasonal forms --
     #  copies of today's art until gfx/drafts/t532_musai_seasons/finals/ holds a drawing NAMED IN ITS APPROVED_FINAL
     #  (the user's picks, 2026-11-08), the approved summers into gfx/daemons/, and its table and coordinates blocks --

@@ -1,0 +1,68 @@
+{
+ "rom": "debug",
+ "about": "T-542 batch 1, A HEARTH (the user, 2026-11-10), DRAFT: THE ROAD GATES -- 53 of primary/general's tiles redrawn in place as the toll cottage (gbaprimary.py --write --approved --pick A); no block, palette, behaviour or map moved. Each map warped to by name. Watch held at day. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "ROUTE 6: BRAZEN's south gate as the toll cottage -- thatch, limewash walls, terracotta piers, leaded lights in oak, oak posts behind it",
+   "steps": [
+    "goto Route6",
+    "close",
+    "wait 60",
+    "shot ROUTE 6: BRAZEN's south gate as the toll cottage -- thatch, limewash walls, terracotta piers, leaded lights in oak, oak posts behind it"
+   ]
+  },
+  {
+   "stop": "ROUTE 11: the east-west gate, its side doors and posts in the toll cottage's thatch and limewash",
+   "steps": [
+    "goto Route11",
+    "close",
+    "wait 60",
+    "shot ROUTE 11: the east-west gate, its side doors and posts in the toll cottage's thatch and limewash"
+   ]
+  },
+  {
+   "stop": "ROUTE 2: the two gates among the ledges, thatched, with their oak posts",
+   "steps": [
+    "goto Route2",
+    "close",
+    "wait 60",
+    "shot ROUTE 2: the two gates among the ledges, thatched, with their oak posts"
+   ]
+  },
+  {
+   "stop": "BRAZEN CITY: the north gate from inside, thatch over limewash and terracotta",
+   "steps": [
+    "goto SaffronCity",
+    "close",
+    "wait 60",
+    "shot BRAZEN CITY: the north gate from inside, thatch over limewash and terracotta"
+   ]
+  },
+  {
+   "stop": "ROUTE 12: the house by the water, its last vanilla pieces redrawn",
+   "steps": [
+    "goto Route12",
+    "close",
+    "wait 60",
+    "shot ROUTE 12: the house by the water, its last vanilla pieces redrawn"
+   ]
+  },
+  {
+   "stop": "FOUR ISLAND: the stone stairs as flagstone steps",
+   "steps": [
+    "goto FourIsland",
+    "close",
+    "wait 60",
+    "shot FOUR ISLAND: the stone stairs as flagstone steps"
+   ]
+  }
+ ]
+}

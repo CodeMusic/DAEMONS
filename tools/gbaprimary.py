@@ -12,7 +12,9 @@
                                                    #   3x detail, and every tile at 3x
     python3 tools/gbaprimary.py --write --approved --pick X
                                                    # into the engine: batch 1 in direction X. Refused unless X is in
-                                                   #   APPROVED (empty: T-542 is a DRAFT until the user picks)
+                                                   #   APPROVED ({"A"}: the user, 2026-11-10, "A Hearth"); with
+                                                   #   one direction approved the report compares the engine with
+                                                   #   that write and exits 1 on any difference
 
 WHAT IS LEFT (census item 7, re-measured on today's engine). T-438 batch C (gbageneral.py) re-surfaced General's
 ground -- the rock, the LEDGES, sand and paving -- and drew its motifs: the FENCES, the SIGNPOSTS, the bushes and the
@@ -82,7 +84,7 @@ if DRAFT == "":
 PICK = argval("--pick")
 
 #  The user's pick goes here ("A", "B" or "C"); --write refuses anything not in it.
-APPROVED = set()
+APPROVED = {"A"}                     # the user, 2026-11-10: A Hearth
 
 #  gbageneral (T-438 C) reads the engine at import and holds the census, the map renderer and the block tables; it is
 #  a writing tool, so it is loaded with an empty argv (engine.md trap 16) and only its functions are used.
@@ -592,6 +594,22 @@ def save_tiles(tiles, path):
         raise SystemExit("  !! %s does not read back as drawn" % path)
 
 
+def check_engine(use):
+    """T-446's rule: with one direction approved, General's tiles.png must be exactly what `--write --approved --pick X`
+    makes -- every tile, not only batch 1's -- and its palettes untouched by it"""
+    pick = next(iter(APPROVED))
+    tiles = draw(STYLES[pick], use)
+    off = [t for t in range(len(G.CUR)) if list(tiles[t]) != list(G.CUR[t])]
+    reserved = [t for t in BATCH1 if any((row_of(t, use), v) in RESERVED for v in tiles[t])]
+    if off or reserved:
+        print("  !! general: the engine differs from `--write --approved --pick %s` in tiles %s%s -- find which side is "
+              "right" % (pick, off[:12], ("; reserved indices drawn in %s" % reserved) if reserved else ""))
+        return 1
+    print("  the engine matches `--write --approved --pick %s` (batch 1, %d tiles; no reserved index drawn)"
+          % (pick, len(BATCH1)))
+    return 0
+
+
 def main():
     use, nlay, mt_seen = G.scan()
     if WRITE:
@@ -642,6 +660,8 @@ def main():
     if len(APPROVED) > 1:
         print("  !! APPROVED holds more than one direction: %s" % sorted(APPROVED))
         bad = True
+    if len(APPROVED) == 1:
+        bad = check_engine(use) or bad
     return 1 if bad else 0
 
 

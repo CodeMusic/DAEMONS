@@ -313,3 +313,39 @@ T-542 batch 1 (DRAFT): FOUR ISLAND's stone stairs -- today and A/B/C at 1x and 3
 T-542 batch 1 (DRAFT): the 53 tiles at 3x by object -- today, A HEARTH, B THE WAYMARK, C THE LATCH
 
 ![10Nov2026 - T542 - batch 1 tiles at 3x - 53](10Nov2026%20-%20T542%20-%20batch%201%20tiles%20at%203x%20-%2053.png)
+
+### 10Nov2026 - T542 - ROUTE 6 gate built, A Hearth - 54
+
+T-542 batch 1 BUILT, A HEARTH (DRAFT): BRAZEN's south gate on ROUTE 6 as the toll cottage -- thatch, limewash, terracotta piers, leaded lights, oak posts -- decoded from the engine's sources
+
+![10Nov2026 - T542 - ROUTE 6 gate built, A Hearth - 54](10Nov2026%20-%20T542%20-%20ROUTE%206%20gate%20built%2C%20A%20Hearth%20-%2054.png)
+
+### 10Nov2026 - T542 - ROUTE 11 gate built, A Hearth - 55
+
+T-542 batch 1 BUILT, A HEARTH (DRAFT): ROUTE 11's east-west gate and its side doors, decoded from the engine's sources
+
+![10Nov2026 - T542 - ROUTE 11 gate built, A Hearth - 55](10Nov2026%20-%20T542%20-%20ROUTE%2011%20gate%20built%2C%20A%20Hearth%20-%2055.png)
+
+### 10Nov2026 - T542 - ROUTE 2 gates built, A Hearth - 56
+
+T-542 batch 1 BUILT, A HEARTH (DRAFT): ROUTE 2's two gates among the ledges, decoded from the engine's sources
+
+![10Nov2026 - T542 - ROUTE 2 gates built, A Hearth - 56](10Nov2026%20-%20T542%20-%20ROUTE%202%20gates%20built%2C%20A%20Hearth%20-%2056.png)
+
+### 10Nov2026 - T542 - BRAZEN north gate built, A Hearth - 57
+
+T-542 batch 1 BUILT, A HEARTH (DRAFT): BRAZEN CITY's north gate from inside, decoded from the engine's sources
+
+![10Nov2026 - T542 - BRAZEN north gate built, A Hearth - 57](10Nov2026%20-%20T542%20-%20BRAZEN%20north%20gate%20built%2C%20A%20Hearth%20-%2057.png)
+
+### 10Nov2026 - T542 - ROUTE 12 house built, A Hearth - 58
+
+T-542 batch 1 BUILT, A HEARTH (DRAFT): ROUTE 12's house by the water, its last vanilla pieces redrawn, decoded from the engine's sources
+
+![10Nov2026 - T542 - ROUTE 12 house built, A Hearth - 58](10Nov2026%20-%20T542%20-%20ROUTE%2012%20house%20built%2C%20A%20Hearth%20-%2058.png)
+
+### 10Nov2026 - T542 - FOUR ISLAND stairs built, A Hearth - 59
+
+T-542 batch 1 BUILT, A HEARTH (DRAFT): FOUR ISLAND's stone stairs as flagstone steps, decoded from the engine's sources
+
+![10Nov2026 - T542 - FOUR ISLAND stairs built, A Hearth - 59](10Nov2026%20-%20T542%20-%20FOUR%20ISLAND%20stairs%20built%2C%20A%20Hearth%20-%2059.png)
