@@ -887,13 +887,28 @@ class Runner:
     BAG_POCKETS = {"items": (0x310, 42, 0), "key": (0x3B8, 30, 1), "balls": (0x430, 13, 2), "tmhm": (0x464, 58, None),
                    "berries": (0x54C, 43, None)}
 
+    POCKET_NAMES = {"POCKET_ITEMS": "items", "POCKET_KEY_ITEMS": "key", "POCKET_POKE_BALLS": "balls",
+                    "POCKET_TM_CASE": "tmhm", "POCKET_BERRY_POUCH": "berries"}
+
+    @staticmethod
+    def item_pocket(item):
+        """The item's pocket as the engine's src/data/items.json gives it (indexed by item id), so new items -- the
+        ORIGIN BOOK at 251 -- land where the game puts them; vanilla's id ranges only if the file can't be read."""
+        try:
+            path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "engineGba", "src", "data", "items.json")
+            with open(path) as f:
+                entry = json.load(f)["items"][item]
+            return Runner.POCKET_NAMES[entry["pocket"]]
+        except (OSError, ValueError, KeyError, IndexError):
+            return ("balls" if 1 <= item <= 12 else "berries" if 133 <= item <= 175 else "tmhm" if 289 <= item <= 346
+                    else "key" if 259 <= item <= 288 or 349 <= item <= 376 else "items")
+
     def bag(self, item, count, first=False):
         """T-433: put COUNT of an item in its pocket of the bag (a slot of SaveBlock1's ITEMS, KEY ITEMS, BALLS, TM CASE
         or BERRY POUCH, its count stored XOR the save's key) -- topped up to COUNT if it is there. With first, it is
         moved to the pocket's top slot (what was there swapped into its place) and the bag is set to open on that
         pocket, its cursor on it (gBagMenuState: pocket +6, itemsAbove +8, cursorPos +14)."""
-        pocket = ("balls" if 1 <= item <= 12 else "berries" if 133 <= item <= 175 else "tmhm" if 289 <= item <= 346
-                  else "key" if 259 <= item <= 288 or 349 <= item <= 376 else "items")
+        pocket = self.item_pocket(item)
         start, n, menu = self.BAG_POCKETS[pocket]
         key = tw.peek([(16, self.addr("*gSaveBlock2Ptr+0xF20"), "k")])["k"]
         slot = lambda i: "*gSaveBlock1Ptr+0x%X" % (start + 4 * i)
