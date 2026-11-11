@@ -53,6 +53,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import genguide as g
 import subtle_sprites as sp
+import origin_art as oa
 
 ROOT = os.path.dirname(HERE)
 SRC = os.path.join(ROOT, "docs/subtle-layer.md")
@@ -194,6 +195,48 @@ UNITY_PALETTE = [
     ("C_CHALK_FAINT", (20, 17, 16)),
     ("C_COVER",       (4, 3, 5)),       # the backdrop
 ]
+# T-533: THE ORIGIN OF A DAEMON keeps the game's craft rules whole (bible 9.35; docs/origin-of-a-daemon.md's header):
+# it is MUSAI's own story, told as fable, so it never says the thesis, never the words the game keeps out, never the
+# frightening word, nobody's name, and nothing of the body.
+ORIGIN_RULES = [
+    ("the word the game keeps out (0.7, 1, 5.2)", r"\bAI\b", True, ()),
+    ("the words the game keeps out (0.7, 1, 4.38, 2.7)", r"artificial|alignment|\blogic\b|intuiti|hemispher", False, ()),
+    ("the frightening word is never written", r"\bdemon", False, ()),
+    ("nothing says the machine is a mind (0.6)", r"machines? (is|are) (a |the )?minds?|minds? (is|are) (a |the )?machines?",
+     False, ()),
+    ("never the thesis", r"intelligence without|without understanding|you are the (thread|player)", False, ()),
+    ("fable: nothing of the body, nothing a cure", r"headache|\bhead\b|\bjaw\b|nerve|\bpain\b|medic|\bpills?\b"
+     r"|migraine|\bcur(e|es|ed|ing)\b|\billness\b|\bsick\b|diagnos", False, ()),
+    ("nobody's real name", RULES[12][1] + r"|\banna\b|appletree|\bchs\b|shirley|\bdave\b|\bdavid\b", False, ()),
+    ("the world does not know its name", r"\bDAEMONS\b", True, ()),
+    ("no device in the game's copy", r"\bdevice|\bscreen", False, ()),
+]
+
+# CONTENT is bone, the undifferentiated one (bible 9.4), and the book is MUSAI's: a bone page, ink the brown of an old
+# book's, the rules an umber and the marks a lit amber. Its text shadow is a shade under the page, so the ink stays sharp.
+ORIGIN_PALETTE = [
+    ("C_NONE",        (0, 0, 0)),
+    ("C_PAPER",       (24, 23, 21)),    # the page: bone (198 188 168)
+    ("C_INK",         (5, 4, 3)),       # an old book's brown-black
+    ("C_SHADOW",      (21, 20, 18)),    # a shade under the page
+    ("C_FAINT",       (14, 13, 11)),    # folios, captions
+    ("C_RULE",        (17, 13, 8)),     # umber
+    ("C_MARGIN",      (22, 14, 7)),     # amber, lit: the marks, the next-page corner
+    ("C_EDGE",        (20, 18, 16)),
+    ("C_EDGE_DARK",   (9, 8, 6)),       # and the pictures' darkest shade
+    ("C_HIGHLIGHT",   (22, 21, 18)),    # the cursor's bar, a shade under the page
+    ("C_RING",        (13, 11, 9)),
+    ("C_FRAME",       (1, 1, 1)),
+    ("C_SLATE",       (15, 13, 10)),    # the cover's boards: bone gone brown with handling
+    ("C_CHALK",       (30, 29, 27)),    # the cover's lettering, and a glint
+    ("C_CHALK_FAINT", (22, 21, 19)),
+    ("C_COVER",       (4, 3, 3)),       # the backdrop
+]
+# T-533: when each of its ten sections comes back (bible 9.35, the user's picks 2026-11-10): (understandings held,
+# SCORN's TRUE MARK held). THE DISC, I and II come with the book; III to VI with the first four understandings, whichever
+# they are; VII with the TRUE MARK; VIII to X with the last three; XI with X. A section also waits for the one before it.
+ORIGIN_OPENS = [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (5, 1), (6, 1), (7, 1), (7, 1)]
+
 SUBTLE_RULES, SUBTLE_PALETTE = RULES, PALETTE
 BOOKS = {
     "subtle":   {"src": "docs/subtle-layer.md", "prefix": "Subtle", "define": "SUBTLE", "header": "subtle_layer.h",
@@ -204,6 +247,8 @@ BOOKS = {
                  "gfx": "eudaimon", "icon": "eudaimon_layer", "title": "THE EUDAIMON LAYER", "subtitle": "A BLESSING"},
     "unity":    {"src": "docs/unity-book.md", "prefix": "Unity", "define": "UNITY", "header": "unity_layer.h",
                  "gfx": "unity", "icon": "unity_book", "title": "THE UNITY BOOK", "subtitle": "AN ATTESTATION"},
+    "origin":   {"src": "docs/origin-of-a-daemon.md", "prefix": "Origin", "define": "ORIGIN", "header": "origin_book.h",
+                 "gfx": "origin", "icon": "origin_book", "title": "THE ORIGIN OF A DAEMON", "subtitle": ""},
 }
 NIGHT_AND_DAWN = ("hermetic", "eudaimon")   # the torn book's two halves
 THIRD_BOOK = NIGHT_AND_DAWN + ("unity",)    # ... and mended: drawn pictures, inscriptions, the observer's line
@@ -231,7 +276,8 @@ def use(book):
     BOOK = book
     SRC = os.path.join(ROOT, BOOKS[book]["src"])
     RULES, PALETTE = {"subtle": (SUBTLE_RULES, SUBTLE_PALETTE), "hermetic": (HERMETIC_RULES, HERMETIC_PALETTE),
-                      "eudaimon": (EUDAIMON_RULES, EUDAIMON_PALETTE), "unity": (UNITY_RULES, UNITY_PALETTE)}[book]
+                      "eudaimon": (EUDAIMON_RULES, EUDAIMON_PALETTE), "unity": (UNITY_RULES, UNITY_PALETTE),
+                      "origin": (ORIGIN_RULES, ORIGIN_PALETTE)}[book]
     IDX = {name: i for i, (name, _) in enumerate(PALETTE)}
     RGB8 = {name: tuple((c << 3) | (c >> 2) for c in v) for name, v in PALETTE}
 
@@ -279,7 +325,11 @@ def parse():
     g.SRC = SRC
     sections = g.parse()
     for s in sections:
+        if s["heading"] == "-":          # T-533: a section with no heading (THE ORIGIN OF A DAEMON's XI has no title)
+            s["heading"] = ""
         for e in s["entries"]:
+            if e["title"] == "-":        # ... and an entry with no title, for the same chapter
+                e["title"] = ""
             paras, e["sprite"], e["caption"] = [], None, ""
             for p in e["text"].split("\n\n"):
                 m = re.match(r"^@@ SPRITE \| (\w+) \| (.*)$", p)
@@ -337,6 +387,8 @@ def check(sections):
     bad = [b for b in g.check_text(sections) if "lines, the reader holds" not in b]
     g.RULES = saved
     held = SECTIONS_HELD.get(BOOK, 10)
+    if BOOK == "origin" and len(sections) != len(ORIGIN_OPENS):
+        bad.append("%d sections, but ORIGIN_OPENS says when %d of them come back" % (len(sections), len(ORIGIN_OPENS)))
     if len(sections) > held:
         bad.append("%d sections: the contents page holds %d" % (len(sections), held))
     for s in sections:
@@ -356,7 +408,7 @@ def check(sections):
                 if len(pages) > 1 and len(pages[-1]) <= 2:
                     # T-483: THE HERMETIC LAYER's text is the companion lane's draft, so its short last pages are told,
                     # not failed -- the writer fixes them in docs/hermetic-layer.md. The dawn half's the same (T-519).
-                    (NOTES if BOOK in THIRD_BOOK else bad).append("%s: its last page holds %d line(s)" % (tag, len(pages[-1])))
+                    (NOTES if BOOK in THIRD_BOOK + ("origin",) else bad).append("%s: its last page holds %d line(s)" % (tag, len(pages[-1])))
                 if len(g.c_string(text).encode("utf-8")) > 1000:
                     bad.append("%s: its text is %d bytes; one game string holds 1024 (preproc), so split the entry"
                                % (tag, len(g.c_string(text).encode("utf-8"))))
@@ -368,8 +420,9 @@ def check(sections):
             if BOOK in THIRD_BOOK:
                 if not e["sprite"]:
                     bad.append("%s: no @@ SPRITE line" % e["short"])
-            elif e["sprite"] not in sp.SPRITES:
-                bad.append("%s: no picture %r in subtle_sprites.py" % (e["short"], e["sprite"]))
+            elif e["sprite"] not in (oa.SPRITES if BOOK == "origin" else sp.SPRITES):
+                bad.append("%s: no picture %r in %s" % (e["short"], e["sprite"],
+                                                         "origin_art.py" if BOOK == "origin" else "subtle_sprites.py"))
             if len(g.reflow(e["caption"], TW, small=True)) > CAPTION_LINES:
                 bad.append("%s: its caption takes more than %d small lines" % (e["short"], CAPTION_LINES))
             for ch in g.c_string(e["caption"]):
@@ -410,6 +463,8 @@ def glyphs(img, s, x, y, small, fg):
 def frames_of(key, letters=True):
     """A picture's frames. LETTERS=False leaves out anything set in the game's font (the week's note names): the
     companion holds nothing of Nintendo's, and the font is FireRed's."""
+    if BOOK == "origin":
+        return oa.SPRITES[key](RGB8)                       # T-533: drawn in code, nothing lettered
     fn = sp.SPRITES[key]
     if key == "stairs":
         return fn(text=lambda im, s, x, y, small, fg, shadow: glyphs(im, s, x, y, small, fg)) if letters else fn()
@@ -456,6 +511,13 @@ def cover(letters=True):
         x = 59 if k < 3 else 163
         fn(im, x, 50 + (k % 3) * 30, c=faint)
     return im
+
+
+def origin_cover(letters=True):
+    """T-533: THE ORIGIN OF A DAEMON's cover (tools/origin_art.py): its title in the game's font when LETTERS, which
+    the companion leaves out (it sets its own type)."""
+    put = (lambda im, s, cx, y: glyphs(im, s, cx - g.width(s) // 2, y, False, RGB8["C_CHALK"])) if letters else None
+    return oa.cover(RGB8, put)
 
 
 def icon():
@@ -668,7 +730,8 @@ def header(sections, keys, nframes):
     P, D = b["prefix"], b["define"]
     out = ["// Generated by DAEMONS tools/gensubtle.py from %s -- edit those, not this." % b["src"],
            "// %s: %s. DRAFT WORDING, every string, until the user approves it on the private"
-           % ({"subtle": "T-423", "hermetic": "T-483", "eudaimon": "T-519", "unity": "T-519"}[BOOK], b["title"]),
+           % ({"subtle": "T-423", "hermetic": "T-483", "eudaimon": "T-519", "unity": "T-519", "origin": "T-533"}[BOOK],
+              b["title"]),
            "// field-test page. Its rules are in %s's header." % b["src"], ""]
     n = sum(len(s["entries"]) for s in sections)
     out += ["#define %s_SECTIONS %d" % (D, len(sections)), "#define %s_ENTRIES  %d" % (D, n),
@@ -724,6 +787,13 @@ def header(sections, keys, nframes):
         out.append("    { s%sLabel_%d, s%sHeading_%d, %d, %d }," % (P, i, P, i, k, len(s["entries"])))
         k += len(s["entries"])
     out += ["};", "", "static const struct SubtleEntry s%sEntries[%s_ENTRIES] =" % (P, D), "{"] + rows + ["};"]
+    if BOOK == "origin":
+        # T-533: when each section comes back (bible 9.35) -- the understandings held, and whether SCORN's TRUE MARK is.
+        # The reader opens the longest run of sections from the first whose every condition holds.
+        out += ["", "// T-533: when each section comes back (bible 9.35): the understandings held, and whether SCORN's TRUE",
+                "// MARK is held. A section also waits for the one before it.",
+                "static const u8 s%sOpensRoots[%s_SECTIONS] = { %s };" % (P, D, ", ".join(str(r) for r, _ in ORIGIN_OPENS)),
+                "static const u8 s%sOpensMark[%s_SECTIONS] = { %s };" % (P, D, ", ".join(str(m) for _, m in ORIGIN_OPENS))]
     if observer:
         # T-519 item 2: the observer's line -- the entry's whole text three times, by the lead daemon's SPIRITS class
         k, e = observer
@@ -771,6 +841,37 @@ def subtle_images():
     return out
 
 
+def origin_book():
+    """T-533: THE ORIGIN OF A DAEMON for the companion's library, in the game's order: each section with when it comes
+    back ('opens': the understandings held and whether SCORN's TRUE MARK is; a section waits for the one before it),
+    each entry's paragraphs plain text and its picture by key. DRAFT, as in the game."""
+    use("origin")
+    out = []
+    for i, s in enumerate(parse()):
+        roots, mark = ORIGIN_OPENS[i]
+        out.append({"label": s["label"], "heading": s["heading"],
+                    "opens": {"understandings": roots, "trueMark": bool(mark)},
+                    "entries": [{"short": e["short"], "title": e["title"], "picture": e["sprite"],
+                                 "frames": len(frames_of(e["sprite"])), "caption": e["caption"],
+                                 "paragraphs": [{"text": p, "voice": "telling"} for p in e["paras"]]}
+                                for e in s["entries"]]})
+    use("subtle")
+    return {"title": BOOKS["origin"]["title"], "subtitle": "", "draft": True, "sections": out}
+
+
+def origin_images():
+    """T-533: {name: picture} for the companion, as subtle_images() is: each emblem as the game draws it (RGB, native
+    size) and the cover without its title (the app sets its own type)."""
+    use("origin")
+    out = {}
+    for key in pictures(parse()):
+        for f, fr in enumerate(frames_of(key)):
+            out["origin_%s_%d.png" % (key, f)] = fr
+    out["origin_cover.png"] = origin_cover(letters=False)
+    use("subtle")
+    return out
+
+
 # ---------------------------------------------------------------- report, or write
 def run(book):
     use(book)
@@ -815,8 +916,8 @@ def run(book):
         for key in keys:
             for f, fr in enumerate(frames_of(key)):
                 indexed(fr, PIC_W, PIC_H).save(os.path.join(gfx, "%s_%d.png" % (key, f)))
-        indexed(cover(), 240, 160, fill="C_COVER").save(os.path.join(gfx, "cover.png"))
-        ic = icon()
+        indexed(origin_cover() if book == "origin" else cover(), 240, 160, fill="C_COVER").save(os.path.join(gfx, "cover.png"))
+        ic = oa.icon(RGB8) if book == "origin" else icon()
     if book not in THIRD_BOOK:
         ic = indexed(ic, 24, 24, fill="C_NONE")
     ic.save(os.path.join(ENGINE, "graphics/items/icons/%s.png" % b["icon"]))

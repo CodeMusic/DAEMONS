@@ -13,6 +13,8 @@ WHERE EACH COMES FROM -- nothing is drawn by hand, so a book reprinted or a cove
   the GUIDE, THE SUBTLE LAYER   wiki/covers.py's lettered covers (the art without the game's font, set in Menlo)
   the third book's three forms  its cover cut from the game's screen where the book lies (app/ui/bookPicture.tsx
                       ON_COVER), lettered where the game letters it (BAND there), in Menlo
+  THE ORIGIN OF A DAEMON  the same: its cover (art/origin_cover.png) cut where the book lies, its title's two lines
+                      lettered where the game letters them, in Menlo (T-533)
   CALLOW SCHOOL       the TEXTBOOK's own cover (art/textbook_cover.png)
   NOTEBOOK, SONGBOOK, STREAM   cloth boards drawn here around the game's own pictures: the NOTEBOOK's item icon, the
                       SONGBOOK's twelve coloured notes (art/play_notes.png), the eight MARKS (art/mark_N.png)
@@ -102,6 +104,26 @@ def third(book):
     spaced(d, t.get("title", ""), font(9 * k), (cx - x0) * k, (ty - y0) * k, ink, 0.5 * k)
     if t.get("subtitle"):
         spaced(d, t["subtitle"].upper(), font(8 * k, 0), (cx - x0) * k, (sy - y0) * k, faint, 0.5 * k)
+    return tall(im, smooth=True)
+
+
+#  T-533: THE ORIGIN OF A DAEMON on the game's screen (tools/origin_art.py cover): the book at x 48..191, y 4..154, its
+#  title in two lines whose caps the game letters on rows 17..23 and 31..37, centred on x 120, in its C_CHALK
+ORIGIN_COVER = (48, 4, 191, 154)
+ORIGIN_TITLE = ((20, "THE ORIGIN"), (34, "OF A DAEMON"))
+
+
+def origin():
+    p = os.path.join(ART, "origin_cover.png")
+    if not os.path.exists(p):
+        return None
+    x0, y0, x1, y1 = ORIGIN_COVER
+    k = 3
+    im = Image.open(p).convert("RGB").crop((x0, y0, x1 + 1, y1 + 1))
+    im = im.resize((im.width * k, im.height * k), Image.NEAREST)
+    d = ImageDraw.Draw(im)
+    for y, line in ORIGIN_TITLE:
+        spaced(d, line, font(9 * k), (120 - x0) * k, (y - y0) * k, "#F7EFDE", 0.5 * k)
     return tall(im, smooth=True)
 
 
@@ -215,6 +237,9 @@ def covers():
         im = third(b)
         if im is not None:
             out[b] = im
+    im = origin()                                    # T-533
+    if im is not None:
+        out["origin"] = im
     out["school"] = school()
     out["notebook"] = notebook()
     out["songbook"] = songbook()

@@ -1344,6 +1344,19 @@ def eudaimon_table():
             "cover": "art/eudaimon_cover.png", "frontispiece": "frontis"}
 
 
+def origin_table():
+    """T-533: THE ORIGIN OF A DAEMON for the companion's LIBRARY -- docs/origin-of-a-daemon.md read by gensubtle's
+    origin_book(): its ten sections in the game's order, each with when it comes back ('opens': the understandings held,
+    whichever they are, and whether SCORN's TRUE MARK is; a section also waits for the one before it), each entry's
+    picture and frame count. 'flag' is FLAG_GOT_ORIGIN_BOOK's number; the companion shows only the sections the save has
+    opened, and never counts the rest. DRAFT, every word."""
+    import gensubtle
+    book = gensubtle.origin_book()
+    book["flag"] = flag_values(["FLAG_GOT_ORIGIN_BOOK"])["FLAG_GOT_ORIGIN_BOOK"]
+    book["cover"] = "art/origin_cover.png"
+    return book
+
+
 def _c_strings(src):
     """{symbol: text} for every _("...") constant in a C file, the scroll break (\\l) a line break, no $"""
     return {s: gba_string(b).replace("\\l", "\n").rstrip("$")
@@ -2282,6 +2295,7 @@ def main():
              "hermetic.json": hermetic_table(),                                 # T-483 / C-238: the LIBRARY's third book
              "eudaimon.json": eudaimon_table(),                                 # T-519: the third book's dawn half
              "unity.json": unity_table(),                                       # T-519 item 3: the third book mended
+             "origin.json": origin_table(),                                     # T-533: THE ORIGIN OF A DAEMON
              "holidays.json": holidays_table(),                                 # T-416 / C-149
              "play.json": play_table()}                                         # T-426
     season_art = musai_seasons(files["species.json"])                  # T-532: before species.json is written
@@ -2336,6 +2350,7 @@ def main():
     #  T-423: THE SUBTLE LAYER's pictures and cover, RGB like the GUIDE's cover (the page colour is part of the picture).
     import gensubtle
     subtle = gensubtle.subtle_images()
+    subtle.update(gensubtle.origin_images())                           # T-533: THE ORIGIN OF A DAEMON's emblems and cover
     for name, im in subtle.items():
         buf = io.BytesIO()
         im.save(buf, "PNG", optimize=True)
