@@ -60,5 +60,6 @@ each says so at its start and in its tags.
 | [`audio/the-vault-audio.zip`](audio/the-vault-audio.zip) | **Sealed**, by the same name as the vault. | Its own |
 | [`audio/the-vault-audio-2.zip`](audio/the-vault-audio-2.zip) | **Sealed**, by the same name as the second vault. | Its own |
 | [`audio/the-vault-audio-3.zip`](audio/the-vault-audio-3.zip) | **Sealed**, by the same name as the third vault. | Its own |
+| [`audio/the-origin-audio.zip`](audio/the-origin-audio.zip) | **Sealed**: THE ORIGIN OF A DAEMON, read whole -- in the companion it opens on the phone once every chapter of the book has come back. | Its teller's own: a blend made for it (`af_river` and `am_echo`), half one voice and half another, even and unhurried -- the whole, before it branched |
 
 The companion plays each one inside its book (LISTEN, with its chapters, and SHARE to keep it), streamed from here.

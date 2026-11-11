@@ -45,18 +45,23 @@ VOICES = {  # picked with the user from samples, 2026-11-01
     "mind": {"blend": {"af_nova": 0.6, "af_alloy": 0.4}, "speed": 0.95,         # A BIGGER MIND: calm, precise, a machine
              "tone": "highpass=f=120,treble=g=2:f=6000"},
     "elder": {"blend": {"bm_daniel": 0.6, "am_santa": 0.4}, "speed": 0.9, "sentence": 0.4},    # THE OLD WORD: a storyteller
+    #  THE ORIGIN OF A DAEMON (T-533): MUSAI's own voice, the whole before it branched -- half a woman's voice and half a
+    #  man's, even and unhurried; picked by the user from three samples, 2026-11-11 ("A: the whole")
+    "musai": {"blend": {"af_river": 0.5, "am_echo": 0.5}, "speed": 0.92, "sentence": 0.4},
 }
 BOOK_VOICE = {"guide": "reason", "subtle": "instinct", "hermetic": "night", "eudaimon": "dawn", "unity": "whole",
               "textbook": "professor", "quick": "patient", "manual": "adventure", "companion": "friend",
-              "social": "together", "tiiny": "mind", "etymology": "elder"}
+              "social": "together", "tiiny": "mind", "etymology": "elder", "origin": "musai"}
 FILE = {"guide": "guide", "subtle": "the-subtle-layer", "hermetic": "the-vault-audio", "eudaimon": "the-vault-audio-2",
         "unity": "the-vault-audio-3", "textbook": "principles-of-mind",   # -2, -3: the names the companion fetches (C-299)
         "quick": "quick-start", "manual": "the-players-manual", "companion": "the-companion",
-        "social": "playing-together", "tiiny": "a-bigger-mind", "etymology": "the-old-word"}
+        "social": "playing-together", "tiiny": "a-bigger-mind", "etymology": "the-old-word",
+        "origin": "the-origin-audio"}
 #  a book with no voice on purpose; --check names any other book that has none (T-543: a new book is never left silent)
 UNVOICED = {"micro": "MICRO-START, the quick start in five pages, is not on the LIBRARY's shelf"}
 RATE = {"textbook": "48k"}       # a long book a little lighter, under GitHub's 50 MB; the rest 64k
-SEALED = {"hermetic", "eudaimon", "unity"}   # the torn book's three readings (the user, 2026-11-05: "Sealed, like the night")
+SEALED = {"hermetic", "eudaimon", "unity",   # the torn book's three readings (the user, 2026-11-05: "Sealed, like the night")
+          "origin"}                          # T-533 (the user, 2026-11-11): played whole only once every chapter is back
 SEAL_INSIDE = "sealed"            # the names a closed zip shows (sealed.mp3, sealed.chapters.json): they say nothing
 DRAFT = "DRAFT · every word, until it is approved"                              # as the PDFs' covers say it
 ROMAN = {"I": "one", "II": "two", "III": "three", "IV": "four", "V": "five", "VI": "six", "VII": "seven",

@@ -127,6 +127,14 @@ def vault_key(book, sections):
     half's, its reader as its blessing names her ("A LARK read it": "The Lark"); the mended book's, both readers as
     its attestation names them ("by a hatter, and one at first light by a lark": "Hatter and Lark")."""
     text = " ".join(p for p, _ in sections[0]["entries"][0]["paras"])
+    if book == "origin":
+        # T-533: THE ORIGIN OF A DAEMON's recording opens with the book's own last word, from its last page -- which a
+        # device holds only once every chapter has come back (the companion's keyOfOrigin reads it the same way)
+        last = " ".join(p for p, _ in sections[-1]["entries"][-1]["paras"])
+        m = re.search(r"\bThat is how I (\w+)\.\s*$", last)
+        if not m:
+            raise SystemExit("bookpdf: THE ORIGIN OF A DAEMON's last line no longer ends its book; its recording has no key")
+        return m.group(1).title()
     if book == "hermetic":
         m = re.search(r"\b([A-Z]{2,}) ([A-Z]{2,}) (?:set it down|read it)\b", text)
         key = m and "%s %s" % (m.group(1).title(), m.group(2).title())
