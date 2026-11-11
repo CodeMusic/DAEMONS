@@ -505,3 +505,15 @@ T-445 DRAFT (2026-11-11): today's card beside each candidate at 2x and 1x -- KEE
 T-445 BUILT: KEEPALIVE PLANT growing untended (A) and TANOBY carved, not lit (A), with MONEAN's rose band, decoded from the built daemonsContent.gba at 2x (DRAFT)
 
 ![11Nov2026 - T445 - two landmark cards built - 101](11Nov2026%20-%20T445%20-%20two%20landmark%20cards%20built%20-%20101.png)
+
+### 11Nov2026 - C273 - THE HERMETIC LAYER cards, MIND BODY SPIRIT - 102
+
+C-273: THE HERMETIC LAYER's MIND · BODY · SPIRIT on the site, phone width and wide; wide, the modes' column 240 so PAST · PRESENT · FUTURE keeps to one line (companion f94226e)
+
+![11Nov2026 - C273 - THE HERMETIC LAYER cards, MIND BODY SPIRIT - 102](11Nov2026%20-%20C273%20-%20THE%20HERMETIC%20LAYER%20cards%2C%20MIND%20BODY%20SPIRIT%20-%20102.png)
+
+### 11Nov2026 - C273 - THE HERMETIC LAYER cards, MIND BODY SPIRIT - 103
+
+C-273: THE HERMETIC LAYER's MIND · BODY · SPIRIT on the site, phone width and wide; wide, the modes' column 240 so PAST · PRESENT · FUTURE keeps to one line (companion f94226e)
+
+![11Nov2026 - C273 - THE HERMETIC LAYER cards, MIND BODY SPIRIT - 103](11Nov2026%20-%20C273%20-%20THE%20HERMETIC%20LAYER%20cards%2C%20MIND%20BODY%20SPIRIT%20-%20103.png)
