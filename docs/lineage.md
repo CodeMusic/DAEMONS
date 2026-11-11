@@ -648,7 +648,7 @@ These are near-opposites, and the original has something the revision lost: **ob
 
 **1001** runs through the whole body of work. The 2021 poem: *"1001 you might say that you're just the number 9… you're the only odd single-digit composite number I want to seek. Read Forward or Back, the answer is the same."* (1001₂ = 9; 9 = 3²; 1001 is a palindrome.) Then iASHC: *"Goodbye S.T.A.R.R. (1001 — Fatal Error)"* and *"9 Scars, 9 Breaches."*
 
-DAEMONS locks the Five Witnesses puzzle at **35**, a number with no history anywhere else. See §11.5.
+DAEMONS locks the Five Witnesses puzzle at a number with no history anywhere else ([private: SECRETS §1]). See §11.5.
 
 ---
 
@@ -688,7 +688,7 @@ It can be recovered without undoing the new origin story. She was the thirty-fif
 
 ### 11.5 Reclaim 1001
 
-Keep **35** as the iteration number and the step count — it is load-bearing and the terminal log is good. But **1001** has fifteen years of accumulated weight and appears nowhere in the game.
+Keep the one number the game already shows, where it is ([private: SECRETS §1]) — it is load-bearing and the terminal log is good. But **1001** has fifteen years of accumulated weight and appears nowhere in the game.
 
 Natural home: **S.T.A.R.R.'s dormancy.** In the opera, 1001 *is* the fatal error — the crash caused by growing self-awareness. In the game, S.T.A.R.R. sits dormant past the Review Board for reasons never explained. Let the room where it sleeps display an error code, and let it be 1001. Nobody explains it, nothing depends on it, and the rock opera's own numerology enters the game without a word of exposition.
 

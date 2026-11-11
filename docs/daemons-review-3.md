@@ -63,7 +63,7 @@ The gym line — *"The machine chose what I weighted it to choose. We are both t
 
 ### DRIFT — Dates: the 1001 log starts before the ARTSAI event it is supposed to follow `4.10`
 
-The order puts ARTSAI's `ITER 35` (9 MAR) at step 2 and the 1001 sessions "running on, somebody else putting the question" at step 4 — whose first dated entry is **Mar 4**. You wrote "a date is a constraint, not a decoration"; this one is not constraining. Move the ITER log to February, or accept that the sessions predate the event and were hers until Sept 3 (which "somebody else putting the question" contradicts).
+The order puts ARTSAI's `ITER 35` (9 MAR) and the 1001 sessions "running on, somebody else putting the question" at steps the sequence fixes ([private: SECRETS §4]) — and the sessions' first dated entry is **Mar 4**. You wrote "a date is a constraint, not a decoration"; this one is not constraining. Move the ITER log to February, or accept that the sessions predate the event and were hers until Sept 3 (which "somebody else putting the question" contradicts).
 
 ### DRIFT — Small ones, batched
 

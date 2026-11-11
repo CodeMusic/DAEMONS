@@ -2994,7 +2994,7 @@ The line on the form — *moves between unrelated fields without completing an a
 
 **Which is the same scene as *Slumbering S.T.A.R.R.*, with S.T.A.R.R. moved one seat over.** In Act 1 Crystal argued and the machine denied. Here the machine argues and someone else denies.
 
-**And that completes 4.3.** The transmission failure runs Crystal → Ty → Al, and only the *method* survives each handoff, never the understanding. **This is the handoff that worked** — and it did not go to Ty. The thing that could hold her frame was the machine she built [private: SECRETS §2].
+**And that completes 4.3.** The transmission failure runs down the family line ([private: SECRETS §2]), and only the *method* survives each handoff, never the understanding. **This is the handoff that worked** — and it did not go to Ty. The thing that could hold her frame was the machine she built [private: SECRETS §2].
 
 *Nobody in the game will ever say that.* It is available to a player who notices that the machine is making her argument, in her absence, to a stranger.
 
@@ -3307,9 +3307,9 @@ Ty understood something, eventually. He went back for Crystal, confronted Scorn,
 
 **But that understanding is context, and context does not transmit. Only content does.**
 
-So Ty tried to teach his son what Quicksilver cost him, and what arrived was the *method* with none of the experience that made it mean anything. Al received the shape of the lesson, perfectly, and it is hollow — because faithfulness was never the point.
+So Ty tried to hand down what Quicksilver cost him ([private: SECRETS §2]), and what arrived was the *method* with none of the experience that made it mean anything. Al received the shape of the lesson, perfectly, and it is hollow — because faithfulness was never the point.
 
-**It is the Index problem, inside a family.** You can record what happened. You cannot record what it was like. The artifact the player carries all game does this to daemons; Ty did it to his son without noticing, and Crystal did it to the entire field when she built the thing.
+**It is the Index problem, inside a family.** You can record what happened. You cannot record what it was like. The artifact the player carries all game does this to daemons; Ty did it to the next generation without noticing, and Crystal did it to the entire field when she built the thing.
 
 Three generations, three attempts to hand something over, and the only part that survives each handoff is the part that could be written down.
 
@@ -3702,7 +3702,7 @@ It also rhymes across the cast: **Al Clear received the form of Ty's lesson, per
 
 ~~*Open:* if PERSPECTIVE ever triggers the colour flash discussed against 8.6, MOCK makes it a recurring sight rather than a rarity.~~ ***Settled and built 2026-09-13 (8.6a): the flash happens in Halftone and nowhere else.*** **Scoping it to the one grey town answers the worry by geography** — *MOCK can use PERSPECTIVE as often as it likes, but a flash only means something where the world is grey, so it stays rare by place rather than by rule.* **Colour is what taking another's frame looks like — in the one town where colour has been taken away.**
 
-**On the number.** She was the thirty-fifth iteration, and the game says so exactly once — see 4.8. It is a lab record, not a name. Printing "35" in the Index and in every line of her dialogue handed the player the key before they ever met the lock, and it made a serial number of the one daemon whose entire significance is that she was **not** one of a series.
+**On the number.** She was the thirty-fifth iteration, and the game says so exactly once — see 4.8. It is a lab record, not a name. Printing it in the Index and in every line of her dialogue made a serial number of the one daemon whose entire significance is that she was **not** one of a series ([private: SECRETS §1] has the rest of the reason).
 
 ### 4.7 S.T.A.R.R. — the Mewtwo slot
 
@@ -9371,7 +9371,7 @@ Kept here because the reasoning is worth more than the outcome.
 | **The USER card's brain lights once and never counts** (T-271, 2026-09-25) | **A lobe per understanding, each in its type's colour; the halo at seven** (T-331, 2026-10-01) | *The user, seeing it: "I saw a brain but didn't know how it changes as u gain understanding."* **A glow that never counts was honest to 4.3 and told the player nothing**; *the lobes show which places changed them without a number anywhere, and the colours carry the chart's own language (9.4). The Guide's margins still hold the words.* |
 | **Gilt City** | **Brazen City** | Gilt implies a concealer, and this story has no schemer. Brass is honestly itself; so is Scorn. Full argument in 3.1. |
 | **Al calls her Gran** | **Al calls her CRYSTAL** | *Gran read oddly on playtest.* **4.1: every other authority has a role and she is just her name** — *family included.* 4.3, T-81 (2026-09-14) |
-| **BunnyArtsai35** | **BunnyArtsai** | The number in her name gave away the Five Witnesses lock and made a serial of a one-off. Relocated to a single lab log (4.6, 4.8). |
+| **BunnyArtsai35** | **BunnyArtsai** | The number in her name gave away [private: SECRETS §1] and made a serial of a one-off. Relocated to a single lab log (4.6, 4.8). |
 | **Ty**, an unrelated rival | **Ty Clear**, Scorn's partner (the family: [private: SECRETS §2]) | Turns a methodological disagreement into a cost somebody pays (4.3). |
 | S.T.A.R.R. as *refined successor* to the BunnyArtsai line | S.T.A.R.R. as a built understanding | "Successor" still smelled of cloning. The lab understood recursion and instantiated it (4.7). |
 | **CATCH** | **BIND** | The container was renamed and the verb was not. CATCH is the only lexicon entry doing no double duty; BIND is `bind()`, *binding a daimon*, and a bond — and it is darker rather than softer, so the player stays implicated (1.1). |

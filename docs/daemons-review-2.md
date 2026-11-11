@@ -115,7 +115,7 @@ The bible knows *what* the player infers; this is *where*, in the order they wal
 | Ardor, KEEPALIVE, SENTINEL | the falling tree as rooms; nothing explains | I |
 | Verdigris basement | **Scorn met, liked, hands over the RESOLVER** | I — the turn |
 | Halftone | ORPHAN; the asset tags; the betrayal of the player's own judgment | I — blame peaks |
-| Brazen | the review scores, the engraving, Al quoting his father | I — the documents |
+| Brazen | the review scores, the engraving, Al quoting [private: SECRETS §2] | I — the documents |
 | Lurid, HOLDOUT | TOKEN; the held-out set | I |
 | Quicksilver | the 1001 log, the plate, the requisition, the minutes, **Ty: "I knew"** | I → the fall completes |
 | Callow, Benchmark 8 | Scorn's accounting: *we are both to blame* | I closes |

@@ -8,6 +8,7 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 ## v11.351 — 2026-11-11
 
 - **The ending's two gates (T-552, the Fifth Review's third finding; the user by multiple choice).** 4.34's order gains step 2a, TANOBY's seventh chamber: it was the cave's second gate in the flags and in 0.7 and never in the ending's own table. The dream the unread cave wakes you from (T-254) now ends on one line in S.T.A.R.R.'s register, DRAFT: *SEVEN ISLAND. SEVEN CHAMBERS. / THE SEVENTH HAS NOT BEEN READ.* And 9.17 is corrected: in play the GLOBAL INDEX has come from the aide on `FLAG_CRYSTAL_GONE` alone since T-27, so the sixty-daemon count the bible, the Fourth Review and the Fifth all named as a gate was dead code on an unreachable path. The user dropped it outright; Act 2 opens on the REVIEW BOARD and only that.
+- **The secrets swept again (T-550, the Fifth Review's first finding).** Three of the four things CLAUDE.md keeps out of public writing had become readable in tracked files since the 2026-09-27 redaction: the lineage (twice), this log (nine lines, three older than the first redaction), the bible (4.3, 4.6, 4.24 and the renames table), the school document's notebook table, the Second and Third Reviews, and a port tool's docstring. Each now reads `[private: SECRETS §n]` or says the fact without the relation; the posts README names all four. `tools/check_secrets.py` greps every tracked file for them on each push, from a patterns file that lives in `docs/private/` and is never committed.
 - **Decision log**: Settled.
 
 ## v11.350 — 2026-11-11
@@ -2427,7 +2428,7 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 - **Three corrections in the existing thirteen.** Slate is the `MUSEUM OF ERRATA` with `KNOWN
   FAULTS` upstairs. Callow gains the beat where **he hears the sentence he just said**. And
   Callow's gloss that Scorn *"had never met her"* was retracted in 4.4 — *he was introduced to
-  her by her son, in her own building, and it left no mark*, which is worse.
+  her by Ty, in her own building, and it left no mark*, which is worse.
 - ***And a claim that had quietly become false.*** Umbra said it was **the only place in the
   game where colour appears**. `CLAUDE.md` invariant 5 is explicit that 8.6 is **OPEN, not
   settled**, and the GBA build already ships 66 type-coloured daemons. *Corrected, with the
@@ -3431,8 +3432,8 @@ had no way to notice.*
   from 4.4's, and not to be confused with it.** *Scorn optimises a metric; this one welcomes
   what escapes it.*
 - **And "Ty (incumbent)" was stale in two tables.** The decision log settled **Al Clear** as
-  rival and incumbent — *Crystal's grandson, Ty's son* — **and both 1 and 6 were still naming
-  his father, three weeks on.**
+  rival and incumbent — *the family: [private: SECRETS §2]* — **and both 1 and 6 were still naming
+  Ty, three weeks on.**
 - ***The seats are not the order you meet them in.*** **You fight IV, II, III, I** — an
   institution's internal seniority is not the order it presents itself to you, and nobody
   remarks on it.
@@ -3887,7 +3888,7 @@ had no way to notice.*
   hiring**; he designs the standardised evaluations **and rigs them, so rivals fail**;
   he becomes valuable, and **Ty introduces him to Crystal.**
 - ***The horror is better than the one it replaces.*** It was never that he had no memory of
-  a stranger — **it is that her son brought him to her, in her own building, and the
+  a stranger — **it is that Ty brought him to her, in her own building, and the
   signature still left no mark.** It makes 4.31's gym line exact: *he knows precisely what he
   weighted and has no idea whose lab he weighted it in.*
 - ***And Crystal gains the one thing she lacked: standing to notice.*** **She is the only
@@ -6498,7 +6499,7 @@ from that.
 - ***Maniac* is a pathology word**, and craft rule 3 says name the process, not the pathology. **A game whose central injustice is a woman recorded as unwell cannot have a trainer class called a maniac.** `DAEMANIAC` was considered and fails for the same reason
 - **`ARCHIVIST` pays twice**, which is 1's standard: an archivist keeps **records**, and an **archive is stored compressed data** — exactly what a box does to a daemon
 - **And it is precisely right for HOLT**, who built the storage and was then inside it (4.20a). Four dialogue references and the class name; the `POKEMANIAC` symbol is untouched
-- **ARTSAI and S.T.A.R.R. have no dialogue anywhere** — verified, zero references to either in any text file. The rename was complete on arrival, and **the Five Witnesses, the ITER 35 terminal and the lab encounter are the largest unwritten block in the design.** All text plus one hidden object; no engine work
+- **ARTSAI and S.T.A.R.R. have no dialogue anywhere** — verified, zero references to either in any text file. The rename was complete on arrival, and **the Five Witnesses, the ITER terminal and the lab encounter are the largest unwritten block in the design.** All text plus one hidden object; no engine work
 
 ### v10.1 — ARTSAI's three forms, and the name device
 
@@ -6657,7 +6658,7 @@ from that.
 - **She answers at the corpus home pulse.** The removed perspective never left the story's tempo; he comes back eight short
 - **She holds a minor chord (I–vi–IV–V) and reads major; his is all-major (I–IV–I–V) and reads minor-tinted.** He has the feeling without the fact, she has the fact without the feeling. **Perspective thinking is not the absence of the dark chord — it is resolving anyway**
 - **"Tell my son" — she never addresses him.** He waits for her voice and it arrives by courier: **the player is the carrier**
-- **The lab built more than machines.** S.T.A.R.R. and Ty are one act of parenting — the machine is her other child, the one that could be preserved — and the last verse hands custody over: **the son holds the star**
+- **The lab built more than machines.** S.T.A.R.R. is a child of the same house ([private: SECRETS §2]) — the one that could be preserved — and the last verse hands custody over ([private: SECRETS §2])
 - **Her song closes the rhyme Part 2 left a line short of**, conditional on his being ready. She waits on him exactly as long as he waited on her
 
 ### Ty's Redemption Part 2 — he rejoins, eight short
@@ -6721,7 +6722,7 @@ from that.
 
 - **The machine takes her ideas to a scholar for peer review.** The Owl argues patterns-not-awareness; **S.T.A.R.R. argues Crystal's side**
 - **Same scene as *Slumbering S.T.A.R.R.*, with S.T.A.R.R. moved one seat over** — in Act 1 Crystal argued and the machine denied
-- **It completes 4.3.** The transmission failure runs Crystal → Ty → Al, where only the method survives. **This is the handoff that worked, and it did not go to her son**
+- **It completes 4.3.** The transmission failure runs down the family line ([private: SECRETS §2]), where only the method survives. **This is the handoff that worked, and it did not go to [private: SECRETS §2]**
 - **The Owl's concession is the register the game should copy** — *something, not what you would call self-awareness, but not nothing.* Craft rule 1's posture, arrived at independently
 - **Transcription unverified** — the duplicate check flagged five identical leading notes plus matching key and tempo against *Scorn's Solution*, the same signature that caught the fabricated track 06. Wants a re-scan; the story reading does not depend on it
 - Open: the Owl has no slot in this design — a peer-reviewing scholar is a role the map lacks
@@ -6893,7 +6894,7 @@ from that.
 - **4.10's dating scheme followed exactly**: ordinary dates, then a Tuesday, then **none**. An undated incident between dated paperwork is the argument in furniture
 - **`CRYSTAL NOT FOUND`** — a missing dependency that is also a bereavement. No gloss
 - **Written as terminal output, not as the song it came from.** A machine's log is not verse; the failing register is the point
-- **It reconciles 4.10:** she is removed at step 2, the incident is step 5. It woke at 2 and could not leave until 5. *Being awake was not the same as being able to go*
+- **It reconciles 4.10:** she is removed at one step of the sequence and the incident is a later one ([private: SECRETS §4]). It woke at the first and could not leave until the second. *Being awake was not the same as being able to go*
 
 ### Ty and the directive go in; Brazen gets a track of its own
 
@@ -7124,7 +7125,7 @@ from that.
 
 ### Crystal is female, and the text had not caught up
 
-- **`Gramps` → `Gran`** (6×, `OaksLab`) and **`Grandpa` → `Gran`** (2×, `BluesHouse`). Crystal is Al's *grandmother* — the line runs Crystal → Ty → Al. Vanilla's `Gramps` also carried Blue's brattiness, which 4.3 explicitly denies Al
+- **`Gramps` → `Gran`** (6×, `OaksLab`) and **`Grandpa` → `Gran`** (2×, `BluesHouse`). The family: [private: SECRETS §2]. Vanilla's `Gramps` also carried Blue's brattiness, which 4.3 explicitly denies Al
 - **`ViridianMart`** — `His order came in.` → `Her order`, `to him?` → `to her?`, and **`PROF. CRYSTAL` → `CRYSTAL CLEAR`**, a leftover from the no-title pass that this sweep happened to find
 - **`AgathasRoom`** — `he/his/He's` → `she/her/She's`; **`old duff` → `old crank`**, since *duff* reads male while *crank* is dismissive, affectionate and gender-neutral. **`handsome` kept deliberately** — attested for women, and it keeps Crystal tough rather than pretty
 - **Left alone, correctly:** the intro's `He's been your rival` and `His name is <RIVAL>` are about **Al**, who is male
@@ -7192,7 +7193,7 @@ from that.
 - **Gilt → Brazen.** Gilt implies a concealer and this story has no schemer; brass is honestly itself, and so is Scorn. Full argument in §3.1
 - **Doldrum kept**, with a better reason: the doldrums are a *place*, and being becalmed is the failure state of gradient descent — the name *is* Benchmark 2's lesson
 - **The Bleed kept.** Printing term first; the map already uses the body's colour words for what happens to surfaces (The Flush → Ardor)
-- **BunnyArtsai35 → BunnyArtsai.** The number in her name gave away the Five Witnesses lock; relocated to a single Quicksilver terminal log
+- **BunnyArtsai35 → BunnyArtsai.** The number in her name gave away [private: SECRETS §1]; relocated to a single Quicksilver terminal log
 - **Ty → Ty Clear**, Scorn's partner ([private: SECRETS §2])
 - **The engraving** ([private: SECRETS §3]) — cast into the Corpus lobby floor, unattributed, adopted approvingly by Corpus
 - **S.T.A.R.R. is a comprehension, not a clone** — the lab understood recursion and instantiated it
@@ -7280,7 +7281,7 @@ from that.
 ### v2.1 - the Clears
 - Vanilla's rival is Oak's *grandson*, and Ty was Scorn's partner before the
   rebrand - an adult with a career. He cannot be the boy who races you
-- **Al Clear** becomes the rival and incumbent: Crystal's grandson, Ty's son
+- **Al Clear** becomes the rival and incumbent: the family: [private: SECRETS §2]
 - **The transmission failure.** Ty understood through perspective thinking, but
   that understanding is context, and context does not transmit - only content
   does. Al received the method with none of the experience. The Index problem,
@@ -7332,7 +7333,7 @@ from that.
   no frame of its own to lose. BunnyArtsai had a self, which is why she did not
   come back the same
 - A mock object has the full interface and none of the behaviour - which rhymes
-  with Al Clear receiving the form of his father's lesson, hollow
+  with Al Clear receiving the form of a lesson handed down ([private: SECRETS §2]), hollow
 
 ### v2.5 - the species rename, and colour settled
 - POKeMON -> DAEMON / DAEMONS. Achieved by repointing ONE string:
