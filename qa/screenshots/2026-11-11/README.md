@@ -445,3 +445,45 @@ T-447 pair 7 DRAFT: the ss_anne tiles at 3x in their home rows, today and A, B, 
 T-447 pair 7 DRAFT: the departure (src/ss_anne.c). Today the smoke and wake are pret's frames drawn in the ship's own palette (genships), which makes them brown and porthole-blue. A, B and C draw in that palette's own whites, greys and blues. The smoke appears 30 px aft of the funnel in all of them: that is set in code, not drawing.
 
 ![11Nov2026 - T447 - S.S. ANNE pair 7 departure smoke and wake - 91](11Nov2026%20-%20T447%20-%20S.S.%20ANNE%20pair%207%20departure%20smoke%20and%20wake%20-%2091.png)
+
+### 11Nov2026 - T447 - pair 7 built SS ANNE deck 2x - 92
+
+T-447 pair 7 BUILT (C THE LIVERY, extended): the S.S. ANNE's deck from the build -- caulked teak, the rail's balusters brass-capped, brass cowls, striped deck chairs, the house in riveted enamel, a navy hull (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built SS ANNE deck 2x - 92](11Nov2026%20-%20T447%20-%20pair%207%20built%20SS%20ANNE%20deck%202x%20-%2092.png)
+
+### 11Nov2026 - T447 - pair 7 built captains office 3x - 93
+
+T-447 pair 7 BUILT: the captain's office -- navy leather chair, the ship herself in the painting, teak stairs with brass nosing, riveted enamel round the room (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built captains office 3x - 93](11Nov2026%20-%20T447%20-%20pair%207%20built%20captains%20office%203x%20-%2093.png)
+
+### 11Nov2026 - T447 - pair 7 built galley 3x - 94
+
+T-447 pair 7 BUILT: the galley -- brass portholes, stainless tables and stove, steel posts with brass collars, navy bins with a brass rim (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built galley 3x - 94](11Nov2026%20-%20T447%20-%20pair%207%20built%20galley%203x%20-%2094.png)
+
+### 11Nov2026 - T447 - pair 7 built cabin 1F 3x - 95
+
+T-447 pair 7 BUILT: a cabin of the seven-room layout -- navy carpet with amber compass stars, a teak bunk (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built cabin 1F 3x - 95](11Nov2026%20-%20T447%20-%20pair%207%20built%20cabin%201F%203x%20-%2095.png)
+
+### 11Nov2026 - T447 - pair 7 built cabin 2F 3x - 96
+
+T-447 pair 7 BUILT: a cabin of the eleven-room layout -- the red rope weave, navy ticking on the wall (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built cabin 2F 3x - 96](11Nov2026%20-%20T447%20-%20pair%207%20built%20cabin%202F%203x%20-%2096.png)
+
+### 11Nov2026 - T447 - pair 7 built hold corridor 3x - 97
+
+T-447 pair 7 BUILT: the hold's corridor, B1F -- teak stairs and white stanchions with brass rings (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built hold corridor 3x - 97](11Nov2026%20-%20T447%20-%20pair%207%20built%20hold%20corridor%203x%20-%2097.png)
+
+### 11Nov2026 - T447 - pair 7 built departure from ROM - 98
+
+T-447 pair 7 BUILT: the departure decoded from daemonsContent.gba -- the smoke now rises from the funnel's mouth (src/ss_anne.c +49,78 -> +46,66; the ship is drawn from x-32), coal smoke and white foam in the ship's own palette (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built departure from ROM - 98](11Nov2026%20-%20T447%20-%20pair%207%20built%20departure%20from%20ROM%20-%2098.png)

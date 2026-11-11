@@ -29,7 +29,10 @@ KEEPALIVE PLANT and TANOBY; pair 6: the LEAGUE and the HALL OF FAME; pair 7: the
                                                       # pair 7's directions (the S.S. ANNE and its departure's smoke
                                                       #   and wake, below), the same outputs in gfx/drafts/t447_pair7/
     python3 tools/gbalandmarkrooms.py --pair 7 --write --approved
-                                                      # refused until APPROVED holds "ss" (the user's pick)
+                                                      # into the engine (the user, 2026-11-11: C THE LIVERY,
+                                                      #   extended over the tiles its draft only recoloured; the
+                                                      #   smoke moved over the funnel in src/ss_anne.c by hand);
+                                                      #   the report then exits 1 on any difference from that write
 
 THE JOB (the user, 2026-11-10, "The landmarks left"; census item 8). T-447 drew the landmarks' OUTSIDES from the story
 (pairs 1-3, tools/gbalandmarks.py). Seven landmarks are still mostly Nintendo's drawing INSIDE: the MANSION (and its
@@ -80,7 +83,8 @@ DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t447_pair4")
 #  the user, 2026-11-10: MANSION A The rack hall, TOWER A The dot screen
 #  the user, 2026-11-11: PLANT B Growing untended, TANOBY A Carved, not lit
 #  the user, 2026-11-11: LEAGUE A The four vessels, HALL A The index card
-APPROVED = {"man": "A", "tow": "A", "pp": "B", "tan": "A", "lg": "A", "hof": "A"}
+APPROVED = {"man": "A", "tow": "A", "pp": "B", "tan": "A", "lg": "A", "hof": "A",
+            "ss": "C"}   # the user, 2026-11-11: C The livery; smoke moved over the funnel
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
@@ -5025,10 +5029,13 @@ def main6():
 #               pale lavender and white in Nintendo's ship palette), which in genships' ANNE_PAL are the planking's
 #               dark brown and the porthole light: TODAY THE SMOKE IS BROWN AND BLUE. The drafts draw in ANNE_PAL's
 #               own indices (5 white, 6 white in shade, 7 grey, 13 the water's shadow, 14 the porthole light), so
-#               nothing in genships changes. NOTE: the smoke is set at the ship's centre +49 px (ss_anne.c), where
-#               vanilla's aft funnel stood; genships' one funnel is at +8..+20, so the smoke rises 30 px aft of it
-#               in every direction -- a drawing cannot move it (a 16x16 frame), only ss_anne.c's 49 or genships'
-#               funnel can (reported, not changed: the engine is read only for a draft).
+#               nothing in genships changes. THE SMOKE'S PLACE (built 2026-11-11, the user: "the smoke moves over
+#               the new funnel"): the draft read ss_anne.c's +49 as 30 px aft of genships' funnel, measuring from
+#               the picture's centre -- but the 128x64 ship is drawn from subsprites at x -32/+32 (y -16/+16), so
+#               her column c is at sprite x + c - 32, and vanilla's +49 is column 81, its FORE funnel's mouth.
+#               genships' funnel mouth is columns 72..84, row 1 (vanilla's row 9), so the built smoke is +46 and
+#               y 78 -> 66 (8 rows higher, and C's first puff sits 4 rows lower in its frame than vanilla's).
+#               The draft's +8..+20 would have put it over the bow. The report checks it (smoke_at, FUNNEL_MOUTH).
 #
 #  The same rules as pairs 4-6: redrawn IN PLACE, every tile keeps its footprint, no block, layer, flip, palette row,
 #  behaviour or collision bit moves and no map is touched; 0 new tiles. gbatowns batch G drew the deck's teak, the
@@ -5956,6 +5963,85 @@ STYLE7_C = dict(misc=C7_misc, edge=C7_edge, floor=C7_floor, floork=C7_floork, de
                 barrel=C7_barrel, counter=C7_counter, plate=C7_plate, cloth=C7_cloth, pillar=C7_pillar)
 
 
+#  C_GROW (the user, 2026-11-11: "C The livery", extended to the tiles its draft only recoloured -- the pair-5 B_GROW
+#  precedent). The draft left 69 of its 206 tiles in Nintendo's drawing, recoloured: the rooms' white edges, the
+#  galley's posts, the stairs, the deck's iron rail, the vents and deck chairs, the captain's chair, the bins, the
+#  stools, the bunks and the stove. Each is carried into the livery in the same slots and only in row 7's ramps
+#  (enamel N, brass Y, navy B, teak W): riveted enamel with a navy rule, stainless posts with brass collars, teak
+#  treads with brass nosing, white stanchions with a brass cap on every baluster, brass ventilator cowls, navy-and-
+#  white striped canvas, navy leather, navy bins with a brass rim, brass-footed stools, teak bunks, a stainless stove.
+#  Left as they are: the tablecloth (145..148, general's fixed row 5) and the painting's frame corner (87), which
+#  already match the rest of their pieces.
+C_EDGE = {3, 4, 5, 12, 15, 20, 21, 31, 37, 47, 70, 208, 210, 242}
+C_POST = {14, 30, 46}
+C_STAIR = {49, 53, 54, 66, 57, 58, 59, 60, 61, 73, 74, 76, 77}
+C_RAIL = {52, 179, 180, 193, 194, 195, 196, 198, 199, 200, 201, 217, 222, 224}
+C_VENT = {91, 107}
+C_DCHAIR = {126, 127, 142, 143}
+C_CHAIR = {112, 128, 144}
+C_BIN = {62, 78}
+C_STOOL = {233, 234}
+C_BED = {80, 81, 82, 96, 98}
+C_GALLEY = {137, 149}
+C_BARE = C_EDGE | C_POST | C_STAIR | C_RAIL | C_VENT | C_DCHAIR | C_CHAIR | C_BIN | C_STOOL | C_BED | C_GALLEY
+
+
+def C_grow(sc, x, y, role, t):
+    rr = lambda u, v: sc.role[v][u] if 0 <= u < sc.w and 0 <= v < sc.h else None
+    if t in C_EDGE:
+        if role in ("N1", "N2"):
+            return "B2"                                      # a navy rule round the room
+        if role in ("N3", "N4", "WHT") and x % 8 == 3 and y % 8 == 3:
+            return "N2"                                      # a rivet
+        return None
+    if t in C_POST:
+        if y % 16 in (2, 3, 12):
+            return {"B1": "Y1", "B2": "Y1", "B3": "Y2"}.get(role)   # a brass collar
+        return {"B1": "N2", "B2": "N3", "B3": "N4"}.get(role)       # stainless
+    if t in C_STAIR:
+        return {"N1": "W1", "N2": "W2", "N3": "W3", "N4": "Y2", "WHT": "Y3"}.get(role)   # teak, brass nosing
+    if t in C_RAIL:
+        if role == "OUT" and rr(x, y - 1) not in ("OUT", None) and rr(x, y + 1) == "OUT":
+            return "Y2"                                      # a brass cap on the baluster
+        if role == "WHT" and y % 8 == 1 and "OUT" in (rr(x - 1, y), rr(x + 1, y)):
+            return "Y2"                                      # a brass ring round a white stanchion
+        return {"N1": "N2", "N2": "N3", "N3": "WHT", "N4": "WHT"}.get(role)   # the stanchions white enamel
+    if t in C_VENT:
+        return {"WHT": "Y3", "N4": "Y3", "N3": "Y2", "N2": "Y1", "N1": "Y1"}.get(role)   # a brass ventilator cowl
+    if t in C_DCHAIR:
+        if role in ("WHT", "N3", "N4"):
+            return "B2" if (x // 2) % 2 else "WHT"           # striped canvas
+        return {"N1": "B1", "N2": "B1"}.get(role)
+    if t in C_CHAIR:
+        return {"N1": "B1", "N2": "B2", "N3": "B2"}.get(role)   # navy leather
+    if t in C_BIN:
+        return {"N1": "B1", "N2": "B2", "N3": "B2", "N4": "Y2"}.get(role)   # navy, a brass rim
+    if t in C_STOOL:
+        return {"N1": "Y1"}.get(role)                        # brass feet under teak seats
+    if t in C_BED:
+        return {"N1": "W1", "N2": "W2"}.get(role)            # a teak bunk
+    if t in C_GALLEY:
+        if role in ("N2", "N3", "N4", "WHT"):
+            return "N4" if (x + y) % 7 else "WHT"            # stainless, brushed (the counter's)
+        return {"N1": "N2"}.get(role)
+    return None
+
+
+def p7_grown(style, grow, bare):
+    base = p7(style)
+
+    def paint(sc, x, y):
+        m = base(sc, x, y)
+        t = sc.tileL[sc.L][y][x]
+        role = sc.role[y][x]
+        if t in bare and role is not None and (m is None or m == role):
+            g = grow(sc, x, y, role, t)
+            if g is not None:
+                return g
+        return m
+    return paint
+
+
 # ---------------------------------------------------------------------------------------- the departure
 #  smoke.png: 16x72, frames 0..3 at rows 0, 16, 32, 48 (ANIMCMD_FRAME 0/4/8/12 for 10/20/20/30 ticks; it drifts
 #  right a pixel every 4 ticks), rows 64..71 a spare tile left blank. wake.png: 16x64, two 16x32 frames alternating
@@ -6155,6 +6241,7 @@ C7 = direction7(
          C1=(110, 74, 44), C2=(152, 112, 72), C3=(200, 160, 104), C4=(230, 200, 150), F1=(176, 112, 32),
          F2=(232, 168, 48), F3=(16, 16, 40), F4=(248, 248, 240)),
     STYLE7_C, SMOKE7["C"])
+C7["paint"] = p7_grown(STYLE7_C, C_grow, C_BARE)          # the user's pick, extended (C_GROW above)
 STYLES7 = {"A": A7, "B": B7, "C": C7}
 
 
@@ -6213,15 +6300,27 @@ DETAILS7 = [("SSAnne_CaptainsOffice", (0, 1, 9, 6), "the captain's office: paint
             ("SSAnne_Deck", (0, 13, 10, 19), "the bow: rail, hull")]
 
 
+def smoke_at():
+    """(x offset from the ship's sprite x, screen y) where src/ss_anne.c sets the smoke"""
+    src = open(os.path.join(GBA, "src/ss_anne.c")).read()
+    m = re.search(r"CreateSmokeSprite\(void\)\s*\{.*?x2 \+ (\d+);.*?sSmokeSpriteTemplate, x, (\d+),", src, re.S)
+    return (int(m.group(1)), int(m.group(2))) if m else (49, 78)
+
+
+FUNNEL_MOUTH = (72, 84, 1)       # genships' funnel: its mouth's columns and top row in the 128x64 picture
+
+
 def departure_scene(ship, smoke, wake, frame=1, scale=1):
-    """the ship as the cutscene sets her up, a few seconds in: smoke at centre +49 (y 78), the wake at +80 (y 109).
-    The ship's centre is put at (88, 80) so smoke and wake fall on a 240x160 screen"""
+    """the ship as the cutscene sets her up: her sprite at (88, 80) -- the 128x64 object is drawn from subsprites at
+    x -32/+32 and y -16/+16, so her picture spans (56..183, 64..127) -- the smoke where src/ss_anne.c sets it
+    (smoke_at(), each frame drifted right a pixel per 4 ticks), the wake at +80 (y 109)"""
     sea = Image.new("RGB", (240, 160), ANNE_PAL[0])
     sx, sy = 88, 80
-    sea.paste(sprite_rgb(ship), (sx - 64, sy - 32), mask(ship))
-    for i, (f, dx) in enumerate(((0, 0), (1, 6), (2, 14), (3, 24))):
+    sea.paste(sprite_rgb(ship), (sx - 32, sy - 16), mask(ship))
+    kx, ky = smoke_at()
+    for i, (f, dx) in enumerate(((0, 0), (1, 2), (2, 7), (3, 12))):
         fr = smoke.crop((0, f * 16, 16, f * 16 + 16))
-        sea.paste(sprite_rgb(fr), (sx + 49 - 8 + dx, 78 - 8 - i * 3), mask(fr))
+        sea.paste(sprite_rgb(fr), (sx + kx - 8 + dx, ky - 8), mask(fr))
     wf = wake.crop((0, frame * 32, 16, frame * 32 + 32))
     sea.paste(sprite_rgb(wf), (sx + 80 - 8 + 2, 109 - 16), mask(wf))
     return sea.resize((240 * scale, 160 * scale), Image.NEAREST)
@@ -6353,8 +6452,9 @@ def contact_sheets7(out_dir, states, sprites):
     d = ImageDraw.Draw(sh)
     text(d, (pad, 6), "T-447 DRAFT, pair 7 -- the departure (src/ss_anne.c): smoke and wake in the S.S. ANNE's own "
                       "palette (genships, unchanged), the ship as she stands", INK)
-    text(d, (pad, 20), "the smoke is set at the ship's centre +49 px, where vanilla's aft funnel stood; genships' funnel "
-                       "is 30 px forward of it (a code or genships question, reported)", SOFT)
+    text(d, (pad, 20), "the smoke at the ship's x %+d, y %d (src/ss_anne.c): the 128x64 ship is drawn from x-32, so "
+                       "that is column %d -- the funnel's mouth (%d..%d)" % (smoke_at() + (smoke_at()[0] + 32,
+                                                                              FUNNEL_MOUTH[0], FUNNEL_MOUTH[1])), SOFT)
     y = 40
     for b in blocks:
         sh.paste(b, (0, y))
@@ -6407,6 +6507,14 @@ def report7():
     else:
         print("    departure: smoke and wake drawn in genships' ANNE_PAL (PALSLOT_NPC_SPECIAL = OBJ palette 10); "
               "today's vanilla frames show index 10 (planking, dark) and 14 (porthole light)")
+    kx, ky = smoke_at()
+    if not FUNNEL_MOUTH[0] <= kx + 32 <= FUNNEL_MOUTH[1]:
+        print("  !! src/ss_anne.c sets the smoke at x %+d, column %d of the ship's picture: not over the funnel's mouth "
+              "(%d..%d)" % (kx, kx + 32, FUNNEL_MOUTH[0], FUNNEL_MOUTH[1]))
+        bad = 1
+    else:
+        print("    the smoke at x %+d, y %d (src/ss_anne.c): column %d of the ship, in the funnel's mouth (%d..%d)" %
+              (kx, ky, kx + 32, FUNNEL_MOUTH[0], FUNNEL_MOUTH[1]))
     known = {"gbatowns.py", "gbadoors.py", "genships.py", "companion_export.py", "check_reach.py", "gbagrove.py",
              "gbanexusmap.py", "gbaprimary.py", "gbawater.py", "port_dialogue.py", "check_generators.py"}
     found = set()
