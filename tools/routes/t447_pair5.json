@@ -1,0 +1,33 @@
+{
+ "rom": "debug",
+ "about": "T-447 pair 5 (tools/gbalandmarkrooms.py --pair 5 --write --approved, built 2026-11-11; the user: PLANT B Growing untended, TANOBY A Carved, not lit), DRAFT: KEEPALIVE PLANT grown over -- ivy up every housing, moss on the caps and in the seams, a creeper round the girders, grass through the grates, the drums planters, ivy up the generators' domes (their behaviour and blocks unchanged); the seven TANOBY chambers in sandstone, each chamber's own colour a band of pigment, a frieze of the unreadable script cut into the back wall and a line of it along every maze wall, doors into the dark. Redrawn in place: no block, palette row, behaviour or map moved. Each map warped to by name. Watch held at day. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {"stop": "the DEBUG build, continued", "steps": [
+   "load debug",
+   "poke gDaemonsWatchOverride 8 1", "poke gDaemonsWeatherOverride 8 1"]},
+  {"stop": "KEEPALIVE PLANT: inside its door, the housings under ivy", "steps": [
+   "goto PowerPlant", "repel 999", "close", "wait 60", "shot KEEPALIVE PLANT inside its door"]},
+  {"stop": "KEEPALIVE PLANT: the generator by the entrance", "steps": [
+   "goto PowerPlant 7 12", "close", "wait 60", "shot KEEPALIVE PLANT the first generator"]},
+  {"stop": "KEEPALIVE PLANT: the drums as planters", "steps": [
+   "goto PowerPlant 41 8", "close", "wait 60", "shot KEEPALIVE PLANT the drums"]},
+  {"stop": "KEEPALIVE PLANT: the second generator", "steps": [
+   "goto PowerPlant 28 38", "close", "wait 60", "shot KEEPALIVE PLANT the second generator"]},
+  {"stop": "TANOBY RUINS outside: the chambers' doors (gbatowns', unchanged)", "steps": [
+   "goto SevenIsland_TanobyRuins", "close", "wait 60", "shot TANOBY RUINS outside"]},
+  {"stop": "MONEAN CHAMBER: the frieze, the band in row 11's colour", "steps": [
+   "goto SevenIsland_TanobyRuins_MoneanChamber", "close", "wait 60", "shot MONEAN CHAMBER"]},
+  {"stop": "LIPTOO CHAMBER (row 10)", "steps": [
+   "goto SevenIsland_TanobyRuins_LiptooChamber", "close", "wait 60", "shot LIPTOO CHAMBER"]},
+  {"stop": "WEEPTH CHAMBER (row 8)", "steps": [
+   "goto SevenIsland_TanobyRuins_WeepthChamber", "close", "wait 60", "shot WEEPTH CHAMBER"]},
+  {"stop": "DILFORD CHAMBER (row 12)", "steps": [
+   "goto SevenIsland_TanobyRuins_DilfordChamber", "close", "wait 60", "shot DILFORD CHAMBER"]},
+  {"stop": "SCUFIB CHAMBER (row 9)", "steps": [
+   "goto SevenIsland_TanobyRuins_ScufibChamber", "close", "wait 60", "shot SCUFIB CHAMBER"]},
+  {"stop": "RIXY CHAMBER (row 9)", "steps": [
+   "goto SevenIsland_TanobyRuins_RixyChamber", "close", "wait 60", "shot RIXY CHAMBER"]},
+  {"stop": "VIAPOIS CHAMBER (row 8)", "steps": [
+   "goto SevenIsland_TanobyRuins_ViapoisChamber", "close", "wait 60", "shot VIAPOIS CHAMBER"]}
+ ]
+}

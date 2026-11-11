@@ -205,3 +205,75 @@ T-447 pair 4 filmed in the theatre on the v11.346.1 debug build: the MANSION A T
 T-447 pair 4 filmed in the theatre on the v11.346.1 debug build: the MANSION A THE RACK HALL (1F breaker cabinet, 2F the LOG, 3F, B1F shutters), ROUTE 21's station, DAEMON TOWER A THE DOT SCREEN in grey and in colour, the stones in their floor, 5F. DRAFT.
 
 ![11Nov2026 - T447 - pair 4 filmed in the theatre - 42](11Nov2026%20-%20T447%20-%20pair%204%20filmed%20in%20the%20theatre%20-%2042.png)
+
+### 11Nov2026 - T447 - KEEPALIVE PLANT growing untended whole floor - 43
+
+T-447 pair 5 BUILT, from the build at 1x: KEEPALIVE PLANT as B GROWING UNTENDED -- ivy up every housing, moss on the caps and in the seams, a creeper round the girders, grass through the grates, the drums planters, ivy up the generators' domes; gbacaves' colours kept (DRAFT)
+
+![11Nov2026 - T447 - KEEPALIVE PLANT growing untended whole floor - 43](11Nov2026%20-%20T447%20-%20KEEPALIVE%20PLANT%20growing%20untended%20whole%20floor%20-%2043.png)
+
+### 11Nov2026 - T447 - KEEPALIVE PLANT entrance housings 3x - 44
+
+T-447 pair 5: the entrance housings, the caps' moss and the creeper on the braces, 3x (the extension over the tiles the draft left bare)
+
+![11Nov2026 - T447 - KEEPALIVE PLANT entrance housings 3x - 44](11Nov2026%20-%20T447%20-%20KEEPALIVE%20PLANT%20entrance%20housings%203x%20-%2044.png)
+
+### 11Nov2026 - T447 - KEEPALIVE PLANT drums as planters 3x - 45
+
+T-447 pair 5: the drums as planters, leaves over their lids; the coils wound with vines, 3x
+
+![11Nov2026 - T447 - KEEPALIVE PLANT drums as planters 3x - 45](11Nov2026%20-%20T447%20-%20KEEPALIVE%20PLANT%20drums%20as%20planters%203x%20-%2045.png)
+
+### 11Nov2026 - T447 - KEEPALIVE PLANT generator under ivy 3x - 46
+
+T-447 pair 5: a generator (MB 0x95, its blocks and behaviour unchanged) with ivy up its dome and moss in its vents, 3x
+
+![11Nov2026 - T447 - KEEPALIVE PLANT generator under ivy 3x - 46](11Nov2026%20-%20T447%20-%20KEEPALIVE%20PLANT%20generator%20under%20ivy%203x%20-%2046.png)
+
+### 11Nov2026 - T447 - TANOBY RUINS outside - 47
+
+T-447 pair 5: TANOBY RUINS from outside at 1x (gbatowns' chamber doors, unchanged by this pair)
+
+![11Nov2026 - T447 - TANOBY RUINS outside - 47](11Nov2026%20-%20T447%20-%20TANOBY%20RUINS%20outside%20-%2047.png)
+
+### 11Nov2026 - T447 - TANOBY MONEAN CHAMBER carved not lit 2x - 48
+
+T-447 pair 5: MONEAN CHAMBER as A CARVED, NOT LIT -- sandstone courses, the chamber's own colour a band of pigment, a frieze of the unreadable script on the back wall and a line of it along every maze wall, doors into the dark; 2x (DRAFT)
+
+![11Nov2026 - T447 - TANOBY MONEAN CHAMBER carved not lit 2x - 48](11Nov2026%20-%20T447%20-%20TANOBY%20MONEAN%20CHAMBER%20carved%20not%20lit%202x%20-%2048.png)
+
+### 11Nov2026 - T447 - TANOBY LIPTOO CHAMBER carved not lit 2x - 49
+
+T-447 pair 5: LIPTOO CHAMBER as A CARVED, NOT LIT -- sandstone courses, the chamber's own colour a band of pigment, a frieze of the unreadable script on the back wall and a line of it along every maze wall, doors into the dark; 2x (DRAFT)
+
+![11Nov2026 - T447 - TANOBY LIPTOO CHAMBER carved not lit 2x - 49](11Nov2026%20-%20T447%20-%20TANOBY%20LIPTOO%20CHAMBER%20carved%20not%20lit%202x%20-%2049.png)
+
+### 11Nov2026 - T447 - TANOBY WEEPTH CHAMBER carved not lit 2x - 50
+
+T-447 pair 5: WEEPTH CHAMBER as A CARVED, NOT LIT -- sandstone courses, the chamber's own colour a band of pigment, a frieze of the unreadable script on the back wall and a line of it along every maze wall, doors into the dark; 2x (DRAFT)
+
+![11Nov2026 - T447 - TANOBY WEEPTH CHAMBER carved not lit 2x - 50](11Nov2026%20-%20T447%20-%20TANOBY%20WEEPTH%20CHAMBER%20carved%20not%20lit%202x%20-%2050.png)
+
+### 11Nov2026 - T447 - TANOBY DILFORD CHAMBER carved not lit 2x - 51
+
+T-447 pair 5: DILFORD CHAMBER as A CARVED, NOT LIT -- sandstone courses, the chamber's own colour a band of pigment, a frieze of the unreadable script on the back wall and a line of it along every maze wall, doors into the dark; 2x (DRAFT)
+
+![11Nov2026 - T447 - TANOBY DILFORD CHAMBER carved not lit 2x - 51](11Nov2026%20-%20T447%20-%20TANOBY%20DILFORD%20CHAMBER%20carved%20not%20lit%202x%20-%2051.png)
+
+### 11Nov2026 - T447 - TANOBY SCUFIB CHAMBER carved not lit 2x - 52
+
+T-447 pair 5: SCUFIB CHAMBER as A CARVED, NOT LIT -- sandstone courses, the chamber's own colour a band of pigment, a frieze of the unreadable script on the back wall and a line of it along every maze wall, doors into the dark; 2x (DRAFT)
+
+![11Nov2026 - T447 - TANOBY SCUFIB CHAMBER carved not lit 2x - 52](11Nov2026%20-%20T447%20-%20TANOBY%20SCUFIB%20CHAMBER%20carved%20not%20lit%202x%20-%2052.png)
+
+### 11Nov2026 - T447 - TANOBY RIXY CHAMBER carved not lit 2x - 53
+
+T-447 pair 5: RIXY CHAMBER as A CARVED, NOT LIT -- sandstone courses, the chamber's own colour a band of pigment, a frieze of the unreadable script on the back wall and a line of it along every maze wall, doors into the dark; 2x (DRAFT)
+
+![11Nov2026 - T447 - TANOBY RIXY CHAMBER carved not lit 2x - 53](11Nov2026%20-%20T447%20-%20TANOBY%20RIXY%20CHAMBER%20carved%20not%20lit%202x%20-%2053.png)
+
+### 11Nov2026 - T447 - TANOBY VIAPOIS CHAMBER carved not lit 2x - 54
+
+T-447 pair 5: VIAPOIS CHAMBER as A CARVED, NOT LIT -- sandstone courses, the chamber's own colour a band of pigment, a frieze of the unreadable script on the back wall and a line of it along every maze wall, doors into the dark; 2x (DRAFT)
+
+![11Nov2026 - T447 - TANOBY VIAPOIS CHAMBER carved not lit 2x - 54](11Nov2026%20-%20T447%20-%20TANOBY%20VIAPOIS%20CHAMBER%20carved%20not%20lit%202x%20-%2054.png)

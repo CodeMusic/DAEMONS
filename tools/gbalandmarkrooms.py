@@ -16,7 +16,9 @@ KEEPALIVE PLANT and TANOBY).
                                                       # pair 5's directions (KEEPALIVE PLANT + TANOBY, below), the
                                                       #   same outputs in gfx/drafts/t447_pair5/
     python3 tools/gbalandmarkrooms.py --pair 5 --write --approved
-                                                      # refused until APPROVED holds a pick for "pp" or "tan"
+                                                      # into the engine (the user, 2026-11-11: PLANT B, TANOBY A,
+                                                      #   B extended over the tiles its draft left bare); the report
+                                                      #   then exits 1 on any difference from that write
 
 THE JOB (the user, 2026-11-10, "The landmarks left"; census item 8). T-447 drew the landmarks' OUTSIDES from the story
 (pairs 1-3, tools/gbalandmarks.py). Seven landmarks are still mostly Nintendo's drawing INSIDE: the MANSION (and its
@@ -65,7 +67,8 @@ GBA = os.path.join(ROOT, "engineGba")
 DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t447_pair4")
 #  The user's picks, one direction per building. --write refuses while it is empty.
 #  the user, 2026-11-10: MANSION A The rack hall, TOWER A The dot screen
-APPROVED = {"man": "A", "tow": "A"}
+#  the user, 2026-11-11: PLANT B Growing untended, TANOBY A Carved, not lit
+APPROVED = {"man": "A", "tow": "A", "pp": "B", "tan": "A"}
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
@@ -2394,6 +2397,10 @@ def leafy(x, y, s, density):
 
 
 def B_pp_zone(kind, role, x, y, K):
+    return B_grown(K, x, y, B_pp_zone0(kind, role, x, y, K))
+
+
+def B_pp_zone0(kind, role, x, y, K):
     if role in (None, "VOID"):
         return None
     if kind in ("floor", "grate"):
@@ -2449,7 +2456,7 @@ def B_pp_housepx(role, x, hy, K):
 
 
 def B_pp_housing(K):
-    K.fn(lambda x, y: B_pp_housepx(vrole5(K, x, y), x % 8, y, K))
+    B_fn(K, lambda x, y: B_pp_housepx(vrole5(K, x, y), x % 8, y, K))
 
 
 def B_pp_panel(K):
@@ -2460,7 +2467,7 @@ def B_pp_panel(K):
             if m:
                 return m
         return pp_keep(r)
-    K.fn(f)
+    B_fn(K, f)
 
 
 def B_pp_coil(K):
@@ -2474,7 +2481,7 @@ def B_pp_coil(K):
         if (x + y * 2) % 7 in (0, 1) and r not in ("HO",):
             return "CG"
         return pp_keep(r)
-    K.fn(f)
+    B_fn(K, f)
 
 
 def B_pp_drums(K):
@@ -2489,7 +2496,7 @@ def B_pp_drums(K):
         if r in ("HB",) and cy in (0, 1, 2, 3) and H(x, y, 3) % 3 == 0:
             return "Q7"
         return pp_keep(r)
-    K.fn(f)
+    B_fn(K, f)
 
 
 def B_pp_gen(K):
@@ -2501,11 +2508,102 @@ def B_pp_gen(K):
         if m and (x // 8) in (0, 5):
             return m
         return pp_keep(r)
-    K.fn(f)
+    B_fn(K, f)
 
 
 def B_pp_floor(K):
-    K.fn(lambda x, y: B_pp_floorpx(vrole5(K, x, y), x, y))
+    B_fn(K, lambda x, y: B_pp_floorpx(vrole5(K, x, y), x, y))
+
+
+#  THE EXTENSION (the user, 2026-11-11, picking B: "extend it to the girders, grates, ends and generator parts that
+#  keep Nintendo's shapes"). The draft left 35 of the plant's 74 tiles as Nintendo drew them; every one of those but
+#  the bare floor plate (10, a flat fill under 747 placements) is grown over here in B's own language, in the same
+#  slots -- CG and LED in row 7 (gbacaves' green conduit and status light, kept), Q7..Q9 in row 8 (B's three greens)
+#  -- and ONLY those tiles, so every tile the user saw drawn stays byte-identical to the draft.
+B_BARE = {2, 11, 12, 13, 14, 15, 16, 23, 24, 28, 29, 33, 34, 35, 37, 46, 47, 48, 49, 52, 53, 54, 56, 57, 59, 60, 63,
+          69, 70, 72, 73, 75, 76, 79}
+B_CAP = {33, 34}                                     # the housings' ribbed cap
+B_WALK = {12, 13, 28, 29}                            # the walkway's raised edges
+B_ENDS = {2, 16}                                     # the walkways' ends
+B_SEAMS = {11, 37}                                   # a plate's seam, a kick plate's slot
+B_GRATE = {14: "SEAM", 15: "SEAM", 47: "HM", 63: "HM", 79: "HM"}
+B_LID = {48, 49}                                     # the drums' lids (row 8)
+B_GEN = {52, 53, 54, 56, 57, 59, 60, 69, 70, 72, 73, 75, 76}
+
+
+def B_grow(t, r, x, y):
+    """what grows on a tile the draft left bare: None keeps the draft's (Nintendo's) pixel"""
+    if r in (None, "x", "VOID", "HO"):
+        return None
+    ly = y % 8
+    if t in B_CAP:                                   # moss on the cap's lip, draping a pixel or three down the ribs
+        if ly == 0:
+            return "LED" if H(x, 1, 448) % 6 == 0 else "CG"
+        if ly <= H(x // 2, 3, 447) % 4 and r in ("LANE", "TRIM", "PLATE", "HM"):
+            return "CG"
+        return None
+    if r in ("G1", "G2", "G3"):                      # a creeper wound round the girders, a leaf every third turn
+        k = (2 * x + y) % 7
+        if k == 0:
+            return "CG"
+        if k == 1 and y % 3 == 0:
+            return "LED"
+        return None
+    if t == 24 and r == "CB":                        # the brace's conduit band under leaves
+        return "CG" if H(x // 2, y, 449) % 2 == 0 else None
+    if t in B_ENDS:                                  # tufts at the walkways' ends
+        if r == "PLATE":
+            return "CG"
+        if ly >= 7 - H(x // 2, y // 8, 451) % 3 and H(x // 2, y // 8, 450) % 3 == 0:
+            return "CG"
+        return None
+    if t in B_WALK:                                  # moss along the walkway's raised edge
+        return "CG" if r == "HB" and H(x // 2, y // 2, 452) % 2 == 0 else None
+    if t in B_SEAMS:                                 # moss in the lower half of the seam
+        return "CG" if r == "SEAM" and ly >= 4 else None
+    if t in B_GRATE:                                 # grass up through the grate's slots
+        if r == B_GRATE[t] and H(x // 2, y, 453) % 4 == 0:
+            return "LED" if H(x, y, 454) % 5 == 0 else "CG"
+        return None
+    if t in B_LID:                                   # the planters' lids: leaves over the rim
+        if r == "SEAM":
+            return "Q8" if (x + y) % 3 else "Q9"
+        if r == "HB":
+            return "Q7"
+        return None
+    if t == 46:                                      # a runner across the coil's base plate
+        k = (x + 2 * y) % 9
+        if r == "K3" and k == 0:
+            return "Q7"
+        if r == "K3" and k == 1 and y % 2:
+            return "Q8"
+        return None
+    if t in B_GEN:                                   # ivy up the generator's dome, moss in its vents and at its foot
+        if r in ("PLATE", "LANE"):
+            if y < 9:                                # moss on the crown, where nothing climbs
+                return "CG" if H(x // 2, y // 3, 457) % 4 == 0 else None
+            return ivy(x % 8, min(31, y))
+        if r == "HM" and y < 8:                      # the crown's rim
+            return "CG" if H(x // 2, 0, 458) % 3 == 0 else None
+        if r == "SEAM":
+            return "CG" if H(x // 2, y, 455) % 3 == 0 else None
+        if r == "HB" and y >= 24 and H(x, y, 456) % 4 == 0:
+            return "CG"
+        return None
+    return None
+
+
+def B_grown(K, x, y, m):
+    t = ktile(K, x, y)
+    if t in B_BARE:
+        g = B_grow(t, vrole5(K, x, y), x, y)
+        if g:
+            return g
+    return m
+
+
+def B_fn(K, f):
+    K.fn(lambda x, y: B_grown(K, x, y, f(x, y)))
 
 
 # ------------------------------------------------------------------ PLANT C: OPEN SESSIONS (nobody connected)
