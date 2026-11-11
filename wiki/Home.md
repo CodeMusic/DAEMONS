@@ -76,10 +76,10 @@ follows the real calendar's holidays, and gives each edition an instrument to pl
 daemons have all been drawn again, in a style of their own.
 
 Releases come often, each one named for the version of the design bible it was built against
-(see [Releases](Releases)); the newest is **v11.350.1**, from 2026-11-11, and
-the newest thing in it that can be told about: the ship in the harbour wears a livery of her own,
-smoke over her funnel -- every landmark but two is now drawn for DAEMONS. Next, THE SUBTLE LAYER's tarot CARDS
-come to the game as the companion has them. What is done and what is not is kept honestly in the
+(see [Releases](Releases)); the newest is **v11.351.1**, from 2026-11-11, and
+the newest thing in it that can be told about: THE SUBTLE LAYER's
+tarot faces read in the game as the companion has them, and the overgrown plant and the carved ruins carry name cards
+of their own. Next, the SAFARI ZONE becomes THE WALLED GARDEN. What is done and what is not is kept honestly in the
 [design bible](https://github.com/CodeMusic/DAEMONS/blob/main/docs/vision.md) and the
 [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md).
 
