@@ -397,3 +397,9 @@ C-167: the CORPUS ledger reading ¥31475 -- the companion's SYNC writer added 31
 T-528 (e), the last of it: TULIKKO's sparks, decoded from both built ROMs (v11.348 build, not released). Top: each ROM's six spark tiles at 12x (a cross, a point, a speck; the red line, then the green) and its palette -- the sky's lines RGB(30,7,9) and RGB(10,30,15), each with its core halfway to white and its embers at 5/8; CONTENT's own sparks are red, CONTEXT's green. Below, at 3x as on screen: under the conjugate light each spark rises green from the fox's tail and turns red above it. Tiles drawn by tools/gentulikko.py, which reproduces the committed PNG byte for byte. Not filmed (route tools/routes/t528_sparks.json). No words. DRAFT.
 
 ![11Nov2026 - T528 - TULIKKOs sparks from the ROM - 82](11Nov2026%20-%20T528%20-%20TULIKKOs%20sparks%20from%20the%20ROM%20-%2082.png)
+
+### 11Nov2026 - T519 - THE UNITY BOOK last line - 83
+
+T-519, the torn lines: THE UNITY BOOK's last entry (LAST WORD), its final spread laid out by gensubtle's own layout (book_reader.c's two 110px pages, 94px column, 13px pitch) in the game's font -- it now ends 'It will not be, and it always was. Look again, and you will see them both.', two lines carried onto the right page, the spread count unchanged. A layout from the build's sources, not a screenshot. DRAFT.
+
+![11Nov2026 - T519 - THE UNITY BOOK last line - 83](11Nov2026%20-%20T519%20-%20THE%20UNITY%20BOOK%20last%20line%20-%2083.png)
