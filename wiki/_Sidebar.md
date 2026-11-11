@@ -16,6 +16,7 @@
 - [MICRO-START](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-microstart.pdf) (PDF, 5 pages)
 - [QUICK-START](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-quickstart.pdf) (PDF, 25 pages)
 - [The player's manual](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-manual.pdf) (PDF)
+- [THE COMPANION](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-companion-manual.pdf) (PDF, 71 pages) -- the companion app
 - [THE OLD WORD](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-etymology.pdf) (PDF, 19 pages) -- why the name
 - [PRINCIPLES OF MIND](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-textbook.pdf) (PDF, 82 pages) -- CALLOW SCHOOL's textbook
 - [Releases page](https://github.com/CodeMusic/DAEMONS/releases)

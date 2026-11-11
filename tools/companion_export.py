@@ -369,8 +369,28 @@ def party_art(species):
         name = os.path.basename(row["art"]["front"]).replace("_front.png", "") + ".png"
         if "/symbol/" in row["art"]["front"]:
             name = "symbol.png"
+            #  C-315: and every one of its 28 forms, art/symbol/<form>.png, one palette for all -- a card that deals
+            #  SYMBOL shows the form for its keyword's first letter (the user's pick, 2026-11-10)
+            for form in sorted(os.listdir(d)):
+                ft = os.path.join(d, form, "front.4bpp")
+                if os.path.exists(ft):
+                    out["symbol/%s.png" % form] = sprite_of(open(ft, "rb").read(), colours)
         out[name] = im
     return out
+
+
+def sprite_of(raw, colours):
+    """A 64x64 front sprite from its 4bpp tiles, in an indexed palette (index 0 clear)."""
+    from PIL import Image
+    im = Image.new("P", (64, 64), 0)
+    px = im.load()
+    for t in range(64):
+        for y in range(8):
+            for x in range(8):
+                b = raw[t * 32 + y * 4 + x // 2]
+                px[(t % 8) * 8 + x, (t // 8) * 8 + y] = (b >> 4) if x & 1 else b & 15
+    im.putpalette(colours + [0] * (768 - len(colours)))
+    return im
 
 
 def charmap_table():

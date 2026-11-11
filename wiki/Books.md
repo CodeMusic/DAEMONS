@@ -5,7 +5,9 @@ adapted from the author's own books and rewritten for the game's world, and ever
 
 Each stays hidden until you find it. The game never says where, and neither does this page. Once your save holds one,
 you can read it in the game and in the [companion](The-companion)'s LIBRARY (the app, the site and the Tab5), as an
-open book: its cover, its contents, then each page in turn.
+open book: its cover, its contents, then each page in turn. In the app and on the site the LIBRARY is a bookcase: the
+books you have found stand face-out on its first shelf, FOUND IN THE GAME, above the MANUALS, HISTORY AND STUDY and YOUR
+OWN PAGES.
 
 The full text of each lives in one file, the one the game and the companion are both built from. It is linked
 below, so the words here never fall behind the game's.

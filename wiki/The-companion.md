@@ -69,8 +69,10 @@ plays the game with the companion in a tab ([The one app](https://github.com/Cod
   has -- DAEMONS' own harp for CONTENT, its flute for CONTEXT.
 - **Experience.** Every step of a goal you finish feeds the daemon and gives it experience, which comes home with it.
 - **Your save, to read.** The app, the site and the Tab5 show YOU (your MARKS, ROOTS, the regions you have seen, the
-  hidden places you have found, the story so far), a LIBRARY (CALLOW SCHOOL and your DIPLOMA, THE GUIDE and THE SUBTLE LAYER once found -- see [Books](Books) -- the
-  NOTEBOOK, the SONGBOOK's songs on a staff in their colours, and STREAM's lessons), and the INDEX with each daemon's
+  hidden places you have found, the story so far), a LIBRARY -- a bookcase in the app and on the site, every book standing by its cover: the books found in the game
+  (see [Books](Books)), the MANUALS (QUICK START, the player's manual, [THE COMPANION](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-companion-manual.pdf), PLAYING TOGETHER, A BIGGER
+  MIND), HISTORY AND STUDY (THE OLD WORD; CALLOW SCHOOL and your DIPLOMA), and YOUR OWN PAGES (the NOTEBOOK, the
+  SONGBOOK's songs on a staff in their colours, and STREAM's lessons), and the INDEX with each daemon's
   NATIVE line -- only what your save has already reached. In the app the INDEX card is whole, and takes its colour as
   your save comes to understand that kind of daemon. **THE ROAD AHEAD** shows the next step and the fights and places
   open to you, and never anything past the next step.
