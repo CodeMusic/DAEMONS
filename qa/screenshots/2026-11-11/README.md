@@ -307,3 +307,15 @@ T-447 pair 6 DRAFT: AL CLEAR's door and emblem, the RECORD's machine and the HAL
 T-447 pair 6 DRAFT: both sets' tiles at 3x, the shared hearing tiles once per room's row
 
 ![11Nov2026 - T447 - pair 6 tiles 3x - 59](11Nov2026%20-%20T447%20-%20pair%206%20tiles%203x%20-%2059.png)
+
+### 11Nov2026 - T533 - the manuals tell the origin book - 63
+
+THE PLAYER'S MANUAL p42 and QUICK START p6: THE ORIGIN OF A DAEMON, on the bedroom shelf (DRAFT)
+
+![11Nov2026 - T533 - the manuals tell the origin book - 63](11Nov2026%20-%20T533%20-%20the%20manuals%20tell%20the%20origin%20book%20-%2063.png)
+
+### 11Nov2026 - T533 - the manuals tell the origin book - 64
+
+THE PLAYER'S MANUAL p42 and QUICK START p6: THE ORIGIN OF A DAEMON, on the bedroom shelf (DRAFT)
+
+![11Nov2026 - T533 - the manuals tell the origin book - 64](11Nov2026%20-%20T533%20-%20the%20manuals%20tell%20the%20origin%20book%20-%2064.png)
