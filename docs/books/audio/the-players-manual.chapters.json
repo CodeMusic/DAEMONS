@@ -1,0 +1,627 @@
+{
+ "book": "manual",
+ "voice": "adventure",
+ "blend": {
+  "am_fenrir": 0.6,
+  "am_puck": 0.4
+ },
+ "speed": 1.0,
+ "tone": "alimiter=limit=0.89:level=disabled",
+ "draft": "DRAFT \u00b7 every word, until it is approved",
+ "sources": "1644ce3a6af14d97",
+ "duration": 3243.29,
+ "chapters": [
+  {
+   "kind": "section",
+   "title": "The Player's Manual",
+   "start": 0.0,
+   "end": 10.95
+  },
+  {
+   "kind": "section",
+   "title": "Welcome to DAEMONS",
+   "start": 10.95,
+   "end": 36.86
+  },
+  {
+   "kind": "entry",
+   "title": "Two editions, one game",
+   "start": 36.86,
+   "end": 101.13
+  },
+  {
+   "kind": "entry",
+   "title": "A few words you will meet",
+   "start": 101.13,
+   "end": 166.53
+  },
+  {
+   "kind": "entry",
+   "title": "Before you start",
+   "start": 166.53,
+   "end": 213.83
+  },
+  {
+   "kind": "section",
+   "title": "Ways to play",
+   "start": 213.83,
+   "end": 263.69
+  },
+  {
+   "kind": "entry",
+   "title": "Patch your own cartridge",
+   "start": 263.69,
+   "end": 283.69
+  },
+  {
+   "kind": "entry",
+   "title": "1. Back up your cartridge",
+   "start": 283.69,
+   "end": 300.49
+  },
+  {
+   "kind": "entry",
+   "title": "2. Find the patch that fits it",
+   "start": 300.49,
+   "end": 332.25
+  },
+  {
+   "kind": "entry",
+   "title": "3. Download it and apply it",
+   "start": 332.25,
+   "end": 378.18
+  },
+  {
+   "kind": "entry",
+   "title": "mGBA, on a computer",
+   "start": 378.18,
+   "end": 381.41
+  },
+  {
+   "kind": "entry",
+   "title": "The emulator DAEMONS is built and tested in",
+   "start": 381.41,
+   "end": 432.03
+  },
+  {
+   "kind": "entry",
+   "title": "Delta, on an iPhone or iPad",
+   "start": 432.03,
+   "end": 435.55
+  },
+  {
+   "kind": "entry",
+   "title": "Patch in Safari, play in Delta",
+   "start": 435.55,
+   "end": 460.48
+  },
+  {
+   "kind": "entry",
+   "title": "A real Game Boy Advance",
+   "start": 460.48,
+   "end": 463.56
+  },
+  {
+   "kind": "entry",
+   "title": "With a flash cartridge",
+   "start": 463.56,
+   "end": 520.71
+  },
+  {
+   "kind": "entry",
+   "title": "The one app, on an iPhone or iPad",
+   "start": 520.71,
+   "end": 524.41
+  },
+  {
+   "kind": "entry",
+   "title": "The game and the companion together (in testing)",
+   "start": 524.41,
+   "end": 587.68
+  },
+  {
+   "kind": "entry",
+   "title": "Buttons on the screen, or in your hands",
+   "start": 587.68,
+   "end": 625.53
+  },
+  {
+   "kind": "entry",
+   "title": "The playground, in a browser",
+   "start": 625.53,
+   "end": 628.58
+  },
+  {
+   "kind": "entry",
+   "title": "The game in a browser, for demos and beta tests",
+   "start": 628.58,
+   "end": 692.82
+  },
+  {
+   "kind": "entry",
+   "title": "The DEBUG builds",
+   "start": 692.82,
+   "end": 695.52
+  },
+  {
+   "kind": "entry",
+   "title": "For testing, not for a first play",
+   "start": 695.52,
+   "end": 760.01
+  },
+  {
+   "kind": "entry",
+   "title": "Build it yourself",
+   "start": 760.01,
+   "end": 795.86
+  },
+  {
+   "kind": "entry",
+   "title": "The classic Game Boy build",
+   "start": 795.86,
+   "end": 798.9
+  },
+  {
+   "kind": "entry",
+   "title": "Where DAEMONS began",
+   "start": 798.9,
+   "end": 831.55
+  },
+  {
+   "kind": "entry",
+   "title": "The companion",
+   "start": 831.55,
+   "end": 851.03
+  },
+  {
+   "kind": "section",
+   "title": "Getting started",
+   "start": 851.03,
+   "end": 853.67
+  },
+  {
+   "kind": "entry",
+   "title": "The buttons",
+   "start": 853.67,
+   "end": 889.49
+  },
+  {
+   "kind": "entry",
+   "title": "A new game",
+   "start": 889.49,
+   "end": 928.78
+  },
+  {
+   "kind": "entry",
+   "title": "The menu",
+   "start": 928.78,
+   "end": 968.8
+  },
+  {
+   "kind": "entry",
+   "title": "Saving",
+   "start": 968.8,
+   "end": 985.0
+  },
+  {
+   "kind": "entry",
+   "title": "CHECKPOINTS and THE REPO",
+   "start": 985.0,
+   "end": 1022.41
+  },
+  {
+   "kind": "entry",
+   "title": "Getting about",
+   "start": 1022.41,
+   "end": 1062.73
+  },
+  {
+   "kind": "section",
+   "title": "The world",
+   "start": 1062.73,
+   "end": 1080.28
+  },
+  {
+   "kind": "entry",
+   "title": "The clock",
+   "start": 1080.28,
+   "end": 1110.45
+  },
+  {
+   "kind": "entry",
+   "title": "The week",
+   "start": 1110.45,
+   "end": 1173.91
+  },
+  {
+   "kind": "entry",
+   "title": "The seasons",
+   "start": 1173.91,
+   "end": 1241.77
+  },
+  {
+   "kind": "entry",
+   "title": "The weather",
+   "start": 1241.77,
+   "end": 1300.63
+  },
+  {
+   "kind": "entry",
+   "title": "Holidays",
+   "start": 1300.63,
+   "end": 1366.68
+  },
+  {
+   "kind": "entry",
+   "title": "The SITEMAP",
+   "start": 1366.68,
+   "end": 1388.26
+  },
+  {
+   "kind": "entry",
+   "title": "Colour is friendship",
+   "start": 1388.26,
+   "end": 1405.23
+  },
+  {
+   "kind": "entry",
+   "title": "Places the game never points to",
+   "start": 1405.23,
+   "end": 1420.32
+  },
+  {
+   "kind": "entry",
+   "title": "Music",
+   "start": 1420.32,
+   "end": 1429.91
+  },
+  {
+   "kind": "section",
+   "title": "Daemons",
+   "start": 1429.91,
+   "end": 1432.22
+  },
+  {
+   "kind": "entry",
+   "title": "Binding",
+   "start": 1432.22,
+   "end": 1466.63
+  },
+  {
+   "kind": "entry",
+   "title": "Your party",
+   "start": 1466.63,
+   "end": 1518.02
+  },
+  {
+   "kind": "entry",
+   "title": "Routines",
+   "start": 1518.02,
+   "end": 1539.32
+  },
+  {
+   "kind": "entry",
+   "title": "States",
+   "start": 1539.32,
+   "end": 1589.52
+  },
+  {
+   "kind": "entry",
+   "title": "Growing",
+   "start": 1589.52,
+   "end": 1607.21
+  },
+  {
+   "kind": "entry",
+   "title": "The daemon behind you",
+   "start": 1607.21,
+   "end": 1630.77
+  },
+  {
+   "kind": "section",
+   "title": "Battles and the type chart",
+   "start": 1630.77,
+   "end": 1633.85
+  },
+  {
+   "kind": "entry",
+   "title": "The battle screen",
+   "start": 1633.85,
+   "end": 1660.9
+  },
+  {
+   "kind": "entry",
+   "title": "The seventeen types",
+   "start": 1660.9,
+   "end": 1675.16
+  },
+  {
+   "kind": "entry",
+   "title": "The chart",
+   "start": 1675.16,
+   "end": 1701.56
+  },
+  {
+   "kind": "entry",
+   "title": "Weather in battle",
+   "start": 1701.56,
+   "end": 1718.58
+  },
+  {
+   "kind": "section",
+   "title": "BENCHMARKS, MARKS and ROOTS",
+   "start": 1718.58,
+   "end": 1721.68
+  },
+  {
+   "kind": "entry",
+   "title": "The eight BENCHMARKS",
+   "start": 1721.68,
+   "end": 1737.03
+  },
+  {
+   "kind": "entry",
+   "title": "The MARKS",
+   "start": 1737.03,
+   "end": 1753.91
+  },
+  {
+   "kind": "entry",
+   "title": "ROOTS: what you come to understand",
+   "start": 1753.91,
+   "end": 1795.04
+  },
+  {
+   "kind": "entry",
+   "title": "THE REVIEW BOARD",
+   "start": 1795.04,
+   "end": 1806.28
+  },
+  {
+   "kind": "section",
+   "title": "The INDEX",
+   "start": 1806.28,
+   "end": 1820.27
+  },
+  {
+   "kind": "entry",
+   "title": "Every entry, twice",
+   "start": 1820.27,
+   "end": 1837.15
+  },
+  {
+   "kind": "entry",
+   "title": "What an entry holds",
+   "start": 1837.15,
+   "end": 1866.67
+  },
+  {
+   "kind": "entry",
+   "title": "OPUS, and the GLOBAL INDEX",
+   "start": 1866.67,
+   "end": 1886.22
+  },
+  {
+   "kind": "section",
+   "title": "The NOTEBOOK and CALLOW SCHOOL",
+   "start": 1886.22,
+   "end": 1889.28
+  },
+  {
+   "kind": "entry",
+   "title": "The NOTEBOOK",
+   "start": 1889.28,
+   "end": 1914.32
+  },
+  {
+   "kind": "entry",
+   "title": "The DREAM LOG",
+   "start": 1914.32,
+   "end": 1942.08
+  },
+  {
+   "kind": "entry",
+   "title": "THE LOG",
+   "start": 1942.08,
+   "end": 1954.21
+  },
+  {
+   "kind": "entry",
+   "title": "CALLOW SCHOOL",
+   "start": 1954.21,
+   "end": 1969.92
+  },
+  {
+   "kind": "section",
+   "title": "The books",
+   "start": 1969.92,
+   "end": 2062.89
+  },
+  {
+   "kind": "entry",
+   "title": "THE PROGRAMMER'S GUIDE TO THE HUMAN MIND",
+   "start": 2062.89,
+   "end": 2093.78
+  },
+  {
+   "kind": "entry",
+   "title": "Carrying it: the margins",
+   "start": 2093.78,
+   "end": 2114.76
+  },
+  {
+   "kind": "entry",
+   "title": "ASK THE GUIDE: REASON",
+   "start": 2114.76,
+   "end": 2136.28
+  },
+  {
+   "kind": "entry",
+   "title": "THE SUBTLE LAYER",
+   "start": 2136.28,
+   "end": 2171.97
+  },
+  {
+   "kind": "entry",
+   "title": "ASK THE SUBTLE LAYER: INSTINCT",
+   "start": 2171.97,
+   "end": 2206.65
+  },
+  {
+   "kind": "entry",
+   "title": "TODAY'S QUESTION, and THE JOURNAL",
+   "start": 2206.65,
+   "end": 2226.91
+  },
+  {
+   "kind": "entry",
+   "title": "THE SUBTLE LAYER's cards",
+   "start": 2226.91,
+   "end": 2316.08
+  },
+  {
+   "kind": "entry",
+   "title": "THE HERMETIC LAYER, a rumour",
+   "start": 2316.08,
+   "end": 2358.05
+  },
+  {
+   "kind": "entry",
+   "title": "Where the story comes from",
+   "start": 2358.05,
+   "end": 2463.91
+  },
+  {
+   "kind": "section",
+   "title": "The subtle layer, in play",
+   "start": 2463.91,
+   "end": 2481.2
+  },
+  {
+   "kind": "entry",
+   "title": "The daemon notices first",
+   "start": 2481.2,
+   "end": 2499.22
+  },
+  {
+   "kind": "entry",
+   "title": "Reads",
+   "start": 2499.22,
+   "end": 2515.46
+  },
+  {
+   "kind": "entry",
+   "title": "Leans",
+   "start": 2515.46,
+   "end": 2530.73
+  },
+  {
+   "kind": "entry",
+   "title": "Words under words",
+   "start": 2530.73,
+   "end": 2542.0
+  },
+  {
+   "kind": "entry",
+   "title": "Out here too",
+   "start": 2542.0,
+   "end": 2578.96
+  },
+  {
+   "kind": "section",
+   "title": "PLAY: the HARP and the FLUTE",
+   "start": 2578.96,
+   "end": 2613.49
+  },
+  {
+   "kind": "entry",
+   "title": "Seven songs",
+   "start": 2613.49,
+   "end": 2643.11
+  },
+  {
+   "kind": "section",
+   "title": "The GAME CORNER and the CASINO",
+   "start": 2643.11,
+   "end": 2646.4
+  },
+  {
+   "kind": "entry",
+   "title": "The GAME CORNER",
+   "start": 2646.4,
+   "end": 2668.75
+  },
+  {
+   "kind": "entry",
+   "title": "The CASINO",
+   "start": 2668.75,
+   "end": 2698.89
+  },
+  {
+   "kind": "section",
+   "title": "The companion",
+   "start": 2698.89,
+   "end": 2728.75
+  },
+  {
+   "kind": "entry",
+   "title": "SEND, AWAY and home",
+   "start": 2728.75,
+   "end": 2799.31
+  },
+  {
+   "kind": "entry",
+   "title": "Where a daemon can live",
+   "start": 2799.31,
+   "end": 2882.26
+  },
+  {
+   "kind": "entry",
+   "title": "What it shows of your game",
+   "start": 2882.26,
+   "end": 2939.88
+  },
+  {
+   "kind": "entry",
+   "title": "Nights and dreams",
+   "start": 2939.88,
+   "end": 2961.22
+  },
+  {
+   "kind": "entry",
+   "title": "Running it",
+   "start": 2961.22,
+   "end": 2991.27
+  },
+  {
+   "kind": "section",
+   "title": "Help",
+   "start": 2991.27,
+   "end": 2993.5
+  },
+  {
+   "kind": "entry",
+   "title": "Something went wrong",
+   "start": 2993.5,
+   "end": 3070.94
+  },
+  {
+   "kind": "entry",
+   "title": "Updating to a new release",
+   "start": 3070.94,
+   "end": 3089.94
+  },
+  {
+   "kind": "entry",
+   "title": "Reporting a bug",
+   "start": 3089.94,
+   "end": 3107.33
+  },
+  {
+   "kind": "section",
+   "title": "Glossary",
+   "start": 3107.33,
+   "end": 3243.29
+  }
+ ]
+}

@@ -1,7 +1,7 @@
 """Render a DAEMONS book (companion server/data/<book>.json) to an MP3 audiobook with chapter markers, in its own voice.
 
-Usage: python3 tools/bookaudio.py <guide|subtle|hermetic|eudaimon|unity|textbook> <out_dir> [--voice NAME]
-       python3 tools/bookaudio.py --check <out_dir>        # which books on disk are current
+Usage: python3 tools/bookaudio.py <book> <out_dir> [--voice NAME]   # any book of BOOK_VOICE: guide, textbook, quick...
+       python3 tools/bookaudio.py --check <out_dir>        # which recordings are current, and which books have no voice
 Needs kokoro-onnx, soundfile and ffmpeg (with rubberband), plus kokoro-v1.0.onnx and voices-v1.0.bin in KOKORO_DIR
 (default ~/.cache/daemons/kokoro, from github.com/thewh1teagle/kokoro-onnx's releases).
 Writes <out_dir>/<file>.mp3 and <file>.chapters.json. A SEALED book goes into a zip the way tools/bookpdf.py seals the
@@ -11,8 +11,10 @@ by its words and its voice, so a changed word or voice is rendered again and not
 Each book has its own voice (T-518, the user 2026-11-01: "each voice for eachbook should be different -- reflecting the
 books essence"), picked by multiple choice from samples: a Kokoro voice or a blend of their style vectors, and a speed.
 The third book is one voice in two halves, each leaned toward what it says by blend, pitch, tone and pause.
+Every book tools/manual.py prints and every book file the companion holds is found by --check, which fails on one
+with no voice (T-543, the user 2026-11-10: "if we have new books we should follow suit so they also have a voice").
 """
-import hashlib, json, os, re, subprocess, sys, tempfile, zipfile
+import ast, glob, hashlib, json, os, re, subprocess, sys, tempfile, zipfile
 import numpy as np, soundfile as sf
 
 DATA = os.environ.get("BOOK_DATA", "../daemons-companion/server/data")
@@ -34,11 +36,25 @@ VOICES = {  # picked with the user from samples, 2026-11-01
               "clause": 0.2, "pause": 1.25},
     "professor": {"blend": {"bm_fable": 0.5, "bm_lewis": 0.5}, "speed": 0.94,     # the TEXTBOOK (2026-11-03): grave, warm
                   "tone": "alimiter=limit=0.89:level=disabled"},             # its loudest syllables touched 0 dB
+    #  the shelf's other books (T-543), each picked by the user from three samples, 2026-11-10 ("A" every time)
+    "patient": {"blend": {"af_heart": 0.7, "af_sarah": 0.3}, "speed": 0.88, "sentence": 0.4},   # QUICK START: unhurried
+    "adventure": {"blend": {"am_fenrir": 0.6, "am_puck": 0.4}, "speed": 1.0,    # THE PLAYER'S MANUAL: the box's narrator
+                  "tone": "alimiter=limit=0.89:level=disabled"},             # it too touched 0 dB
+    "friend": {"blend": {"af_kore": 0.6, "af_aoede": 0.4}, "speed": 0.96},      # THE COMPANION: warm, encouraging
+    "together": {"blend": {"af_jessica": 0.5, "am_liam": 0.5}, "speed": 1.0},   # PLAYING TOGETHER: two as one voice
+    "mind": {"blend": {"af_nova": 0.6, "af_alloy": 0.4}, "speed": 0.95,         # A BIGGER MIND: calm, precise, a machine
+             "tone": "highpass=f=120,treble=g=2:f=6000"},
+    "elder": {"blend": {"bm_daniel": 0.6, "am_santa": 0.4}, "speed": 0.9, "sentence": 0.4},    # THE OLD WORD: a storyteller
 }
 BOOK_VOICE = {"guide": "reason", "subtle": "instinct", "hermetic": "night", "eudaimon": "dawn", "unity": "whole",
-              "textbook": "professor"}
+              "textbook": "professor", "quick": "patient", "manual": "adventure", "companion": "friend",
+              "social": "together", "tiiny": "mind", "etymology": "elder"}
 FILE = {"guide": "guide", "subtle": "the-subtle-layer", "hermetic": "the-vault-audio", "eudaimon": "the-vault-audio-2",
-        "unity": "the-vault-audio-3", "textbook": "principles-of-mind"}   # -2, -3: the names the companion fetches (C-299)
+        "unity": "the-vault-audio-3", "textbook": "principles-of-mind",   # -2, -3: the names the companion fetches (C-299)
+        "quick": "quick-start", "manual": "the-players-manual", "companion": "the-companion",
+        "social": "playing-together", "tiiny": "a-bigger-mind", "etymology": "the-old-word"}
+#  a book with no voice on purpose; --check names any other book that has none (T-543: a new book is never left silent)
+UNVOICED = {"micro": "MICRO-START, the quick start in five pages, is not on the LIBRARY's shelf"}
 RATE = {"textbook": "48k"}       # a long book a little lighter, under GitHub's 50 MB; the rest 64k
 SEALED = {"hermetic", "eudaimon", "unity"}   # the torn book's three readings (the user, 2026-11-05: "Sealed, like the night")
 SEAL_INSIDE = "sealed"            # the names a closed zip shows (sealed.mp3, sealed.chapters.json): they say nothing
@@ -73,21 +89,53 @@ def chunks(t: str, limit=380):
     return out
 
 
-TEXTBOOK = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "docs/manual-textbook/manual.md")
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FLOOR = {f"{n}F": f"the {w} floor" for n, w in enumerate(
     ("first", "second", "third", "fourth", "fifth", "sixth", "seventh"), 1)}
-SKIP = {"references", "reading"}  # what a reader skips aloud: the References, and each chapter's Further Reading
+#  what a reader skips aloud: the References, each chapter's Further Reading, where THE OLD WORD's sources are, and
+#  the page about the printing (its release and date, which a recording does not keep)
+SKIP = {"references", "reading", "sources", "colophon"}
+DRAFTED = "Every word quoted from the game is a draft, until it is approved."
+#  the books tools/manual.py prints, read from the same markdown: the TEXTBOOK (T-520), and the companion's MANUALS
+#  and HISTORY AND STUDY shelves (C-320; the user, 2026-11-10: "if we have new books we should follow suit so they
+#  also have a voice"). The title is the chapter mark; the opening is what is said first.
+MANUALS = {
+    "textbook": ("docs/manual-textbook", "Principles of Mind", "Principles of Mind. An Introduction in Seven Floors. By "
+                 "the Faculty of Callow School. Every passage quoted from the game is a draft, every word, until it is approved."),
+    "quick": ("docs/manual-quick", "Quick Start", f"Quick Start. What DAEMONS is, and how to play. {DRAFTED}"),
+    "manual": ("docs/manual", "The Player's Manual",
+               f"The Player's Manual. Every way to play DAEMONS, and how it all works. {DRAFTED}"),
+    "companion": ("docs/manual-companion", "The Companion",
+                  f"The Companion. Your daemons away: the app, the hub and the devices. {DRAFTED}"),
+    "social": ("docs/manual-social", "Playing Together",
+               f"Playing Together. Trading, lending, gifts, meetings and friends' homes. {DRAFTED}"),
+    "tiiny": ("docs/manual-tiiny", "A Bigger Mind", f"A Bigger Mind. The Tiiny, set up for the companion. {DRAFTED}"),
+    "etymology": ("docs/manual-etymology", "The Old Word",
+                  f"The Old Word. How daimon branched, and why it is said DAY-mons. {DRAFTED}"),
+}
+SAY = {"←": " left ", "→": " right ", "↑": " up ", "↓": " down ", "⟷": " to ", "½": " half", "°": " degrees",
+       "−": "minus ", "⚙": "the gear", "…": "...", "✚": "", "✦": "", "•": "", "▼": "", "▶": "", "○": "", "✕": "",
+       "‹": "", "›": ""}   # what the manuals draw rather than say
 
 
-def plain(t: str) -> str:
-    """A line of the TEXTBOOK's markdown as it is said: no marks, no links, no (1.3) pointing at a section."""
-    t = re.sub(r"\[([^\]]*)\]\{[^}]*\}", r"\1", t)                    # [Research Spotlight · ...]{.bh}
+def plain(t: str, letters=False) -> str:
+    """A line of a manual's markdown as it is said: no marks, no links, no (1.3) pointing at a section. With letters
+    (THE OLD WORD, which is about letters), *ae* and **d** are said letter by letter."""
+    t = re.sub(r"\[[^\]]*\]\{\.greek\}", "", t)                       # the Greek letters; the next words spell them
+    t = re.sub(r"\s*\(`[^`]*\s[^`]*`\)", "", t)                        # (`head -c ...`): a command, left to the page
+    t = re.sub(r"\[([^\]]*)\]\{[^}]*\}", r"\1", t)                    # [Research Spotlight · ...]{.bh}, [A]{.btn}
     t = re.sub(r"\[([^\]]*)\]\([^)]*\)", r"\1", t)                    # a link says its words
     t = re.sub(r"\s*\((?:intro|Ch\. \d+|\d+\.\d+)(?:, (?:intro|Ch\. \d+|\d+\.\d+))*\)", "", t)
     t = re.sub(r"(?<!\w)-(\w)", r"\1", t)                             # the -s of daemons: the s
     t = re.sub(r"(\w)-(?=[*\s,.)]|$)", r"\1", t)                      # un- and -able: un, able
+    if letters:                                                       # *ae*, **d**: the letters, one by one
+        t = re.sub(r"(?<![\w*])\*{1,2}([a-z]{1,2})\*{1,2}(?![\w*])", lambda m: ", ".join(m.group(1).upper()), t)
     t = t.replace("**", "").replace("*", "").replace(" · ", ". ").replace("&middot;", ". ")
-    return re.sub(r"<[^>]+>", "", t).strip()
+    t = re.sub(r"\s+--\s+", ", ", t).replace("`", "")
+    t = "".join(SAY.get(c, c) for c in t)
+    t = re.sub(r"</?(?:br|span|div|b|i|em|strong|sup|sub|small|a|p|img|kbd|u|s|code)\b[^>]*>", "", t)
+    t = re.sub(r"<([^<>]+)>", r"\1", t)                                # <its address>: the words it stands for
+    return re.sub(r" {2,}", " ", t).strip()
 
 
 def chalk(text):
@@ -95,30 +143,54 @@ def chalk(text):
     return [" ".join(p.split("\n")) for p in text.split("\n\n") if p.strip()]
 
 
-def textbook_script():
-    """CALLOW SCHOOL's TEXTBOOK (T-520), read from its markdown: each floor's placard and boards from the build's
-    export, as tools/manual.py quotes them; every figure by its caption; no References, no Further Reading."""
-    school = {f["floor"]: f for f in json.load(open(f"{DATA}/school.json"))["floors"]}
-    lines = [("section", "Principles of Mind", "Principles of Mind. An Introduction in Seven Floors. By the Faculty of "
-              "Callow School. Every passage quoted from the game is a draft, every word, until it is approved.")]
-    divs, chapter, skip_h1, para = [], 0, False, []
+def table(rows, say=plain):
+    """A table, row by row: two columns as "this: that"; more, each cell after its column's heading."""
+    cells = [[say(c) for c in r.strip().strip("|").split("|")]
+             for r in rows if not re.match(r"^\|[\s|:-]+\|$", r.strip())]
+    head, body = cells[0], cells[1:]
+    if len(head) == 2:
+        return [f"{r[0]}: {r[1]}." for r in body]
+    said = lambda h, c: c if not h or c.lower().startswith(h.lower()) else f"{h}, {c}"   # no "CONTENT, CONTENT, ..."
+    return [f"{r[0]}: " + "; ".join(said(h, c) for h, c in zip(head[1:], r[1:])) + "." for r in body]
+
+
+def manual_script(book):
+    """One of tools/manual.py's books, read from its markdown: every heading a chapter mark, every figure and screen by
+    its caption, a table row by row, a block of commands left to the page; the TEXTBOOK's placards and boards from the
+    build's export, as manual.py quotes them; no References, no Further Reading, nothing about the printing."""
+    src, name, opening = MANUALS[book]
+    school = {f["floor"]: f for f in json.load(open(f"{DATA}/school.json"))["floors"]} if book == "textbook" else {}
+    lines = [("section", name, opening)]
+    divs, chapter, skip_h1, para, rows, fence = [], 0, False, [], [], False
+    def say(t): return plain(t, letters=book == "etymology")
 
     def flush():
+        if rows:
+            lines.extend(("para", None, r) for r in table(rows, say)); rows.clear()
         if para and not skip_h1 and not SKIP & set(divs):
             text = " ".join(para)
-            text = plain(text.replace(" · ", ", ") if "terms" in divs else text)   # Key Terms, as a list
+            text = say(text.replace(" · ", ", ") if "terms" in divs else text)   # Key Terms, as a list
             if text: lines.append(("para", None, text))
         para.clear()
-    for raw in open(TEXTBOOK, encoding="utf-8"):
+    for raw in open(os.path.join(ROOT, src, "manual.md"), encoding="utf-8"):
         line = raw.rstrip("\n")
+        if line.startswith("```"):                                     # commands and settings: the page shows them
+            flush()
+            if not fence and not skip_h1 and not SKIP & set(divs):
+                lines.append(("para", None, "That is printed on the page, to copy."))
+            fence = not fence
+            continue
+        if fence: continue
+        if re.match(r"^`[^`]*\s[^`]*`\s*$", line):                    # a command on a line of its own
+            flush(); lines.append(("para", None, "That is printed on the page, to copy.")); continue
         h = re.match(r"^(#{1,3}) (.+?)\s*(\{[^}]*\})?\s*$", line)
         if h:
             flush()
-            title, attrs = plain(h.group(2)), h.group(3) or ""
+            title, attrs = say(h.group(2)), h.group(3) or ""
             if len(h.group(1)) == 1:
                 skip_h1 = bool(SKIP & set(re.findall(r"#([\w-]+)", attrs)))
                 if skip_h1: continue
-                if ".unnumbered" not in attrs:
+                if book == "textbook" and ".unnumbered" not in attrs:
                     chapter += 1; title = f"Chapter {chapter}: {title}"
                 lines.append(("section", title, title.replace(":", ".", 1) + "."))
             elif not skip_h1 and title != "Further Reading":
@@ -131,10 +203,13 @@ def textbook_script():
             if d.group(2): divs.append(" ".join(re.findall(r"[\w-]+", d.group(2))).split()[-1])
             elif divs: divs.pop()
             continue
-        sc = re.match(r"^\{\{(\w+) ([^|}]*)(?:\|(.*))?\}\}\s*$", line)
+        if line.startswith("|"):
+            if para: flush()
+            rows.append(line); continue
+        sc = re.match(r"^\{\{(\w+) ?([^|}]*)(?:\|(.*))?\}\}\s*$", line)
         if sc:
             flush()
-            kind, args = sc.group(1), sc.group(2).split()
+            kind, args, caption = sc.group(1), sc.group(2).split(), say(sc.group(3) or "")
             if kind == "placard":
                 f = school[args[0]]
                 text = f["placard"].split("\n\n", 1)[1] if "\n\n" in f["placard"] else f["placard"]
@@ -145,21 +220,29 @@ def textbook_script():
                 b = next(b for b in f["board"] if b["topic"] == " ".join(args[1:]))
                 lines.append(("para", None, f"On the board, {FLOOR[args[0]]}, {titled(f['subject'])}: {titled(b['topic'])}."))
                 lines += [("para", None, p) for p in chalk(b["text"])]
-            elif kind == "diagram" and sc.group(3):
-                lines.append(("para", None, re.sub(r"^(Figure \d+\.\d+) ", r"\1. ", plain(sc.group(3)))))
-            continue
+            elif kind == "sprites" and caption:                          # a row of daemons: who they are
+                lines.append(("para", None, caption.rstrip(".") + ": " +
+                              ", ".join(titled(a.replace("_", " ")) for a in args) + "."))
+            elif kind in ("diagram", "screen", "screens", "pictures") and caption:
+                lines.append(("para", None, re.sub(r"^(Figure \d+\.\d+) ", r"\1. ", caption)))
+            continue                                                   # the cards, charts and covers: the page's own
         if not line.strip():
             flush(); continue
+        if rows: flush()
         bh = re.match(r"^\[(.+)\]\{\.bh\}\s*$", line)
         if bh:                                                         # a box's own heading, said on its own
             flush()
-            if not SKIP & set(divs): lines.append(("para", None, plain(bh.group(1)) + "."))
+            if not SKIP & set(divs): lines.append(("para", None, say(bh.group(1)) + "."))
             continue
-        if re.match(r"^\s*(?:- |\d+\. )", line) or (divs and divs[-1] == "glossary" and line.startswith("**")):
+        line = re.sub(r"\s*\(\{\{release\}\}[^)]*\)|,? like `\{\{release\}\}`", "", line)   # the printing's own release
+        line = line.replace("{{release}}", "this release").replace(" ({{date}})", "").replace("{{date}}", "")
+        glossary = divs and divs[-1] in ("glossary", "gloss", "words")
+        if re.match(r"^\s*(?:- |\d+\. )", line) or (glossary and line.startswith("**")):
             flush()
             line = re.sub(r"^\s*- ", "", line)
-            if divs and divs[-1] == "glossary":
-                line = re.sub(r"^\*\*(.+?)\*\*\s+", lambda m: m.group(1)[:1].upper() + m.group(1)[1:] + ". ", line)
+            if glossary:                                               # **TERM** -- what it is: "Term. What it is."
+                line = re.sub(r"^\*\*(.+?)\*\*\s+(?:--\s+)?(\S?)",
+                              lambda m: f"{m.group(1)[:1].upper()}{m.group(1)[1:]}. {m.group(2).upper()}", line)
         para.append(line.strip())
     flush()
     return lines
@@ -167,8 +250,8 @@ def textbook_script():
 
 def script(book: str):
     """[(kind, chapter_title_or_None, text)] in reading order."""
-    if book == "textbook":
-        return textbook_script()
+    if book in MANUALS:
+        return manual_script(book)
     d = json.load(open(f"{DATA}/{book}.json"))
     lines = []
     head = d["title"] + (f". {d['subtitle']}" if d.get("subtitle") else "") + (f". By {d['author']}" if d.get("author") else "") + "."
@@ -292,17 +375,42 @@ def main(book, out_dir, voice):
     print(f"DONE {book} in {voice}, {total / 60:.1f} min, sources {digest}", flush=True)
 
 
+def books():
+    """Every book there is: each one tools/manual.py prints (its "main" is THE PLAYER'S MANUAL), and each book file in the
+    companion's data -- a title, and sections of entries."""
+    tree = ast.parse(open(os.path.join(ROOT, "tools/manual.py"), encoding="utf-8").read())
+    printed = next(ast.literal_eval(n.value) for n in tree.body
+                   if isinstance(n, ast.Assign) and getattr(n.targets[0], "id", None) == "BOOKS")
+    found = {"manual" if b == "main" else b for b in printed}
+    for f in glob.glob(f"{DATA}/*.json"):
+        try:
+            d = json.load(open(f, encoding="utf-8"))
+        except ValueError:
+            continue
+        if isinstance(d, dict) and "title" in d and isinstance(d.get("sections"), list) and d["sections"] \
+                and isinstance(d["sections"][0], dict) and "entries" in d["sections"][0]:
+            found.add(os.path.basename(f)[:-5])
+    return found
+
+
 def check(out_dir):
+    """Say which recordings are current and which books have no voice; the count of what needs doing."""
+    behind = 0
     for book, voice in BOOK_VOICE.items():
         have, want = recorded(book, out_dir), sources(book, voice)
         print(f"  {book}: {voice}, sources {want}; {FILE.get(book, book)} is " +
               ("missing" if have is None else "current" if have == want else "out of date"))
+        behind += have != want
+    for book in sorted(books() - set(BOOK_VOICE) - set(UNVOICED)):
+        print(f"  {book}: NO VOICE -- choose one with the user from samples, then add it to VOICES and BOOK_VOICE")
+        behind += 1
+    return behind
 
 
 if __name__ == "__main__":
     args = sys.argv[1:]
     if args and args[0] == "--check":
-        check(args[1] if len(args) > 1 else "docs/books/audio")
+        sys.exit(1 if check(args[1] if len(args) > 1 else "docs/books/audio") else 0)
     else:
         voice = args[args.index("--voice") + 1] if "--voice" in args else BOOK_VOICE.get(args[0])
         if voice not in VOICES:

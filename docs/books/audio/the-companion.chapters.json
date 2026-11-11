@@ -1,0 +1,602 @@
+{
+ "book": "companion",
+ "voice": "friend",
+ "blend": {
+  "af_kore": 0.6,
+  "af_aoede": 0.4
+ },
+ "speed": 0.96,
+ "draft": "DRAFT \u00b7 every word, until it is approved",
+ "sources": "f33906f417f594a2",
+ "duration": 3497.05,
+ "chapters": [
+  {
+   "kind": "section",
+   "title": "The Companion",
+   "start": 0.0,
+   "end": 11.25
+  },
+  {
+   "kind": "section",
+   "title": "The companion",
+   "start": 11.25,
+   "end": 87.37
+  },
+  {
+   "kind": "entry",
+   "title": "What you need",
+   "start": 87.37,
+   "end": 150.37
+  },
+  {
+   "kind": "entry",
+   "title": "The tabs",
+   "start": 150.37,
+   "end": 238.85
+  },
+  {
+   "kind": "section",
+   "title": "First steps",
+   "start": 238.85,
+   "end": 241.39
+  },
+  {
+   "kind": "entry",
+   "title": "Pairing the app",
+   "start": 241.39,
+   "end": 296.07
+  },
+  {
+   "kind": "entry",
+   "title": "A phone on its own",
+   "start": 296.07,
+   "end": 331.9
+  },
+  {
+   "kind": "entry",
+   "title": "Your save",
+   "start": 331.9,
+   "end": 385.49
+  },
+  {
+   "kind": "entry",
+   "title": "SEND, SYNC, and CALL HOME",
+   "start": 385.49,
+   "end": 444.96
+  },
+  {
+   "kind": "entry",
+   "title": "RECEIVED",
+   "start": 444.96,
+   "end": 476.34
+  },
+  {
+   "kind": "entry",
+   "title": "The widget",
+   "start": 476.34,
+   "end": 535.72
+  },
+  {
+   "kind": "section",
+   "title": "TODAY",
+   "start": 535.72,
+   "end": 544.97
+  },
+  {
+   "kind": "entry",
+   "title": "The day",
+   "start": 544.97,
+   "end": 564.52
+  },
+  {
+   "kind": "entry",
+   "title": "THE ONE THING",
+   "start": 564.52,
+   "end": 584.61
+  },
+  {
+   "kind": "entry",
+   "title": "A glance at everything",
+   "start": 584.61,
+   "end": 624.05
+  },
+  {
+   "kind": "section",
+   "title": "Your daemon",
+   "start": 624.05,
+   "end": 644.82
+  },
+  {
+   "kind": "entry",
+   "title": "Its den",
+   "start": 644.82,
+   "end": 666.25
+  },
+  {
+   "kind": "entry",
+   "title": "Caring for it",
+   "start": 666.25,
+   "end": 740.68
+  },
+  {
+   "kind": "entry",
+   "title": "How it is, and how it has been",
+   "start": 740.68,
+   "end": 816.02
+  },
+  {
+   "kind": "entry",
+   "title": "Grown here",
+   "start": 816.02,
+   "end": 831.73
+  },
+  {
+   "kind": "entry",
+   "title": "The SYNC card",
+   "start": 831.73,
+   "end": 860.35
+  },
+  {
+   "kind": "entry",
+   "title": "Party",
+   "start": 860.35,
+   "end": 889.54
+  },
+  {
+   "kind": "entry",
+   "title": "The INDEX",
+   "start": 889.54,
+   "end": 933.42
+  },
+  {
+   "kind": "entry",
+   "title": "Routines",
+   "start": 933.42,
+   "end": 946.08
+  },
+  {
+   "kind": "entry",
+   "title": "In its own voice",
+   "start": 946.08,
+   "end": 973.39
+  },
+  {
+   "kind": "entry",
+   "title": "SOUNDINGS",
+   "start": 973.39,
+   "end": 993.13
+  },
+  {
+   "kind": "entry",
+   "title": "READS",
+   "start": 993.13,
+   "end": 1015.52
+  },
+  {
+   "kind": "section",
+   "title": "Talking with your daemon",
+   "start": 1015.52,
+   "end": 1024.51
+  },
+  {
+   "kind": "entry",
+   "title": "HOLD TO TALK",
+   "start": 1024.51,
+   "end": 1077.2
+  },
+  {
+   "kind": "entry",
+   "title": "What it knows, and what it remembers",
+   "start": 1077.2,
+   "end": 1115.4
+  },
+  {
+   "kind": "entry",
+   "title": "Other places to talk",
+   "start": 1115.4,
+   "end": 1139.5
+  },
+  {
+   "kind": "section",
+   "title": "Nights and dreams",
+   "start": 1139.5,
+   "end": 1146.66
+  },
+  {
+   "kind": "entry",
+   "title": "A night",
+   "start": 1146.66,
+   "end": 1180.42
+  },
+  {
+   "kind": "entry",
+   "title": "The dream",
+   "start": 1180.42,
+   "end": 1196.23
+  },
+  {
+   "kind": "entry",
+   "title": "DREAMS, the journal",
+   "start": 1196.23,
+   "end": 1254.45
+  },
+  {
+   "kind": "entry",
+   "title": "The dream goes home",
+   "start": 1254.45,
+   "end": 1268.54
+  },
+  {
+   "kind": "entry",
+   "title": "How you live, it shows",
+   "start": 1268.54,
+   "end": 1296.38
+  },
+  {
+   "kind": "section",
+   "title": "MEETINGS",
+   "start": 1296.38,
+   "end": 1310.22
+  },
+  {
+   "kind": "entry",
+   "title": "Recording one",
+   "start": 1310.22,
+   "end": 1349.77
+  },
+  {
+   "kind": "entry",
+   "title": "The write-up",
+   "start": 1349.77,
+   "end": 1376.14
+  },
+  {
+   "kind": "entry",
+   "title": "VOICE NOTES",
+   "start": 1376.14,
+   "end": 1396.24
+  },
+  {
+   "kind": "section",
+   "title": "JOURNEY",
+   "start": 1396.24,
+   "end": 1403.18
+  },
+  {
+   "kind": "entry",
+   "title": "GOALS",
+   "start": 1403.18,
+   "end": 1457.03
+  },
+  {
+   "kind": "entry",
+   "title": "WALKING",
+   "start": 1457.03,
+   "end": 1477.82
+  },
+  {
+   "kind": "entry",
+   "title": "The JOURNAL",
+   "start": 1477.82,
+   "end": 1509.66
+  },
+  {
+   "kind": "entry",
+   "title": "A chapter, to print",
+   "start": 1509.66,
+   "end": 1570.57
+  },
+  {
+   "kind": "section",
+   "title": "The LIBRARY",
+   "start": 1570.57,
+   "end": 1605.33
+  },
+  {
+   "kind": "entry",
+   "title": "FOUND IN THE GAME",
+   "start": 1605.33,
+   "end": 1721.95
+  },
+  {
+   "kind": "entry",
+   "title": "MANUALS",
+   "start": 1721.95,
+   "end": 1766.64
+  },
+  {
+   "kind": "entry",
+   "title": "HISTORY AND STUDY",
+   "start": 1766.64,
+   "end": 1812.03
+  },
+  {
+   "kind": "entry",
+   "title": "YOUR OWN PAGES",
+   "start": 1812.03,
+   "end": 1856.76
+  },
+  {
+   "kind": "entry",
+   "title": "Your instrument",
+   "start": 1856.76,
+   "end": 1899.76
+  },
+  {
+   "kind": "section",
+   "title": "YOU, and your game",
+   "start": 1899.76,
+   "end": 1910.1
+  },
+  {
+   "kind": "entry",
+   "title": "You as the game draws you",
+   "start": 1910.1,
+   "end": 1939.38
+  },
+  {
+   "kind": "entry",
+   "title": "The facts",
+   "start": 1939.38,
+   "end": 1953.15
+  },
+  {
+   "kind": "entry",
+   "title": "MARKS and ROOTS",
+   "start": 1953.15,
+   "end": 1989.9
+  },
+  {
+   "kind": "entry",
+   "title": "GROVES",
+   "start": 1989.9,
+   "end": 2004.05
+  },
+  {
+   "kind": "entry",
+   "title": "GAME EVENTS",
+   "start": 2004.05,
+   "end": 2018.78
+  },
+  {
+   "kind": "entry",
+   "title": "THE ROAD AHEAD",
+   "start": 2018.78,
+   "end": 2041.81
+  },
+  {
+   "kind": "entry",
+   "title": "TRADE",
+   "start": 2041.81,
+   "end": 2059.03
+  },
+  {
+   "kind": "section",
+   "title": "The GAME tab",
+   "start": 2059.03,
+   "end": 2077.22
+  },
+  {
+   "kind": "entry",
+   "title": "Your own copy",
+   "start": 2077.22,
+   "end": 2117.98
+  },
+  {
+   "kind": "entry",
+   "title": "Playing",
+   "start": 2117.98,
+   "end": 2153.48
+  },
+  {
+   "kind": "entry",
+   "title": "One save, synced as you play",
+   "start": 2153.48,
+   "end": 2198.48
+  },
+  {
+   "kind": "entry",
+   "title": "The iPad on its side",
+   "start": 2198.48,
+   "end": 2228.31
+  },
+  {
+   "kind": "section",
+   "title": "The CASINO",
+   "start": 2228.31,
+   "end": 2246.42
+  },
+  {
+   "kind": "entry",
+   "title": "The reels",
+   "start": 2246.42,
+   "end": 2297.96
+  },
+  {
+   "kind": "entry",
+   "title": "The coins are your game's money",
+   "start": 2297.96,
+   "end": 2320.91
+  },
+  {
+   "kind": "entry",
+   "title": "The day's odds, and THE HOUSE",
+   "start": 2320.91,
+   "end": 2359.8
+  },
+  {
+   "kind": "section",
+   "title": "Nearby, and away from home",
+   "start": 2359.8,
+   "end": 2363.03
+  },
+  {
+   "kind": "entry",
+   "title": "NEARBY",
+   "start": 2363.03,
+   "end": 2411.67
+  },
+  {
+   "kind": "entry",
+   "title": "MET NEARBY",
+   "start": 2411.67,
+   "end": 2454.93
+  },
+  {
+   "kind": "entry",
+   "title": "Away from home",
+   "start": 2454.93,
+   "end": 2504.95
+  },
+  {
+   "kind": "section",
+   "title": "PLACES and devices",
+   "start": 2504.95,
+   "end": 2521.34
+  },
+  {
+   "kind": "entry",
+   "title": "THE HUB",
+   "start": 2521.34,
+   "end": 2557.84
+  },
+  {
+   "kind": "entry",
+   "title": "YOUR DEVICES",
+   "start": 2557.84,
+   "end": 2604.41
+  },
+  {
+   "kind": "entry",
+   "title": "EVERY DEVICE'S SETTINGS",
+   "start": 2604.41,
+   "end": 2644.73
+  },
+  {
+   "kind": "entry",
+   "title": "Each device's own",
+   "start": 2644.73,
+   "end": 2677.87
+  },
+  {
+   "kind": "entry",
+   "title": "The devices themselves",
+   "start": 2677.87,
+   "end": 2733.19
+  },
+  {
+   "kind": "entry",
+   "title": "GLASSES",
+   "start": 2733.19,
+   "end": 2753.51
+  },
+  {
+   "kind": "entry",
+   "title": "HOME, and the TV",
+   "start": 2753.51,
+   "end": 2788.63
+  },
+  {
+   "kind": "section",
+   "title": "THE MIND",
+   "start": 2788.63,
+   "end": 2828.77
+  },
+  {
+   "kind": "entry",
+   "title": "The minds",
+   "start": 2828.77,
+   "end": 2887.58
+  },
+  {
+   "kind": "entry",
+   "title": "How far each may go",
+   "start": 2887.58,
+   "end": 2929.76
+  },
+  {
+   "kind": "entry",
+   "title": "WHO ANSWERS WHEN YOU TALK",
+   "start": 2929.76,
+   "end": 2993.22
+  },
+  {
+   "kind": "entry",
+   "title": "AN ENDPOINT OF YOUR OWN",
+   "start": 2993.22,
+   "end": 3020.8
+  },
+  {
+   "kind": "entry",
+   "title": "THE HUB'S ENDPOINTS",
+   "start": 3020.8,
+   "end": 3057.0
+  },
+  {
+   "kind": "entry",
+   "title": "THE MIND AT WORK",
+   "start": 3057.0,
+   "end": 3115.18
+  },
+  {
+   "kind": "entry",
+   "title": "The voice, quickly",
+   "start": 3115.18,
+   "end": 3137.16
+  },
+  {
+   "kind": "section",
+   "title": "Settings",
+   "start": 3137.16,
+   "end": 3151.85
+  },
+  {
+   "kind": "entry",
+   "title": "On every screen",
+   "start": 3151.85,
+   "end": 3179.29
+  },
+  {
+   "kind": "entry",
+   "title": "Your save",
+   "start": 3179.29,
+   "end": 3203.39
+  },
+  {
+   "kind": "entry",
+   "title": "The world outside",
+   "start": 3203.39,
+   "end": 3216.73
+  },
+  {
+   "kind": "entry",
+   "title": "On a phone",
+   "start": 3216.73,
+   "end": 3245.5
+  },
+  {
+   "kind": "entry",
+   "title": "On the hub's own site",
+   "start": 3245.5,
+   "end": 3269.54
+  },
+  {
+   "kind": "entry",
+   "title": "HOW TO PLAY and WHAT'S NEW",
+   "start": 3269.54,
+   "end": 3324.56
+  },
+  {
+   "kind": "section",
+   "title": "When it goes wrong",
+   "start": 3324.56,
+   "end": 3442.61
+  },
+  {
+   "kind": "section",
+   "title": "Coming next",
+   "start": 3442.61,
+   "end": 3497.05
+  }
+ ]
+}
