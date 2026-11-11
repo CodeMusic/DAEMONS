@@ -1,0 +1,71 @@
+{
+  "rom": "debug",
+  "about": "T-528 (e), the last of it: TULIKKO's sparks at STILLFALL CAVE on FOUR ISLAND, the fox at (40,14) sweeping west, the player two tiles off. They rise from its tail only at night with THE UNITY BOOK mended, and on a night of light (in the edition's own line: CONTENT red, CONTEXT green) or under the conjugate light (on any night, even a dark one: each spark rising green and turning red above it). None before the mending, none by day, none on a dark night without the conjugate light. GAME EVENTS rows MENDED, NIGHTS OF LIGHT (A steps it: by the date, every night, none) and FROM THE OTHER SIDE set each case; DEBUG's WATCH (gDaemonsWatchOverride: 1 day, 3 night) is poked as t528_aurora_b does. Each stop is a burst of captures, a spark living 64..103 frames and one born at most every 18. The theatre's debug scratch save, never the user's.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "the build: nights by the date, by day, the book not mended",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "poke gAuroraDebugNights 8 0",
+        "poke gDaemonsWatchOverride 8 1",
+        "flag FLAG_UNITY_MENDED 0",
+        "flagis FLAG_UNITY_MENDED 0"
+      ]
+    },
+    {
+      "stop": "no sparks before the mending, even on a night of light",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 3",
+        "events \"NIGHTS OF LIGHT:\"",
+        "goto FourIsland 38 14",
+        "burst \"a night of light, the book not mended: no sparks\" 6 20"
+      ]
+    },
+    {
+      "stop": "a night of light, the book mended: the sparks in the edition's own line",
+      "steps": [
+        "events \"MENDED\"",
+        "flagis FLAG_UNITY_MENDED 1",
+        "goto FourIsland 38 14",
+        "burst \"sparks from the fox's tail, rising and fading: a cross, a point, a speck\" 10 12"
+      ]
+    },
+    {
+      "stop": "no sparks by day, the book mended",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 1",
+        "goto FourIsland 38 14",
+        "burst \"by day: no sparks\" 6 20"
+      ]
+    },
+    {
+      "stop": "the conjugate light on a dark night: the sparks rise green and turn red above",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 3",
+        "events \"NIGHTS OF LIGHT:\"",
+        "events \"FROM THE OTHER SIDE\"",
+        "goto FourIsland 38 14",
+        "burst \"the conjugate light, a dark night: green rising, red above\" 10 12"
+      ]
+    },
+    {
+      "stop": "a dark night without the conjugate light: no sparks",
+      "steps": [
+        "events \"FROM THE OTHER SIDE\"",
+        "goto FourIsland 38 14",
+        "burst \"a dark night, this edition's lead: no sparks\" 6 20"
+      ]
+    },
+    {
+      "stop": "put back: the nights by the date, the watch by the clock, the book unmended",
+      "steps": [
+        "events \"NIGHTS OF LIGHT:\"",
+        "events \"MENDED\"",
+        "flagis FLAG_UNITY_MENDED 0",
+        "poke gDaemonsWatchOverride 8 0"
+      ]
+    }
+  ]
+}
