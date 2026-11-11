@@ -385,3 +385,9 @@ THE WATCH (C-326, DRAFT): the cover and the controls
 THE WATCH (C-326, DRAFT): the cover and the controls
 
 ![11Nov2026 - C326 - THE WATCH manual - 80](11Nov2026%20-%20C326%20-%20THE%20WATCH%20manual%20-%2080.png)
+
+### 11Nov2026 - C167 - the ledger shows the companions figure - 81
+
+C-167: the CORPUS ledger reading ¥31475 -- the companion's SYNC writer added 31,415 to a scratch debug save's house take (60 -> 31,475), and the game shows it.
+
+![11Nov2026 - C167 - the ledger shows the companions figure - 81](11Nov2026%20-%20C167%20-%20the%20ledger%20shows%20the%20companions%20figure%20-%2081.png)
