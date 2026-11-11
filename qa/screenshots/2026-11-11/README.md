@@ -373,3 +373,15 @@ C-327 (DRAFT): two household devices' daemons in one den on a scratch companion 
 C-327 (DRAFT): two household devices' daemons in one den on a scratch companion -- PIP on this phone, LABEL from a pretend T-Watch Ultra; then a feed from the watch, the fruit eaten down to crumbs in the middle
 
 ![11Nov2026 - C327 - household together - 78](11Nov2026%20-%20C327%20-%20household%20together%20-%2078.png)
+
+### 11Nov2026 - C326 - THE WATCH manual - 79
+
+THE WATCH (C-326, DRAFT): the cover and the controls
+
+![11Nov2026 - C326 - THE WATCH manual - 79](11Nov2026%20-%20C326%20-%20THE%20WATCH%20manual%20-%2079.png)
+
+### 11Nov2026 - C326 - THE WATCH manual - 80
+
+THE WATCH (C-326, DRAFT): the cover and the controls
+
+![11Nov2026 - C326 - THE WATCH manual - 80](11Nov2026%20-%20C326%20-%20THE%20WATCH%20manual%20-%2080.png)
