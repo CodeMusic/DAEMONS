@@ -349,3 +349,21 @@ T-542 batch 1 BUILT, A HEARTH (DRAFT): ROUTE 12's house by the water, its last v
 T-542 batch 1 BUILT, A HEARTH (DRAFT): FOUR ISLAND's stone stairs as flagstone steps, decoded from the engine's sources
 
 ![10Nov2026 - T542 - FOUR ISLAND stairs built, A Hearth - 59](10Nov2026%20-%20T542%20-%20FOUR%20ISLAND%20stairs%20built%2C%20A%20Hearth%20-%2059.png)
+
+### 10Nov2026 - C318 - WHATS NEW dialog and timeline - 60
+
+C-318: the WHAT'S NEW dialog on build 963, then build 955 picked on the timeline with TELL ME 955–963 (site, a throwaway hub; DRAFT)
+
+![10Nov2026 - C318 - WHATS NEW dialog and timeline - 60](10Nov2026%20-%20C318%20-%20WHATS%20NEW%20dialog%20and%20timeline%20-%2060.jpg)
+
+### 10Nov2026 - C318 - WHATS NEW dialog and timeline - 61
+
+C-318: the WHAT'S NEW dialog on build 963, then build 955 picked on the timeline with TELL ME 955–963 (site, a throwaway hub; DRAFT)
+
+![10Nov2026 - C318 - WHATS NEW dialog and timeline - 61](10Nov2026%20-%20C318%20-%20WHATS%20NEW%20dialog%20and%20timeline%20-%2061.jpg)
+
+### 10Nov2026 - C318 - WHATS NEW dialog and timeline - 62
+
+C-318: the WHAT'S NEW dialog on build 963, then build 955 picked on the timeline with TELL ME 955–963 (site, a throwaway hub; DRAFT)
+
+![10Nov2026 - C318 - WHATS NEW dialog and timeline - 62](10Nov2026%20-%20C318%20-%20WHATS%20NEW%20dialog%20and%20timeline%20-%2062.jpg)
