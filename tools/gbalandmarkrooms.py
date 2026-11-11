@@ -23,7 +23,8 @@ KEEPALIVE PLANT and TANOBY; pair 6: the LEAGUE and the HALL OF FAME).
                                                       # pair 6's directions (the LEAGUE + the HALL OF FAME, below),
                                                       #   the same outputs in gfx/drafts/t447_pair6/
     python3 tools/gbalandmarkrooms.py --pair 6 --write --approved
-                                                      # refused until APPROVED holds "lg" and/or "hof" (a DRAFT)
+                                                      # into the engine (the user, 2026-11-11: LEAGUE A, HALL A);
+                                                      #   the report then exits 1 on any difference from that write
 
 THE JOB (the user, 2026-11-10, "The landmarks left"; census item 8). T-447 drew the landmarks' OUTSIDES from the story
 (pairs 1-3, tools/gbalandmarks.py). Seven landmarks are still mostly Nintendo's drawing INSIDE: the MANSION (and its
@@ -73,7 +74,8 @@ DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t447_pair4")
 #  The user's picks, one direction per building. --write refuses while it is empty.
 #  the user, 2026-11-10: MANSION A The rack hall, TOWER A The dot screen
 #  the user, 2026-11-11: PLANT B Growing untended, TANOBY A Carved, not lit
-APPROVED = {"man": "A", "tow": "A", "pp": "B", "tan": "A"}
+#  the user, 2026-11-11: LEAGUE A The four vessels, HALL A The index card
+APPROVED = {"man": "A", "tow": "A", "pp": "B", "tan": "A", "lg": "A", "hof": "A"}
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS

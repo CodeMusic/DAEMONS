@@ -109,8 +109,10 @@ ARGS = {
     #  T-447 pair 5: the user picked "PLANT B Growing untended, TANOBY A Carved, not lit" on 2026-11-11 -- a second run,
     #  `--pair 5 --approved`, whose write redraws KEEPALIVE PLANT's tiles and rows 7, 8 (gbacaves' slots kept) and the
     #  seven chambers' tiles and rows 7..12 (each chamber's slots kept); either report checks both pairs in the engine.
-    #  T-447 pair 6 is a DRAFT (nothing approved): its report runs inside both runs above, and its write refuses.
-    "gbalandmarkrooms": [["--approved"], ["--pair", "5", "--approved"]],
+    #  T-447 pair 6: the user picked "LEAGUE A The four vessels, HALL A The index card" on 2026-11-11 -- a third run,
+    #  `--pair 6 --approved`, whose write redraws the LEAGUE's tiles and rows 7..12 (the nine named blocks keep their
+    #  ids) and the HALL OF FAME's own tiles and rows 7, 10, 11 (never the UNION ROOM's); any report checks all three.
+    "gbalandmarkrooms": [["--approved"], ["--pair", "5", "--approved"], ["--pair", "6", "--approved"]],
     #  gbatowns' --write refuses without --approved, so --writes never saw its write (found by T-447 pair 5's build,
     #  2026-11-11: an approved write would have changed pokemon_league and sevii_islands_45). With --approved its
     #  sandboxed write is real; the LEAGUE and the HALL are LANDMARKS now (pair 6), and FOUR ISLAND's two post copies
