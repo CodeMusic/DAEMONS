@@ -167,7 +167,7 @@ def take(url, shots, view, only):
             pg = b.new_page(viewport={"width": w, "height": max(h, sh.get("height", h))}, device_scale_factor=2)
             pg.route("**/*", lambda r: r.continue_() if r.request.url.split("/")[2] == host
                      or r.request.url.startswith("data:") else r.abort())
-            pg.goto(url + "/?server=" + url, wait_until="networkidle")
+            pg.goto(url + "/?server=" + url + sh.get("query", ""), wait_until="networkidle")   # "query": "&preview=1"
             pg.wait_for_timeout(1200)
             try:
                 for st in sh.get("steps", []):
