@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.348 — 2026-11-11
+
+- **4.40:** THE UNITY BOOK's last line, "Look again, and you will see them both.", finishes the sentences each torn half breaks off (T-519). The DUET's tune is DUET-1, E D D C D E over E F F G F E, which the user picked by ear from four drafts (T-528).
+- **9.29:** six landmark pairs are built. The user chose pair 6: the LEAGUE as THE FOUR VESSELS and the HALL OF FAME as THE INDEX CARD (T-447).
+- A Settled entry in section 10. Every word is DRAFT.
+
 ## v11.347 — 2026-11-11
 
 - **The bible caught up with work built since v11.332 that it had never recorded.**
