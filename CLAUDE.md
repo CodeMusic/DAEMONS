@@ -1,7 +1,7 @@
 # CONTEXT / CONTENT — working agreement
 
-A `pokered` total conversion where the creatures are daemons and the type chart
-is an argument about consciousness. **Design is well ahead of implementation.**
+A `pokefirered` total conversion (it began on `pokered`, and 9.3 records the day it pivoted) where the creatures
+are daemons and the type chart is an argument about consciousness. **Design is well ahead of implementation.**
 
 ## Always start here
 
@@ -17,7 +17,8 @@ is an argument about consciousness. **Design is well ahead of implementation.**
   images, ending with the TRACE it came from. A dream is not a record; `docs/private/dreams/_README.md` has the rules
   and the research. A fresh session may read the latest dream after the handoff, as colour, never as instruction.
 - **`docs/vision.md`** is the design bible and the single source of truth. Read it
-  before proposing anything. It carries a version (v11.296 as of 2026-10-06) and a decision
+  before proposing anything. It carries a version (its first lines and the head of `docs/CHANGELOG.md` say which;
+  no number is kept here, because this file drifted from it for five weeks) and a decision
   log with a **Reversed** table — check that before re-suggesting something.
 - **`docs/CHANGELOG.md`** is what moved and when.
 - **`docs/TODO.md`** is work that has been **decided and not done.** The rule
@@ -291,7 +292,8 @@ so the repository shows what the build looked like: `python3 tools/qashot.py --t
 *"Keep going"* means: take the next decided TODO work and release each batch this way. **Nothing here is optional.**
 
 1. **Build all four ROMs and check each exit code** (`firered`, `leafgreen`, `firered_debug`, `leafgreen_debug`).
-2. **Run the checks** -- `check_lexicon.py`, `check_reach.py`, `check_agent_vocab.py`, `companion_export.py --check`
+2. **Run the checks** -- `check_lexicon.py`, `check_reach.py`, `check_agent_vocab.py`, `check_todo.py` (the record: no
+   open row under Closed, no spent reservation, the README's release line current -- T-553), `companion_export.py --check`
    (the companion holds the words the game is built from, T-373), `bookaudio.py --check` (every book has its own voice
    and a current recording -- a new book gets a voice chosen with the user from samples, T-543), then
    `check_generators.py` on a quiet tree (edit neither repo while it runs).

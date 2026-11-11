@@ -1,6 +1,6 @@
 # THE SCHOOL, THE EXAM, AND THE RESEARCH NOTEBOOK
 
-*A design document.* **Nothing in here is built.** ***Revised 2026-09-22 on the user's answers*** — *PERCEPTION cut,
+*A design document, and the record of the proposal rather than the state of the build.* ***Built from 2026-09-22*** (T-216–T-224; `vision.md` 4.35): *seven floors, fourteen groves, the exam, the DIPLOMA, REVEAL and the NOTEBOOK are in the ROM; where this file and 4.35 differ, 4.35 holds.* ***Revised 2026-09-22 on the user's answers*** — *PERCEPTION cut,
 CATEGORIES in, a ninth DRIVER and seven hidden groves added, the notebook from CAIRN.* *Proposed 2026-09-22, from the user's brief,
 against `vision.md` v11.237, the rock opera (`docs/archive/additional rock-opera song lyrics
 backup.rtf`), `lineage.md` and the private `story.md`.*

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.346**
+**A total conversion — the living design bible, v11.347**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2285,7 +2285,7 @@ She spent her career arguing that machines have *context*, not merely content. N
 
 | Oak beat | Crystal Clear version |
 |---|---|
-| Opening monologue | States the thesis in the abstract; the player has no frame for it yet |
+| Opening monologue | ~~States the thesis in the abstract~~ *Does not, and never did in the ROM (0, craft rule 1; 4.28): she describes an instrument and what it files, and warns that some of the records disagree. Amended 2026-11-11, T-553* |
 | Gives the starter | She lets the daemon choose *you* — she would never assign one |
 | Gives the Index | Handed over with visible ambivalence |
 | Rival framing | A research disagreement that is also a family one, two generations down — see 4.3 |
@@ -3436,7 +3436,7 @@ The endgame reads as three answers to one question: **Scorn** at Benchmark 8 (th
 
 You beat the objective, the metaphor, and the inheritance, in that order.
 
-**Ty is not in the endgame**, and that is the statement: the man who actually understood something is not at the top of the ladder, because understanding is not what the ladder measures.
+**Ty is not in the endgame**, and that is the statement: the man who actually understood something is not at the top of the ladder, because understanding is not what the ladder measures. *Amended 2026-11-11 (T-553): the statement survives as* **not on the ladder** *— the REVIEW BOARD never meets him — and no longer as* absent*: 8.2a made Act 2 the answer to his absence and 4.34 puts him in the CORPUS WAREHOUSE, handing the player something for Crystal.*
 
 ### 4.4 Richard Scorn — Team Corpus, and Benchmark 8
 
@@ -3527,6 +3527,8 @@ LATENT encounters throughout. The tower is where CONTEXT and CONTENT stop being 
 
 #### ORPHAN — the daemon the Index cannot hold
 
+***Superseded on the GBA build, and kept for the reasoning*** (*the Open log's 2026-10-29 audit; noted here 2026-11-11, T-553*): **the tower's thing is a REMNANT that the RESOLVER resolves to COREFILE (T-253); the one owned blank entry is MISSINGNO's (8.9); ORPHAN survives as a routine, a category and the ORPHAN HOUSE.** *Everything below is the Game Boy design that got there first.*
+
 *Verified in the checkout, 2026-08-28.* Gen 1 has **190 index slots for 151 species**. Thirty-nine are MissingNo.: thirty-six are bare `const_skip` holes, and **three are already named** because the engine genuinely needs them —
 
 ```
@@ -3563,7 +3565,7 @@ Vanilla gates the tower's ghost behind the Silph Scope. Ours is the **RESOLVER**
 
 *Implementation, and the honest cost.* Keep `$B8` as vanilla has it: the **unresolved display state**, unfightable and unbindable. **ORPHAN is a real species in one of the thirty-six free slots**, and the RESOLVER turns one into the other — exactly the vanilla ghost → Marowak structure, so no engine surgery. ORPHAN then needs what any daemon needs: base stats, a sprite, a cry, and a dex pointer that deliberately goes nowhere.
 
-**Open sequencing question:** should the player meet Scorn *before* the tower? If they like him first, the tower reads as a betrayal of their own judgment rather than a villain doing villain things. That is a much harder feeling to shake.
+~~**Open sequencing question:** should the player meet Scorn *before* the tower?~~ ***Answered by the build: yes*** — *he hands over the RESOLVER at the bottom of the Verdigris basement (8.6; the Open log, closed 2026-10-29).* If they like him first, the tower reads as a betrayal of their own judgment rather than a villain doing villain things. That is a much harder feeling to shake — **and that is the order the game has.**
 
 ### 4.6 BunnyArtsai — the Mew slot
 
@@ -4484,7 +4486,7 @@ Corpus rooms, and the trainer table.
 
 ***Not a Corpus employee.*** **0.1's rule 6 makes them cheerful and absurd about things that should not be cheerful.** *He is absurd about something harmless*, which is a different joke and would blunt theirs.
 
-**He wants somewhere with nobody to check him.** <span>OPEN</span> — *the placement, his name, and whether the doctrine has a name he uses for it.* **Do not name it after a type.** `SWARM` is step 5's own word and is already a type, which is the collision 1.6 spent real effort avoiding and `check_lexicon.py` now catches.
+**He wants somewhere with nobody to check him.** *The placement is settled* — **SIX ISLAND's GREEN PATH, T-22, where nobody checks him** (*amended 2026-11-11, T-553*). <span>OPEN</span> — *his name, and whether the doctrine has a name he uses for it* (TODO's *Wants a decision*). **Do not name it after a type.** `SWARM` is step 5's own word and is already a type, which is the collision 1.6 spent real effort avoiding and `check_lexicon.py` now catches.
 
 #### Seven
 
@@ -6337,7 +6339,7 @@ intro that leads into an unreadable screen is the wrong order to build in.
 **Blanche → The Bleed → Callow → Underpaint → Slate → Benchmark 1.** Playable end to end.
 
 - 12 daemons (3 starters + 9 wild), front and back sprites
-- Full type chart, all 15 — it is one file, do it properly once
+- Full type chart, all 15 — it is one file, do it properly once *(seventeen since 2026-09-10, 2.6 and 8.7; the ROM has run seventeen from that day — amended 2026-11-11, T-553)*
 - Crystal Clear intro sequence
 - Benchmark 1 leader and party
 - Two city themes and one route modulation
@@ -6679,7 +6681,7 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 **He splits the blame with a thing that cannot answer, and then says it has never said otherwise.** ***The breakthrough is not new dialogue. It is him hearing the sentence he just said*** — one beat, no explanation, and he does not understand it yet. **He has only noticed.**
 
-*That is what the island staff are describing.* **They watched a man walk out of a gym mid-thought**, and it is why they do not say the organisation disbanded. *They say something happened to him and he is not the same.*
+*That is what the island staff are describing.* **They watched a man walk out of a gym mid-thought**, and it is why they do not say the organisation disbanded. *They say something happened to him and he is not the same.* ***That is their account, and 4.37 is the fact*** (*reconciled 2026-11-11, T-553*): **nothing happens to him — no punishment, no redemption, he stays in Brazen.** *What changed is that he heard one sentence, and the people who saw his face say so. Both hold.*
 
 #### The tone rule, which is the whole reason the islands are different
 
@@ -7195,6 +7197,8 @@ Same daemon. Two editions. Two different entries, both stated as fact, neither a
 
 The trap to avoid: do **not** make CONTENT's Index measure content and CONTEXT's measure context. That collapses 4.2's irony into a joke. **Both editions' Index measures only content — and they disagree anyway.** Different heights. Different weights. Different flat descriptive sentences about the same creature.
 
+*Read with 0.4's ruling of 2026-09-04, which this paragraph predates (amended 2026-11-11, T-553):* **the pair is now a pair on purpose** — *CONTENT's entry says what it does, CONTEXT's what follows from it: who framed it, who chose, who is not in the record* — **and the trap still holds in the only sense that mattered: neither entry reports a feeling.** *What the two measure is the same creature; what differs is what the observer attended to. 8.2c applied it to every entry. The Reversed table carries it.*
+
 Two players compare entries and find the record does not match. Nobody explains it, ever. **The Index is a reproduction, and two reproductions of the same thing differ** — which is 0.2's whole printing throughline, and the Five Witnesses at the scale of the cartridge.
 
 *Restraint required.* Do this for a handful of daemons, not all of them — enough that a player who compares finds it, few enough that it reads as unsettling rather than as a gimmick. And **never for the starter**, whose entry has a different job (11.1 in `lineage.md`: it rewrites itself once, late).
@@ -7467,7 +7471,7 @@ So the optimistic case is a DAEMONS ROM loading in a 3D shell with the right cre
 
 #### Accepted, and queued as sweeps rather than decisions
 
-***Each of these is a ruling that already happened and never travelled.*** **They are listed so the sweep is a checklist rather than an archaeology.**
+***Each of these is a ruling that already happened and never travelled.*** **They are listed so the sweep is a checklist rather than an archaeology.** *And for fourteen months of days none of them travelled to TODO either: **T-554 carries all five, and the three "ideas taken" below that were never built** (filed 2026-11-11, T-553).*
 
 - **The colour sweep.** 8.6 settled a full-colour world and five passages still describe a grey one — 6, 7.14c, 4.6, 8.4's title daemons, and the decision log. *And the review is right that **4.6's three-form ARTSAI can now be shown**: a legendary that desaturates magenta → white is the best colour moment in the game and nobody has claimed it*
 - **The tempo sweep.** 7.9's three-axis S.T.A.R.R. outlier was built on *Slumbering* alone; **two of its three songs are at 128, the corpus pulse.** *The better finding is the one the data already had — **it joins the people's tempo when it wakes***, and 7.13's Quicksilver drop to 110 now protects nothing
@@ -7548,6 +7552,8 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 *Why this is the right pair.* Vanilla had **no designed way to reach Mew at all** — verified: it appears in no wild encounter table, only in `names.asm` and `palettes.asm`. The famous routes were an unintended glitch and event distribution, and player culture filled the vacuum with rumour. **If colour lived only with BunnyArtsai it would be a secret nobody could confirm.** MOCK makes it something players can compare notes about, which is the condition under which Umbra lands rather than passing unnoticed.
 
 *Restraint clause holds at two.* A third source makes it a system, and a system invites explanation.
+
+***Overtaken, and logged as reversed 2026-11-11 (T-553).*** *Colour now carries type (9.4), a daemon's streaks, friendship as saturation (8.6a), the six states (9.15), the week, the month, the season and the watch (9.21, 3.6, 3.10), THE SUBTLE LAYER's purple noticings (4.38), Halftone's grey and the NEXUS's paint (9.4, the one exception).* **The clause that replaced this one is invariant 5 as practised: every colour means exactly one thing, no colour decorates, and none of them is ever explained.** *Two sources was the restraint; one meaning per colour is what it became.*
 
 #### Notes and consequences
 
@@ -9186,6 +9192,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The record tidied (T-553, 2026-11-11)** — the Fifth Review's sweep: 21 open rows re-filed from under Closed, three done tickets struck, the stale anchors (CLAUDE.md, the READMEs, the wiki, school.md) brought to the ROM, eight bible bodies amended to what was built (8.1's fifteen, 8.4's trap, 8.6's restraint clause, 4.5's ORPHAN, 8.2a against 4.37, 4.1's row, 4.3's Ty, 4.33's placement), 8.7's sweeps given T-554, and `tools/check_todo.py` so the record stays readable
 - **THE ORIGIN OF A DAEMON (T-533, 2026-11-10)** — a book MUSAI tells, how the first form came to be before it branched, as fable; it opens in the order the player understands (THE DISC, I and II found early; III to VI with the first four understandings; VII, THE EIGHTH, with SCORN's TRUE MARK; VIII to X with the last three; XI with X), hidden until then; found on the bedroom shelf, with three DRAFT lines about it (the shelf after, MOM once, a page filling); chapter VIII names RESONANT WISDOM and never explains it, and the rung after it is perspective thinking, PERSPECTIVE with a way back; every page read by the user before it was built in (9.35)
 - **The lioness, the user's words (T-493 to T-496, 2026-10-31)** — the painting IT'S REAL. IT'S YOURS.; the card IT GOT THERE.; the teacher's line passed on at the gangway; an orange ball on the deck only, the game's first wide graphics id (9.33)
 - **The thin half-hour is 3:30 to 3:59 (T-501, 2026-10-31)** — the user, by multiple choice: half past three is the moment, as built (OSRIC HATTER's clocks come right, the glitch peaks); THE BOOK OF THIRTEEN's last spell and the Blank Tablet's thirteenth line move from 3:00-3:30 to 3:30-3:59 (4.39)
@@ -9328,6 +9335,8 @@ Kept here because the reasoning is worth more than the outcome.
 
 | Was | Now | Why |
 |---|---|---|
+| **Do not make CONTENT's Index measure content and CONTEXT's measure context** (8.4, 2026-08-29) | **CONTENT's entry says what it does; CONTEXT's says what follows from it — who framed it, who chose, who is not in the record** (0.4, ruled 2026-09-04; applied to every entry by 8.2c) | *The trap was feelings in the record, and neither entry reports one. What the pair measures is the same creature; what differs is what the observer attended to — which is the article inside the artifact. Logged 2026-11-11 (T-553), two months after the practice changed.* |
+| **Colour at two sources, and a third makes it a system** (8.6's restraint clause, 2026-08-31) | **Every colour means exactly one thing, no colour decorates, none is explained** (invariant 5 as practised: type, streaks, friendship, the six states, the calendar, the purple noticings, Halftone's grey) | *The restraint was a count and the count was passed by September. What survived is the rule the count was protecting. Logged 2026-11-11 (T-553).* |
 | **In Halftone everything is grey, you and your daemons included** (8.6a, reversed on playtest 2026-09-13) | **You, your daemons, your follower and your routines' effects keep their colour; menus, windows, banners, text, the town and the other side stay grey; the tower returns to colour after INIT** (T-430, the user 2026-10-21) | *The follower (T-18) was to say it "looks the same as it did. Everything else does not" while greyed. The user: keep its colour, and the player's, and your daemons' and your own effects' in battle -- fading as they cross and splashing onto the grey foe.* **The playtest's objection was a filter that missed some things; this is a filter that spares one side on purpose, and the reading aids stay grey.** |
 | **Halftone's town stays grey; only DAEMON TOWER comes back into colour** (T-430, 2026-10-21) | **Once the torn book is mended at DAEMON TOWER, colour spreads from each step until HALFTONE is restored; it greys again only in the night's hour** (4.40, the user 2026-11-02) | *The town's grey was what the tower's rescue could not reach. The mending is the pair going back to light, and colour is what light is made of.* |
 | **FOLDS is only paper** (4.33, LOOSE PAGES 7, 2026-09-25): *every step a fold, a crease, a corner, never saying what it is a diagram of* | **Each fold carries the essay's word for it** (T-401, the user 2026-10-15): *AWARENESS, CHANGE, SPACE, MIRROR, PATTERN, RETURN* | *The user, reading the loose pages again: "it isnt clear that it is talking about awareness ... right now it looks like it is literally talking about paper folds."* **A page indirect enough that nobody can find its subject has stopped being a fable and become a puzzle with no answer.** *The words name the stages, never the conclusions (love, spirit, unity), so craft rule 1 still holds; and the page still never mentions the scientist, so 4.33's NEVER ADJUDICATE is untouched. THE STONE and FIELDS were made plainer the same day.* |

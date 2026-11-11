@@ -19,8 +19,12 @@ if [[ "$ARG" == *.html ]]; then
   SRC="$DOCS/$ARG"
   OUT="$DOCS/${ARG%.html}.pdf"
   [ -f "$SRC" ] || { echo "no such doc: $SRC" >&2; exit 1; }
-  CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-  [ -x "$CHROME" ] || { echo "Chrome not found at $CHROME" >&2; exit 1; }
+  CHROME="${CHROME:-}"
+  for c in "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" /opt/pw-browsers/chromium \
+           "$(command -v google-chrome || true)" "$(command -v chromium || true)"; do
+    [ -n "$CHROME" ] && break; [ -n "$c" ] && [ -x "$c" ] && CHROME="$c"
+  done
+  [ -n "$CHROME" ] && [ -x "$CHROME" ] || { echo "Chrome not found (set CHROME=/path/to/chrome)" >&2; exit 1; }
   TMPD="$(mktemp -d)"; trap 'rm -rf "$TMPD"' EXIT
   "$CHROME" --headless --disable-gpu --no-sandbox \
     --no-pdf-header-footer --print-to-pdf-no-header \
@@ -43,8 +47,12 @@ fi
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 
-CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-[ -x "$CHROME" ] || { echo "Chrome not found at $CHROME" >&2; exit 1; }
+CHROME="${CHROME:-}"
+  for c in "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" /opt/pw-browsers/chromium \
+           "$(command -v google-chrome || true)" "$(command -v chromium || true)"; do
+    [ -n "$CHROME" ] && break; [ -n "$c" ] && [ -x "$c" ] && CHROME="$c"
+  done
+  [ -n "$CHROME" ] && [ -x "$CHROME" ] || { echo "Chrome not found (set CHROME=/path/to/chrome)" >&2; exit 1; }
 
 printf '<style>\n' > "$TMP/head.html"
 cat "$DOCS/style.css" >> "$TMP/head.html"
