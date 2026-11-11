@@ -1068,9 +1068,13 @@ def landmark_init(folder):
 #  built map (ROOM_SCENE: its back wall cut from reviewsheet's render and tiled, its floor laid in perspective, its
 #  furniture stood in front), for the insides vanilla never painted. --cards --draft paints nothing new (--paint
 #  does), drafts every candidate into gfx/drafts/t445_landmarks/<candidate>/ and the sheets; --cards --write
-#  --approved writes only what CARDS_APPROVED names into that candidate's engine folder, and CARDS_APPROVED is empty.
+#  --approved writes only what CARDS_APPROVED names into that candidate's engine folder.
+#  BUILT 2026-11-11: KEEPALIVE PLANT growing untended A and TANOBY carved, not lit A. Their engine folders (power_plant,
+#  monean_chamber) are batch E's and batch G's, so the caves' own write skips a folder an approved candidate has taken
+#  (CARDS_TAKEN) -- else a plain --write --approved would lay the stale cards back. The MANSION and DAEMON TOWER keep
+#  their outsides (the rack hall and the dot screen stay drafts).
 CARDS_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t445_landmarks")
-CARDS_APPROVED = set()                 # nothing until the user picks; --write refuses every candidate not named here
+CARDS_APPROVED = {"power_plant_untended_a", "monean_chamber_carved_a"}  # the user, 2026-11-11: PLANT A, TANOBY A
 _PLANT_UNTENDED = dict(
     folder="power_plant", banner_from="power_plant", init="graded", title="KEEPALIVE PLANT, growing untended",
     #  pair 5 B's own colours (power_plant row 7's metal, row 8's three greens and moss) -- no status lights
@@ -1132,6 +1136,9 @@ CARDS["pokemon_tower_dotscreen_b"] = dict(CARDS["pokemon_tower_dotscreen_a"], se
 #  the rooms came back at 0.48-0.50 still reading as the map's tiles, so a third of each painted harder
 CARDS["pokemon_mansion_rackhall_c"] = dict(CARDS["pokemon_mansion_rackhall_a"], seed=4510, denoise=0.62)
 CARDS["pokemon_tower_dotscreen_c"] = dict(CARDS["pokemon_tower_dotscreen_a"], seed=4511, denoise=0.62)
+#  the engine folders an approved candidate writes, and which candidate: at most one per folder
+CARDS_TAKEN = {CARDS[c]["folder"]: c for c in sorted(CARDS_APPROVED)}
+assert len(CARDS_TAKEN) == len(CARDS_APPROVED), "two approved CARDS candidates for one engine card"
 
 
 def motif_ivy(out, v, c):
@@ -1258,7 +1265,7 @@ def paint(folder, sec, out_dir):
 
 
 def painted_path(folder):
-    return os.path.join(A.draft or DRAFT_DEFAULT, folder, "painted.png")
+    return os.path.join(A.draft or (CARDS_DRAFT if A.cards else DRAFT_DEFAULT), folder, "painted.png")
 
 
 def painted_picture(folder):
@@ -1816,6 +1823,8 @@ def report():
             ("place (%s): drafted with --places%s" % (PLACES[folder]["what"],
              ", APPROVED" if folder in PLACES_APPROVED else ", waits on the user")) if folder in PLACES else \
             ("not drafted: " + NOT_DRAFTED.get(folder, "?"))
+        if folder in CARDS_TAKEN:
+            status += "; SUPERSEDED by --cards' %s (APPROVED)" % CARDS_TAKEN[folder]
         print("  %-17s %s" % (folder, status))
         for key, sec, typ in ents:
             n = nm.get(sec, "?")
@@ -1857,6 +1866,9 @@ def main():
             continue
         if A.cards and A.write and folder not in CARDS_APPROVED and not A.draft:
             print("  %-27s a candidate, not approved (CARDS_APPROVED): not written" % folder)
+            continue
+        if A.write and not A.cards and folder in CARDS_TAKEN and not A.draft:
+            print("  %-17s taken by --cards' %s (CARDS_APPROVED): not written" % (folder, CARDS_TAKEN[folder]))
             continue
         if A.write and folder in BATCH_G and folder not in BATCH_G_APPROVED and not A.draft:
             print("  %-17s batch G, not approved (BATCH_G_APPROVED): not written" % folder)

@@ -124,6 +124,10 @@ ARGS = {
     #  (the user's picks, 2026-11-08), the approved summers into gfx/daemons/, and its table and coordinates blocks --
     #  and its report exits 0. port_index's whole-tree --write refuses (generator_drift.json); its seasonal header is --write --seasons.
     "genmusaiseasons": [[]],
+    #  T-445: gbapreviews' --write refuses without --approved, so --writes never saw a card written. The user picked
+    #  "PLANT A, TANOBY A" on 2026-11-11 (CARDS_APPROVED); `--cards --approved` writes those two into power_plant and
+    #  monean_chamber, so a sandboxed write changes nothing when the engine is right. The plain run keeps the report.
+    "gbapreviews": [[], ["--cards", "--approved"]],
 }
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
 SKIPPED = {name: "docs/private/notebook_docs.json is missing (private, not in git), and gbadocs without it is not a check"
