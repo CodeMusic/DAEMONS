@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.346, working |
-| [`CONTEXT-CONTENT-design-bible-v11.346.pdf`](CONTEXT-CONTENT-design-bible-v11.346.pdf) | Typeset **snapshot** at v11.346 — THE ORIGIN OF A DAEMON: MUSAI tells how it came to be, found on the bedroom shelf, its chapters coming back in the order the player understands | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.347, working |
+| [`CONTEXT-CONTENT-design-bible-v11.347.pdf`](CONTEXT-CONTENT-design-bible-v11.347.pdf) | Typeset **snapshot** at v11.347 — the bible catches up: contact is physical, a gym leader who reads instead of bending, and the lines the three-book review moved to where they can be heard. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

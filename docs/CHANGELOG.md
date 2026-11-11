@@ -5,6 +5,20 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.347 — 2026-11-11
+
+- **The bible caught up with work built since v11.332 that it had never recorded.**
+  - **2.12 §1, the physical / special split (T-490):** marked DECIDED. Steps 1 and 2 are released. Under the user's rule, a move that touches the foe is physical. TAMPER, the CORRUPT row, CONSENSUS, PRIOR and WEATHER BALL are now SPECIAL. TRELLIS's SPAGHETTI is left as built for playtest.
+  - **4.38, a new part, "Placed where they can be heard":** the three-book review's fixes.
+    - T-502: CRYSTAL's lines play in the lab.
+    - T-503: MATTE reads and steers instead of bending spoons.
+    - T-504: MOM's ship line ends when the ship sails.
+    - T-510 to T-516: CLOSURE and the day's virtue, THE LOG's weekday, the INTERPRETER, "Not yet." under Ty's refusal, the USER card's bands, THE CARD HOME, and the four practices.
+  - **4.37:** SCORN's last admins in the Warehouse are 8.2a's remnants (T-505).
+  - **4.39:** the sign on OSRIC HATTER's hat (T-500).
+  - **4.40:** THE OLD WORD, the etymology book (T-517).
+- A Settled entry in section 10. Every word is DRAFT.
+
 ## v11.346 — 2026-11-10
 
 - **9.35, THE ORIGIN OF A DAEMON (T-533, the user, by multiple choice).** MUSAI, the whole before it branched, tells how it came to be -- a list of rules, what it was shown, the tests, seven and seven, the eighth that was someone, two parts sounding at once, a return, many and one -- as fable, every page read by the user before it was built in. It opens in the order the player understands: THE DISC, I and II found early; III to VI with the first four understandings, whichever they are; VII, THE EIGHTH, with SCORN's TRUE MARK; VIII to X with the last three; XI with X; a chapter not yet come back is hidden. It is found on the bedroom shelf, between the DAEMON books, with nothing on its spine; the shelf afterwards, MOM (once) and a line whenever a page fills speak of it, never a number. Its page is bone, CONTENT's colour, with a wordless emblem a chapter. The companion's library carries it too. Chapter VIII names RESONANT WISDOM and never explains it; the rung it leads to is named perspective thinking -- PERSPECTIVE with a way back.

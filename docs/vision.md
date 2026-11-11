@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.346**
+**A total conversion — the living design bible, v11.347**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -1947,7 +1947,7 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 
 *Asked 2026-09-11. **Every cost below was read out of the engine, not estimated.***
 
-#### 1. The physical / special split — <span>OPEN</span>, and the code is the cheap half
+#### 1. The physical / special split — DECIDED (T-490), in steps; two built
 
 ***Gen 1–3 decide physical-or-special by the TYPE. Gen 4 moved it to the MOVE.*** **In this build that is two macros:**
 
@@ -1965,6 +1965,8 @@ THRASHING    CONTENT×3  CONTEXT×2  LATENT×1  LOGIC×1  SWARM×1  FLOW×1
 | **the design** | ***354 judgment calls***, and **five leader designs in 5.3b were built against the Gen 3 rule** |
 
 ***Recommendation: yes, and not alone.*** **The code is not the job; the 354 rulings are**, *and they belong with the routine work 2.10 left open rather than as a pass of their own.*
+
+***Decided 2026-10-29 and built in steps (T-490).*** **Step 1, released v11.332.1: every routine carries its own category, set from what its type gave it (149 PHYSICAL, 93 SPECIAL, 141 STATUS), so nothing moved** -- *13,788 checks over the four ROMs, none differing; the move info shows a strike or a channel after the type (DRAFT).* ***Step 2, released v11.332.2, on the user's rule (2026-10-30): contact is physical*** -- **touching the foe is physical; beams, sound, signals and data are special.** *First, rain, sun and the sky boosts were moved out of the special branch to act by the hit's type, which changed nothing. Then TAMPER (the case this section opened with), ETCH, POLLUTE, GARBAGE, DUMP, MEDIAN, BITROT MOON, CONSENSUS, PRIOR and WEATHER BALL became SPECIAL; the fangs and tails stay PHYSICAL.* **The rest are judged as each routine is touched** (*25 contact-special and 52 no-contact-physical candidates listed at the field*). ***Of the five leaders, CAIRN, BASIN, ANNEAL and SCORN barely move; TRELLIS does*** -- *the player's CORRUPT hits now take SPAGHETTI in one, and ENSEMBLE's screen halves them.* **The user: leave SPAGHETTI as built and judge it in playtest.**
 
 #### 2. Type-resist handlers — DECIDED (T-488), and this is the best fit in the question
 
@@ -4883,7 +4885,7 @@ take off.*
 #### What is deliberately not here
 
 - ***Nobody is rescued, and it is not a happy ending stated.*** **It is still a merger, and Brazen is right there**: *the player may wonder whether it goes the same way. Only details show the difference — two names, no scores.*
-- ***SCORN is unchanged.*** **He is still in Brazen and nothing happens to him** — *no punishment, no redemption. The joining is not about him.*
+- ***SCORN is unchanged.*** **He is still in Brazen and nothing happens to him** — *no punishment, no redemption. The joining is not about him.* ***And in the Warehouse on FIVE ISLAND he stands where he always stood, and his last admins have become 8.2a's remnants (T-505, built 2026-10-31)***: *"He's back there. He doesn't give orders. He checks something. None of us know what." / "I did as I was told. Then the telling stopped." / "He can stay. He won't notice we've gone."* (DRAFT)
 - ***Nothing is repainted.*** **The Quicksilver gold keeps lifting** (*4.34's last beat*), **so the second joining sits beside the first rather than undoing it.**
 - ***No dates.*** **Both papers are undated**, *unlike PROSPECTUS 3* — **and the rule that each date belongs to one document (SECRETS §4) is untouched.**
 - ***Tending, never medical*** (craft rule 3): **a signal, a check-in, a keeper's ledger** — *never a reading, a vital, a condition.*
@@ -4973,6 +4975,21 @@ take off.*
 - ***Each book has its part of the day*** (*9.21's week*): **THE SUBTLE LAYER the centre, the day's word and its note; the GUIDE the virtue said over its shadow** -- *woven into some answers, not every one.*
 - ***Once a day THE SUBTLE LAYER asks a question of its own*** (*THE ROUTINE's moments, set in the day's centre, word and note*), **and what is answered is kept in a journal "with the day and the centre"**, *as TRUE OR NOT tells a trainer to keep a log.*
 
+#### Placed where they can be heard (the three-book review, the user by multiple choice, 2026-10-31 to 11-02)
+
+***A review of the three books against the story found lines that could never play and places the books said one thing and the game another.*** **Each was settled by multiple choice and built; every word DRAFT.**
+
+- ***CRYSTAL's words under words (T-502).*** **"You will go further than I did." and its purple "I cannot always be there." sat in a PALLET scene that never plays (4.34).** *They now play in the lab once, the first time she is spoken to with the eighth MARK held and before the REVIEW BOARD -- the purple only with the book -- so her note's "Take it further than I did." answers them.*
+- ***MOM and the ship (T-504).*** **Her ship line and its purple "Come back." end when the ship sails; after it, once:** *"Your brother called. / From the ship. / He never calls. I did not say so. / ...He sounded well."*
+- ***BRAZEN stops speaking of psychic powers (T-503)*** -- **in the book's own city, MATTE reads and steers instead of bending:** *"They say I bent a spoon once, as a child. It was a cheap spoon. I don't move anything. I see where people are about to look."*; *"Everyone reads the room. People just don't notice they do."* **THREE ISLAND's spoon-bender now says** *"Maybe it was never the spoon. Maybe it was who was watching."* *The INTERPRETERs' wrong-and-confident jokes stay.*
+- ***CLOSURE rises with the day's virtue (T-510)***: **+1 at a battle's start while today's virtue's INSIGHT is held**, *friendship still the base -- as the book says.*
+- ***THE LOG keeps the weekday (T-511)***, **and reads come a little more often on Fridays** (*18% of arrivals, 12% otherwise*), *as FRIDAY says.*
+- ***The INTERPRETER, after the book is taken (T-512)***: *"Ask before you read anyone."* -- **the book's own first instruction.**
+- ***Words under Ty's refusal (T-513)***: **with the book held, a purple "Not yet." under "...No. I am not coming."** *The first place a book touches the story; nothing of SECRETS is touched.*
+- ***The USER card's bands follow the GUIDE (T-514)***: **each MARK lights the centre the GUIDE's week gives its virtue.**
+- ***The lioness's card home is filed beside CORRESPONDENCE 7 (T-515)*** -- **THE CARD HOME in LOOSE PAGES, so the two rhyming cards can be read side by side.**
+- ***The practices get something to do (T-516)***: **ASK FIRST** -- *the INTERPRETER's "Did they agree to it?" once ten reads are given*; **MENDING** -- *"It was already mending." under a heal's "Not too soon."*; **SATURDAY** -- *THE LOG opens "SATURDAY. Who was looking?"*; **BEFORE STEERING** -- *THE THREE's WRITE does nothing before seven reads are given.*
+
 #### The witching hour (T-480, C-236, the user, 2026-10-29)
 
 ***Between three and four in the morning, by the cartridge's clock, the seam between the layers is thin.*** *The user's brief: "if you happen to wake up at that time and check the daemons... there's something very unique... a routine or skill they have... it only shows up during that time."*
@@ -5029,7 +5046,7 @@ take off.*
 #### OSRIC HATTER, and THE LAYERS (the user, by multiple choice, 2026-10-29)
 
 - ***The author is OSRIC HATTER, the Hatter of QUICKSILVER*** -- **a stoat** (*actors are animals*). *The user wanted a name a search ties to the Mad Hatter, and tied to QUICKSILVER because hatters went mad from the quicksilver they set felt with.* **The warning: he made hats there "until the quicksilver in the felt began to talk to him. Some say he went mad. He says he went through."** *Then: some who read to the end went a little mad as well; stop here if you want your world to stay solid; turn the page to see the subtle layer underneath.* **The book's question back ends "Take it with a grain of salt."** *Only QUICKSILVER's public name is in the book -- never 4.10's sequence or its order.*
-- ***His house on QUICKSILVER***: **a leaning top hat with a 10/6 price card in its band; inside, every clock stopped at half past three, and a long tea table laid for many where only he sits.** *Half past three is the Tablet of Gravity's hour.* **Anyone may visit; he says a riddle at the tea table, more with THE HERMETIC LAYER held, and something else at 3:30 AM** -- *his riddles turned from the book's own sayings, said to the empty chairs.* **A key building, so its own art (9.29), on new ground on QUICKSILVER; nothing there moves.** (*T-485, the game lane.*)
+- ***His house on QUICKSILVER***: ***a sign beside the door reads "OSRIC HATTER / HATS" and "In this style 10/6"*** (*T-500, built 2026-10-31, DRAFT: so the vault's hint, his name, can be solved in the game*); **a leaning top hat with a 10/6 price card in its band; inside, every clock stopped at half past three, and a long tea table laid for many where only he sits.** *Half past three is the Tablet of Gravity's hour.* **Anyone may visit; he says a riddle at the tea table, more with THE HERMETIC LAYER held, and something else at 3:30 AM** -- *his riddles turned from the book's own sayings, said to the empty chairs.* **A key building, so its own art (9.29), on new ground on QUICKSILVER; nothing there moves.** (*T-485, the game lane.*)
 - ***THE LAYERS (SENSE)***, **a section after the alchemy and before REFLECTION** -- *SUBSTRATE, REPRESENT, ABSTRACT, FEELING, NOUN, INTERFACE: the thesis, shadowed, as the exception allows* -- **"ABSTRACTION AND REPRESENTATION MAKE A PERCEPTION."** *·* **"A noun is a verb that has been told to hold still."** *The Work folds into THE ONE THING, so the book keeps ten sections; the Resonance Fractal keeps its name.*
 
 #### The only glitch in the game (the user, by multiple choice, 2026-10-29; T-486)
@@ -5115,6 +5132,8 @@ take off.*
 - ***How it shows***: **tone, never hue** -- *a daemon lightens or darkens and keeps its type's colour (invariant 5); the light and dark sets are the Work's albedo and nigredo* -- **and an evolution-like screen when it crosses.** *It behaves its spirits, in the game and on the companion: one in low spirits may refuse its food, one in good spirits thanks you brightly.*
 
 #### The history, checked (the user's research, 2026-11-01)
+
+***Printed as THE OLD WORD (T-517)***: **`docs/DAEMONS-etymology.pdf`, an illustrated book like the manuals** -- *seven chapters and their sources, every claim checked first; the frightening word it is taken for is never printed in it.*
 
 *Eudaimon is* eu *+* daimon, *"with a good attendant spirit"; Socrates' daimonion only ever warned him (*Apology* 31d); Aristotle's eudaimonia is living and doing well. The Agathos Daimon was the household good spirit, given the last cup after a meal. The word turned between the Septuagint, which already called the gods of the nations* daimonia *(3rd-2nd century BCE), and the 1st-century New Testament -- not "by the early 2nd century". A line attributed to Jung (neither eudaemon nor cacodaemon, only the daemon) is unsourced and stays out until it is found.*
 
@@ -9211,6 +9230,7 @@ about itself* (rule 6).
 - **A daemon given carries its own mark (T-492, C-223, 2026-10-29)** — "[NAME] arrived as a gift.", FIRST MET: A GIFT, and it still trade-evolves on arrival; trading, loans and gifts written up as 9.32. The menus and the field keep the calendar, released in v11.329.1 (T-481 B, C).
 - **ALIGN and CONSENSUS / SLANT released (T-489, T-491, v11.330.1)** — ALIGN (382, CONTEXT) hands the foe the user's first type; SCORN's ace uses it in CORPUS only; PLUGIN49 on CORPUS HIDEOUT B4F. CONSENSUS runs 90 to 120 with the party's overlap, SLANT (the CONTEXT routine) 65 to 95 with its divergence. All DRAFT; the convergence question goes to playtest.
 - **The SINKs and the GIFT released (T-488, T-492, v11.331.1)** — sixteen `* SINK` items, no ORACLE or CONTENT sink; SIGNAL SINK kept beside LIGHTNING ROD's ability as SINK beside MINUS's (the user); sold after each MARK, four hidden. A daemon given arrives with its own line and FIRST MET: A GIFT. All DRAFT.
+- **Recorded 2026-11-11, built since v11.332 and missing from the bible** — the split's steps 1 and 2 (T-490, 2.12, contact is physical); the three-book review's placements (T-502 to T-504, T-510 to T-516, 4.38); SCORN's remnants in the Warehouse (T-505, 4.37); the hatter's sign (T-500, 4.39); THE OLD WORD (T-517, 4.40). All DRAFT.
 - **The daemons redrawn with charm, and followers at their own size (T-452, T-464, recorded 2026-10-28)** — every daemon redrawn in the sprite-server style, charm over fidelity, one key prop kept and entries agreed with; coloured by type with accents capped near 15% and off other types' hues; icons drawn separately; THE NEXUS keeps its painted art; followers walk as their own small pictures (9.31)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
