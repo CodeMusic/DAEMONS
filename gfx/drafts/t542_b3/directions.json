@@ -1,0 +1,112 @@
+{
+ "ticket": "T-542",
+ "batch": 3,
+ "status": "DRAFT -- not in the engine",
+ "approved": [],
+ "directions": {
+  "A": {
+   "title": "THE CLEAR PANE",
+   "what": "the doors as plain good glass: a sky-lit top fading down the pane, two upright glints, a steel push bar at the waist and a steel kick plate; every edge, rock, tree and bank as dictated",
+   "tiles_redrawn": 21,
+   "unchanged": [
+    4,
+    301,
+    503
+   ],
+   "new_tiles": 0,
+   "palettes_changed": 0
+  },
+  "B": {
+   "title": "THE READOUT",
+   "what": "the doors as dark screens (the world as the running machine it is): night-blue glass with three lit scan lines and a cursor block, a lit status line at the foot",
+   "tiles_redrawn": 21,
+   "unchanged": [
+    4,
+    301,
+    503
+   ],
+   "new_tiles": 0,
+   "palettes_changed": 0
+  },
+  "C": {
+   "title": "THE MANIFESTATION",
+   "what": "the doors as glass with the frosted safety band real glass doors carry at eye height (a white band of dots, so no one walks into it), a steel kick plate below",
+   "tiles_redrawn": 21,
+   "unchanged": [
+    4,
+    301,
+    503
+   ],
+   "new_tiles": 0,
+   "palettes_changed": 0
+  }
+ },
+ "objects": {
+  "tree": {
+   "title": "the thin tree's crown (FOUR ISLAND's garden, BRAZEN)",
+   "tiles": [
+    11,
+    27,
+    43,
+    59
+   ],
+   "look": "dictated: every tree's crown (gbageneral m_bush, gbatrees' crown in little) -- lobes lit across their tops, dark at their feet, a deep edge; symmetric, so its two halves meet"
+  },
+  "lip": {
+   "title": "the islet's rim corners (ROUTE 12, the islands)",
+   "tiles": [
+    79,
+    94
+   ],
+   "look": "dictated: pass 3's crenellated lip on 239 between them, carried on in phase to where the rim turns down"
+  },
+  "ground": {
+   "title": "the sand's corner, the forest path's edge, a cliff sliver",
+   "tiles": [
+    4,
+    301,
+    503
+   ],
+   "look": "dictated, and already met: each is all edge -- the halo band and the sand's lip (4), the path's scalloped edge its sides share (301), a cliff's grey rim and rock line beside a bridge (503, 6 draws) -- so ours is vanilla's; redrawing them is redrawing every path edge"
+  },
+  "rock": {
+   "title": "the sea rock (every sea route; BREATHVERSE in PALLET's row 10)",
+   "tiles": [
+    173,
+    174,
+    189,
+    190
+   ],
+   "look": "dictated: the chunky stones of its twin already in the water strip (420..423) -- four lumps, lit tops, shaded feet, dark cracks; the silhouette and its foam rim kept"
+  },
+  "quay": {
+   "title": "the quay's edge (ARDOR, the S.S. ANNE's pier, THREE ISLAND)",
+   "tiles": [
+    617,
+    618
+   ],
+   "look": "dictated: one more course of the paving's running bond, the coping, lit along its arris; the lap below it in small even ripples against the stone, over gbawater's strip"
+  },
+  "puddle": {
+   "title": "FOUR ISLAND's puddles: their banks",
+   "tiles": [
+    311,
+    326,
+    342,
+    358,
+    359
+   ],
+   "look": "dictated: the bank already ours at 310 -- a lit lip on the grass, a dark bank, a wet foot; one-pixel banks in small stones, symmetric so a bank meets its mirror"
+  },
+  "doors": {
+   "title": "the sliding doors 0x62 (single) and 0x15B (double)",
+   "tiles": [
+    292,
+    293,
+    269,
+    285
+   ],
+   "look": "the real choice: the glass (A THE CLEAR PANE, B THE READOUT, C THE MANIFESTATION); the frame and threshold stay; gbadoors re-runs after the write"
+  }
+ }
+}

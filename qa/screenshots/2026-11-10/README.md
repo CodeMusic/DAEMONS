@@ -535,3 +535,87 @@ T-542 batch 2 built (DRAFT), the user 2026-11-10: build as drawn; cave mouth A. 
 T-542 batch 2 built (DRAFT), the user 2026-11-10: build as drawn; cave mouth A. Decoded from the engine's sources: ROUTE 4's cave mouth as A THE ROCK'S OWN MOUTH -- pass 3's chunky stones carried to the lip
 
 ![10Nov2026 - T542 - ROUTE 4 cave mouth built, A - 93](10Nov2026%20-%20T542%20-%20ROUTE%204%20cave%20mouth%20built%2C%20A%20-%2093.png)
+
+### 10Nov2026 - T542 - batch 3 FOUR ISLAND garden thin trees and puddles - 94
+
+T-542 batch 3 (DRAFT): FOUR ISLAND's garden today beside the draft -- the thin trees in every tree's lobed crown, the puddle banks lit lip, dark bank, wet foot
+
+![10Nov2026 - T542 - batch 3 FOUR ISLAND garden thin trees and puddles - 94](10Nov2026%20-%20T542%20-%20batch%203%20FOUR%20ISLAND%20garden%20thin%20trees%20and%20puddles%20-%2094.png)
+
+### 10Nov2026 - T542 - batch 3 FOUR ISLAND south puddles - 95
+
+T-542 batch 3 (DRAFT): FOUR ISLAND's south puddles, their banks redrawn
+
+![10Nov2026 - T542 - batch 3 FOUR ISLAND south puddles - 95](10Nov2026%20-%20T542%20-%20batch%203%20FOUR%20ISLAND%20south%20puddles%20-%2095.png)
+
+### 10Nov2026 - T542 - batch 3 BRAZEN thin tree - 96
+
+T-542 batch 3 (DRAFT): BRAZEN CITY, the thin tree's foot by the east road
+
+![10Nov2026 - T542 - batch 3 BRAZEN thin tree - 96](10Nov2026%20-%20T542%20-%20batch%203%20BRAZEN%20thin%20tree%20-%2096.png)
+
+### 10Nov2026 - T542 - batch 3 ROUTE 12 islet rim corners - 97
+
+T-542 batch 3 (DRAFT): ROUTE 12's islet, its rim corners carrying pass 3's lip on
+
+![10Nov2026 - T542 - batch 3 ROUTE 12 islet rim corners - 97](10Nov2026%20-%20T542%20-%20batch%203%20ROUTE%2012%20islet%20rim%20corners%20-%2097.png)
+
+### 10Nov2026 - T542 - batch 3 ROUTE 20 sea rocks - 98
+
+T-542 batch 3 (DRAFT): ROUTE 20's sea rocks in the chunky stones of their twin already in the water strip
+
+![10Nov2026 - T542 - batch 3 ROUTE 20 sea rocks - 98](10Nov2026%20-%20T542%20-%20batch%203%20ROUTE%2020%20sea%20rocks%20-%2098.png)
+
+### 10Nov2026 - T542 - batch 3 ARDOR quay edge - 99
+
+T-542 batch 3 (DRAFT): ARDOR CITY's quay edge -- a coping course in the paving's bond, even ripples below
+
+![10Nov2026 - T542 - batch 3 ARDOR quay edge - 99](10Nov2026%20-%20T542%20-%20batch%203%20ARDOR%20quay%20edge%20-%2099.png)
+
+### 10Nov2026 - T542 - batch 3 ARDOR pier quay edge - 100
+
+T-542 batch 3 (DRAFT): ARDOR's pier by the S.S. ANNE, the quay edge
+
+![10Nov2026 - T542 - batch 3 ARDOR pier quay edge - 100](10Nov2026%20-%20T542%20-%20batch%203%20ARDOR%20pier%20quay%20edge%20-%20100.png)
+
+### 10Nov2026 - T542 - batch 3 ROUTE 1 sand corner unchanged - 101
+
+T-542 batch 3 (DRAFT): ROUTE 1's sand corner, unchanged -- all edge, already met by ours
+
+![10Nov2026 - T542 - batch 3 ROUTE 1 sand corner unchanged - 101](10Nov2026%20-%20T542%20-%20batch%203%20ROUTE%201%20sand%20corner%20unchanged%20-%20101.png)
+
+### 10Nov2026 - T542 - batch 3 FOREST path edge unchanged - 102
+
+T-542 batch 3 (DRAFT): the FOREST's path edge, unchanged -- the scallop its sides share
+
+![10Nov2026 - T542 - batch 3 FOREST path edge unchanged - 102](10Nov2026%20-%20T542%20-%20batch%203%20FOREST%20path%20edge%20unchanged%20-%20102.png)
+
+### 10Nov2026 - T542 - batch 3 CALLOW CENTRE double door - 103
+
+T-542 batch 3 (DRAFT): CALLOW's CENTRE double door, today and A THE CLEAR PANE, B THE READOUT, C THE MANIFESTATION
+
+![10Nov2026 - T542 - batch 3 CALLOW CENTRE double door - 103](10Nov2026%20-%20T542%20-%20batch%203%20CALLOW%20CENTRE%20double%20door%20-%20103.png)
+
+### 10Nov2026 - T542 - batch 3 CALLOW REPO single door - 104
+
+T-542 batch 3 (DRAFT): CALLOW's REPO single door, today and A, B, C
+
+![10Nov2026 - T542 - batch 3 CALLOW REPO single door - 104](10Nov2026%20-%20T542%20-%20batch%203%20CALLOW%20REPO%20single%20door%20-%20104.png)
+
+### 10Nov2026 - T542 - batch 3 DOLDRUM CENTRE and REPO doors - 105
+
+T-542 batch 3 (DRAFT): DOLDRUM's CENTRE and REPO, today and A, B, C
+
+![10Nov2026 - T542 - batch 3 DOLDRUM CENTRE and REPO doors - 105](10Nov2026%20-%20T542%20-%20batch%203%20DOLDRUM%20CENTRE%20and%20REPO%20doors%20-%20105.png)
+
+### 10Nov2026 - T542 - batch 3 sliding doors opening - 106
+
+T-542 batch 3 (DRAFT): both sliding doors opening (closed, ajar, half, open) as gbadoors draws them, today and A, B, C
+
+![10Nov2026 - T542 - batch 3 sliding doors opening - 106](10Nov2026%20-%20T542%20-%20batch%203%20sliding%20doors%20opening%20-%20106.png)
+
+### 10Nov2026 - T542 - batch 3 the 24 tiles at 3x - 107
+
+T-542 batch 3 (DRAFT): the 24 tiles at 3x, today and A, B, C
+
+![10Nov2026 - T542 - batch 3 the 24 tiles at 3x - 107](10Nov2026%20-%20T542%20-%20batch%203%20the%2024%20tiles%20at%203x%20-%20107.png)
