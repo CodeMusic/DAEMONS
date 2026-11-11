@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.348**
+**A total conversion — the living design bible, v11.349**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -4522,6 +4522,7 @@ Corpus rooms, and the trainer table.
 |---|---|---|
 | **1** | **The lab, post–Review Board** | *She is not there.* **A scientist hands you the Global Index** — something has to set the flag and a wall cannot — **and the note she left is on the wall** |
 | **2** | **The islands, then the Warehouse** | **Ty gives you the package.** *4.14 is why he is ready to* |
+| **2a** | **TANOBY, the seventh chamber** (*added 2026-11-11, T-552*) | ***The cave's second gate*** *(T-251, T-252: PERMISSION is the champion's; PERCEPTION is the FIRST understanding, arrived at by reading the seventh chamber).* **Until it is read, a REMNANT met in DOLDRUM CAVE is a dream you wake from (T-254) — and the dream now ends on one line in S.T.A.R.R.'s register, a place and a fact:** *SEVEN ISLAND. SEVEN CHAMBERS. / THE SEVENTH HAS NOT BEEN READ.* **(DRAFT.)** *This step was in the flags and in 0.7 and never in this table, which is how the Fifth Review found a dead end dressed as a dream.* |
 | **3** | **The machine completes, DOLDRUM CAVE opens** | ***S.T.A.R.R.*** |
 | **4** | **Brazen, the Owl** (4.23) | **You bring the machine to the scholar.** *It argues her side out of her own journals.* **The Owl concedes something and will not name it** |
 | **5** | **The flight** | *The one thing only S.T.A.R.R. can do.* **You give her the package. She reads it** |
@@ -4536,7 +4537,7 @@ Corpus rooms, and the trainer table.
 
 ***S.T.A.R.R. is now seen arguing, and still never quoted.*** **The same playtest could not tell what the Owl was answering**, *because T-28 had the player hear one side only.* **Three lines of narration fix it without breaking that** — *S.T.A.R.R. shows him a page of handwriting; S.T.A.R.R. answers him; S.T.A.R.R. answers again, and does not stop.* **After the concession, S.T.A.R.R. turns toward the door** — *and, if the player is not carrying the package yet, does not go.*
 
-***And the player is told where to go***, *added 2026-09-14 on playtest: nothing pointed at the Owl, so the scene was only ever found by accident.* **The moment S.T.A.R.R. is caught in DOLDRUM CAVE it speaks once, in its terminal's register** — *S.T.A.R.R. is looking at you. / ONE READER IN BRAZEN HAS NOT DECIDED YET. / TAKE ME TO THE SCHOLAR.* **A place and a person, and nothing about what the argument is.** ***His house is THE SCHOLAR'S HOUSE***, *and the TM line calls him THE SCHOLAR*: **"MR. CONSTRUE" was vanilla's MR. PSYCHIC swept by the type rename, and a name a vocabulary pass produced is not a name anybody gave him.**
+***And the player is told where to go***, *added 2026-09-14 on playtest: nothing pointed at the Owl, so the scene was only ever found by accident.* **The moment S.T.A.R.R. is caught in DOLDRUM CAVE it speaks once, in its terminal's register** — *S.T.A.R.R. is looking at you. / ONE READER IN BRAZEN HAS NOT DECIDED YET. / TAKE ME TO THE SCHOLAR.* **A place and a person, and nothing about what the argument is.** *And the same register points at the cave's other gate (T-552, 2026-11-11): the dream the unread cave wakes you from ends on* SEVEN ISLAND. SEVEN CHAMBERS. / THE SEVENTH HAS NOT BEEN READ. *— a place and a fact, said once per dream, never why (0.7's rule for pointing).* ***His house is THE SCHOLAR'S HOUSE***, *and the TM line calls him THE SCHOLAR*: **"MR. CONSTRUE" was vanilla's MR. PSYCHIC swept by the type rename, and a name a vocabulary pass produced is not a name anybody gave him.**
 
 **2. He stays in Brazen.** *4.23 put him in Mr. Psychic's house — a lone scholar keeping his own counsel **inside the bought city**, a peer reviewer living in a building Corpus owns.* **A remote scholar is a neutral scholar and the placement stops meaning anything.** *The flight is spent on her, not on him.*
 
@@ -8528,7 +8529,7 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 |---|---|
 | **Islands 1–3** | ***not gated on the REVIEW BOARD at all.*** **The ferry at ARDOR PORT runs once the S.S. ANNE has sailed and CELIO's quest has started** — *and CELIO only starts it after HOLT takes you to ONE ISLAND from the QUICKSILVER shore, which is main-story* |
 | **Islands 4–7** | **CELIO asks for the RUBY only when `IsNationalPokedexEnabled` is TRUE**, and the RAINBOW PASS comes at the end of that errand |
-| **The upgraded INDEX** | **`FLAG_SYS_GAME_CLEAR`, *sixty daemons owned*, and *having been to ONE ISLAND*** — three conditions, and the last two are the ones nobody remembers |
+| **The upgraded INDEX** | ~~**`FLAG_SYS_GAME_CLEAR`, *sixty daemons owned*, and *having been to ONE ISLAND*** — three conditions, and the last two are the ones nobody remembers~~ ***Corrected 2026-11-11 (T-552):*** **in play the GLOBAL INDEX comes from her aide the moment she is gone (`FLAG_CRYSTAL_GONE`, set at the Hall of Fame; T-27), with no count and no island** — *vanilla's three-clause gate survived only on the path where CRYSTAL hands it over herself, which nothing but a debug order reaches.* **The user dropped the sixty outright** (*a game arguing the INDEX cannot hold what matters does not gate its ending on a count*); *the ONE ISLAND fence stays on that unreachable path. So the gate to Act 2 is the REVIEW BOARD, and only that.* |
 
 ***So beating the REVIEW BOARD is necessary and nowhere near sufficient***, and a debug save fails on every clause: six daemons, no ferry, and **CRYSTAL CLEAR is not even in her own lab** — `FLAG_HIDE_OAK_IN_HIS_LAB` is set at new game and only cleared by the starter scene, *so the room a debug player walks into is empty.*
 
@@ -9192,6 +9193,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The ending's two gates (T-552, 2026-11-11)** — the user, by multiple choice: the sixty-daemon condition on the GLOBAL INDEX is dropped (it was dead in play since T-27; 9.17 corrected), so Act 2 opens on the REVIEW BOARD alone; and the dream the unread DOLDRUM CAVE wakes you from now ends on one line in S.T.A.R.R.'s register pointing at TANOBY's seventh chamber (DRAFT), TANOBY added to 4.34's order as step 2a
 - **DURABLE holds from full HP (T-551, 2026-11-11)** — the Fifth Review found BENCHMARK 1's one mechanic was a misreading of Gen 3's STURDY (one-hit-KO routines only); the later generations' rule is in the damage calculation, with its own line (DRAFT) and a description in 2.11's register (DRAFT); ENDURE and FAILSAFE keep precedence, a SUBSTITUTE takes the hit (2.11, 5.3, 5.3b)
 - **The record tidied (T-553, 2026-11-11)** — the Fifth Review's sweep: 21 open rows re-filed from under Closed, three done tickets struck, the stale anchors (CLAUDE.md, the READMEs, the wiki, school.md) brought to the ROM, eight bible bodies amended to what was built (8.1's fifteen, 8.4's trap, 8.6's restraint clause, 4.5's ORPHAN, 8.2a against 4.37, 4.1's row, 4.3's Ty, 4.33's placement), 8.7's sweeps given T-554, and `tools/check_todo.py` so the record stays readable
 - **THE ORIGIN OF A DAEMON (T-533, 2026-11-10)** — a book MUSAI tells, how the first form came to be before it branched, as fable; it opens in the order the player understands (THE DISC, I and II found early; III to VI with the first four understandings; VII, THE EIGHTH, with SCORN's TRUE MARK; VIII to X with the last three; XI with X), hidden until then; found on the bedroom shelf, with three DRAFT lines about it (the shelf after, MOM once, a page filling); chapter VIII names RESONANT WISDOM and never explains it, and the rung after it is perspective thinking, PERSPECTIVE with a way back; every page read by the user before it was built in (9.35)

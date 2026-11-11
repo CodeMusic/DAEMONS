@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.349 — 2026-11-11
+
+- **The ending's two gates (T-552, the Fifth Review's third finding; the user by multiple choice).** 4.34's order gains step 2a, TANOBY's seventh chamber: it was the cave's second gate in the flags and in 0.7 and never in the ending's own table. The dream the unread cave wakes you from (T-254) now ends on one line in S.T.A.R.R.'s register, DRAFT: *SEVEN ISLAND. SEVEN CHAMBERS. / THE SEVENTH HAS NOT BEEN READ.* And 9.17 is corrected: in play the GLOBAL INDEX has come from the aide on `FLAG_CRYSTAL_GONE` alone since T-27, so the sixty-daemon count the bible, the Fourth Review and the Fifth all named as a gate was dead code on an unreachable path. The user dropped it outright; Act 2 opens on the REVIEW BOARD and only that.
+- **Decision log**: Settled.
+
 ## v11.348 — 2026-11-11
 
 - **DURABLE holds from full HP (T-551, the Fifth Review's second finding).** 2.11, 5.3 and 5.3b said CAIRN's line "cannot be knocked out in one blow, at any level"; the ability was vanilla's STURDY, which in Gen 3 stops only the four one-hit-KO routines, so a strong hit took HEAP down in one and BENCHMARK 1 had no mechanic. The later generations' rule is built: a daemon with DURABLE at full HP survives any single hit with 1 HP left (ENDURE and FAILSAFE keep precedence; a SUBSTITUTE takes the hit; the one-hit-KO block stays). Its line, DRAFT: *did not go down to one hit!* Its description, DRAFT, in 2.11's register: *No one hit takes it from full.* The three sections say so; 5.3b's row 1 is amended.
