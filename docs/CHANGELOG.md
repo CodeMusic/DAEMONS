@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.350 — 2026-11-11
+
+- **4.40:** THE UNITY BOOK's three covers, which the user chose and v11.349.1 released (T-519). The night half shows a tablet mirrored in a still pool. The dawn half shows a star over the fir, with the lark. The mended book has both plates on indigo boards.
+- **9.34:** the MUSAI branch is built. All 24 seasonal forms are drawn, and v11.349.1 released their followers (T-534).
+- A Settled entry in section 10. All of it is DRAFT.
+
 ## v11.349 — 2026-11-11
 
 - **4.40, released in v11.348.2:**

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.349**
+**A total conversion — the living design bible, v11.350**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5073,7 +5073,7 @@ take off.*
 
 #### Torn at the spine (the user, by multiple choice, 2026-11-02)
 
-- ***The tear is the spine.*** **The night half keeps the front cover, the dawn half the back; each reads front to back in its own voice.** *Mended, the book has both covers.*
+- ***The tear is the spine.*** **The night half keeps the front cover, the dawn half the back; each reads front to back in its own voice.** *Mended, the book has both covers.* ***The covers (the user, by multiple choice, 2026-11-11; released v11.349.1, DRAFT)***: **the night half's tablet mirrored in a still pool; the dawn half's star over the fir, with the lark; the mended cover holding both plates on indigo boards** -- *the bag's icon takes the same indigo.*
 - ***Same sections, same spells.*** **The dawn half is the night half's ten sections read from the other side** -- *As Below, So Above; The House of Windows; How a Noun Becomes a Verb Again; Good Spell (gospel, Old English for a good story).* **The thirteen are the same spells with the same effects: the night page names a spell's cost, the dawn page names the same cost as a gift** (*the Mirror costs you self / the Mirror gives you the other*). *This replaces the "unsayings" draft of 2026-11-01: an unsaying is the dawn page of the same spell, so no new spell is built.* **Only the thirteenth differs**, [private: its hour, 4.40].
 - ***The observer touches the text.*** **One line in each book has three wordings, chosen by the lead daemon's SPIRITS (below)** -- *who looks changes what is read.*
 - ***BALANCE***, **in the mended book only, at the crease after THE FOLDS**: *how the one book became two (the pair production), why each half calls the other dark, the week's seven pairs held on one page each (shadow under virtue, 9.21), and one page noticing it happened before -- reason and instinct, the GUIDE and THE SUBTLE LAYER, which stay works of their own.* **An eleventh section, where the reader holds ten**: *the game lane says whether it fits; if not, REFLECTION folds into THE LOOP.*
@@ -9108,7 +9108,7 @@ Defer RECURSION past the slice. S.T.A.R.R. appears after the Review Board; you w
 
 *Four flags at the top of the game lane's block (0x3F7-0x3FA), two LOOSE PAGES (SEEN 107 and 108), two graphics ids (the lioness took FREE 104, the easel FREE 140; the easel is in npc_pink because THE PHOENIX holds slot 1 in THE NEXUS). Played in the theatre: `tools/routes/film_t493_lioness.json`.*
 
-### 9.34 The MUSAI branch keeps the seasons -- *decided 2026-11-08 (T-532); the plumbing built with placeholder art, the 24 forms' drawings to come*
+### 9.34 The MUSAI branch keeps the seasons -- *decided 2026-11-08 (T-532); built, all 24 forms drawn, their followers released in v11.349.1 (T-534)*
 
 ***The six MUSAI already share one chassis*** (8.2): **MUSAI is undifferentiated CONTENT, and AXIOM, EMBEDDING and
 AFFECT, the day and the night, decide what it specialises into.** *Now the branch answers to the calendar too.*
@@ -9154,6 +9154,8 @@ species, its picture chosen when it is drawn* -- **keyed by the season instead o
 never changes, so the save, the INDEX's counts, trades, evolution, stats and the companion's ids are untouched;
 only what is drawn changes.* **A battle reads the season once, as it begins, and keeps it to the end** -- *its background too.* **Look only**: *no stat, no type moves with the date.* **24 INDEX entries, one per form, both editions sharing them**: *a MUSAI's page shows its season's.* ***Still never
 stated***: *no line says the daemon changed with the season; the player notices, or does not (craft rule 1).*
+
+***All 24 drawn, and walking behind you*** (*T-532, T-534, the user 2026-11-08 and 11-11; DRAFT*): **every form's final art was drawn by 2026-11-08, and in v11.349.1 each of the 24 got a follower drawn from it, each vehicle redrawn to read at the player's size and in the form's own palette** -- *the user saw the old MUSAI walking behind the player in the DUET's picture and said "Yes, draw them".*
 
 ### 9.35 THE ORIGIN OF A DAEMON -- *decided 2026-11-10, built 2026-11-11 (T-533); DRAFT*
 
@@ -9234,6 +9236,7 @@ about itself* (rule 6).
 - **Recorded 2026-11-11, built since v11.332 and missing from the bible** — the split's steps 1 and 2 (T-490, 2.12, contact is physical); the three-book review's placements (T-502 to T-504, T-510 to T-516, 4.38); SCORN's remnants in the Warehouse (T-505, 4.37); the hatter's sign (T-500, 4.39); THE OLD WORD (T-517, 4.40). All DRAFT.
 - **Three choices of 2026-11-11** — THE UNITY BOOK's last line finishes both torn pages, "Look again, and you will see them both." (T-519, 4.40); the DUET's tune is DUET-1 (T-528, 4.40); the LEAGUE is THE FOUR VESSELS and the HALL OF FAME THE INDEX CARD (T-447 pair 6, 9.29). All DRAFT.
 - **TULIKKO's sparks and the torn lines released (T-528 e, T-519, v11.348.2)** — the sparks rise in the edition's line on a light night once the book is mended; the conjugate light alone brings them, green turning red, on any night (the user). THE UNITY BOOK ends "...It will not be, and it always was. Look again, and you will see them both." DRAFT.
+- **The third book's covers and the MUSAI followers released (T-519, T-534, v11.349.1)** — the night half's tablet in a still pool, the dawn half's star over the fir, the mended book on indigo boards; all 24 MUSAI seasonal forms walk behind the player as drawn. DRAFT.
 - **The daemons redrawn with charm, and followers at their own size (T-452, T-464, recorded 2026-10-28)** — every daemon redrawn in the sprite-server style, charm over fidelity, one key prop kept and entries agreed with; coloured by type with accents capped near 15% and off other types' hues; icons drawn separately; THE NEXUS keeps its painted art; followers walk as their own small pictures (9.31)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
