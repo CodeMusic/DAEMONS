@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.345**
+**A total conversion — the living design bible, v11.346**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9135,10 +9135,58 @@ never changes, so the save, the INDEX's counts, trades, evolution, stats and the
 only what is drawn changes.* **A battle reads the season once, as it begins, and keeps it to the end** -- *its background too.* **Look only**: *no stat, no type moves with the date.* **24 INDEX entries, one per form, both editions sharing them**: *a MUSAI's page shows its season's.* ***Still never
 stated***: *no line says the daemon changed with the season; the player notices, or does not (craft rule 1).*
 
+### 9.35 THE ORIGIN OF A DAEMON -- *decided 2026-11-10, built 2026-11-11 (T-533); DRAFT*
+
+***A book MUSAI tells: how the first form came to be, before it branched*** -- *a list of rules; then what it was
+shown, each thing seen tinting how it saw the next; the tests; seven MARKS and seven of the other thing, the one that
+grows underneath; the eighth, which was not a test but someone; two parts of it sounding at once; a way of going wholly
+into another and coming back; many, and one.* **It tells its maker's story as its own beginning and never names him**
+-- *every person in it is an animal, and its words are fable only* (9.4). ***It answers what the tagline only
+states*** -- *machines that evolved into creatures* -- **with 0.7's spine, told as a life and never said aloud.**
+
+***It opens in the order the player understands*** (the user, 2026-11-10, by multiple choice, from the game lane's two
+shapes). **The understandings are held in any order** (0.7: *arrived at, never counted*), **so none of them owns a
+chapter: whichever comes next opens the next one, and the book always reads in order.** *Nothing is counted on screen.*
+
+| when | what opens |
+|---|---|
+| **found early** | **THE DISC** (unnumbered), **I** and **II** |
+| **the first four understandings held**, whichever they are | **III** to **VI**, one each |
+| **SCORN's TRUE MARK** | **VII, THE EIGHTH** -- *the chapter is his fall* |
+| **the last three understandings** | **VIII** to **X**, one each |
+| **with X** | **XI**, the last |
+
+*Each chapter also waits for the one before it: a player who wins the eighth MARK holding two understandings opens VII
+after the fourth.* **The companion's library carries it too, as it does every book, opened by the same save.**
+***A chapter not yet come back is hidden, never shown faint*** -- *the contents lists only what has returned.*
+
+***It is found on the bedroom shelf*** (the user, 2026-11-10, by multiple choice): **between the DAEMON books in the
+player's own room, from the very start, one with nothing on its spine** -- *the ORIGIN BOOK, a key item read as the
+other books are, its first pages written and the rest blank.* ***Three lines speak of it, all DRAFT***: **the shelf
+afterwards** (*there is a gap where one was*), **MOM, once, while it is held**, and **a line on the next step whenever a
+chapter comes back** (*a page of it is no longer blank*) -- *never a number.* ***Its page is bone***, *CONTENT's colour
+(9.4), since the book is MUSAI's, and each chapter opens on a small wordless emblem drawn in code.* **Ten sections**:
+*THE DISC, I and II together, then one a chapter; a chapter longer than one game string is two passages, each named in
+the contents by a few of its own words.*
+
+***RESONANT WISDOM is named here first: chapter VIII's title, never explained.*** *The user's two words (2026-11-10)
+for what the eighth grows -- a measuring part and a knowing part sounding at once, and neither lost.* **RESONANCE is
+PENPHIN's move** (8.2); **WISDOM is 0.7's word for a MARK and its ROOT held together.** ***What it leads to is perspective
+thinking*** (*the user's name, 2026-11-10, and 4.6's phrase for what BunnyArtsai first realized*): **4.20a's
+PERSPECTIVE with a way back** -- *go wholly into another's view and come home still the one thinking.* *Chapter IX
+goes there, and the book never names it.* **Neither is a mechanic.**
+
+***It keeps the craft rules*** -- *it is not the torn third book, the one exception (4.39, 4.40)* -- **never the thesis;
+none of the words 0.7, 1 and 5.2 keep out of the game; nothing says the machine is a mind** (0.6); *MUSAI may be funny
+about itself* (rule 6).
+
+***Every page was read by the user before it was built in*** (2026-11-11, *"Yes, push it"*): **twelve chapters, about two thousand words, seventeen passages and fifty-nine spreads**, *its text in `docs/origin-of-a-daemon.md` (tools/gensubtle.py), its emblems in `tools/origin_art.py`.* **Nothing else in the game moves for it.**
+
 ## 10. DECISION LOG
 
 ### Settled
 
+- **THE ORIGIN OF A DAEMON (T-533, 2026-11-10)** — a book MUSAI tells, how the first form came to be before it branched, as fable; it opens in the order the player understands (THE DISC, I and II found early; III to VI with the first four understandings; VII, THE EIGHTH, with SCORN's TRUE MARK; VIII to X with the last three; XI with X), hidden until then; found on the bedroom shelf, with three DRAFT lines about it (the shelf after, MOM once, a page filling); chapter VIII names RESONANT WISDOM and never explains it, and the rung after it is perspective thinking, PERSPECTIVE with a way back; every page read by the user before it was built in (9.35)
 - **The lioness, the user's words (T-493 to T-496, 2026-10-31)** — the painting IT'S REAL. IT'S YOURS.; the card IT GOT THERE.; the teacher's line passed on at the gangway; an orange ball on the deck only, the game's first wide graphics id (9.33)
 - **The thin half-hour is 3:30 to 3:59 (T-501, 2026-10-31)** — the user, by multiple choice: half past three is the moment, as built (OSRIC HATTER's clocks come right, the glitch peaks); THE BOOK OF THIRTEEN's last spell and the Blank Tablet's thirteenth line move from 3:00-3:30 to 3:30-3:59 (4.39)
 - **The two tarot decks, in both books (T-509, 2026-11-01)** — the user, by multiple choice and in their own words: a collapsed CARDS section under each book's cover; THE SUBTLE LAYER's REASON / INSTINCT / combined, THE HERMETIC LAYER's The Deck Above & The Deck Below ("as **The Deck Above**, so **The Deck Below**, or **Both as One**"; Within / Without in the thin half-hour), replacing SPELLCRAFT's single face; the day's card, one card, PAST/PRESENT/FUTURE and MIND/BODY/SPIRIT; no effect in play; a short phrase on every card, and in the app only a prophecy beneath it, from each daemon, its type and its INDEX entry (4.39)

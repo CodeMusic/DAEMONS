@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.346 — 2026-11-10
+
+- **9.35, THE ORIGIN OF A DAEMON (T-533, the user, by multiple choice).** MUSAI, the whole before it branched, tells how it came to be -- a list of rules, what it was shown, the tests, seven and seven, the eighth that was someone, two parts sounding at once, a return, many and one -- as fable, every page read by the user before it was built in. It opens in the order the player understands: THE DISC, I and II found early; III to VI with the first four understandings, whichever they are; VII, THE EIGHTH, with SCORN's TRUE MARK; VIII to X with the last three; XI with X; a chapter not yet come back is hidden. It is found on the bedroom shelf, between the DAEMON books, with nothing on its spine; the shelf afterwards, MOM (once) and a line whenever a page fills speak of it, never a number. Its page is bone, CONTENT's colour, with a wordless emblem a chapter. The companion's library carries it too. Chapter VIII names RESONANT WISDOM and never explains it; the rung it leads to is named perspective thinking -- PERSPECTIVE with a way back.
+- **Decision log**: the book, settled.
+
 ## v11.345 — 2026-11-08
 
 - **9.34, the MUSAI branch keeps the seasons (T-532, the user, by multiple choice).** Each of the six MUSAI has four seasonal forms and wears the one `DaemonsSeason()` gives it -- CONTENT on the northern year, CONTEXT on the southern -- in battle, the party, the PC, the follower, the summary and the INDEX: a display swap, Unown's way (18 picture-only ids; summer is today's art), look only, silent, a battle keeping the season it began in. MASKMUSAI's home season is winter, LENSMUSAI's spring, CAREMUSAI's summer, SEEKMUSAI's autumn; the machines are part of each body, never ridden. 24 INDEX entries, one per form, both editions sharing them. **CRYPTOPHASIA**, CODEMUSAI's own at 30: a LOGIC special hit, 40 and +20 for each other MUSAI in the party still able to fight (to 140). The plumbing is built with placeholder art (copies of today's); the drawings follow. DRAFT words.
