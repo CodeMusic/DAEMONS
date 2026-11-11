@@ -49,7 +49,7 @@ there is no 0 or O, no 1 or I, to mix up.
 {{pictures invite | INVITE A PLAYER, on the hub. A code works once, for fifteen minutes.}}
 
 That companion first sets **THE HUB**, at the foot of TRADE, to the hub's address -- `http://` and the hub's plain name
-and port, such as `http://coremp135:4730` -- then joins with its name and the code.
+and port, such as `http://daemons-hearth:4730` -- then joins with its name and the code.
 
 ::: tip
 **On an iPhone, use the hub's plain name or its 100.x address**, not a long `.ts.net` one: iOS only lets the app speak
