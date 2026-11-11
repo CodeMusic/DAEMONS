@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.351, working |
-| [`CONTEXT-CONTENT-design-bible-v11.351.pdf`](CONTEXT-CONTENT-design-bible-v11.351.pdf) | Typeset **snapshot** at v11.351 — a liner dressed inside as she is outside, and every landmark but two drawn new. | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.352, working |
+| [`CONTEXT-CONTENT-design-bible-v11.352.pdf`](CONTEXT-CONTENT-design-bible-v11.352.pdf) | Typeset **snapshot** at v11.352 — the cards that announce a place agree with the place, and eight faces of the deck redrawn. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

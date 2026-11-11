@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.352 — 2026-11-11
+
+- **9.29:** the landmarks' name cards follow their buildings, released in v11.351.1 (T-445). The KEEPALIVE PLANT's card is growing untended, and TANOBY's chambers are carved, not lit. Every place card is now ours except DOLDRUM CAVE's.
+- **4.39:** eight of THE HERMETIC LAYER's faces were redrafted in the companion and carried into the game's deck (C-272, v11.351.1).
+- A Settled entry in section 10. All of it is DRAFT.
+
 ## v11.351 — 2026-11-11
 
 - **9.29:** landmark pair 7 is built and released in v11.350.1 (T-447). The user chose THE LIVERY for the S.S. ANNE: the outside of the liner, which was already ours, carried into her rooms. Her departure smoke now sits over the funnel. Every landmark is now ours except USER TOWER (the user's) and DOLDRUM CAVE (waits on T-251).
