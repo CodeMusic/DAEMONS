@@ -193,3 +193,18 @@ curl -s http://roverbyteseer:4000/v1/responses \
 
 Then `./bindDaemons.sh --ai` with `OPENAI_BASE_URL` set to whichever of the two
 lines applies, and `OPENAI_API_KEY` set to the master key.
+
+## The Tiiny's voice, streamed (C-317, 2026-11-10)
+
+LiteLLM hands a voice on only once it is whole -- 20 s of speech arrives after 13 s -- and in 1.83 a pass-through can
+require a key only with an Enterprise licence. `tiiny-voice-stream/` is that pass-through, keyed: one route,
+`POST /v1/audio/speech` on **:4001**, sent to the `tiiny-voice` model named in `~/daemons-litellm-config.yaml` and
+streamed back as it comes. A request needs a key LiteLLM itself takes (it asks LiteLLM's `/v1/models` with it, and
+remembers a hash of an accepted one for ten minutes); it reads no LiteLLM key of its own. Launch agent
+`ca.codemusic.daemons.tiinyvoice`, log `~/Library/Logs/daemons-tiiny-voice.log`.
+
+    scp -r ai/litellm/tiiny-voice-stream roverbyte@roverbyteseer:~/daemons-tiiny-voice
+    ssh roverbyte@roverbyteseer 'bash ~/daemons-tiiny-voice/install.sh'
+
+The hub uses it through its `tiiny.stream` setting (THE TIINY in the companion's settings): first words about 3 s after
+the hub is asked, where LiteLLM gave them at 13.
