@@ -1,0 +1,32 @@
+{
+ "rom": "debug",
+ "about": "T-447 pair 4 (tools/gbalandmarkrooms.py --write --approved, built 2026-11-10; the user: MANSION A The rack hall, TOWER A The dot screen), DRAFT: the MANSION's rooms as the machine's burnt housing -- raised-floor plates, rack fronts of dead lights, the runner a cable trench, the secret switch a breaker cabinet with two lamps (OFF dark, ON red), the gates shut as shutters, the diary a fanfold LOG -- and ROUTE 21's station, which borrows its walls; DAEMON TOWER's floors as the outside carried in, flags under a dot screen, arched niches with warm lights, grey and in colour (sDaemonsHalftoneInColour poked), the stones untouched. Redrawn in place: no block, palette row, behaviour or map moved. Each map warped to by name. Watch held at day. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {"stop": "the DEBUG build, continued", "steps": [
+   "load debug",
+   "poke gDaemonsWatchOverride 8 1", "poke gDaemonsWeatherOverride 8 1"]},
+  {"stop": "the MANSION 1F: the rack hall, the cable trench, the breaker cabinet", "steps": [
+   "goto PokemonMansion_1F 8 31", "repel 999", "close", "wait 60", "shot the MANSION 1F inside its door"]},
+  {"stop": "the MANSION 2F: the LOG on its table", "steps": [
+   "goto PokemonMansion_2F", "close", "wait 60", "shot the MANSION 2F"]},
+  {"stop": "the MANSION 3F", "steps": [
+   "goto PokemonMansion_3F", "close", "wait 60", "shot the MANSION 3F"]},
+  {"stop": "the MANSION B1F: the shutters", "steps": [
+   "goto PokemonMansion_B1F", "close", "wait 60", "shot the MANSION B1F"]},
+  {"stop": "ROUTE 21's station: the MANSION's walls, the sketch kept", "steps": [
+   "goto Route21_North_Station", "close", "wait 60", "shot ROUTE 21's station"]},
+  {"stop": "DAEMON TOWER 1F, grey: the dot screen and the niches", "steps": [
+   "goto PokemonTower_1F 10 17", "close", "wait 60", "shot DAEMON TOWER 1F in grey"]},
+  {"stop": "DAEMON TOWER 1F, in colour", "steps": [
+   "poke sDaemonsHalftoneInColour 8 1", "goto PokemonTower_1F 10 17", "close", "wait 60",
+   "shot DAEMON TOWER 1F in colour", "poke sDaemonsHalftoneInColour 8 0"]},
+  {"stop": "DAEMON TOWER 3F: the stones in their floor", "steps": [
+   "goto PokemonTower_3F", "close", "wait 60", "shot DAEMON TOWER 3F in grey",
+   "poke sDaemonsHalftoneInColour 8 1", "goto PokemonTower_3F", "close", "wait 60",
+   "shot DAEMON TOWER 3F in colour", "poke sDaemonsHalftoneInColour 8 0"]},
+  {"stop": "DAEMON TOWER 5F", "steps": [
+   "goto PokemonTower_5F", "close", "wait 60", "shot DAEMON TOWER 5F in grey",
+   "poke sDaemonsHalftoneInColour 8 1", "goto PokemonTower_5F", "close", "wait 60",
+   "shot DAEMON TOWER 5F in colour", "poke sDaemonsHalftoneInColour 8 0"]}
+ ]
+}

@@ -9,7 +9,8 @@
                                                       #   primary tiles, and the contact sheets (gfx/drafts/t447_pair4/)
     python3 tools/gbalandmarkrooms.py --write --approved
                                                       # into the engine -- refused unless APPROVED names a direction
-                                                      #   per building (it is empty: the user has not picked)
+                                                      #   per building (the user, 2026-11-10: A and A); the report
+                                                      #   then exits 1 on any difference from that write
 
 THE JOB (the user, 2026-11-10, "The landmarks left"; census item 8). T-447 drew the landmarks' OUTSIDES from the story
 (pairs 1-3, tools/gbalandmarks.py). Seven landmarks are still mostly Nintendo's drawing INSIDE: the MANSION (and its
@@ -56,8 +57,9 @@ from PIL import Image, ImageDraw
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t447_pair4")
-#  The user's picks go here, one direction per building: {"man": "A", "tow": "C"}. --write refuses while it is empty.
-APPROVED = {}
+#  The user's picks, one direction per building. --write refuses while it is empty.
+#  the user, 2026-11-10: MANSION A The rack hall, TOWER A The dot screen
+APPROVED = {"man": "A", "tow": "A"}
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
@@ -484,23 +486,38 @@ def draw(D, only=None):
     return out, prim, owner
 
 
+STONE_FLOOR_AT = {t: q for copy in STONE_FLOOR_COPIES for q, t in enumerate(copy)}
+
+
+def stone_floor_px(t, k):
+    """(floor, shade) of pixel k of stone tile t. The floor is read off VANILLA's pixel there -- the floor's own slots
+    5, 6, 7, 14 and 8, outside the screen gbatombstones writes -- never off the engine's, which after a write holds
+    this tool's floor (reading the engine made a second write repaint its own floor: 2026-11-10, the build)"""
+    q = STONE_FLOOR_AT.get(t)
+    if q is None:
+        return False, False
+    x, y = (q % 2) * 8 + k % 8, (q // 2) * 8 + k // 8
+    fx0, fy0, fx1, fy1 = STONE_FACE
+    if fx0 <= x <= fx1 and fy0 <= y <= fy1:
+        return False, False
+    vv = TOW.van[t][k]
+    return vv in (5, 6, 7, 8, 14), vv in (5, 14)
+
+
 def stone_floor(DD, st):
-    """the floor AROUND the stones in their floor-layer copies (T-249's tiles): only pixels of the floor's own slots
-    (5, 6, 7, 14, and 8 outside the screen) are repainted, in this direction's floor; the stone is not touched"""
+    """the floor AROUND the stones in their floor-layer copies (T-249's tiles): only the floor's pixels (stone_floor_px)
+    are repainted, in this direction's floor; the stone is not touched"""
     tiles, pals = st
     mat = mats_for(DD, "tow")
     index = {n: i + 1 for i, n in enumerate(ROWMATS["tow", 7])}
     f = DD["tfloor"]
-    fx0, fy0, fx1, fy1 = STONE_FACE
     for copy in STONE_FLOOR_COPIES:
         for q, t in enumerate(copy):
             px = TOW.cur[t][:]
             for k in range(64):
-                x, y = (q % 2) * 8 + k % 8, (q // 2) * 8 + k // 8
-                vv = px[k]
-                face = fx0 <= x <= fx1 and fy0 <= y <= fy1
-                if vv in (5, 6, 7, 14) or (vv == 8 and not face):
-                    shade = vv in (5, 14)
+                floor, shade = stone_floor_px(t, k)
+                if floor:
+                    x, y = (q % 2) * 8 + k % 8, (q // 2) * 8 + k // 8
                     n = f(x, y, shade)
                     px[k] = index.get(n) or G.nearest(mat[n], pals[7])
             tiles[t] = px
@@ -1951,7 +1968,7 @@ def report():
         for t in STONE_T:
             for q in range(64):
                 a, b2 = tt[t][q], TOW.cur[t][q]
-                if a != b2 and not (b2 in (5, 6, 7, 14) or b2 == 8):
+                if a != b2 and not stone_floor_px(t, q)[0]:
                     print("  !! %s: stone tile %d pixel %d changed (not the floor around it)" % (k, t, q))
                     bad = 1
                     break
