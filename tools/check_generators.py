@@ -101,7 +101,7 @@ ARGS = {
     #  mouth A" -- its write is a second run, each sandboxed on its own; the report checks both batches either way.
     #  Batch 3 (THE EDGES AND DOORS): the user, 2026-11-10, "A Clear pane" -- a third run; then gbadoors' frames follow.
     "gbaprimary": [["--approved", "--pick", "A"], ["--batch", "2", "--approved", "--pick", "A"],
-                   ["--batch", "3", "--approved", "--pick", "A"]],
+                   ["--batch", "3", "--approved", "--pick", "A"], ["--batch", "4", "--approved", "--pick", "B"]],
     #  T-447 pair 4: the same shape; the user picked "MANSION A The rack hall, TOWER A The dot screen" on 2026-11-10.
     #  APPROVED holds both picks; the write redraws the MANSION's tiles and rows 7, 8, 12, the diary's four primary
     #  tiles and DAEMON TOWER's tiles and rows 7, 8, 9, 12 (never the stones' slots), and the report exits 1 when the
