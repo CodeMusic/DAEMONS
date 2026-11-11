@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 130" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="10">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16161a"/></marker></defs>
+  <g fill="#fff" stroke="#16161a"><rect x="6" y="28" width="118" height="78" rx="8"/><rect x="137" y="28" width="118" height="78" rx="8"/><rect x="268" y="28" width="118" height="78" rx="8"/><rect x="399" y="28" width="115" height="78" rx="8"/></g>
+  <g font-weight="700" font-size="9" letter-spacing="1.5" fill="#9a4a38"><text x="12" y="20">1  SEND</text><text x="143" y="20">2  SYNC</text><text x="274" y="20">3  AWAY</text><text x="405" y="20">4  CALL HOME</text></g>
+  <g fill="#16161a">
+    <text x="16" y="48">In the game, open a</text><text x="16" y="62">daemon's menu and</text><text x="16" y="76">choose SEND. Save,</text><text x="16" y="90">and close the game.</text>
+    <text x="147" y="48">The companion reads</text><text x="147" y="62">the save and takes</text><text x="147" y="76">the daemon -- by</text><text x="147" y="90">itself, or with SYNC.</text>
+    <text x="278" y="48">It lives on your</text><text x="278" y="62">phone and devices:</text><text x="278" y="76">fed, put to bed,</text><text x="278" y="90">talked with, growing.</text>
+    <text x="409" y="48">In the game, CALL</text><text x="409" y="62">HOME. Save, close,</text><text x="409" y="76">SYNC: it comes home</text><text x="409" y="90">with what it learned.</text>
+  </g>
+  <path d="M124 67L137 67" stroke="#16161a" marker-end="url(#ar)"/><path d="M255 67L268 67" stroke="#16161a" marker-end="url(#ar)"/><path d="M386 67L399 67" stroke="#16161a" marker-end="url(#ar)"/>
+</svg>

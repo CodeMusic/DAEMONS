@@ -1,0 +1,131 @@
+{
+ "about": "THE COMPANION's pictures: the companion's own screens, photographed from the site against a throwaway hub on a theatre save by tools/companion_shots.py (never anyone's own save).",
+ "frames": {},
+ "pictures": {
+  "today": {
+   "from": "docs/manual-companion/pictures/today.png",
+   "taken": "2026-11-10",
+   "shows": "TODAY, its top: the day and THE ONE THING"
+  },
+  "today-more": {
+   "from": "docs/manual-companion/pictures/today-more.png",
+   "taken": "2026-11-10",
+   "shows": "TODAY under the day: THE ONE THING, your daemon with its care keys, YOUR GAME"
+  },
+  "daemon": {
+   "from": "docs/manual-companion/pictures/daemon.png",
+   "taken": "2026-11-10",
+   "shows": "DAEMON, Yours: the daemon in its den, its care bars and the care keys"
+  },
+  "daemon-sync": {
+   "from": "docs/manual-companion/pictures/daemon-sync.png",
+   "taken": "2026-11-10",
+   "shows": "DAEMON, Yours: the SYNC card and NEARBY under it"
+  },
+  "party": {
+   "from": "docs/manual-companion/pictures/party.png",
+   "taken": "2026-11-10",
+   "shows": "DAEMON, Party: the party as the game draws it, one ON YOUR DEVICE"
+  },
+  "index": {
+   "from": "docs/manual-companion/pictures/index.png",
+   "taken": "2026-11-10",
+   "shows": "DAEMON, INDEX: the first entries, with NATIVE and LISTEN"
+  },
+  "dreams": {
+   "from": "docs/manual-companion/pictures/dreams.png",
+   "taken": "2026-11-10",
+   "shows": "DAEMON, DREAMS: the journal of nights, with REASON, INSTINCT and WHOLE"
+  },
+  "meetings": {
+   "from": "docs/manual-companion/pictures/meetings.png",
+   "taken": "2026-11-10",
+   "shows": "DAEMON, MEETINGS: RECORD A MEETING, FROM A VOICE MEMO, the meetings and VOICE NOTES"
+  },
+  "goals": {
+   "from": "docs/manual-companion/pictures/goals.png",
+   "taken": "2026-11-10",
+   "shows": "JOURNEY, GOALS: YOUR GOAL with its steps and a milestone, and WALKING"
+  },
+  "journal": {
+   "from": "docs/manual-companion/pictures/journal.png",
+   "taken": "2026-11-10",
+   "shows": "JOURNEY, JOURNAL: YOUR JOURNALS and Start it"
+  },
+  "library": {
+   "from": "docs/manual-companion/pictures/library.png",
+   "taken": "2026-11-10",
+   "shows": "LIBRARY: the bookcase, a shelf per kind of book"
+  },
+  "school": {
+   "from": "docs/manual-companion/pictures/school.png",
+   "taken": "2026-11-10",
+   "shows": "LIBRARY, CALLOW SCHOOL: the DIPLOMA, THE FLOORS and THE PAPER, TO SIT AGAIN"
+  },
+  "songbook": {
+   "from": "docs/manual-companion/pictures/songbook.png",
+   "taken": "2026-11-10",
+   "shows": "LIBRARY, SONGBOOK: each song learned on its staff, and LISTEN"
+  },
+  "you": {
+   "from": "docs/manual-companion/pictures/you.png",
+   "taken": "2026-11-10",
+   "shows": "YOU, its top: the trainer, the region maps and the facts"
+  },
+  "marks": {
+   "from": "docs/manual-companion/pictures/marks.png",
+   "taken": "2026-11-10",
+   "shows": "YOU: MARKS and ROOTS"
+  },
+  "road": {
+   "from": "docs/manual-companion/pictures/road.png",
+   "taken": "2026-11-10",
+   "shows": "YOU: THE ROAD AHEAD"
+  },
+  "casino": {
+   "from": "docs/manual-companion/pictures/casino.png",
+   "taken": "2026-11-10",
+   "shows": "DAEMON, Routines, THE CASINO: the reels, BET - and BET +, SPIN, and THE HOUSE"
+  },
+  "nearby": {
+   "from": "docs/manual-companion/pictures/nearby.png",
+   "taken": "2026-11-10",
+   "shows": "DAEMON, Yours: NEARBY, with the box to Say and the acts"
+  },
+  "places": {
+   "from": "docs/manual-companion/pictures/places.png",
+   "taken": "2026-11-10",
+   "shows": "PLACES, its top: THE HUB card and WHO ANSWERS FIRST WHEN YOU TALK"
+  },
+  "every-settings": {
+   "from": "docs/manual-companion/pictures/every-settings.png",
+   "taken": "2026-11-10",
+   "shows": "PLACES: EVERY DEVICE'S SETTINGS"
+  },
+  "settings": {
+   "from": "docs/manual-companion/pictures/settings.png",
+   "taken": "2026-11-10",
+   "shows": "SETTINGS, its top: THIS APP, DEVELOPER MODE and YOUR DAEMONS SAVE (kept short: WHO ANSWERS WHEN YOU TALK, lower down, shows the house computer's name as THE TIINY's placeholder)"
+  },
+  "settings-mind": {
+   "from": "docs/manual-companion/pictures/settings-mind.png",
+   "taken": "2026-11-10",
+   "shows": "SETTINGS: THE MIND -- the minds with their dots, TRY IT and RECENT THOUGHTS"
+  },
+  "endpoints": {
+   "from": "docs/manual-companion/pictures/endpoints.png",
+   "taken": "2026-11-10",
+   "shows": "SETTINGS: THE HUB'S ENDPOINTS, at the foot of THE MIND"
+  },
+  "mind-at-work": {
+   "from": "docs/manual-companion/pictures/mind-at-work.png",
+   "taken": "2026-11-10",
+   "shows": "SETTINGS: THE MIND AT WORK -- the web, THE RIVER, NOW and BEFORE"
+  },
+  "whatsnew": {
+   "from": "docs/manual-companion/pictures/whatsnew.png",
+   "taken": "2026-11-10",
+   "shows": "WHAT'S NEW, opened from the header: at 400 wide the header's button reads ✦ NEW until this build's notes are read"
+  }
+ }
+}

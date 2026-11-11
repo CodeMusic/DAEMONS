@@ -36,7 +36,7 @@ PICS = os.path.join(BOOK, "pictures")
 SITE = os.path.join(ROOT, ".theatre", "companion-site")
 SAVE = os.path.join(ROOT, ".theatre", "rom", "theatre_debug.sav")
 NODE = "/opt/homebrew/opt/node@24/bin"
-NAME = "ROVER"                                   # the trainer the pictures show
+NAME, RIVAL = "ROVER", "KIT"                     # the trainer and rival the pictures show
 
 
 def newest(folder, exts=(".ts", ".tsx", ".json", ".png", ".ttf")):
@@ -64,16 +64,34 @@ def export_site(keep):
         raise SystemExit("companion_shots: the site did not export")
 
 
-def renamed(src, dest, name):
-    """A copy of a FireRed-layout save, its trainer renamed: section 0's first 8 bytes, its checksum redone."""
+def sizes():
+    """Each section's checksummed length, as the companion reads the save (its data/save_layout.json)."""
+    l = json.load(open(os.path.join(COMPANION, "server", "data", "save_layout.json"), encoding="utf-8"))
+    d = l["sector_data_size"]
+    return {0: l["saveblock2_size"], **{i: min(d, l["saveblock1_size"] - (i - 1) * d) for i in range(1, 5)}}
+
+
+def renamed(src, dest, name, rival):
+    """A copy of a FireRed-layout save, its trainer and rival renamed: the trainer in section 0's first 8 bytes, the
+    rival in SaveBlock1's rivalName (profile_layout.json; in section 4), each section's checksum redone."""
+    SIZES = sizes()
+    l = json.load(open(os.path.join(COMPANION, "server", "data", "save_layout.json"), encoding="utf-8"))
+    SECTOR = l["sector_data_size"]
+    RIVAL_AT = json.load(open(os.path.join(COMPANION, "server", "data", "profile_layout.json"), encoding="utf-8"))["sb1"]["rival_name"]
+    assert 3 * SECTOR <= RIVAL_AT < 4 * SECTOR, "the rival's name is not in section 4"
     b = bytearray(open(src, "rb").read())
-    enc = bytes(0xBB + ord(c) - 65 for c in name.upper()) + b"\xff" * (8 - len(name))
+    enc = lambda n: bytes(0xBB + ord(c) - 65 for c in n.upper()) + b"\xff" * (8 - len(n))
     for sec in range(len(b) // 0x1000):
         o = sec * 0x1000
-        if struct.unpack_from("<I", b, o + 0xFF8)[0] != 0x08012025 or struct.unpack_from("<H", b, o + 0xFF4)[0] != 0:
+        sid = struct.unpack_from("<H", b, o + 0xFF4)[0]
+        if struct.unpack_from("<I", b, o + 0xFF8)[0] != 0x08012025 or sid not in (0, 4):
             continue
-        b[o:o + 8] = enc
-        s = sum(struct.unpack_from("<%dI" % (0xF24 // 4), b, o)) & 0xFFFFFFFF
+        if sid == 0:
+            b[o:o + 8] = enc(name)
+        else:
+            at = RIVAL_AT - 3 * SECTOR
+            b[o + at:o + at + 7] = enc(rival)[:7]
+        s = sum(struct.unpack_from("<%dI" % (SIZES[sid] // 4), b, o)) & 0xFFFFFFFF
         struct.pack_into("<H", b, o + 0xFF6, ((s >> 16) + s) & 0xFFFF)
     open(dest, "wb").write(b)
 
@@ -92,7 +110,7 @@ def free_port():
 def start_hub(tmp):
     port = free_port()
     save = os.path.join(tmp, "demo.sav")
-    renamed(SAVE, save, NAME)
+    renamed(SAVE, save, NAME, RIVAL)
     cfg = {"port": port, "host": "127.0.0.1", "database": os.path.join(tmp, "demo.sqlite"), "edition": "CONTENT",
            "savePath": save, "siteDir": SITE, "ai": {"enabled": False}, "talk": {"url": None}, "watchSave": False}
     path = os.path.join(tmp, "config.json")
@@ -169,6 +187,8 @@ def take(url, shots, view, only):
                 pg.wait_for_timeout(800)
                 out = os.path.join(PICS, name + ".png")
                 height = sh.get("height", h)
+                page = pg.evaluate("document.documentElement.scrollHeight")
+                top = max(0, min(top, page - height))     # a picture near the foot of the page ends at the foot
                 pg.screenshot(path=out, clip={"x": 0, "y": top, "width": w, "height": height}, full_page=True)
                 taken[name] = sh.get("about", "")
                 print("  took %s" % name)

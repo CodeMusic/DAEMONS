@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="9.5">
+  <circle cx="130" cy="100" r="92" fill="#fbf0ea" stroke="#c8705c" stroke-width="1.4"/>
+  <circle cx="130" cy="110" r="62" fill="#f4f2ea" stroke="#5b8a4e" stroke-width="1.4"/>
+  <circle cx="130" cy="124" r="30" fill="#16161a"/>
+  <text x="130" y="122" text-anchor="middle" fill="#fff" font-weight="700" font-size="8.5">THIS</text>
+  <text x="130" y="133" text-anchor="middle" fill="#fff" font-weight="700" font-size="8.5">PHONE</text>
+  <text x="130" y="64" text-anchor="middle" font-weight="700" font-size="9" letter-spacing="1.5" fill="#3f6b33">AT HOME</text>
+  <text x="130" y="24" text-anchor="middle" font-weight="700" font-size="9" letter-spacing="1.5" fill="#9a4a38">ANYWHERE</text>
+  <g fill="#16161a">
+    <text x="250" y="40" font-weight="700">ANYWHERE</text>
+    <text x="250" y="54">Every mind it can reach, including an endpoint on the</text>
+    <text x="250" y="66">internet and, if you chose it, OpenRouter.</text>
+    <text x="250" y="96" font-weight="700">AT HOME</text>
+    <text x="250" y="110">Nothing leaves your house: this phone, the hub, the</text>
+    <text x="250" y="122">Tiiny, the AI board, an endpoint inside your home.</text>
+    <text x="250" y="152" font-weight="700">THIS PHONE</text>
+    <text x="250" y="166">Nothing leaves the phone. Only on a phone that can</text>
+    <text x="250" y="178">think for itself, and only for TALK.</text>
+  </g>
+</svg>

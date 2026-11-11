@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 250" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="9.5">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16161a"/></marker></defs>
+  <!-- the house -->
+  <rect x="6" y="20" width="508" height="210" rx="10" fill="#fbf0ea" stroke="#c8705c" stroke-width="1.4"/>
+  <text x="18" y="40" font-weight="700" font-size="10" letter-spacing="2" fill="#9a4a38">YOUR HOME</text>
+  <!-- the screens -->
+  <rect x="20" y="52" width="96" height="34" rx="6" fill="#fff" stroke="#16161a"/><text x="68" y="66" text-anchor="middle">the app: iPhone,</text><text x="68" y="78" text-anchor="middle">iPad or Mac</text>
+  <rect x="20" y="96" width="96" height="34" rx="6" fill="#fff" stroke="#16161a"/><text x="68" y="110" text-anchor="middle">the site, in</text><text x="68" y="122" text-anchor="middle">any browser</text>
+  <rect x="20" y="140" width="96" height="34" rx="6" fill="#fff" stroke="#16161a"/><text x="68" y="154" text-anchor="middle">a watch, a handheld,</text><text x="68" y="166" text-anchor="middle">the Tab5, the widget</text>
+  <!-- the game -->
+  <rect x="20" y="184" width="96" height="34" rx="6" fill="#f1ecf8" stroke="#8a5cc8"/><text x="68" y="198" text-anchor="middle">the game's save</text><text x="68" y="210" text-anchor="middle">(a copy, or the mirror)</text>
+  <!-- the hub -->
+  <rect x="190" y="84" width="120" height="84" rx="8" fill="#16161a"/>
+  <text x="250" y="106" text-anchor="middle" fill="#fff" font-weight="700" font-size="11">THE HUB</text>
+  <text x="250" y="122" text-anchor="middle" fill="#d9d4c4" font-size="9">reads the save at SYNC,</text>
+  <text x="250" y="134" text-anchor="middle" fill="#d9d4c4" font-size="9">keeps each daemon's day,</text>
+  <text x="250" y="146" text-anchor="middle" fill="#d9d4c4" font-size="9">its dreams, your goals</text>
+  <text x="250" y="158" text-anchor="middle" fill="#d9d4c4" font-size="9">and your journals</text>
+  <path d="M116 69L190 100" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+  <path d="M116 113L190 118" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+  <path d="M116 157L190 140" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+  <path d="M116 201L190 158" stroke="#8a5cc8" fill="none" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+  <text x="150" y="232" text-anchor="middle" font-size="8.5" fill="#5a5a64">SYNC</text>
+  <!-- the minds -->
+  <text x="396" y="58" font-weight="700" font-size="9" letter-spacing="1.5" fill="#9a4a38">THE MIND: WHOEVER CAN ANSWER</text>
+  <rect x="396" y="66" width="104" height="28" rx="6" fill="#fff" stroke="#16161a"/><text x="448" y="84" text-anchor="middle">the Tiiny (if you have one)</text>
+  <rect x="396" y="100" width="104" height="28" rx="6" fill="#fff" stroke="#16161a"/><text x="448" y="118" text-anchor="middle">the hub's AI board</text>
+  <rect x="396" y="134" width="104" height="28" rx="6" fill="#fff" stroke="#16161a"/><text x="448" y="152" text-anchor="middle">endpoints you name</text>
+  <rect x="396" y="168" width="104" height="28" rx="6" fill="#fff" stroke="#16161a"/><text x="448" y="186" text-anchor="middle">your own model (n8n)</text>
+  <path d="M310 110L396 82" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+  <path d="M310 120L396 114" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+  <path d="M310 132L396 146" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+  <path d="M310 144L396 180" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+  <text x="448" y="214" text-anchor="middle" font-size="8.5" fill="#5a5a64">and, on a phone, the phone's own mind</text>
+</svg>

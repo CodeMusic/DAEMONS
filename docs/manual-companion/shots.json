@@ -1,0 +1,362 @@
+{
+ "viewport": [
+  400,
+  860
+ ],
+ "shots": {
+  "today": {
+   "about": "TODAY, its top: the day and THE ONE THING",
+   "steps": [
+    {
+     "tab": "TODAY"
+    },
+    {
+     "wait": 800
+    }
+   ],
+   "height": 860
+  },
+  "today-more": {
+   "about": "TODAY under the day: THE ONE THING, your daemon with its care keys, YOUR GAME",
+   "steps": [
+    {
+     "tab": "TODAY"
+    },
+    {
+     "wait": 800
+    }
+   ],
+   "height": 900,
+   "scroll": "THE ONE THING"
+  },
+  "daemon": {
+   "about": "DAEMON, Yours: the daemon in its den, its care bars and the care keys",
+   "steps": [
+    {
+     "tab": "DAEMON"
+    },
+    {
+     "wait": 1200
+    }
+   ],
+   "height": 900
+  },
+  "daemon-sync": {
+   "about": "DAEMON, Yours: the SYNC card and NEARBY under it",
+   "steps": [
+    {
+     "tab": "DAEMON"
+    },
+    {
+     "wait": 800
+    }
+   ],
+   "height": 260,
+   "scroll": "The game is asking. Close it first, then SYNC."
+  },
+  "party": {
+   "about": "DAEMON, Party: the party as the game draws it, one ON YOUR DEVICE",
+   "steps": [
+    {
+     "tab": "DAEMON"
+    },
+    {
+     "click": "Party"
+    },
+    {
+     "wait": 1000
+    }
+   ],
+   "height": 760
+  },
+  "index": {
+   "about": "DAEMON, INDEX: the first entries, with NATIVE and LISTEN",
+   "steps": [
+    {
+     "tab": "DAEMON"
+    },
+    {
+     "click": "INDEX"
+    },
+    {
+     "wait": 1500
+    }
+   ],
+   "height": 1000
+  },
+  "dreams": {
+   "about": "DAEMON, DREAMS: the journal of nights, with REASON, INSTINCT and WHOLE",
+   "steps": [
+    {
+     "tab": "DAEMON"
+    },
+    {
+     "click": "DREAMS"
+    },
+    {
+     "wait": 1000
+    }
+   ],
+   "height": 900
+  },
+  "meetings": {
+   "about": "DAEMON, MEETINGS: RECORD A MEETING, FROM A VOICE MEMO, the meetings and VOICE NOTES",
+   "steps": [
+    {
+     "tab": "DAEMON"
+    },
+    {
+     "click": "MEETINGS"
+    },
+    {
+     "wait": 1000
+    }
+   ],
+   "height": 900
+  },
+  "goals": {
+   "about": "JOURNEY, GOALS: YOUR GOAL with its steps and a milestone, and WALKING",
+   "steps": [
+    {
+     "tab": "JOURNEY"
+    },
+    {
+     "click": "GOALS"
+    },
+    {
+     "wait": 800
+    }
+   ],
+   "height": 900
+  },
+  "journal": {
+   "about": "JOURNEY, JOURNAL: YOUR JOURNALS and Start it",
+   "steps": [
+    {
+     "tab": "JOURNEY"
+    },
+    {
+     "click": "JOURNAL"
+    },
+    {
+     "wait": 800
+    }
+   ],
+   "height": 700
+  },
+  "library": {
+   "about": "LIBRARY: the bookcase, a shelf per kind of book",
+   "steps": [
+    {
+     "tab": "LIBRARY"
+    },
+    {
+     "wait": 2000
+    }
+   ],
+   "height": 1200
+  },
+  "school": {
+   "about": "LIBRARY, CALLOW SCHOOL: the DIPLOMA, THE FLOORS and THE PAPER, TO SIT AGAIN",
+   "steps": [
+    {
+     "tab": "LIBRARY"
+    },
+    {
+     "wait": 1500
+    },
+    {
+     "click": "CALLOW SCHOOL"
+    },
+    {
+     "wait": 1000
+    }
+   ],
+   "height": 1000
+  },
+  "songbook": {
+   "about": "LIBRARY, SONGBOOK: each song learned on its staff, and LISTEN",
+   "steps": [
+    {
+     "tab": "LIBRARY"
+    },
+    {
+     "wait": 1500
+    },
+    {
+     "click": "SONGBOOK"
+    },
+    {
+     "wait": 1000
+    }
+   ],
+   "height": 900
+  },
+  "you": {
+   "about": "YOU, its top: the trainer, the region maps and the facts",
+   "steps": [
+    {
+     "tab": "YOU"
+    },
+    {
+     "wait": 1200
+    }
+   ],
+   "height": 1000
+  },
+  "marks": {
+   "about": "YOU: MARKS and ROOTS",
+   "steps": [
+    {
+     "tab": "YOU"
+    },
+    {
+     "wait": 1200
+    }
+   ],
+   "height": 560,
+   "scroll": "MARKS"
+  },
+  "road": {
+   "about": "YOU: THE ROAD AHEAD",
+   "steps": [
+    {
+     "tab": "YOU"
+    },
+    {
+     "wait": 1500
+    }
+   ],
+   "height": 900,
+   "scroll": "THE ROAD AHEAD"
+  },
+  "casino": {
+   "about": "DAEMON, Routines, THE CASINO: the reels, BET - and BET +, SPIN, and THE HOUSE",
+   "steps": [
+    {
+     "tab": "DAEMON"
+    },
+    {
+     "click": "Routines"
+    },
+    {
+     "wait": 600
+    },
+    {
+     "click": "THE CASINO"
+    },
+    {
+     "wait": 1500
+    }
+   ],
+   "height": 1000
+  },
+  "nearby": {
+   "about": "DAEMON, Yours: NEARBY, with the box to Say and the acts",
+   "steps": [
+    {
+     "tab": "DAEMON"
+    },
+    {
+     "wait": 1000
+    }
+   ],
+   "height": 700,
+   "scroll": "NEARBY"
+  },
+  "places": {
+   "about": "PLACES, its top: THE HUB card and WHO ANSWERS FIRST WHEN YOU TALK",
+   "steps": [
+    {
+     "tab": "PLACES"
+    },
+    {
+     "wait": 1500
+    }
+   ],
+   "height": 900
+  },
+  "every-settings": {
+   "about": "PLACES: EVERY DEVICE'S SETTINGS",
+   "steps": [
+    {
+     "tab": "PLACES"
+    },
+    {
+     "wait": 1500
+    }
+   ],
+   "height": 900,
+   "scroll": "EVERY DEVICE'S SETTINGS"
+  },
+  "settings": {
+   "about": "SETTINGS, its top: THIS APP, DEVELOPER MODE and YOUR DAEMONS SAVE (kept short: WHO ANSWERS WHEN YOU TALK, lower down, shows the house computer's name as THE TIINY's placeholder)",
+   "steps": [
+    {
+     "click": "⚙"
+    },
+    {
+     "wait": 800
+    }
+   ],
+   "height": 900
+  },
+  "settings-mind": {
+   "about": "SETTINGS: THE MIND -- the minds with their dots, TRY IT and RECENT THOUGHTS",
+   "steps": [
+    {
+     "click": "⚙"
+    },
+    {
+     "wait": 800
+    }
+   ],
+   "height": 1100,
+   "scroll": "THE MIND"
+  },
+  "endpoints": {
+   "about": "SETTINGS: THE HUB'S ENDPOINTS, at the foot of THE MIND",
+   "steps": [
+    {
+     "click": "⚙"
+    },
+    {
+     "wait": 800
+    }
+   ],
+   "height": 700,
+   "scroll": "THE HUB'S ENDPOINTS"
+  },
+  "mind-at-work": {
+   "about": "SETTINGS: THE MIND AT WORK -- the web, THE RIVER, NOW and BEFORE",
+   "steps": [
+    {
+     "click": "⚙"
+    },
+    {
+     "wait": 800
+    },
+    {
+     "wait": 1200
+    }
+   ],
+   "height": 1100,
+   "scroll": "THE MIND AT WORK"
+  },
+  "whatsnew": {
+   "about": "WHAT'S NEW, opened from the header: at 400 wide the header's button reads ✦ NEW until this build's notes are read",
+   "steps": [
+    {
+     "tab": "TODAY"
+    },
+    {
+     "click": "✦ NEW"
+    },
+    {
+     "wait": 1200
+    }
+   ],
+   "height": 860
+  }
+ }
+}
