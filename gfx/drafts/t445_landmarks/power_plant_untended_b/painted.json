@@ -1,0 +1,29 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t445_landmarks/power_plant_untended_b/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, interior of an abandoned power plant overgrown with ivy, creepers climbing every grey machine housing, moss in the seams of the steel floor plates, old drums used as planters full of leaves, the machines dark and silent, soft daylight from a high window, cool grey metal and many greens, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, status lights, glowing lights, lamps, screens, people",
+ "seed": 4502,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.5,
+ "stop_at": null,
+ "image": "gfx/drafts/t445_landmarks/power_plant_untended_b/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "model": "shaper",
+ "loras": [],
+ "references": [],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "model_files": {
+  "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 44.4,
+ "comfyui": "0.19.1",
+ "made": "2026-11-11 15:58:27"
+}

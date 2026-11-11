@@ -487,3 +487,15 @@ T-447 pair 7 BUILT: the hold's corridor, B1F -- teak stairs and white stanchions
 T-447 pair 7 BUILT: the departure decoded from daemonsContent.gba -- the smoke now rises from the funnel's mouth (src/ss_anne.c +49,78 -> +46,66; the ship is drawn from x-32), coal smoke and white foam in the ship's own palette (DRAFT)
 
 ![11Nov2026 - T447 - pair 7 built departure from ROM - 98](11Nov2026%20-%20T447%20-%20pair%207%20built%20departure%20from%20ROM%20-%2098.png)
+
+### 11Nov2026 - T445 - Landmark cards census - 99
+
+T-445 census (DRAFT, 2026-11-11): every landmark's name card today beside Nintendo's it replaced -- all ours but DOLDRUM CAVE (T-251); KEEPALIVE PLANT and TANOBY stale after T-447 pair 5; no card for SCORN, ERRATA, the LEAGUE/HALL (UMBRA PLATEAU's card), the S.S. ANNE
+
+![11Nov2026 - T445 - Landmark cards census - 99](11Nov2026%20-%20T445%20-%20Landmark%20cards%20census%20-%2099.png)
+
+### 11Nov2026 - T445 - Landmark cards candidates - 100
+
+T-445 DRAFT (2026-11-11): today's card beside each candidate at 2x and 1x -- KEEPALIVE PLANT growing untended A/B/C, TANOBY carved not lit A/B, the MANSION's rack hall A/B/C, DAEMON TOWER's dot screen A/B/C; nothing written
+
+![11Nov2026 - T445 - Landmark cards candidates - 100](11Nov2026%20-%20T445%20-%20Landmark%20cards%20candidates%20-%20100.png)
