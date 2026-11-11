@@ -190,7 +190,7 @@ UNITY_PALETTE = [
     ("C_HIGHLIGHT",   (11, 8, 10)),     # the cursor's bar
     ("C_RING",        (8, 22, 14)),     # an INSCRIPTION: the tablet's green
     ("C_FRAME",       (1, 1, 1)),
-    ("C_SLATE",       (8, 6, 8)),       # the cover's boards
+    ("C_SLATE",       (8, 7, 18)),      # the cover's boards: indigo, between the night's violet and the dawn's sapphire (the user, 2026-11-11)
     ("C_CHALK",       (31, 30, 28)),    # the cover's lettering
     ("C_CHALK_FAINT", (20, 17, 16)),
     ("C_COVER",       (4, 3, 5)),       # the backdrop
@@ -639,7 +639,9 @@ COVERS_DIR = os.path.join(HERE, "thirdbook_covers")
 
 
 def third_cover(book):
-    """T-519: the third book's cover -- the user's pick (2026-11-05: night V4, dawn V2, mended V2), each the chosen
+    """T-519: the third book's cover -- the user's pick (2026-11-05: night V4, dawn V2, mended V2; regenerated 2026-11-11: the night half's tablet
+    mirrored in a still pool, the dawn half's Christmas star, and the mended cover holding both -- docs/private/art/t519/
+    regen-2026-11-11/stitch.py), each the chosen
     composition repainted on the sprite server with a painted plate's light (docs/private/art/t519/forge/blend.py)
     and quantized into the book's roles. Bundled as indexed PNGs in tools/thirdbook_covers/ so this tool needs no
     server; written with this book's palette, so a palette change carries. The placeholder if one is missing."""
