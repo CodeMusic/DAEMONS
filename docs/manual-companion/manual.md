@@ -681,6 +681,36 @@ is **WILD HERE** in your edition. **Nothing past the next step is ever shown.**
 At the foot of YOU is **TRADE**: joining your home's exchange, offering, lending and giving daemons, OUT TOGETHER,
 friends, dreams shared, THE COMMONS, **IN DIALOGUE** and **BATTLE**. All of it is told in **PLAYING TOGETHER**, on the LIBRARY's MANUALS shelf.
 
+## GUARDIAN {#guardian}
+
+Below TRADE is **GUARDIAN**: the account a grown-up holds for the players at home. **A grown-up signs in; a player
+never does.** The account and its profiles are kept on THE COMMONS, reached through your hub. With no way to reach them,
+the card says so.
+
+**Signed in**, the card lists each **profile**, one for each player. A profile's name is made from two words, one
+picked from each of two lists, never typed, with a number after it: **ADD A PROFILE**, pick **the first word** and
+**the second word**, and **MAKE IT**. Each profile has its own controls, the safest choice first:
+
+| Control | Choices |
+|---|---|
+| **FRIENDS** | **I APPROVE** each one, or **IT DECIDES** |
+| **TRADES WITH** | **FRIENDS** only, **+ HOME**, or **+ LOBBY** |
+| **MEETINGS** | with **FRIENDS**, with **TRADES** too, or **OFF** |
+| **THE LOBBY** | **OFF** or **ON** |
+
+A profile may also have a **nickname** that only its friends see; type it and **SET**.
+
+To put a profile on a player's phone or tablet, press **OPEN ON A DEVICE**. You get an eight-letter code. Type it on
+the player's device, in its own GUARDIAN card, and press **OPEN**. A code works once and only for a little while; the
+card says until when. Every device a profile is open on is listed under it, and **CLOSE IT** takes the profile off that
+device. **Remove this profile…** asks once, then removes it and closes it on every device.
+
+**SIGN OUT** leaves everything as it is. **Delete this account and every profile in it…** erases all of it at once,
+the profiles and every device they are open on, and asks you to type DELETE first. It cannot be undone.
+
+**On a player's device**, the card shows only the profile's name, the nickname its friends see, and that its guardian
+sets what it may do. **LEAVE THIS PROFILE** takes the device off it.
+
 # The GAME tab {#game .t-LATENT}
 
 On an iPhone, an iPad or a Mac, the app plays DAEMONS itself, in the **GAME** tab. The game and the companion share
