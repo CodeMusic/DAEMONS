@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.353 — 2026-11-11
+
+- **9.29:** the S.S. ANNE's departure wake now starts at her waterline, released in v11.352.1 (T-447, the user's pick). It had shown through the flagstaff's notch over the deck.
+- A Settled entry in section 10. DRAFT.
+
 ## v11.352 — 2026-11-11
 
 - **9.29:** the landmarks' name cards follow their buildings, released in v11.351.1 (T-445). The KEEPALIVE PLANT's card is growing untended, and TANOBY's chambers are carved, not lit. Every place card is now ours except DOLDRUM CAVE's.
