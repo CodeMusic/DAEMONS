@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.351 — 2026-11-11
+
+- **9.29:** landmark pair 7 is built and released in v11.350.1 (T-447). The user chose THE LIVERY for the S.S. ANNE: the outside of the liner, which was already ours, carried into her rooms. Her departure smoke now sits over the funnel. Every landmark is now ours except USER TOWER (the user's) and DOLDRUM CAVE (waits on T-251).
+- A Settled entry in section 10. All of it is DRAFT.
+
 ## v11.350 — 2026-11-11
 
 - **4.40:** THE UNITY BOOK's three covers, which the user chose and v11.349.1 released (T-519). The night half shows a tablet mirrored in a still pool. The dawn half shows a star over the fir, with the lark. The mended book has both plates on indigo boards.
