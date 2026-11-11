@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.348, working |
-| [`CONTEXT-CONTENT-design-bible-v11.348.pdf`](CONTEXT-CONTENT-design-bible-v11.348.pdf) | Typeset **snapshot** at v11.348 — one line that finishes both torn pages, a duet in a mirror, and the LEAGUE as four vessels. | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.349, working |
+| [`CONTEXT-CONTENT-design-bible-v11.349.pdf`](CONTEXT-CONTENT-design-bible-v11.349.pdf) | Typeset **snapshot** at v11.349 — a fox whose sparks go on rising, and a book that ends by finishing both its tears. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

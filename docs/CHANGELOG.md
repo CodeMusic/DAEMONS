@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.349 — 2026-11-11
+
+- **4.40, released in v11.348.2:**
+  - **TULIKKO's sparks (T-528 e).** Once the book is mended, sparks rise from the fox's tail on a night of light, in the edition's own colour. The conjugate light brings them on any night by itself, rising green and turning red, which is what the user chose.
+  - **The torn lines (T-519).** The book now ends "...It will not be, and it always was. Look again, and you will see them both."
+- A Settled entry in section 10. Every word is DRAFT.
+
 ## v11.348 — 2026-11-11
 
 - **4.40:** THE UNITY BOOK's last line, "Look again, and you will see them both.", finishes the sentences each torn half breaks off (T-519). The DUET's tune is DUET-1, E D D C D E over E F F G F E, which the user picked by ear from four drafts (T-528).
