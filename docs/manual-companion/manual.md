@@ -524,6 +524,9 @@ THE SUBTLE LAYER also holds **THE CARDS**, folded under its cover as a deck: tou
 
 The cards are only read. They never change your daemon or your save.
 
+Other books found in the game stand beside them, each in a reader of its own. Some come back a part at a time, as
+far as your save has them, and never further.
+
 **READ ALOUD** is on every chapter of these books: a paragraph at a time, in the reading voice. While it plays, the
 book's own look fills the reader -- its colours, its ribbon of chapters with the one you are hearing lit, and **NOW
 READING** with the chapter's name.
@@ -548,9 +551,15 @@ The second shelf holds DAEMONS' own printed books, kept on your phone once fetch
 Each opens in the app's own reader, to scroll and pinch like any PDF. **Share** keeps it in Books or Files. On the site,
 **Open in a tab** gives it a tab of its own. When a newer printing comes out, the app fetches it.
 
+Above the page, each one can be **heard**, in a voice of its own. **LISTEN** shows how many minutes it runs, and its
+chapters as a bar, the one being read lit. Touch a chapter on the bar, or use **‹ Chapter** and **Chapter ›**, to move
+through it. While it plays, **NOW READING** names the chapter and how far in you are. Stop part-way and it goes on from
+there next time. When a newer reading comes out, **LISTEN** fetches it.
+
 ## HISTORY AND STUDY {#study}
 
-- **THE OLD WORD** -- how the Greek *daimon* branched, and why it is said *DAY-mons*.
+- **THE OLD WORD** -- how the Greek *daimon* branched, and why it is said *DAY-mons*. It can be heard, as the
+  MANUALS can.
 - **CALLOW SCHOOL** -- the game's school, kept here. Your **DIPLOMA** in its certificate words, with your best mark;
   or, without one, how often you have sat the paper. **THE FLOORS**: each of the seven opens its syllabus once you have
   stood on it in the game (*Not yet stood on* until then). **THE PAPER, TO SIT AGAIN**: the whole paper, a question at a

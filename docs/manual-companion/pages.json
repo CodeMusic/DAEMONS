@@ -42,7 +42,8 @@
   "screens/settings/Saves.tsx": "settings-save",
   "screens/settings/Mind.tsx": "minds",
   "screens/settings/MindMap.tsx": "mind-at-work",
-  "screens/settings/HubEndpoints.tsx": "endpoints"
+  "screens/settings/HubEndpoints.tsx": "endpoints",
+  "screens/library/Origin.tsx": "found"
  },
  "not for players": [
   "screens/dev/Dev.tsx"
