@@ -361,3 +361,15 @@ T-447 pair 6 BUILT (DRAFT): the HALL OF FAME as A The index card (rows 7, 10, 11
 C-254 THE MIND (DRAFT) on a throwaway hub with a copy of the test save: the link under the den, NOW, BOTH DREAMS, VOICE, SELF and REMEMBERED.
 
 ![11Nov2026 - C254 - THE MIND, its five parts - 74](11Nov2026%20-%20C254%20-%20THE%20MIND%2C%20its%20five%20parts%20-%2074.png)
+
+### 11Nov2026 - C327 - household together - 77
+
+C-327 (DRAFT): two household devices' daemons in one den on a scratch companion -- PIP on this phone, LABEL from a pretend T-Watch Ultra; then a feed from the watch, the fruit eaten down to crumbs in the middle
+
+![11Nov2026 - C327 - household together - 77](11Nov2026%20-%20C327%20-%20household%20together%20-%2077.jpg)
+
+### 11Nov2026 - C327 - household together - 78
+
+C-327 (DRAFT): two household devices' daemons in one den on a scratch companion -- PIP on this phone, LABEL from a pretend T-Watch Ultra; then a feed from the watch, the fruit eaten down to crumbs in the middle
+
+![11Nov2026 - C327 - household together - 78](11Nov2026%20-%20C327%20-%20household%20together%20-%2078.png)
