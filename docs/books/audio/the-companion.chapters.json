@@ -7,8 +7,8 @@
  },
  "speed": 0.96,
  "draft": "DRAFT \u00b7 every word, until it is approved",
- "sources": "e43e5b8fada837fc",
- "duration": 3737.94,
+ "sources": "e5389d0b6f3cd525",
+ "duration": 3842.09,
  "chapters": [
   {
    "kind": "section",
@@ -386,241 +386,247 @@
    "kind": "entry",
    "title": "TRADE",
    "start": 2202.23,
-   "end": 2220.78
+   "end": 2219.78
+  },
+  {
+   "kind": "entry",
+   "title": "GUARDIAN",
+   "start": 2219.78,
+   "end": 2324.93
   },
   {
    "kind": "section",
    "title": "The GAME tab",
-   "start": 2220.78,
-   "end": 2238.96
+   "start": 2324.93,
+   "end": 2343.11
   },
   {
    "kind": "entry",
    "title": "Your own copy",
-   "start": 2238.96,
-   "end": 2279.72
+   "start": 2343.11,
+   "end": 2383.87
   },
   {
    "kind": "entry",
    "title": "Playing",
-   "start": 2279.72,
-   "end": 2315.22
+   "start": 2383.87,
+   "end": 2419.37
   },
   {
    "kind": "entry",
    "title": "One save, synced as you play",
-   "start": 2315.22,
-   "end": 2360.22
+   "start": 2419.37,
+   "end": 2464.37
   },
   {
    "kind": "entry",
    "title": "The iPad on its side",
-   "start": 2360.22,
-   "end": 2390.06
+   "start": 2464.37,
+   "end": 2494.21
   },
   {
    "kind": "section",
    "title": "The CASINO",
-   "start": 2390.06,
-   "end": 2408.16
+   "start": 2494.21,
+   "end": 2512.31
   },
   {
    "kind": "entry",
    "title": "The reels",
-   "start": 2408.16,
-   "end": 2459.71
+   "start": 2512.31,
+   "end": 2563.85
   },
   {
    "kind": "entry",
    "title": "The coins are your game's money",
-   "start": 2459.71,
-   "end": 2482.65
+   "start": 2563.85,
+   "end": 2586.8
   },
   {
    "kind": "entry",
    "title": "The day's odds, and THE HOUSE",
-   "start": 2482.65,
-   "end": 2521.55
+   "start": 2586.8,
+   "end": 2625.7
   },
   {
    "kind": "section",
    "title": "Nearby, and away from home",
-   "start": 2521.55,
-   "end": 2524.78
+   "start": 2625.7,
+   "end": 2628.93
   },
   {
    "kind": "entry",
    "title": "NEARBY",
-   "start": 2524.78,
-   "end": 2573.41
+   "start": 2628.93,
+   "end": 2677.56
   },
   {
    "kind": "entry",
    "title": "MET NEARBY",
-   "start": 2573.41,
-   "end": 2616.67
+   "start": 2677.56,
+   "end": 2720.82
   },
   {
    "kind": "entry",
    "title": "Away from home",
-   "start": 2616.67,
-   "end": 2666.69
+   "start": 2720.82,
+   "end": 2770.84
   },
   {
    "kind": "section",
    "title": "PLACES and devices",
-   "start": 2666.69,
-   "end": 2683.09
+   "start": 2770.84,
+   "end": 2787.24
   },
   {
    "kind": "entry",
    "title": "THE HUB",
-   "start": 2683.09,
-   "end": 2719.58
+   "start": 2787.24,
+   "end": 2823.73
   },
   {
    "kind": "entry",
    "title": "YOUR DEVICES",
-   "start": 2719.58,
-   "end": 2766.15
+   "start": 2823.73,
+   "end": 2870.3
   },
   {
    "kind": "entry",
    "title": "EVERY DEVICE'S SETTINGS",
-   "start": 2766.15,
-   "end": 2806.48
+   "start": 2870.3,
+   "end": 2910.62
   },
   {
    "kind": "entry",
    "title": "Each device's own",
-   "start": 2806.48,
-   "end": 2839.62
+   "start": 2910.62,
+   "end": 2943.77
   },
   {
    "kind": "entry",
    "title": "The devices themselves",
-   "start": 2839.62,
-   "end": 2901.04
+   "start": 2943.77,
+   "end": 3005.19
   },
   {
    "kind": "entry",
    "title": "GLASSES",
-   "start": 2901.04,
-   "end": 2955.77
+   "start": 3005.19,
+   "end": 3059.92
   },
   {
    "kind": "entry",
    "title": "HOME, and the TV",
-   "start": 2955.77,
-   "end": 2990.89
+   "start": 3059.92,
+   "end": 3095.04
   },
   {
    "kind": "section",
    "title": "THE MIND",
-   "start": 2990.89,
-   "end": 3031.03
+   "start": 3095.04,
+   "end": 3135.18
   },
   {
    "kind": "entry",
    "title": "The minds",
-   "start": 3031.03,
-   "end": 3089.84
+   "start": 3135.18,
+   "end": 3193.99
   },
   {
    "kind": "entry",
    "title": "How far each may go",
-   "start": 3089.84,
-   "end": 3132.02
+   "start": 3193.99,
+   "end": 3236.17
   },
   {
    "kind": "entry",
    "title": "WHO ANSWERS WHEN YOU TALK",
-   "start": 3132.02,
-   "end": 3195.48
+   "start": 3236.17,
+   "end": 3299.63
   },
   {
    "kind": "entry",
    "title": "AN ENDPOINT OF YOUR OWN",
-   "start": 3195.48,
-   "end": 3223.06
+   "start": 3299.63,
+   "end": 3327.21
   },
   {
    "kind": "entry",
    "title": "THE HUB'S ENDPOINTS",
-   "start": 3223.06,
-   "end": 3259.26
+   "start": 3327.21,
+   "end": 3363.41
   },
   {
    "kind": "entry",
    "title": "THE MIND AT WORK",
-   "start": 3259.26,
-   "end": 3317.46
+   "start": 3363.41,
+   "end": 3421.61
   },
   {
    "kind": "entry",
    "title": "THE ENGINE ROOM",
-   "start": 3317.46,
-   "end": 3356.06
+   "start": 3421.61,
+   "end": 3460.21
   },
   {
    "kind": "entry",
    "title": "The voice, quickly",
-   "start": 3356.06,
-   "end": 3378.04
+   "start": 3460.21,
+   "end": 3482.19
   },
   {
    "kind": "section",
    "title": "Settings",
-   "start": 3378.04,
-   "end": 3392.73
+   "start": 3482.19,
+   "end": 3496.88
   },
   {
    "kind": "entry",
    "title": "On every screen",
-   "start": 3392.73,
-   "end": 3420.18
+   "start": 3496.88,
+   "end": 3524.33
   },
   {
    "kind": "entry",
    "title": "Your save",
-   "start": 3420.18,
-   "end": 3444.27
+   "start": 3524.33,
+   "end": 3548.42
   },
   {
    "kind": "entry",
    "title": "The world outside",
-   "start": 3444.27,
-   "end": 3457.62
+   "start": 3548.42,
+   "end": 3561.77
   },
   {
    "kind": "entry",
    "title": "On a phone",
-   "start": 3457.62,
-   "end": 3486.39
+   "start": 3561.77,
+   "end": 3590.54
   },
   {
    "kind": "entry",
    "title": "On the hub's own site",
-   "start": 3486.39,
-   "end": 3510.43
+   "start": 3590.54,
+   "end": 3614.58
   },
   {
    "kind": "entry",
    "title": "HOW TO PLAY and WHAT'S NEW",
-   "start": 3510.43,
-   "end": 3565.45
+   "start": 3614.58,
+   "end": 3669.6
   },
   {
    "kind": "section",
    "title": "When it goes wrong",
-   "start": 3565.45,
-   "end": 3683.5
+   "start": 3669.6,
+   "end": 3787.65
   },
   {
    "kind": "section",
    "title": "Coming next",
-   "start": 3683.5,
-   "end": 3737.94
+   "start": 3787.65,
+   "end": 3842.09
   }
  ]
 }
