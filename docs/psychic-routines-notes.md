@@ -80,9 +80,9 @@ game text is written yet**: the next step is the DRAFT entries, on the user's go
    traded daemon arrives non-zero; and **BEAUTY is EVO_BEAUTY**: SADDLE (Feebas) becomes Milotic at 170
    (`evolution.h`). SADDLE is in no wild table or trade (only `opus_margins.h`), but BEAUTY stays untouched. **They are
    per daemon.** A trainer's own value would need SaveBlock space (`engine.md`'s budgets).
-2. **8.6's friendship saturation is decided and not built.** Settled 2026-09-06 (*"Saturation is friendship"*,
-   CHANGELOG), but `GetMonSpritePalFromSpeciesAndPersonality` returns the species palette untouched and nothing tints
-   a daemon by friendship. No ticket carries it. **The book cannot lean on "the bond is already visible" until it is.**
+2. **8.6's friendship saturation is built** (T-424): `src/daemon_saturation.c` tints a daemon by its friendship, and the
+   summary screen lays it over the loaded palette (`pokemon_summary_screen.c`, `Saturation_ApplyToLoaded`). *This note
+   once said it was decided and not built; the book can lean on "the bond is already visible".*
 3. **The kindred-bond row**: checked against `SECRETS.md`; the verdict and its guard are there, [private: SECRETS §2].
 4. **"The Clairs" against the Clears**: checked against `SECRETS.md`; the verdict is there, [private: SECRETS §2].
 5. **Three of the book's words are already taken** (`check_lexicon.py`'s surfaces): **CHARGE** is an item (the Ether

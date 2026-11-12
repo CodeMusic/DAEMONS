@@ -5,6 +5,16 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.357 — 2026-11-12
+
+- **9.29:** THE BLACKOUT is dark from the first line of every frame, released in v11.356.1 (T-546). The top few lines of the screen had shown lit for a moment.
+- **4.38, stale lines fixed:**
+  - THE SUBTLE LAYER has fifty-one entries, not fifty.
+  - MOM's ship line runs until the ship sails (T-504), not to the eighth MARK.
+- `psychic-routines-notes.md` V.2: friendship saturation is built (T-424).
+- TODO: T-459 closed, since its last line is in the bible at 4.38.
+- A Settled entry in section 10.
+
 ## v11.356 — 2026-11-12
 
 - **9.29:** THE BLACKOUT in purple with threads of green, the user's picks, released in v11.355.1 (T-546).
