@@ -422,6 +422,18 @@ LANDMARKS = {
                        ("PokemonLeague_LancesRoom", 0, 0, 28, 24, "I, SANGUINE"),
                        ("PokemonLeague_ChampionsRoom", 0, 0, 13, 20, "AL CLEAR's room")],
     "hall_of_fame": [("PokemonLeague_HallOfFame", 0, 0, 11, 13, "the HALL OF FAME")],
+    #  T-447's seventh pair (drafted 2026-11-11, gbalandmarkrooms.py --pair 7): the S.S. ANNE's 25 rooms, whole, by
+    #  their nine layouts (the cabins share two) -- batch G's teak, bulkheads and carpet are kept as they stand until
+    #  that pair is built (its write already left the set alone: 0 tiles; this makes it a rule)
+    "ss_anne": [("SSAnne_Deck", 0, 0, 24, 19, "the S.S. ANNE's deck"),
+                ("SSAnne_1F_Corridor", 0, 0, 31, 21, "the S.S. ANNE, 1F"),
+                ("SSAnne_2F_Corridor", 0, 0, 34, 16, "the S.S. ANNE, 2F"),
+                ("SSAnne_3F_Corridor", 0, 0, 22, 7, "the S.S. ANNE, 3F"),
+                ("SSAnne_B1F_Corridor", 0, 0, 23, 7, "the S.S. ANNE, B1F (the hold)"),
+                ("SSAnne_CaptainsOffice", 0, 0, 9, 10, "the captain's office"),
+                ("SSAnne_Kitchen", 0, 0, 16, 14, "the galley"),
+                ("SSAnne_Room1", 0, 0, 6, 8, "the cabins (seven rooms, 1F)"),
+                ("SSAnne_Room2", 0, 0, 6, 9, "the cabins (eleven rooms, 2F and B1F)")],
 }
 
 

@@ -2,7 +2,7 @@
 """TULIKKO, the arctic fox who sweeps the snow by STILLFALL CAVE on FOUR ISLAND (T-528 (e), vision.md 4.40).
 
     python3 tools/gentulikko.py            # report: is the sheet current and registered
-    python3 tools/gentulikko.py --write    # tulikko.png, its spritesheet rule, and OBJ_EVENT_GFX_TULIKKO
+    python3 tools/gentulikko.py --write    # tulikko.png, its spritesheet rule, OBJ_EVENT_GFX_TULIKKO, and the sparks
 
 After the Finnish revontulet, "fox fires": a fox whose tail, sweeping the snow, throws sparks into the sky. Every
 person is an animal (the fable rule), and this one is an animal on four feet -- not one of the town's upright folk,
@@ -22,8 +22,16 @@ ITS PALETTE is npc_white, in npc_white's own slot (PALSLOT_NPC_4), which every o
 already holds (the item balls, the rock, the man by the cave), so it repaints no one (engine.md trap 17):
     W white  l light grey (the underside)  g grey  K the outline (npc_white's darkest grey)  B black (eyes, nose)
 A wide graphics id (no FREE id is left, T-461), so the recap replays it as OBJ_EVENT_GFX_MEOWTH.
+
+THE SPARKS (T-528 (e), the last of it): six 8x8 tiles in graphics/field_effects/pics/tulikko_sparks.png, which
+src/daemons_aurora.c's Aurora_SparksTick lifts from the fox's tail -- a spark young, older and nearly gone, in the red
+line and then the green. Each is a diamond about the tile's centre, its shade the frame plus the distance from the
+centre (0 the core, 1 the line, 2 the embers, past that nothing): a cross, a point, a speck. Their palette is read
+from the engine's own RED_LINE and GREEN_LINE, the sky's lines, each with its core halfway to white and its embers at
+five eighths (SPARK_CORE, SPARK_DIM), so the PNG shows what the game draws:
+    0 clear  1 red core  2 red line  3 red embers  4 green core  5 green line  6 green embers
 """
-import os, sys
+import os, re, sys
 from PIL import Image
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -34,6 +42,8 @@ GBA = os.path.join(ROOT, "engineGba")
 PEOPLE = os.path.join(GBA, "graphics/object_events/pics/people")
 PALS = os.path.join(GBA, "graphics/object_events/palettes")
 RULES = os.path.join(GBA, "spritesheet_rules.mk")
+SPARKS = os.path.join(GBA, "graphics/field_effects/pics/tulikko_sparks.png")
+AURORA = os.path.join(GBA, "src/daemons_aurora.c")
 WRITE = "--write" in sys.argv
 SCRATCH = os.environ.get("DAEMONS_SCRATCH", os.path.join(ROOT, ".theatre"))
 
@@ -191,6 +201,48 @@ def sheet(frs):
     return img
 
 
+def line(name):
+    """RED_LINE or GREEN_LINE, as daemons_aurora.c defines it: (r, g, b) in the GBA's five bits"""
+    m = re.search(r"#define\s+%s\s+RGB\((\d+),\s*(\d+),\s*(\d+)\)" % name, open(AURORA).read())
+    if not m:
+        sys.exit("gentulikko: no %s in %s" % (name, os.path.relpath(AURORA, ROOT)))
+    return tuple(int(v) for v in m.groups())
+
+
+def spark_palette():
+    """the sparks' sixteen colours, as sSparkPalette builds them (SPARK_CORE, the line, SPARK_DIM), in eight bits"""
+    to8 = lambda c: tuple((v << 3) | (v >> 2) for v in c)
+    pal = [(0, 0, 0)]
+    for name in ("RED_LINE", "GREEN_LINE"):
+        c = line(name)
+        pal += [to8(tuple((v + 31) // 2 for v in c)), to8(c), to8(tuple(v * 5 // 8 for v in c))]
+    return pal + [(0, 0, 0)] * (16 - len(pal))
+
+
+def sparks():
+    """the six tiles: per line (red, then green), three frames, each a diamond of shade frame + distance"""
+    img = Image.new("P", (8 * 6, 8), 0)
+    img.putpalette([v for c in spark_palette() for v in c])
+    px = img.load()
+    for ln in range(2):
+        for frame in range(3):
+            t = ln * 3 + frame
+            for y in range(8):
+                for x in range(8):
+                    shade = frame + abs(x - 4) + abs(y - 4)
+                    if shade <= 2:
+                        px[t * 8 + x, y] = 1 + ln * 3 + shade
+    return img
+
+
+def sparks_current(img):
+    if not os.path.exists(SPARKS):
+        return False
+    old = Image.open(SPARKS)
+    return (old.mode == "P" and old.size == img.size and list(old.getdata()) == list(img.getdata())
+            and old.getpalette()[:48] == img.getpalette()[:48])
+
+
 CONST, CNAME, FNAME = "OBJ_EVENT_GFX_TULIKKO", "Tulikko", "tulikko"
 TAG, SLOT = "OBJ_EVENT_PAL_TAG_NPC_WHITE", "PALSLOT_NPC_4"
 NOTE = ("T-528 (e): TULIKKO, the arctic fox sweeping snow by STILLFALL CAVE (DAEMONS tools/gentulikko.py), npc_white; "
@@ -239,17 +291,27 @@ def main():
     os.makedirs(SCRATCH, exist_ok=True)
     img.convert("RGBA").resize((img.width * 6, img.height * 6), Image.NEAREST).save(
         os.path.join(SCRATCH, "%s_preview.png" % FNAME))
+    spk = sparks()
+    spk_same = sparks_current(spk)
+    spk.convert("RGBA").resize((spk.width * 8, spk.height * 8), Image.NEAREST).save(
+        os.path.join(SCRATCH, "tulikko_sparks_preview.png"))
     print("  %-22s sheet %s, rule %s, registered %s" % (CONST, "current" if same else "STALE",
           "present" if rule else "MISSING", "yes" if reg else "NO"))
-    if same and reg and rule:
+    print("  %-22s six tiles %s (RED_LINE %s, GREEN_LINE %s)" % ("the sparks", "current" if spk_same else "STALE",
+          line("RED_LINE"), line("GREEN_LINE")))
+    if same and reg and rule and spk_same:
         return
     if not WRITE:
-        print("  report only; pass --write (preview in %s)" % SCRATCH)
+        print("  report only; pass --write (previews in %s)" % SCRATCH)
         return
-    img.save(path, bits=4)
-    ensure_rule()
-    register()
-    print("  written: %s, %s" % (os.path.relpath(path, GBA), CONST))
+    if not (same and reg and rule):
+        img.save(path, bits=4)
+        ensure_rule()
+        register()
+        print("  written: %s, %s" % (os.path.relpath(path, GBA), CONST))
+    if not spk_same:
+        spk.save(SPARKS, bits=4)
+        print("  written: %s" % os.path.relpath(SPARKS, GBA))
 
 
 if __name__ == "__main__":

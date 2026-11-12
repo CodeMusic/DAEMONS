@@ -32,6 +32,16 @@
                                                    # batch 3 into the engine: refused unless X is in APPROVED_B3
                                                    #   ({"A"}: the user, 2026-11-10, "A Clear pane"); then
                                                    #   gbadoors.py --write --approved for the door frames
+    python3 tools/gbaprimary.py --draft            # (batch 4, the default for --draft since batches 1..3 are built;
+                                                   #   --batch 3 drafts batch 3 again) batch 4 THE LAST EDGES into
+                                                   #   gfx/drafts/t542_b4/: A, B, C tiles.png, directions.json (with each
+                                                   #   direction's seam count over every map), the three tiles at 6x
+                                                   #   beside today in their home blocks, and five maps at 2x with a 6x
+                                                   #   detail (ARDOR's and TREASURE BEACH's sand, the FOREST's path,
+                                                   #   ROUTE 12's cliff by the bridge, ONE ISLAND's)
+    python3 tools/gbaprimary.py --write --batch 4 --approved --pick X
+                                                   # batch 4 into the engine: refused unless X is in APPROVED_B4
+                                                   #   (empty: a draft until the user picks)
 
 WHAT IS LEFT (census item 7, re-measured on today's engine). T-438 batch C (gbageneral.py) re-surfaced General's
 ground -- the rock, the LEDGES, sand and paving -- and drew its motifs: the FENCES, the SIGNPOSTS, the bushes and the
@@ -60,6 +70,11 @@ ground strays and three doors. A tile is LEFT when its 64 pixels are pret's and 
              Drafted 2026-11-10 (B3 below): all dictated but the doors (A THE CLEAR PANE, B THE READOUT, C THE
              MANIFESTATION); 21 of 24 redrawn, 4, 301 and 503 all edge and already met; gbageneral's LATER_T542
              claims all 24.
+    BATCH 4  THE LAST EDGES (3): batch 3's three, drawn anyway (the user, 2026-11-11, "draft the 3 path edges") so
+             no Nintendo pixel is left on an outdoor map: 4 the sand's outer corner, 301 the forest path's straight
+             edge, 503 a cliff's foot. Every pixel on a joint keeps what the neighbour across it has (B4_JOINS, read
+             from the engine), 301 stays its own mirror, and inside that each direction draws its edge: A THE DITHER,
+             B THE TRACE, C THE CUT STONE. DRAFT; BUILT 2026-11-11 in B THE TRACE (the user's pick, engine 676f4cb6b).
 
 THE RULES (as gbamuseum and gbadwellings keep them). Nothing but pixels inside batch 1's 53 tiles moves: no block,
 layer, flip, palette row, behaviour, collision or map. No palette changes -- General's rows 0..6 are every outdoor
@@ -532,6 +547,7 @@ def report(use):
     print("    gbageneral writes only tiles still pret's, so once batch 1 is in it cannot put one back")
     bad |= report_b2(use)
     bad |= report_b3(use)
+    bad |= report_b4(use)
     return bad, rows, c
 
 
@@ -624,16 +640,25 @@ def check_engine(use):
         b3 = draw_b3(next(iter(APPROVED_B3)), use)
         for t in B3_TILES:
             tiles[t] = b3[t]
+    if len(APPROVED_B4) == 1:                            # and batch 4's, over batch 3's three unchanged edges
+        b4 = draw_b4(next(iter(APPROVED_B4)), use)
+        for t in B4_TILES:
+            tiles[t] = b4[t]
     off = [t for t in range(len(G.CUR)) if list(tiles[t]) != list(G.CUR[t])]
     reserved = [t for t in BATCH1 if any((row_of(t, use), v) in RESERVED for v in tiles[t])]
     if off or reserved:
         print("  !! general: the engine differs from `--write --approved --pick %s` in tiles %s%s -- find which side is "
               "right" % (pick, off[:12], ("; reserved indices drawn in %s" % reserved) if reserved else ""))
         return 1
-    print("  the engine matches `--write --approved --pick %s` (batch 1, %d tiles%s%s; no reserved index drawn)"
-          % (pick, len(BATCH1), (", and batch 2's --pick %s, %d tiles" % (next(iter(APPROVED_B2)), len(B2_TILES)))
-             if len(APPROVED_B2) == 1 else "", (", and batch 3's --pick %s, %d tiles" % (next(iter(APPROVED_B3)),
-                                                len(B3_TILES))) if len(APPROVED_B3) == 1 else ""))
+    also = ""
+    if len(APPROVED_B2) == 1:
+        also += ", and batch 2's --pick %s, %d tiles" % (next(iter(APPROVED_B2)), len(B2_TILES))
+    if len(APPROVED_B3) == 1:
+        also += ", and batch 3's --pick %s, %d tiles" % (next(iter(APPROVED_B3)), len(B3_TILES))
+    if len(APPROVED_B4) == 1:
+        also += ", and batch 4's --pick %s, %d tiles" % (next(iter(APPROVED_B4)), len(B4_TILES))
+    print("  the engine matches `--write --approved --pick %s` (batch 1, %d tiles%s; no reserved index drawn)"
+          % (pick, len(BATCH1), also))
     return 0
 
 
@@ -1397,7 +1422,7 @@ B3 = collections.OrderedDict([
     ("ground", dict(title="the sand's corner, the forest path's edge, a cliff sliver", tiles=[4, 301, 503],
                     look="dictated, and already met: each is all edge -- the halo band and the sand's lip (4), the "
                          "path's scalloped edge its sides share (301), a cliff's grey rim and rock line beside a "
-                         "bridge (503, 6 draws) -- so ours is vanilla's; redrawing them is redrawing every path edge")),
+                         "bridge (503, 6 draws) -- so batch 3 leaves them as pret's; batch 4 (B4 below) draws them")),
     ("rock", dict(title="the sea rock (every sea route; BREATHVERSE in PALLET's row 10)", tiles=[173, 174, 189, 190],
                   look="dictated: the chunky stones of its twin already in the water strip (420..423) -- four lumps, "
                        "lit tops, shaded feet, dark cracks; the silhouette and its foam rim kept")),
@@ -1443,6 +1468,8 @@ def draw_b3(pick, use=None):
 def b3_state(pick_tiles):
     van, ours, other = [], [], []
     for t in B3_TILES:
+        if len(APPROVED_B4) == 1 and t in B4_TILES:
+            continue                                     # 4, 301, 503 are batch 4's once it is picked (report_b4)
         if pick_tiles is not None and G.CUR[t] == pick_tiles[t]:
             ours.append(t)
         elif G.CUR[t] == G.VAN[t]:
@@ -1616,8 +1643,393 @@ def draft_b3(use):
 B3_OBJ3 = {t: k for k, o in B3.items() for t in o["tiles"]}
 
 
+# ================================================================== batch 4: THE LAST EDGES (4, 301, 503)
+#  Batch 3 left three tiles as pret's because each is all edge: 4 the sand's outer corner (the halo band and the
+#  sand's lip, on 39 maps), 301 the forest path's straight edge (the scallop its sides share, 1283 draws) and 503 a
+#  cliff's lower corner (its grey rim and the rock beside it, 6 draws, most of it under a roof or a tree). The user,
+#  2026-11-11: "draft the 3 path edges" -- drawn anyway, so no Nintendo pixel is left on an outdoor map.
+#  What holds them is where they MEET, not what they are: every pixel on a joint is set to what the neighbour across
+#  that joint already has (B4_JOINS, checked against the engine's own neighbours), and inside that ring each direction
+#  draws its own edge. 4 meets 5 on its right and 20 below (and their flips, the same edge shapes, in 0xD5/0xE3/0xE5
+#  and the SAND blocks 0x1D5..0x1E7); 301 is drawn beside itself and its mirror, so it stays mirror-symmetric and its
+#  two side columns match 348 and 300's (the corners); 503 meets 504 above and 177 (or 183, 178) on its right.
+#  The one thing a redraw of these three cannot do is carry its language round a corner: the corners and sides
+#  (5, 20, 36, 37 by the sand; 300, 316, 332, 348 by the forest path) are already ours (T-438 C) and stay as they are,
+#  so a direction's edge runs along the straights and the sand's outer corner and hands over, pixel for pixel, to
+#  the scallop at the next corner. All three tiles draw in General's rows 5 (4, 301) and 1 (503): no reserved index.
+APPROVED_B4 = {"B"}                  # the user, 2026-11-11: B THE TRACE
+DRAFT_B4 = os.path.join(ROOT, "gfx", "drafts", "t542_b4")
+B4_TILES = [4, 301, 503]
+B4_ROW = {4: 5, 301: 5, 503: 1}
+
+B4_STYLES = collections.OrderedDict([
+    ("A", dict(title="THE DITHER",
+               blurb="every edge quantised to two inks, as a low-colour screen fakes a blend: the sand's corner a 45-degree "
+                     "stripe of grass and halo with the lip checkered into the sand, the forest path's scallops a checker "
+                     "fading halo into path, the cliff's rim a two-pixel stair with its rock shaded in an ordered ramp")),
+    ("B", dict(title="THE TRACE",
+               blurb="every edge laid like a circuit board's copper -- straight runs, clean 45-degree bends, a via where "
+                     "one turns: the sand's corner chamfered with an etched trace and a via at the bend, the forest path's "
+                     "edge one straight trace with a via in every tile, the cliff's rim one 45-degree run beside rock "
+                     "laid in straight strata")),
+    ("C", dict(title="THE CUT STONE",
+               blurb="every edge set by hand: the sand's corner turned in two cut stones (a mossy joint on the "
+                     "diagonal, their inner edge in shade), the forest path a kerb of oblong stones with lit tops and dark joints, the cliff's "
+                     "corner two dressed blocks lit along their tops")),
+])
+
+
+def _grid(s):
+    rows = [r.split() for r in s.strip().splitlines()]
+    if len(rows) != 8 or any(len(r) != 8 for r in rows):
+        raise SystemExit("  !! batch 4: a grid is not 8 x 8:\n%s" % s)
+    return [int(v, 16) for r in rows for v in r]
+
+
+#  Row 5 (4 and 301): f the grass, d / e the halo (light / shaded), a b c the sand (light, lip, shade), 6 7 8 9 the
+#  path's gold ramp (cream .. dark). Row 1 (503): f the grass, 4 the rim's grey, 9..e the rock light to dark.
+B4_ART = {
+    ("A", 4): """
+        f f f f f f f f
+        f f f f f d f d
+        f f f f d f d d
+        f f f d f d d d
+        f f d f d d d d
+        f d f d d d b b
+        f f d d d b a a
+        f d d d d b a a""",
+    ("A", 301): """
+        e e f f f f e e
+        e f e f f e f e
+        e e f e e f e e
+        e e e e e e e e
+        e 8 e e e e 8 e
+        8 e 8 e e 8 e 8
+        7 8 7 8 8 7 8 7
+        7 7 7 7 7 7 7 7""",
+    ("A", 503): """
+        f 4 4 e d c c b
+        f f 4 e d c d c
+        f f 4 4 e d c d
+        f f f 4 e d d c
+        f f f 4 4 e d d
+        f f f f 4 4 e d
+        f f f f f 4 4 e
+        f f f f f 4 4 4""",
+    ("B", 4): """
+        f f f f f f f f
+        f f f f f f f d
+        f f f f f f e d
+        f f f f f e d d
+        f f f f 6 e d d
+        f f f e e d d b
+        f f e d d d b a
+        f d d d d b a a""",
+    ("B", 301): """
+        e e f f f f e e
+        e e e e e e e e
+        e e e e e e e e
+        e e e e e e e e
+        e e e 8 8 e e e
+        8 8 8 7 7 8 8 8
+        7 7 7 8 8 7 7 7
+        7 7 7 7 7 7 7 7""",
+    ("B", 503): """
+        f 4 4 e d c c b
+        f f 4 e d d d d
+        f f 4 e c c c c
+        f f f 4 e d d d
+        f f f f 4 e d d
+        f f f f f 4 e c
+        f f f f f f 4 e
+        f f f f f f 4 4""",
+    ("C", 4): """
+        f f f f f f f f
+        f f f f f f f d
+        f f f f f f d d
+        f f f f d d d d
+        f f f d f d d d
+        f f f d d f e b
+        f f d d d e b a
+        f d d d d b a a""",
+    ("C", 301): """
+        e e f f f f e e
+        e e e e e e e e
+        e e e e e e e e
+        e e e e e e e e
+        e 6 6 6 6 6 6 e
+        8 7 7 7 7 7 7 8
+        7 9 8 8 8 8 9 7
+        7 7 7 7 7 7 7 7""",
+    ("C", 503): """
+        f 4 4 e d c c b
+        f f 4 e b b b e
+        f f 4 e d d d e
+        f f f 4 e e e e
+        f f f 4 e b b e
+        f f f f 4 e d e
+        f f f f 4 4 e e
+        f f f f f 4 4 4""",
+}
+
+#  The joints each tile must keep, as (my edge, the neighbour, its edge, the pixels compared): the neighbour is a tile
+#  (or (tile, "v") as a block draws it flipped), read from the ENGINE, so a later redraw of 5 or 20 shows up here as a
+#  broken join; or None, and then its "edge" is the inks allowed there (f: grass; 78: the path's gold).
+#  "col0"/"col7"/"row0"/"row7" are a tile's edges; the range limits the comparison to part of the edge.
+B4_JOINS = {
+    4: [("col7", 5, "col0", range(1, 8)),             # 5 to its right (0xD3): the band, the lip, the sand
+        ("row7", 20, "row0", range(1, 8)),            # 20 below it: the same, turned
+        ("row0", None, "f", range(8)),                # grass above and to the left
+        ("col0", None, "f", range(8))],
+    301: [("col7", (348, "v"), "col7", range(6)),    # the corner beside it (0xD0: 348v | 301h): the halo, the lip
+          ("col7", None, "78", range(6, 8)),          # and the path's gold below the lip (the corner has 8, pret's 7)
+          ("row7", 317, "row0", range(8))],           # the path's fill under it; beside itself it is its own mirror
+    503: [("row0", 504, "row7", range(0, 4)),         # 504 above it: the grass, the rim, the rock's dark edge
+          ("col0", None, "f", range(8)),              # grass to the left
+          ("col7", 177, "col0", range(6, 8))],        # 177 on its right: the rim turning along the foot
+}
+
+
+def _edge(px, which):
+    if which == "row0":
+        return [px[x] for x in range(8)]
+    if which == "row7":
+        return [px[56 + x] for x in range(8)]
+    if which == "col0":
+        return [px[y * 8] for y in range(8)]
+    return [px[y * 8 + 7] for y in range(8)]
+
+
+def b4_joins(t, px):
+    """the joints tile T breaks if drawn as PX: [(edge, neighbour, positions)]"""
+    bad = []
+    for mine, nb, theirs, idx in B4_JOINS[t]:
+        a = _edge(px, mine)
+        if nb is None:
+            off = [i for i in idx if "%x" % a[i] not in theirs]
+        else:
+            t2, fl = nb if isinstance(nb, tuple) else (nb, "")
+            src = G.CUR[t2]
+            if fl == "v":
+                src = [src[(7 - y) * 8 + x] for y in range(8) for x in range(8)]
+            b = _edge(src, theirs)
+            off = [i for i in idx if a[i] != b[i]]
+        if off:
+            bad.append((mine, nb if nb is not None else "grass", off))
+    return bad
+
+
+def draw_b4(pick, use=None):
+    """General's tiles with batch 4 drawn in direction PICK; every rule checked, so a draft that breaks one never lands"""
+    tiles = [list(p) for p in G.CUR]
+    for t in B4_TILES:
+        px = _grid(B4_ART[pick, t])
+        if any((a == 0) != (b == 0) for a, b in zip(G.VAN[t], px)):
+            raise SystemExit("  !! batch 4 %s: tile %d's footprint moved" % (pick, t))
+        row = B4_ROW[t]
+        if any((row, v) in RESERVED for v in px):
+            raise SystemExit("  !! batch 4 %s: tile %d draws a reserved index in row %d" % (pick, t, row))
+        if use is not None and set(use[t]["rows"]) != {("general", row)}:
+            raise SystemExit("  !! batch 4: tile %d is drawn in %s, not General row %d alone" %
+                             (t, sorted(use[t]["rows"]), row))
+        if t == 301 and any(px[y * 8 + x] != px[y * 8 + 7 - x] for y in range(8) for x in range(8)):
+            raise SystemExit("  !! batch 4 %s: tile 301 is drawn beside its mirror and is not mirror-symmetric" % pick)
+        bad = b4_joins(t, px)
+        if bad:
+            raise SystemExit("  !! batch 4 %s: tile %d breaks a joint: %s" % (pick, t, bad))
+        tiles[t] = px
+    return tiles
+
+
+def b4_state(pick_tiles):
+    van, ours, other = [], [], []
+    for t in B4_TILES:
+        if pick_tiles is not None and G.CUR[t] == pick_tiles[t]:
+            ours.append(t)
+        elif G.CUR[t] == G.VAN[t]:
+            van.append(t)
+        else:
+            other.append(t)
+    return van, ours, other
+
+
+def report_b4(use):
+    """batch 4's census and its checks"""
+    bad = False
+    print("\n  BATCH 4 -- THE LAST EDGES (drafted: gfx/drafts/t542_b4/; APPROVED_B4 %s)" % (sorted(APPROVED_B4) or "empty"))
+    for t in B4_TILES:
+        u = use[t]
+        gen = sorted(m for s, m in u["blocks"] if s == "general")
+        sec = sorted({s for s, m in u["blocks"] if s != "general"})
+        named = code_names(gen)
+        print("    %3d  %4d draws  %2d maps  %2d General blocks %s%s%s" %
+              (t, u["draws"], len(u["maps"]), len(gen), ("+ %s " % ", ".join(sec)) if sec else "",
+               "  rows: %s" % ", ".join("%s r%d %d" % (s.replace("gTileset_", ""), r, n) for (s, r), n in u["rows"].items()),
+               ("\n          NAMED: " + "; ".join("%s %s" % (b, w) for b, w in named.items())) if named else ""))
+    for k in B4_STYLES:
+        draw_b4(k, use)                                  # raises on a broken rule
+    print("    each direction keeps every footprint, every joint (B4_JOINS, read from the engine's neighbours) and 301's "
+          "mirror; no reserved index")
+    claim = set(getattr(G, "LATER_T542", set()))
+    if not set(B4_TILES) <= claim:
+        print("  !! gbageneral.LATER_T542 does not claim %s -- its write could draw over them" %
+              sorted(set(B4_TILES) - claim))
+        bad = True
+    else:
+        print("    gbageneral.LATER_T542 claims all three (no other tool draws them)")
+    pick_tiles = draw_b4(next(iter(APPROVED_B4)), use) if len(APPROVED_B4) == 1 else None
+    van, ours, other = b4_state(pick_tiles)
+    print("    in the engine: %d pret's, %d the approved pick's, %d someone else's%s" %
+          (len(van), len(ours), len(other), (" -- %s: find which side is right" % other) if other else ""))
+    bad |= bool(other)
+    if len(APPROVED_B4) > 1:
+        print("  !! APPROVED_B4 holds more than one direction: %s" % sorted(APPROVED_B4))
+        bad = True
+    return bad
+
+
+B4_CROPS = [   # (map, x0, y0, w, h in cells, what it shows, detail box inside the crop)
+    ("VermilionCity", 9, 6, 22, 14, "ARDOR CITY: the beach town's sand, its outer corners (4)", (9, 2, 6, 4)),
+    ("OneIsland_TreasureBeach", 3, 20, 16, 16, "TREASURE BEACH: sand pools in the grass, every corner (4)", (3, 4, 5, 4)),
+    ("ViridianForest", 10, 4, 14, 8, "the FOREST: the path's straight edges (301) and the corners already ours",
+     (0, 1, 6, 4)),
+    ("Route12", 0, 35, 14, 10, "ROUTE 12: the cliff's foot by the bridge (503, under the tree's edge)", (5, 4, 4, 4)),
+    ("OneIsland", 12, 0, 10, 5, "ONE ISLAND: the cliff's foot behind the CENTRE (503 where most of it shows)", (4, 0, 3, 2)),
+]
+B4_HOME = {4: (G.GMT, 0xD3, "in 0xD3"), 301: (G.GMT, 0xD1, "in 0xD1"),
+           503: ("sevii_islands_45", 744 - 640, "in SEVII 0x2E8\n(bottom layer)")}
+
+
+def b4_map_sheet(crop, versions, path, Z=2, DZ=6):
+    name, x0, y0, w, h, why, det = crop
+    F, f2 = G.font(15), G.font(12)
+    shots = [(lab, G.render2(name, tl, None, None, (x0, y0, w, h))) for lab, tl in versions]
+    dets = [(lab, G.render2(name, tl, None, None, (x0 + det[0], y0 + det[1], det[2], det[3]))) for lab, tl in versions]
+    a, d = shots[0][1], dets[0][1]
+    gap = 12
+    head = "T-542 batch 4 -- %s   (DRAFT; %dx, and a %dx detail below)" % (why, Z, DZ)
+    W = max(2 * (a.width * Z + gap), 4 * (d.width * DZ + gap), int(F.getlength(head))) + 16
+    rows2 = (len(shots) + 1) // 2
+    H = 30 + rows2 * (a.height * Z + 22) + 22 + d.height * DZ + 14
+    im = Image.new("RGB", (W, H), (16, 16, 20))
+    dr = ImageDraw.Draw(im)
+    dr.text((8, 6), head, fill=HEAD, font=F)
+    for k, (lab, s) in enumerate(shots):
+        x, y = 8 + (k % 2) * (a.width * Z + gap), 30 + (k // 2) * (a.height * Z + 22)
+        dr.text((x, y), lab, fill=(220, 220, 230), font=f2)
+        im.paste(s.resize((s.width * Z, s.height * Z), Image.NEAREST), (x, y + 16))
+    y = 30 + rows2 * (a.height * Z + 22)
+    for k, (lab, s) in enumerate(dets):
+        x = 8 + k * (d.width * DZ + gap)
+        dr.text((x, y), lab + "  %dx" % DZ, fill=(220, 220, 230), font=f2)
+        im.paste(s.resize((s.width * DZ, s.height * DZ), Image.NEAREST), (x, y + 16))
+    im.save(path)
+    return path
+
+
+def _home_block(t, tiles, Z):
+    """tile T's home block, both layers (503's bottom layer only: its top is a roof), at Z"""
+    buf, i, _ = B4_HOME[t]
+    if isinstance(buf, str):
+        sec = G.secondary("gTileset_SeviiIslands45")
+        stp = sec["tiles"].load()
+        sw, sh = sec["tiles"].size
+        e = G.entries(sec["mt"], i)
+        pals = [G.PALS[r] for r in range(7)] + [sec["pals"][r] for r in range(7, 16)]
+        im = Image.new("RGB", (16, 16))
+        for q in range(4):                                # the bottom layer only
+            v = e[q]
+            tt, row = v & 0x3FF, v >> 12
+            for yy in range(8):
+                for xx in range(8):
+                    sx, sy = (7 - xx if v & 0x400 else xx), (7 - yy if v & 0x800 else yy)
+                    if tt < 640:
+                        c = tiles[tt][sy * 8 + sx]
+                    else:
+                        j = tt - 640
+                        py = (j // (sw // 8)) * 8 + sy
+                        c = stp[(j % (sw // 8)) * 8 + sx, py] & 15 if py < sh else 0
+                    im.putpixel(((q % 2) * 8 + xx, (q // 2) * 8 + yy), pals[row][c])
+        return im.resize((16 * Z, 16 * Z), Image.NEAREST)
+    o = G.composite(buf, i, lambda tt, x, y: tiles[tt][y * 8 + x], lambda r: G.PALS[r])
+    im = Image.new("RGB", (16, 16))
+    for y in range(16):
+        for x in range(16):
+            im.putpixel((x, y), o[y][x] or (0, 0, 0))
+    return im.resize((16 * Z, 16 * Z), Image.NEAREST)
+
+
+def b4_tiles_sheet(versions, path, Z=6):
+    """each tile at 6x, today (pret's) beside each direction, and under it its home block at 6x"""
+    F, f2 = G.font(15), G.font(12)
+    cw = 16 * Z + 16
+    W = max(160 + len(versions) * cw, 1060)
+    rowh = 8 * Z + 16 * Z + 50
+    im = Image.new("RGB", (W, 40 + len(B4_TILES) * rowh), (16, 16, 20))
+    dr = ImageDraw.Draw(im)
+    dr.text((8, 8), "T-542 batch 4: the last three Nintendo edges at %dx, today and each direction, in a home block "
+            "(DRAFT)" % Z, fill=HEAD, font=F)
+    for k, (lab, _) in enumerate(versions):
+        dr.text((160 + k * cw, 26), lab, fill=(220, 220, 230), font=f2)
+    names = {4: "4  the sand's corner", 301: "301  the forest\n     path's edge", 503: "503  the cliff's\n     foot"}
+    for r, t in enumerate(B4_TILES):
+        y = 44 + r * rowh
+        dr.multiline_text((8, y + 4), names[t] + "\n\n   row %d" % B4_ROW[t], fill=(200, 200, 210), font=f2)
+        dr.multiline_text((8, y + 8 * Z + 20), B4_HOME[t][2], fill=(150, 150, 160), font=G.font(11))
+        for k, (lab, tl) in enumerate(versions):
+            im.paste(G.tile_rgb(tl[t], G.PALS[B4_ROW[t]], Z), (160 + k * cw, y))
+            im.paste(_home_block(t, tl, Z), (160 + k * cw, y + 8 * Z + 12))
+    im.save(path)
+    return path
+
+
+def draft_b4(use, mt_seen):
+    os.makedirs(DRAFT_B4, exist_ok=True)
+    summary, drawn = {}, {}
+    print("\n  batch 4, directions (3 tiles; 0 new tiles, 0 palette changes, 0 blocks moved)")
+    for k, D in B4_STYLES.items():
+        tiles = draw_b4(k, use)
+        drawn[k] = tiles
+        dd = os.path.join(DRAFT_B4, k)
+        os.makedirs(dd, exist_ok=True)
+        save_tiles(tiles, os.path.join(dd, "tiles.png"))
+        ch = {t: sum(1 for a, b in zip(G.VAN[t], tiles[t]) if a != b) for t in B4_TILES}
+        sm = G.seam_measure(tiles, mt_seen)
+        summary[k] = dict(title=D["title"], what=D["blurb"], pixels_changed=ch, new_tiles=0, palettes_changed=0,
+                          seams=dict(pairs=sm["pairs"], pixel_pairs=sm["pixel_pairs"], opened=sm["opened"],
+                                     closed=sm["closed"], worst=sm["worst"]))
+        print("    %s %-14s pixels redrawn %s; joints: %d pixel pairs over %d block pairs, %d opened, %d closed%s" %
+              (k, D["title"], ", ".join("%d: %d/64" % kv for kv in ch.items()), sm["pixel_pairs"], sm["pairs"],
+               sm["opened"], sm["closed"], ("\n        worst: %s" % sm["worst"][:4]) if sm["opened"] else ""))
+    json.dump(dict(ticket="T-542", batch=4, status="DRAFT -- not in the engine", approved=sorted(APPROVED_B4),
+                   tiles=B4_TILES, directions=summary,
+                   joins={t: [(m, nb, th, list(ix)) for m, nb, th, ix in js] for t, js in B4_JOINS.items()}),
+              open(os.path.join(DRAFT_B4, "directions.json"), "w"), indent=1)
+    allv = [("TODAY (pret's)", G.CUR)] + [("%s %s" % (k, D["title"]), drawn[k]) for k, D in B4_STYLES.items()]
+    out = [b4_tiles_sheet(allv, os.path.join(DRAFT_B4, "t542b4_tiles.png"))]
+    for i, crop in enumerate(B4_CROPS):
+        out.append(b4_map_sheet(crop, allv, os.path.join(DRAFT_B4, "t542b4_maps_%d.png" % (i + 1))))
+    for p in out:
+        print("  sheet:", p)
+
+
 def main():
     use, nlay, mt_seen = G.scan()
+    if WRITE and BATCH == "4":
+        if "--approved" not in ARGS or not PICK or PICK not in APPROVED_B4:
+            print("  --write --batch 4 refused: batch 4 is a draft. APPROVED_B4 is %s; the user picks a direction "
+                  "first, it goes into APPROVED_B4,\n  then --write --batch 4 --approved --pick X writes its 3 tiles "
+                  "into General's tiles.png (never a palette, a block or a map)." % (sorted(APPROVED_B4) or "empty"))
+            return 1
+        tiles = draw_b4(PICK, use)
+        van, ours, other = b4_state(tiles)
+        if other:
+            print("  --write refused: batch 4 tiles %s are neither pret's nor direction %s's -- another tool drew "
+                  "there; find which side is right first" % (other, PICK))
+            return 1
+        save_tiles(tiles, os.path.join(PD, "tiles.png"))
+        print("  written: batch 4, direction %s -- %d tiles (%d were already so)" % (PICK, len(van), len(ours)))
+        return 0
     if WRITE and BATCH == "3":
         if "--approved" not in ARGS or not PICK or PICK not in APPROVED_B3:
             print("  --write --batch 3 refused: batch 3 is a draft. APPROVED_B3 is %s; the user picks a direction "
@@ -1668,8 +2080,10 @@ def main():
     bad, rows, c = report(use)
     if DRAFT is not None and BATCH == "2":
         draft_b2(use)
-    elif DRAFT is not None and BATCH != "1":
+    elif DRAFT is not None and BATCH == "3":
         draft_b3(use)
+    elif DRAFT is not None and BATCH != "1":
+        draft_b4(use, mt_seen)
     elif DRAFT is not None:
         os.makedirs(DRAFT, exist_ok=True)
         versions = [("TODAY", G.CUR)]

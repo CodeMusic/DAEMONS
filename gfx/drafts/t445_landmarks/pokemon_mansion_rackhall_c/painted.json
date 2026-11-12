@@ -1,0 +1,29 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t445_landmarks/pokemon_mansion_rackhall_c/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, inside a burned out machine hall, tall black server racks with rows of small dead lights, raised steel floor plates, a dark cable trench, soot climbing the grey walls, a hole in the roof letting in a pale ash grey light, cold and long burnt out, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, fire, flames, glow, embers, orange light, people, windows with curtains, bright colours",
+ "seed": 4510,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.62,
+ "stop_at": null,
+ "image": "gfx/drafts/t445_landmarks/pokemon_mansion_rackhall_c/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "model": "shaper",
+ "loras": [],
+ "references": [],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "model_files": {
+  "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 48.9,
+ "comfyui": "0.19.1",
+ "made": "2026-11-11 16:05:13"
+}

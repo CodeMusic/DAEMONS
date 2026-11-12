@@ -101,7 +101,7 @@ The crown is a **button**, not a dial: you press it, you do not turn it.
 
 - **Asleep, press it** to wake the watch. Only the crown wakes it from sleep (or, on the Ultra, your wrist).
 - **Press it** to go back a step.
-- **Press it twice**, quickly, to go home to the face, from anywhere.
+- **Press it twice**, quickly, to go home to the face, from anywhere -- even from inside BOOKS or HOURS.
 - **Hold it** and the watch sleeps.
 - **Hold it longer** and the watch switches off. The crown starts it again. There is no SWITCH OFF page.
 
@@ -205,7 +205,8 @@ With no goal yet, it says so. Goals are set in the app.
 ## Your daemon's page {#daemonpage}
 
 Your daemon in its den, its name and kind and level, how it is (or *ASLEEP*), and how fed and watered it is today:
-*fed 2/3 water 1/3*. **Tap** to care for it ([Caring for it](#care)).
+*fed 2/3 water 1/3*. **Tap**, and four tiles open: **CARE** ([Caring for it](#care)), **INDEX** (its
+[entry](#entry)), **TALK** ([Talking](#talk)) and **DREAM** (last night's, [Nights and dreams](#nights)).
 
 With no daemon, it tells you how to send one.
 
@@ -236,7 +237,8 @@ screen is dimmer and sleeps sooner. Putting it on its charger turns low power of
 
 ## CARE {#caregrid}
 
-**Tap the face twice** -- or tap **CARE** in the strip, or, on the Ultra, tap the watch twice -- and four tiles open
+**Tap the face twice** -- or **CARE** on your daemon's page, or in the strip, or, on the Ultra, tap the watch twice -- and
+four tiles open
 under *CARE FOR* your daemon's name:
 
 | tile | |
@@ -256,7 +258,7 @@ watch is dark for the night.
 
 ## Its INDEX entry {#entry}
 
-From your daemon's page, open its care and choose **ITS INDEX ENTRY**, or tap **INDEX** in the Ultra's strip: its
+Tap your daemon's page, then **INDEX** -- or tap **INDEX** in the Ultra's strip: its
 kind, its types, its entry from the game's INDEX and what the OPUS wrote about it. Swipe for more; **tap** and it is
 read aloud.
 
@@ -340,10 +342,16 @@ FIND IT needs the watch to be in reach of the companion.
 ## BOOKS {#bookslist}
 
 **BOOKS**, in ROUTINES or the Ultra's strip. Each book your save holds -- **THE SUBTLE LAYER**, **THE GUIDE**, the
-**NOTEBOOK** -- stands here once you have found it in the game, and not before. Swipe to choose and tap to open.
+**NOTEBOOK** -- stands here once you have found it in the game, and not before.
 
-A book opens on its chapters. Inside a chapter, **swipe** to turn the page, and **LISTEN** to have it read aloud, a
-paragraph at a time; a tap, a hold or the crown stops the reading.
+BOOKS opens as **tiles**, four to a screen, each with its picture: an open book for a book, a **?** for each way of
+asking, a card for the cards, four squares for THE INDEX, and, on the Ultra, a memory card for KEEP ON THE CARD.
+**Swipe** for the next four; **tap** a tile to open it.
+
+A book opens on its chapters, as tiles numbered 1, 2, 3 and on. Inside a chapter, **swipe** to turn the page, and
+**LISTEN** to have it read aloud; a tap, a hold or the crown stops the reading. THE GUIDE and THE SUBTLE LAYER are
+read in **the book's own voice**, the recording the app plays, a chapter at a time; a chapter with no recording yet is
+read a paragraph at a time, in the INDEX's voice.
 
 With a book found, BOOKS also lets you **ask** it, aloud:
 
@@ -357,20 +365,17 @@ With a book found, BOOKS also lets you **ask** it, aloud:
 
 Asking needs home; away from it, the watch says *ASK THE BOOK AT HOME*.
 
-::: note
-**BOOKS is changing** (C-325): its list is becoming tiles, as the pages are. This printing describes the list.
-:::
-
 ## THE INDEX {#index}
 
 First in BOOKS is **THE INDEX**: every daemon you have met in the game, numbered, and how many you have seen and
-bound. A daemon only seen says so. Tap one for its picture, its kind and types, its entry, what was written in the
+bound, as a list: swipe up or down to move through it. A daemon only seen says so. Tap one for its picture, its kind and types, its entry, what was written in the
 margin, and **LISTEN**.
 
 ## The memory card (Ultra) {#sd}
 
 Put a microSD card in the Ultra, and it keeps what you read on it as you read it -- the books, THE INDEX and its
-pictures, and every reading once heard -- so they open **FROM THE CARD**, and are read aloud, away from any network.
+pictures, and every reading once heard, a book's own recording among them -- so they open **FROM THE CARD**, and are read aloud,
+away from any network.
 **KEEP ON THE CARD**, at the foot of BOOKS, keeps all of them at once while you are home: *KEPT 12 OF 40*, and so on.
 
 The card also holds what the watch could not send while it was away: walks and nights, meetings and voice notes. They

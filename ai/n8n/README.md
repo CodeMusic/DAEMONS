@@ -134,6 +134,11 @@ prompts — and the good ones then get drawn properly.
 
 ## `daemon/talk`, and the companion's devices (2026-10-07)
 
+**Moved to the companion** (2026-11-11, companion C-340): `daemon/talk` and `daemon/hear`, and `make_workflows.py` that
+writes them, are now in [daemons-companion's `seer/n8n/`](https://github.com/CodeMusic/daemons-companion/tree/main/seer), written for whatever the local cloud was set up with
+(`seer/bindSeer.sh`): their models are LiteLLM's names `seer-talk` and `seer-hear`, and `DAEMONS_LLM_KEY` is LiteLLM's
+key. What follows is how they came to be.
+
 Every companion device that can listen -- the handhelds, the watch, the stick, the Tab5 and the phone app -- talks to its
 daemon through this one endpoint, **by way of the companion server** (which holds the secret and knows the daemon), never
 directly: the same reason `daemon/voice` is proxied.

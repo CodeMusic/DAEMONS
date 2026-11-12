@@ -1,0 +1,311 @@
+{
+ "ticket": "T-542",
+ "batch": 4,
+ "status": "DRAFT -- not in the engine",
+ "approved": [],
+ "tiles": [
+  4,
+  301,
+  503
+ ],
+ "directions": {
+  "A": {
+   "title": "THE DITHER",
+   "what": "every edge quantised to two inks, as a low-colour screen fakes a blend: the sand's corner a 45-degree stripe of grass and halo with the lip checkered into the sand, the forest path's scallops a checker fading halo into path, the cliff's rim a two-pixel stair with its rock shaded in an ordered ramp",
+   "pixels_changed": {
+    "4": 13,
+    "301": 10,
+    "503": 15
+   },
+   "new_tiles": 0,
+   "palettes_changed": 0,
+   "seams": {
+    "pairs": 1836,
+    "pixel_pairs": 157456,
+    "opened": 220,
+    "closed": 3606,
+    "worst": [
+     [
+      "13 209 v gTileset_VermilionCity",
+      106
+     ],
+     [
+      "13 209 v gTileset_ViridianForest",
+      20
+     ],
+     [
+      "36 209 v gTileset_VermilionCity",
+      15
+     ],
+     [
+      "37 209 v gTileset_VermilionCity",
+      14
+     ],
+     [
+      "13 209 v gTileset_SeviiIslands123",
+      8
+     ],
+     [
+      "225 650 v gTileset_ViridianForest",
+      6
+     ],
+     [
+      "225 648 v gTileset_ViridianForest",
+      6
+     ],
+     [
+      "202 210 v gTileset_CinnabarIsland",
+      4
+     ],
+     [
+      "98 209 v gTileset_LavenderTown",
+      4
+     ],
+     [
+      "13 210 v gTileset_VermilionCity",
+      4
+     ],
+     [
+      "676 209 v gTileset_ViridianForest",
+      4
+     ],
+     [
+      "3 209 v gTileset_ViridianForest",
+      4
+     ]
+    ]
+   }
+  },
+  "B": {
+   "title": "THE TRACE",
+   "what": "every edge laid like a circuit board's copper -- straight runs, clean 45-degree bends, a via where one turns: the sand's corner chamfered with an etched trace and a via at the bend, the forest path's edge one straight trace with a via in every tile, the cliff's rim one 45-degree run beside rock laid in straight strata",
+   "pixels_changed": {
+    "4": 12,
+    "301": 8,
+    "503": 18
+   },
+   "new_tiles": 0,
+   "palettes_changed": 0,
+   "seams": {
+    "pairs": 1836,
+    "pixel_pairs": 157456,
+    "opened": 34,
+    "closed": 1410,
+    "worst": [
+     [
+      "224 1 h gTileset_CinnabarIsland",
+      11
+     ],
+     [
+      "138 225 h gTileset_CeruleanCity",
+      6
+     ],
+     [
+      "138 225 h gTileset_PewterCity",
+      2
+     ],
+     [
+      "114 209 h gTileset_LavenderTown",
+      2
+     ],
+     [
+      "138 849 h gTileset_SeviiIslands67",
+      2
+     ],
+     [
+      "224 114 h gTileset_CinnabarIsland",
+      1
+     ],
+     [
+      "114 226 h gTileset_CinnabarIsland",
+      1
+     ],
+     [
+      "224 8 h gTileset_CinnabarIsland",
+      1
+     ],
+     [
+      "224 476 h gTileset_CinnabarIsland",
+      1
+     ],
+     [
+      "114 209 h gTileset_PewterCity",
+      1
+     ],
+     [
+      "138 209 h gTileset_CeruleanCity",
+      1
+     ],
+     [
+      "146 209 h gTileset_LavenderTown",
+      1
+     ]
+    ]
+   }
+  },
+  "C": {
+   "title": "THE CUT STONE",
+   "what": "every edge set by hand: the sand's corner turned in two cut stones (a mossy joint on the diagonal, their inner edge in shade), the forest path a kerb of oblong stones with lit tops and dark joints, the cliff's corner two dressed blocks lit along their tops",
+   "pixels_changed": {
+    "4": 7,
+    "301": 14,
+    "503": 15
+   },
+   "new_tiles": 0,
+   "palettes_changed": 0,
+   "seams": {
+    "pairs": 1836,
+    "pixel_pairs": 157456,
+    "opened": 1,
+    "closed": 1446,
+    "worst": [
+     [
+      "853 893 h gTileset_SeviiIslands123",
+      1
+     ]
+    ]
+   }
+  }
+ },
+ "joins": {
+  "4": [
+   [
+    "col7",
+    5,
+    "col0",
+    [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   ],
+   [
+    "row7",
+    20,
+    "row0",
+    [
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   ],
+   [
+    "row0",
+    null,
+    "f",
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   ],
+   [
+    "col0",
+    null,
+    "f",
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   ]
+  ],
+  "301": [
+   [
+    "col7",
+    [
+     348,
+     "v"
+    ],
+    "col7",
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ]
+   ],
+   [
+    "col7",
+    null,
+    "78",
+    [
+     6,
+     7
+    ]
+   ],
+   [
+    "row7",
+    317,
+    "row0",
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   ]
+  ],
+  "503": [
+   [
+    "row0",
+    504,
+    "row7",
+    [
+     0,
+     1,
+     2,
+     3
+    ]
+   ],
+   [
+    "col0",
+    null,
+    "f",
+    [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5,
+     6,
+     7
+    ]
+   ],
+   [
+    "col7",
+    177,
+    "col0",
+    [
+     6,
+     7
+    ]
+   ]
+  ]
+ }
+}

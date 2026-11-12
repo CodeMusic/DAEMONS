@@ -293,19 +293,22 @@ so the repository shows what the build looked like: `python3 tools/qashot.py --t
 
 1. **Build all four ROMs and check each exit code** (`firered`, `leafgreen`, `firered_debug`, `leafgreen_debug`).
 2. **Run the checks** -- `check_lexicon.py`, `check_reach.py`, `check_agent_vocab.py`, `check_todo.py` (the record: no
-   open row under Closed, no spent reservation, the README's release line current -- T-553), `check_secrets.py` (the four
-   secrets grepped for in every tracked file, from `docs/private/secrets_patterns.txt` -- T-550), `companion_export.py --check`
-   (the companion holds the words the game is built from, T-373), `bookaudio.py --check` (every book has its own voice
-   and a current recording -- a new book gets a voice chosen with the user from samples, T-543), then
-   `check_generators.py` on a quiet tree (edit neither repo while it runs).
+   open row under Closed, no conflict marker, no spent reservation, the README's release line current -- T-553), `check_secrets.py`
+   (the four secrets grepped for in every tracked file, from `docs/private/secrets_patterns.txt` -- T-550), `companion_export.py --check`
+   (the companion holds the words the game is built from, T-373), `releasedocs.py --audio-gate` (every book has its
+   own voice -- a new book gets one chosen with the user from samples, T-543 -- and, on a major or minor release only,
+   a current recording, T-544), then `check_generators.py` on a quiet tree (edit neither repo while it runs).
 3. **Commit per ticket** in both repos -- engine first, then the docs commit that strikes the ticket through with the
    engine commit -- and push both.
 4. **Release**: `check_fresh_clone.py`, then `romrelease.py --write`, commit "ROM release vX: ...", push, then
    `ghrelease.py --write`.
-5. **Show it**: review sheets sent with SendUserFile and filed with `qashot.py` (above); a new `<li id="q-pushN">` at
+5. **Bring the docs current from WHAT'S NEW** (T-544; "Releasing ROMs" below): `python3 tools/releasedocs.py --online`.
+   Fix every STALE line it prints, judge every CANDIDATE (write it, or add a TODO row), commit by path, push, and
+   publish each wiki that changed. On a minor or major release, report its book-audio plan to the user, then run it.
+6. **Show it**: review sheets sent with SendUserFile and filed with `qashot.py` (above); a new `<li id="q-pushN">` at
    the top of `<ol class="asks">` on the private field-test page and its `<p class="build">` bumped -- read the live
    page first and build from the saved copy (its memory note has the details).
-6. **Rewrite `docs/private/HANDOFF.md`**, and if the session folded since the last push, keep the fold and dream it (above).
+7. **Rewrite `docs/private/HANDOFF.md`**, and if the session folded since the last push, keep the fold and dream it (above).
 
 **Standing rules a session has to be told**: never touch the user's own save (`engineGba/daemonsContent.sav`) --
 test on a copy in the scratchpad; mark every new in-game word DRAFT; a message box line is at most 208px; draw
@@ -313,7 +316,7 @@ sprites at `--size 512x512`; never run the paid AI playtester (a local one on th
 the user's personal story stays in `docs/private/` and reaches the game only as fable -- no real names, company,
 medical detail or emails; DAEMONS is said **DAY-mons** -- never write the frightening word it is taken for in
 anything a reader sees, and every line handed to a voice is respelled daymon(s) first (the companion's `sayable()`,
-`ai/n8n/make_workflows.py` `SAYABLE`, `tools/bookaudio.py`; its app/AGENTS.md lists every speech path).
+the companion's `seer/n8n/make_workflows.py` `SAYABLE`, `tools/bookaudio.py`; its app/AGENTS.md lists every speech path).
 
 ## Releasing ROMs
 
@@ -329,6 +332,25 @@ set as one `ReleaseNotes_v11.281.x.pdf`. It refuses a dirty tree. Without `--wri
 CONTEXT for LeafGreen 1.0 and Rev 1, made against pret's own byte-identical builds of retail, cached in
 `~/.cache/daemons` and checked by hash. They are gitignored for size and are what gets published. A patch made by
 this encoder was checked independently: mGBA applied it to a retail Rev 1 ROM and booted DAEMONS.
+**Every release brings the documentation current, read from WHAT'S NEW** (T-544; the user, 2026-11-11: "during
+releases we look back between now and the previous what's new -- and with that context, ensure git readme's, wiki's,
+manuals, docs, etc automatically get updated and rebuilt"). After the release is filed, `python3 tools/releasedocs.py
+--online` lists what came since the release before it (the engine's and this repo's commits, grouped by ticket and
+titled from TODO) and checks every public surface against it: the five READMEs and five wikis (each `wiki/` folder,
+published with its `wiki/publish.sh` -- from HEAD when another session has wiki edits open), the manuals' sources and
+PDFs (`tools/manual.py --book X --write`), the design bible's PDF, and the companion's SET UP pages (C-339).
+**STALE** is mechanical and always fixed in the same push: a "newest release" line naming an older release, a manual
+whose sources moved after it was printed, a wiki not published, a SET UP whose page does not name it. **CANDIDATE**
+is a judgement: an item routed by the files it touched to a page that does not name it -- write it, or add a TODO row;
+most tickets need no public word. *Nothing in docs/private/, none of the four things above, nothing personal.*
+**Major, minor, patch**: a release is v<bible>.<n>; it is **major** when the bible's first number moved since the last
+release, **minor** when its second did (the first release of a new group, the one that seals), and a **patch**
+otherwise. The companion's TestFlight builds are patches; only its app.json version's first two numbers make one
+minor. **Book audio is regenerated on a major or minor release only, never on a build or a fix**, and only for the
+books whose words changed since their recording (`--audio-gate` fails a minor release with any behind and prints
+exactly which; on a patch it names them and defers). Recordings are long and run on the Tiiny or roverbyteseer:
+**report the plan to the user before running any.** The companion's half of this is in its `app/AGENTS.md`.
+
 **Before a release anyone else will download, run `python3 tools/check_fresh_clone.py`**: it clones the engine
 from GitHub, builds both editions and compares them byte for byte with this machine's (about five minutes). A
 mismatch means the build needs something that is not in git. First run 2026-09-24: identical.

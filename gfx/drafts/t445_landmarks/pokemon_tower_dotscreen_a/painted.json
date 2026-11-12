@@ -1,0 +1,29 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t445_landmarks/pokemon_tower_dotscreen_a/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, inside a pale round stone tower, the curved wall made of halftone dots with rows of small arched niches each holding a tiny warm candle flame, a pale floor of fine halftone dots, quiet, soft grey light, monochrome grey with only the small warm flames, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, colour, green, blue, fire on the floor, people, windows, stairs",
+ "seed": 4508,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.48,
+ "stop_at": null,
+ "image": "gfx/drafts/t445_landmarks/pokemon_tower_dotscreen_a/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "model": "shaper",
+ "loras": [],
+ "references": [],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "model_files": {
+  "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 42.1,
+ "comfyui": "0.19.1",
+ "made": "2026-11-11 16:02:53"
+}

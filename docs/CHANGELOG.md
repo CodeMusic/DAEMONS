@@ -5,25 +5,46 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
-## v11.351 — 2026-11-11
+## v11.354 — 2026-11-12
+
+*The Fifth Review's four jobs, done on a branch 2026-11-11 and merged over main's v11.347 to v11.353, which took the numbers the branch had used meanwhile; one version carries all four.*
 
 - **The ending's two gates (T-552, the Fifth Review's third finding; the user by multiple choice).** 4.34's order gains step 2a, TANOBY's seventh chamber: it was the cave's second gate in the flags and in 0.7 and never in the ending's own table. The dream the unread cave wakes you from (T-254) now ends on one line in S.T.A.R.R.'s register, DRAFT: *SEVEN ISLAND. SEVEN CHAMBERS. / THE SEVENTH HAS NOT BEEN READ.* And 9.17 is corrected: in play the GLOBAL INDEX has come from the aide on `FLAG_CRYSTAL_GONE` alone since T-27, so the sixty-daemon count the bible, the Fourth Review and the Fifth all named as a gate was dead code on an unreachable path. The user dropped it outright; Act 2 opens on the REVIEW BOARD and only that.
 - **The secrets swept again (T-550, the Fifth Review's first finding).** Three of the four things CLAUDE.md keeps out of public writing had become readable in tracked files since the 2026-09-27 redaction: the lineage (twice), this log (nine lines, three older than the first redaction), the bible (4.3, 4.6, 4.24 and the renames table), the school document's notebook table, the Second and Third Reviews, and a port tool's docstring. Each now reads `[private: SECRETS §n]` or says the fact without the relation; the posts README names all four. `tools/check_secrets.py` greps every tracked file for them on each push, from a patterns file that lives in `docs/private/` and is never committed.
-- **Decision log**: Settled.
-
-## v11.350 — 2026-11-11
-
 - **DURABLE holds from full HP (T-551, the Fifth Review's second finding).** 2.11, 5.3 and 5.3b said CAIRN's line "cannot be knocked out in one blow, at any level"; the ability was vanilla's STURDY, which in Gen 3 stops only the four one-hit-KO routines, so a strong hit took HEAP down in one and BENCHMARK 1 had no mechanic. The later generations' rule is built: a daemon with DURABLE at full HP survives any single hit with 1 HP left (ENDURE and FAILSAFE keep precedence; a SUBSTITUTE takes the hit; the one-hit-KO block stays). Its line, DRAFT: *did not go down to one hit!* Its description, DRAFT, in 2.11's register: *No one hit takes it from full.* The three sections say so; 5.3b's row 1 is amended.
-- **Decision log**: Settled.
-
-## v11.349 — 2026-11-11
-
 - **The record tidied (T-553, the Fifth Review's plans section).** No design moved; eight bodies were brought to what the build already does. 8.1's slice list says the chart is seventeen types, as it has been since 2026-09-10. 8.4's "trap to avoid" is read with 0.4's 2026-09-04 ruling and logged as **Reversed**: the pair is a pair on purpose, and neither entry reports a feeling. 8.6's "restraint clause holds at two" is logged as **Reversed** by the dozen meanings colour now carries; what survived is invariant 5 as practised, one meaning per colour and none explained. 4.5's ORPHAN is marked superseded on the GBA build (REMNANT to COREFILE, MISSINGNO's blank entry) and its open sequencing question answered by the build. 8.2a's "he is not the same" is reconciled with 4.37's "SCORN is unchanged": the staff's account and the fact. 4.1's opening row no longer says the thesis is stated. 4.3's "Ty is not in the endgame" survives as *not on the ladder*. 4.33's placement is settled (T-22); his name stays OPEN.
 - **8.7's accepted sweeps have a ticket at last**: T-554 carries the colour, tempo and SLEEP sweeps, Brazen's B-section, the small continuity faults, CONVICTION, Al's desaturating party and the INDEX sprite's fixed saturation.
 - **Outside the bible, the same ticket**: 21 open rows re-filed from under TODO's Closed heading, T-456, T-457 and T-433 struck, the PKRS question struck (MEME, T-258), the T-267 reservation cleared; CLAUDE.md no longer carries a bible version to drift (it said v11.296 for five weeks) and names the GBA fork in its first line; the READMEs and the wiki name v11.346.2; wiki/Editions says 398 entries; docs/README's dead PDF links gone, engine.md's "eight traps" forty-three, school.md and its row say built; `tools/check_todo.py` fails the push on an open row under Closed, a spent reservation or a stale release line.
-- **Decision log**: Settled, and two rows in Reversed.
+- **Decision log**: four Settled rows, and two rows in Reversed (8.4's trap, 8.6's restraint clause).
 
-*v11.349 to v11.351 were the Fifth Review's three jobs on a branch, merged over main's v11.347 and v11.348 (below), which had taken the same numbers meanwhile.*
+## v11.353 — 2026-11-11
+
+- **9.29:** the S.S. ANNE's departure wake now starts at her waterline, released in v11.352.1 (T-447, the user's pick). It had shown through the flagstaff's notch over the deck.
+- A Settled entry in section 10. DRAFT.
+
+## v11.352 — 2026-11-11
+
+- **9.29:** the landmarks' name cards follow their buildings, released in v11.351.1 (T-445). The KEEPALIVE PLANT's card is growing untended, and TANOBY's chambers are carved, not lit. Every place card is now ours except DOLDRUM CAVE's.
+- **4.39:** eight of THE HERMETIC LAYER's faces were redrafted in the companion and carried into the game's deck (C-272, v11.351.1).
+- A Settled entry in section 10. All of it is DRAFT.
+
+## v11.351 — 2026-11-11
+
+- **9.29:** landmark pair 7 is built and released in v11.350.1 (T-447). The user chose THE LIVERY for the S.S. ANNE: the outside of the liner, which was already ours, carried into her rooms. Her departure smoke now sits over the funnel. Every landmark is now ours except USER TOWER (the user's) and DOLDRUM CAVE (waits on T-251).
+- A Settled entry in section 10. All of it is DRAFT.
+
+## v11.350 — 2026-11-11
+
+- **4.40:** THE UNITY BOOK's three covers, which the user chose and v11.349.1 released (T-519). The night half shows a tablet mirrored in a still pool. The dawn half shows a star over the fir, with the lark. The mended book has both plates on indigo boards.
+- **9.34:** the MUSAI branch is built. All 24 seasonal forms are drawn, and v11.349.1 released their followers (T-534).
+- A Settled entry in section 10. All of it is DRAFT.
+
+## v11.349 — 2026-11-11
+
+- **4.40, released in v11.348.2:**
+  - **TULIKKO's sparks (T-528 e).** Once the book is mended, sparks rise from the fox's tail on a night of light, in the edition's own colour. The conjugate light brings them on any night by itself, rising green and turning red, which is what the user chose.
+  - **The torn lines (T-519).** The book now ends "...It will not be, and it always was. Look again, and you will see them both."
+- A Settled entry in section 10. Every word is DRAFT.
 
 ## v11.348 — 2026-11-11
 

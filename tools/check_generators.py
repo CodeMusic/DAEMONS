@@ -101,7 +101,7 @@ ARGS = {
     #  mouth A" -- its write is a second run, each sandboxed on its own; the report checks both batches either way.
     #  Batch 3 (THE EDGES AND DOORS): the user, 2026-11-10, "A Clear pane" -- a third run; then gbadoors' frames follow.
     "gbaprimary": [["--approved", "--pick", "A"], ["--batch", "2", "--approved", "--pick", "A"],
-                   ["--batch", "3", "--approved", "--pick", "A"]],
+                   ["--batch", "3", "--approved", "--pick", "A"], ["--batch", "4", "--approved", "--pick", "B"]],
     #  T-447 pair 4: the same shape; the user picked "MANSION A The rack hall, TOWER A The dot screen" on 2026-11-10.
     #  APPROVED holds both picks; the write redraws the MANSION's tiles and rows 7, 8, 12, the diary's four primary
     #  tiles and DAEMON TOWER's tiles and rows 7, 8, 9, 12 (never the stones' slots), and the report exits 1 when the
@@ -112,7 +112,8 @@ ARGS = {
     #  T-447 pair 6: the user picked "LEAGUE A The four vessels, HALL A The index card" on 2026-11-11 -- a third run,
     #  `--pair 6 --approved`, whose write redraws the LEAGUE's tiles and rows 7..12 (the nine named blocks keep their
     #  ids) and the HALL OF FAME's own tiles and rows 7, 10, 11 (never the UNION ROOM's); any report checks all three.
-    "gbalandmarkrooms": [["--approved"], ["--pair", "5", "--approved"], ["--pair", "6", "--approved"]],
+    "gbalandmarkrooms": [["--approved"], ["--pair", "5", "--approved"], ["--pair", "6", "--approved"],
+                         ["--pair", "7", "--approved"]],
     #  gbatowns' --write refuses without --approved, so --writes never saw its write (found by T-447 pair 5's build,
     #  2026-11-11: an approved write would have changed pokemon_league and sevii_islands_45). With --approved its
     #  sandboxed write is real; the LEAGUE and the HALL are LANDMARKS now (pair 6), and FOUR ISLAND's two post copies
@@ -123,6 +124,10 @@ ARGS = {
     #  (the user's picks, 2026-11-08), the approved summers into gfx/daemons/, and its table and coordinates blocks --
     #  and its report exits 0. port_index's whole-tree --write refuses (generator_drift.json); its seasonal header is --write --seasons.
     "genmusaiseasons": [[]],
+    #  T-445: gbapreviews' --write refuses without --approved, so --writes never saw a card written. The user picked
+    #  "PLANT A, TANOBY A" on 2026-11-11 (CARDS_APPROVED); `--cards --approved` writes those two into the plant's and
+    #  MONEAN's card folders, so a sandboxed write changes nothing when the engine is right. The plain run keeps the report.
+    "gbapreviews": [[], ["--cards", "--approved"]],
 }
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
 SKIPPED = {name: "docs/private/notebook_docs.json is missing (private, not in git), and gbadocs without it is not a check"

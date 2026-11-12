@@ -61,6 +61,11 @@ for l in todo:
         else:
             say(f"ok    reservation T-{lo} to T-{hi} still has free ids")
 
+# conflict markers left by a merge (two blocks of them rode on the branch for a day, 2026-11-11)
+markers = [i + 1 for i, l in enumerate(todo) if re.match(r"^(<<<<<<<|=======|>>>>>>>)( |$)", l)]
+if markers:
+    fail(f"{len(markers)} conflict-marker line(s) in docs/TODO.md, first at line {markers[0]}")
+
 # malformed rows: an id cell with no closing pipe (T-519's, 2026-11-11)
 bad = [l[:40] for l in todo if re.match(r"\| (~~)?\*\*T-\d+\*\*(~~)? [^|]", l)]
 if bad:

@@ -385,3 +385,159 @@ THE WATCH (C-326, DRAFT): the cover and the controls
 THE WATCH (C-326, DRAFT): the cover and the controls
 
 ![11Nov2026 - C326 - THE WATCH manual - 80](11Nov2026%20-%20C326%20-%20THE%20WATCH%20manual%20-%2080.png)
+
+### 11Nov2026 - C167 - the ledger shows the companions figure - 81
+
+C-167: the CORPUS ledger reading ¥31475 -- the companion's SYNC writer added 31,415 to a scratch debug save's house take (60 -> 31,475), and the game shows it.
+
+![11Nov2026 - C167 - the ledger shows the companions figure - 81](11Nov2026%20-%20C167%20-%20the%20ledger%20shows%20the%20companions%20figure%20-%2081.png)
+
+### 11Nov2026 - T528 - TULIKKOs sparks from the ROM - 82
+
+T-528 (e), the last of it: TULIKKO's sparks, decoded from both built ROMs (v11.348 build, not released). Top: each ROM's six spark tiles at 12x (a cross, a point, a speck; the red line, then the green) and its palette -- the sky's lines RGB(30,7,9) and RGB(10,30,15), each with its core halfway to white and its embers at 5/8; CONTENT's own sparks are red, CONTEXT's green. Below, at 3x as on screen: under the conjugate light each spark rises green from the fox's tail and turns red above it. Tiles drawn by tools/gentulikko.py, which reproduces the committed PNG byte for byte. Not filmed (route tools/routes/t528_sparks.json). No words. DRAFT.
+
+![11Nov2026 - T528 - TULIKKOs sparks from the ROM - 82](11Nov2026%20-%20T528%20-%20TULIKKOs%20sparks%20from%20the%20ROM%20-%2082.png)
+
+### 11Nov2026 - T519 - THE UNITY BOOK last line - 83
+
+T-519, the torn lines: THE UNITY BOOK's last entry (LAST WORD), its final spread laid out by gensubtle's own layout (book_reader.c's two 110px pages, 94px column, 13px pitch) in the game's font -- it now ends 'It will not be, and it always was. Look again, and you will see them both.', two lines carried onto the right page, the spread count unchanged. A layout from the build's sources, not a screenshot. DRAFT.
+
+![11Nov2026 - T519 - THE UNITY BOOK last line - 83](11Nov2026%20-%20T519%20-%20THE%20UNITY%20BOOK%20last%20line%20-%2083.png)
+
+### 11Nov2026 - T534 - MUSAI followers all 24 looks walking - 84
+
+T-534: the MUSAI branch's followers drawn from the finals (DRAFT) -- all six forms in all four seasons, decoded from the built daemonsContent.gba (engine 27a29b6f7): each form's battle front beside its follower at 3x walking south, north, west and east (east mirrored, each with its 1px step hop, as daemons_follower.c draws it), in the form's own palette. Vehicles redrawn to read at 1x: runners, rugged wheels, pontoon floats, wings.
+
+![11Nov2026 - T534 - MUSAI followers all 24 looks walking - 84](11Nov2026%20-%20T534%20-%20MUSAI%20followers%20all%2024%20looks%20walking%20-%2084.png)
+
+### 11Nov2026 - T447 - S.S. ANNE pair 7 rooms 1x deck office galley - 86
+
+T-447 pair 7 DRAFT: the S.S. ANNE's deck, the captain's office and the galley at 1x, today beside A THE PACKET, B THE KEY, NO TUNE and C THE LIVERY. Redrawn in place, 0 new tiles, rows 7-9 only. Not in the engine.
+
+![11Nov2026 - T447 - S.S. ANNE pair 7 rooms 1x deck office galley - 86](11Nov2026%20-%20T447%20-%20S.S.%20ANNE%20pair%207%20rooms%201x%20deck%20office%20galley%20-%2086.png)
+
+### 11Nov2026 - T447 - S.S. ANNE pair 7 rooms 1x cabins hold corridor - 87
+
+T-447 pair 7 DRAFT: both cabin layouts, the B1F corridor (the hold's) and part of 1F at 1x, today beside the three directions.
+
+![11Nov2026 - T447 - S.S. ANNE pair 7 rooms 1x cabins hold corridor - 87](11Nov2026%20-%20T447%20-%20S.S.%20ANNE%20pair%207%20rooms%201x%20cabins%20hold%20corridor%20-%2087.png)
+
+### 11Nov2026 - T447 - S.S. ANNE pair 7 details 3x office cabins - 88
+
+T-447 pair 7 DRAFT at 3x: the captain's office (painting, desk, book), a cabin's door, porthole and carpet, and the other cabin's bed.
+
+![11Nov2026 - T447 - S.S. ANNE pair 7 details 3x office cabins - 88](11Nov2026%20-%20T447%20-%20S.S.%20ANNE%20pair%207%20details%203x%20office%20cabins%20-%2088.png)
+
+### 11Nov2026 - T447 - S.S. ANNE pair 7 details 3x galley deck bow - 89
+
+T-447 pair 7 DRAFT at 3x: the galley (portholes, a table), the deck (barrels, the house, portholes) and the bow (rail, hull).
+
+![11Nov2026 - T447 - S.S. ANNE pair 7 details 3x galley deck bow - 89](11Nov2026%20-%20T447%20-%20S.S.%20ANNE%20pair%207%20details%203x%20galley%20deck%20bow%20-%2089.png)
+
+### 11Nov2026 - T447 - S.S. ANNE pair 7 tiles 3x - 90
+
+T-447 pair 7 DRAFT: the ss_anne tiles at 3x in their home rows, today and A, B, C (the door, the void and general's fixed rows not shown).
+
+![11Nov2026 - T447 - S.S. ANNE pair 7 tiles 3x - 90](11Nov2026%20-%20T447%20-%20S.S.%20ANNE%20pair%207%20tiles%203x%20-%2090.png)
+
+### 11Nov2026 - T447 - S.S. ANNE pair 7 departure smoke and wake - 91
+
+T-447 pair 7 DRAFT: the departure (src/ss_anne.c). Today the smoke and wake are pret's frames drawn in the ship's own palette (genships), which makes them brown and porthole-blue. A, B and C draw in that palette's own whites, greys and blues. The smoke appears 30 px aft of the funnel in all of them: that is set in code, not drawing.
+
+![11Nov2026 - T447 - S.S. ANNE pair 7 departure smoke and wake - 91](11Nov2026%20-%20T447%20-%20S.S.%20ANNE%20pair%207%20departure%20smoke%20and%20wake%20-%2091.png)
+
+### 11Nov2026 - T447 - pair 7 built SS ANNE deck 2x - 92
+
+T-447 pair 7 BUILT (C THE LIVERY, extended): the S.S. ANNE's deck from the build -- caulked teak, the rail's balusters brass-capped, brass cowls, striped deck chairs, the house in riveted enamel, a navy hull (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built SS ANNE deck 2x - 92](11Nov2026%20-%20T447%20-%20pair%207%20built%20SS%20ANNE%20deck%202x%20-%2092.png)
+
+### 11Nov2026 - T447 - pair 7 built captains office 3x - 93
+
+T-447 pair 7 BUILT: the captain's office -- navy leather chair, the ship herself in the painting, teak stairs with brass nosing, riveted enamel round the room (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built captains office 3x - 93](11Nov2026%20-%20T447%20-%20pair%207%20built%20captains%20office%203x%20-%2093.png)
+
+### 11Nov2026 - T447 - pair 7 built galley 3x - 94
+
+T-447 pair 7 BUILT: the galley -- brass portholes, stainless tables and stove, steel posts with brass collars, navy bins with a brass rim (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built galley 3x - 94](11Nov2026%20-%20T447%20-%20pair%207%20built%20galley%203x%20-%2094.png)
+
+### 11Nov2026 - T447 - pair 7 built cabin 1F 3x - 95
+
+T-447 pair 7 BUILT: a cabin of the seven-room layout -- navy carpet with amber compass stars, a teak bunk (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built cabin 1F 3x - 95](11Nov2026%20-%20T447%20-%20pair%207%20built%20cabin%201F%203x%20-%2095.png)
+
+### 11Nov2026 - T447 - pair 7 built cabin 2F 3x - 96
+
+T-447 pair 7 BUILT: a cabin of the eleven-room layout -- the red rope weave, navy ticking on the wall (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built cabin 2F 3x - 96](11Nov2026%20-%20T447%20-%20pair%207%20built%20cabin%202F%203x%20-%2096.png)
+
+### 11Nov2026 - T447 - pair 7 built hold corridor 3x - 97
+
+T-447 pair 7 BUILT: the hold's corridor, B1F -- teak stairs and white stanchions with brass rings (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built hold corridor 3x - 97](11Nov2026%20-%20T447%20-%20pair%207%20built%20hold%20corridor%203x%20-%2097.png)
+
+### 11Nov2026 - T447 - pair 7 built departure from ROM - 98
+
+T-447 pair 7 BUILT: the departure decoded from daemonsContent.gba -- the smoke now rises from the funnel's mouth (src/ss_anne.c +49,78 -> +46,66; the ship is drawn from x-32), coal smoke and white foam in the ship's own palette (DRAFT)
+
+![11Nov2026 - T447 - pair 7 built departure from ROM - 98](11Nov2026%20-%20T447%20-%20pair%207%20built%20departure%20from%20ROM%20-%2098.png)
+
+### 11Nov2026 - T445 - Landmark cards census - 99
+
+T-445 census (DRAFT, 2026-11-11): every landmark's name card today beside Nintendo's it replaced -- all ours but DOLDRUM CAVE (T-251); KEEPALIVE PLANT and TANOBY stale after T-447 pair 5; no card for SCORN, ERRATA, the LEAGUE/HALL (UMBRA PLATEAU's card), the S.S. ANNE
+
+![11Nov2026 - T445 - Landmark cards census - 99](11Nov2026%20-%20T445%20-%20Landmark%20cards%20census%20-%2099.png)
+
+### 11Nov2026 - T445 - Landmark cards candidates - 100
+
+T-445 DRAFT (2026-11-11): today's card beside each candidate at 2x and 1x -- KEEPALIVE PLANT growing untended A/B/C, TANOBY carved not lit A/B, the MANSION's rack hall A/B/C, DAEMON TOWER's dot screen A/B/C; nothing written
+
+![11Nov2026 - T445 - Landmark cards candidates - 100](11Nov2026%20-%20T445%20-%20Landmark%20cards%20candidates%20-%20100.png)
+
+### 11Nov2026 - T445 - two landmark cards built - 101
+
+T-445 BUILT: KEEPALIVE PLANT growing untended (A) and TANOBY carved, not lit (A), with MONEAN's rose band, decoded from the built daemonsContent.gba at 2x (DRAFT)
+
+![11Nov2026 - T445 - two landmark cards built - 101](11Nov2026%20-%20T445%20-%20two%20landmark%20cards%20built%20-%20101.png)
+
+### 11Nov2026 - C273 - THE HERMETIC LAYER cards, MIND BODY SPIRIT - 102
+
+C-273: THE HERMETIC LAYER's MIND · BODY · SPIRIT on the site, phone width and wide; wide, the modes' column 240 so PAST · PRESENT · FUTURE keeps to one line (companion f94226e)
+
+![11Nov2026 - C273 - THE HERMETIC LAYER cards, MIND BODY SPIRIT - 102](11Nov2026%20-%20C273%20-%20THE%20HERMETIC%20LAYER%20cards%2C%20MIND%20BODY%20SPIRIT%20-%20102.png)
+
+### 11Nov2026 - C273 - THE HERMETIC LAYER cards, MIND BODY SPIRIT - 103
+
+C-273: THE HERMETIC LAYER's MIND · BODY · SPIRIT on the site, phone width and wide; wide, the modes' column 240 so PAST · PRESENT · FUTURE keeps to one line (companion f94226e)
+
+![11Nov2026 - C273 - THE HERMETIC LAYER cards, MIND BODY SPIRIT - 103](11Nov2026%20-%20C273%20-%20THE%20HERMETIC%20LAYER%20cards%2C%20MIND%20BODY%20SPIRIT%20-%20103.png)
+
+### 11Nov2026 - C296 - SPIRITS, the tone and THE MINDs card - 104
+
+C-296 (DRAFT): the same daemon in low spirits (darker), as it is, and in good spirits (lighter), the hue kept; THE MIND > NOW's SPIRITS card with the four totals (companion dca02e7)
+
+![11Nov2026 - C296 - SPIRITS, the tone and THE MINDs card - 104](11Nov2026%20-%20C296%20-%20SPIRITS%2C%20the%20tone%20and%20THE%20MINDs%20card%20-%20104.png)
+
+### 11Nov2026 - C296 - SPIRITS, the tone and THE MINDs card - 105
+
+C-296 (DRAFT): the same daemon in low spirits (darker), as it is, and in good spirits (lighter), the hue kept; THE MIND > NOW's SPIRITS card with the four totals (companion dca02e7)
+
+![11Nov2026 - C296 - SPIRITS, the tone and THE MINDs card - 105](11Nov2026%20-%20C296%20-%20SPIRITS%2C%20the%20tone%20and%20THE%20MINDs%20card%20-%20105.png)
+
+### 11Nov2026 - T447 - SS ANNE wake before and after - 106
+
+T-447: the S.S. ANNE's departure wake, before (+80, y 109: through the flagstaff's notch) and after (+76, y 113: behind the hull, out at the waterline), drawn behind the ship as the game does, drift 0-22
+
+![11Nov2026 - T447 - SS ANNE wake before and after - 106](11Nov2026%20-%20T447%20-%20SS%20ANNE%20wake%20before%20and%20after%20-%20106.png)
+
+### 11Nov2026 - T542 - batch 4 B THE TRACE built - 107
+
+T-542 batch 4 BUILT: the last three Nintendo edges in B THE TRACE (DRAFT) -- TREASURE BEACH's sand corners at 4x from the engine's built tiles
+
+![11Nov2026 - T542 - batch 4 B THE TRACE built - 107](11Nov2026%20-%20T542%20-%20batch%204%20B%20THE%20TRACE%20built%20-%20107.png)

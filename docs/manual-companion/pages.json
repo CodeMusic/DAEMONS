@@ -43,7 +43,13 @@
   "screens/settings/Mind.tsx": "minds",
   "screens/settings/MindMap.tsx": "mind-at-work",
   "screens/settings/HubEndpoints.tsx": "endpoints",
-  "screens/library/Origin.tsx": "found"
+  "screens/library/Origin.tsx": "found",
+  "screens/daemon/Easel.tsx": "easel",
+  "screens/daemon/SleepSounds.tsx": "sleepsounds",
+  "screens/you/Battle.tsx": "together-pointer",
+  "screens/you/Dialogue.tsx": "together-pointer",
+  "screens/daemon/Mind.tsx": "its-mind",
+  "screens/you/Guardian.tsx": "guardian"
  },
  "not for players": [
   "screens/dev/Dev.tsx"

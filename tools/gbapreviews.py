@@ -22,6 +22,11 @@
     python3 tools/gbapreviews.py --places --draft        #   DENSE WOOD, the SAFARI, and THE SAME BUSH as a card of its
                                                          #   own), painted as the caves were; --write writes only what
                                                          #   PLACES_APPROVED names, and never a NEW card
+    python3 tools/gbapreviews.py --cards --paint --draft gfx/drafts/t445_landmarks
+                                                         # 2026-11-11: the landmark cards' re-census (CARDS) -- the
+                                                         #   candidates for the cards T-447 pairs 4-5 left stale or
+                                                         #   gave an alternative; a census sheet and a candidates
+                                                         #   sheet; --write writes only what CARDS_APPROVED names
     python3 tools/gbapreviews.py --write --approved      # into the engine (graphics/map_preview/<cave>/tiles.png,
                                                          #   tilemap.bin, and the -num_tiles line in graphics_file_rules.mk).
                                                          #   OTHER CAVE's light1..3.pal too. Without --approved it refuses.
@@ -110,6 +115,7 @@ ap.add_argument("--approved", action="store_true")
 ap.add_argument("--over-later-work", action="store_true", help="accepted so check_generators --writes really runs the write")
 ap.add_argument("--landmarks", action="store_true")      # the landmarks' cards (LANDMARK) instead of the caves
 ap.add_argument("--places", action="store_true")         # the forests' and the SAFARI's cards (PLACES)
+ap.add_argument("--cards", action="store_true")          # the landmark cards' candidates, 2026-11-11 (CARDS)
 ap.add_argument("--only", nargs="+")                     # draft only these folders (T-456: one card, its seeds)
 ap.add_argument("--seed", type=int)                      # --paint with this seed instead of the entry's
 A = ap.parse_args()
@@ -346,7 +352,7 @@ def _pret(rel):
 
 def cfg(folder):
     """a card's entry: LANDMARK's, PLACES' or PAINT's (a cave's)"""
-    return LANDMARK.get(folder) or PLACES.get(folder) or PAINT.get(folder, {})
+    return CARDS.get(folder) or LANDMARK.get(folder) or PLACES.get(folder) or PAINT.get(folder, {})
 
 
 def van(folder):
@@ -1041,13 +1047,215 @@ def landmark_init(folder):
     return out.convert("RGB").filter(ImageFilter.GaussianBlur(c.get("soften", 2.5)))
 
 
+# ================================================================== the landmarks' name cards, re-census (2026-11-11)
+#  The user (2026-11-11, "Landmark name cards"): census which landmark places have a card and what each shows, and
+#  draft a replacement for any card that no longer matches its landmark as T-447 redrew it. The census (engine
+#  58eaa23d8): every landmark card is ours but DOLDRUM CAVE's (cerulean_cave, T-251, waits on the user); FOUNDRY CO.,
+#  DAEMON TOWER and the MANSION were painted 2026-10-26 from T-447 pairs 1-2's OUTSIDES, UMBRA PLATEAU's from pair 3's
+#  REVIEW BOARD. Since then pairs 4-7 redrew the INSIDES: the MANSION's rack hall and DAEMON TOWER's dot screen (pair
+#  4), KEEPALIVE PLANT growing untended and TANOBY carved, not lit (pair 5), the LEAGUE's four vessels and the HALL
+#  (pair 6), the S.S. ANNE's livery (pair 7). Two cards are stale: KEEPALIVE PLANT's still paints batch E's STILL
+#  RUNNING plant (green status lights; the plant is overgrown now) and MONEAN CHAMBER's is batch G's gold ochre (the
+#  chambers are pale sandstone with a band of pigment now). The MANSION's and the TOWER's cards are their outsides,
+#  still true; vanilla's MANSION card is its hall INSIDE, so the rack hall is a real alternative, and the dot screen
+#  likewise. The LEAGUE, the HALL OF FAME and the S.S. ANNE have no card of their own (the LEAGUE and the HALL are
+#  UMBRA PLATEAU's mapsec, whose card is the REVIEW BOARD and T-456 suppresses it on the credits warp; the S.S. ANNE
+#  has no sMapPreviewScreenData entry), so nothing is drafted for them.
+#
+#  CARDS holds the candidates, several to one engine card ("folder"); each keeps its card's type (CAVE fade or FOREST
+#  popup), letterbox, banner and palette 14. Two ways to a start image: "graded" is the caves' paint_init (vanilla's
+#  composition graded through the place's colours as built now, a motif laid in); "room" draws the room from the
+#  built map (ROOM_SCENE: its back wall cut from reviewsheet's render and tiled, its floor laid in perspective, its
+#  furniture stood in front), for the insides vanilla never painted. --cards --draft paints nothing new (--paint
+#  does), drafts every candidate into gfx/drafts/t445_landmarks/<candidate>/ and the sheets; --cards --write
+#  --approved writes only what CARDS_APPROVED names into that candidate's engine folder.
+#  BUILT 2026-11-11: KEEPALIVE PLANT growing untended A and TANOBY carved, not lit A. Their engine folders (power_plant,
+#  monean_chamber) are batch E's and batch G's, so the caves' own write skips a folder an approved candidate has taken
+#  (CARDS_TAKEN) -- else a plain --write --approved would lay the stale cards back. The MANSION and DAEMON TOWER keep
+#  their outsides (the rack hall and the dot screen stay drafts).
+CARDS_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t445_landmarks")
+CARDS_APPROVED = {"power_plant_untended_a", "monean_chamber_carved_a"}  # the user, 2026-11-11: PLANT A, TANOBY A
+_PLANT_UNTENDED = dict(
+    folder="power_plant", banner_from="power_plant", init="graded", title="KEEPALIVE PLANT, growing untended",
+    #  pair 5 B's own colours (power_plant row 7's metal, row 8's three greens and moss) -- no status lights
+    rock=[(24, 30, 40), (50, 58, 76), (90, 104, 122), (122, 140, 154), (160, 178, 168), (200, 212, 200)],
+    sky=[(122, 140, 154), (214, 232, 196)], leaf=[(40, 88, 44), (62, 168, 72), (150, 210, 110)],
+    motif=["ivy"], denoise=0.50,
+    prompt="interior of an abandoned power plant overgrown with ivy, creepers climbing every grey machine housing, "
+           "moss in the seams of the steel floor plates, old drums used as planters full of leaves, the machines "
+           "dark and silent, soft daylight from a high window, cool grey metal and many greens",
+    neg="status lights, glowing lights, lamps, screens, people")
+_TANOBY_CARVED = dict(
+    folder="monean_chamber", banner_from="monean_chamber", init="graded", title="TANOBY, carved, not lit",
+    #  pair 5 A: tanoby_ruins rows 7/8's pale sandstone and its dark cut; MONEAN's pigment (row 8 slot 14)
+    rock=[(24, 18, 18), (70, 54, 44), (130, 102, 72), (180, 150, 104), (204, 176, 124), (236, 214, 164),
+          (244, 232, 200)],
+    leaf=[(70, 96, 58), (106, 140, 82), (150, 172, 120)], white="keep",
+    motif=["script", "pigment"], post=["script"], pigment=(205, 139, 189), force=[(205, 139, 189)], denoise=0.45,
+    prompt="an ancient shrine of pale dressed sandstone blocks on a small island, a dark square doorway into the "
+           "dark with low steps, a frieze of small carved unknown glyphs cut along the stone, one band of faded "
+           "rose pigment painted along the wall, unlit, sparse grass, clear sky with soft clouds",
+    neg="hieroglyphs, egyptian, letters, alphabet, runes glowing, gold, torches, fire")
+ROOM_SCENE = dict(
+    #  the MANSION's rack hall (pair 4 A), PokemonMansion_1F as built: its back wall (the raised wall with four arched
+    #  breaker bays) tiled across at 1.5x, its floor plates in perspective, the four rack fronts stood before it
+    rackhall=dict(map="PokemonMansion_1F", wall=(224, 8, 592, 48), wall_scale=1.5, wall_y=14, ceiling=(30, 28, 34),
+                  floor=(240, 64, 272, 96), floor_y=74,
+                  props=[((304, 72, 320, 112), 10 + 40 * i, 46, 1.5) for i in range(6)],
+                  soot=0.55, roof=((70, 0, 170, 12), (164, 162, 164))),
+    #  DAEMON TOWER's dot screen (pair 4 A), PokemonTower_1F as built: the curved wall of arched niches, each with its
+    #  warm light, at 2x; the halftone floor below
+    dotscreen=dict(map="PokemonTower_1F", wall=(144, 4, 224, 32), wall_scale=2.0, wall_y=6, ceiling=(228, 222, 208),
+                   floor=(160, 40, 208, 64), floor_y=70, curve=10),
+)
+CARDS = {
+    "power_plant_untended_a": dict(_PLANT_UNTENDED, seed=4501),
+    "power_plant_untended_b": dict(_PLANT_UNTENDED, seed=4502),
+    "power_plant_untended_c": dict(_PLANT_UNTENDED, seed=4503, denoise=0.56),
+    "monean_chamber_carved_a": dict(_TANOBY_CARVED, seed=4504),
+    "monean_chamber_carved_b": dict(_TANOBY_CARVED, seed=4505),
+    "pokemon_mansion_rackhall_a": dict(
+        folder="pokemon_mansion", banner_from="pokemon_mansion", init="room", room="rackhall",
+        title="the MANSION's rack hall", seed=4506, denoise=0.50,
+        prompt="inside a burned out machine hall, tall black server racks with rows of small dead lights, raised "
+               "steel floor plates, a dark cable trench, soot climbing the grey walls, a hole in the roof letting in "
+               "a pale ash grey light, cold and long burnt out",
+        neg="fire, flames, glow, embers, orange light, people, windows with curtains, bright colours"),
+    "pokemon_mansion_rackhall_b": None,
+    "pokemon_tower_dotscreen_a": dict(
+        folder="pokemon_tower", banner_from="pokemon_tower", init="room", room="dotscreen",
+        title="DAEMON TOWER's dot screen", seed=4508, denoise=0.48,
+        prompt="inside a pale round stone tower, the curved wall made of halftone dots with rows of small arched "
+               "niches each holding a tiny warm candle flame, a pale floor of fine halftone dots, quiet, soft grey "
+               "light, monochrome grey with only the small warm flames",
+        neg="colour, green, blue, fire on the floor, people, windows, stairs"),
+    "pokemon_tower_dotscreen_b": None,
+}
+CARDS["pokemon_mansion_rackhall_b"] = dict(CARDS["pokemon_mansion_rackhall_a"], seed=4507)
+CARDS["pokemon_tower_dotscreen_b"] = dict(CARDS["pokemon_tower_dotscreen_a"], seed=4509)
+#  the rooms came back at 0.48-0.50 still reading as the map's tiles, so a third of each painted harder
+CARDS["pokemon_mansion_rackhall_c"] = dict(CARDS["pokemon_mansion_rackhall_a"], seed=4510, denoise=0.62)
+CARDS["pokemon_tower_dotscreen_c"] = dict(CARDS["pokemon_tower_dotscreen_a"], seed=4511, denoise=0.62)
+#  the engine folders an approved candidate writes, and which candidate: at most one per folder
+CARDS_TAKEN = {CARDS[c]["folder"]: c for c in sorted(CARDS_APPROVED)}
+assert len(CARDS_TAKEN) == len(CARDS_APPROVED), "two approved CARDS candidates for one engine card"
+
+
+def motif_ivy(out, v, c):
+    """GROWING UNTENDED (pair 5 B): creepers up the dark housings -- a stem that climbs from a lit floor edge with
+    leaves either side -- and moss along the floor's seams, in the plant's own three greens"""
+    import random
+    rnd, op = random.Random(4501), out.load()
+    G = c["leaf"]
+    for _ in range(46):
+        x, y = rnd.randrange(4, 236), rnd.randrange(40, 108)
+        if not 30 < _lum(op[x, y]) < 150:
+            continue
+        for k in range(rnd.randrange(14, 44)):
+            yy = y - k
+            if yy < 2:
+                break
+            x = min(237, max(2, x + rnd.choice((-1, 0, 0, 1))))
+            op[x, yy] = G[0]
+            if k % 3 == 0:
+                s = rnd.choice((-1, 1))
+                op[x + s, yy] = G[1]
+                op[x + 2 * s, yy] = G[2] if rnd.random() < 0.5 else G[1]
+                op[x + s, yy - 1] = G[1]
+    for _ in range(60):                                     # moss: low clumps on the lit floor, never a line
+        x, y = rnd.randrange(2, 232), rnd.randrange(84, 108)
+        if _lum(op[x, y]) < 90:
+            continue
+        for a in range(rnd.randrange(3, 8)):
+            for b in range(rnd.randrange(1, 3)):
+                if rnd.random() < 0.7:
+                    op[x + a, y + b] = G[1] if rnd.random() < 0.6 else G[2]
+
+
+def motif_pigment(out, v, c):
+    """TANOBY carved, not lit (pair 5 A): one band of the chamber's pigment along the dressed stone, 3px, under the
+    frieze's first line -- only where the whole band is stone"""
+    op, rock = out.load(), _rockmask(v)
+    for x in range(240):
+        if all(rock(x, y) for y in range(31, 35)):
+            for y in range(31, 34):
+                op[x, y] = _shade(c["pigment"], 0.85 + 0.15 * ((x // 3) % 2))
+
+
+MOTIFS.update(ivy=motif_ivy, pigment=motif_pigment)
+
+
+def room_scene(c):
+    """(RGB 240x112) an inside vanilla never painted, drawn from the built map: the ceiling, the back wall cut from
+    reviewsheet's render and tiled across, the floor laid in perspective below it, the furniture stood in front"""
+    r = ROOM_SCENE[c["room"]]
+    img = RS.render(RS.layout_of(r["map"])).convert("RGB")
+    bg = Image.new("RGB", (240, 112), r["ceiling"])
+    s = r["wall_scale"]
+    wall = img.crop(r["wall"])
+    wall = wall.resize((int(wall.size[0] * s), int(wall.size[1] * s)), Image.NEAREST)
+    fy = r["floor_y"]
+    #  the floor: its patch tiled into a wide plane, taken by a homography to a trapezoid whose far edge meets the
+    #  wall's foot and whose near edge runs off both sides of the picture
+    patch = img.crop(r["floor"])
+    plane = Image.new("RGB", (patch.size[0] * 8, patch.size[1] * 3))
+    for i in range(8):
+        for j in range(3):
+            plane.paste(patch, (i * patch.size[0], j * patch.size[1]))
+    W, H = plane.size
+    co = _homography([(0, H), (W, H), (W, 0), (0, 0)], [(-260, 112), (500, 112), (300, fy), (-60, fy)])
+    bg.paste(plane.transform((240, 112), Image.PERSPECTIVE, co, Image.BICUBIC).crop((0, fy, 240, 112)), (0, fy))
+    x = 0
+    while x < 240:
+        bg.paste(wall, (x, r["wall_y"]))
+        x += wall.size[0]
+    wall_foot = r["wall_y"] + wall.size[1]
+    if wall_foot < fy:                                       # the wall carried down to the floor in its own base
+        base = wall.crop((0, wall.size[1] - 4, wall.size[0], wall.size[1]))
+        for yy in range(wall_foot, fy, 4):
+            for xx in range(0, 240, wall.size[0]):
+                bg.paste(base, (xx, yy))
+    if r.get("curve"):                                       # the round tower: the wall bows toward the middle
+        src = bg.copy()
+        sp, dp = src.load(), bg.load()
+        for xx in range(240):
+            off = int(r["curve"] * (1 - ((xx - 120) / 120) ** 2))
+            for yy in range(fy - 1, -1, -1):
+                dp[xx, yy] = sp[xx, max(0, yy - off)] if yy - off >= 0 else r["ceiling"]
+    for rect, px_, py_, sc in r.get("props", []):
+        p = img.crop(rect)
+        p = p.resize((int(p.size[0] * sc), int(p.size[1] * sc)), Image.NEAREST)
+        bg.paste(p, (px_, py_))
+    if r.get("roof"):                                        # the MANSION: the roof broken through, ash light
+        (x0, y0, x1, y1), col = r["roof"]
+        ImageDraw.Draw(bg).ellipse((x0, y0 - 14, x1, y1 + 6), fill=col)
+    if r.get("soot"):                                        # soot climbing from the floor
+        px = bg.load()
+        for yy in range(112):
+            k = r["soot"] * max(0.0, (yy - 20) / 92) * 0.6
+            for xx in range(240):
+                p = px[xx, yy]
+                px[xx, yy] = tuple(int(q * (1 - k)) for q in p)
+    return bg
+
+
+def card_init(folder, sec):
+    """a CARDS candidate's start image, at the painting's size"""
+    from PIL import ImageFilter
+    c = CARDS[folder]
+    if c["init"] == "graded":
+        return paint_init(folder, sec)
+    return room_scene(c).resize(PAINT_SIZE, Image.BICUBIC).filter(ImageFilter.GaussianBlur(c.get("soften", 2.5)))
+
+
 def paint(folder, sec, out_dir):
     """--paint: the start image, then the sprite server's painting of it, with its record"""
     import spriteforge
     d = os.path.join(out_dir, folder)
     os.makedirs(d, exist_ok=True)
     init = os.path.join(d, "painted_init.png")
-    (landmark_init(folder) if folder in LANDMARK else paint_init(folder, sec)).save(init)
+    (card_init(folder, sec) if folder in CARDS else landmark_init(folder) if folder in LANDMARK
+     else paint_init(folder, sec)).save(init)
     c = cfg(folder)
     p = dict(mode="i2i", out=os.path.join(d, "painted"), prompt=PAINT_STYLE % c["prompt"],
              negative=PAINT_NEG + (", " + c["neg"] if c.get("neg") else ""),
@@ -1057,7 +1265,7 @@ def paint(folder, sec, out_dir):
 
 
 def painted_path(folder):
-    return os.path.join(A.draft or DRAFT_DEFAULT, folder, "painted.png")
+    return os.path.join(A.draft or (CARDS_DRAFT if A.cards else DRAFT_DEFAULT), folder, "painted.png")
 
 
 def painted_picture(folder):
@@ -1469,6 +1677,110 @@ def sheet(rows, path, title):
     return path
 
 
+def engine_card(folder):
+    """(RGB 240x160) the card the engine has now, decoded from graphics/map_preview/<folder>/ (tiles.png keeps each
+    index's low nibble; tilemap.bin's palette bits pick 13 or 14)"""
+    d = os.path.join(MPS, folder)
+    im = Image.open(os.path.join(d, "tiles.png"))
+    pal = im.getpalette()[:96]
+    pal = [tuple(pal[i:i + 3]) for i in range(0, 96, 3)]
+    px, (W, H) = im.load(), im.size
+    tiles = [[px[tx * 8 + x, ty * 8 + y] & 15 for y in range(8) for x in range(8)]
+             for ty in range(H // 8) for tx in range(W // 8)]
+    m = list(struct.unpack("<640H", open(os.path.join(d, "tilemap.bin"), "rb").read()[:1280]))
+    return compose(tiles, m, pal), pal
+
+
+#  the census (2026-11-11): every landmark T-447 redrew, the card it shows on entering, and what that card is
+CARD_CENSUS = [
+    ("silph_co", "CORPUS's tower", "ours (2026-10-26) from pair 2's outside -- current"),
+    ("pokemon_tower", "DAEMON TOWER", "ours (2026-10-26) from pair 2's outside -- current; the dot screen is inside"),
+    ("pokemon_mansion", "the MANSION", "ours (2026-10-26) the burned outside -- current; vanilla's was its hall"),
+    ("power_plant", "KEEPALIVE PLANT", "ours (2026-10-23) batch E's STILL RUNNING -- STALE: pair 5 overgrew it"),
+    ("monean_chamber", "TANOBY (7 chambers)", "ours (2026-11-06) batch G's gold ochre -- STALE: pair 5 sandstone"),
+    ("review_board", "the REVIEW BOARD", "ours (2026-10-26, T-456) -- current; the LEAGUE shares its mapsec"),
+    ("rocket_hideout", "CORPUS HIDEOUT", "ours (2026-10-26) -- current (no T-447 art)"),
+    ("rocket_warehouse", "CORPUS WAREHOUSE", "ours (2026-10-26) -- current (no T-447 art)"),
+    ("cerulean_cave", "DOLDRUM CAVE", "NINTENDO'S -- waits on the user (T-251), not drafted"),
+]
+NO_CARD = ["SCORN SOLUTIONS, ERRATA, CRYSTAL's lab, the GAME CORNER, the BENCHMARKs, USER TOWER: a town's building,",
+           "  the name popup only (no sMapPreviewScreenData entry).",
+           "the LEAGUE and the HALL OF FAME: UMBRA PLATEAU's mapsec -- its card is the REVIEW BOARD, and T-456",
+           "  suppresses it on the credits warp into the HALL.",
+           "the S.S. ANNE: no card (no entry); its livery (pair 7) shows only on the map."]
+
+
+def cards_census_sheet(path):
+    nm = names()
+    sec_of = {}
+    for _, sec_, _, f in previews():                    # a card's FIRST mapsec (TANOBY's is MONEAN's)
+        sec_of.setdefault(f, sec_)
+    Z, cw, ch = 1, 240, 160
+    cols = 3
+    rows = (len(CARD_CENSUS) + cols - 1) // cols
+    W = cols * (cw * 2 + 40) + 16
+    H = 48 + rows * (ch + 56) + 20 + 16 * len(NO_CARD) + 20
+    out = Image.new("RGB", (W, H), (34, 34, 40))
+    d = ImageDraw.Draw(out)
+    d.text((12, 10), "T-445 CENSUS (2026-11-11) -- the landmarks' name cards: the card the engine shows today (left) "
+           "and Nintendo's it replaced (right), at 1x", fill=(235, 235, 235), font=font(14))
+    for i, (folder, what, status) in enumerate(CARD_CENSUS):
+        x, y = 16 + (i % cols) * (cw * 2 + 40), 44 + (i // cols) * (ch + 56)
+        now, pal = engine_card(folder)
+        draw_name(now, nm.get(sec_of[folder], "?"), pal)
+        out.paste(now, (x, y + 34))
+        try:
+            vt, vm, vpal = vanilla(folder)
+            out.paste(compose(vt, vm, vpal), (x + cw + 8, y + 34))
+        except (SystemExit, AttributeError):          # a NEW card, or pret's rule spelled otherwise
+            d.text((x + cw + 20, y + 100), "(no vanilla card read)", fill=(150, 150, 150), font=font(11))
+        stale = "STALE" in status or "NINTENDO" in status
+        d.text((x, y), "%s  (%s)" % (what, folder), fill=(240, 220, 120), font=font(12))
+        d.text((x, y + 16), status, fill=(255, 140, 120) if stale else (170, 210, 170), font=font(11))
+    y = 44 + rows * (ch + 56) + 4
+    d.text((16, y), "NO CARD:", fill=(240, 220, 120), font=font(12))
+    for k, line in enumerate(NO_CARD):
+        d.text((16, y + 18 + k * 16), line, fill=(210, 210, 210), font=font(11))
+    out.save(path)
+    return path
+
+
+def cards_sheet(rows, path):
+    """today's card and each candidate for it, at 2x with the 1x beneath, one engine card a row"""
+    nm = names()
+    by = collections.OrderedDict()
+    for r in rows:
+        by.setdefault(CARDS[r["folder"]]["folder"], []).append(r)
+    sec_of = {}
+    for _, sec_, _, f in previews():                    # a card's FIRST mapsec (TANOBY's is MONEAN's)
+        sec_of.setdefault(f, sec_)
+    cw, ch = 480, 320
+    n = max(len(v) for v in by.values()) + 1
+    W = 16 + n * (cw + 16)
+    RH = 30 + ch + 8 + 160 + 30
+    out = Image.new("RGB", (W, 44 + len(by) * RH), (34, 34, 40))
+    d = ImageDraw.Draw(out)
+    d.text((12, 10), "T-445 DRAFT (2026-11-11) -- the landmarks' name cards: TODAY's card (left) and the candidates "
+           "painted from T-447 pairs 4-5 as built, each at 2x with 1x below; nothing written", fill=(235, 235, 235),
+           font=font(14))
+    y = 44
+    for folder, rs in by.items():
+        now, pal = engine_card(folder)
+        draw_name(now, nm.get(sec_of[folder], "?"), pal)
+        cells = [("TODAY  %s" % folder, now, "the engine's card now")] + \
+                [("%s  %s" % (chr(65 + i), r["folder"]), r["draft"], "%s, %d tiles" % (r["where"], r["tiles"]))
+                 for i, r in enumerate(rs)]
+        for k, (label, im, note) in enumerate(cells):
+            x = 16 + k * (cw + 16)
+            d.text((x, y), label, fill=(170, 170, 170) if k == 0 else (240, 220, 120), font=font(12))
+            d.text((x, y + 14), note, fill=(200, 200, 200), font=font(10))
+            out.paste(im.resize((cw, ch), Image.NEAREST), (x, y + 30))
+            out.paste(im, (x, y + 30 + ch + 8))
+        y += RH
+    out.save(path)
+    return path
+
+
 # ================================================================== main
 def new_rule(rules, folder, n):
     """graphics_file_rules.mk with a NEW card's -num_tiles rule (T-456), laid in among the others in name order; a
@@ -1488,6 +1800,8 @@ def new_rule(rules, folder, n):
 def entry(by_folder, folder):
     """(MPS key, MAPSEC, type) of a card: sMapPreviewScreenData's, or a NEW card's own (T-456)"""
     c = cfg(folder)
+    if folder in CARDS:                                 # a candidate for an engine card: that card's entry
+        return by_folder[c["folder"]][0]
     if folder not in by_folder and c.get("new"):
         return c["mps"], c["mapsec"], c["type"]
     return by_folder[folder][0]
@@ -1509,6 +1823,8 @@ def report():
             ("place (%s): drafted with --places%s" % (PLACES[folder]["what"],
              ", APPROVED" if folder in PLACES_APPROVED else ", waits on the user")) if folder in PLACES else \
             ("not drafted: " + NOT_DRAFTED.get(folder, "?"))
+        if folder in CARDS_TAKEN:
+            status += "; SUPERSEDED by --cards' %s (APPROVED)" % CARDS_TAKEN[folder]
         print("  %-17s %s" % (folder, status))
         for key, sec, typ in ents:
             n = nm.get(sec, "?")
@@ -1533,7 +1849,8 @@ def main():
         return 1
     by_folder = report()
     if A.paint is not None:
-        for folder in (A.paint or list(LANDMARK if A.landmarks else PLACES if A.places else PAINT)):
+        for folder in (A.paint or list(CARDS if A.cards else LANDMARK if A.landmarks else PLACES if A.places
+                                       else PAINT)):
             key, sec, typ = entry(by_folder, folder)
             paint(folder, sec, A.draft or DRAFT_DEFAULT)
         if not (A.draft or A.write):
@@ -1544,8 +1861,14 @@ def main():
     out_dir = A.draft or DRAFT_DEFAULT
     sheets = A.sheets or out_dir
     rows = []
-    for folder in (LANDMARK if A.landmarks else PLACES if A.places else {**BATCH_E, **BATCH_G}):
+    for folder in (CARDS if A.cards else LANDMARK if A.landmarks else PLACES if A.places else {**BATCH_E, **BATCH_G}):
         if A.only and folder not in A.only:
+            continue
+        if A.cards and A.write and folder not in CARDS_APPROVED and not A.draft:
+            print("  %-27s a candidate, not approved (CARDS_APPROVED): not written" % folder)
+            continue
+        if A.write and not A.cards and folder in CARDS_TAKEN and not A.draft:
+            print("  %-17s taken by --cards' %s (CARDS_APPROVED): not written" % (folder, CARDS_TAKEN[folder]))
             continue
         if A.write and folder in BATCH_G and folder not in BATCH_G_APPROVED and not A.draft:
             print("  %-17s batch G, not approved (BATCH_G_APPROVED): not written" % folder)
@@ -1573,7 +1896,7 @@ def main():
             van_.paste(b.convert("RGB"), ((240 - b.size[0]) // 2, (160 - b.size[1]) // 2), b)
         for im in (van_, dra):
             draw_name(im, nm[sec], (vpal if im is van_ else pal))
-        what = ("from %s, as built" % landmark_source(folder)) if A.landmarks else \
+        what = CARDS[folder]["title"] if A.cards else ("from %s, as built" % landmark_source(folder)) if A.landmarks else \
             PLACES[folder]["what"] if A.places else {**BATCH_E, **BATCH_G}[folder]
         notes = ["%s, %s" % (nm[sec], sec), "type %s" % typ, what, "",
                  "tiles: %d (vanilla %d; must stay < 450)" % (len(tiles), len(vt)),
@@ -1604,19 +1927,21 @@ def main():
             json.dump({"mapsec": sec, "name": nm[sec], "from": where, "num_tiles": len(tiles)},
                       open(os.path.join(d, "draft.json"), "w"), indent=1)
         if A.write and (not A.landmarks or folder in LANDMARK_APPROVED) and (not A.places or folder in PLACES_APPROVED) \
-                and (folder not in BATCH_G or folder in BATCH_G_APPROVED):
-            d = os.path.join(MPS, folder)
+                and (folder not in BATCH_G or folder in BATCH_G_APPROVED) and (not A.cards or folder in CARDS_APPROVED):
+            dest = cfg(folder).get("folder", folder)            # a CARDS candidate writes its engine card's folder
+            d = os.path.join(MPS, dest)
             os.makedirs(d, exist_ok=True)                                # a NEW card's folder (T-456)
             tiles_png(png, pal, os.path.join(d, "tiles.png"))
             open(os.path.join(d, "tilemap.bin"), "wb").write(struct.pack("<640H", *m))
             for n, lp in list(enumerate(lights or []))[1:]:          # OTHER CAVE: map_preview_screen.c INCBINs these
                 write_pal(lp, os.path.join(d, "light%d.pal" % n))
-            rules = new_rule(open(RULES).read(), folder, len(tiles))
+            rules = new_rule(open(RULES).read(), dest, len(tiles))
             rules = re.sub(r"(\$\(MAPPREVIEWGFXDIR\)/%s/tiles\.4bpp: %%\.4bpp: %%\.png\n\t\$\(GFX\) \$< \$@ -num_tiles )\d+"
-                           % folder, lambda mm: mm.group(1) + str(len(tiles)), rules)
+                           % dest, lambda mm: mm.group(1) + str(len(tiles)), rules)
             open(RULES, "w").write(rules)
             print("      written %s" % d)
-        rows.append(dict(folder=folder, name=nm[sec], where=where, vanilla=van_, draft=dra, notes=notes))
+        rows.append(dict(folder=folder, name=nm[sec], where=where, vanilla=van_, draft=dra, notes=notes,
+                         tiles=len(tiles)))
         for n, lp in enumerate(lights or []):
             if n == 0:
                 continue
@@ -1626,6 +1951,11 @@ def main():
                              where=where, vanilla=van_, draft=li,
                              notes=["light %d: %s" % (n, LIGHT_NAMES[n]), "the same tiles, palette 13 moved",
                                     "onto this light's rock and crystal", "ramps (palettes_other_%d)" % n]))
+    if A.draft and A.cards:
+        os.makedirs(sheets, exist_ok=True)
+        print("  sheet -> %s" % cards_census_sheet(os.path.join(sheets, "t445L_census.png")))
+        print("  sheet -> %s" % cards_sheet(rows, os.path.join(sheets, "t445L_candidates.png")))
+        return 0
     if A.draft:
         os.makedirs(sheets, exist_ok=True)
         painted = any(r["where"].startswith("painted") for r in rows)

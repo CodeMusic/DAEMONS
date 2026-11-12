@@ -24,6 +24,15 @@ Its pixels are in the SAME shared icon palette as its icon (gMonIconPaletteIndic
 are tools/gbafollowerpal.py's remap of that palette -- so nothing about its colour changes. A species with no picture
 here falls back to its icon's first frame (daemons_follower.c FollowerPic). tools/gbasprite.py calls this after it
 writes the icons, so a redrawn daemon's follower is never staler than its icon.
+
+    4. DRAWN     (T-534, the user 2026-11-11: "Yes, draw them") the MUSAI branch, all six in all four seasons -- the 18
+                 seasonal ids and the six species' own (summer) -- walk as a follower DRAWN from their finals:
+                 gfx/drafts/t532_musai_seasons/followers/<name>_<season>_follower.png (RGBA, in the form's own colours;
+                 made by that folder's scripts/draw.py, each form's vehicle drawn again pixel by pixel so it reads at
+                 1x). Its follower.png is written in the form's OWN palette (normal.pal), not a shared icon palette,
+                 and tools/gbafollowerpal.py gives such a follower normal.pal and shiny.pal as they stand (DRAWN_PAL
+                 below) -- the shared-palette remap reached four to nine of a form's colours. A drawn follower that is
+                 missing falls back to 1-3. DRAFT.
 """
 import os, re, sys, io
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -56,6 +65,48 @@ def icon_rows():
         if sp in ("SPECIES_NONE", "SPECIES_EGG") or sym not in paths:
             continue
         out.append((sp, paths[sym].replace(".4bpp", ".png"), int(palidx.get(sp, 0))))
+    return out
+
+
+DRAWN_DIR = os.path.join(ROOT, "gfx", "drafts", "t532_musai_seasons", "followers")
+#  the MUSAI branch's species and their slots (genmusaiseasons.BRANCH's order); summer is the species' own id
+DRAWN_BRANCH = [("MUSAI", "EEVEE"), ("CODEMUSAI", "FLAREON"), ("SEEKMUSAI", "JOLTEON"), ("CAREMUSAI", "VAPOREON"),
+                ("LENSMUSAI", "ESPEON"), ("MASKMUSAI", "UMBREON")]
+
+
+def drawn():
+    """{SPECIES_X[_SEASON]: drawn RGBA follower path} for every MUSAI form whose drawing is in DRAWN_DIR (T-534)."""
+    out = {}
+    for name, slot in DRAWN_BRANCH:
+        for season in ("winter", "spring", "summer", "autumn"):
+            sp = "SPECIES_%s" % slot if season == "summer" else "SPECIES_%s_%s" % (slot, season.upper())
+            f = os.path.join(DRAWN_DIR, "%s_%s_follower.png" % (name.lower(), season))
+            if os.path.exists(f):
+                out[sp] = f
+    return out
+
+
+def own_pal(icon):
+    """The form's normal.pal beside its icon (16 colours), as tools/gbafollowerpal.py reads it."""
+    lines = open(os.path.join(GBA, os.path.dirname(icon), "normal.pal"), encoding="utf-8").read().split()
+    vals = [int(v) for v in lines[3:3 + 48]]
+    return [tuple(vals[i * 3:i * 3 + 3]) for i in range(16)]
+
+
+def from_drawn(path, pal):
+    """A drawn RGBA follower as a grid of the form's own palette indices: each opaque pixel the index of its exact
+    colour (1-15), else the nearest; transparent is 0."""
+    im = Image.open(path).convert("RGBA")
+    if im.size != (32, 32):
+        raise SystemExit("%s: a follower is one 32x32 frame" % path)
+    px = im.load()
+    out = [[0] * 32 for _ in range(32)]
+    for y in range(32):
+        for x in range(32):
+            r, g, b, a = px[x, y]
+            if a < 128:
+                continue
+            out[y][x] = min(range(1, 16), key=lambda i: (sum((c - d) ** 2 for c, d in zip((r, g, b), pal[i])), i))
     return out
 
 
@@ -188,9 +239,14 @@ def plan():
     out = {}
     import genmusaiseasons                   # T-532: the MUSAI branch's seasonal forms meet us in gMonIconTable
     seasonal = genmusaiseasons.form_species()
+    hand = drawn()                           # T-534: the branch's followers, drawn from the finals
     for sp, icon, pi in icon_rows():
         p = os.path.join(GBA, icon)
         if not os.path.exists(p):
+            continue
+        if sp in hand:
+            pal = own_pal(icon)
+            out[sp] = (os.path.dirname(icon), from_drawn(hand[sp], pal), "drawn", pal)
             continue
         if sp in seasonal:
             #  T-532: a form with no final drawing is a copy of its species' picture, so its follower is its species'
@@ -270,12 +326,13 @@ def run(write):
         h, w = size(bbox(grid))
         if h > GUARD_H or w > GUARD_W:
             bad.append("%s %dx%d (%s)" % (sp, w, h, how))
+        pal = pi if isinstance(pi, list) else pals[pi]       # DRAWN: the form's own normal.pal
         path = os.path.join(GBA, d, "follower.png")
         old, oldpal = read_png_grid(path)
-        if old != grid or oldpal != [tuple(c) for c in pals[pi]]:
+        if old != grid or oldpal != [tuple(c) for c in pal]:
             changed.append(sp)
             if write:
-                write_png(path, grid, pals[pi])
+                write_png(path, grid, pal)
     wanted = {os.path.join(GBA, d, "follower.png") for d, *_ in p.values()}
     mon = os.path.join(GBA, "graphics", "pokemon")
     dirs = sorted(os.listdir(mon)) + ["unown/" + f for f in sorted(os.listdir(os.path.join(mon, "unown")))

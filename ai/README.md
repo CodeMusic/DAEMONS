@@ -21,12 +21,12 @@ is kept as the readable statement of what we changed and why.
 This README is about the model that **plays** the game. Two neighbours here serve the
 [companion](https://github.com/CodeMusic/daemons-companion) instead -- the daemon you carry, talking:
 
-- **`n8n/`** -- the workflows on your own n8n: `daemon/talk` (push to talk: speech to text, the
-  daemon answering as itself on a local model or OpenRouter, the INDEX voice), `daemon/voice`,
-  `daemon/hear` and the rest, written by `make_workflows.py` and imported by `push.py`
-  (every one tagged `daemons`). Its README has each endpoint and the settings it reads.
-- **`stt/`** -- speech to text: MLX Whisper behind an OpenAI-style endpoint on port 8770, with
-  its install and the launch agent that keeps it running.
+- **The companion's own part of the machine beside the hub** (the local cloud) -- LiteLLM's four
+  names, the Tiiny's streamed voice, sleep sounds, Whisper, and the n8n workflows `daemon/talk` and
+  `daemon/hear` -- moved to the companion's [`seer/`](https://github.com/CodeMusic/daemons-companion/tree/main/seer) on 2026-11-11 (companion C-340): one
+  script, `seer/bindSeer.sh`, sets it all up, with or without a Tiiny.
+- **`n8n/`** -- this repo's own workflows (`daemon/look`, `daemon/sprite`, `daemon/voice`,
+  `daemon/health`, `daemon/chat`), imported by `push.py` (every one tagged `daemons`).
 
 ## It reads RAM first, and the screen second
 
