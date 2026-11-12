@@ -27,6 +27,10 @@
                                                          #   candidates for the cards T-447 pairs 4-5 left stale or
                                                          #   gave an alternative; a census sheet and a candidates
                                                          #   sheet; --write writes only what CARDS_APPROVED names
+    python3 tools/gbapreviews.py --cards --paint rock_tunnel_unlit_a --draft gfx/drafts/t546_blackout
+    python3 tools/gbapreviews.py --cards --only rock_tunnel_unlit_a rock_tunnel_threads_b rock_tunnel_entered_c \
+        --draft gfx/drafts/t546_blackout                 # T-546 (2026-11-11): THE BLACKOUT's card, three DRAFTS (one
+                                                         #   painted, two drawn in code), t546_card.png beside today's
     python3 tools/gbapreviews.py --write --approved      # into the engine (graphics/map_preview/<cave>/tiles.png,
                                                          #   tilemap.bin, and the -num_tiles line in graphics_file_rules.mk).
                                                          #   OTHER CAVE's light1..3.pal too. Without --approved it refuses.
@@ -1076,7 +1080,8 @@ def landmark_init(folder):
 #  (CARDS_TAKEN) -- else a plain --write --approved would lay the stale cards back. The MANSION and DAEMON TOWER keep
 #  their outsides (the rack hall and the dot screen stay drafts).
 CARDS_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t445_landmarks")
-CARDS_APPROVED = {"power_plant_untended_a", "monean_chamber_carved_a", "cerulean_cave_becalmed_a"}  # the user, 2026-11-11: PLANT A, TANOBY A; DOLDRUM A BECALMED
+CARDS_APPROVED = {"power_plant_untended_a", "monean_chamber_carved_a", "cerulean_cave_becalmed_a",
+                  "rock_tunnel_threads_b"}  # the user, 2026-11-11: PLANT A, TANOBY A; DOLDRUM A BECALMED; THE BLACKOUT B only the threads (T-546)
 _PLANT_UNTENDED = dict(
     folder="power_plant", banner_from="power_plant", init="graded", title="KEEPALIVE PLANT, growing untended",
     #  pair 5 B's own colours (power_plant row 7's metal, row 8's three greens and moss) -- no status lights
@@ -1211,9 +1216,7 @@ def unread(im):
     return out
 
 
-#  the engine folders an approved candidate writes, and which candidate: at most one per folder
-CARDS_TAKEN = {CARDS[c]["folder"]: c for c in sorted(CARDS_APPROVED)}
-assert len(CARDS_TAKEN) == len(CARDS_APPROVED), "two approved CARDS candidates for one engine card"
+#  CARDS_TAKEN (the engine folders an approved candidate writes) is worked out after the last CARDS entry (T-546's)
 
 
 def motif_ivy(out, v, c):
@@ -1326,6 +1329,9 @@ def card_init(folder, sec):
 def paint(folder, sec, out_dir):
     """--paint: the start image, then the sprite server's painting of it, with its record"""
     import spriteforge
+    if cfg(folder).get("drawn"):                        # T-546: drawn in code
+        print("  %-27s drawn in code (%s), not painted" % (folder, cfg(folder)["drawn"]))
+        return None
     if cfg(folder).get("painting_of"):                  # drawn from another candidate's painting, never painted itself
         print("  %-27s no painting of its own: drawn from %s's" % (folder, cfg(folder)["painting_of"]))
         return None
@@ -1653,6 +1659,8 @@ def best_window(cands, ww=WIN_W, wh=WIN_H):
 def picture(folder, sec, painted=None):
     """the 240x112 RGB picture for this cave, and where it was taken: the painting where there is one (unless
     --top-down), else the top-down window"""
+    if cfg(folder).get("drawn"):                        # T-546: drawn in code, never painted
+        return DRAWN[cfg(folder)["drawn"]](folder), "drawn (%s)" % cfg(folder)["drawn"]
     if painted is None:
         painted = not A.top_down and os.path.exists(painted_path(folder))
     if painted:
@@ -1977,6 +1985,161 @@ def cards_sheet(rows, path):
     return path
 
 
+#  T-546 (the user, 2026-11-11): THE BLACKOUT's card "black with dim green threads, as a player first meets it" --
+#  the cave in digital purple with threads of green, which the player meets unlit (VERBOSE is its light; the dark is
+#  gbacaves.py --blackout's part 3). Three directions were drafted for the card that was THE OUTAGE; the user picked
+#  B, only the threads (2026-11-11): it is in CARDS_APPROVED, so --cards --write --approved writes rock_tunnel's card
+#  and the caves' own --write skips that folder (CARDS_TAKEN). Each keeps the CAVE type, vanilla's letterbox, banner
+#  and palette 14. The card is shown before the map loads (fldeff_flash.c's RunMapPreviewScreen, not CB2_Overworld),
+#  so the dark's palette override never touches it: what is drawn here is what is seen.
+#    python3 tools/gbapreviews.py --cards --paint rock_tunnel_unlit_a --draft gfx/drafts/t546_blackout
+#    python3 tools/gbapreviews.py --cards --only rock_tunnel_unlit_a rock_tunnel_threads_b rock_tunnel_entered_c \
+#        --draft gfx/drafts/t546_blackout                  # the drafts and t546_card.png beside today's card
+BLACKOUT_GREENS = [(40, 136, 72), (24, 96, 48), (12, 56, 30)]     # the dim threads: core, mid, halo (the card's own)
+CARDS.update({
+    #  A: vanilla's mouth in its cliff, graded down to a dark violet with B's threads laid in, painted, and put back
+    #  down to a quarter of its light -- the cliff a breath above black, the threads kept -- a painting, as every other
+    #  cave card is
+    "rock_tunnel_unlit_a": dict(
+        folder="rock_tunnel", banner_from="rock_tunnel", init="graded", title="THE BLACKOUT, unlit",
+        rock=[(6, 4, 14), (14, 8, 28), (22, 14, 42), (32, 20, 56), (42, 26, 70), (54, 34, 86)],
+        white=[(42, 26, 70), (60, 40, 96)], sky=[(0, 0, 2), (4, 2, 10)], skygrad=1,
+        leaf=[(4, 4, 8), (8, 8, 16), (14, 12, 24)], water=[(0, 0, 0), (2, 2, 4)],
+        motif=["threads"], post=["unlit"], tex=0.10, seed=4546, denoise=0.50, force=list(BLACKOUT_GREENS),
+        prompt="a cave mouth at the foot of steep cliffs in total darkness, the rock barely visible as deep violet "
+               "black, thin dim green glowing threads running through the cracks of the rock like veins of light, no "
+               "moon, no sky light, the cave mouth pure black",
+        neg="moon, stars, sky glow, blue, purple light, lamps, fire, bright green, neon, fog"),
+    #  B: no painting -- the black, and only the threads: vanilla's own composition kept as nothing but its ink (the
+    #  strokes that draw its rock, its cliffs' line, the mouth's rim), traced in the dim greens
+    "rock_tunnel_threads_b": dict(
+        folder="rock_tunnel", banner_from="rock_tunnel", drawn="threads", title="THE BLACKOUT, only the threads",
+        force=list(BLACKOUT_GREENS), accents=False),
+    #  C: the cave itself, as the dark shows it -- the first room in from ROUTE 10, drawn with the tiles gbacaves'
+    #  T-546 direction B would build (it follows whichever is picked), under the dark's palette (black but the threads)
+    "rock_tunnel_entered_c": dict(
+        folder="rock_tunnel", banner_from="rock_tunnel", drawn="entered", title="THE BLACKOUT, as it is entered",
+        direction="b", view=("RockTunnel_1F", 10, 0), accents=False),
+})
+
+
+def blackout_ink(folder="rock_tunnel"):
+    """(RGB 240x112) vanilla's picture kept only as its own ink -- the dark strokes that draw its rock, the line of its
+    cliffs against the sky and the leaves, the rim of the mouth -- in the dim greens on black; a stroke under ten
+    pixels is grit and is dropped. B is this; A is painted from it."""
+    vt, vm, vpal = van(folder)
+    v = compose(vt, vm, vpal).crop((0, 24, 240, 136))
+    px = v.load()
+    L = [[_lum(px[x, y]) for x in range(240)] for y in range(112)]
+    R = [[_region(px[x, y]) for x in range(240)] for y in range(112)]
+    at = lambda x, y, k: 0 <= x < 240 and 0 <= y < 112 and R[y][x] in k
+    ink = [[0] * 240 for _ in range(112)]
+    for y in range(112):
+        for x in range(240):
+            if not at(x, y, ("rock", "white")):
+                continue
+            nb = [L[b][a] for b in range(max(0, y - 2), min(112, y + 3)) for a in range(max(0, x - 2), min(240, x + 3))]
+            if L[y][x] < sum(nb) / len(nb) - 9 and L[y][x] < 175:
+                ink[y][x] = 1                               # a stroke of the rock's own drawing
+            if any(at(x + u, y + w, ("sky", "leaf")) for u, w in ((0, -1), (-1, 0), (1, 0))):
+                ink[y][x] = 2                               # the cliff's line against the sky or the leaves
+            if any(at(x + u, y + w, ("water",)) for u, w in ((0, -1), (-1, 0), (1, 0), (0, 1))):
+                ink[y][x] = 3                               # the rim of the mouth (vanilla's mouth reads as water)
+    seen = [[0] * 240 for _ in range(112)]
+    out = Image.new("RGB", (240, 112), (0, 0, 0))
+    op = out.load()
+    for y in range(112):
+        for x in range(240):
+            if not ink[y][x] or seen[y][x]:
+                continue
+            st, comp = [(x, y)], []
+            seen[y][x] = 1
+            while st:
+                a, b = st.pop()
+                comp.append((a, b))
+                for u in (-1, 0, 1):
+                    for w in (-1, 0, 1):
+                        c, d = a + u, b + w
+                        if 0 <= c < 240 and 0 <= d < 112 and ink[d][c] and not seen[d][c]:
+                            seen[d][c] = 1
+                            st.append((c, d))
+            if len(comp) < 10:
+                continue
+            for a, b in comp:
+                k = ink[b][a]
+                op[a, b] = BLACKOUT_GREENS[0] if k == 3 else BLACKOUT_GREENS[1] if k == 2 or L[b][a] < 90 \
+                    else BLACKOUT_GREENS[2]
+    return out
+
+
+def motif_threads(out, v, c):
+    """A, before the painting: blackout_ink's threads laid into the dark start image, at the core's green so the
+    painting keeps them"""
+    ip, op = blackout_ink().load(), out.load()
+    for y in range(112):
+        for x in range(240):
+            if ip[x, y] != (0, 0, 0):
+                op[x, y] = BLACKOUT_GREENS[0] if ip[x, y] != BLACKOUT_GREENS[2] else BLACKOUT_GREENS[1]
+
+
+MOTIFS.update(threads=motif_threads)
+
+
+def post_unlit(im):
+    """A, after the painting: what is green stays (to the nearest of the three dim greens); everything else is put
+    down to a quarter of its light -- the cliff's form a breath above black"""
+    px = im.load()
+    for y in range(112):
+        for x in range(240):
+            r, g, b = px[x, y]
+            if g > r + 24 and g > b + 12:
+                px[x, y] = min(BLACKOUT_GREENS, key=lambda k: abs(k[1] - g) + abs(k[0] - r) + abs(k[2] - b))
+            else:
+                px[x, y] = (r // 4, g // 5, b // 3)
+
+
+POSTS.update(unlit=post_unlit)
+
+
+def drawn_threads(folder):
+    """B: black, and only the threads"""
+    return blackout_ink(folder)
+
+
+def drawn_entered(folder):
+    """C: the first room in, as gbacaves' T-546 direction draws it and the dark shows it"""
+    argv, sys.argv = sys.argv, sys.argv[:1]
+    try:
+        import gbacaves as GC
+    finally:
+        sys.argv = argv
+    c = CARDS[folder]
+    cave = GC.Cave("rock_tunnel")
+    new, pp, _ = GC.blackout(cave, c["direction"])
+    m, x0, y0 = c["view"]
+    return GC.render16(cave, m, new, GC.dark_pals(GC.full_pals(m, pp)), (x0, y0, 15, 7)).convert("RGB")
+
+
+DRAWN = dict(threads=drawn_threads, entered=drawn_entered)
+
+#  the engine folders an approved candidate writes, and which candidate: at most one per folder (after every CARDS entry)
+CARDS_TAKEN = {CARDS[c]["folder"]: c for c in sorted(CARDS_APPROVED)}
+assert len(CARDS_TAKEN) == len(CARDS_APPROVED), "two approved CARDS candidates for one engine card"
+
+
+def blackout_card_sheet(rows, path):
+    """today's card and the three, each at 2x with 1x beneath, and the dim greens they share"""
+    out = cards_sheet(rows, path)
+    im = Image.open(out)
+    d = ImageDraw.Draw(im)
+    d.rectangle((0, 0, im.width, 40), fill=(34, 34, 40))
+    d.text((12, 10), "T-546 DRAFT (2026-11-11) -- THE BLACKOUT's name card (rock_tunnel): TODAY's (left, THE OUTAGE) and "
+           "three directions, black with dim green threads as a player first meets it; 2x, 1x below; nothing "
+           "written", fill=(235, 235, 235), font=font(14))
+    im.save(out)
+    return out
+
+
 # ================================================================== main
 def new_rule(rules, folder, n):
     """graphics_file_rules.mk with a NEW card's -num_tiles rule (T-456), laid in among the others in name order; a
@@ -2147,6 +2310,10 @@ def main():
                              where=where, vanilla=van_, draft=li,
                              notes=["light %d: %s" % (n, LIGHT_NAMES[n]), "the same tiles, palette 13 moved",
                                     "onto this light's rock and crystal", "ramps (palettes_other_%d)" % n]))
+    if A.draft and A.cards and rows and all(CARDS[r["folder"]]["folder"] == "rock_tunnel" for r in rows):
+        os.makedirs(sheets, exist_ok=True)              # T-546's own sheet; the others' left as they are
+        print("  sheet -> %s" % blackout_card_sheet(rows, os.path.join(sheets, "t546_card.png")))
+        return 0
     if A.draft and A.cards and rows and all(CARDS[r["folder"]]["folder"] == "cerulean_cave" for r in rows):
         os.makedirs(sheets, exist_ok=True)              # DOLDRUM's own sheet; the others' sheets left as they are
         print("  sheet -> %s" % doldrum_sheet(rows, os.path.join(sheets, "t445L_doldrum.png")))

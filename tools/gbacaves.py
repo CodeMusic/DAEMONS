@@ -47,7 +47,7 @@ splits over the stack and the outage, STILLFALL as one over GLAUCOUS ISLES' bloo
 (built rooms over primary/building, drawn by draw_tunnel and draw_plant); GLAUCOUS ISLES, MT. SMOULDER and THE DOTS
 (the cave method, each with its own index plan). TANOBY waits for batch G and DOLDRUM CAVE for the user.
 """
-import collections, io, json, os, struct, sys
+import collections, contextlib, io, json, os, struct, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import daemonslib
 from daemonslib import read_pal, write_pal
@@ -1585,6 +1585,9 @@ def report():
         moved = [t for t in range(cave.n) if any((a == 0) != (b == 0) for a, b in zip(new[t], cave.tiles[t]))]
         print("      footprint: %s" % ("every tile keeps its transparent pixels" if not moved else
                                        "!! tiles %s change their footprint" % moved))
+    print("\n  T-546 THE BLACKOUT in purple with threads of green: DRAFT directions %s (--blackout); approved: %s" % (
+        ", ".join("%s %s" % (d.upper(), v["title"]) for d, v in BLACKOUT_DIRS.items()),
+        ", ".join(sorted(BLACKOUT_APPROVED)) or "none -- nothing written"))
     print("\n  OTHER CAVE, a light per entry (a cycle of four, built):")
     for l in PER_ENTRY:
         print("      " + "\n        ".join(_wrap(l, 108)))
@@ -1639,6 +1642,627 @@ def write_engine():
         for r in rows:
             write_pal(os.path.join(cave.dir, "palettes/%02d.pal" % r), pp[r])
         print("  wrote %s (%s): %d tiles redrawn, palette rows %s" % (look["name"], ts, len(what), rows or "none"))
+    #  T-546: an approved BLACKOUT direction is laid over batch E's rock_tunnel (and hides its threads in OTHER CAVE's
+    #  four lights), last, so the loop above can never put THE OUTAGE back
+    for d in sorted(BLACKOUT_APPROVED):
+        blackout_into_engine(d)
+
+
+# ================================================================== T-546: THE BLACKOUT in purple, threads of green
+#  The user, 2026-11-11: "using digital colours with the purple for the majority of the cave with threads of green
+#  running though it"; "before verbose you see black with some dim green threads -- and after you use it bright green
+#  threads with the rest as a life like breathing purple". Three directions were drafted; the user picked B, LIGHT IN
+#  THE SEAMS (2026-11-11), so --write --approved lays it over batch E's rock_tunnel. The dark is engine code
+#  (src/daemons_blackout.c): its slot table and percentages are THREAD_ACCENT, DIM and BREATH_* here.
+#
+#    python3 tools/gbacaves.py --blackout [DIR]          # drafts A/B/C into DIR (gfx/drafts/t546_blackout/), their
+#                                                        #   sheets: the tiles in place, OTHER CAVE, the dark mock-ups
+#    python3 tools/gbacaves.py --blackout-proof OUT.png   # THE BLACKOUT as BUILT, decoded from daemonsContent.gba,
+#                                                        #   the dark mocked with daemons_blackout.c's own numbers
+#    python3 tools/gbacaves.py --blackout DIR --into-engine a
+#                                                        # direction a's tiles and rows into engineGba -- refused
+#                                                        #   unless engineGba is NOT the shared engine checkout (a
+#                                                        #   draft worktree), or the direction is approved
+#
+#  THE THREADS take the slots vanilla leaves magenta: row 8's 6, 7, 8 and row 10's 1, 2, 3 (no tile of rock_tunnel is
+#  drawn in both rows, so a tile's thread index means the same wherever it is drawn). Each slot is a level of the
+#  thread -- core, mid, halo -- so the dark (part 3) is a table of six entries: these six dimmed, every other entry of
+#  the map's rows 0..12 black. The threads are laid AFTER the look's own redraw, on rock and floor pixels that are not
+#  a join (vanilla's joins are kept, as everywhere), and never on an OBJECT (boulders, breakable rocks, pebbles).
+#  Their pattern is a 16x16 torus like every motif here, so a thread leaving one block enters the next where it left.
+#
+#  OTHER CAVE draws these tiles too (gTileset_OtherCave is a palette split over gTilesetTiles_RockTunnel, engine.md
+#  trap 25). Its four lights give the six thread slots their rock's own body colour, so in OTHER CAVE a thread is a
+#  seam in the stone, not a light -- the sheet shows it. (Its own tiles, 256 x 32 bytes, are the alternative.)
+BLACKOUT_APPROVED = {"b"}   # the user, 2026-11-11 (by multiple choice): "B LIGHT IN THE SEAMS" -- and build the dark
+BLACKOUT_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t546_blackout")
+THREAD_ACCENT = {8: [6, 7, 8], 10: [1, 2, 3]}          # core, mid, halo
+SHARED_ENGINE = os.path.realpath(os.path.join(os.path.expanduser("~"), "Projects", "pokefirered-daemons"))
+
+
+def _wire(X, Y, kind, plane):
+    """A, THE LIVE WIRE: one straight trace a block down the faces, in the joint between two columns (THE OUTAGE's
+    x 8), so a side wall carries a long unbroken line and a wall's foot a row of short ones; a crisp core, no halo.
+    The tops are left the purple."""
+    if kind != "rock" or plane != "face":
+        return None
+    return 0 if X == 8 else None
+
+
+_VEIN = [8, 8, 9, 9, 10, 10, 10, 9, 8, 7, 7, 6, 6, 6, 7, 7]     # a slow S, back where it began (a torus)
+
+
+def _seams(X, Y, kind, plane):
+    """B, LIGHT IN THE SEAMS: a living vein, a slow S down every face with a halo either side; across the tops the
+    cracks between the column ends (THE OUTAGE's own ENDS) take the mid, a deep green -- seen when the light is up
+    and almost not in the dark. Tissue more than wiring."""
+    if kind != "rock":
+        return None
+    if plane == "face":
+        x = _VEIN[Y]
+        return 0 if X == x else 2 if X in (x - 1, x + 1) else None
+    return 1 if ENDS[Y][X] == "crack" else None     # its own slot, so OTHER CAVE can hide it as top, not face
+
+
+_FAULT = [0, 0, 1, 1, 1, 2, 2, 1, 1, 0, 0, 1, 2, 2, 1, 0]   # the jag, a pixel or two either side of the diagonal
+
+
+def _fault(X, Y, kind, plane):
+    """C, THE FAULT: one jagged fracture a block down the faces, on the diagonal so it runs on unbroken from block
+    to block, a core with a mid to its right as a lit crack throws light on one side; and the floor's own slate
+    fractures faintly lit, as if the fault ran on under the floor. The tops are left the purple."""
+    if kind == "floor":
+        return 2 if FLOOR_SLATE[Y][X] == "crack" else None
+    if kind != "rock" or plane != "face":
+        return None
+    x = (Y + _FAULT[Y]) % 16
+    return 0 if X == x else 1 if X == (x + 1) % 16 else None
+
+
+#  each direction: its look (THE OUTAGE's motif and floors, a purple of its own) and its threads. Purples are the
+#  "digital" ones -- saturated, synthetic, never grey (HALFTONE and the unread DOLDRUM own grey) -- and keep vanilla's
+#  value structure: a floor between a wall's lit top and its face.
+BLACKOUT_DIRS = {
+    "a": dict(title="THE LIVE WIRE", threads=_wire,
+              line="electric violet; one straight trace down the faces, in a column joint; the tops plain",
+              pal={"floor": [(84, 44, 132), (70, 36, 114), (58, 28, 98), (46, 22, 82), (36, 16, 66)],
+                   "rock": [(200, 150, 255), (168, 110, 240), (136, 80, 214), (106, 56, 180), (76, 36, 140),
+                            (48, 20, 100)],
+                   "dark": [(20, 8, 40), (34, 16, 60)], "shade": [(26, 12, 48)], "hole": [(6, 2, 14)],
+                   "wood": [(220, 200, 255), (190, 168, 240), (160, 136, 214), (130, 106, 186), (100, 78, 150),
+                            (72, 52, 116)],
+                   "rung": [(220, 200, 255), (184, 160, 236), (146, 120, 204), (110, 86, 168)],
+                   "water": [(60, 40, 150), (46, 30, 124), (34, 20, 100)],
+                   "patch": [(64, 32, 104), (54, 26, 90), (44, 20, 76)],
+                   "accent": [(120, 255, 152), (40, 208, 104), (16, 120, 64)]}),
+    "b": dict(title="LIGHT IN THE SEAMS", threads=_seams,
+              line="magenta-violet, warmer, alive; a slow S-vein down the faces, a faint green mesh across the tops",
+              pal={"floor": [(96, 40, 110), (82, 32, 96), (68, 26, 82), (54, 20, 68), (42, 14, 56)],
+                   "rock": [(236, 150, 240), (204, 112, 218), (170, 80, 192), (136, 56, 164), (100, 36, 128),
+                            (64, 20, 90)],
+                   "dark": [(26, 8, 34), (42, 14, 52)], "shade": [(32, 10, 42)], "hole": [(10, 2, 14)],
+                   "wood": [(250, 210, 250), (226, 180, 232), (198, 150, 210), (168, 120, 186), (134, 90, 156),
+                            (100, 62, 122)],
+                   "rung": [(250, 210, 250), (216, 170, 226), (178, 132, 196), (140, 96, 164)],
+                   "water": [(90, 40, 140), (72, 30, 118), (54, 20, 96)],
+                   "patch": [(74, 28, 88), (64, 24, 78), (54, 18, 66)],
+                   "accent": [(168, 255, 120), (44, 150, 72), (28, 120, 58)]}),
+    "c": dict(title="THE FAULT", threads=_fault,
+              line="ultraviolet over a near-black floor; a jagged lit fracture down the faces, the floor's cracks faint",
+              pal={"floor": [(44, 22, 74), (38, 18, 64), (32, 14, 54), (26, 10, 46), (20, 6, 38)],
+                   "rock": [(176, 124, 255), (140, 92, 236), (110, 64, 208), (82, 44, 172), (58, 28, 132),
+                            (36, 14, 92)],
+                   "dark": [(12, 4, 26), (22, 8, 40)], "shade": [(16, 6, 32)], "hole": [(4, 0, 10)],
+                   "wood": [(208, 190, 255), (178, 158, 240), (148, 126, 214), (120, 98, 186), (92, 72, 150),
+                            (66, 48, 116)],
+                   "rung": [(208, 190, 255), (172, 150, 236), (136, 112, 204), (102, 80, 168)],
+                   "water": [(44, 28, 130), (34, 20, 108), (24, 12, 86)],
+                   "patch": [(40, 20, 68), (34, 16, 58), (28, 12, 50)],
+                   "accent": [(110, 255, 196), (32, 220, 140), (12, 116, 80)]}),
+}
+for _d, _v in BLACKOUT_DIRS.items():
+    LOOKS["rock_tunnel/t546" + _d] = dict(LOOKS["rock_tunnel"], name="THE BLACKOUT, %s" % _v["title"],
+                                         motif=_v["title"].lower(), pal=_v["pal"])
+
+#  PART 3, the dark, as the engine would lay it (BlackoutDark_*, specified in --blackout's dark.json): on every copy to
+#  PLTT, BG rows 0..12 -- before VERBOSE every entry black but the six thread slots, each at DIM of its own colour;
+#  after VERBOSE the buffer as it is, the threads bright, and every other entry of rows 8..12 breathing: scaled
+#  between BREATH_LOW and 1 on Pulse_Phase()'s eight-second breath, a touch of red and blue added at the top of it.
+DIM = {0: 0.40, 1: 0.30, 2: 0.18}                       # core, mid, halo, as the dark shows them
+BREATH_LOW = 0.70                                      # 179/256: the exhale
+BREATH_LIFT = (2, 0, 3)                                # 5-bit r, g, b added at the full inhale
+
+
+#  PART 3 as the engine would build it -- a design, not built (the user picks a direction first). dark.json carries it.
+BLACKOUT_ENGINE = [
+    "WHY NOT THE WINDOW: FRLG's dark is WIN0, a circle of radius sFlashLevelToRadius[flashLevel] (24 px unlit) drawn "
+    "per scanline by HBlank DMA into WIN0H; outside it WINOUT shows only BG0 (overworld.c "
+    "InitOverworldGraphicsRegisters), so the map is not drawn there at all and the backdrop shows -- no thread can "
+    "be seen outside the circle. A hardware darken outside the window (BLDCNT effect 3, BLDY) keeps every colour's "
+    "RATIO, so threads at 31 and a purple at 22 come out 6 and 5 at BLDY 13: never black-with-threads. An HBlank "
+    "palette DMA lights a band, not a circle, and DMA0 already carries WIN0H. No spare BG for a threads layer "
+    "(BG0 is the text, BG1-3 the map).",
+    "THE MECHANISM (cheapest real one): a palette override at the copy to PLTT, as T-483's pulse and T-528's aurora "
+    "already do -- the buffers are never touched, so fades, the battle transition, HALFTONE and every palette "
+    "reload work unchanged, and trap 30's two PLTT paths are already hooked (palette.c's TransferPlttBuffer and "
+    "BeginNormalPaletteFade both call Pulse_ApplyToPltt). New src/daemons_blackout.c (+ include/daemons_blackout.h, "
+    "+ its .o in ld_script.ld beside daemons_pulse.o): Blackout_Tick() in main.c beside Pulse_Tick(); "
+    "Blackout_ApplyToPltt() called LAST in daemons_pulse.c's Pulse_ApplyToPltt, so the dark outranks the pulse and "
+    "the creator's tint and the breath rides on top of them. It acts only while DaemonsFieldOnScreen() and "
+    "gMapHeader.mapLayout->secondaryTileset == &gTileset_RockTunnel (THE BLACKOUT's two maps; OTHER CAVE's header is "
+    "gTileset_OtherCave, so it never darkens).",
+    "BEFORE VERBOSE (flashLevel != 0): every BG entry of rows 0..12 written 0 (black, the backdrop too) but the six "
+    "thread slots (row 8: 6 7 8, row 10: 1 2 3), each its buffer colour x DIM (core 102/256, mid 77, halo 46). WINOUT "
+    "gains BG1|BG2|BG3 (not OBJ) on these two maps -- in InitOverworldGraphicsRegisters and wherever WINOUT is "
+    "restored -- so the map draws everywhere in the dark palette while WIN0's circle still decides which SPRITES show "
+    "(the player and the follower inside 24 px, nothing beyond, as vanilla hides a trainer in the dark). No circle "
+    "is seen: palette RAM is one per frame, so the screen is black and the threads, the player in it.",
+    "VERBOSE: AnimateFlash(0) (field_screen_effect.c) calls Blackout_Illuminate(frames), frames being the circle's own "
+    "growth ((200 - 24) / 2 x 2 = 176): sLit climbs 0..256 in step, each entry drawn lerp(dark, lit, sLit), so the "
+    "purple rises while VERBOSE's light spreads and its circle uncovers the sprites. Map load (overworld.c, where "
+    "InitCurrentFlashLevelScanlineEffect runs) sets sLit = flashLevel ? 0 : 256.",
+    "AFTER (flashLevel == 0): the threads as the buffer has them (bright); every other entry of rows 8..12 scaled by "
+    "BREATH_LOW + (1 - BREATH_LOW) x s and lifted (r +2, b +3 at the top), s = Pulse_Phase() / 256 -- the pulse's "
+    "eight-second breath, so the cave breathes with the companion and the boards. Rows 0..7 are not touched lit.",
+    "COST: ROM about 700 bytes of code and a 12-byte slot table; IWRAM about 6 bytes (sLit, sRise, sOn: statics land "
+    "in IWRAM, 2.4 KB free); EWRAM 0; palette rows 0 new (six slots vanilla left magenta); VRAM 0 (the tileset keeps "
+    "its 256 tiles); vblank about 208 entries a frame for the ~3 s of the rise, 75 a frame lit, 6 + a fill unlit.",
+    "RISKS: (1) the first frame back on the field after a battle or a menu -- if CB2 is not yet CB2_Overworld when "
+    "the map palettes reach PLTT unfaded, one frame shows lit purple; film it with the theatre's pburst (trap 30's "
+    "method) and widen the test to the field's load callbacks if so. (2) The battle transition: TRANSITION_TYPE_FLASH "
+    "(B_TRANSITION_BLUR / GRID_SQUARES) runs under CB2_Overworld, so the dark holds through it, and a fade to black "
+    "reads the buffer, so the threads fade with it; a fade to WHITE would leave the black entries black -- none "
+    "starts from the dark today. (3) HALFTONE: grey outranks the pulse; here the dark should still outrank grey "
+    "(grey threads in the black) -- a decision. (4) THE CREATOR'S HOUR's bloom brightens inside WIN0 only "
+    "(daemons_hours.c BLOOM_WININ): in the dark it would lift the circle's black toward grey; skip the bloom while "
+    "Blackout is dark. (5) The follower is already hidden in the dark (daemons_follower.c FollowerIsHidden). "
+    "(6) OTHER CAVE shares the tiles: its four lights hide the threads (palettes_other*, written with the tiles). "
+    "(7) The rest of the game's caves: untouched -- the override is keyed on the tileset, and RockTunnel_1F/B1F are "
+    "the only maps with requires_flash; a later dark cave would need its own slot table. (8) The card is drawn "
+    "before the map loads (RunMapPreviewScreen, not CB2_Overworld): the override never reaches it.",
+    "OPTIONS on the same hook: the threads breathe too in the dark (DIM between 0.3 and 0.45 on the same phase -- a "
+    "pulse you can see before you can see anything else); or C's fracture flows (its core, mid and halo slots "
+    "rotated every 8 frames -- a palette cycle on the thread slots, 0 extra bytes).",
+]
+
+
+def _gba(c):
+    return tuple((v >> 3) << 3 for v in c)
+
+
+def thread_slots():
+    """{(row, index): level} -- the six slots"""
+    return {(r, i): k for r, ix in THREAD_ACCENT.items() for k, i in enumerate(ix)}
+
+
+def dark_pals(pals16):
+    """the screen before VERBOSE: rows 0..12 black, the thread slots dimmed (index 0 of a row is never drawn)"""
+    slots = thread_slots()
+    out = [list(p) for p in pals16]
+    for r in range(13):
+        for i in range(16):
+            k = slots.get((r, i))
+            out[r][i] = _gba(tuple(int(v * DIM[k]) for v in pals16[r][i])) if k is not None else (0, 0, 0)
+    return out
+
+
+def breath_pals(pals16, s):
+    """the screen after VERBOSE at breath s (0 the exhale, 1 the inhale): rows 8..12 but the threads scaled"""
+    slots = thread_slots()
+    out = [list(p) for p in pals16]
+    f = BREATH_LOW + (1 - BREATH_LOW) * s
+    for r in range(8, 13):
+        for i in range(1, 16):
+            if (r, i) in slots:
+                continue
+            c = [min(31, int((v >> 3) * f + lift * s + 0.5)) for v, lift in zip(pals16[r][i], BREATH_LIFT)]
+            out[r][i] = tuple(v << 3 for v in c)
+    return out
+
+
+def lay_threads(cave, new, fn):
+    """the threads into the redrawn tiles: a non-join rock or floor pixel the pattern names takes its level's slot"""
+    plans = MATERIALS["rock_tunnel"]
+    objs = objects_of("rock_tunnel")
+    n, under = 0, collections.defaultdict(collections.Counter)
+    for t in range(cave.n):
+        rows = [r for r in cave.rows[t] if r >= 7]
+        if len(rows) != 1 or rows[0] not in THREAD_ACCENT or t in objs or not any(cave.tiles[t]):
+            continue
+        where = placement(cave, t)
+        if not where:
+            continue
+        b, j, f = where
+        g = layer_grid(cave, b, j // 4, plans)
+        ox, oy = ((j % 4) % 2) * 8, ((j % 4) // 2) * 8
+        slots = THREAD_ACCENT[rows[0]]
+        for y in range(8):
+            for x in range(8):
+                i = y * 8 + x
+                if not cave.tiles[t][i]:
+                    continue
+                X, Y = ox + (7 - x if f & 1 else x), oy + (7 - y if f & 2 else y)
+                m = g[Y][X]
+                if not m or m[0] not in ("rock", "floor"):
+                    continue
+                if any(not g[c][a] or g[c][a][0] != m[0] for a, c in ((X + 1, Y), (X - 1, Y), (X, Y + 1), (X, Y - 1))
+                       if 0 <= a < 16 and 0 <= c < 16):
+                    continue                            # a join: vanilla's
+                plane = "top" if _gmean(g, X, Y, "rock", 2) <= TOP_AT else "face"
+                lv = fn(X, Y, m[0], plane)
+                if lv is not None:
+                    under[(rows[0], slots[lv])][new[t][i]] += 1
+                    new[t][i] = slots[lv]
+                    n += 1
+    return n, under
+
+
+@contextlib.contextmanager
+def _thread_slots():
+    was = ACCENT.get("rock_tunnel")
+    ACCENT["rock_tunnel"] = THREAD_ACCENT
+    try:
+        yield
+    finally:
+        ACCENT["rock_tunnel"] = was
+
+
+def blackout(cave, d):
+    """(tiles, palettes rows 0..15 of the secondary) for direction d"""
+    key = "rock_tunnel/t546" + d
+    with _thread_slots():
+        new, what = redraw(cave, key)
+        pp = palettes(cave, True, key)
+    n, under = lay_threads(cave, new, BLACKOUT_DIRS[d]["threads"])
+    HIDE[d] = {k: c.most_common(1)[0][0] for k, c in under.items()}
+    return new, pp, n
+
+
+HIDE = {}   # direction -> {(row, slot): the index its threads were laid over most} -- what OTHER CAVE shows instead
+
+
+def other_cave_hidden(cave, d, light=0):
+    """OTHER CAVE's rows with each thread slot given the colour of what its threads lie over (in its own light), so
+    a thread is a seam there, not a light; a slot direction d leaves unused takes its row's rock body (index 11)"""
+    pp = palettes(cave, True, "rock_tunnel/other", light)
+    for r, ix in THREAD_ACCENT.items():
+        for i in ix:
+            pp[r][i] = pp[r][HIDE.get(d, {}).get((r, i), 11)]
+    return pp
+
+
+def full_pals(mapname, pp):
+    """all sixteen BG rows a map draws with: its primary's 0..6 and the secondary's 7..15"""
+    G = general(layouts()[mapname]["primary_tileset"])
+    return [list(G["pals"][r]) for r in range(7)] + [list(pp[r]) for r in range(7, 16)]
+
+
+def render16(cave, mapname, tiles, pals16, box):
+    """render() with every row given (a dark palette darkens the primary's rows too)"""
+    G = general(layouts()[mapname]["primary_tileset"])
+    keep = G["pals"]
+    G["pals"] = [pals16[r] for r in range(7)] + list(keep[7:])
+    try:
+        return render(cave, mapname, tiles=tiles, pals=pals16, box=box)
+    finally:
+        G["pals"] = keep
+
+
+_PLAYER = None
+
+
+def with_player(im, cx, cy):
+    """the player, standing facing down, centred on the cell at (cx, cy) as the field camera holds them"""
+    global _PLAYER
+    if _PLAYER is None:
+        s = Image.open(os.path.join(GBA, "graphics/object_events/pics/people/red_normal.png"))
+        fr = s.crop((0, 0, 16, 32))
+        _PLAYER = fr.convert("RGBA")
+        a = [(0, 0, 0, 0) if v == 0 else p for v, p in zip(fr.getdata(), _PLAYER.getdata())]
+        _PLAYER.putdata(a)
+    out = im.copy()
+    out.paste(_PLAYER, (cx - 8, cy - 24), _PLAYER)
+    return out
+
+
+#  where the mock-ups stand: (map, cell x, cell y) of the player; the screen is 15x10 cells, the player at (7, 5) of it
+#  as the camera holds them (120, 80 is the middle of the cell's lower half -- the field centres a 16x32 sprite there)
+BLACKOUT_SPOTS = [("RockTunnel_1F", 11, 10, "1F, the first room in from ROUTE 10"),
+                  ("RockTunnel_1F", 30, 20, "1F, the long walls of the middle"),
+                  ("RockTunnel_B1F", 10, 9, "B1F, under the ladder")]
+
+
+def screen_box(cx, cy):
+    return (cx - 7, cy - 5, 15, 10)
+
+
+def blackout_drafts(outdir):
+    os.makedirs(outdir, exist_ok=True)
+    cave = Cave("rock_tunnel")
+    made = {}
+    for d, v in BLACKOUT_DIRS.items():
+        new, pp, threads = blackout(cave, d)
+        if any((a == 0) != (b == 0) for t in range(cave.n) for a, b in zip(new[t], cave.van[t])):
+            raise SystemExit("  !! T-546 %s: a tile's footprint moved" % d)
+        dd = os.path.join(outdir, "tiles_" + d)
+        os.makedirs(os.path.join(dd, "palettes_proposed"), exist_ok=True)
+        tiles_png(cave, new, pp[8]).save(os.path.join(dd, "tiles.png"))
+        for r in range(7, 13):
+            write_pal(os.path.join(dd, "palettes_proposed", "%02d.pal" % r), pp[r])
+        oc = os.path.join(dd, "palettes_other_hidden")
+        for n in range(4):
+            od = oc + ("" if n == 0 else "_%d" % n)
+            os.makedirs(od, exist_ok=True)
+            for r in range(7, 13):
+                write_pal(os.path.join(od, "%02d.pal" % r), other_cave_hidden(cave, d, n)[r])
+        changed = sum(1 for t in range(cave.n) if new[t] != cave.now[t])
+        made[d] = dict(tiles=new, pp=pp, changed=changed)
+        print("  T-546 %s %-18s %d of %d tiles differ from the engine's; %d thread pixels" % (
+            d.upper(), v["title"], changed, cave.n, threads))
+    #  the engine's table for part 3, per direction: the six slots, their lit and dark colours (GBA 5-bit)
+    spec = {}
+    for d, m in made.items():
+        pp = m["pp"]
+        spec[d] = dict(title=BLACKOUT_DIRS[d]["title"], slots=[
+            dict(row=r, index=i, level=["core", "mid", "halo"][k], lit=[v >> 3 for v in pp[r][i]],
+                 dark=[int(v * DIM[k]) >> 3 for v in pp[r][i]]) for (r, i), k in sorted(thread_slots().items())])
+    json.dump(dict(ticket="T-546", status="DRAFT -- nothing in the engine (BLACKOUT_APPROVED is empty)",
+                   dim=DIM, breath_low=BREATH_LOW, breath_lift=BREATH_LIFT, engine_design=BLACKOUT_ENGINE,
+                   directions=spec),
+              open(os.path.join(outdir, "dark.json"), "w"), indent=1)
+    return cave, made
+
+
+def blackout_sheets(cave, made, outdir):
+    f, F = font(13), font(17)
+    z2 = lambda im: im.resize((im.width * 2, im.height * 2), Image.NEAREST)
+    out = []
+    #  1. the tiles in place: each spot, today's beside A, B, C, at 2x
+    for k, (m, cx, cy, what) in enumerate(BLACKOUT_SPOTS, 1):
+        box = screen_box(cx, cy)
+        ims = [_label(z2(render(cave, m, tiles=cave.now, box=box)), "TODAY (engine): THE OUTAGE", f)]
+        for d, v in BLACKOUT_DIRS.items():
+            ims.append(_label(z2(render16(cave, m, made[d]["tiles"], full_pals(m, made[d]["pp"]), box)),
+                              "%s  %s (DRAFT), VERBOSE used" % (d.upper(), v["title"]), f))
+        rows = [_row(ims[:2]), _row(ims[2:])]
+        p = os.path.join(outdir, "t546_tiles_%d.png" % k)
+        _col([_title("T-546 DRAFT -- THE BLACKOUT's tiles in place, 2x\n%s (%s, cells %d,%d, 15x10: one screen)\n"
+                     "blocks, layers, collision, maps unchanged; threads in row 8's slots 6-8, row 10's 1-3"
+                     % (what, m, box[0], box[1]), F, max(r.width for r in rows))] + rows).save(p)
+        out.append(p)
+    #  2. OTHER CAVE: the tiles are shared, its lights give the thread slots its rock's body colour
+    m, box = "SixIsland_AlteringCave", (4, 2, 15, 10)
+    ims = [_label(z2(render16(cave, m, cave.now, full_pals(m, palettes(cave, True, "rock_tunnel/other")), box)),
+                  "TODAY: OTHER CAVE (teal light)", f)]
+    for d, v in BLACKOUT_DIRS.items():
+        ims.append(_label(z2(render16(cave, m, made[d]["tiles"], full_pals(m, other_cave_hidden(cave, d)), box)),
+                          "%s's tiles, threads hidden in its light" % d.upper(), f))
+    rows = [_row(ims[:2]), _row(ims[2:])]
+    p = os.path.join(outdir, "t546_othercave.png")
+    _col([_title("T-546 DRAFT -- OTHER CAVE shares THE BLACKOUT's tiles\n(gTileset_OtherCave is a palette split, trap "
+                 "25); its four lights\n give each thread slot the colour it lies over, so a thread is a seam there",
+                 F, max(r.width for r in rows))] + rows).save(p)
+    out.append(p)
+    #  3. the dark, part 3: per direction, at the first spot -- today's dark, before VERBOSE, after (exhale, inhale)
+    for k, (m, cx, cy, what) in enumerate(BLACKOUT_SPOTS[:2], 1):
+        box = screen_box(cx, cy)
+        pc = (7 * 16 + 8, 5 * 16 + 8)
+        today = dark(render(cave, m, tiles=cave.now, box=box), *pc)
+        rows = []
+        for d, v in BLACKOUT_DIRS.items():
+            full = full_pals(m, made[d]["pp"])
+            t = made[d]["tiles"]
+            cells = [_label(z2(with_player(today, *pc)), "TODAY, before VERBOSE: the 24px circle", f),
+                     _label(z2(with_player(render16(cave, m, t, dark_pals(full), box), *pc)),
+                            "%s before VERBOSE: black, the threads dim" % d.upper(), f),
+                     _label(z2(with_player(render16(cave, m, t, breath_pals(full, 0.0), box), *pc)),
+                            "after VERBOSE: the exhale (purple at %d%%)" % round(BREATH_LOW * 100), f),
+                     _label(z2(with_player(render16(cave, m, t, breath_pals(full, 1.0), box), *pc)),
+                            "after VERBOSE: the inhale (full, lifted)", f)]
+            rows.append(_label(_row(cells), "%s  %s -- %s" % (d.upper(), v["title"], v["line"]), F))
+        p = os.path.join(outdir, "t546_dark_%d.png" % k)
+        _col([_title("T-546 DRAFT -- the dark, mocked by the proposed palette maths (BlackoutDark, part 3): %s\n"
+                     "before VERBOSE every BG entry of rows 0..12 is black but the six thread slots (core %d%%, mid "
+                     "%d%%, halo %d%% of their colour); after, the purple breathes on the pulse's 8-second breath"
+                     % (what, DIM[0] * 100, DIM[1] * 100, DIM[2] * 100), F, max(r.width for r in rows))] + rows,
+             gap=16).save(p)
+        out.append(p)
+    #  the breath as a strip: one direction's first spot at eight points of the eight seconds, 1x
+    import math
+    m, cx, cy, _ = BLACKOUT_SPOTS[1]
+    for d in BLACKOUT_DIRS:
+        full = full_pals(m, made[d]["pp"])
+        fr = [_label(render16(cave, m, made[d]["tiles"], breath_pals(full, (1 - math.cos(2 * math.pi * n / 8)) / 2),
+                              screen_box(cx, cy)), "t=%ds" % n, f) for n in range(8)]
+        p = os.path.join(outdir, "t546_breath_%s.png" % d)
+        _col([_title("T-546 DRAFT -- %s's breath, 1x: one frame a second of the eight-second breath (s = (1 - cos) / 2)"
+                     % BLACKOUT_DIRS[d]["title"], F, 4 * 252)] + [_row(fr[:4]), _row(fr[4:])]).save(p)
+        out.append(p)
+    return out
+
+
+#  --blackout-proof OUT.png: THE BLACKOUT as BUILT, decoded from engineGba/daemonsContent.gba (its symbols from the
+#  .elf): the card (sRockTunnelMapPreview*), the tiles, palettes and metatiles (gTileset*_RockTunnel and the primary's),
+#  laid on the maps' own blockdata; and the dark, mocked with src/daemons_blackout.c's OWN numbers -- the slot table,
+#  the shares and the breath are read from that file and its integer maths done here as it is there, so this sheet
+#  cannot drift from the code.
+def _lz77(rom, at):
+    """the GBA BIOS's LZ77 (type 0x10)"""
+    assert rom[at] == 0x10, "not LZ77 at %x" % at
+    n = rom[at + 1] | rom[at + 2] << 8 | rom[at + 3] << 16
+    out, i = bytearray(), at + 4
+    while len(out) < n:
+        flags = rom[i]
+        i += 1
+        for b in range(8):
+            if len(out) >= n:
+                break
+            if flags & (0x80 >> b):
+                hi, lo = rom[i], rom[i + 1]
+                i += 2
+                ln, off = (hi >> 4) + 3, ((hi & 15) << 8 | lo) + 1
+                for _ in range(ln):
+                    out.append(out[-off])
+            else:
+                out.append(rom[i])
+                i += 1
+    return bytes(out)
+
+
+def _rgb15(v):
+    return ((v & 31) << 3, (v >> 5 & 31) << 3, (v >> 10 & 31) << 3)
+
+
+def _tiles4(b):
+    return [[(b[t * 32 + k // 2] >> (4 * (k & 1))) & 15 for k in range(64)] for t in range(len(b) // 32)]
+
+
+def blackout_spec():
+    """the dark's numbers, from src/daemons_blackout.c itself"""
+    import re
+    src = open(os.path.join(GBA, "src/daemons_blackout.c")).read()
+    num = {k: int(v) for k, v in re.findall(r"^#define (\w+)\s+(\d+)", src, re.M)}
+    body = src[src.index("sThreadSlots[][3] = {"):]
+    body = body[:body.index("};")]
+    slots = [(int(r), int(i), num[s] if s in num else int(s))
+             for r, i, s in re.findall(r"\{\s*(\d+),\s*(\d+),\s*(\w+)\s*\}", body)]
+    return num, slots
+
+
+def c_dark_pltt(pltt, num, slots, lit, phase):
+    """Blackout_ApplyToPltt over a 16x16 list of 15-bit colours, as the C does it"""
+    R, G, B = (lambda c: c & 31), (lambda c: c >> 5 & 31), (lambda c: c >> 10 & 31)
+    rgb = lambda r, g, b: r | g << 5 | b << 10
+    share_of = {r * 16 + i: s for r, i, s in slots}
+    LIT, LOW = 256, num["BREATH_LOW"]
+    out = [list(p) for p in pltt]
+    start = num["BREATH_FIRST_ROW"] * 16 if lit >= LIT else 0
+    for e in range(start, num["BLACKOUT_ROWS"] * 16):
+        c = pltt[e // 16][e % 16]
+        s = share_of.get(e, -1)
+        if s < 0 and e >= num["BREATH_FIRST_ROW"] * 16 and e & 15:
+            f = LOW + ((256 - LOW) * phase) // 255
+            lc = rgb(min(31, (R(c) * f + num["BREATH_LIFT_R"] * phase + 128) >> 8), min(31, (G(c) * f + 128) >> 8),
+                     min(31, (B(c) * f + num["BREATH_LIFT_B"] * phase + 128) >> 8))
+        else:
+            lc = c
+        if lit >= LIT:
+            out[e // 16][e % 16] = lc
+            continue
+        d = 0 if s < 0 else rgb((R(c) * s) >> 8, (G(c) * s) >> 8, (B(c) * s) >> 8)
+        lerp = lambda a, b: int(a + (b - a) * lit / 256)          # C's s32 division truncates toward zero
+        out[e // 16][e % 16] = rgb(lerp(R(d), R(lc)), lerp(G(d), G(lc)), lerp(B(d), B(lc)))
+    return out
+
+
+def blackout_proof(path):
+    import subprocess
+    rom_path = os.path.join(GBA, "daemonsContent.gba")
+    rom = open(rom_path, "rb").read()
+    sym = {}
+    for line in subprocess.run(["arm-none-eabi-nm", os.path.join(GBA, "daemonsContent.elf")], capture_output=True,
+                               text=True).stdout.splitlines():
+        a, _, n = line.split()
+        sym[n] = int(a, 16) - 0x8000000
+    rd = lambda n, size: rom[sym[n]:sym[n] + size]
+    pal = lambda n, rows: [[_rgb15(struct.unpack_from("<H", rom, sym[n] + (r * 16 + i) * 2)[0]) for i in range(16)]
+                           for r in range(rows)]
+    raw = lambda n, rows: [[struct.unpack_from("<H", rom, sym[n] + (r * 16 + i) * 2)[0] for i in range(16)]
+                           for r in range(rows)]
+    #  the card
+    ct = _tiles4(_lz77(rom, sym["sRockTunnelMapPreviewTiles"]))
+    cm = struct.unpack("<640H", _lz77(rom, sym["sRockTunnelMapPreviewTilemap"])[:1280])
+    cp = [_rgb15(struct.unpack_from("<H", rom, sym["sRockTunnelMapPreviewPalette"] + 2 * i)[0]) for i in range(32)]
+    card = Image.new("RGB", (240, 160))
+    cpx = card.load()
+    for ty in range(20):
+        for tx in range(30):
+            e = cm[ty * 32 + tx]
+            t, p = ct[e & 0x3FF] if (e & 0x3FF) < len(ct) else [0] * 64, (e >> 12) - 13
+            for k in range(64):
+                x, y = k % 8, k // 8
+                x, y = (7 - x if e & 0x400 else x), (7 - y if e & 0x800 else y)
+                cpx[tx * 8 + x, ty * 8 + y] = cp[(p if 0 <= p < 2 else 1) * 16 + t[k]] if t[k] else (0, 0, 0)
+    #  the tiles, palettes and metatiles as built
+    gt = _tiles4(_lz77(rom, sym["gTilesetTiles_General"]))
+    st = _tiles4(_lz77(rom, sym["gTilesetTiles_RockTunnel"]))
+    praw = raw("gTilesetPalettes_General", 7)
+    sraw = raw("gTilesetPalettes_RockTunnel", 16)
+    allraw = praw + sraw[7:16]
+    gmt = rom[sym["gMetatiles_General"]:sym["gMetatiles_General"] + 640 * 16]
+    smt = rom[sym["gMetatiles_RockTunnel"]:sym["gMetatiles_RockTunnel"] + os.path.getsize(
+        os.path.join(GBA, SEC + "rock_tunnel/metatiles.bin"))]
+
+    def draw(mapname, box, pr):
+        l = layouts()[mapname]
+        W = l["width"]
+        d = open(os.path.join(GBA, l["blockdata_filepath"]), "rb").read()
+        x0, y0, w, h = box
+        cols = [[_rgb15(c) for c in row] for row in pr]
+        img = Image.new("RGB", (w * 16, h * 16), cols[0][0])
+        o = img.load()
+        for yy in range(h):
+            for xx in range(w):
+                m = struct.unpack_from("<H", d, ((y0 + yy) * W + x0 + xx) * 2)[0] & 0x3FF
+                buf, k = (gmt, m) if m < 640 else (smt, m - 640)
+                if (k + 1) * 16 > len(buf):
+                    continue
+                e = struct.unpack_from("<8H", buf, k * 16)
+                for layer in (0, 1):
+                    for q in range(4):
+                        v = e[layer * 4 + q]
+                        t, row = v & 0x3FF, v >> 12
+                        src = gt[t] if t < 640 else (st[t - 640] if t - 640 < len(st) else [0] * 64)
+                        for ty in range(8):
+                            for tx in range(8):
+                                c = src[(7 - ty if v & 0x800 else ty) * 8 + (7 - tx if v & 0x400 else tx)]
+                                if c:
+                                    o[xx * 16 + (q % 2) * 8 + tx, yy * 16 + (q // 2) * 8 + ty] = cols[row][c]
+        return img
+    num, slots = blackout_spec()
+    f, F = font(13), font(17)
+    z2 = lambda im: im.resize((im.width * 2, im.height * 2), Image.NEAREST)
+    rows = [_row([_label(z2(card), "the CARD as built (sRockTunnelMapPreview*, decoded from the ROM; the name is "
+                                   "printed by the game over the banner)", f)])]
+    import math
+    for m, cx, cy, what in BLACKOUT_SPOTS:
+        box = screen_box(cx, cy)
+        pc = (7 * 16 + 8, 5 * 16 + 8)
+        cells = [(c_dark_pltt(allraw, num, slots, 0, 0), "before VERBOSE (sLit 0)"),
+                 (c_dark_pltt(allraw, num, slots, 128, 0), "VERBOSE rising (sLit 128)"),
+                 (c_dark_pltt(allraw, num, slots, 256, 0), "lit, the exhale (phase 0)"),
+                 (c_dark_pltt(allraw, num, slots, 256, 255), "lit, the inhale (phase 255)")]
+        rows.append(_label(_row([_label(z2(with_player(draw(m, box, pr), *pc)), lab, f) for pr, lab in cells]),
+                           "%s -- %s, cells %d,%d" % (what, m, box[0], box[1]), F))
+    _col([_title("T-546 BUILT -- THE BLACKOUT decoded from %s: the card, the tiles B LIGHT IN THE SEAMS, and the dark "
+                 "with src/daemons_blackout.c's own\nslot table %s, shares %s/256 and breath %d..256 (+%d r, +%d b) -- "
+                 "the C's integer maths applied to the ROM's palettes; 2x"
+                 % (os.path.basename(rom_path), [(r, i) for r, i, _ in slots], sorted({s for *_, s in slots}, reverse=True),
+                    num["BREATH_LOW"], num["BREATH_LIFT_R"], num["BREATH_LIFT_B"]), F,
+                 max(r.width for r in rows))] + rows, gap=16).save(path)
+    return path
+
+
+def blackout_into_engine(d):
+    """direction d's tiles and rows into engineGba, and OTHER CAVE's thread slots hidden -- only into a draft engine
+    worktree, or an approved direction into the real one"""
+    real = os.path.realpath(GBA)
+    if d not in BLACKOUT_APPROVED and real == SHARED_ENGINE:
+        raise SystemExit("  --into-engine refused: %s is the shared engine and T-546 %s is not in BLACKOUT_APPROVED"
+                         % (real, d.upper()))
+    cave = Cave("rock_tunnel")
+    new, pp, _ = blackout(cave, d)
+    tiles_png(cave, new).save(os.path.join(cave.dir, "tiles.png"), bits=4)
+    for r in range(7, 13):
+        if pp[r] != cave.pals[r]:
+            write_pal(os.path.join(cave.dir, "palettes/%02d.pal" % r), pp[r])
+    for n in range(4):
+        od = os.path.join(GBA, SEC + SPLIT_DIR["rock_tunnel/other"] + ("" if n == 0 else "_%d" % n))
+        hp = other_cave_hidden(cave, d, n)
+        for r in range(7, 13):
+            write_pal(os.path.join(od, "%02d.pal" % r), hp[r])
+    print("  T-546 %s (%s) written into %s%s" % (d.upper(), BLACKOUT_DIRS[d]["title"], real,
+                                                 "" if d in BLACKOUT_APPROVED else " -- a DRAFT worktree"))
 
 
 def main():
@@ -1648,6 +2272,18 @@ def main():
         return 0
     if WRITE:
         write_engine()
+        return 0
+    if argval("--blackout-proof"):
+        print("  wrote %s" % blackout_proof(argval("--blackout-proof")))
+        return 0
+    if "--blackout" in ARGS:
+        if argval("--into-engine"):
+            blackout_into_engine(argval("--into-engine").lower())
+            return 0
+        outdir = argval("--blackout") or BLACKOUT_DRAFT
+        cave, made = blackout_drafts(outdir)
+        for p in blackout_sheets(cave, made, SHEETS if argval("--sheets") else outdir):
+            print("  wrote %s" % p)
         return 0
     if DRAFT is not None:
         made = write_draft(DRAFT)
