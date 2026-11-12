@@ -103,3 +103,39 @@ C-357 THE SUBTLE LAYER, LIVED, the companion's half on the site: THE MISREAD in 
 T-547 (DRAFT): THE BLANK TABLET by BLANCHE's north path and the old toad by the pond, from engine 38d8a4400; not filmed
 
 ![12Nov2026 - T547 - the stone and the old toad in BLANCHE - 17](12Nov2026%20-%20T547%20-%20the%20stone%20and%20the%20old%20toad%20in%20BLANCHE%20-%2017.png)
+
+### 12Nov2026 - C349 - TODAY in THE BLACKOUT accent - 18
+
+TODAY wearing THE BLACKOUT's purple and green accent, Thursday's colour kept on the day card, the tuning fork beside G and the 12 NOV calendar sprite (DRAFT)
+
+![12Nov2026 - C349 - TODAY in THE BLACKOUT accent - 18](12Nov2026%20-%20C349%20-%20TODAY%20in%20THE%20BLACKOUT%20accent%20-%2018.png)
+
+### 12Nov2026 - C351 - the days singing bowl - 19
+
+The day's singing bowl in Thursday's colour, the Throat sign lit, rung (DRAFT)
+
+![12Nov2026 - C351 - the days singing bowl - 19](12Nov2026%20-%20C351%20-%20the%20days%20singing%20bowl%20-%2019.png)
+
+### 12Nov2026 - C350 - SETTINGS THEME tab - 20
+
+SETTINGS in four tabs; THEME: light or dark, the week's palette, ACCENTS FROM THE GAME (DRAFT)
+
+![12Nov2026 - C350 - SETTINGS THEME tab - 20](12Nov2026%20-%20C350%20-%20SETTINGS%20THEME%20tab%20-%2020.png)
+
+### 12Nov2026 - C349 - an accent picked by hand - 21
+
+DOLDRUM CITY's accent picked by hand (DRAFT)
+
+![12Nov2026 - C349 - an accent picked by hand - 21](12Nov2026%20-%20C349%20-%20an%20accent%20picked%20by%20hand%20-%2021.jpg)
+
+### 12Nov2026 - C354 - THE CALENDAR in November - 22
+
+THE CALENDAR, November: Remembrance, settling, the month view (DRAFT)
+
+![12Nov2026 - C354 - THE CALENDAR in November - 22](12Nov2026%20-%20C354%20-%20THE%20CALENDAR%20in%20November%20-%2022.png)
+
+### 12Nov2026 - C354 - Octobers bowl - 23
+
+October's bowl, blue into indigo, ringing G + A (DRAFT)
+
+![12Nov2026 - C354 - Octobers bowl - 23](12Nov2026%20-%20C354%20-%20Octobers%20bowl%20-%2023.png)
