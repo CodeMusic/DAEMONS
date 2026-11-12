@@ -184,6 +184,19 @@ Under the day is **THE ONE THING**: the very next step of your goal, and nothing
 With no goal yet, it says *Nothing to do yet. Add a goal, and the first step will wait here.* Goals are made on
 **JOURNEY** ([GOALS](#goals)).
 
+## THE DAY'S TENDING {#tending}
+
+Once **THE SUBTLE LAYER** stands on the LIBRARY's first shelf, TODAY has a card called **THE DAY'S TENDING**. Each day
+of the week has its own centre in the body, from **the root** on Sunday up to **the crown** on Saturday. The card gives
+that day's centre and how to tend it, in the book's own words. On a Thursday it reads: *The throat: sing, and say your
+goals aloud.*
+
+When you have done it, tap **Tended**. It counts once a day. Two days can tend themselves: on Sunday, a walk of a
+thousand steps or more tends the root, and on Friday, a dream kept tends the third eye. The card says which it was.
+
+Under it is **the week's climb**: seven circles, root to crown, starting on Sunday, with each day tended filled in and
+the days still ahead faint. They are all one purple, the book's own, never a colour for each centre. *So they climb.*
+
 ## A glance at everything {#glance}
 
 Under that, a card for each place, and each one opens its tab when you tap it:
@@ -261,6 +274,10 @@ you are not looking, and a day or two of care puts any of it right. A feeling is
 
 A daemon away grows. Every step of your goal you finish counts as a meal and gives it experience. When it has grown,
 the card says so: *Grown here: level 12 to 13. It takes that home with it.*
+
+When your daemon **changes form**, here or in the game and brought home by SYNC, it is still the same daemon. Once THE
+SUBTLE LAYER is on your shelf, for a week after the change a line sits under its own words, in the book's purple:
+*Still me.*
 
 ## The SYNC card {#synccard}
 
@@ -340,6 +357,11 @@ nothing to fix, no score and no streak: only what was heard.
 Once your game holds a certain book, a card called **READS** joins the DAEMON page. Now and then, on a watch, your
 daemon notices something before it happens -- someone close by, rain on the way, a still night -- and gives you **a
 read**. The companion keeps count of which came true, and never says one was right before it has.
+
+Each read is kept with its day, the day's centre, and whether it came **calm** or **with argument**. Sometimes your
+daemon only **leans** one way. A lean that came true says *Landed.*; one that did not says *A misread.*, and under it
+the book's own line: the information was accurate, and the conclusion is the misread. Once there are a few, READS
+keeps a tally of how many calm reads and how many argued reads landed. *The log decides. The calm only points.*
 
 # Talking with your daemon {#talk .t-EMERGENT}
 
@@ -503,6 +525,10 @@ better.
 The first step not yet done is **THE ONE THING** on TODAY. Each step you finish counts as a meal for your daemon and
 gives it experience, which it takes home at the next SYNC. A goal met puts a gold star by it for the week.
 
+Once THE SUBTLE LAYER is on your shelf, a goal also **weathers a mark in**: a small stack of seven layers beside it,
+in the book's purple. Each day you tick a step adds one layer, however many steps you tick that day, and the mark says
+*Weathered in over 3 days.* Ticking more today says *Today counts once, however many steps.*
+
 ## WALKING {#walking}
 
 Under the goal is **WALKING**: the steps you have walked today, of a daily goal you choose -- **6k**, **8k**, **10k** or
@@ -590,6 +616,9 @@ THE SUBTLE LAYER also holds **THE CARDS**, folded under its cover as a deck: tou
   Deck of Reason**, **The Deck of Instinct**, or both together. Touch the spread to draw a card; touch a card on the
   board to turn it over. Under a turned card is its prophecy, a few sentences of its own.
 - Now and then a card is **✦ SHINY ✦**, its colours inverted and its edge gold.
+- In THE SUBTLE LAYER, **PAST · PRESENT · FUTURE** is laid **once a day and kept**. Before it is drawn, all twenty-two
+  cards lie faint. Once they are turned, PAST and PRESENT stay where they fell; touch one and it says *That is the lever
+  you cannot pull.* Only the future can change: **DRAW THE FUTURE AGAIN**.
 
 The cards are only read. They never change your daemon or your save.
 
@@ -772,6 +801,12 @@ The title screen offers **PLAY** and **HOW TO PLAY**. The buttons are drawn on t
   the game, draws its layout under the game; **ON-SCREEN CONTROLS** goes back.
 - **A keyboard** on an iPad or Mac: **X** is A and **Z** is B.
 - **‹ TITLE** goes back to the title screen.
+
+On a phone paired with the companion, the title also offers **LINK CABLE**: two games joined by a cable, as two Game
+Boy Advances would be, so two players can meet at the Cable Club and trade. The companion runs both games itself, and
+each phone plays its own: pick **PLAYER 1 · CONTENT** or **PLAYER 2 · CONTEXT** at the top, and play that game's screen
+with its buttons. **‹ TITLE** goes back. It works at home or on your tailnet, where the companion's hub can be reached,
+and not away from it.
 
 The game pauses whenever another tab is shown, and plays on when you come back.
 
