@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.354 — 2026-11-11
+
+- **9.29:** every General tile is now ours, released in v11.353.1 (T-542 batch 4). General is the tileset every outdoor map shares. The last three edges are the sand's corner, the forest path's edge and the cliff's foot, drawn in THE TRACE, the user's pick.
+- A Settled entry in section 10. DRAFT.
+
 ## v11.353 — 2026-11-11
 
 - **9.29:** the S.S. ANNE's departure wake now starts at her waterline, released in v11.352.1 (T-447, the user's pick). It had shown through the flagstaff's notch over the deck.
