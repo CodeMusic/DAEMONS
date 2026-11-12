@@ -1,0 +1,215 @@
+{
+ "rom": "debug",
+ "about": "The 2026-11-11/12 backlog, filmed where no route showed it moving: the S.S. ANNE's departure from VERMILION (T-447 pair 7: the smoke over her funnel, src/ss_anne.c +46 y 66; the wake moved to +76 y 113 to start behind the hull and drift out at her waterline, engine 569037e2d), burst through; the landmark name cards as a player meets them, walked in through the door -- KEEPALIVE PLANT (T-445 A, fc22a68da), TANOBY's MONEAN CHAMBER (T-445 A, its rose pigment band kept, ba1c0ac79) and DOLDRUM CAVE (T-445 A BECALMED, d4277a127: in colour with the first understanding, inked grey by the cave's filter without -- the DEBUG menu's JUMP > DOLDRUM sets exactly FLAG_UNDERSTANDING_FIRST (or clears it), FLAG_HIDE_CERULEAN_CAVE_GUARD and warps to DOLDRUM CITY 1,14, which these stops do by flag and goto because the route's `debug` step closes with B and would answer the JUMP's YES/NO); TANOBY's chambers' back walls, which T-447 pair 5's route films only from the door; and T-542 batch 4's last three General edges in B THE TRACE (676f4cb6b): TREASURE BEACH's sand corners (tile 4), VERIDIAN FOREST's path edge (301), ONE ISLAND's cliff foot by the bridge (503, row 0 at x 17). Watch held at day, clear weather, follower away. The theatre's debug scratch save; nothing is saved. Then T-447 pair 6's two rooms its own route could not show (2026-11-12: AL CLEAR's room played the champion's scene through the battle, the HALL OF FAME and the credits, so the HALL was never reached): hearing room IV from its middle, AL CLEAR's room with the three FIRST champion battles marked won (OnResume stops the scene), and the HALL OF FAME warped into by hand and burst through its walk-in -- last, since its scene holds the player at the RECORD.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1",
+    "flag FLAG_FOLLOWER_OFF 1"
+   ]
+  },
+  {
+   "stop": "T-447 pair 7: the S.S. ANNE leaves VERMILION -- smoke over the funnel, the wake from behind the hull",
+   "timeout": 1200,
+   "steps": [
+    "goto VermilionCity 23 31",
+    "repel 999",
+    "close",
+    "wait 30",
+    "flag FLAG_HIDE_SS_ANNE 0",
+    "var VAR_MAP_SCENE_VERMILION_CITY 1",
+    "shot on VERMILION's quay, the departure armed",
+    "poke gDaemonsDebugWarp+1 8 1",
+    "poke gDaemonsDebugWarp+2 8 4",
+    "poke gDaemonsDebugWarp+4 16 32",
+    "poke gDaemonsDebugWarp+6 16 14",
+    "poke gDaemonsDebugWarp 8 1",
+    "burst \"departure, the horn and the first puffs\" 50 4",
+    "burst \"departure, under way\" 60 16",
+    "wait 120",
+    "close",
+    "shot back on VERMILION, the ship gone",
+    "expect VermilionCity"
+   ]
+  },
+  {
+   "stop": "T-445: KEEPALIVE PLANT's card, walked in from ROUTE 10",
+   "steps": [
+    "goto Route10 7 42",
+    "repel 999",
+    "close",
+    "wait 30",
+    "to 7 41",
+    "close",
+    "wait 20",
+    "shot at the PLANT's door",
+    "burst \"KEEPALIVE PLANT card\" 30 8 UP 16",
+    "wait 120",
+    "close",
+    "shot KEEPALIVE PLANT inside",
+    "expect PowerPlant"
+   ]
+  },
+  {
+   "stop": "T-445: MONEAN CHAMBER's card (the rose pigment band), walked in from TANOBY RUINS",
+   "steps": [
+    "goto SevenIsland_TanobyRuins 120 11",
+    "repel 999",
+    "wait 30",
+    "finish",
+    "wait 90",
+    "finish",
+    "wait 120",
+    "finish",
+    "to 120 11",
+    "finish",
+    "wait 60",
+    "finish",
+    "wait 20",
+    "shot at MONEAN's door",
+    "burst \"MONEAN CHAMBER card\" 30 8 UP 16",
+    "wait 120",
+    "close",
+    "shot MONEAN CHAMBER inside",
+    "expect SevenIsland_TanobyRuins_MoneanChamber"
+   ]
+  },
+  {
+   "stop": "T-447 pair 5: MONEAN and DILFORD CHAMBERs' back walls -- the frieze and each chamber's own band",
+   "steps": [
+    "goto SevenIsland_TanobyRuins_MoneanChamber 11 3",
+    "close",
+    "wait 60",
+    "shot MONEAN CHAMBER back wall",
+    "goto SevenIsland_TanobyRuins_DilfordChamber 11 3",
+    "close",
+    "wait 60",
+    "shot DILFORD CHAMBER back wall",
+    "goto SevenIsland_TanobyRuins_LiptooChamber 11 3",
+    "close",
+    "wait 60",
+    "shot LIPTOO CHAMBER back wall"
+   ]
+  },
+  {
+   "stop": "T-445: DOLDRUM CAVE's card WITHOUT the understanding (inked grey)",
+   "steps": [
+    "flag FLAG_UNDERSTANDING_FIRST 0",
+    "flag FLAG_HIDE_CERULEAN_CAVE_GUARD 1",
+    "goto CeruleanCity 1 14",
+    "repel 999",
+    "close",
+    "wait 30",
+    "flagis FLAG_UNDERSTANDING_FIRST 0",
+    "to 1 13",
+    "close",
+    "wait 20",
+    "shot at DOLDRUM CAVE's mouth, not understood",
+    "burst \"DOLDRUM CAVE card, not understood\" 30 8 UP 16",
+    "wait 120",
+    "close",
+    "shot DOLDRUM CAVE inside, not understood",
+    "expect CeruleanCave_1F"
+   ]
+  },
+  {
+   "stop": "T-445: DOLDRUM CAVE's card WITH the understanding (in colour)",
+   "steps": [
+    "flag FLAG_UNDERSTANDING_FIRST 1",
+    "flag FLAG_HIDE_CERULEAN_CAVE_GUARD 1",
+    "goto CeruleanCity 1 14",
+    "repel 999",
+    "close",
+    "wait 30",
+    "flagis FLAG_UNDERSTANDING_FIRST 1",
+    "to 1 13",
+    "close",
+    "wait 20",
+    "shot at DOLDRUM CAVE's mouth, understood",
+    "burst \"DOLDRUM CAVE card, understood\" 30 8 UP 16",
+    "wait 120",
+    "close",
+    "shot DOLDRUM CAVE inside, understood",
+    "expect CeruleanCave_1F"
+   ]
+  },
+  {
+   "stop": "T-542 batch 4: TREASURE BEACH's sand corners (tile 4) in B THE TRACE",
+   "steps": [
+    "goto OneIsland_TreasureBeach 10 28",
+    "repel 999",
+    "close",
+    "wait 60",
+    "shot TREASURE BEACH the sand corners",
+    "burst \"TREASURE BEACH walking past the corners\" 12 8 DOWN 48",
+    "wait 30",
+    "shot TREASURE BEACH after the walk"
+   ]
+  },
+  {
+   "stop": "T-542 batch 4: VERIDIAN FOREST's path straight edge (tile 301) in B THE TRACE",
+   "steps": [
+    "goto ViridianForest 17 7",
+    "repel 999",
+    "close",
+    "wait 60",
+    "shot the forest path's edge",
+    "burst \"walking along the forest path's edge\" 12 8 RIGHT 48",
+    "wait 30",
+    "shot the forest path after the walk"
+   ]
+  },
+  {
+   "stop": "T-542 batch 4: ONE ISLAND's cliff foot by the bridge (tile 503, 17,0)",
+   "steps": [
+    "goto OneIsland 22 3",
+    "repel 999",
+    "close",
+    "wait 60",
+    "shot ONE ISLAND the cliff foot by the bridge",
+    "burst \"ONE ISLAND stepping down the bridge\" 12 6 DOWN 16",
+    "wait 30",
+    "shot ONE ISLAND after the walk"
+   ]
+  },
+  {
+   "stop": "T-447 pair 6: hearing room IV (PHLEGMATIC) from its middle",
+   "steps": [
+    "goto PokemonLeague_LoreleisRoom 6 6",
+    "close",
+    "wait 60",
+    "shot LEAGUE hearing room IV, the middle"
+   ]
+  },
+  {
+   "stop": "T-447 pair 6: AL CLEAR's room (row 12), the champion beaten",
+   "steps": [
+    "trainer TRAINER_CHAMPION_FIRST_SQUIRTLE 1",
+    "trainer TRAINER_CHAMPION_FIRST_BULBASAUR 1",
+    "trainer TRAINER_CHAMPION_FIRST_CHARMANDER 1",
+    "goto PokemonLeague_ChampionsRoom 6 12",
+    "close",
+    "wait 60",
+    "shot LEAGUE AL CLEAR's room",
+    "burst \"AL CLEAR's room walking up\" 12 8 UP 32"
+   ]
+  },
+  {
+   "stop": "T-447 pair 6: the HALL OF FAME (A THE INDEX CARD), walked into as the scene does",
+   "steps": [
+    "poke gDaemonsDebugWarp+1 8 1",
+    "poke gDaemonsDebugWarp+2 8 80",
+    "poke gDaemonsDebugWarp+4 16 5",
+    "poke gDaemonsDebugWarp+6 16 12",
+    "poke gDaemonsDebugWarp 8 1",
+    "burst \"HALL OF FAME the walk-in\" 40 8",
+    "wait 60",
+    "shot HALL OF FAME the record",
+    "expect PokemonLeague_HallOfFame"
+   ]
+  }
+ ]
+}
