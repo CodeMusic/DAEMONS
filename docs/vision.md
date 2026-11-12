@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.359**
+**A total conversion — the living design bible, v11.360**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2276,6 +2276,27 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 ***The backgrounds keep the calendar*** (*T-481, the user: "the background should also change based on the time of day ... the day of the week colour ... the season ... a regular day or a holiday"*). **Three surfaces, built in this order: the battle backgrounds, then the menu and window backgrounds, then the overworld's sky and light (9.21's hour tint gains the rest).** *By multiple choice:* **outdoors takes the hour and the season in full; buildings take the hour at a quarter, as if through the windows, and no season; caves keep their own light.** **The weekday is one 1px horizon line** -- *a fine accent, never a wash, noticed on the seventh day rather than the first* -- **and a holiday lights the platforms' glints in the month's colour (3.6).** *BENCHMARK arenas and the Elite rooms take only the line and the glints. Summer bleaches the ground lightly; winter snows it.* **Colour carries the argument here as everywhere (invariant 5): the background tells you when you are.** *All three are built and released: the battles in v11.326.1, and the menus and the field in v11.329.1 (T-481 B and C).* **The panes take the day's trim on one sparse slot and a holiday's month colour on another, and the hour tints only frames and backdrops, never the paper or the ink**, *so the words always read the same; T-318's wash is retired. Outdoors, the water's crest takes the day's trim, and on a holiday with no look of its own one petal takes the month's colour.*
 
 ***The map is a score*** (*T-449, the user: "same shape ... the thesis looks and feel (elements of music and code)"*). **The TOWN MAP keeps vanilla's layout and cursor grid, so finding the way is unchanged, and is redrawn on paper in ink: staff-line terrain, beamed routes, towns as noteheads, and the sea a shuffle of bits and notes cycling against the paper islands.** *The cursor is four ink brackets; a town you can GOTO is a notehead lit in FLOW's blue inside an ink ring; a dungeon an open notehead, filled once found.* **The water in the world moves the same way, each tile on its own timing.** *Built and released; the user kept it as drawn (2026-10-29).*
+
+### 3.11 THE WALLED GARDEN (T-540, the user, 2026-11-10/12)
+
+**The SAFARI ZONE is a platform.** Behind LURID's gate is a curated, walled sandbox where daemons that carry no
+signature are allowed to run, and the wall is there so that nothing leaves it unvetted: a daemon goes out only on
+a GUESTBOX, the platform's own host, issued at the gate and expiring there (1.3's one dim pip). **The player is a
+guest**, on a session metered by the step, and leaves their own daemons at the gate, because what comes in from
+outside is unvetted too. Its four zones are four **RINGS** of permission, the deeper the more privileged. **The
+WARDEN keeps it**; his staff call him LATENCY because every review waits on him, and while his TOKEN is lost
+nothing he says verifies -- though the office goes on obeying it. **At the deepest ring the SECRET HOUSE gives
+away the one thing in the garden that works outside it**: DRIVER03, TRAVERSE, which crosses the water the wall
+never reached.
+
+*What the user asked for was a quarantine that is not about illness, and a sandbox is exactly that: the isolation
+of untrusted code.* **Craft rule 3 binds it**: no line names an illness, and vanilla's *"speech problem"* became
+words that do not verify. **Craft rule 1 binds it harder**: nobody says what a walled garden is for or what it
+costs. The visitors love it. It is safe. Nothing in it surprises anybody. **SAFARI ZONE survives only as an old
+name, remembered.**
+
+***Built 2026-11-12 (DRAFT)***: **every one of its 85 lines picked by the user, line by line** (`docs/walled-garden-picks.json`); the mapsec renamed THE WALLED GARDEN everywhere a player reads it; **the RINGS count down**, RING 3 at the gate to RING 0 at the SECRET HOUSE; the START menu's first row reads SIGN OUT; FIRST MET drops the leading THE only where the place will not fit. SAFARI ZONE is kept twice, as THE OLD NAME: on the WARDEN's merchandise shelf and by HOLT's grandfather. *The SAFARI buildings' art and the place's name card are next.*
+
 
 ## 4. CAST
 

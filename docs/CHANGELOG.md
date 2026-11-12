@@ -5,6 +5,10 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.360 — 2026-11-12
+
+- **3.11, THE WALLED GARDEN (T-540)**: the SAFARI ZONE becomes a curated, walled platform run as a sandbox (the user, 2026-11-10); its 85 lines picked one by one by the user (2026-11-12) and built, DRAFT. The RINGS count down, the menu reads SIGN OUT, SAFARI ZONE survives only as an old name, remembered.
+
 ## v11.359 — 2026-11-12
 
 - Recorded from release v11.358.1:
