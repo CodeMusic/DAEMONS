@@ -157,6 +157,25 @@ At the top: the **day of the week**, its **note** and the **season**, then the d
 under it. Each day of the week has its own colour, note and virtue, and the whole app is dressed in the day's colour.
 CONTENT keeps the northern year's seasons; CONTEXT the southern.
 
+Beside the note is a small **tuning fork**. Tap it and a **singing bowl** opens in the day's colour, patterned with the
+day's centre and its virtue over its shadow, and it rings the day's note. Tap the bowl to ring it again; tap outside
+it, or **[x]**, to close it.
+
+## THE CALENDAR {#calendar}
+
+Beside the date is a small **calendar**, in the month's colours: the months go round the wheel of the week's hues, red
+in January to violet in December. Under the date, a line says the month's tone.
+
+Tap the calendar to open **THE CALENDAR**. At the top is the month: its name, where it comes from, its colours and
+its practice, and the month's own bowl to ring. Under it, **MONTH**, **WEEK** and **DAY** show the events in your
+phone's calendar. The first time, the phone asks to share its calendar with DAEMONS; allow full access to see and
+change your events. Tap an event to change it or remove it, or **+** to add one; a repeating event changes only at
+the time you tapped. Your events stay on the phone. Said no by mistake? The phone's Settings, **Privacy & Security**,
+**Calendars**, turns it back on.
+
+The months follow your hemisphere: CONTENT reads the northern year, CONTEXT the southern, and SETTINGS, **THEME**,
+**THE MONTH'S SEASON**, can choose the other.
+
 ## THE ONE THING {#onething}
 
 Under the day is **THE ONE THING**: the very next step of your goal, and nothing else. When you have done it, tap
@@ -1079,14 +1098,23 @@ heard once -- an INDEX entry, a page -- are kept on the phone, and open away fro
 # Settings {#settings .t-HARDENED}
 
 **⚙**, at the top right, opens SETTINGS. What you see depends on where you are: a paired phone, a phone on its own, or
-the hub's own site.
+the hub's own site. Its tabs, along the top: **GENERAL**, **THEME**, **VOICES** and **SYSTEM**.
 
 {{pictures settings | SETTINGS: THIS APP, and YOUR DAEMONS SAVE.}}
 
+## THEME {#theme}
+
+- **LIGHT OR DARK** -- **Auto** follows the phone or the computer; or choose **Light** or **Dark**.
+- **THE DAY'S COLOUR** -- the colours the days wear: **The site's**, or **Rainbow**.
+- **ACCENTS FROM THE GAME** -- colours from the game. Every place you have saved in, or reached, gives its own; the hub reads them
+  from your save. **In step with the game** wears the place you saved in last, and some places **breathe**. Choose any
+  place you have unlocked to wear it instead, or **Off**, the day's colour alone. Whatever you wear, the day's colour stays: on TODAY's card,
+  on the calendar, and on the line under the header.
+- **THE MONTH'S SEASON** -- whose year THE CALENDAR's months follow: **As the edition**, **North** or **South**.
+
 ## On every screen {#settings-all}
 
-- **THIS APP** -- the build you are running, and whether a newer one is ready. **LIGHT OR DARK**: **Auto** follows the
-  phone or the computer; or choose **Light** or **Dark**.
+- **THIS APP** -- the build you are running, and whether a newer one is ready.
 - **DEVELOPER MODE** -- off unless you turn it on. It is for the people who build the companion: a **</>** tab, a
   record of what the app is doing, and ways to try things without playing to them. Nothing in it reaches your save.
 
