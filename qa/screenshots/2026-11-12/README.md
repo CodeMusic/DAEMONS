@@ -175,3 +175,9 @@ C-221 (companion bd1af9b): the two linked games run on roverbyteseer, played fro
 C-221: THE LINK CABLE in a phone's GAME tab -- the hub's /link/ page, each seat's screen and touch buttons, both games on one cable (save copies, DRAFT)
 
 ![12Nov2026 - C221 - the link cable in the GAME tab - 29](12Nov2026%20-%20C221%20-%20the%20link%20cable%20in%20the%20GAME%20tab%20-%2029.png)
+
+### 12Nov2026 - C357 - THE COMPANION manual - tending, reads, cards, still me, link cable - 30
+
+THE COMPANION's manual (74 pages): THE DAY'S TENDING, READS kept calm or argued, the kept PAST / PRESENT / FUTURE, Still me., and the LINK CABLE
+
+![12Nov2026 - C357 - THE COMPANION manual - tending, reads, cards, still me, link cable - 30](12Nov2026%20-%20C357%20-%20THE%20COMPANION%20manual%20-%20tending%2C%20reads%2C%20cards%2C%20still%20me%2C%20link%20cable%20-%2030.png)
