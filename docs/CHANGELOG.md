@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.355 — 2026-11-12
+
+- **The Third Review's accepted sweeps, finally swept (T-554; 8.7 accepted them 2026-09-10 and no ticket carried them).** The colour sweep: 4.6 and 7.14c no longer describe a greyscale game. The tempo sweep: 7.9 re-read at n=4 — S.T.A.R.R. is the outlier only asleep; it wakes at the people's 128. The SLEEP sweep: 4.5 and 4.25 say SUSPENDED, and SUSPEND being SUSPENDED is kept as the joke (the user). Brazen's B-section: 7.11's row and 7.13 corrected to the re-scanned hook, the music owned as a composition choice (the user). The small faults: Vera's birth order, Ty's key, 4.14's inversion and 4.17's reachability annotated. 8.7's ideas taken: HARD CODED (the Choice Band's name since 1.6c) on the hideout's first grunt; Al's party fading fight by fight, 255 to 0, in 8.6a; the INDEX-sprite idea noted as superseded by T-424's grey INDEX.
+- **Decision log**: Settled.
+
 ## v11.354 — 2026-11-12
 
 *The Fifth Review's four jobs, done on a branch 2026-11-11 and merged over main's v11.347 to v11.353, which took the numbers the branch had used meanwhile; one version carries all four.*

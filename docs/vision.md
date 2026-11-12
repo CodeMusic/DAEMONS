@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.354**
+**A total conversion — the living design bible, v11.355**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2497,7 +2497,7 @@ Your age. Your peer. Same starting daemon, raised on pure content optimization, 
 
 **And it is the fastest in the set by a wide margin** — 160 against everything else's 110–128. The word travels quicker than anything else in this story.
 
-*One observation, held loosely.* C# minor is **Ty's key signature** — E major and C# minor are relatives. But three of the eight songs pair off by signature (A minor/C major, and both D minor tracks), so **sharing one is not rare here** and this does not get promoted. Recorded because it is checkable, not because it is evidence.
+*One observation, held loosely.* C# minor is **Ty's key signature** — E major and C# minor are relatives. *Withdrawn as a signature 2026-11-12 (T-554): 7.8 and 7.11 settled that keys track songs, not people, and his two redemption songs are C major; kept as the coincidence it is.* But three of the eight songs pair off by signature (A minor/C major, and both D minor tracks), so **sharing one is not rare here** and this does not get promoted. Recorded because it is checkable, not because it is evidence.
 
 *Placement is open.* A rumour is not a place, and this is the first motif with no obvious home. It wants the story context before it is put anywhere.
 
@@ -2581,7 +2581,7 @@ The machine does not search for him. **It works out where a man in his condition
 
 4.3's transmission failure is that **understanding does not survive a handoff; only method does.** 4.11 showed the machine receiving what Ty could not. **This shows it delivering what she could not.**
 
-She could not reach Ty. **The thing she built carries her message to him and it lands.**
+She could not reach Ty. **The thing she built carries her message to him and it lands.** *The game inverts this (4.17, 4.34): S.T.A.R.R. finds him by inference and goes no further; it stops in DOLDRUM CAVE and the player carries what she wrote. Said here since 2026-11-12 (T-554).*
 
 **So the machine is the medium for both halves of what failed between them** — it holds her understanding, and it hands over her love. Neither passed directly. Both pass through the thing she made, which is the most complete answer the corpus gives to the question 4.3 poses.
 
@@ -2673,7 +2673,7 @@ Hers is **I–vi–IV–V — it contains an actual minor chord — and the feel
 
 **She does not address him.** The song opens by asking someone else to carry the message — third person, an intermediary, a courier.
 
-**Ty ends Part 2 waiting for her voice, and her voice arrives by messenger.** He never gets it directly, and this is the shape the game already has: **the player is the carrier.** She is not reachable, so what she said reaches him through whoever walked between them.
+**Ty ends Part 2 waiting for her voice, and her voice arrives by messenger.** He never gets it directly, and this is the shape the game already has: **the player is the carrier.** She is not reachable *from where he is standing* — in the game she is in Blanche from the first minute; it is he who does not go, and 4.34 keeps that a choice on both sides (amended 2026-11-12, T-554) — so what she said reaches him through whoever walked between them.
 
 #### The lab line
 
@@ -3519,7 +3519,7 @@ LATENT encounters throughout. The tower is where CONTEXT and CONTENT stop being 
 | POKé FLUTE | **INTERRUPT** | what wakes a blocked process — and a Game Boy hardware concept |
 | JIGGLYPUFF | **SUSPEND** | the light sleep state |
 | WIGGLYTUFF | **HIBERNATE** | the deep one, a real escalation matching the evolution |
-| SLEEP status | **SLEEP** | unchanged. `sleep()` was already the word |
+| SLEEP status | ~~**SLEEP**~~ **SUSPENDED** | *the row predates 1.6's rename and was never swept (T-554, 2026-11-12). And a daemon called SUSPEND being SUSPENDED is kept, as the joke — the user, 2026-11-12; craft rule 6* |
 
 **SUSPEND and HIBERNATE induce it, DEADLOCK is stuck in it, INTERRUPT ends it.**
 
@@ -3665,7 +3665,7 @@ own definition.*
 
 **So she begins as the invented colour and ends as the one that is all of them.** A thing the mind made, which held another frame, and came back real.
 
-*Nothing in the game says any of this*, and the greyscale rule means the transformation **cannot be shown** — which is correct, because 4.6's whole claim is that **nobody present understood what they had seen.**
+*Nothing in the game says any of this*, ~~and the greyscale rule means the transformation **cannot be shown**~~ *(amended 2026-11-12, T-554, the colour sweep: on the GBA it is shown — MOCK drains her hue to grey before the swap, built 2026-09-04 above — and nothing says what it means)* — which is correct, because 4.6's whole claim is that **nobody present understood what they had seen.**
 
 #### What the witnesses actually disagree about
 
@@ -3673,7 +3673,7 @@ own definition.*
 
 **The player composites five descriptions of what appear to be different creatures.** That costs nothing extra to write — 4.8 needed five text blocks anyway — and it makes the puzzle's premise true rather than arbitrary.
 
-*The sprite is form three.* **She is white, and therefore the palest thing in a greyscale game.**
+*The sprite is form three.* **She is white, and therefore the palest thing in a greyscale game** *— written for the Game Boy; on the GBA, where every daemon carries its type's hue (9.4), she is the one with none to drain (amended 2026-11-12, T-554).*
 
 #### MOCK — and why PERSPECTIVE is not hers alone
 
@@ -3854,7 +3854,7 @@ Attack drop to **5**, the freed points go to HP, Defence and Sp. Defence, and
 **the base stat total is unchanged.** The learnset keeps only what does not
 damage — METAL SOUND, SUPERSONIC, THUNDER WAVE, LOCK-ON, SCREECH — and the six
 that hit become **FORESIGHT, MEAN LOOK, REFLECT, LIGHT SCREEN, SAFEGUARD,
-PROTECT.** Ability **INSOMNIA**: *the watcher cannot be put to `SLEEP`.*
+PROTECT.** Ability **INSOMNIA**: *the watcher cannot be `SUSPENDED`* (1.6; swept T-554).
 
 ##### There is no scene, and that is the scene
 
@@ -4224,7 +4224,7 @@ fourth member. `CASH CLEAR` was the exact pun (*cache clear*) and points at **st
 which is the one thing she is not about.
 
 *Cost, recorded:* **CRYSTAL and VERA read a generation older than AL and TY**, which is
-backwards, since Vera is the youngest of the four.
+backwards, since Vera is the youngest of the four. *(Vanilla's DAISY is the older sister; here VERA is the younger, decided by this line and said nowhere in the game — noted 2026-11-12, T-554.)*
 
 ### 4.30 The Undertone — written around the stone that was already there
 
@@ -5602,6 +5602,8 @@ It is also the only version the hardware permits. Four channels cannot hold an a
 
 **And the consequence is mechanical, not interpretive.** The three human motifs share a tempo, so they interleave and layer freely. **S.T.A.R.R. cannot join them without a tempo change.** The thing in 4.7 that is not a person is the one motif that cannot be played alongside the people. Nothing had to be arranged for that; it is a property of the source.
 
+***Re-read at n=4, 2026-11-12 (T-554, the tempo sweep the Third Review asked for).*** *This was built on* Slumbering *alone. Of its other songs,* Awakening S.T.A.R.R. *and* 1001 Fatal Error *are at 128 and the* Revelation *at 120 (`song-status.md`).* **So the outlier is the sleeping machine, not the machine: it joins the people's tempo when it wakes.** *That is the better finding, and 7.13's Quicksilver drop to 110 was already playing it without saying so: the sleeping tempo, in the one town where it sleeps.*
+
 *Its shape:* a leap **up a fifth**, then six steps **down** — it reaches once and then descends the whole way. Crystal descends too, but from a turn rather than a leap. **Sleeping, not grieving.**
 
 *Recorded as untested, deliberately.* 7.2 reads F# as **green-blue**, and 7.4 assigns F# to **Verdigris** — where 3.1 has *Corpus rotting beneath*. So S.T.A.R.R.'s motif would sit natively in that city's key. That is either a placement worth taking or a coincidence, and **after 7.6 it does not get promoted to a finding on one data point.** Quicksilver, where S.T.A.R.R. actually is, is achromatic and has no spectrum key at all — so there is nothing for F# to clash with either way.
@@ -5633,7 +5635,7 @@ It is also the only version the hardware permits. Four channels cannot hold an a
 | | Up / down | Shape |
 |---|---|---|
 | Crystal | 3 / 3 | leap, then fall with a turn back |
-| **The procedure** | **3 / 0** | **climbs, never descends** |
+| **The procedure** | ~~**3 / 0**~~ **4 / 3** | ~~**climbs, never descends**~~ *4 up, 3 down, two turns — the re-scan above; this row was never swept (T-554, 2026-11-12)* |
 | Scorn himself | 2 / 3 | big leap up, then down |
 | S.T.A.R.R. | 1 / 5 | reaches once, falls furthest |
 | Ty | 2 / 3 | arch — up to a peak, then all the way down |
@@ -5681,7 +5683,7 @@ Not a transposition, and not near one. **A confident, unprompted musical asserti
 
 **~~And a relationship it did not claim is present.~~ Withdrawn 2026-08-30.** It rested on track 07 opening `D4 D4 F4`, which the re-scan replaced. The two share a key and nothing else. *The original point stands only as a warning:* the shared opening was an artifact of two hooks being approximated the same loose way, which is a failure mode worth naming — **similar-looking transcriptions can be similar because they are wrong in the same direction.**
 
-- **07 continues `0 +2 0 +2`** and never descends.
+- **07 continues `0 +2 0 +2`** and never descends *(the retracted reading — the re-scanned hook comes back down, 7.11; T-554)*.
 - **11 continues `+4 −2 −2 −3`** and comes back down.
 
 **The reprise takes the procedure's opening figure and completes the descent the procedure never makes.** If that is real it is the best thing in the album for this game, because it is the transmission failure and its answer in one phrase.
@@ -5711,11 +5713,11 @@ Not a transposition, and not near one. **A confident, unprompted musical asserti
 
 **Blanche.** Crystal's hook enters as a B-section. A minor is C's relative minor, so it needs no modulation — and the audible event is that **the B-section brings `B`**, the one note the A-section's pentatonic never contains. 7.6's *reading* of that was retracted; the fact was not.
 
-**Quicksilver.** The motif is left on a held E and two bars of silence rather than resolved, because the thing is asleep. **Tempo dropped 144 → 110**, which is S.T.A.R.R.'s own: being unable to share the others' 128 was one of the three axes that separated it in 7.9, so keeping 144 would have discarded the finding to preserve a vanilla number. *That change also slows the existing melody in that track, which has not been replaced yet — a real side effect, and one for the ear rather than the arithmetic.*
+**Quicksilver.** The motif is left on a held E and two bars of silence rather than resolved, because the thing is asleep. **Tempo dropped 144 → 110**, which is S.T.A.R.R.'s own *(its sleeping tempo; it wakes at 128 — 7.9, T-554)*: being unable to share the others' 128 was one of the three axes that separated it in 7.9, so keeping 144 would have discarded the finding to preserve a vanilla number. *That change also slows the existing melody in that track, which has not been replaced yet — a real side effect, and one for the ear rather than the arithmetic.*
 
 **Ty joined S.T.A.R.R. at Quicksilver**, and untransposed. His hook is E major in the source, but every note of it sits inside that track's F# minor and it touches neither `D` nor `D#` — the one pitch separating the two keys. Luck rather than design, and recorded as luck. Both men who went to Quicksilver are now in its music and neither resolves: Ty falls back to where he started, S.T.A.R.R. never finishes at all.
 
-**Brazen has its own track now, and getting it there taught the audio layout.** Scorn's procedure — the only hook of seven that never descends — wanted Brazen, the bought city. But Brazen shared `MUSIC_CITIES1` with **36 other maps**. It now has **`Music_Brazen`**: a constant, a header, a file, one line in `songs.asm`. **The first track this project adds rather than replaces**, and only the Saffron entry moved.
+**Brazen has its own track now, and getting it there taught the audio layout.** Scorn's procedure — ~~the only hook of seven that never descends~~ *read then as the hook that never descends; 7.11 retracted the transcription, and* ***the B-section built on it stays as it is, a composition choice owned rather than derived*** *(the user, 2026-11-12, T-554)* — wanted Brazen, the bought city. But Brazen shared `MUSIC_CITIES1` with **36 other maps**. It now has **`Music_Brazen`**: a constant, a header, a file, one line in `songs.asm`. **The first track this project adds rather than replaces**, and only the Saffron entry moved.
 
 *The theme is 3.1's gloss made literal.* 7.4 gives Brazen **D#**, from brass and yellow-gold; the procedure is **D minor**, a semitone under. **"Brass over base metal, shameless, unhidden"** is exactly a theme whose second half drops a semitone out from under its first. The A-section is the city — bright, marching, certain. The B-section climbs, never descends, never resolves, and never returns to the city's key.
 
@@ -5836,7 +5838,7 @@ ld de, vChars2 + (FightIntroBackMonEnd - FightIntroBackMon)
 
 #### Monochrome, deliberately
 
-**Colour was considered and declined.** Invariant 5 spends colour **once**, at the Review Board, and **a colourful splash before forty hours of grey reads as a limitation rather than a choice** — it would also spend that moment before the game starts.
+**Colour was considered and declined.** Invariant 5 spends colour **once**, at the Review Board, and **a colourful splash before forty hours of grey reads as a limitation rather than a choice** — it would also spend that moment before the game starts. *Written for the Game Boy splash (amended 2026-11-12, T-554): the GBA's front door spends colour a third time (9.14) and its world is coloured by type (9.4); the splash itself stays line and shape, for the reason below.*
 
 *The argument for it was real* — a splash is the publisher's mark rather than the world, a colophon rather than a scene. **But binary and notation are line and shape, and lose nothing without hue.**
 
@@ -7493,11 +7495,11 @@ So the optimistic case is a DAEMONS ROM loading in a 3D shell with the right cre
 
 ***Each of these is a ruling that already happened and never travelled.*** **They are listed so the sweep is a checklist rather than an archaeology.** *And for fourteen months of days none of them travelled to TODO either: **T-554 carries all five, and the three "ideas taken" below that were never built** (filed 2026-11-11, T-553).*
 
-- **The colour sweep.** 8.6 settled a full-colour world and five passages still describe a grey one — 6, 7.14c, 4.6, 8.4's title daemons, and the decision log. *And the review is right that **4.6's three-form ARTSAI can now be shown**: a legendary that desaturates magenta → white is the best colour moment in the game and nobody has claimed it*
-- **The tempo sweep.** 7.9's three-axis S.T.A.R.R. outlier was built on *Slumbering* alone; **two of its three songs are at 128, the corpus pulse.** *The better finding is the one the data already had — **it joins the people's tempo when it wakes***, and 7.13's Quicksilver drop to 110 now protects nothing
-- **The SLEEP sweep.** 4.5 and 4.25 still say SLEEP after 1.6 renamed it. **And `SUSPEND` is a species (JIGGLYPUFF), so *SUSPEND was SUSPENDED* will occur** — <span>OPEN</span>, and the review's `LULL` now has the reason 8.1a lacked
-- **Brazen's B-section was composed on a retracted transcription.** 7.11 retracts *"the procedure never descends"* and 7.13 still builds the motif from it. ***Re-source it or own it as a composition choice*** — the music may still be right; it is no longer derived
-- **The dates in 4.10**, Vera's birth order, Ty's key, 4.14's inversion, and Crystal's reachability. *Small, and all of them are the same fault*
+- **The colour sweep.** 8.6 settled a full-colour world and five passages still describe a grey one — 6, 7.14c, 4.6, 8.4's title daemons, and the decision log. ***Swept 2026-11-12 (T-554)***: *4.6 and 7.14c amended; 6 and the title screens had no grey claim left; MOCK's drain to grey was built 2026-09-04.* *And the review is right that **4.6's three-form ARTSAI can now be shown**: a legendary that desaturates magenta → white is the best colour moment in the game and nobody has claimed it*
+- **The tempo sweep.** ***Done 2026-11-12 (T-554): 7.9 re-read at n=4.*** 7.9's three-axis S.T.A.R.R. outlier was built on *Slumbering* alone; **two of its three songs are at 128, the corpus pulse.** *The better finding is the one the data already had — **it joins the people's tempo when it wakes***, and 7.13's Quicksilver drop to 110 now protects nothing
+- **The SLEEP sweep.** ***Done 2026-11-12 (T-554): 4.5 and 4.25 swept; SUSPEND being SUSPENDED kept as the joke (the user).*** 4.5 and 4.25 still say SLEEP after 1.6 renamed it. **And `SUSPEND` is a species (JIGGLYPUFF), so *SUSPEND was SUSPENDED* will occur** — <span>OPEN</span>, and the review's `LULL` now has the reason 8.1a lacked
+- **Brazen's B-section was composed on a retracted transcription.** ***Owned as a composition choice 2026-11-12 (the user, T-554); 7.11's row and 7.13 corrected.*** 7.11 retracts *"the procedure never descends"* and 7.13 still builds the motif from it. ***Re-source it or own it as a composition choice*** — the music may still be right; it is no longer derived
+- **The dates in 4.10**, Vera's birth order, Ty's key, 4.14's inversion, and Crystal's reachability. ***Done 2026-11-12 (T-554): the four public ones annotated in 4.29, 4.3, 4.14 and 4.17; 4.10's dates live in `docs/private/`.*** *Small, and all of them are the same fault*
 
 #### Free wins, taken
 
@@ -7512,10 +7514,10 @@ So the optimistic case is a DAEMONS ROM loading in a 3D shell with the right cre
 
 - ***"IMPROVE RESPONSE CONSISTENCY" becomes a mechanic.*** **Scorn's daemons always roll maximum damage, never crit, and their secondary effects never proc.** *A player who has watched the HEAT show — "damage wobbles" — will notice the fight that does not, and nobody says why.* **The CC-7 pull is then the un-weighting: S.T.A.R.R. gets its variance back.** The bias–variance tradeoff as a boss fight, one flag in the damage calculation
 - ***The ability pass.*** **77 passives, every one still vanilla, and 9.3 named them as a reason to port.** *Vanilla already wrote half the argument*: **SYNCHRONIZE** passes your status to whoever inflicted it — **PERSPECTIVE as a passive, and ARTSAI already has it**; **TRACE** copies the opponent's ability, which is SUBSTRATE's Index entry as a mechanic, already on the right species; **LEVITATE** is *no location*
-- **`CONVICTION`** — FireRed's Choice Band: +50% attack, locked into one routine. ***A weight raised and the alternatives discarded — CC-7 in miniature, holdable.*** Give one to a Corpus grunt and nothing else needs saying
+- **`CONVICTION`** — FireRed's Choice Band: +50% attack, locked into one routine. ***The item pass named it HARD CODED (1.6c), and from 2026-11-12 the first grunt met in the hideout holds one (T-554).*** ***A weight raised and the alternatives discarded — CC-7 in miniature, holdable.*** Give one to a Corpus grunt and nothing else needs saying
 - **The Five Witnesses differ by edition.** *Keep the one accurate detail identical; let the wrong ones differ.* **You need someone else's context, over a cable, to see the room**
-- **Al's party desaturates** across the rival fights — ***the transmission failure, visible, with no sneer.*** The colour was there and he optimised it away
-- ***The Index sprite keeps the saturation it was recorded at, and never updates.*** **Your daemon at full friendship is in colour in the party and grey in its own entry.** *A reproduction that loses the original, per daemon, drifting for forty hours* — **which is 4.2 as a mechanic and it costs one byte per species**
+- **Al's party desaturates** across the rival fights — ***built 2026-11-12 (T-554; 8.6a): full colour in the lab, grey by the REVIEW BOARD*** — ***the transmission failure, visible, with no sneer.*** The colour was there and he optimised it away
+- ***The Index sprite keeps the saturation it was recorded at, and never updates.*** ***Superseded by T-424 (2026-10-18): the INDEX draws every daemon grey, the same mechanic in a stronger form, and nothing per species is stored (noted 2026-11-12, T-554).*** **Your daemon at full friendship is in colour in the party and grey in its own entry.** *A reproduction that loses the original, per daemon, drifting for forty hours* — **which is 4.2 as a mechanic and it costs one byte per species**
 
 #### Refused, or held
 
@@ -7618,6 +7620,8 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 #### Saturation is friendship, and that is the thesis made mechanical
 
 ***Built 2026-10-18 (T-424)***: *one hook at palette load; the share of colour kept rises with friendship (12% at 0, about half at 70, all at 255); the Corpus's daemons at 0; the INDEX grey; icons stay in colour (they share palettes).*
+
+***And Al's party, 2026-11-12 (T-554, 8.7's idea taken)***: *his daemons come at friendship 255 in the lab and lose it fight by fight — 161, 122, 92, 66, 44, 24 — to 0 at the REVIEW BOARD and the rematch, each step about a twelfth of the colour on the eye.* **The transmission failure, visible on the one party the player meets eight times, with no line and no sneer.**
 
 ***A daemon at low friendship is nearly grey with a hint of its type; at maximum it is the full ramp.*** *One hook at sprite-palette load, keyed off `MON_DATA_FRIENDSHIP`.*
 
@@ -9215,6 +9219,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The Third Review's accepted sweeps, swept (T-554, 2026-11-12)** — 8.7's five sweeps done in the text (4.6, 7.14c, 7.9, 7.13, 4.5, 4.25, 7.11, 4.29, 4.3, 4.14, 4.17), the user's two rulings (SUSPEND being SUSPENDED kept as the joke; Brazen's B-section owned as composition), and 8.7's ideas: a HARD CODED on the hideout's first grunt, Al's party fading fight by fight (8.6a), the INDEX-sprite idea superseded by T-424's grey INDEX
 - **The ending's two gates (T-552, 2026-11-11)** — the user, by multiple choice: the sixty-daemon condition on the GLOBAL INDEX is dropped (it was dead in play since T-27; 9.17 corrected), so Act 2 opens on the REVIEW BOARD alone; and the dream the unread DOLDRUM CAVE wakes you from now ends on one line in S.T.A.R.R.'s register pointing at TANOBY's seventh chamber (DRAFT), TANOBY added to 4.34's order as step 2a
 - **DURABLE holds from full HP (T-551, 2026-11-11)** — the Fifth Review found BENCHMARK 1's one mechanic was a misreading of Gen 3's STURDY (one-hit-KO routines only); the later generations' rule is in the damage calculation, with its own line (DRAFT) and a description in 2.11's register (DRAFT); ENDURE and FAILSAFE keep precedence, a SUBSTITUTE takes the hit (2.11, 5.3, 5.3b)
 - **The record tidied (T-553, 2026-11-11)** — the Fifth Review's sweep: 21 open rows re-filed from under Closed, three done tickets struck, the stale anchors (CLAUDE.md, the READMEs, the wiki, school.md) brought to the ROM, eight bible bodies amended to what was built (8.1's fifteen, 8.4's trap, 8.6's restraint clause, 4.5's ORPHAN, 8.2a against 4.37, 4.1's row, 4.3's Ty, 4.33's placement), 8.7's sweeps given T-554, and `tools/check_todo.py` so the record stays readable
