@@ -43,3 +43,21 @@ C-339 seen on the site: SET UP opens THE LOCAL CLOUD's own steps in WHAT'S NEW
 C-190: THE HUB card with CHECK EVERY BRAIN NOW, TRY THE AI and LoRa boards that open their settings (throwaway hub, no AI there)
 
 ![12Nov2026 - C190 - THE HUB card acts, site - 7](12Nov2026%20-%20C190%20-%20THE%20HUB%20card%20acts%2C%20site%20-%207.png)
+
+### 12Nov2026 - C190 - THE HUB card acts, iOS app - 8
+
+C-190 in the iOS app (Simulator, locally signed): THE HUB card with CHECK EVERY BRAIN NOW, TRY THE AI and the LoRa boards as links
+
+![12Nov2026 - C190 - THE HUB card acts, iOS app - 8](12Nov2026%20-%20C190%20-%20THE%20HUB%20card%20acts%2C%20iOS%20app%20-%208.png)
+
+### 12Nov2026 - C190 - a LoRa link opens the watchs settings, iOS app - 9
+
+C-190 in the iOS app: tapping T-Watch S3 on the card opened its own settings, C-166's CLOCK row among them
+
+![12Nov2026 - C190 - a LoRa link opens the watchs settings, iOS app - 9](12Nov2026%20-%20C190%20-%20a%20LoRa%20link%20opens%20the%20watchs%20settings%2C%20iOS%20app%20-%209.png)
+
+### 12Nov2026 - C337 - THIS PHONE in SETTINGS, iOS app - 10
+
+C-337 in the iOS app: SETTINGS > THIS PHONE, the phone's name on the companion and what the daemon calls you
+
+![12Nov2026 - C337 - THIS PHONE in SETTINGS, iOS app - 10](12Nov2026%20-%20C337%20-%20THIS%20PHONE%20in%20SETTINGS%2C%20iOS%20app%20-%2010.png)
