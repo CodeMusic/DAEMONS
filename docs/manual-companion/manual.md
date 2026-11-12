@@ -494,7 +494,8 @@ Reaching the goal counts as activity for your daemon: *Reached: your daemon is g
 
 The **JOURNAL** is yours to keep. You can have several, each with a title.
 
-1. Under **YOUR JOURNALS**, type a title -- *This autumn* -- and tap **Start it**.
+1. Under **YOUR JOURNALS**, type a title -- *This autumn* -- choose **WHAT KIND** it is, **STANDARD** or **DREAM
+   JOURNAL**, and tap **Start it**. A dream journal is marked **DREAMS**, and its button reads **+ NEW DREAM**.
 2. Open it, and tap **+ NEW ENTRY**. Give it a title if you like, write what happened and what you noticed, and tap
    **Save entry**.
 3. Tap an entry to read it again, **Edit** it, or **Remove** it. **Rename** and **Remove** at the top change the whole
@@ -518,6 +519,21 @@ Then, beside the chapter:
 
 If it could not be written, **Try again**, or **Lay it out as written**, which sets your own entries on the page just
 as you wrote them. With no mind in the house, or on a phone on its own, that is what happens at once.
+
+## The signs {#signs}
+
+Every journal can look for what is hidden in it. Beside an entry or a chapter, tap **✦ SIGNS AND PATTERNS** -- in a
+dream journal, **✦ READ THE SIGNS**. Your daemon reads the words through the four books -- THE SUBTLE LAYER, THE
+HERMETIC LAYER, THE EUDAIMON LAYER and THE UNITY BOOK -- and finds three to six signs: an image, a creature, a
+colour, a number, a place that keeps returning. For each it shows where it appears in your words, what it may mean,
+and the books it was read through; under them, **TOGETHER**, what the signs say as one. **Read them again** asks for a
+fresh reading.
+
+In a **dream journal**, a chapter is told as your dreams in order, and its signs are read as soon as the chapter is
+written. A sign is always something your own words hold; the books are only how it is read. They offer, never
+pronounce: nothing here diagnoses, predicts or advises.
+
+With no mind in the house, or on a phone on its own, the signs come from the books' own readings of the symbols found.
 
 ::: note
 **The JOURNAL is always written at home.** Your entries go to your own hub's mind, and to nothing outside the house.
