@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.358, working |
-| [`CONTEXT-CONTENT-design-bible-v11.358.pdf`](CONTEXT-CONTENT-design-bible-v11.358.pdf) | Typeset **snapshot** at v11.358 — the Blank Tablet in BLANCHE, and the old toad who says the lean. | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.359, working |
+| [`CONTEXT-CONTENT-design-bible-v11.359.pdf`](CONTEXT-CONTENT-design-bible-v11.359.pdf) | Typeset **snapshot** at v11.359 — a blank stone that writes itself, an old toad by the pond, and a ship leaving cleanly. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

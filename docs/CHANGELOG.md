@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.359 — 2026-11-12
+
+- Recorded from release v11.358.1:
+  - **4.39:** THE BLANK TABLET is released (T-547). The user kept its words as drafted.
+  - **9.29:** the S.S. ANNE's wake now sits wholly behind her hull, and at the pier's end the player stands in front of her funnel (T-447).
+  - **9.29:** the KEEPALIVE PLANT's name card now leaves the screen as a cave's card does, with a flash and nested rectangles (T-445).
+- A Settled entry in section 10. DRAFT.
+
 ## v11.358 — 2026-11-12
 
 - **4.39, the Blank Tablet built (T-547)**, from the user's picks by multiple choice:
