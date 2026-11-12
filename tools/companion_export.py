@@ -1982,7 +1982,7 @@ PLANNER_FERRY_TO = ["MAP_%s_ISLAND_HARBOR" % n for n in ("ONE", "TWO", "THREE", 
 #  DRIVER01, and the planner points at the captain, not the pier.
 PLANNER_SPOT_FLAG = {"ss_anne": "FLAG_GOT_HM01"}
 #  The harness's labels, less the four that are still vanilla's words
-PLANNER_LABELS = {"ss_anne": "S.S. ANNE", "safari_zone": "SAFARI ZONE", "silph_co": "FOUNDRY CO.", "champion": "CHAMPION"}
+PLANNER_LABELS = {"ss_anne": "S.S. ANNE", "safari_zone": "THE WALLED GARDEN", "silph_co": "FOUNDRY CO.", "champion": "CHAMPION"}
 #  T-407's season, hour and weather homes (wild_shifts.h): left out until the user says they are not found by playing
 PLANNER_SHIFTS = False
 PLANNER_AREAS = [["north-west", "north", "north-east"], ["west", "centre", "east"], ["south-west", "south", "south-east"]]

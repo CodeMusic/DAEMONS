@@ -98,7 +98,7 @@
     },
     "safari_zone": {
       "first":  [["I dreamt of a wild park behind a", "gate, and a little house deep in it."], ["Someone there kept a way across", "the water."]],
-      "second": [["I dreamt of the SAFARI ZONE in", "LURID CITY."], ["The house at its far end holds", "DRIVER03."]],
+      "second": [["I dreamt of THE WALLED GARDEN", "in LURID CITY."], ["The house at its far end holds", "DRIVER03."]],
       "title":  "BEHIND THE GATE",
       "led":    [["The little house kept its way", "across the water for you."]]
     },

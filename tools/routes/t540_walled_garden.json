@@ -1,0 +1,85 @@
+{
+ "rom": "debug",
+ "about": "T-540, THE WALLED GARDEN (the user's line picks, 2026-11-12), DRAFT: the gate's attendants, a guest session signed in, the map popup, the START menu's SIGN OUT, the RINGS counting down (RING 3 at the gate, RING 0 at the SECRET HOUSE) and a WAITING ROOM sign. Watch held at day. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "the gate: the info attendant explains the four RINGS",
+   "steps": [
+    "goto FuchsiaCity_SafariZone_Entrance 4 5",
+    "close",
+    "talk FuchsiaCity_SafariZone_Entrance_EventScript_InfoAttendant 1",
+    "press A",
+    "finish"
+   ]
+  },
+  {
+   "stop": "the gate: signing in to THE WALLED GARDEN, and the map popup inside",
+   "steps": [
+    "trigger 4 3 2",
+    "press A",
+    "finish",
+    "wait 20",
+    "shot the map popup: THE WALLED GARDEN"
+   ]
+  },
+  {
+   "stop": "START inside: SIGN OUT",
+   "steps": [
+    "press START",
+    "shot the START menu: SIGN OUT at the top",
+    "press B"
+   ]
+  },
+  {
+   "stop": "RING 3, at the gate",
+   "steps": [
+    "goto SafariZone_Center 33 22",
+    "close",
+    "to 33 21",
+    "press A",
+    "shot RING 3",
+    "press A"
+   ]
+  },
+  {
+   "stop": "RING 0 and a WAITING ROOM, in the WEST where the SECRET HOUSE is",
+   "steps": [
+    "goto SafariZone_West 35 28",
+    "wait 40",
+    "shot the map popup on arriving",
+    "to 35 27",
+    "press A",
+    "shot RING 0",
+    "press A",
+    "to 22 21",
+    "to 22 20",
+    "press A",
+    "shot WAITING ROOM",
+    "press A"
+   ]
+  },
+  {
+   "stop": "the name card, walking from the gate into RING 3 (its first-visit flag cleared)",
+   "steps": [
+    "goto FuchsiaCity_SafariZone_Entrance 4 2",
+    "close",
+    "flag FLAG_WORLD_MAP_SAFARI_ZONE_CENTER 0",
+    "warp MAP_SAFARI_ZONE_CENTER",
+    "wait 30",
+    "shot the name card: THE WALLED GARDEN",
+    "wait 40",
+    "shot the name card, a moment later",
+    "wait 60",
+    "shot after the card"
+   ]
+  }
+ ]
+}

@@ -124,7 +124,7 @@ HEARSAY = {
             (LIKE, "M", [["I lost, and none of it was his", "doing. TILT says that is the point."], ["I still don't know if that makes", "it better."]]),
             (FAMILY, "F", [["My father is the BENCHMARK LEADER", "of this town. People cross the", "street."], ["He knows every remedy in LURID,", "and why each one is needed."]]),
             (RUMOR, "", [["LURID's CHECKPOINT keeps a shelf", "of TILT's remedies."], ["Each is labelled with what it", "cures, and what causes it."]]),
-            (DO, "M", [["TILT walks the SAFARI ZONE every", "so often."], ["Things go wrong less after he has", "been. Nobody's seen him fix a", "thing."]]),
+            (DO, "M", [["TILT walks THE WALLED GARDEN", "every so often."], ["Things go wrong less after he has", "been. Nobody's seen him fix a", "thing."]]),
         ],
         "letter": ("M", [["Nothing I did was to you."], ["Remember that. And remember that", "it happened anyway."]]),
     },
@@ -264,7 +264,7 @@ WORLD = {
                                                   ["It also lets you TRAVERSE outside", "of battle!"], ["CORRUPT. I do not need to beat", "you."], ["Your own ROUTINES will see to it.", "Take this too."]],
     "FuchsiaCity_Gym_Text_KirkPostBattle": [["I lost, and none of it was his", "doing. TILT says that is the point."], ["I still don't know if that makes", "it better."]],
     "FuchsiaCity_Text_MyFatherIsGymLeader": [["My father is the BENCHMARK LEADER", "of this town. People cross the", "street."], ["He knows every remedy in LURID,", "and why each one is needed."]],
-    "SafariZone_West_Text_KogaPatrolsSafariEverySoOften": [["TILT walks the SAFARI ZONE every", "so often."], ["Things go wrong less after he has", "been. Nobody's seen him fix a", "thing."]],
+    "SafariZone_West_Text_KogaPatrolsSafariEverySoOften": [["TILT walks THE WALLED GARDEN", "every so often."], ["Things go wrong less after he has", "been. Nobody's seen him fix a", "thing."]],
     # BRAZEN
     "ThreeIsland_House2_Text_IAdmireSabrina": [["Everybody over in BRAZEN says", "MATTE works for the company."], ["Everybody over in BRAZEN works", "for the company."]],
     "SaffronCity_Gym_Text_ExplainMarshBadgeTakeThis": [["The FRAME MARK makes DAEMON up to", "L70 obey you!"], ["Stronger DAEMON will ignore your", "orders in battle."],

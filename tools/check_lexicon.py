@@ -780,6 +780,13 @@ def check_stale_names():
     #  COUNTER (CONTRADICT). port_vocab.py holds the same phrases (T-324, 2026-10-01).
     held = ("SERVICE COUNTER", "REST HOUSE", "KNOWS THE REST")   # T-401: a rest house and "the rest" are not IDLE
 
+    #  T-540 (the user's line picks, 2026-11-12): THE WALLED GARDEN was the SAFARI ZONE, and the old name survives
+    #  ONLY where someone remembers it -- the WARDEN's merchandise shelf ("Most of it still says SAFARI ZONE") and
+    #  HOLT's grandfather ("since it was the SAFARI ZONE"). Exactly these two labels, and only that old name; the
+    #  same words anywhere else are still stale.
+    old_name_kept = {("SAFARI ZONE", "FuchsiaCity_WardensHouse_Text_OldMonMerchandiseOnDisplay"),
+                     ("SAFARI ZONE", "FuchsiaCity_House1_Text_WardenIsOldHasFalseTeeth")}
+
     def hit(s, old):
         """None, or how to describe the match -- "" plain, or a collision note."""
         for h in held:
@@ -840,7 +847,10 @@ def check_stale_names():
                 #  a constant the player never reads.
                 s = re.sub(r"\{[^}]*\}", " ",
                            re.sub(r"\\[nlp]", " ", "".join(parts)))
+                lm = re.match(r"^(\w+)::", lines[start - 1]) if start else None
                 for old, new in renamed.items():
+                    if lm and (old, lm.group(1)) in old_name_kept:
+                        continue
                     note = hit(s, old)
                     if note is not None:
                         out.append(("%s:%d" % (os.path.relpath(p, GBA), start + 1),

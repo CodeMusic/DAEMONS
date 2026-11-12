@@ -181,3 +181,81 @@ C-221: THE LINK CABLE in a phone's GAME tab -- the hub's /link/ page, each seat'
 THE COMPANION's manual (74 pages): THE DAY'S TENDING, READS kept calm or argued, the kept PAST / PRESENT / FUTURE, Still me., and the LINK CABLE
 
 ![12Nov2026 - C357 - THE COMPANION manual - tending, reads, cards, still me, link cable - 30](12Nov2026%20-%20C357%20-%20THE%20COMPANION%20manual%20-%20tending%2C%20reads%2C%20cards%2C%20still%20me%2C%20link%20cable%20-%2030.png)
+
+### 12Nov2026 - T540 - walled garden words as built - 31
+
+T-540 THE WALLED GARDEN: every changed line, today beside as built (the user's pick), in the game font, 8 sheets. DRAFT.
+
+![12Nov2026 - T540 - walled garden words as built - 31](12Nov2026%20-%20T540%20-%20walled%20garden%20words%20as%20built%20-%2031.png)
+
+### 12Nov2026 - T540 - walled garden words as built - 32
+
+T-540 THE WALLED GARDEN: every changed line, today beside as built (the user's pick), in the game font, 8 sheets. DRAFT.
+
+![12Nov2026 - T540 - walled garden words as built - 32](12Nov2026%20-%20T540%20-%20walled%20garden%20words%20as%20built%20-%2032.png)
+
+### 12Nov2026 - T540 - walled garden words as built - 33
+
+T-540 THE WALLED GARDEN: every changed line, today beside as built (the user's pick), in the game font, 8 sheets. DRAFT.
+
+![12Nov2026 - T540 - walled garden words as built - 33](12Nov2026%20-%20T540%20-%20walled%20garden%20words%20as%20built%20-%2033.png)
+
+### 12Nov2026 - T540 - walled garden words as built - 34
+
+T-540 THE WALLED GARDEN: every changed line, today beside as built (the user's pick), in the game font, 8 sheets. DRAFT.
+
+![12Nov2026 - T540 - walled garden words as built - 34](12Nov2026%20-%20T540%20-%20walled%20garden%20words%20as%20built%20-%2034.png)
+
+### 12Nov2026 - T540 - walled garden words as built - 35
+
+T-540 THE WALLED GARDEN: every changed line, today beside as built (the user's pick), in the game font, 8 sheets. DRAFT.
+
+![12Nov2026 - T540 - walled garden words as built - 35](12Nov2026%20-%20T540%20-%20walled%20garden%20words%20as%20built%20-%2035.png)
+
+### 12Nov2026 - T540 - walled garden words as built - 36
+
+T-540 THE WALLED GARDEN: every changed line, today beside as built (the user's pick), in the game font, 8 sheets. DRAFT.
+
+![12Nov2026 - T540 - walled garden words as built - 36](12Nov2026%20-%20T540%20-%20walled%20garden%20words%20as%20built%20-%2036.png)
+
+### 12Nov2026 - T540 - walled garden words as built - 37
+
+T-540 THE WALLED GARDEN: every changed line, today beside as built (the user's pick), in the game font, 8 sheets. DRAFT.
+
+![12Nov2026 - T540 - walled garden words as built - 37](12Nov2026%20-%20T540%20-%20walled%20garden%20words%20as%20built%20-%2037.png)
+
+### 12Nov2026 - T540 - walled garden words as built - 38
+
+T-540 THE WALLED GARDEN: every changed line, today beside as built (the user's pick), in the game font, 8 sheets. DRAFT.
+
+![12Nov2026 - T540 - walled garden words as built - 38](12Nov2026%20-%20T540%20-%20walled%20garden%20words%20as%20built%20-%2038.png)
+
+### 12Nov2026 - T540 - walled garden in the theatre - 39
+
+T-540 filmed from the debug build: the gate's attendants, signing in, START's SIGN OUT, RING 0 and a WAITING ROOM, the name card saying THE WALLED GARDEN. DRAFT.
+
+![12Nov2026 - T540 - walled garden in the theatre - 39](12Nov2026%20-%20T540%20-%20walled%20garden%20in%20the%20theatre%20-%2039.png)
+
+### 12Nov2026 - T540 - walled garden in the theatre - 40
+
+T-540 filmed from the debug build: the gate's attendants, signing in, START's SIGN OUT, RING 0 and a WAITING ROOM, the name card saying THE WALLED GARDEN. DRAFT.
+
+![12Nov2026 - T540 - walled garden in the theatre - 40](12Nov2026%20-%20T540%20-%20walled%20garden%20in%20the%20theatre%20-%2040.png)
+
+### 12Nov2026 - T540 - walled garden in the theatre - 41
+
+T-540 filmed from the debug build: the gate's attendants, signing in, START's SIGN OUT, RING 0 and a WAITING ROOM, the name card saying THE WALLED GARDEN. DRAFT.
+
+![12Nov2026 - T540 - walled garden in the theatre - 41](12Nov2026%20-%20T540%20-%20walled%20garden%20in%20the%20theatre%20-%2041.png)
+
+### 12Nov2026 - T540 - walled garden in the theatre - 42
+
+T-540 filmed from the debug build: the gate's attendants, signing in, START's SIGN OUT, RING 0 and a WAITING ROOM, the name card saying THE WALLED GARDEN. DRAFT.
+
+![12Nov2026 - T540 - walled garden in the theatre - 42](12Nov2026%20-%20T540%20-%20walled%20garden%20in%20the%20theatre%20-%2042.png)
+
+### 12Nov2026 - T540 - walled garden in the theatre - 43
+
+T-540 filmed from the debug build: the gate's attendants, signing in, START's SIGN OUT, RING 0 and a WAITING ROOM, the name card saying THE WALLED GARDEN. DRAFT.
+
+![12Nov2026 - T540 - walled garden in the theatre - 43](12Nov2026%20-%20T540%20-%20walled%20garden%20in%20the%20theatre%20-%2043.png)
