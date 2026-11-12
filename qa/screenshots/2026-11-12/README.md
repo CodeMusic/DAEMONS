@@ -157,3 +157,9 @@ T-447 pair 7, filmed 2026-11-12 (engine 80832812d): at the pier's end (32,14) th
 T-445, filmed 2026-11-12 (engine b9062d63a): KEEPALIVE PLANT's card as a FOREST card (before) cross-faded over a room with void beneath it, leaving a rectangle seam through the card and its name box for 5 burst frames; as a CAVE card (after) it clears by the white flash and grey rectangles before the room fades in -- 0 such frames. The map-name popup now follows it, as it follows MONEAN and DOLDRUM (vanilla shows it after every CAVE card).
 
 ![12Nov2026 - T445 - KEEPALIVE PLANT card exit, before and after - 26](12Nov2026%20-%20T445%20-%20KEEPALIVE%20PLANT%20card%20exit%2C%20before%20and%20after%20-%2026.png)
+
+### 12Nov2026 - C221 - a TRADE CENTER trade between two linked games - 27
+
+C-221's first step (companion 95a4021): CONTENT and CONTEXT's DEBUG builds on mGBA 0.10.5's lockstep cable, headless on one machine, met at the Cable Club, entered the TRADE CENTER and traded DEADLOCK for CODEMUSAI; both saves (copies) hold the trade. DRAFT.
+
+![12Nov2026 - C221 - a TRADE CENTER trade between two linked games - 27](12Nov2026%20-%20C221%20-%20a%20TRADE%20CENTER%20trade%20between%20two%20linked%20games%20-%2027.png)
