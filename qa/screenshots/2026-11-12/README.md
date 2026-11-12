@@ -163,3 +163,9 @@ T-445, filmed 2026-11-12 (engine b9062d63a): KEEPALIVE PLANT's card as a FOREST 
 C-221's first step (companion 95a4021): CONTENT and CONTEXT's DEBUG builds on mGBA 0.10.5's lockstep cable, headless on one machine, met at the Cable Club, entered the TRADE CENTER and traded DEADLOCK for CODEMUSAI; both saves (copies) hold the trade. DRAFT.
 
 ![12Nov2026 - C221 - a TRADE CENTER trade between two linked games - 27](12Nov2026%20-%20C221%20-%20a%20TRADE%20CENTER%20trade%20between%20two%20linked%20games%20-%2027.png)
+
+### 12Nov2026 - C221 - the linked pair on roverbyteseer - 28
+
+C-221 (companion bd1af9b): the two linked games run on roverbyteseer, played from the Mac over the tailnet, reached 2P LINK and the TRADE CENTER; a deflated screen is ~2 KB in 60-80 ms. DRAFT.
+
+![12Nov2026 - C221 - the linked pair on roverbyteseer - 28](12Nov2026%20-%20C221%20-%20the%20linked%20pair%20on%20roverbyteseer%20-%2028.png)
