@@ -151,3 +151,9 @@ T-447 pair 7, filmed in the theatre 2026-11-12 (engine 80832812d): the S.S. ANNE
 T-447 pair 7, filmed 2026-11-12 (engine 80832812d): at the pier's end (32,14) the new funnel passed over the player (her subpriority, lower on screen, put her ahead in OAM at the same priority 2). With her subpriority fixed at 0xFE for the scene the player's coat stays 31 pixels visible in every frame (before: 27, 16, then 0 as she passed). The smoke (OAM priority 0) still drifts over the player's hat, as in vanilla.
 
 ![12Nov2026 - T447 - the player in front of her funnel, before and after - 25](12Nov2026%20-%20T447%20-%20the%20player%20in%20front%20of%20her%20funnel%2C%20before%20and%20after%20-%2025.png)
+
+### 12Nov2026 - T445 - KEEPALIVE PLANT card exit, before and after - 26
+
+T-445, filmed 2026-11-12 (engine b9062d63a): KEEPALIVE PLANT's card as a FOREST card (before) cross-faded over a room with void beneath it, leaving a rectangle seam through the card and its name box for 5 burst frames; as a CAVE card (after) it clears by the white flash and grey rectangles before the room fades in -- 0 such frames. The map-name popup now follows it, as it follows MONEAN and DOLDRUM (vanilla shows it after every CAVE card).
+
+![12Nov2026 - T445 - KEEPALIVE PLANT card exit, before and after - 26](12Nov2026%20-%20T445%20-%20KEEPALIVE%20PLANT%20card%20exit%2C%20before%20and%20after%20-%2026.png)
