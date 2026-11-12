@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.354, working |
-| [`CONTEXT-CONTENT-design-bible-v11.354.pdf`](CONTEXT-CONTENT-design-bible-v11.354.pdf) | Typeset **snapshot** at v11.354 — the last borrowed edges of the outdoor ground, drawn as our own. | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.355, working |
+| [`CONTEXT-CONTENT-design-bible-v11.355.pdf`](CONTEXT-CONTENT-design-bible-v11.355.pdf) | Typeset **snapshot** at v11.355 — a becalmed cave, the last place card drawn as our own. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

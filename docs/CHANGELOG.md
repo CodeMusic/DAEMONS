@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.355 — 2026-11-11
+
+- **9.29:** DOLDRUM CAVE's name card, BECALMED, the user's pick, released in v11.354.1 (T-445). It shows still air, a still black pool and one point of light, in the cave's grey until the cave is understood and in colour after. Every place card is now ours.
+- A Settled entry in section 10. DRAFT.
+
 ## v11.354 — 2026-11-11
 
 - **9.29:** every General tile is now ours, released in v11.353.1 (T-542 batch 4). General is the tileset every outdoor map shares. The last three edges are the sand's corner, the forest path's edge and the cliff's foot, drawn in THE TRACE, the user's pick.
