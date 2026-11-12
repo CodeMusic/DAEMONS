@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.356 — 2026-11-12
+
+- **9.29:** THE BLACKOUT in purple with threads of green, the user's picks, released in v11.355.1 (T-546).
+  - **The rock, LIGHT IN THE SEAMS:** magenta-violet, a green vein down every face, and a green mesh in the seams.
+  - **The card:** black but for the threads.
+  - **The dark:** black but for the steady threads until VERBOSE, which raises the light with its circle. Once lit, the rock breathes with the pulse.
+  - The dark outranks HALFTONE.
+- A Settled entry in section 10. DRAFT.
+
 ## v11.355 — 2026-11-11
 
 - **9.29:** DOLDRUM CAVE's name card, BECALMED, the user's pick, released in v11.354.1 (T-445). It shows still air, a still black pool and one point of light, in the cave's grey until the cave is understood and in colour after. Every place card is now ours.
