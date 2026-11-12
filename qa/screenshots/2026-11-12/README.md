@@ -61,3 +61,33 @@ C-190 in the iOS app: tapping T-Watch S3 on the card opened its own settings, C-
 C-337 in the iOS app: SETTINGS > THIS PHONE, the phone's name on the companion and what the daemon calls you
 
 ![12Nov2026 - C337 - THIS PHONE in SETTINGS, iOS app - 10](12Nov2026%20-%20C337%20-%20THIS%20PHONE%20in%20SETTINGS%2C%20iOS%20app%20-%2010.png)
+
+### 12Nov2026 - C356 - the dream journal and its signs - 11
+
+C-356 (DRAFT): a new journal's kind; a dream journal's chapter with READ THE SIGNS -- the reading here is the Tiiny's own from the hub, every sign from the dream; a standard journal's SIGNS AND PATTERNS from the lexicon
+
+![12Nov2026 - C356 - the dream journal and its signs - 11](12Nov2026%20-%20C356%20-%20the%20dream%20journal%20and%20its%20signs%20-%2011.png)
+
+### 12Nov2026 - C356 - the dream journal and its signs - 12
+
+C-356 (DRAFT): a new journal's kind; a dream journal's chapter with READ THE SIGNS -- the reading here is the Tiiny's own from the hub, every sign from the dream; a standard journal's SIGNS AND PATTERNS from the lexicon
+
+![12Nov2026 - C356 - the dream journal and its signs - 12](12Nov2026%20-%20C356%20-%20the%20dream%20journal%20and%20its%20signs%20-%2012.png)
+
+### 12Nov2026 - C356 - the dream journal and its signs - 13
+
+C-356 (DRAFT): a new journal's kind; a dream journal's chapter with READ THE SIGNS -- the reading here is the Tiiny's own from the hub, every sign from the dream; a standard journal's SIGNS AND PATTERNS from the lexicon
+
+![12Nov2026 - C356 - the dream journal and its signs - 13](12Nov2026%20-%20C356%20-%20the%20dream%20journal%20and%20its%20signs%20-%2013.png)
+
+### 12Nov2026 - C356 - the dream journal and its signs - 14
+
+C-356 (DRAFT): a new journal's kind; a dream journal's chapter with READ THE SIGNS -- the reading here is the Tiiny's own from the hub, every sign from the dream; a standard journal's SIGNS AND PATTERNS from the lexicon
+
+![12Nov2026 - C356 - the dream journal and its signs - 14](12Nov2026%20-%20C356%20-%20the%20dream%20journal%20and%20its%20signs%20-%2014.png)
+
+### 12Nov2026 - C356 - the dream journal and its signs - 15
+
+C-356 (DRAFT): a new journal's kind; a dream journal's chapter with READ THE SIGNS -- the reading here is the Tiiny's own from the hub, every sign from the dream; a standard journal's SIGNS AND PATTERNS from the lexicon
+
+![12Nov2026 - C356 - the dream journal and its signs - 15](12Nov2026%20-%20C356%20-%20the%20dream%20journal%20and%20its%20signs%20-%2015.png)
