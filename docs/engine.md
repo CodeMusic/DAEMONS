@@ -26,10 +26,10 @@ python3 tools/gbabudget.py --write   # and update the tables below
 | | size | used | free | %age |
 |---|---|---|---|---|
 | **EWRAM** | 256.0 KB | 255.3 KB | **668 B** | 99.75% |
-| **IWRAM** | 32.0 KB | 29.6 KB | **2.4 KB** | 92.42% |
-| **ROM** | 16.0 MB | 11.2 MB | **4.8 MB** | 70.18% |
+| **IWRAM** | 32.0 KB | 30.0 KB | **2.0 KB** | 93.74% |
+| **ROM** | 16.0 MB | 11.2 MB | **4.8 MB** | 70.19% |
 
-***The ROM's row is the 16 MB file and what is in it, not the highest address used.*** *`gfx_data` is pinned where retail keeps it, so the 4.8 MB free is in two places: what comes before it grows into a 3.9 MB gap below it, and it grows into the 878.8 KB after it. The GBA addresses 32 MB, so the file itself could grow.*
+***The ROM's row is the 16 MB file and what is in it, not the highest address used.*** *`gfx_data` is pinned where retail keeps it, so the 4.8 MB free is in two places: what comes before it grows into a 3.9 MB gap below it, and it grows into the 878.5 KB after it. The GBA addresses 32 MB, so the file itself could grow.*
 
 *The debug ROM costs a further **176 bytes** of EWRAM and **48** of IWRAM.*
 
@@ -44,7 +44,7 @@ The biggest tenants after it:
 | `src/help_system_util.o` | 16.5 KB | `src/m4a.o` | 2.0 KB |
 | `src/main.o` | 16.0 KB | `data/sound_data.o` | 1.8 KB |
 | `src/battle_main.o` | 5.7 KB | `src/sprite.o` | 800 B |
-| `src/sprite.o` | 5.6 KB | `src/pokemon_storage_system_misc.o` | 388 B |
+| `src/sprite.o` | 5.6 KB | `src/daemons_blackout.o` | 425 B |
 
 ### Against vanilla FireRed, and the save
 
@@ -54,15 +54,15 @@ The biggest tenants after it:
 |---|---|---|---|---|
 | **ROM** contents | 8.9 MB | 11.2 MB | **2.4 MB** | 4.8 MB |
 | **EWRAM** | 254.9 KB | 255.3 KB | **436 B** | 668 B |
-| **IWRAM** | 29.1 KB | 29.6 KB | **460 B** | 2.4 KB |
+| **IWRAM** | 29.1 KB | 30.0 KB | **892 B** | 2.0 KB |
 
 | ROM section | vanilla | ours | grew |
 |---|---|---|---|
 | `.rodata` | 4.8 MB | 6.6 MB | 1.8 MB |
 | `gfx_data` | 1.7 MB | 1.8 MB | 97.7 KB |
-| `.text` | 1.4 MB | 1.5 MB | 103.5 KB |
+| `.text` | 1.4 MB | 1.5 MB | 103.9 KB |
 | `script_data` | 496.9 KB | 545.7 KB | 48.8 KB |
-| `extra` | 0 B | 364.7 KB | 364.7 KB |
+| `extra` | 0 B | 365.0 KB | 365.0 KB |
 | `song_data` | 282.1 KB | 253.2 KB | -28.9 KB |
 | `multiboot_data` | 188.8 KB | 188.8 KB | 0 B |
 | `lib_text` | 56.5 KB | 56.5 KB | 0 B |
