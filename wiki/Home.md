@@ -76,10 +76,10 @@ follows the real calendar's holidays, and gives each edition an instrument to pl
 daemons have all been drawn again, in a style of their own.
 
 Releases come often, each one named for the version of the design bible it was built against
-(see [Releases](Releases)); the newest is **v11.356.1**, from 2026-11-11, and
-the newest thing in it that can be told about: THE BLACKOUT
-is black but for dim green threads in the rock until VERBOSE lights it, and then the threads burn bright and the purple
-around them breathes. Before it, the deepest cave got a card of its own. Next, the SAFARI ZONE becomes THE WALLED GARDEN. What is done and what is not is kept honestly in the
+(see [Releases](Releases)); the newest is **v11.358.1**, from 2026-11-11, and
+the newest thing in it that can be told about: a blank stone
+stands by the path north out of BLANCHE, and an old toad keeps the pond. Before it, THE BLACKOUT went black but for dim
+green threads until VERBOSE lights it. Next, the SAFARI ZONE becomes THE WALLED GARDEN. What is done and what is not is kept honestly in the
 [design bible](https://github.com/CodeMusic/DAEMONS/blob/main/docs/vision.md) and the
 [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md).
 
