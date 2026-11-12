@@ -26,10 +26,10 @@ your daemon's care, talk and nights, MEETINGS, JOURNEY, the LIBRARY, the house's
 **From your own cartridge:** download a patch from [Releases](https://github.com/CodeMusic/DAEMONS/releases) and
 apply it to a *FireRed* or *LeafGreen* ROM you backed up yourself. [`ROM RELEASE/HOW_TO_PATCH.md`](ROM%20RELEASE/HOW_TO_PATCH.md)
 walks through it and lists the checksum each patch expects. **From source:** `./setup.sh`, then `./bindDaemons.sh`.
-No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.354.1**
-(2026-11-11), and the newest thing in it that can be told about: the deepest
-cave has a card of its own -- still air, still water, one point of light -- so every landmark is announced in art drawn
-for DAEMONS. Before it, the last of the ground's edges were drawn like copper on a circuit board. Next, the SAFARI ZONE becomes THE WALLED GARDEN. Each release on GitHub carries four BPS patches — CONTENT for *FireRed* 1.0 and Rev 1, CONTEXT for
+No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.355.1**
+(2026-11-11), and the newest thing in it that can be told about: THE BLACKOUT
+is black but for dim green threads in the rock until VERBOSE lights it, and then the threads burn bright and the purple
+around them breathes. Before it, the deepest cave got a card of its own. Next, the SAFARI ZONE becomes THE WALLED GARDEN. Each release on GitHub carries four BPS patches — CONTENT for *FireRed* 1.0 and Rev 1, CONTEXT for
 *LeafGreen* 1.0 and Rev 1 — and the [**wiki**](https://github.com/CodeMusic/DAEMONS/wiki) walks through playing,
 building and the two editions.
 
