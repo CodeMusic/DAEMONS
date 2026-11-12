@@ -553,3 +553,21 @@ T-445 BUILT: DOLDRUM CAVE's name card, A BECALMED, decoded from the built daemon
 T-445 DRAFT: DOLDRUM CAVE's four directions with the unread view (the user picked A BECALMED)
 
 ![11Nov2026 - T445 - DOLDRUM CAVE card directions - 109](11Nov2026%20-%20T445%20-%20DOLDRUM%20CAVE%20card%20directions%20-%20109.png)
+
+### 11Nov2026 - C296 - iOS Simulator - THE MIND SPIRITS - 110
+
+iPhone Simulator, current companion code: THE MIND's SPIRITS card under NOW (companion 6851fc0).
+
+![11Nov2026 - C296 - iOS Simulator - THE MIND SPIRITS - 110](11Nov2026%20-%20C296%20-%20iOS%20Simulator%20-%20THE%20MIND%20SPIRITS%20-%20110.png)
+
+### 11Nov2026 - C191 - iOS Simulator - THE ROAD AHEAD WAYS OPENED - 111
+
+iPhone Simulator: THE ROAD AHEAD under YOU, WAYS OPENED above OPEN TO YOU.
+
+![11Nov2026 - C191 - iOS Simulator - THE ROAD AHEAD WAYS OPENED - 111](11Nov2026%20-%20C191%20-%20iOS%20Simulator%20-%20THE%20ROAD%20AHEAD%20WAYS%20OPENED%20-%20111.png)
+
+### 11Nov2026 - C273 - iOS Simulator - LIBRARY shelf - 112
+
+iPhone Simulator: the LIBRARY shelf and its covers.
+
+![11Nov2026 - C273 - iOS Simulator - LIBRARY shelf - 112](11Nov2026%20-%20C273%20-%20iOS%20Simulator%20-%20LIBRARY%20shelf%20-%20112.png)
