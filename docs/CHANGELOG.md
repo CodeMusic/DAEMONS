@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.358 — 2026-11-12
+
+- **4.39, the Blank Tablet built (T-547)**, from the user's picks by multiple choice:
+  - The stone stands by BLANCHE's path north.
+  - Each half of the third book reads one face: the night half the front, the dawn half the back, the mended book both.
+  - Each face has its own thirteenth line, in its own hour, shown until read once.
+  - The witch is an old toad by the pond, who says only the player's lean.
+  - The words are in `docs/blank-tablet-draft.md`. DRAFT.
+
 ## v11.357 — 2026-11-12
 
 - **9.29:** THE BLACKOUT is dark from the first line of every frame, released in v11.356.1 (T-546). The top few lines of the screen had shown lit for a moment.

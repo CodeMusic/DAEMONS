@@ -97,3 +97,9 @@ C-356 (DRAFT): a new journal's kind; a dream journal's chapter with READ THE SIG
 C-357 THE SUBTLE LAYER, LIVED, the companion's half on the site: THE MISREAD in READS, the decks' PAST PRESENT FUTURE kept for the day with only the FUTURE drawn again and all 22 faint before, THE DAY'S TENDING on TODAY with the week's climb, the goal's weathered mark, and Still me. under a daemon in a new form (DRAFT)
 
 ![12Nov2026 - C357 - THE SUBTLE LAYER lived on the site - 16](12Nov2026%20-%20C357%20-%20THE%20SUBTLE%20LAYER%20lived%20on%20the%20site%20-%2016.png)
+
+### 12Nov2026 - T547 - the stone and the old toad in BLANCHE - 17
+
+T-547 (DRAFT): THE BLANK TABLET by BLANCHE's north path and the old toad by the pond, from engine 38d8a4400; not filmed
+
+![12Nov2026 - T547 - the stone and the old toad in BLANCHE - 17](12Nov2026%20-%20T547%20-%20the%20stone%20and%20the%20old%20toad%20in%20BLANCHE%20-%2017.png)

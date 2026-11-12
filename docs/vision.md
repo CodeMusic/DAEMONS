@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.357**
+**A total conversion — the living design bible, v11.358**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5032,7 +5032,7 @@ take off.*
 - ***The Folds of Awareness*** (*lineage: Seeing Sharp, 2025*): **awareness, change, space, gravity at 3½, consciousness, intelligence, wisdom.** *Matter is a process, not a noun; separation is an illusion the folds produce; transformation, prima materia, the One Thing, the alchemical stages, all gamified.*
 - ***Reflection and the representative state***: **entanglement** -- *once two things are entangled, an act on one moves the other, person and daemon, person and item, both ways* -- *in modern words where they help and the ancient ones where they ring.*
 - ***THE BOOK OF THIRTEEN***: **twelve spells on the wheel and one in the crease**, *each leaning on two axes, reason or intuition and content or context, each with a cost that rhymes with its lesson* (*the Mirror costs you self, the Seam your separateness*). **The thirteenth, THE WITCHING HOUR, is castable only from 3:30 to 3:59 -- the half-hour OSRIC HATTER's clocks keep -- only once all twelve have been cast, and once a playthrough** (*T-501, the user, 2026-10-31: it was 3:00 to 3:30*).
-- ***The Blank Tablet***: **a stone with nothing on it that the player writes without knowing**, *each spell cast adding or reshaping a line in the voice their casting leans toward; at 3:30 to 3:59 a thirteenth line with the player's name, then never again.* **A quiet ledger counts the leans and is never shown as a bar.**
+- ***The Blank Tablet***: **a stone with nothing on it that the player writes without knowing**, *each spell cast adding or reshaping a line in the voice their casting leans toward; at 3:30 to 3:59 a thirteenth line with the player's name, then never again.* **A quiet ledger counts the leans and is never shown as a bar.** ***Built (T-547, the user, 2026-11-12, by multiple choice; DRAFT)***: **the stone stands by BLANCHE's path north; each half of THE UNITY BOOK reads one face** -- *THE HERMETIC LAYER the front (what each spell cost), THE EUDAIMON LAYER the back (the same thing, given), the mended book both; the face read is the side stood on.* **Each face has its own thirteenth line**: *the front's in the witching half-hour, the back's in THE CREATOR'S HOUR, each shown until read once.* **The witch's one line is an old toad's**, *by the pond, saying only how the player has been leaning, kinder at dawn; BLANCHE's sign lady is kept.* *The words: `docs/blank-tablet-draft.md`.*
 
 #### How it looks and how it is found
 
