@@ -139,3 +139,15 @@ THE CALENDAR, November: Remembrance, settling, the month view (DRAFT)
 October's bowl, blue into indigo, ringing G + A (DRAFT)
 
 ![12Nov2026 - C354 - Octobers bowl - 23](12Nov2026%20-%20C354%20-%20Octobers%20bowl%20-%2023.png)
+
+### 12Nov2026 - T447 - the wake behind her hull, before and after - 24
+
+T-447 pair 7, filmed in the theatre 2026-11-12 (engine 80832812d): the S.S. ANNE's departure wake at y 113 (before) showed through the empty notch above her deck by the flag; at y 121 (after) it starts wholly behind her hull and leaves the stern between rows 111 and 129 -- 0 wake pixels above the deck line in all 110 frames (before: 6-19 in the first frames, 22-37 once out).
+
+![12Nov2026 - T447 - the wake behind her hull, before and after - 24](12Nov2026%20-%20T447%20-%20the%20wake%20behind%20her%20hull%2C%20before%20and%20after%20-%2024.png)
+
+### 12Nov2026 - T447 - the player in front of her funnel, before and after - 25
+
+T-447 pair 7, filmed 2026-11-12 (engine 80832812d): at the pier's end (32,14) the new funnel passed over the player (her subpriority, lower on screen, put her ahead in OAM at the same priority 2). With her subpriority fixed at 0xFE for the scene the player's coat stays 31 pixels visible in every frame (before: 27, 16, then 0 as she passed). The smoke (OAM priority 0) still drifts over the player's hat, as in vanilla.
+
+![12Nov2026 - T447 - the player in front of her funnel, before and after - 25](12Nov2026%20-%20T447%20-%20the%20player%20in%20front%20of%20her%20funnel%2C%20before%20and%20after%20-%2025.png)

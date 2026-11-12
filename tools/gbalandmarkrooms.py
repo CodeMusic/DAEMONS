@@ -6318,12 +6318,16 @@ FUNNEL_MOUTH = (72, 84, 1)       # genships' funnel: its mouth's columns and top
 
 
 def departure_scene(ship, smoke, wake, frame=1, scale=1):
-    """the ship as the cutscene sets her up: her sprite at (88, 80) -- the 128x64 object is drawn from subsprites at
-    x -32/+32 and y -16/+16, so her picture spans (56..183, 64..127) -- the smoke where src/ss_anne.c sets it
-    (smoke_at(), each frame drifted right a pixel per 4 ticks), the wake where it sets that (wake_at()), behind her"""
+    """the ship as the cutscene sets her up: her sprite at (88, 88) -- the 128x64 object is drawn from subsprites at
+    x -32/+32 and y -16/+16, so her picture spans (56..183, 72..135) -- the smoke where src/ss_anne.c sets it
+    (smoke_at(), each frame drifted right a pixel per 4 ticks), the wake where it sets that (wake_at()), behind her.
+    y 88, not 80: read off the theatre's frames 2026-11-12 (her deck, picture row 37, on screen line 109; her keel
+    stripe, rows 53-57, on 125-129). At 80 this sheet showed the wake's y 113 behind her hull while the game showed it
+    through the notch above her deck."""
     sea = Image.new("RGB", (240, 160), ANNE_PAL[0])
-    sx, sy = 88, 80
-    #  the wake is drawn BEHIND the ship (subpriority 0xFF), so it goes down first and the ship over it
+    sx, sy = 88, 88
+    #  the wake is drawn BEHIND the ship (both priority 2, she ahead of it in OAM: her subpriority is fixed at 0xFE for
+    #  the scene, the wake's is 0xFF), so it goes down first and the ship over it
     wf = wake.crop((0, frame * 32, 16, frame * 32 + 32))
     wx, wy = wake_at()
     sea.paste(sprite_rgb(wf), (sx + wx - 8 + 2, wy - 16), mask(wf))
