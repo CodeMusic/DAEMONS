@@ -169,3 +169,9 @@ C-221's first step (companion 95a4021): CONTENT and CONTEXT's DEBUG builds on mG
 C-221 (companion bd1af9b): the two linked games run on roverbyteseer, played from the Mac over the tailnet, reached 2P LINK and the TRADE CENTER; a deflated screen is ~2 KB in 60-80 ms. DRAFT.
 
 ![12Nov2026 - C221 - the linked pair on roverbyteseer - 28](12Nov2026%20-%20C221%20-%20the%20linked%20pair%20on%20roverbyteseer%20-%2028.png)
+
+### 12Nov2026 - C221 - the link cable in the GAME tab - 29
+
+C-221: THE LINK CABLE in a phone's GAME tab -- the hub's /link/ page, each seat's screen and touch buttons, both games on one cable (save copies, DRAFT)
+
+![12Nov2026 - C221 - the link cable in the GAME tab - 29](12Nov2026%20-%20C221%20-%20the%20link%20cable%20in%20the%20GAME%20tab%20-%2029.png)
