@@ -2,7 +2,7 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.359, working |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.360, working |
 | [`CONTEXT-CONTENT-design-bible-v11.360.pdf`](CONTEXT-CONTENT-design-bible-v11.360.pdf) | Typeset **snapshot** at v11.360 — the SAFARI ZONE becomes THE WALLED GARDEN, a blank stone that writes itself, and a ship leaving cleanly. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
