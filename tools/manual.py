@@ -14,6 +14,7 @@ everything has images from the game and really communicates everthing includes t
     python3 tools/manual.py --book textbook --write    # CALLOW SCHOOL's TEXTBOOK, as a university textbook
     python3 tools/manual.py --book companion --write   # THE COMPANION: the whole app, its pictures from the site (C-321)
     python3 tools/manual.py --book watch --write       # THE WATCH: the T-Watch Ultra and S3 on the wrist (C-326)
+    python3 tools/manual.py --book glass --write       # THE GLASSES: the T-Glass before one eye (C-262)
 
 Rebuild it every release: the version, the patches and every daemon's picture and INDEX entry are read from the
 build, so a release that changes them changes the manual.
@@ -122,6 +123,16 @@ BOOKS = {
               "subject": "The DAEMONS companion on a watch: the T-Watch Ultra and the T-Watch S3",
               "sprites": ("ROVERCUB", "HEARTBEAT", "PING"),
               "strip": ("ECHO", "PACKET", "RELAY", "LOOKOUT", "SENTINEL", "KEEPER", "INFERENCE", "ROVERBYTE")},
+    # the tenth: THE GLASSES, the T-Glass before one eye (C-262; the user, 2026-11-11: "do we have a user manual for this
+    # device build? ... edit/regen able like the others, then exported to pdf and added to the library"), read from the
+    # companion's firmware (glass.cpp), its GLASSES card (app/screens/places/Glass.tsx) and its wiki page The-T-Glass;
+    # nothing of the glasses is captured yet, so its pictures are drawings (diagrams/)
+    "glass": {"src": "docs/manual-glass", "out": "docs/DAEMONS-glass-manual.pdf", "title": "DAEMONS: the glasses",
+              "tag": "THE GLASSES", "sub": "Your daemon before your eye: the T-Glass",
+              "foot": "the glasses",
+              "subject": "The DAEMONS companion on glasses: the LilyGO T-Glass",
+              "sprites": ("PING", "LOOKOUT", "ECHO"),
+              "strip": ("SENTINEL", "PACKET", "RELAY", "KEEPER", "HEARTBEAT", "ROVERCUB", "INFERENCE", "ROVERBYTE")},
 }
 BOOK = BOOKS["main"]
 THEATRE = os.path.join(ROOT, ".theatre/routes")
