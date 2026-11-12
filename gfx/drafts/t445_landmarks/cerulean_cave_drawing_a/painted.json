@@ -1,0 +1,29 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t445_landmarks/cerulean_cave_drawing_a/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, a pen and ink drawing on warm paper of the mouth of a quiet cave, simple dots and lines, sparse hatching, a still dark pool in the mouth, bare trunks behind, unfinished sketch, flat, no colour, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, colour, painting, shading gradient, photo, stars, moon, people, text",
+ "seed": 4523,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.6,
+ "stop_at": null,
+ "image": "gfx/drafts/t445_landmarks/cerulean_cave_drawing_a/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "model": "shaper",
+ "loras": [],
+ "references": [],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "model_files": {
+  "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 48.7,
+ "comfyui": "0.19.1",
+ "made": "2026-11-11 22:00:50"
+}

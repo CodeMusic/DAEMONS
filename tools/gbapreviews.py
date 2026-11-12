@@ -366,9 +366,11 @@ def vanilla(folder):
     cut into 8x8 tiles row by row (the first -num_tiles of them, each index's low nibble, as gbagfx keeps it), its
     tilemap.bin, and the png's palette at the GBA's 5 bits"""
     im = Image.open(io.BytesIO(_pret("graphics/map_preview/%s/tiles.png" % folder)))
-    n = int(re.search(r"/%s/tiles\.4bpp: %%\.4bpp: %%\.png\n\t\$\(GFX\) \$< \$@ -num_tiles (\d+)" % folder,
-                      _pret("graphics_file_rules.mk").decode()).group(1))
+    rule = re.search(r"/%s/tiles\.4bpp: %%\.4bpp: %%\.png\n\t\$\(GFX\) \$< \$@ -num_tiles (\d+)" % folder,
+                     _pret("graphics_file_rules.mk").decode())
     px, (W, H) = im.load(), im.size
+    #  a card with no -num_tiles rule (cerulean_cave: its tiles.png is cut to its count) is every tile gbagfx reads
+    n = int(rule.group(1)) if rule else (W // 8) * (H // 8)
     tiles = []
     for ty in range(H // 8):
         for tx in range(W // 8):
@@ -1050,7 +1052,7 @@ def landmark_init(folder):
 # ================================================================== the landmarks' name cards, re-census (2026-11-11)
 #  The user (2026-11-11, "Landmark name cards"): census which landmark places have a card and what each shows, and
 #  draft a replacement for any card that no longer matches its landmark as T-447 redrew it. The census (engine
-#  58eaa23d8): every landmark card is ours but DOLDRUM CAVE's (cerulean_cave, T-251, waits on the user); FOUNDRY CO.,
+#  58eaa23d8): every landmark card was ours but DOLDRUM CAVE's (built 2026-11-11 as A BECALMED, engine d4277a127); FOUNDRY CO.,
 #  DAEMON TOWER and the MANSION were painted 2026-10-26 from T-447 pairs 1-2's OUTSIDES, UMBRA PLATEAU's from pair 3's
 #  REVIEW BOARD. Since then pairs 4-7 redrew the INSIDES: the MANSION's rack hall and DAEMON TOWER's dot screen (pair
 #  4), KEEPALIVE PLANT growing untended and TANOBY carved, not lit (pair 5), the LEAGUE's four vessels and the HALL
@@ -1074,7 +1076,7 @@ def landmark_init(folder):
 #  (CARDS_TAKEN) -- else a plain --write --approved would lay the stale cards back. The MANSION and DAEMON TOWER keep
 #  their outsides (the rack hall and the dot screen stay drafts).
 CARDS_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t445_landmarks")
-CARDS_APPROVED = {"power_plant_untended_a", "monean_chamber_carved_a"}  # the user, 2026-11-11: PLANT A, TANOBY A
+CARDS_APPROVED = {"power_plant_untended_a", "monean_chamber_carved_a", "cerulean_cave_becalmed_a"}  # the user, 2026-11-11: PLANT A, TANOBY A; DOLDRUM A BECALMED
 _PLANT_UNTENDED = dict(
     folder="power_plant", banner_from="power_plant", init="graded", title="KEEPALIVE PLANT, growing untended",
     #  pair 5 B's own colours (power_plant row 7's metal, row 8's three greens and moss) -- no status lights
@@ -1136,6 +1138,79 @@ CARDS["pokemon_tower_dotscreen_b"] = dict(CARDS["pokemon_tower_dotscreen_a"], se
 #  the rooms came back at 0.48-0.50 still reading as the map's tiles, so a third of each painted harder
 CARDS["pokemon_mansion_rackhall_c"] = dict(CARDS["pokemon_mansion_rackhall_a"], seed=4510, denoise=0.62)
 CARDS["pokemon_tower_dotscreen_c"] = dict(CARDS["pokemon_tower_dotscreen_a"], seed=4511, denoise=0.62)
+
+#  DOLDRUM CAVE (cerulean_cave), DRAFT 2026-11-11 (the user picked the job): the last landmark card still Nintendo's
+#  but USER TOWER's. Two things fix what it may be. (1) The cave's own tiles wait on the user (gbacaves.py; T-251:
+#  "its grey and its 'itself' are a decided pair"), so no candidate paints a tile look -- vanilla's composition (a
+#  dark mouth in the rocks, mist among trunks behind) graded, and the stillness taken from the NAME (a doldrum is the
+#  windless calm), not from gbacaves' BECALMED proposal. (2) The card is ALREADY two-state with no engine work:
+#  DaemonsGreyHalftoneFrame tones every palette entry while DaemonsCaveUnperceived() (fieldmap.c, T-255), and the
+#  preview's palettes 13-14 reach the screen through that buffer, so a colour card is shown to the unread player as
+#  four flat tones of ink on warm paper (DRAWING_TONES below; read from the code, not yet seen on a screen). The
+#  sheet shows each candidate both ways. S.T.A.R.R. is never drawn or named: the read card holds one point of light
+#  on the still pool and no star above it to make it.
+_DOLDRUM = dict(
+    folder="cerulean_cave", banner_from="cerulean_cave", init="graded", tex=0.08,
+    rock=[(18, 22, 30), (36, 44, 56), (62, 74, 88), (96, 110, 120), (140, 152, 158), (186, 194, 196)],
+    water=[(4, 10, 16), (14, 32, 42), (34, 64, 76), (70, 104, 112)],
+    white=[(150, 166, 170), (206, 216, 214)],
+    pool=(115, 76, 56, 18), denoise=0.50,
+    prompt="the mouth of a quiet cave in still slate grey rock, a perfectly still black pool filling the mouth like "
+           "a mirror, windless, mist hanging motionless among pale bare trunks behind, calm cold dusk, a single tiny "
+           "point of white light reflected on the still water",
+    neg="stars in the sky, moon, sun, waves, ripples, wind, fire, glow, torches, crystals, green grass, purple")
+CARDS.update({
+    #  A: the cave as the understood see it, in colour -- still air, still water, one reflected light with no source
+    "cerulean_cave_becalmed_a": dict(_DOLDRUM, seed=4521, title="DOLDRUM CAVE, becalmed", post=["starpoint"],
+                                     force=[(232, 236, 224)]),
+    "cerulean_cave_becalmed_b": dict(_DOLDRUM, seed=4522, title="DOLDRUM CAVE, becalmed", post=["starpoint"],
+                                     force=[(232, 236, 224)], denoise=0.56),
+    #  B: the unread cave as a card of its own, painted as ink and laid in the engine's four tones exactly, so the
+    #  filter leaves it as it is -- one state: the read player would see the drawing too
+    "cerulean_cave_drawing_a": dict(_DOLDRUM, seed=4523, title="DOLDRUM CAVE, a simple drawing", post=["drawing"],
+                                    denoise=0.60,
+                                    rock=[(40, 40, 44), (90, 86, 88), (176, 168, 150), (240, 232, 204)],
+                                    water=[(24, 24, 40), (60, 58, 66)], white=[(232, 226, 200), (246, 240, 214)],
+                                    prompt="a pen and ink drawing on warm paper of the mouth of a quiet cave, simple "
+                                           "dots and lines, sparse hatching, a still dark pool in the mouth, bare "
+                                           "trunks behind, unfinished sketch, flat, no colour",
+                                    neg="colour, painting, shading gradient, photo, stars, moon, people, text"),
+    #  C: A's own tiles, every 16px block present and the arrangement wrong (content with no context) -- what the
+    #  map does on each entry (T-251 step 3), done to the card; shown here once, as one seed would lay it
+    "cerulean_cave_recomposed": dict(_DOLDRUM, title="DOLDRUM CAVE, wrongly arranged", painting_of=
+                                     "cerulean_cave_becalmed_a", post=["starpoint", "recompose"],
+                                     force=[(232, 236, 224)]),
+    #  D: the drawing with one thing in colour -- the pool already shows the cave as it is (lineage 3b's painted
+    #  mirror); needs engine work to survive the filter (see the report)
+    "cerulean_cave_mirror": dict(_DOLDRUM, title="DOLDRUM CAVE, the painted mirror", painting_of=
+                                 "cerulean_cave_becalmed_a", post=["starpoint", "mirror"], force=[(232, 236, 224)]),
+})
+#  fieldmap.c's sDrawingTones (T-255), at 8 bits, and DaemonsDrawingTone's thresholds on the 5-bit luminance
+DRAWING_TONES = [(3 << 3, 3 << 3, 5 << 3), (11 << 3, 10 << 3, 11 << 3), (22 << 3, 21 << 3, 18 << 3),
+                 (30 << 3, 29 << 3, 25 << 3)]
+#  B is laid in the four tones exactly; D's ink is the four tones and its pool the rest
+CARDS["cerulean_cave_drawing_a"]["force"] = list(DRAWING_TONES)
+CARDS["cerulean_cave_drawing_a"]["accents"] = False
+CARDS["cerulean_cave_mirror"]["force"] = [(232, 236, 224)] + DRAWING_TONES
+
+
+def drawing_tone(c):
+    """DaemonsDrawingTone: a colour as the unread DOLDRUM CAVE shows it"""
+    if c in DRAWING_TONES:
+        return c
+    r, g, b = c[0] >> 3, c[1] >> 3, c[2] >> 3
+    lum = (r * 77 + g * 150 + b * 29) >> 8
+    return DRAWING_TONES[0 if lum < 7 else 1 if lum < 14 else 2 if lum < 23 else 3]
+
+
+def unread(im):
+    """(RGB) a whole card as the unread player sees it: every colour through drawing_tone"""
+    out = im.copy()
+    cache = {}
+    out.putdata([cache.setdefault(p, drawing_tone(p)) for p in im.getdata()])
+    return out
+
+
 #  the engine folders an approved candidate writes, and which candidate: at most one per folder
 CARDS_TAKEN = {CARDS[c]["folder"]: c for c in sorted(CARDS_APPROVED)}
 assert len(CARDS_TAKEN) == len(CARDS_APPROVED), "two approved CARDS candidates for one engine card"
@@ -1251,6 +1326,9 @@ def card_init(folder, sec):
 def paint(folder, sec, out_dir):
     """--paint: the start image, then the sprite server's painting of it, with its record"""
     import spriteforge
+    if cfg(folder).get("painting_of"):                  # drawn from another candidate's painting, never painted itself
+        print("  %-27s no painting of its own: drawn from %s's" % (folder, cfg(folder)["painting_of"]))
+        return None
     d = os.path.join(out_dir, folder)
     os.makedirs(d, exist_ok=True)
     init = os.path.join(d, "painted_init.png")
@@ -1265,6 +1343,7 @@ def paint(folder, sec, out_dir):
 
 
 def painted_path(folder):
+    folder = CARDS.get(folder, {}).get("painting_of", folder)    # DOLDRUM's C and D are drawn from A's painting
     return os.path.join(A.draft or (CARDS_DRAFT if A.cards else DRAFT_DEFAULT), folder, "painted.png")
 
 
@@ -1398,6 +1477,66 @@ def post_script(im):
 
 
 POSTS = dict(script=post_script, braille=post_braille, redband=post_redband, spinfloor=post_spinfloor, vessels=post_vessels)
+
+
+def _in_pool(x, y):
+    """DOLDRUM CAVE: inside the dark mouth vanilla's composition holds (an ellipse, picture coordinates)"""
+    cx, cy, rx, ry = _DOLDRUM["pool"]
+    return ((x - cx) / rx) ** 2 + ((y - cy) / ry) ** 2 <= 1
+
+
+def post_starpoint(im):
+    """DOLDRUM CAVE, after the painting: one point of light on the still pool and nothing above it to make it --
+    three pixels and a fainter one either side, laid on the darkest stretch of the pool's middle"""
+    px = im.load()
+    cx, cy, rx, ry = _DOLDRUM["pool"]
+    best = min(((sum(_lum(px[x + a, y]) for a in range(-3, 4)), x, y)
+                for y in range(cy - ry // 3, cy + ry // 2) for x in range(cx - rx // 2, cx + rx // 2)
+                if _in_pool(x - 3, y) and _in_pool(x + 3, y)))
+    _, x, y = best
+    for a in (-1, 0, 1):
+        px[x + a, y] = (232, 236, 224)
+    for a in (-2, 2):
+        px[x + a, y] = _shade((232, 236, 224), 0.62)
+
+
+def post_drawing(im):
+    """DOLDRUM CAVE B, after the painting: every pixel to the engine's four tones of ink (DaemonsDrawingTone), so the
+    filter, which leaves a tone alone, shows it exactly as written"""
+    px = im.load()
+    for y in range(112):
+        for x in range(240):
+            px[x, y] = drawing_tone(px[x, y])
+
+
+def post_recompose(im):
+    """DOLDRUM CAVE C: the picture cut into twelve blocks of 5x7 tiles (40x56, so every tile is A's) and laid back
+    with none where it was -- one seed's arrangement; the map's own recomposition differs each entry. 16px blocks
+    (tried first) read as noise, not as a place put together wrong"""
+    import random
+    src = im.copy()
+    cells = [(x, y) for y in range(0, 112, 56) for x in range(0, 240, 40)]
+    order, rnd = cells[:], random.Random(4524)
+    while any(a == b for a, b in zip(cells, order)):
+        rnd.shuffle(order)
+    for (dx, dy), (sx, sy) in zip(cells, order):
+        im.paste(src.crop((sx, sy, sx + 40, sy + 56)), (dx, dy))
+
+
+def post_mirror(im):
+    """DOLDRUM CAVE D: A in the engine's ink everywhere but the pool, which keeps its colour -- the pool decided by
+    TILE (an 8x8 tile is in it when its middle is), since a palette slot is a tile's, never a pixel's"""
+    px = im.load()
+    for ty in range(14):
+        for tx in range(30):
+            if _in_pool(tx * 8 + 4, ty * 8 + 4):
+                continue
+            for y in range(ty * 8, ty * 8 + 8):
+                for x in range(tx * 8, tx * 8 + 8):
+                    px[x, y] = drawing_tone(px[x, y])
+
+
+POSTS.update(starpoint=post_starpoint, drawing=post_drawing, recompose=post_recompose, mirror=post_mirror)
 
 
 # ================================================================== OTHER CAVE's four lights
@@ -1603,7 +1742,9 @@ def build(folder, sec):
     if pic is None:
         return None
     c = cfg(folder)
-    idx, pal13 = reduce(pic, vpal, accents=where.startswith("painted"), force=c.get("force", ()), neutral=c.get("neutral"))
+    #  a card laid in a few flat tones (DOLDRUM's drawing) has no accents to keep
+    idx, pal13 = reduce(pic, vpal, accents=where.startswith("painted") and c.get("accents", True),
+                        force=c.get("force", ()), neutral=c.get("neutral"))
     tiles, seen, m, tpal = [], {}, [0] * 640, []
 
     def add(t, p=14):
@@ -1701,7 +1842,7 @@ CARD_CENSUS = [
     ("review_board", "the REVIEW BOARD", "ours (2026-10-26, T-456) -- current; the LEAGUE shares its mapsec"),
     ("rocket_hideout", "CORPUS HIDEOUT", "ours (2026-10-26) -- current (no T-447 art)"),
     ("rocket_warehouse", "CORPUS WAREHOUSE", "ours (2026-10-26) -- current (no T-447 art)"),
-    ("cerulean_cave", "DOLDRUM CAVE", "NINTENDO'S -- waits on the user (T-251), not drafted"),
+    ("cerulean_cave", "DOLDRUM CAVE", "ours (2026-11-11, --cards A BECALMED, engine d4277a127) -- the grey filter inks it unread"),
 ]
 NO_CARD = ["SCORN SOLUTIONS, ERRATA, CRYSTAL's lab, the GAME CORNER, the BENCHMARKs, USER TOWER: a town's building,",
            "  the name popup only (no sMapPreviewScreenData entry).",
@@ -1741,6 +1882,61 @@ def cards_census_sheet(path):
     d.text((16, y), "NO CARD:", fill=(240, 220, 120), font=font(12))
     for k, line in enumerate(NO_CARD):
         d.text((16, y + 18 + k * 16), line, fill=(210, 210, 210), font=font(11))
+    out.save(path)
+    return path
+
+
+#  what each DOLDRUM candidate is, on its sheet: (the read row, the unread row)
+DOLDRUM_NOTES = {
+    "cerulean_cave_becalmed_a": ("A  BECALMED: still air, still water, one point of light",
+                                 "unread: the filter alone, no engine work"),
+    "cerulean_cave_becalmed_b": ("A2 BECALMED, another seed, painted harder",
+                                 "unread: the filter alone, no engine work"),
+    "cerulean_cave_drawing_a": ("B  A SIMPLE DRAWING: already the four tones",
+                                "the same both ways: one state, read or not"),
+    "cerulean_cave_recomposed": ("C  WRONGLY ARRANGED: A's own tiles, misplaced",
+                                 "as unread would see it IF the engine shuffles"),
+    "cerulean_cave_mirror": ("D  THE PAINTED MIRROR: A unread, pool in colour",
+                             "WITHOUT the engine's exemption the pool inks too"),
+}
+
+
+def doldrum_sheet(rows, path):
+    """DOLDRUM CAVE's candidates beside TODAY's card: each at 2x and 1x as built (what the player who holds the
+    understanding sees), and at 1x through T-255's drawing filter (what the unread player sees, by the code)"""
+    nm = names()
+    cw, ch = 480, 320
+    cells = [("TODAY  cerulean_cave", None, "Nintendo's card, as the engine has it", "unread: inked by the filter")]
+    for r in rows:
+        a, b = DOLDRUM_NOTES.get(r["folder"], (r["folder"], ""))
+        cells.append((a, r, "%s, %d tiles (< 450)" % (r["where"], r["tiles"]), b))
+    W = 16 + len(cells) * (cw + 16)
+    H = 64 + 30 + ch + 8 + 22 + 160 + 8 + 22 + 160 + 24
+    out = Image.new("RGB", (W, H), (34, 34, 40))
+    d = ImageDraw.Draw(out)
+    d.text((12, 10), "T-445 DRAFT (2026-11-11) -- DOLDRUM CAVE's name card (cerulean_cave): TODAY's (left) and four "
+           "directions, each at 2x and 1x AS BUILT -- what the player holding the understanding sees -- and at 1x "
+           "UNREAD,", fill=(235, 235, 235), font=font(14))
+    d.text((12, 28), "through fieldmap.c's four tones of ink on warm paper (T-255: DaemonsGreyHalftoneFrame tones the "
+           "preview's palettes while DaemonsCaveUnperceived -- read from the code, not seen on a screen). DRAFT, "
+           "nothing written to the engine.", fill=(235, 235, 235), font=font(14))
+    y = 64
+    for k, (label, r, note, unote) in enumerate(cells):
+        x = 16 + k * (cw + 16)
+        if r is None:
+            im, pal = engine_card("cerulean_cave")
+            draw_name(im, nm.get("MAPSEC_CERULEAN_CAVE", "DOLDRUM CAVE"), pal)
+        else:
+            im = r["draft"]
+        d.text((x, y), label, fill=(170, 170, 170) if k == 0 else (240, 220, 120), font=font(12))
+        d.text((x, y + 14), note, fill=(200, 200, 200), font=font(10))
+        out.paste(im.resize((cw, ch), Image.NEAREST), (x, y + 30))
+        yy = y + 30 + ch + 8
+        d.text((x, yy), "AS BUILT, 1x", fill=(170, 210, 170), font=font(11))
+        out.paste(im, (x, yy + 18))
+        yy += 18 + 160 + 8
+        d.text((x, yy), "UNREAD, 1x -- " + unote, fill=(255, 170, 140), font=font(11))
+        out.paste(unread(im), (x, yy + 18))
     out.save(path)
     return path
 
@@ -1951,6 +2147,10 @@ def main():
                              where=where, vanilla=van_, draft=li,
                              notes=["light %d: %s" % (n, LIGHT_NAMES[n]), "the same tiles, palette 13 moved",
                                     "onto this light's rock and crystal", "ramps (palettes_other_%d)" % n]))
+    if A.draft and A.cards and rows and all(CARDS[r["folder"]]["folder"] == "cerulean_cave" for r in rows):
+        os.makedirs(sheets, exist_ok=True)              # DOLDRUM's own sheet; the others' sheets left as they are
+        print("  sheet -> %s" % doldrum_sheet(rows, os.path.join(sheets, "t445L_doldrum.png")))
+        return 0
     if A.draft and A.cards:
         os.makedirs(sheets, exist_ok=True)
         print("  sheet -> %s" % cards_census_sheet(os.path.join(sheets, "t445L_census.png")))
