@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.360**
+**A total conversion — the living design bible, v11.361**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2295,7 +2295,9 @@ words that do not verify. **Craft rule 1 binds it harder**: nobody says what a w
 costs. The visitors love it. It is safe. Nothing in it surprises anybody. **SAFARI ZONE survives only as an old
 name, remembered.**
 
-***Built 2026-11-12 (DRAFT)***: **every one of its 85 lines picked by the user, line by line** (`docs/walled-garden-picks.json`); the mapsec renamed THE WALLED GARDEN everywhere a player reads it; **the RINGS count down**, RING 3 at the gate to RING 0 at the SECRET HOUSE; the START menu's first row reads SIGN OUT; FIRST MET drops the leading THE only where the place will not fit. SAFARI ZONE is kept twice, as THE OLD NAME: on the WARDEN's merchandise shelf and by HOLT's grandfather. *The SAFARI buildings' art and the place's name card are next.*
+***Built 2026-11-12 (DRAFT)***: **every one of its 85 lines picked by the user, line by line** (`docs/walled-garden-picks.json`); the mapsec renamed THE WALLED GARDEN everywhere a player reads it; **the RINGS count down**, RING 3 at the gate to RING 0 at the SECRET HOUSE; the START menu's first row reads SIGN OUT; FIRST MET drops the leading THE only where the place will not fit. SAFARI ZONE is kept twice, as THE OLD NAME: on the WARDEN's merchandise shelf and by HOLT's grandfather. **Released in v11.360.1** (*76 lines changed, 9 kept; the WARDEN's own lines open UNSIGNED:; the rest houses are WAITING ROOMs, the review queue*). *The SAFARI buildings' art and the place's name card are next.*
+
+***Decided 2026-11-14, not yet built: the WARDEN becomes the GATEKEEPER (T-551).*** **A warden keeps a prison; a walled garden has a gatekeeper**, *the one who decides what comes in* (*the user: "we called him the warden still, that doesnt fit as much in a walled garden I think"; GATEKEEPER picked over THE GARDENER, MODERATOR and STEWARD, and CURATOR left out because SLATE's museum has one*). **His staff still call him LATENCY.** *With it, the attendant's dream of the garden, BEHIND THE WALL: a little house deep in it, where someone kept a way across the water.* *Every word DRAFT.*
 
 
 ## 4. CAST
@@ -9268,6 +9270,7 @@ about itself* (rule 6).
 - **THE BLACKOUT in purple with threads of green (T-546, v11.355.1)** — LIGHT IN THE SEAMS for the rock, a card of only the threads, and the dark built: black but for the threads until VERBOSE, breathing with the pulse once lit; the dark outranks HALFTONE. DRAFT.
 - **THE BLACKOUT dark from the first line (T-546, v11.356.1)** — no lit lines at the top of a dark frame. DRAFT.
 - **THE BLANK TABLET released, and the ship and the plant tidied (T-547, T-447, T-445, v11.358.1)** — the stone by BLANCHE's path and the old toad by the pond, the user keeping the words as drafted; the S.S. ANNE's wake wholly behind her hull and the player before her funnel; the KEEPALIVE PLANT's card leaving as a cave's. DRAFT.
+- **THE WALLED GARDEN released (T-540, v11.360.1); its WARDEN to be the GATEKEEPER (T-551, decided 2026-11-14)** — every one of the 85 lines as the user picked them; the warden renamed because a walled garden is kept at a gate, not a cell, with the attendant's dream BEHIND THE WALL beside it. DRAFT.
 - **The daemons redrawn with charm, and followers at their own size (T-452, T-464, recorded 2026-10-28)** — every daemon redrawn in the sprite-server style, charm over fidelity, one key prop kept and entries agreed with; coloured by type with accents capped near 15% and off other types' hues; icons drawn separately; THE NEXUS keeps its painted art; followers walk as their own small pictures (9.31)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)

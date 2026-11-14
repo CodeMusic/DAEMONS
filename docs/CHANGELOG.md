@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.361 — 2026-11-14
+
+- **3.11:** THE WALLED GARDEN, released in v11.360.1 (T-540). Of the 85 lines, 76 were changed and 9 kept, as the user picked.
+- **3.11, decided:** the WARDEN becomes the GATEKEEPER (T-551, the user, 2026-11-14). A walled garden is kept at a gate. His staff still call him LATENCY. The attendant's dream BEHIND THE WALL comes with it. Not yet built.
+- A Settled entry in section 10. DRAFT.
+
 ## v11.360 — 2026-11-12
 
 - **3.11, THE WALLED GARDEN (T-540)**: the SAFARI ZONE becomes a curated, walled platform run as a sandbox (the user, 2026-11-10); its 85 lines picked one by one by the user (2026-11-12) and built, DRAFT. The RINGS count down, the menu reads SIGN OUT, SAFARI ZONE survives only as an old name, remembered.

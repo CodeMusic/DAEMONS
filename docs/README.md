@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.360, working |
-| [`CONTEXT-CONTENT-design-bible-v11.360.pdf`](CONTEXT-CONTENT-design-bible-v11.360.pdf) | Typeset **snapshot** at v11.360 — the SAFARI ZONE becomes THE WALLED GARDEN, a blank stone that writes itself, and a ship leaving cleanly. | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.361, working |
+| [`CONTEXT-CONTENT-design-bible-v11.361.pdf`](CONTEXT-CONTENT-design-bible-v11.361.pdf) | Typeset **snapshot** at v11.361 — a walled garden opened to play, and its keeper moved from the cell to the gate. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |
