@@ -307,3 +307,39 @@ T-553: MASKMUSAI's three passes at ski feet, then all six forms across the four 
 T-552/T-553 picks reduced to 64x64/16 on each type ramp, autumn in grey fur, ski feet drawn by hand. DRAFT, not in the ROM.
 
 ![14Nov2026 - T553 - MUSAI and Rover at game size - 46](14Nov2026%20-%20T553%20-%20MUSAI%20and%20Rover%20at%20game%20size%20-%2046.png)
+
+### 14Nov2026 - T561 - field overlays emotes draft - 47
+
+T-561 DRAFT: emotes today beside each draft at 2x in theatre shots (gbamenus3.py --t561)
+
+![14Nov2026 - T561 - field overlays emotes draft - 47](14Nov2026%20-%20T561%20-%20field%20overlays%20emotes%20draft%20-%2047.png)
+
+### 14Nov2026 - T561 - field overlays itemfinder draft - 48
+
+T-561 DRAFT: itemfinder today beside each draft at 2x in theatre shots (gbamenus3.py --t561)
+
+![14Nov2026 - T561 - field overlays itemfinder draft - 48](14Nov2026%20-%20T561%20-%20field%20overlays%20itemfinder%20draft%20-%2048.png)
+
+### 14Nov2026 - T561 - field overlays questlog draft - 49
+
+T-561 DRAFT: questlog today beside each draft at 2x in theatre shots (gbamenus3.py --t561)
+
+![14Nov2026 - T561 - field overlays questlog draft - 49](14Nov2026%20-%20T561%20-%20field%20overlays%20questlog%20draft%20-%2049.png)
+
+### 14Nov2026 - T561 - field overlays qldesc draft - 50
+
+T-561 DRAFT: qldesc today beside each draft at 2x in theatre shots (gbamenus3.py --t561)
+
+![14Nov2026 - T561 - field overlays qldesc draft - 50](14Nov2026%20-%20T561%20-%20field%20overlays%20qldesc%20draft%20-%2050.png)
+
+### 14Nov2026 - T561 - field overlays banner draft - 51
+
+T-561 DRAFT: banner today beside each draft at 2x in theatre shots (gbamenus3.py --t561)
+
+![14Nov2026 - T561 - field overlays banner draft - 51](14Nov2026%20-%20T561%20-%20field%20overlays%20banner%20draft%20-%2051.png)
+
+### 14Nov2026 - T561 - field overlays helpscreen draft - 52
+
+T-561 DRAFT: helpscreen today beside each draft at 2x in theatre shots (gbamenus3.py --t561)
+
+![14Nov2026 - T561 - field overlays helpscreen draft - 52](14Nov2026%20-%20T561%20-%20field%20overlays%20helpscreen%20draft%20-%2052.png)

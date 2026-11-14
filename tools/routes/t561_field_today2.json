@@ -1,0 +1,37 @@
+{
+  "rom": "debug",
+  "about": "T-561 (DRAFT): HELP's screen, and a save to CONTINUE into (the quest log's recap). The theatre's debug scratch save; nothing kept.",
+  "stop_timeout": 600,
+  "stops": [
+    {
+      "stop": "HELP",
+      "steps": [
+        "goto Route10 5 25",
+        "wait 30",
+        "press START",
+        "wait 20",
+        "press RIGHT",
+        "press DOWN 3",
+        "wait 10",
+        "shot \"START: HELP's own banner\"",
+        "press A",
+        "wait 90",
+        "shot \"HELP: the screen\"",
+        "press A",
+        "wait 40",
+        "shot \"HELP: a page\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "a save for the quest log",
+      "steps": [
+        "goto ViridianCity_Mart 4 4",
+        "wait 30",
+        "warp MAP_VIRIDIAN_CITY",
+        "wait 60",
+        "save"
+      ]
+    }
+  ]
+}

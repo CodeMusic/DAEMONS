@@ -1,0 +1,47 @@
+{
+  "rom": "debug",
+  "about": "T-561 (DRAFT): the field overlays as they stand today, for the drafts' 'today' column -- a trainer's ! as they spot you (misc/emoticons), the itemfinder's arrow (itemfinder/spr_tiles), the START menu's description banner (help_system/msg_window) ; HELP and the save to CONTINUE into are t561_field_today2.json, and the recap itself was filmed by hand (reset, A at CONTINUE, a burst: the route runner's continue skips it). The theatre's debug scratch save; nothing kept.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "a trainer spots you: the !",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 1",
+        "trainer TRAINER_PICNICKER_HEIDI 0",
+        "goto Route10 11 29",
+        "wait 40",
+        "shot \"Route 10, beside HEIDI's line, out of her sight\"",
+        "burst \"spotted: the !\" 40 2 LEFT 32",
+        "win",
+        "close"
+      ]
+    },
+    {
+      "stop": "the itemfinder",
+      "steps": [
+        "goto Route10 6 29",
+        "repel 999",
+        "keyitem ITEM_ITEMFINDER",
+        "register ITEM_ITEMFINDER",
+        "flag FLAG_HIDDEN_ITEM_ROUTE10_CHERI_BERRY 0",
+        "wait 30",
+        "burst \"the itemfinder: the arrow\" 40 3 SELECT 6",
+        "close"
+      ]
+    },
+    {
+      "stop": "the START menu's banner",
+      "steps": [
+        "goto Route10 5 25",
+        "wait 30",
+        "press START",
+        "wait 20",
+        "shot \"START: the description banner\"",
+        "wait 10",
+        "close"
+      ]
+    }
+  ]
+}

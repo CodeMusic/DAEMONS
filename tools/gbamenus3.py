@@ -49,6 +49,9 @@ THE PIECES, and what each drop-in keeps (report() prints it):
              two corners, the top V-flipped for the bottom; palette 15 = its PNG's: 1-3 the window's text, kept;
              4, 7, 9, 10, 11 its own, retinted).
 
+T-561 (DRAFT, the field overlays: the trainers' emotes, the itemfinder, the quest log's frame and bar, the START
+banner, the HELP screen) lives in its own section at the foot of this file, behind --t561.
+
 NO NEW WORDS. OK, CANCEL, SEL, START, SELECT, A, B, L, R are FireRed's words, redrawn; nothing else is painted.
 """
 import argparse, os, struct, subprocess, sys, tempfile, atexit, shutil
@@ -84,6 +87,7 @@ ap.add_argument("--write", action="store_true")
 ap.add_argument("--approved", action="store_true")
 ap.add_argument("--pick")
 ap.add_argument("--all", action="store_true")
+ap.add_argument("--t561", action="store_true", help="T-561: the field overlays (DRAFT; see the section at the foot)")
 ap.add_argument("--over-later-work", action="store_true", help="accepted so check_generators --writes runs the write")
 ARGS = ap.parse_args() if __name__ == "__main__" else ap.parse_args([])
 
@@ -1528,6 +1532,8 @@ def differs(picks):
 
 
 def main():
+    if ARGS.t561:
+        return t561_main()
     if ARGS.write:
         if not ARGS.approved or not (ARGS.pick or ARGS.all):
             sys.exit("gbamenus3: --write needs --approved and --all or --pick piece=A|B|C,... (the user's picks)")
@@ -1549,6 +1555,946 @@ def main():
             print("  wrote", os.path.relpath(p, ROOT))
         return 0
     return report()
+
+
+
+# ================================================================================================================
+# T-561: THE FIELD OVERLAYS -- the Nintendo art drawn over the world (batch 2 of the 2026-11-14 re-census). DRAFT.
+#
+#     python3 tools/gbamenus3.py --t561                    # report: each piece's files, contract and APPROVED_561
+#     python3 tools/gbamenus3.py --t561 --draft [DIR] [--shots DIR]   # every piece into DIR (gfx/drafts/t561_field/)
+#     python3 tools/gbamenus3.py --t561 --write --approved --pick piece=X,...   # refuses until APPROVED_561 names it
+#
+# genemoji.py does not own misc/emoticons.png (it writes daemon_emoji.png, the follower's own sheet with its own
+# palette), so the trainers' emotes are drawn here, beside T-554's pieces, in the follower bubble's family.
+#
+# THE PIECES, and what each drop-in keeps:
+#   emotes     misc/emoticons.png, 48x80: 15 frames of 16x16, three a row (pop, half, full), rows ! !! X smile ?
+#              (sSpriteImages_Emoticons reads rows 0,2,1,3,4 for anims 0-4; the rows are kept where they are).
+#              The template's paletteTag is 0xFFFF and its OAM palette 0: the emotes are drawn in the PLAYER's OBJ
+#              palette (slot 0, player.pal), which the watch and the season tint with every other object. So they
+#              are drawn only in player.pal's slots, the palette is not touched -- and 12 and 13 are NEVER used:
+#              T-256 paints them as the shoes' sole and trim at run time. Today's ! is drawn in 12, so since MOM's
+#              shoes it has been YELLOW (the theatre shows it), and black with DAD's.
+#   itemfinder itemfinder/spr_tiles.png, 16x80: frames 0-3 the arrow (stored pointing LEFT; affine-rotated toward
+#              the item, four tones in turn), frame 4 the "here" mark. paletteTag 0xFFFF too: player.pal, never 12/13
+#              (today's frames 1 and 4 use 13, the shoes' trim).
+#   questlog   text_window/quest_log.png, 40x32: the message box at every CONTINUE's recap (LoadQuestLogWindowTiles,
+#              DLG tiles 0-13 laid as menu_message's, five tiles a row here), in BG palette 15 = stdpal_4 (only the
+#              quest log loads it). A FRAME: drawn to match A TERMINAL -- the engine's own menu_message (T-523, the
+#              user's pick), tile for tile. Tiles 14-19 kept.
+#   qldesc     quest_log/description_window.png, 8x24: the recap's description bar (top, middle, bottom tile, the
+#              middle repeated), stdpal_4; its text is white on 15 with a 12 shadow, so the middle stays 15 and the
+#              designs live in the top tile's rows 0-2 and the bottom's 5-7 (text reaches y 3..21).
+#   banner     help_system/msg_window.png, 80x16: the START menu's description banner (tiles 0 top, 5 middle, 14
+#              bottom), stdpal_2 -- shared with the slots, the item PC, the SEAGALLOP and menu.c's top bar, so not
+#              retinted; text white (10) with a dark grey (2) shadow on a transparent ground: the middle tile is it.
+#   helpscreen help_system/bg_tiles.png, 24x24 (9 tiles 0x1F7-0x1FF: the header/footer rules, the sides, the
+#              body, two scroll arrows, the clear tile) whose palette (bg_tiles.gbapal is made from the PNG) is the HELP screen's own BG palette 0
+#              (entry 0 the backdrop: the page's ground). A FRAME, and its palette is its own, so TERMINAL is matched
+#              exactly: 0, 10-15 retinted; 1-9 kept (the text's colours); the arrows move from 4 (red, a text colour)
+#              to 11.
+# ================================================================================================================
+T561_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t561_field")
+T561_PIECES = ("emotes", "itemfinder", "questlog", "qldesc", "banner", "helpscreen")
+T561_NAMES = {
+    "emotes": {"A": "SMALL SCREEN", "B": "PAPER TAG", "C": "BRACKETS"},
+    "itemfinder": {"A": "PROMPT CHEVRON", "B": "SLATE WEDGE", "C": "DOUBLE CARET"},
+    "questlog": {"1": "TERMINAL, IN STDPAL_4", "2": "TERMINAL, EXACT"},
+    "qldesc": {"A": "SLATE BAND", "B": "TICKED RULE", "C": "DASHED RULE"},
+    "banner": {"A": "DARK BAND", "B": "TEAL RULE", "C": "DOUBLE RULE"},
+    "helpscreen": {"1": "TERMINAL"},
+}
+T561_OFFERED = {p: "".join(T561_NAMES[p]) for p in T561_PIECES}
+T561_RECOMMENDED = {"emotes": "A", "itemfinder": "A", "questlog": "1", "qldesc": "A", "banner": "A",
+                    "helpscreen": "1"}
+APPROVED_561 = {}          # empty until the user picks: nothing of T-561 is written
+
+OBJ_PAL = "object_events/palettes/player.pal"
+SHOES = (12, 13)           # T-256: the sole and the trim, painted at run time -- never drawn in
+
+
+def player_pal():
+    return jpal(OBJ_PAL)
+
+
+# ------------------------------------------------------------------------------------------------ the emotes
+#  player.pal's slots, by role (and never 12/13):
+#    6 ink (34,34,40)   5 glass (52,52,60)   14 shade (100,100,112)   7 bezel (156,156,166)   2 bezel lit (176,168,164)
+#    9 paper/glow (240,230,204)   10 paper dim (202,190,160)   11 amber (188,128,72)   8 amber dark (132,84,48)
+E_INK, E_GLASS, E_SHADE, E_BEZEL, E_LIT, E_PAPER, E_DIM, E_AMBER, E_AMBER_DK = 6, 5, 14, 7, 2, 9, 10, 11, 8
+EMOTE_ROWS = ("excl", "excl2", "x", "smile", "q")       # the sheet's rows, top to bottom
+
+#  The glyphs, 10 x 7, drawn on a screen's glass (A), a card (B) or bare (C). '#' the stroke.
+GLYPHS = {
+    "excl": ["....##....",
+             "....##....",
+             "....##....",
+             "....##....",
+             "..........",
+             "....##....",
+             ".........."],
+    "excl2": ["..##..##..",
+              "..##..##..",
+              "..##..##..",
+              "..##..##..",
+              "..........",
+              "..##..##..",
+              ".........."],
+    "x": ["..##..##..",
+          "...####...",
+          "....##....",
+          "...####...",
+          "..##..##..",
+          "..........",
+          ".........."],
+    "smile": ["..........",
+              "...#..#...",
+              "...#..#...",
+              "..........",
+              "..#....#..",
+              "...####...",
+              ".........."],
+    "q": ["...####...",
+          "..##..##..",
+          "......##..",
+          ".....##...",
+          "....##....",
+          "..........",
+          "....##...."],
+}
+
+
+def glyph_cells(kind, scale_y=1.0):
+    g = GLYPHS[kind]
+    return [(x, int(y * scale_y)) for y, r in enumerate(g) for x, c in enumerate(r) if c == "#"]
+
+
+def emote_A(kind, f):
+    """SMALL SCREEN: the follower's bubble (genemoji) as the trainers' -- a bezel, dark glass, a glint, the glyph lit
+    on the glass, an amber power light (the follower's is its feeling's colour), the tail down. Frames: the screen
+    switching on -- a lit line, the bezel at half height, the screen."""
+    g = canvas(16, 16)
+    if f == 0:                                          # a line of light, as a tube comes on
+        fill(g, 3, 6, 13, 9, E_INK)
+        fill(g, 4, 7, 12, 8, E_PAPER)
+        put(g, 3, 6, 0), put(g, 12, 6, 0), put(g, 3, 8, 0), put(g, 12, 8, 0)
+        return g
+    top, bot = (0, 12) if f == 2 else (3, 11)
+    for x in range(2, 14):
+        put(g, x, top, E_INK), put(g, x, bot, E_INK), put(g, x, top + 1, E_LIT), put(g, x, bot - 1, E_SHADE)
+    for y in range(top + 2, bot - 1):
+        put(g, 0, y, E_INK), put(g, 15, y, E_INK), put(g, 1, y, E_LIT), put(g, 14, y, E_SHADE)
+    for (x, y) in ((1, top + 1), (14, top + 1), (1, bot - 1), (14, bot - 1)):
+        put(g, x, y, E_INK)
+    fill(g, 2, top + 2, 14, bot - 1, E_GLASS)
+    for (x, y) in ((2, top + 2), (13, top + 2), (2, bot - 2), (13, bot - 2)):
+        put(g, x, y, E_BEZEL)
+    put(g, 3, top + 2, E_PAPER), put(g, 2, top + 3, E_PAPER)          # the glint
+    put(g, 12, bot - 1, E_AMBER)                                      # the power light
+    put(g, 7, bot, E_SHADE), put(g, 8, bot, E_SHADE)                  # the tail
+    put(g, 6, bot + 1, E_INK), put(g, 7, bot + 1, E_SHADE), put(g, 8, bot + 1, E_SHADE), put(g, 9, bot + 1, E_INK)
+    put(g, 7, bot + 2, E_INK), put(g, 8, bot + 2, E_INK)
+    if f == 2:
+        for (x, y) in glyph_cells(kind):
+            put(g, 3 + x, 3 + y, E_PAPER)
+    else:                                               # the glyph half-formed: its rows squeezed, dim
+        for (x, y) in glyph_cells(kind, 0.5):
+            put(g, 3 + x, top + 3 + y, E_DIM)
+    return g
+
+
+def emote_B(kind, f):
+    """PAPER TAG: A TERMINAL's frame as a tag -- paper inside a slate rule cut at 45 degrees, the amber corner
+    bracket top left (the frame's bracket), the glyph in ink, a notch pointing down at whoever it is over."""
+    g = canvas(16, 16)
+    if f == 0:
+        cut_box(g, 5, 6, 6, 5, 1, [E_INK], E_PAPER)
+        return g
+    x0, y0, w, h = (0, 0, 16, 13) if f == 2 else (2, 3, 12, 9)
+    cut_box(g, x0, y0, w, h, 2, [E_INK, E_SHADE], E_PAPER)
+    for k in range(3):                                  # the bracket
+        put(g, x0 + 2 + k, y0 + 2, E_AMBER), put(g, x0 + 2, y0 + 2 + k, E_AMBER)
+    by = y0 + h                                         # the notch
+    put(g, 7, by - 1, E_PAPER), put(g, 8, by - 1, E_PAPER)
+    put(g, 6, by - 1, E_INK), put(g, 9, by - 1, E_INK)
+    put(g, 7, by, E_INK), put(g, 8, by, E_INK)
+    if f == 2:
+        for (x, y) in glyph_cells(kind):
+            put(g, 3 + x, 3 + y, E_INK)
+    else:
+        for (x, y) in glyph_cells(kind, 0.5):
+            put(g, 3 + x, y0 + 3 + y, E_SHADE)
+    return g
+
+
+def emote_C(kind, f):
+    """BRACKETS: no bubble at all -- the glyph alone in paper, ringed in ink so it reads on grass, sand, snow and
+    water, held between two amber terminal brackets that open out as it appears."""
+    g = canvas(16, 16)
+    spread = (2, 1, 0)[f]                               # the brackets close in from the middle, then open
+    lx, rx, ty, by = 1 + 3 * spread, 14 - 3 * spread, 1 + 2 * spread, 12 - 2 * spread
+
+    def bracket(x, y, dx, dy):
+        for k in range(3):
+            put(g, x + dx * k, y, E_AMBER), put(g, x, y + dy * k, E_AMBER)
+
+    def ring(cells, v):
+        for (x, y) in cells:
+            for ox in (-1, 0, 1):
+                for oy in (-1, 0, 1):
+                    if g[min(15, max(0, y + oy))][min(15, max(0, x + ox))] == 0:
+                        put(g, x + ox, y + oy, E_INK)
+        for (x, y) in cells:
+            put(g, x, y, v)
+
+    bracket(lx, ty, 1, 1)
+    bracket(rx, by, -1, -1)
+    for (x, y) in [(lx, ty), (lx + 1, ty), (lx + 2, ty), (lx, ty + 1), (lx, ty + 2),
+                   (rx, by), (rx - 1, by), (rx - 2, by), (rx, by - 1), (rx, by - 2)]:
+        for (ox, oy) in ((0, -1), (-1, 0), (1, 0), (0, 1)):
+            if 0 <= x + ox < 16 and 0 <= y + oy < 16 and g[y + oy][x + ox] == 0:
+                put(g, x + ox, y + oy, E_INK)
+    if f == 2:
+        ring([(3 + x, 3 + y) for (x, y) in glyph_cells(kind)], E_PAPER)
+    elif f == 1:
+        ring([(3 + x, 5 + y) for (x, y) in glyph_cells(kind, 0.5)], E_DIM)
+    return g
+
+
+EMOTE_FN = {"A": emote_A, "B": emote_B, "C": emote_C}
+
+
+def emotes_art(direction):
+    g = canvas(48, 80)
+    for r, kind in enumerate(EMOTE_ROWS):
+        for f in range(3):
+            fr = EMOTE_FN[direction](kind, f)
+            for y in range(16):
+                for x in range(16):
+                    g[r * 16 + y][f * 16 + x] = fr[y][x]
+    return g
+
+
+def emote_frame(g, row, f):
+    return [r[f * 16:f * 16 + 16] for r in g[row * 16:row * 16 + 16]]
+
+
+# ------------------------------------------------------------------------------------------------ the itemfinder
+IF_TONES = (E_PAPER, E_INK, E_LIT, E_AMBER)            # today's four frames: cream, (13) dark, grey, amber -- 13 gone
+
+
+def arrow_A(tone):
+    """PROMPT CHEVRON: T-523's prompt chevron, pointing left -- a 45-degree '<' two pixels thick, ringed in ink (or,
+    in the ink frame, in paper) so it reads over the player and the ground."""
+    g = canvas(16, 16)
+    edge = E_PAPER if tone == E_INK else E_INK
+    body = []
+    for k in range(5):
+        for t in (0, 1):
+            body += [(3 + k + t, 8 - k), (3 + k + t, 8 + k)]
+    body += [(9, 3), (9, 13)]
+    for (x, y) in body:
+        for ox in (-1, 0, 1):
+            for oy in (-1, 0, 1):
+                if g[y + oy][x + ox] == 0:
+                    put(g, x + ox, y + oy, edge)
+    for (x, y) in body:
+        put(g, x, y, tone)
+    return g
+
+
+def arrow_B(tone):
+    """SLATE WEDGE: today's solid wedge kept, ringed in ink, its upper edge lit."""
+    g = canvas(16, 16)
+    edge = E_PAPER if tone == E_INK else E_INK
+    for y in range(4, 13):
+        w = 8 - abs(y - 8) * 2
+        for x in range(10 - w, 11):
+            put(g, x, y, tone)
+    for y in range(3, 14):
+        for x in range(1, 12):
+            if g[y][x] == 0 and any(0 <= y + oy < 16 and g[y + oy][x + ox] not in (0, edge)
+                                    for ox in (-1, 0, 1) for oy in (-1, 0, 1)):
+                g[y][x] = edge
+    for y in range(4, 9):
+        x = 10 - (8 - abs(y - 8) * 2)
+        if g[y][x + 1] == tone and tone != E_PAPER:
+            put(g, x + 1, y, E_PAPER if tone != E_LIT else E_PAPER)
+    return g
+
+
+def arrow_C(tone):
+    """DOUBLE CARET: '<<', one pixel each, ringed -- the terminal's back-history key."""
+    g = canvas(16, 16)
+    edge = E_PAPER if tone == E_INK else E_INK
+    body = []
+    for x0 in (3, 8):
+        for k in range(4):
+            body += [(x0 + k, 8 - k), (x0 + k, 8 + k)]
+    for (x, y) in body:
+        for ox in (-1, 0, 1):
+            for oy in (-1, 0, 1):
+                if g[y + oy][x + ox] == 0:
+                    put(g, x + ox, y + oy, edge)
+    for (x, y) in body:
+        put(g, x, y, tone)
+    return g
+
+
+def here_mark(direction):
+    """Frame 4: standing on it. A: a diamond in four corner brackets (the found cursor); B: a four-point spark;
+    C: a crosshair ring."""
+    g = canvas(16, 16)
+    if direction == "A":
+        for k in range(4):
+            for (x, y) in ((7 - k, 4 + k), (8 + k, 4 + k), (7 - k, 11 - k), (8 + k, 11 - k)):
+                put(g, x, y, E_INK)
+        fill(g, 7, 5, 9, 11, E_PAPER), fill(g, 6, 6, 10, 10, E_PAPER), fill(g, 5, 7, 11, 9, E_PAPER)
+        fill(g, 7, 7, 9, 9, E_AMBER)
+        for (x, y, dx, dy) in ((1, 1, 1, 1), (14, 1, -1, 1), (1, 14, 1, -1), (14, 14, -1, -1)):
+            for k in range(3):
+                put(g, x + dx * k, y, E_AMBER), put(g, x, y + dy * k, E_AMBER)
+    elif direction == "B":
+        body = [(7, y) for y in range(2, 14)] + [(8, y) for y in range(2, 14)] + \
+               [(x, 7) for x in range(2, 14)] + [(x, 8) for x in range(2, 14)] + [(6, 6), (9, 6), (6, 9), (9, 9)]
+        for (x, y) in body:
+            for ox in (-1, 0, 1):
+                for oy in (-1, 0, 1):
+                    if g[y + oy][x + ox] == 0:
+                        put(g, x + ox, y + oy, E_INK)
+        for (x, y) in body:
+            put(g, x, y, E_PAPER)
+        fill(g, 7, 7, 9, 9, E_AMBER)
+    else:
+        for y in range(16):
+            for x in range(16):
+                d = ((x - 7.5) ** 2 + (y - 7.5) ** 2) ** 0.5
+                if 4.6 <= d < 5.8:
+                    g[y][x] = E_PAPER
+                elif 3.6 <= d < 4.6 or 5.8 <= d < 6.8:
+                    g[y][x] = E_INK
+        for k in (1, 2, 13, 14):
+            put(g, k, 7, E_AMBER), put(g, k, 8, E_AMBER), put(g, 7, k, E_AMBER), put(g, 8, k, E_AMBER)
+        fill(g, 7, 7, 9, 9, E_AMBER)
+    return g
+
+
+ARROW_FN = {"A": arrow_A, "B": arrow_B, "C": arrow_C}
+
+
+def itemfinder_art(direction):
+    g = canvas(16, 80)
+    frames = [ARROW_FN[direction](t) for t in IF_TONES] + [here_mark(direction)]
+    for i, fr in enumerate(frames):
+        for y in range(16):
+            g[i * 16 + y] = list(fr[y])
+    return g
+
+
+# ------------------------------------------------------------------------------------------------ the quest log
+TW4 = "text_window/stdpal_4.pal"
+#  stdpal_0's TERMINAL slots -> stdpal_4's nearest in lightness (version 1): the outline near-black to 10 (the darkest,
+#  a slate teal), the band slate to 15, its light to 13, the bracket's teal to 14 (stdpal_4 has no teal bright enough),
+#  the inner-corner flecks to 3.
+QL_SLOTS_1 = {0: 0, 1: 1, 11: 3, 12: 13, 13: 15, 14: 14, 15: 10}
+
+
+def dlg_tiles_from(rel, per):
+    w, h, pal, px = png(rel) if rel != "text_window/menu_message.png" else _engine_png(rel)
+    return {t: tile_of(px, t, per) for t in range(14)}
+
+
+def _engine_png(rel):
+    """The engine's file as it is NOW (the user's A TERMINAL, built by T-523) -- the frame to match, not to replace."""
+    im = Image.open(os.path.join(G, rel))
+    raw = im.getpalette() or []
+    d = list(im.getdata())
+    w, h = im.size
+    return w, h, [tuple(raw[i:i + 3]) for i in range(0, len(raw), 3)], [[d[y * w + x] for x in range(w)] for y in range(h)]
+
+
+def questlog_art(version):
+    term = dlg_tiles_from("text_window/menu_message.png", 6)
+    w, h, pal, now = png("text_window/quest_log.png")
+    g = [[v & 15 for v in r] for r in now]
+    if isinstance(pal, list) and not any(pal):
+        pass
+    for t, blk in term.items():
+        x0, y0 = (t % 5) * 8, (t // 5) * 8
+        for y in range(8):
+            for x in range(8):
+                v = blk[y][x] & 15
+                g[y0 + y][x0 + x] = QL_SLOTS_1.get(v, v) if version == "1" else v
+    return g
+
+
+def questlog_pal(version):
+    p = jpal(TW4)
+    if version == "2":
+        p0 = jpal("text_window/stdpal_0.pal")
+        for s in (11, 12, 13, 14, 15):
+            p[s] = p0[s]
+    return p
+
+
+def questlog_box(version, pal=None):
+    """The 240x48 box the hardware draws from tiles 0-13 (gbaframes.strip), as an index grid."""
+    import gbaframes as F
+    g = questlog_art(version)
+    q = [[0] * F.QW for _ in range(F.QH)]
+    for t, (x0, y0) in F.DLG_TILES.items():
+        for y in range(8):
+            for x in range(8):
+                q[y0 + y][x0 + x] = g[(t // 5) * 8 + y][(t % 5) * 8 + x]
+    for y in range(8, F.QH):
+        for x in range(16, 24):
+            q[y][x] = 1
+    return F.strip(q)
+
+
+# ------------------------------------------------------------------------------------------------ the description bar
+#  stdpal_4: 10 slate teal (dark), 11/12/13/14 greys 131..230, 15 slate (the ground), 1 white.
+def qldesc_art(direction):
+    top = [[15] * 8 for _ in range(8)]
+    mid = [[15] * 8 for _ in range(8)]
+    if direction == "A":           # SLATE BAND: a dark rule, a light hairline, then the band
+        top[0], top[1] = [10] * 8, [13] * 8
+    elif direction == "B":         # TICKED RULE: a light rule with a tick every 8px, as a ruler
+        top[0], top[1] = [10] * 8, [14] * 8
+        top[2] = [14, 15, 15, 15, 15, 15, 15, 15]
+    else:                          # DASHED RULE: the dark rule broken into dashes, a tooth hanging from each
+        top[0] = [10, 10, 10, 10, 10, 10, 15, 15]
+        top[1] = [10, 13, 13, 13, 13, 10, 15, 15]
+        top[2] = [10, 15, 15, 15, 15, 15, 15, 15]
+    bot = [r[:] for r in reversed(top)]
+    return top + mid + bot
+
+
+def qldesc_bar(direction, pal_version="1"):
+    """The description window as CopyDescriptionWindowTiles lays it: 30 tiles wide, 6 high (rows 14-19)."""
+    g = qldesc_art(direction) if direction else [[v & 15 for v in r] for r in png("quest_log/description_window.png")[3]]
+    rows = []
+    for i in range(6):
+        t = 0 if i == 0 else (2 if i == 5 else 1)
+        for y in range(8):
+            rows.append([g[t * 8 + y][x % 8] for x in range(240)])
+    return rows
+
+
+# ------------------------------------------------------------------------------------------------ the START banner
+#  stdpal_2 (not retinted: the slots, the item PC, the SEAGALLOP and menu.c's bar share it): 10 white (the text),
+#  11 sky (74,205,238), 12 cyan (16,172,222), 13 dark teal (0,82,115), 14 teal (0,115,139), 15 blue (0,123,197).
+def banner_art(direction):
+    w, h, pal, now = png("help_system/msg_window.png")
+    g = [[v & 15 for v in r] for r in now]
+    if direction == "A":           # DARK BAND: the darkest teal is the ground (the nearest stdpal_2 has to slate)
+        top = [[13] * 8 for _ in range(8)]
+        top[0], top[1], top[2] = [15] * 8, [11] * 8, [13] * 8
+        mid = [[13] * 8 for _ in range(8)]
+        bot = [[13] * 8 for _ in range(8)]
+        bot[6], bot[7] = [14] * 8, [15] * 8
+    elif direction == "B":         # TEAL RULE: teal ground, a sky rule on top with a tick every 8px, a dark foot
+        top = [[14] * 8 for _ in range(8)]
+        top[0], top[1] = [13] * 8, [11] * 8
+        top[2] = [11, 14, 14, 14, 14, 14, 14, 14]
+        mid = [[14] * 8 for _ in range(8)]
+        bot = [[14] * 8 for _ in range(8)]
+        bot[6], bot[7] = [13] * 8, [13] * 8
+    else:                          # DOUBLE RULE: today's blue kept, two hairlines over it and a dark foot
+        top = [[15] * 8 for _ in range(8)]
+        top[0], top[1], top[2], top[3] = [13] * 8, [11] * 8, [15] * 8, [12] * 8
+        mid = [[15] * 8 for _ in range(8)]
+        bot = [[15] * 8 for _ in range(8)]
+        bot[5], bot[6], bot[7] = [12] * 8, [13] * 8, [13] * 8
+    for t, blk in ((0, top), (5, mid), (14, bot)):
+        x0, y0 = (t % 10) * 8, (t // 10) * 8
+        for y in range(8):
+            for x in range(8):
+                g[y0 + y][x0 + x] = blk[y][x]
+    return g
+
+
+def banner_strip(g):
+    """The 240x40 window (30x5 tiles): row 0 tile 0, rows 1-3 tile 5, row 4 tile 14."""
+    out = []
+    for i in range(5):
+        t = 0 if i == 0 else (14 if i == 4 else 5)
+        x0, y0 = (t % 10) * 8, (t // 10) * 8
+        for y in range(8):
+            out.append([g[y0 + y][x0 + (x % 8)] for x in range(240)])
+    return out
+
+
+# ------------------------------------------------------------------------------------------------ the HELP screen
+#  bg_tiles: 9 tiles, 3 a row; tile i is map tile 0x1F7 + i.
+#    0 0x1F7 header rule (lighter)   1 0x1F8 footer rule (lighter)   2 0x1F9 the side columns
+#    3 0x1FA the body                4 0x1FB header rule (darker)    5 0x1FC footer/row-5 rule (darker)
+#    6 0x1FD scroll arrow down       7 0x1FE scroll arrow up         8 0x1FF clear (the backdrop, entry 0)
+HELP_PAL_EXACT = {0: SLATE_OUT, 10: (16, 20, 28), 11: TEAL, 12: TEAL_DK, 13: SLATE_MID, 14: (48, 58, 72),
+                  15: SLATE_OUT}
+
+
+def helpscreen_art(version="1"):
+    T = {i: canvas(8, 8, 0) for i in range(9)}
+    T[0] = [[15] * 8 for _ in range(8)]
+    T[0][5], T[0][6], T[0][7] = [13] * 8, [11] * 8, [14] * 8                     # header: slate, teal, the body
+    T[1] = [[15] * 8 for _ in range(8)]
+    T[1][0], T[1][1], T[1][2] = [14] * 8, [11] * 8, [13] * 8                     # footer: the body, teal, slate
+    T[2] = [[10] * 8 for _ in range(8)]                                          # the sides: near-black
+    for y in range(8):
+        T[2][y][3] = 13
+    T[3] = [[14] * 8 for _ in range(8)]                                          # the body
+    T[4] = [[14] * 8 for _ in range(8)]
+    T[4][0], T[4][1], T[4][2] = [10] * 8, [11] * 8, [13] * 8                     # the darker header rule
+    T[5] = [[14] * 8 for _ in range(8)]
+    T[5][5], T[5][6], T[5][7] = [13] * 8, [11] * 8, [10] * 8
+    for i, up in ((6, False), (7, True)):                                        # the arrows: teal, ringed
+        g = canvas(8, 8)
+        for k in range(4):                                                       # k 0 the point
+            y = (1 + k) if up else (6 - k)
+            for x in range(3 - k, 5 + k):
+                g[y][x] = 11
+            put(g, 3 - k, y, 10), put(g, 4 + k, y, 10)
+        for x in range(0, 8):
+            put(g, x, 5 if up else 2, 10)
+        put(g, 3, 0 if up else 7, 10), put(g, 4, 0 if up else 7, 10)
+        T[i] = g
+    T[8] = canvas(8, 8, 0)
+    g = canvas(24, 24)
+    for i, blk in T.items():
+        for y in range(8):
+            for x in range(8):
+                g[(i // 3) * 8 + y][(i % 3) * 8 + x] = blk[y][x]
+    return g
+
+
+def helpscreen_pal(version="1"):
+    p = list(png("help_system/bg_tiles.png")[2][:16])
+    for k, v in HELP_PAL_EXACT.items():
+        p[k] = v
+    return p
+
+
+def read_gbapal(rel):
+    d = open(os.path.join(G, rel), "rb").read()
+    return [((v & 31) << 3, ((v >> 5) & 31) << 3, ((v >> 10) & 31) << 3) for v in struct.unpack("<16H", d[:32])]
+
+
+# ------------------------------------------------------------------------------------------------ files and checks
+def t561_outputs(piece, d):
+    if piece == "emotes":
+        return {"misc/emoticons.png": _png(emotes_art(d), png("misc/emoticons.png")[2][:16])}
+    if piece == "itemfinder":
+        return {"itemfinder/spr_tiles.png": _png(itemfinder_art(d), png("itemfinder/spr_tiles.png")[2][:16])}
+    if piece == "questlog":
+        out = {"text_window/quest_log.png": _png(questlog_art(d), questlog_pal(d))}
+        if d == "2":
+            out["text_window/stdpal_4.pal"] = ("pal", questlog_pal(d))
+        return out
+    if piece == "qldesc":
+        return {"quest_log/description_window.png": _png(qldesc_art(d), jpal(TW4))}
+    if piece == "banner":
+        return {"help_system/msg_window.png": _png(banner_art(d), png("help_system/msg_window.png")[2][:16])}
+    if piece == "helpscreen":
+        p = helpscreen_pal(d)
+        return {"help_system/bg_tiles.png": _png(helpscreen_art(d), p)}      # bg_tiles.gbapal is made from the PNG
+    return {}
+
+
+def t561_check(piece, d):
+    errs = []
+    for rel, payload in t561_outputs(piece, d).items():
+        if payload[0] != "png":
+            continue
+        g = payload[1]
+        w, h, pal, now = png(rel)
+        if (len(g[0]), len(g)) != (w, h):
+            errs.append("%s is %dx%d, not %dx%d" % (rel, len(g[0]), len(g), w, h))
+        used = {v for r in g for v in r}
+        if piece in ("emotes", "itemfinder") and used & set(SHOES):
+            errs.append("%s draws in %s (the shoes' slots, T-256)" % (rel, sorted(used & set(SHOES))))
+        if piece == "qldesc" and any(v != 15 for r in g[8:16] for v in r):
+            errs.append("the middle tile is not all 15 (the text's ground)")
+        if piece == "qldesc" and any(v != 15 for r in g[3:21] for v in r[:1]) and d != "C":
+            errs.append("text rows 3-20 must stay 15")
+        if piece == "banner" and used - {0, 10, 11, 12, 13, 14, 15}:
+            errs.append("draws outside stdpal_2's own slots 10-15")
+        if piece == "helpscreen" and used & {4} :
+            errs.append("draws in 4 (the HELP text's red)")
+    return errs
+
+
+def t561_report():
+    print("gbamenus3 --t561 (T-561): the field overlays. APPROVED_561: %s" % (APPROVED_561 or "none -- nothing is written"))
+    bad = 0
+    for piece in T561_PIECES:
+        print("  %-10s %s" % (piece, ", ".join(sorted(t561_outputs(piece, T561_RECOMMENDED[piece])))))
+        for d in T561_OFFERED[piece]:
+            errs = t561_check(piece, d)
+            if errs:
+                bad += 1
+                print("    %s %s: %s" % (d, T561_NAMES[piece][d], "; ".join(errs)))
+    return 1 if bad else 0
+
+
+# ------------------------------------------------------------------------------------------------ mocks
+def find_shape(img, grid, slack=6):
+    """Where `grid` sits in `img` whatever its palette: the pixels of one index all one colour, different indices
+    different colours (mGBA's colours are not the .pal's) -- up to `slack` pixels off, for the falling leaves and
+    the weather drawn over it. The best fit, or nothing."""
+    from collections import Counter
+    pts = [(x, y, v) for y, r in enumerate(grid) for x, v in enumerate(r) if v]
+    p = img.load()
+    W, H = img.size
+    gw, gh = len(grid[0]), len(grid)
+    best = None
+    for y in range(0, H - gh + 1):
+        for x in range(0, W - gw + 1):
+            by = {}
+            for (dx, dy, v) in pts:
+                by.setdefault(v, []).append(p[x + dx, y + dy])
+            off, cols = 0, []
+            for v, cs in by.items():
+                c, n = Counter(cs).most_common(1)[0]
+                off += len(cs) - n
+                cols.append(c)
+                if off > slack:
+                    break
+            if off <= slack and len(set(cols)) == len(cols) and (best is None or off < best[0]):
+                best = (off, x, y)
+    return [best[1:]] if best else []
+
+
+def _blank():
+    return Image.new("RGB", (240, 160), (36, 40, 46))
+
+
+def _over(img, g, pal, x, y, k=1):
+    """Draw index grid g (0 clear) onto img at (x, y)."""
+    out = img.copy()
+    o = out.load()
+    for dy, r in enumerate(g):
+        for dx, v in enumerate(r):
+            X, Y = x + dx, y + dy
+            if v and 0 <= X < out.width and 0 <= Y < out.height:
+                o[X, Y] = mgba(q5(pal[v]))
+    return out
+
+
+def _restore(img, clean, g_old, x, y):
+    out = img.copy()
+    o, c = out.load(), clean.load()
+    for dy, r in enumerate(g_old):
+        for dx, v in enumerate(r):
+            X, Y = x + dx, y + dy
+            if v and 0 <= X < 240 and 0 <= Y < 160:
+                o[X, Y] = c[X, Y]
+    return out
+
+
+def _player_pal_live(shoes="MOM"):
+    """player.pal as it stands on screen once shoes are given (T-256: MOM's sole yellow, trim black)."""
+    p = player_pal()
+    if shoes == "MOM":
+        p[12], p[13] = (240, 200, 32), (24, 24, 32)
+    return p
+
+
+TERRAINS = [("grass", (152, 192, 128)), ("sand", (224, 208, 160)), ("snow", (240, 244, 248)),
+            ("water", (72, 136, 200)), ("night", (24, 32, 56)), ("cave", (88, 72, 64))]
+
+
+def terrain_plate(frames_by_dir, pal):
+    """Each direction's full ! (and ? and !!) at 1x and 3x over six grounds."""
+    im = Image.new("RGB", (240, 160), (36, 40, 46))
+    d = ImageDraw.Draw(im)
+    for i, (name, c) in enumerate(TERRAINS):
+        x0 = i * 40
+        d.rectangle([x0, 0, x0 + 39, 159], fill=c)
+        for j, fr in enumerate(frames_by_dir):
+            z = idx_rgba(fr, pal).resize((32, 32), Image.NEAREST)
+            im.paste(z, (x0 + 4, 4 + j * 52), z)
+            o = idx_rgba(fr, pal)
+            im.paste(o, (x0 + 12, 38 + j * 52), o)
+    return im
+
+
+def mock_emotes(shots, d):
+    pal = _player_pal_live()
+    old = emotes_art_today()
+    g = emotes_art(d) if d else old
+    full = emote_frame(g, 0, 2)
+    imgs = []
+    s = shot_any(shots, "spotted")
+    if s is not None:
+        hits = find_shape(s, emote_frame(old, 0, 2))
+        base = s
+        for (x, y) in hits[:1]:
+            base = _restore(s, s, [[0]], x, y)
+            # erase today's bubble with the ground round it, then draw the draft
+            ring = [s.getpixel((X, Y)) for X in range(max(0, x - 1), min(240, x + 17)) for Y in (max(0, y - 1),)]
+            bgc = max(set(ring), key=ring.count)
+            o = base.load()
+            ref = emote_frame(old, 0, 2)
+            for dy in range(16):
+                for dx in range(16):
+                    if ref[dy][dx] and 0 <= x + dx < 240 and 0 <= y + dy < 160:
+                        o[x + dx, y + dy] = bgc
+            base = _over(base, full, pal, x, y)
+            imgs.append(base)
+            zx, zy = max(0, min(240 - 80, x - 32)), max(0, min(160 - 53, y - 10))
+            imgs.append(base.crop((zx, zy, zx + 80, zy + 53)).resize((240, 160), Image.NEAREST))
+        if not hits:
+            imgs += [s, s]
+    else:
+        imgs += [_blank(), _blank()]
+    imgs.append(terrain_plate([emote_frame(g, 0, 2), emote_frame(g, 4, 2), emote_frame(g, 1, 2)], pal))
+    imgs.append(zoom(idx_rgba(g, pal), 2))
+    return imgs
+
+
+def emotes_art_today():
+    return [[v & 15 for v in r] for r in png("misc/emoticons.png")[3]]
+
+
+def shot_any(shots, key, n=None):
+    for name, im in shots.items():
+        if key.lower() in name.lower() and im.size == (240, 160):
+            return im
+    return None
+
+
+def mock_itemfinder(shots, d):
+    pal = _player_pal_live()
+    old = [[v & 15 for v in r] for r in png("itemfinder/spr_tiles.png")[3]]
+    g = itemfinder_art(d) if d else old
+    frames = [g[i * 16:(i + 1) * 16] for i in range(5)]
+    up = [[frames[0][15 - x][y] for x in range(16)] for y in range(16)]   # turned a quarter: the point up
+    imgs = []
+    s = shot_any(shots, "itemfinder")
+    if s is not None:
+        base = s.copy()
+        # the player stands at screen (112, 72); the arrow sprite is drawn centred on them, pointing at the item
+        base = _over(base, up, pal, 104, 60)
+        imgs.append(base)
+        imgs.append(base.crop((72, 36, 152, 89)).resize((240, 160), Image.NEAREST))
+    else:
+        imgs += [_blank(), _blank()]
+    imgs.append(parts_plate([idx_rgba(f, pal) for f in frames], k=2))
+    return imgs
+
+
+def mock_questlog(shots, v):
+    imgs = []
+    if v is None:
+        g = questlog_box_today()
+        pal = jpal(TW4)
+    else:
+        g, pal = questlog_box(v), questlog_pal(v)
+    s = shot_any(shots, "recap")
+    base = s.copy() if s is not None else _blank()
+    o = base.load()
+    for y in range(48):
+        for x in range(240):
+            if g[y][x]:
+                o[x, 112 + y] = mgba(q5(pal[g[y][x]]))
+    imgs.append(base)
+    imgs.append(base.crop((0, 100, 120, 160)).resize((240, 120), Image.NEAREST).crop((0, 0, 240, 120)))
+    w = Image.new("RGB", (240, 160), (36, 40, 46))
+    w.paste(imgs[-1], (0, 20))
+    imgs[-1] = w
+    return imgs
+
+
+def questlog_box_today():
+    import gbaframes as F
+    w, h, pal, now = png("text_window/quest_log.png")
+    g = [[v & 15 for v in r] for r in now]
+    q = [[0] * F.QW for _ in range(F.QH)]
+    for t, (x0, y0) in F.DLG_TILES.items():
+        for y in range(8):
+            for x in range(8):
+                q[y0 + y][x0 + x] = g[(t // 5) * 8 + y][(t % 5) * 8 + x]
+    for y in range(8, F.QH):
+        for x in range(16, 24):
+            q[y][x] = 1
+    return F.strip(q)
+
+
+QL_LINES = ["DRAFT: the recap's description bar,", "white on the band as the engine prints it."]
+
+
+def mock_qldesc(shots, d, pal_version="1"):
+    pal = questlog_pal(pal_version) if pal_version else jpal(TW4)
+    rows = qldesc_bar(d)
+    s = shot_any(shots, "recap")
+    base = s.copy() if s is not None else _blank()
+    o = base.load()
+    for y in range(48):
+        for x in range(240):
+            o[x, 112 + y] = mgba(q5(pal[rows[y][x]]))
+    for i, line in enumerate(QL_LINES):
+        say(base, 2, 112 + 10 + 14 * i, line, pal[1], pal[12])
+    return [base, base.crop((0, 104, 120, 160)).resize((240, 112), Image.NEAREST)]
+
+
+def mock_banner(shots, d):
+    pal = jpal("text_window/stdpal_2.pal")
+    g = banner_art(d) if d else [[v & 15 for v in r] for r in png("help_system/msg_window.png")[3]]
+    strip_ = banner_strip(g)
+    s = shot_any(shots, "description banner")
+    base = s.copy() if s is not None else _blank()
+    o = base.load()
+    for y in range(40):
+        for x in range(240):
+            o[x, 120 + y] = mgba(q5(pal[strip_[y][x]]))
+    for i, line in enumerate(["A device that records DAEMON secrets", "upon meeting or binding them."]):
+        say(base, 2, 120 + 5 + 14 * i, line, pal[10], pal[2])
+    return [base, base.crop((0, 112, 120, 160)).resize((240, 96), Image.NEAREST)]
+
+
+def mock_helpscreen(shots, v):
+    """The HELP screen laid as help_system_util draws it: the clear backdrop, the body (rows 3-19, cols 1-28), the
+    darker header and footer rules (rows 2 and 19), the side columns, the scroll arrows -- with sample text."""
+    if v is None:
+        w, h, pal, now = png("help_system/bg_tiles.png")
+        g = [[x & 15 for x in r] for r in now]
+        pal = png("help_system/bg_tiles.png")[2][:16]
+    else:
+        g, pal = helpscreen_art(v), helpscreen_pal(v)
+    s = shot_any(shots, "HELP the screen")
+    T = {i: [r[(i % 3) * 8:(i % 3) * 8 + 8] for r in g[(i // 3) * 8:(i // 3) * 8 + 8]] for i in range(9)}
+    im = Image.new("RGB", (240, 160), q5(pal[0]))
+    o = im.load()
+
+    def tile(i, cx, cy):
+        for y in range(8):
+            for x in range(8):
+                vv = T[i][y][x]
+                if vv:
+                    o[cx * 8 + x, cy * 8 + y] = q5(pal[vv])
+    for cy in range(3, 20):
+        for cx in range(1, 29):
+            tile(3, cx, cy)
+    for cy in range(20):
+        tile(2, 0, cy), tile(2, 29, cy)
+    for cx in range(1, 29):
+        tile(4, cx, 2), tile(5, cx, 19), tile(5, cx, 5)
+    tile(7, 28, 3), tile(6, 28, 18)
+    say(im, 12, 0, "HELP", pal[1], pal[2])
+    say(im, 16, 24, "DRAFT: what the HELP page", pal[1], pal[2])
+    say(im, 16, 48, "says sits on the body here,", pal[1], pal[2])
+    say(im, 16, 64, "the rules above and below it.", pal[1], pal[2])
+    out = []
+    if s is not None:                       # the theatre shot, each of the frame's colours moved to the draft's
+        old = png("help_system/bg_tiles.png")[2][:16]
+        swap = {mgba(q5(old[k])): q5(pal[k]) for k in (0, 10, 11, 12, 13, 14, 15)} if v else {}
+        o2 = s.copy()
+        q = o2.load()
+        for y in range(160):
+            for x in range(240):
+                if q[x, y] in swap:
+                    q[x, y] = swap[q[x, y]]
+        out = [o2]
+    return out + [im, im.crop((0, 0, 120, 80)).resize((240, 160), Image.NEAREST)]
+
+
+T561_MOCKS = {"emotes": mock_emotes, "itemfinder": mock_itemfinder, "questlog": mock_questlog,
+              "qldesc": mock_qldesc, "banner": mock_banner, "helpscreen": mock_helpscreen}
+
+T561_ROWS = {
+    "emotes": "Rows: Route 10, HEIDI's ! as she spots you (theatre shot, today's bubble found and the draft drawn in "
+              "its place, in player.pal as on screen with MOM's shoes); the same at 3x; the full !, ? and !! over "
+              "grass, sand, snow, water, night and cave at 2x and 1x; the whole sheet (15 frames) at 2x.",
+    "itemfinder": "Rows: the itemfinder on Route 10 (the arrow drawn over the player as the sprite sits, rotated up "
+                  "towards the berry as the affine turns it); the same at 3x; the five frames at 3x.",
+    "questlog": "Rows: the recap's message box (the 240x48 the hardware draws from tiles 0-13), over the recap "
+                "shot when the theatre has one; its left half at 2x.",
+    "qldesc": "Rows: the recap's description bar (CopyDescriptionWindowTiles: 30x6 tiles, rows 14-19) with two "
+              "lines printed as the engine prints them (white on 15, 12 shadow); its left half at 2x.",
+    "banner": "Rows: the START menu with its description banner (theatre shot, the banner redrawn and its words "
+              "printed again, white with the dark grey shadow, on the transparent ground); its left half at 2x.",
+    "helpscreen": "Rows: today's HELP screen (theatre; for the draft, each of the frame's palette entries -- 0, "
+                  "10-15 -- moved to the draft's colour, a palette-only approximation: the shot's body and ground "
+                  "are both entry 0/15 today, so they take one colour); the page laid as help_system_util lays "
+                  "it (body, rules, sides, scroll arrows), sample words DRAFT; its corner at 2x.",
+}
+T561_NOTES = {
+    "emotes": "Kept: 48x80, 15 frames, three a row (pop, half, full), the rows where the code reads them; the "
+              "player's OBJ palette (slot 0: the template has no palette tag), so the watch and the season tint it "
+              "as before, and no palette changes. Never 12/13: T-256's shoes -- today's ! is in 12 and so has been "
+              "yellow since MOM's shoes (black with DAD's). A: the follower's SMALL SCREEN (genemoji, T-431) as the "
+              "trainers' -- dark glass, the glyph lit, an amber light where the follower's shows its feeling; B: A "
+              "TERMINAL's frame as a paper tag, its bracket in amber; C: no bubble, the glyph ringed in ink between "
+              "two amber brackets.",
+    "itemfinder": "Kept: 16x80, five frames, the arrow stored pointing left with its point where today's is, four "
+                  "tones in turn (frame 1 was 13, the shoes' trim: now ink ringed in paper), frame 4 the 'here' "
+                  "mark. A: T-523's prompt chevron; B: today's wedge, ringed and lit; C: '<<'.",
+    "questlog": "A FRAME: matched to A TERMINAL, the engine's menu_message tile for tile (T-523's, the user's pick). "
+                "Kept: DLG tiles 0-13 in their places, tiles 14-19, stdpal_4 in BG palette 15 (only the quest log "
+                "loads it). Why two: stdpal_4 has no near-black and no teal. 1 draws TERMINAL in stdpal_4's nearest "
+                "slots (outline 10 slate teal, band 15, light 13, bracket 14, flecks 3); quest_log.png only. 2 is "
+                "TERMINAL exactly and retints stdpal_4's 11-15 to stdpal_0's -- only the quest log reads stdpal_4, "
+                "but 12 and 15 are also the description bar's shadow and ground, and the top and bottom bars', which "
+                "go near-black with it.",
+    "qldesc": "Kept: 8x24, top / middle / bottom, the middle all 15 (the text's ground); stdpal_4 as it is (shown "
+              "under version 1's palette). A: a dark rule and a light hairline, the band; B: the same with a tick "
+              "every 8px, as a ruler; C: the rule broken into dashes, each with a tooth (the tile repeats every 8px, so every "
+              "motif here does).",
+    "banner": "Kept: msg_window's 20 tiles (only 0, 5 and 14 are drawn on screen; the rest kept), stdpal_2 "
+              "untouched (the slots, item PC, SEAGALLOP and menu.c's bar share it) -- so no slate: its darkest is a "
+              "dark teal. A matches TERMINAL as nearly as stdpal_2 allows; an exact match needs the banner to load "
+              "another palette (an engine change, not drafted).",
+    "helpscreen": "A FRAME, in its own palette (bg_tiles.png's, built into bg_tiles.gbapal: only HELP loads it), so TERMINAL is matched "
+                  "exactly: entry 0 (the page's ground) near-black slate, 10 near-black, 11 teal, 12 dark teal, 13 "
+                  "slate, 14 the body, 15 slate; 1-9 (the text's colours) kept. The scroll arrows move from 4 (red) to "
+                  "teal 11. 9 tiles in their order kept.",
+}
+
+
+def t561_draft(out, shots_dir=None):
+    os.makedirs(out, exist_ok=True)
+    shots = load_shots(shots_dir)
+    made = []
+    for piece in T561_PIECES:
+        for d in T561_OFFERED[piece]:
+            errs = t561_check(piece, d)
+            if errs:
+                sys.exit("gbamenus3 --t561: %s %s breaks its contract: %s" % (piece, d, "; ".join(errs)))
+            put_files(t561_outputs(piece, d), os.path.join(out, d, "graphics"))
+        cols = [("TODAY (the engine)", T561_MOCKS[piece](shots, None))]
+        for d in T561_OFFERED[piece]:
+            cols.append(("%s %s" % (d, T561_NAMES[piece][d]), T561_MOCKS[piece](shots, d)))
+        notes = [T561_ROWS[piece], T561_NOTES[piece],
+                 "DRAFT -- drawn in code (tools/gbamenus3.py --t561), nothing in the engine until the user picks; "
+                 "recommended: %s (%s). APPROVED_561 is empty." % (T561_RECOMMENDED[piece],
+                                                                  T561_NAMES[piece][T561_RECOMMENDED[piece]])]
+        made.append(contact("T-561 THE FIELD OVERLAYS -- %s -- DRAFT" % piece.upper(), cols, notes,
+                            os.path.join(out, "t561_%s_sheet.png" % piece)))
+    return made
+
+
+def t561_main():
+    if ARGS.write:
+        if not ARGS.approved or not ARGS.pick:
+            sys.exit("gbamenus3 --t561: --write needs --approved and --pick piece=X,... (the user's picks)")
+        picks = dict(kv.split("=") for kv in ARGS.pick.split(","))
+        for piece, d in picks.items():
+            if piece not in T561_PIECES or d not in T561_OFFERED[piece]:
+                sys.exit("gbamenus3 --t561: unknown pick %s=%s" % (piece, d))
+            if APPROVED_561.get(piece) != d:
+                sys.exit("gbamenus3 --t561: %s=%s is not APPROVED_561 (T-561 is a DRAFT)" % (piece, d))
+        for piece, d in picks.items():
+            for p in put_files(t561_outputs(piece, d), G):
+                print("  wrote", os.path.relpath(p, ROOT))
+        return 0
+    if ARGS.draft:
+        out = ARGS.draft if ARGS.draft != DRAFT_DEFAULT else T561_DRAFT
+        for p in t561_draft(out, ARGS.shots):
+            print("  wrote", os.path.relpath(p, ROOT))
+        return 0
+    return t561_report()
 
 
 if __name__ == "__main__":
