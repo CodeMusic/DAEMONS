@@ -54,7 +54,8 @@
   "screens/you/Guardian.tsx": "guardian",
   "screens/today/Tending.tsx": "tending",
   "screens/game/Link.tsx": "playing",
-  "screens/daemon/Creations.tsx": "creations"
+  "screens/daemon/Creations.tsx": "creations",
+  "screens/daemon/Sing.tsx": "sings"
  },
  "not for players": [
   "screens/dev/Dev.tsx"

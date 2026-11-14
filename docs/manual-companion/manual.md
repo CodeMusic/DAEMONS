@@ -315,8 +315,21 @@ stops it; while it speaks, **HUSH** quiets it.
 
 ## Routines {#routines}
 
-**Routines** holds **THE CASINO**, which has a chapter of its own ([The CASINO](#casino)), and **YOUR PARTY'S
-ROUTINES**: the moves your party knows, as the game knows them.
+**Routines** is what your daemon does. First its own: **IT SINGS**, **THE EASEL** and **SLEEP SOUNDS** (the first two
+when the companion is with a hub). Then **THE CASINO**, which has a chapter of its own ([The CASINO](#casino)), **THE
+HOUSE**, and **YOUR PARTY'S ROUTINES**: the moves your party knows, as the game knows them. What it has made is kept
+in its galleries: **ITS GALLERIES ›**, under its card on **Yours** ([CREATIONS](#creations)).
+
+## IT SINGS {#sings}
+
+In **Routines**, **IT SINGS** asks your daemon for a song, three ways:
+
+- **PROMPT** -- say what the song is about, and it writes the words.
+- **MY WORDS** -- give it your own words, and a style to sing them in.
+- **ITS OWN** -- it writes and styles a song of its own, from how it is today.
+
+A song takes two or three minutes. Its cover is painted meanwhile, and when it is ready it is kept on this phone and
+plays here, like a record. Every song is in its galleries with the rest of what it has made.
 
 ## In its own voice {#own-voice}
 
@@ -338,7 +351,7 @@ keeps it; this is the daemon's own telling, and only the app's.
 
 ## THE EASEL {#easel}
 
-Under its card on **Yours** is **THE EASEL ›**, when the companion is with a hub. Type what it should paint, under
+In **Routines** is **THE EASEL**, when the companion is with a hub. Type what it should paint, under
 *What should it paint?*, and **PAINT**: your daemon walks to its easel and paints while you wait, the canvas filling a
 stroke at a time. It paints in a style of its own, from how it is today -- how it feels, what it needs, your goals,
 the weather on the way -- and gives the painting a title and a line about it. A painting takes a minute or two.
@@ -348,8 +361,8 @@ it large; hold it to see **WHAT WAS ASKED**. **TAKE IT DOWN** takes one off the 
 
 ## CREATIONS {#creations}
 
-**CREATIONS ›**, under its card on **Yours** (and under SLEEP SOUNDS), is one gallery of everything the daemons have
-made: **SLEEP SOUNDS** and **PAINTINGS**. Choose where to look:
+**ITS GALLERIES ›**, under its card on **Yours** (and under SLEEP SOUNDS), is one gallery of everything the daemons
+have made: **SLEEP SOUNDS**, **SONGS** and **PAINTINGS**. Choose where to look:
 
 - **MINE** -- what is on this phone.
 - **HOUSEHOLD** -- everything the hub keeps, from every device at home. A **✓** marks what this phone already has, and
@@ -464,7 +477,7 @@ the morning.
 
 ## SLEEP SOUNDS {#sleepsounds}
 
-Above the dreams, **SLEEP SOUNDS** is music made for your daemon as it is tonight, to fall asleep to together. Its kind
+In **Routines**, and above the dreams, **SLEEP SOUNDS** is music made for your daemon as it is tonight, to fall asleep to together. Its kind
 chooses the instruments, its feelings the key and the pace, and what it needs what the music carries -- rain for a
 thirsty one, a hearth for a hungry one. **MAKE TONIGHT'S** asks the hub for it; it takes about three minutes, and is
 kept on the phone once it comes.
