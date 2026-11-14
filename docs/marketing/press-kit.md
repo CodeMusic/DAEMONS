@@ -4,8 +4,7 @@ title: DAEMONS press kit
 
 # How to use this kit {.t-CONTEXT .unnumbered}
 
-This is the promotional companion to *The Fourth Review* (design bible **v11.338**, release **v11.337.4**, 3 November
-2026). The review says what is true and what is not yet; this kit says it out loud, and it **only says things the
+This is the promotional companion to *The Fourth Review* (revised for release **v11.361.1**, design bible **v11.362**, 14 November 2026). The review says what is true and what is not yet; this kit says it out loud, and it **only says things the
 review found to be true**. Where a feature is in testing, the copy says so.
 
 Three kinds of page are in here:
@@ -72,17 +71,18 @@ boards, a radio with a dial: any of them can host one, one daemon to each.
 ### 3 · A mind that lives in your house
 
 A daemon out here can **talk** -- hold to talk, and it answers in the voice of its INDEX entry. That mind runs on
-hardware *you* own: today the AX630 module on the companion's hub, or LM Studio on your own computer through the
-companion server; the Tiiny is wired and waiting for its first run. **Next, any OpenAI-compatible endpoint** --
-Ollama, LM Studio and their kin, linked straight from the phone -- so the computer you already have can be its mind. No account, no
-cloud required, and the app collects nothing for its developer.
+hardware *you* own: the AX630 module on the companion's hub, LM Studio on your own computer, **or any
+OpenAI-compatible endpoint you link -- Ollama, LM Studio and their kin -- straight from the phone**, with the phone's
+own on-device model as one more mind -- and a Tiiny on the network as another. **They are not a setting to pick
+between: THE MIND joins every one the phone can reach into one**, and each thought goes to the nearest, strongest
+mind that answers in time. The player sets how far a thought may travel: anywhere, only at home, or only this phone. No account, no cloud required, and the app collects nothing for its developer.
 :::
 
 ::: callout
-**Honest footing for the third pillar.** Talking needs the companion running on a computer or the hub today -- a
-phone on its own does not talk yet. The AX630 and LM Studio paths run; the Tiiny is built and not yet run on the
-device; the general "link any endpoint" setting is *planned* (see the review, Part 5). Say **"coming"** for Ollama
-and for phone-only talk until they ship.
+**Honest footing for the third pillar** (revised for v11.361). The AX630 and LM Studio paths run. Linking any
+endpoint, from the hub or the phone, and the phone's on-device mind are **built and in testing -- not yet tried by
+hand**, and the Tiiny is built and not yet run on the device. Say **"in testing"** for those until they have been.
+And until the review's output filter lands, never promote linking an *uncensored* model.
 :::
 
 # The fact sheet {.t-LOGIC}
@@ -94,10 +94,10 @@ and for phone-only talk until they ship.
 | **Editions** | **CONTENT** (made from FireRed) and **CONTEXT** (made from LeafGreen) |
 | **Platforms** | Your own cartridge's ROM, patched (mGBA, Delta, a flash cart); in a browser on your own network (the *playground*); **one app for iPhone, iPad and Apple Silicon Mac** -- game and companion together (in TestFlight testing) |
 | **Companion hosts** | Phone and home-screen widget; LilyGO T-Embed, T-Deck, T-Watch S3 and Ultra, T-Display; M5Stack Stick, Core, Dial, Cardputer, Tab5; ESP32-S3-BOX-3 as a Home Assistant voice |
-| **Local AI** | AX630 module on the hub; LM Studio via the companion server; Tiiny (built, first run pending); any OpenAI-compatible endpoint, from the phone too, *coming* (Ollama, LM Studio) |
+| **Local AI** | AX630 module on the hub; LM Studio via the companion server; Tiiny (built, first run pending); any OpenAI-compatible endpoint -- Ollama, LM Studio -- from the hub or the phone, and the phone's on-device model (*in testing*) |
 | **Price** | Free. A fan project, never sold |
 | **What you need** | A FireRed or LeafGreen you own. **No ROM is distributed** -- a patch is applied to yours |
-| **Current release** | v11.337.4 (2 November 2026), built against design bible v11.337 |
+| **Current release** | v11.361.1 (14 November 2026), built against design bible v11.361 |
 | **Manuals** | MICRO-START (5 pp) · QUICK-START (25 pp, large type) · the player's manual · *Playing together* · *A bigger mind* (Tiiny) · *The Old Word* (why DAY-mons) · *Principles of Mind* (the in-game school's textbook) |
 | **Source** | github.com/CodeMusic -- DAEMONS (design), pokefirered-daemons (the game), daemons-companion (app, server, firmware), daemons-playground (browser) |
 
@@ -161,7 +161,7 @@ One caption per card, ready to paste. Hashtags last, five at most; leave them of
 | 6 | **Two editions, one argument** | CONTENT and CONTEXT: one story, told two ways. The same type chart in both, because an argument that changes by cartridge isn't one. #DAEMONS #GBA |
 | 7 | **It doesn't have to stay in the cartridge** | In your party, choose SEND. Your daemon steps out of the game and onto your phone -- hungry, sleepy, glad to see you. SYNC, and it goes home with everything that happened. #DAEMONS #companion |
 | 8 | **One next step** | Tell your daemon what you want to get done. It finds one next step. Finish it, and that's a meal. #DAEMONS #productivity |
-| 9 | **A mind in your house** | Your daemon can talk -- and its mind runs on hardware you own, on your own network: an AX630 module or LM Studio today, Ollama and any OpenAI-compatible endpoint on the way. #DAEMONS #LocalAI #Ollama #LMStudio |
+| 9 | **A mind in your house** | Your daemon can talk -- and its mind runs on hardware you own, on your own network: an AX630 module, a Tiiny, or LM Studio, Ollama and any OpenAI-compatible model you link -- and your phone, hub and models think as one mind (in testing). #DAEMONS #LocalAI #Ollama #LMStudio |
 | 10 | **Any board can host one** | A watch, a pocket keyboard, a radio with a dial. Most LilyGO and M5Stack boards can host a daemon -- one daemon to each. #DAEMONS #ESP32 #M5Stack #LilyGO |
 | 11 | **Bring your own game** | DAEMONS is free and never sold. You bring the FireRed or LeafGreen you own; a patch makes DAEMONS from it. No ROM is ever shared. #DAEMONS #FanGame |
 | 12 | **It never explains itself** | Books hidden in the world. A record you fill in. A story told in pieces, at your own pace. You work it out. #DAEMONS |
@@ -183,7 +183,7 @@ A suggestion, not a schedule. One card a day is plenty; the replies matter more 
 | 9 | A photo of a real board hosting a daemon on a desk | The physical proof -- this sells the companion better than any card |
 | 10 | Card 8, *One next step* | The everyday use: why you'd keep it |
 | 11 | Card 10, *Any board can host one* | For the makers -- cross-post to their communities |
-| 12 | Card 9, *A mind in your house* | For the local-AI crowd -- only after the endpoint setting ships, or say *coming* |
+| 12 | Card 9, *A mind in your house* | For the local-AI crowd -- say *in testing* until it has been tried by hand |
 | 13 | Card 5, *Crystal Clear* | A character people can quote |
 | 14 | Card 12, *It never explains itself* | Ends on the mystery; invites the long-form players |
 
@@ -272,9 +272,10 @@ PNGs. The colour band at the top of each is the type its idea belongs to.
 <div class="stripe"></div>
 <div class="k">09 · A MIND IN YOUR HOUSE</div>
 <h2>Its mind runs on hardware you own.</h2>
-<ul><li>The AX630 module on your hub</li><li>LM Studio on your own computer</li><li>Ollama · any OpenAI-compatible endpoint -- coming</li></ul>
+<ul><li>The AX630 module on your hub</li><li>A Tiiny on your network</li><li>LM Studio, Ollama -- any OpenAI-compatible model</li></ul>
+<p style="font-size:8.6pt;margin-top:2mm">One mind, not a setting: your phone, the hub and every model you link think together -- the nearest, strongest one answers.</p>
 <div class="art">{{sprite.small HUNCH CLUSTER}}</div>
-<div class="foot"><span><b>DAEMONS</b> · no cloud required</span><span>collects nothing</span></div>
+<div class="foot"><span><b>DAEMONS</b> · no cloud required</span><span>in testing · collects nothing</span></div>
 </div>
 
 <div class="card t-SIGNAL">
