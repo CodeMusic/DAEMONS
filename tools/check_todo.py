@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""check_todo.py -- the record a fresh session reads first, checked (T-553).
+"""check_todo.py -- the record a fresh session reads first, checked (T-563).
 
 Fails (exit 1) on any of:
 

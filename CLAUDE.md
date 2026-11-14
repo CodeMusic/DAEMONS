@@ -293,8 +293,8 @@ so the repository shows what the build looked like: `python3 tools/qashot.py --t
 
 1. **Build all four ROMs and check each exit code** (`firered`, `leafgreen`, `firered_debug`, `leafgreen_debug`).
 2. **Run the checks** -- `check_lexicon.py`, `check_reach.py`, `check_agent_vocab.py`, `check_todo.py` (the record: no
-   open row under Closed, no conflict marker, no spent reservation, the README's release line current -- T-553), `check_secrets.py`
-   (the four secrets grepped for in every tracked file, from `docs/private/secrets_patterns.txt` -- T-550), `companion_export.py --check`
+   open row under Closed, no conflict marker, no spent reservation, the README's release line current -- T-563), `check_secrets.py`
+   (the four secrets grepped for in every tracked file, from `docs/private/secrets_patterns.txt` -- T-560), `companion_export.py --check`
    (the companion holds the words the game is built from, T-373), `releasedocs.py --audio-gate` (every book has its
    own voice -- a new book gets one chosen with the user from samples, T-543 -- and, on a major or minor release only,
    a current recording, T-544), then `check_generators.py` on a quiet tree (edit neither repo while it runs).
@@ -388,7 +388,7 @@ The game asks the player to work them out. A reader who knows them cannot un-kno
 **They live in `docs/private/`, which is gitignored** (2026-09-27): `SECRETS.md` holds the four, and
 `vision-unredacted.md` the whole bible as it stood. The public `vision.md` reads `[private: SECRETS §n]` where each
 stood. **Write new detail about any of the four there, never in a tracked file.** The folder is in no repository, so
-it needs backing up. **`python3 tools/check_secrets.py` greps every tracked file for them** (T-550, after three of the
+it needs backing up. **`python3 tools/check_secrets.py` greps every tracked file for them** (T-560, after three of the
 four were found readable again six weeks after the redaction): its patterns are `docs/private/secrets_patterns.txt`,
 one regular expression a line under `## SECRETS §n` headings, written on the author's machine and never committed;
 where the folder is absent the check passes quietly, so it proves nothing from a fresh clone or a cloud session.

@@ -108,7 +108,7 @@ The bible knows this for 4 and 7. It does not know it for 1.
   A player who does not revisit Doldrum's gym after the Review Board, and does not solve a vanilla optional boulder
   puzzle, has a dead end dressed as a dream, with T-347's three-heals backstop as the only net. **Put the pointer on
   the path: S.T.A.R.R.'s own terminal register already exists for this.**
-- **Act 2 opens on sixty daemons owned** (9.17 `:8466`), "the one nobody remembers". *Correction, 2026-11-11 (T-552): read from the bible, not the scripts. In play the aide hands the GLOBAL INDEX over on `FLAG_CRYSTAL_GONE` alone (T-27); the sixty survived only on a path nothing reaches. 9.17 was stale and is corrected; the dead check is removed.* The finale of a game whose
+- **Act 2 opens on sixty daemons owned** (9.17 `:8466`), "the one nobody remembers". *Correction, 2026-11-11 (T-562): read from the bible, not the scripts. In play the aide hands the GLOBAL INDEX over on `FLAG_CRYSTAL_GONE` alone (T-27); the sixty survived only on a path nothing reaches. 9.17 was stale and is corrected; the dead check is removed.* The finale of a game whose
   argument is that the Index cannot hold what matters is gated on a collection count, recorded as a debug finding
   and kept because "both preconditions are real". It is never discussed as a design choice. Decide it, in either
   direction, and write it down.

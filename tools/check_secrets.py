@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""check_secrets.py -- the four things that never go in public writing, grepped for (T-550).
+"""check_secrets.py -- the four things that never go in public writing, grepped for (T-560).
 
 CLAUDE.md names four secrets the game asks the player to work out. They live in docs/private/ (gitignored). The
 2026-09-27 redaction swept them out of the tracked files once; by 2026-11-04 three of the four were readable again
