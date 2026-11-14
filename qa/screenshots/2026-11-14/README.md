@@ -127,3 +127,33 @@ C-358: tap the record for the spectrum (DRIFT DOWN on)
 C-358: COMMUNITY -- the first piece shared to THE COMMONS
 
 ![14Nov2026 - C358 - community - 21](14Nov2026%20-%20C358%20-%20community%20-%2021.jpg)
+
+### 14Nov2026 - T549 - A direction, not a verdict on a daemons naming screen - 22
+
+T-549 (DRAFT): a daemon's naming screen carries A direction, not a verdict. faintly on the banner's left (NAME RATER in grey LAVENDER, PIXELBYTE's gift in colour); the player's own name screen does not, with the book held.
+
+![14Nov2026 - T549 - A direction, not a verdict on a daemons naming screen - 22](14Nov2026%20-%20T549%20-%20A%20direction%2C%20not%20a%20verdict%20on%20a%20daemons%20naming%20screen%20-%2022.png)
+
+### 14Nov2026 - T549 - A direction, not a verdict on a daemons naming screen - 23
+
+T-549 (DRAFT): a daemon's naming screen carries A direction, not a verdict. faintly on the banner's left (NAME RATER in grey LAVENDER, PIXELBYTE's gift in colour); the player's own name screen does not, with the book held.
+
+![14Nov2026 - T549 - A direction, not a verdict on a daemons naming screen - 23](14Nov2026%20-%20T549%20-%20A%20direction%2C%20not%20a%20verdict%20on%20a%20daemons%20naming%20screen%20-%2023.png)
+
+### 14Nov2026 - T549 - A direction, not a verdict on a daemons naming screen - 24
+
+T-549 (DRAFT): a daemon's naming screen carries A direction, not a verdict. faintly on the banner's left (NAME RATER in grey LAVENDER, PIXELBYTE's gift in colour); the player's own name screen does not, with the book held.
+
+![14Nov2026 - T549 - A direction, not a verdict on a daemons naming screen - 24](14Nov2026%20-%20T549%20-%20A%20direction%2C%20not%20a%20verdict%20on%20a%20daemons%20naming%20screen%20-%2024.png)
+
+### 14Nov2026 - T548 - Still me under the evolution, with and without the book - 26
+
+T-548 (DRAFT): with THE SUBTLE LAYER held the evolution's own words are followed by one purple line, Still me.; without the book, nothing under them. Route t548_550_subtle stops 1-2, debug build.
+
+![14Nov2026 - T548 - Still me under the evolution, with and without the book - 26](14Nov2026%20-%20T548%20-%20Still%20me%20under%20the%20evolution%2C%20with%20and%20without%20the%20book%20-%2026.png)
+
+### 14Nov2026 - T548 - Still me under the evolution, with and without the book - 27
+
+T-548 (DRAFT): with THE SUBTLE LAYER held the evolution's own words are followed by one purple line, Still me.; without the book, nothing under them. Route t548_550_subtle stops 1-2, debug build.
+
+![14Nov2026 - T548 - Still me under the evolution, with and without the book - 27](14Nov2026%20-%20T548%20-%20Still%20me%20under%20the%20evolution%2C%20with%20and%20without%20the%20book%20-%2027.png)
