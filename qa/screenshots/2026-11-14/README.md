@@ -157,3 +157,9 @@ T-548 (DRAFT): with THE SUBTLE LAYER held the evolution's own words are followed
 T-548 (DRAFT): with THE SUBTLE LAYER held the evolution's own words are followed by one purple line, Still me.; without the book, nothing under them. Route t548_550_subtle stops 1-2, debug build.
 
 ![14Nov2026 - T548 - Still me under the evolution, with and without the book - 27](14Nov2026%20-%20T548%20-%20Still%20me%20under%20the%20evolution%2C%20with%20and%20without%20the%20book%20-%2027.png)
+
+### 14Nov2026 - T438 - nintendo art left 14Nov - 28
+
+The re-census of 14 Nov 2026: the pret/pokefirered art still in the GBA build for the top three batches, at 2x, each file in its own palette. 1, the menu leftovers: the std frame 25 screens load, the bag's background (recoloured only), the list arrows, SELECT, the bag-swap line, the close-bag arrow, the keypad glyphs and the markings. 2, the field overlays: the trainer emotes (the ! over every trainer who spots you), the quest log's frame, the HELP window, the itemfinder. 3, the 548 town and route tiles left in eleven Kanto secondaries, recoloured by T-438 but still pret's drawing.
+
+![14Nov2026 - T438 - nintendo art left 14Nov - 28](14Nov2026%20-%20T438%20-%20nintendo%20art%20left%2014Nov%20-%2028.png)
