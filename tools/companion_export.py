@@ -143,6 +143,17 @@ def species_table():
         if all(got):
             base[m.group(1)] = [int(x.group(1)) for x in got]
 
+    # C-359: each species' gender split, as the game holds it (genderRatio: 0 male only, 254 female only, 255 genderless,
+    # else female below it) -- the companion works a daemon's gender out of its personality the way GetBoxMonGender does,
+    # so it can say he or she, and they for a genderless one. PERCENT_FEMALE is C's integer cut of min(254, p*255/100);
+    # a body built from a macro (the old UNOWN forms) is genderless
+    gender = {}
+    for m in re.finditer(r"\[SPECIES_(\w+)\]\s*=\s*\{((?:(?!\[SPECIES_).)*)", info, re.S):
+        g = re.search(r"\.genderRatio\s*=\s*(MON_MALE|MON_FEMALE|MON_GENDERLESS|PERCENT_FEMALE\(([\d.]+)\))", m.group(2))
+        if g:
+            gender[m.group(1)] = ({"MON_MALE": 0, "MON_FEMALE": 254, "MON_GENDERLESS": 255}.get(g.group(1))
+                                  if g.group(2) is None else int(min(254, float(g.group(2)) * 255 / 100)))
+
     # T-448 (C-184): how each species evolves, so a daemon carried on the companion can evolve there. The companion
     # judges only what it can see (level, friendship, the hour, and the personality split Wurmple's line uses); items,
     # trades, BEAUTY and SHEDINJA's empty-slot copy stay the game's, marked "judged": false
@@ -184,6 +195,7 @@ def species_table():
             "base": base.get(sp),                      # C-45: HP, Attack, Defense, Speed, Sp.Atk, Sp.Def
             "native": native_of(native.get("SPECIES_" + sp, 0)),   # T-407: the INDEX's NATIVE box, as data
             "evolutions": evos.get(sp, []),            # T-448: method, param, target species id, judged by the companion?
+            "gender": gender.get(sp, 255),             # C-359: genderRatio -- 0 male, 254 female, 255 none, else by personality
         }
         out[str(sid)] = row
     # T-395: the save keeps an INDEX bit per national number up to NUM_SPECIES rounded to a byte (DEX_FLAGS_NO, 416);
