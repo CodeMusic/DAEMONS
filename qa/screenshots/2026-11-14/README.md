@@ -355,3 +355,8 @@ T-561 BUILT (engine 9e489b46e): HEIDI's ! with MOM's shoes on and the itemfinder
 T-561 BUILT (engine 9e489b46e): the START banner, HELP and the recap's description bar, today beside built, theatre; the quest log message box not reached
 
 ![14Nov2026 - T561 - field overlays built the banner HELP and recap - 54](14Nov2026%20-%20T561%20-%20field%20overlays%20built%20the%20banner%20HELP%20and%20recap%20-%2054.png)
+### 14Nov2026 - T553 - front back icon follower at game size - 49
+
+T-552/T-553: all 27 at game size, front, back, icon and follower. DRAFT, not in the ROM.
+
+![14Nov2026 - T553 - front back icon follower at game size - 49](14Nov2026%20-%20T553%20-%20front%20back%20icon%20follower%20at%20game%20size%20-%2049.png)
