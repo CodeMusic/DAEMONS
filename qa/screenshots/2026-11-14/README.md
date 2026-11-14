@@ -301,3 +301,9 @@ T-553: MASKMUSAI's three passes at ski feet, then all six forms across the four 
 T-553: MASKMUSAI's three passes at ski feet, then all six forms across the four seasons (two seeds each).
 
 ![14Nov2026 - T553 - MUSAI seasons and MASKMUSAI passes - 45](14Nov2026%20-%20T553%20-%20MUSAI%20seasons%20and%20MASKMUSAI%20passes%20-%2045.png)
+
+### 14Nov2026 - T553 - MUSAI and Rover at game size - 46
+
+T-552/T-553 picks reduced to 64x64/16 on each type ramp, autumn in grey fur, ski feet drawn by hand. DRAFT, not in the ROM.
+
+![14Nov2026 - T553 - MUSAI and Rover at game size - 46](14Nov2026%20-%20T553%20-%20MUSAI%20and%20Rover%20at%20game%20size%20-%2046.png)

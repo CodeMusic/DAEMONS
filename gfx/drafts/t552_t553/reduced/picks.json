@@ -1,0 +1,137 @@
+{
+ "musai_winter": {
+  "source": "seasons/musai_winter_7501",
+  "type": "NORMAL",
+  "folded": 0
+ },
+ "musai_spring": {
+  "source": "seasons/musai_spring_7502",
+  "type": "NORMAL",
+  "folded": 0
+ },
+ "musai_summer": {
+  "source": "round2/musai_summer_7301",
+  "type": "NORMAL",
+  "folded": 0
+ },
+ "musai_autumn": {
+  "source": "autumn2/musai_autumn_7601",
+  "type": "NORMAL",
+  "folded": 0
+ },
+ "codemusai_winter": {
+  "source": "seasons/codemusai_winter_7501",
+  "type": "FIGHTING",
+  "folded": 0
+ },
+ "codemusai_spring": {
+  "source": "seasons/codemusai_spring_7501",
+  "type": "FIGHTING",
+  "folded": 0
+ },
+ "codemusai_summer": {
+  "source": "round2/codemusai_summer_7302",
+  "type": "FIGHTING",
+  "folded": 0
+ },
+ "codemusai_autumn": {
+  "source": "autumn2/codemusai_autumn_7601",
+  "type": "FIGHTING",
+  "folded": 0
+ },
+ "seekmusai_winter": {
+  "source": "seasons/seekmusai_winter_7501",
+  "type": "FLYING",
+  "folded": 25
+ },
+ "seekmusai_spring": {
+  "source": "seasons/seekmusai_spring_7501",
+  "type": "FLYING",
+  "folded": 4
+ },
+ "seekmusai_summer": {
+  "source": "seasons/seekmusai_summer_7502",
+  "type": "FLYING",
+  "folded": 28
+ },
+ "seekmusai_autumn": {
+  "source": "round2/seekmusai_autumn_7301",
+  "type": "FLYING",
+  "folded": 31
+ },
+ "caremusai_winter": {
+  "source": "seasons/caremusai_winter_7501",
+  "type": "PSYCHIC",
+  "folded": 1
+ },
+ "caremusai_spring": {
+  "source": "seasons/caremusai_spring_7502",
+  "type": "PSYCHIC",
+  "folded": 0
+ },
+ "caremusai_summer": {
+  "source": "round2/caremusai_summer_7302",
+  "type": "PSYCHIC",
+  "folded": 0
+ },
+ "caremusai_autumn": {
+  "source": "autumn2/caremusai_autumn_7602",
+  "type": "PSYCHIC",
+  "folded": 0
+ },
+ "lensmusai_winter": {
+  "source": "seasons/lensmusai_winter_7501",
+  "type": "PSYCHIC",
+  "folded": 0
+ },
+ "lensmusai_spring": {
+  "source": "round2/lensmusai_spring_7301",
+  "type": "PSYCHIC",
+  "folded": 0
+ },
+ "lensmusai_summer": {
+  "source": "seasons/lensmusai_summer_7501",
+  "type": "PSYCHIC",
+  "folded": 5
+ },
+ "lensmusai_autumn": {
+  "source": "autumn2/lensmusai_autumn_7601",
+  "type": "PSYCHIC",
+  "folded": 0
+ },
+ "maskmusai_winter": {
+  "source": "round3/maskmusai_winter_7402",
+  "type": "DARK",
+  "folded": 0
+ },
+ "maskmusai_spring": {
+  "source": "seasons/maskmusai_spring_7501",
+  "type": "DARK",
+  "folded": 0
+ },
+ "maskmusai_summer": {
+  "source": "seasons/maskmusai_summer_7501",
+  "type": "DARK",
+  "folded": 0
+ },
+ "maskmusai_autumn": {
+  "source": "autumn2/maskmusai_autumn_7602",
+  "type": "DARK",
+  "folded": 0
+ },
+ "rovercub": {
+  "source": "concepts/rovercub_7202",
+  "type": "GRASS",
+  "folded": 0
+ },
+ "roverseer": {
+  "source": "round2/roverseer_7302",
+  "type": "GRASS",
+  "folded": 0
+ },
+ "roverbyte": {
+  "source": "concepts/roverbyte_7201",
+  "type": "GRASS",
+  "folded": 0
+ }
+}

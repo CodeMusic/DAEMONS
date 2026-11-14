@@ -1,0 +1,37 @@
+{
+ "mode": "t2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t552_t553/autumn2/maskmusai_autumn_7601",
+ "prompt": "pixel art sprite, chibi, the same creature as in the image, the same round helmet head, the same dark visor with glowing eyes, the same antennae, the same body shape and markings, its fur stays GREY exactly as in the image, not orange, not brown, in thick autumn fur, three or four small orange autumn leaves caught on its grey fur and falling around it, its hind feet a little longer and flatter than usual, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only the leaves coloured, facing left three-quarter view, black outline, centered on a plain white background, full body, the whole body inside the picture with white space on every side, no shadow, no text, game asset",
+ "negative": "",
+ "seed": 7601,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t552_t553/round3/maskmusai_winter_7402.png"
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 30.1,
+ "comfyui": "0.19.1",
+ "made": "2026-11-14 15:57:28"
+}
