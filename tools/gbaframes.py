@@ -9,6 +9,9 @@
                                                         #   sheet and a mock screen per direction at real size
     python3 tools/gbaframes.py --write --approved --main A   # write the chosen direction into the engine.
                                                         #   Refuses without --approved, and without --main.
+    python3 tools/gbaframes.py --std-draft [DIR]        # T-554: the std frame (std.png, LoadStdWindowGfx's) in its two
+                                                        #   versions into DIR (gfx/drafts/t554_menus/std/)
+    python3 tools/gbaframes.py --write --approved --std 1|2  # write it; refuses until APPROVED_STD names the pick
 
 DRAFT, 2026-11-06, the user away ("Text boxes first", from the vanilla-art census). Every pixel here is drawn in code,
 on the tile grid, from scratch: no AI image, nothing traced. The engine's own files are read only to keep what this does
@@ -62,10 +65,16 @@ ap.add_argument("--write", action="store_true")
 ap.add_argument("--approved", action="store_true")
 ap.add_argument("--over-later-work", action="store_true", help="accepted so check_generators --writes really runs the write")
 ap.add_argument("--main", choices="ABC")
+ap.add_argument("--std-draft", nargs="?", const=os.path.join(ROOT, "gfx", "drafts", "t554_menus", "std"),
+                help="T-554: draw the std frame's versions into DIR (std.png, and stdpal_3.pal where one moves)")
+ap.add_argument("--std", choices=("1", "2"), help="T-554: with --write --approved, write this std version (APPROVED_STD)")
 A = ap.parse_args() if __name__ == "__main__" else ap.parse_args([])
 
 MAIN_RECOMMENDED = "A"
 APPROVED = "A"                       # the user's pick, 2026-11-06: A TERMINAL, and the whole family with it
+#  T-554 (DRAFT 2026-11-14): the std frame, graphics/text_window/std.png. Nothing approved: --write --std refuses.
+APPROVED_STD = None
+STD_RECOMMENDED = "1"
 
 
 def q5(c):
@@ -754,7 +763,74 @@ def write(main):
     print("  now: python3 tools/gbacalendar_ui.py --write --approved  (the START styleMask is measured: all ten)")
 
 
+# ================================================================================================ T-554: the std frame
+#  graphics/text_window/std.png is NOT type1: LoadStdWindowGfx (src/text_window.c) loads it, 9 tiles (0x120 bytes),
+#  always with stdpal_3 (GetTextWindowPalette(3)), for the money box (bag, MART, field), the save box, the party's
+#  message box, the PC's message box, the item PC's and TOOLKIT's sub-windows, the coin box, the elevator and the map
+#  name popup (which loads stdpal_3 too). T-523 redrew type1-10, so the user's TERMINAL is round every window the
+#  OPTIONS frame draws, and pret's 9 tiles (a grey rounded ring, recoloured) round these.
+#  THE CONTRACT: 24x24, exactly 9 tiles in DrawStdFrameWithCustomTileAndPalette's order (0 1 2 / 3 4 5 / 6 7 8, no
+#  flips), tile 4 the paper (1) because the window's own pixels sit over it; drawn in stdpal_3's slots, which are
+#  every std window's TEXT colours too (1 paper, 2 ink, 3 shadow) and the popup's -- so a drop-in leaves the .pal be.
+#  stdpal_3 holds no near-black and no teal, so TERMINAL cannot be matched colour for colour inside it:
+#    1  TERMINAL, IN STDPAL_3   type1's drawing pixel for pixel, its slots mapped to stdpal_3's nearest in lightness
+#                               order (outline 13 slate, band 15, light 12, shade 13, bevel 11, the inner corners 14
+#                               sky). std.png only; no palette moves. A lighter TERMINAL.
+#    2  TERMINAL, EXACT         type1 itself (slots 10-15) and stdpal_3's 10-15 set to type1's colours. Breaks the
+#                               rule that stdpal_0..4 do not move: slot 10 is unused magenta, but 11-15 are read by the
+#                               map name popup's frame (the same std tiles) and the PC's multi-move palette 13 too.
+STD_SLOTS_1 = {15: 13, 14: 15, 13: 12, 10: 13, 11: 11, 12: 14, 1: 1, 0: 0}
+
+
+def std_versions():
+    """{version: (24x24 index grid, stdpal_3 as it would be, said)} -- drawn from user_frame, the code type1 came from."""
+    base = user_frame("bracket")
+    p3 = text_pal(3)
+    one = [[STD_SLOTS_1[v] for v in r] for r in base]
+    p2 = list(p3)
+    for s, c in FAMILY[0][2].items():
+        p2[s] = c
+    return {"1": (one, p3, "TERMINAL, IN STDPAL_3: type1's drawing, stdpal_3's colours; std.png only"),
+            "2": ([r[:] for r in base], p2, "TERMINAL, EXACT: type1 itself, and stdpal_3's slots 10-15 retinted")}
+
+
+def std_now():
+    w, h, bd, pal, px = load_png(os.path.join(TW, "std.png"))
+    return [[v & 15 for v in r] for r in px], text_pal(3)
+
+
+def std_draft(out):
+    for v, (g, p3, said) in std_versions().items():
+        d = os.path.join(out, v)
+        os.makedirs(d, exist_ok=True)
+        save_png(os.path.join(d, "std.png"), g, [q5(c) for c in p3])
+        if p3 != text_pal(3):
+            write_jasc(p3, os.path.join(d, "stdpal_3.pal"))
+        print("  std %s: %s -> %s" % (v, said, os.path.relpath(d, ROOT)))
+
+
+def std_write(v):
+    g, p3, said = std_versions()[v]
+    assert len(g) == 24 and len(g[0]) == 24 and all(x == 1 for r in g[8:16] for x in r[8:16]), "std's 9-tile contract"
+    w, h, bd, pal, px = load_png(os.path.join(TW, "std.png"))
+    save_png(os.path.join(TW, "std.png"), g, pal)        # the PNG's own palette kept: stdpal_3 colours it at run time
+    if p3 != text_pal(3):
+        write_jasc(p3, os.path.join(TW, "stdpal_3.pal"))
+    print("  written std.png (%s)%s" % (said, ", stdpal_3.pal 10-15" if p3 != text_pal(3) else ""))
+
+
 def main():
+    if A.std_draft:
+        std_draft(A.std_draft)
+        if not (A.write or A.draft):
+            return 0
+    if A.write and A.std:
+        if not A.approved or APPROVED_STD != A.std:
+            print("  --write --std %s refuses: APPROVED_STD is %r (the user has not picked the std frame)."
+                  % (A.std, APPROVED_STD))
+            return 1
+        std_write(A.std)
+        return 0
     if A.write and not A.approved:
         print("  --write refuses without --approved: the user picks a direction before it is written.")
         return 1

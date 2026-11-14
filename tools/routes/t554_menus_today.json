@@ -1,0 +1,96 @@
+{
+  "rom": "debug",
+  "about": "T-554 (DRAFT): the menu leftovers as they stand today, for the drafts' 'today' column -- the bag (its background, the pocket and list scroll arrows, SELECT, the swap line, CLOSE BAG's arrow), the money box (the std frame) in the bag and at a MART, the save box (the std frame), the party's message box (the std frame), and the INDEX's footer (the keypad glyphs). The theatre's debug scratch save; nothing kept.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "the bag: background, arrows, SELECT, the swap line, CLOSE BAG",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 1",
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "wait 30",
+        "bag ITEM_POTION 3 first",
+        "bag ITEM_SUPER_POTION 2",
+        "bag ITEM_ANTIDOTE 2",
+        "bag ITEM_PARALYZE_HEAL 2",
+        "bag ITEM_AWAKENING 2",
+        "bag ITEM_BURN_HEAL 2",
+        "bag ITEM_ICE_HEAL 2",
+        "bag ITEM_ESCAPE_ROPE 2",
+        "bag ITEM_REPEL 2",
+        "bag ITEM_FULL_HEAL 2",
+        "open BAG",
+        "wait 60",
+        "shot \"the bag, the first row\"",
+        "press DOWN 4",
+        "wait 20",
+        "shot \"the bag, the list scrolled (both arrows)\"",
+        "press SELECT",
+        "wait 30",
+        "shot \"SELECT pressed: the swap line\"",
+        "press B",
+        "wait 20",
+        "press DOWN 20",
+        "wait 20",
+        "shot \"CLOSE BAG: its arrow\"",
+        "press UP 20",
+        "press A",
+        "wait 20",
+        "shot \"an item's menu open\"",
+        "press B",
+        "wait 20",
+        "close"
+      ]
+    },
+    {
+      "stop": "a MART: the money box",
+      "steps": [
+        "goto ViridianCity_Mart 4 4",
+        "repel 999",
+        "flag FLAG_CLERK_NOTICED_OPUS 1",
+        "talk LOCALID_VIRIDIAN_MART_CLERK 1",
+        "wait 30",
+        "shot \"BUY / SELL / SEE YA: the money box\"",
+        "press A",
+        "wait 60",
+        "shot \"VIRIDIAN MART: BUY, the money box\"",
+        "press A",
+        "wait 20",
+        "shot \"how many\"",
+        "press B",
+        "wait 20",
+        "close"
+      ]
+    },
+    {
+      "stop": "the save box",
+      "steps": [
+        "goto ViridianCity_PokemonCenter_1F 7 5",
+        "open SAVE",
+        "wait 60",
+        "shot \"SAVE: the save box\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "the party: its message box",
+      "steps": [
+        "open DAEMON",
+        "wait 30",
+        "shot \"the party: Choose a DAEMON\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "the INDEX footer: keypad glyphs",
+      "steps": [
+        "open INDEX",
+        "wait 60",
+        "shot \"the INDEX: its footer\"",
+        "close"
+      ]
+    }
+  ]
+}

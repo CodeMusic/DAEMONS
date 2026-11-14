@@ -181,3 +181,56 @@ C-362: IT SINGS -- a prompt, your words with a style, or its own (the buttons si
 C-361 THE ENGINE ROOM's CREATIONS (DRAFT): every creation the hub keeps, filtered by kind and daemon, ticked and let go
 
 ![14Nov2026 - C361 - the engine room creations - 34](14Nov2026%20-%20C361%20-%20the%20engine%20room%20creations%20-%2034.jpg)
+### 14Nov2026 - T554 - menu leftovers std drafts - 35
+
+T-554 DRAFT: the std today (theatre or the engine's own render) beside its drafts at 2x and real size; nothing in the engine
+
+![14Nov2026 - T554 - menu leftovers std drafts - 35](14Nov2026%20-%20T554%20-%20menu%20leftovers%20std%20drafts%20-%2035.png)
+
+### 14Nov2026 - T554 - menu leftovers bag drafts - 36
+
+T-554 DRAFT: the bag today (theatre or the engine's own render) beside its drafts at 2x and real size; nothing in the engine
+
+![14Nov2026 - T554 - menu leftovers bag drafts - 36](14Nov2026%20-%20T554%20-%20menu%20leftovers%20bag%20drafts%20-%2036.png)
+
+### 14Nov2026 - T554 - menu leftovers arrows drafts - 37
+
+T-554 DRAFT: the arrows today (theatre or the engine's own render) beside its drafts at 2x and real size; nothing in the engine
+
+![14Nov2026 - T554 - menu leftovers arrows drafts - 37](14Nov2026%20-%20T554%20-%20menu%20leftovers%20arrows%20drafts%20-%2037.png)
+
+### 14Nov2026 - T554 - menu leftovers select drafts - 38
+
+T-554 DRAFT: the select today (theatre or the engine's own render) beside its drafts at 2x and real size; nothing in the engine
+
+![14Nov2026 - T554 - menu leftovers select drafts - 38](14Nov2026%20-%20T554%20-%20menu%20leftovers%20select%20drafts%20-%2038.png)
+
+### 14Nov2026 - T554 - menu leftovers swap drafts - 39
+
+T-554 DRAFT: the swap today (theatre or the engine's own render) beside its drafts at 2x and real size; nothing in the engine
+
+![14Nov2026 - T554 - menu leftovers swap drafts - 39](14Nov2026%20-%20T554%20-%20menu%20leftovers%20swap%20drafts%20-%2039.png)
+
+### 14Nov2026 - T554 - menu leftovers fieldicons drafts - 40
+
+T-554 DRAFT: the fieldicons today (theatre or the engine's own render) beside its drafts at 2x and real size; nothing in the engine
+
+![14Nov2026 - T554 - menu leftovers fieldicons drafts - 40](14Nov2026%20-%20T554%20-%20menu%20leftovers%20fieldicons%20drafts%20-%2040.png)
+
+### 14Nov2026 - T554 - menu leftovers keypad drafts - 41
+
+T-554 DRAFT: the keypad today (theatre or the engine's own render) beside its drafts at 2x and real size; nothing in the engine
+
+![14Nov2026 - T554 - menu leftovers keypad drafts - 41](14Nov2026%20-%20T554%20-%20menu%20leftovers%20keypad%20drafts%20-%2041.png)
+
+### 14Nov2026 - T554 - menu leftovers markings drafts - 42
+
+T-554 DRAFT: the markings today (theatre or the engine's own render) beside its drafts at 2x and real size; nothing in the engine
+
+![14Nov2026 - T554 - menu leftovers markings drafts - 42](14Nov2026%20-%20T554%20-%20menu%20leftovers%20markings%20drafts%20-%2042.png)
+
+### 14Nov2026 - T554 - menu leftovers pcparts drafts - 43
+
+T-554 DRAFT: the pcparts today (theatre or the engine's own render) beside its drafts at 2x and real size; nothing in the engine
+
+![14Nov2026 - T554 - menu leftovers pcparts drafts - 43](14Nov2026%20-%20T554%20-%20menu%20leftovers%20pcparts%20drafts%20-%2043.png)
