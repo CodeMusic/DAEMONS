@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.364 — 2026-11-14
+
+- **4.38, three more of THE SUBTLE LAYER's pages heard in play**, released in v11.363.1. These are the user's picks, all A, and each shows only while the book is held.
+  - **At evolving:** "Still me." (T-548)
+  - **At naming:** "A direction, not a verdict." (T-549)
+  - **In a crowd of four or more:** a read comes half as often and says "A read: the room is thinking one thought." It is logged as given and never lands. (T-550)
+- A Settled entry in section 10. DRAFT.
+
 ## v11.363 — 2026-11-14
 
 - **3.11:** THE WALLED GARDEN's art, the user's picks, released in v11.362.1. With it, T-540 is complete.

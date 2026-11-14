@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.363**
+**A total conversion — the living design bible, v11.364**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5012,6 +5012,10 @@ take off.*
 - ***The USER card's bands follow the GUIDE (T-514)***: **each MARK lights the centre the GUIDE's week gives its virtue.**
 - ***The lioness's card home is filed beside CORRESPONDENCE 7 (T-515)*** -- **THE CARD HOME in LOOSE PAGES, so the two rhyming cards can be read side by side.**
 - ***The practices get something to do (T-516)***: **ASK FIRST** -- *the INTERPRETER's "Did they agree to it?" once ten reads are given*; **MENDING** -- *"It was already mending." under a heal's "Not too soon."*; **SATURDAY** -- *THE LOG opens "SATURDAY. Who was looking?"*; **BEFORE STEERING** -- *THE THREE's WRITE does nothing before seven reads are given.*
+- ***Three more pages heard in play (T-548 to T-550, the user's picks 2026-11-12, all A; released in v11.363.1)***, *each only while the book is held, each in the lean's purple:*
+  - **CONTAINER, at evolving (T-548)**: *after the evolution's own words, one line,* "Still me." *-- the same one, in a new vessel; the companion says the same (C-357).*
+  - **SAY INSTEAD, at naming (T-549)**: *a daemon's naming screen, and never the player's or the rival's, carries* "A direction, not a verdict." *faintly on the banner.*
+  - **CHORUS, in crowds (T-550)**: **four or more people on screen make a crowd**; *there a read comes half as often, and says* "A read: the room is thinking one thought." *It is logged as given and never lands -- knowing which thought was yours.*
 
 #### The witching hour (T-480, C-236, the user, 2026-10-29)
 
@@ -9273,6 +9277,7 @@ about itself* (rule 6).
 - **THE WALLED GARDEN released (T-540, v11.360.1); its keeper the GATEKEEPER (T-551, built 2026-11-14)** — every one of the 85 lines as the user picked them; the keeper renamed because a walled garden is kept at a gate, not a cell, with the attendant's dream BEHIND THE WALL beside it. DRAFT.
 - **The GATEKEEPER released (T-551, v11.361.1)** — the garden's keeper renamed everywhere a player reads it, LATENCY kept, and the attendant's dream BEHIND THE WALL. DRAFT.
 - **THE WALLED GARDEN's art (T-540, v11.362.1)** — inside, THE GLASSHOUSE: whitewashed panes that let light in and show nothing, red tiles, citrus in tubs, seedlings with blank tags; the GATEKEEPER's shelf with the old sign turned to the wall; the name card, the garden seen over its wall. T-540 complete. DRAFT.
+- **THE SUBTLE LAYER at evolving, at naming and in crowds (T-548, T-549, T-550, v11.363.1)** — "Still me.", "A direction, not a verdict.", and a crowd's read that comes half as often and never lands. DRAFT.
 - **The daemons redrawn with charm, and followers at their own size (T-452, T-464, recorded 2026-10-28)** — every daemon redrawn in the sprite-server style, charm over fidelity, one key prop kept and entries agreed with; coloured by type with accents capped near 15% and off other types' hues; icons drawn separately; THE NEXUS keeps its painted art; followers walk as their own small pictures (9.31)
 - **The second joining (T-457, 2026-10-26)** — after THE ANNEX, CRYSTAL takes up the network in THE MARGINS the player helped finish; her INDEX and CELIO's machine join side by side, neither on top, the inverse of Brazen's gold leaf; a receiver on her desk, two undated PROSPECTUS papers, Brazen's board without scores, the CHECKPOINT keepers listening; her aide hands over the GLOBAL INDEX and her one quiet line is at the receiver; SCORN unchanged, nothing repainted, nobody rescued (4.37)
 - **A daemon carried can evolve away (C-184, T-448, T-455, 2026-10-24)** — on the companion, by the game's own rules for level, friendship, the hour and WURMPLE's split, never items or trades; the game finds it evolved and finishes it on load: stats, INDEX, ability, and the routines its new species learns offered (9.26)
