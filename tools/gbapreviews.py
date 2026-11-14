@@ -1081,7 +1081,8 @@ def landmark_init(folder):
 #  their outsides (the rack hall and the dot screen stay drafts).
 CARDS_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t445_landmarks")
 CARDS_APPROVED = {"power_plant_untended_a", "monean_chamber_carved_a", "cerulean_cave_becalmed_a",
-                  "rock_tunnel_threads_b"}  # the user, 2026-11-11: PLANT A, TANOBY A; DOLDRUM A BECALMED; THE BLACKOUT B only the threads (T-546)
+                  "rock_tunnel_threads_b",  # the user, 2026-11-11: PLANT A, TANOBY A; DOLDRUM A BECALMED; THE BLACKOUT B only the threads (T-546)
+                  "safari_zone_overwall_b"}  # the user, 2026-11-14: THE WALLED GARDEN, B over the wall (T-540)
 _PLANT_UNTENDED = dict(
     folder="power_plant", banner_from="power_plant", init="graded", title="KEEPALIVE PLANT, growing untended",
     #  pair 5 B's own colours (power_plant row 7's metal, row 8's three greens and moss) -- no status lights
@@ -1352,7 +1353,8 @@ def paint(folder, sec, out_dir):
 
 def painted_path(folder):
     folder = CARDS.get(folder, {}).get("painting_of", folder)    # DOLDRUM's C and D are drawn from A's painting
-    return os.path.join(A.draft or (CARDS_DRAFT if A.cards else DRAFT_DEFAULT), folder, "painted.png")
+    home = CARDS.get(folder, {}).get("draft_dir")               # T-540: the garden's paintings live in t540_card
+    return os.path.join(A.draft or home or (CARDS_DRAFT if A.cards else DRAFT_DEFAULT), folder, "painted.png")
 
 
 def painted_picture(folder):
@@ -2260,6 +2262,7 @@ def scene_rings():
 
 GARDEN_SCENES = dict(gate=scene_gate, overwall=scene_overwall, rings=scene_rings)
 _GARDEN = dict(folder="safari_zone", banner_from="safari_zone", init="scene", denoise=0.58,
+               draft_dir=os.path.join(ROOT, "gfx", "drafts", "t540_card"),
                neg="people, animals, cars, text, signs, letters, barbed wire, fence wire, prison, guard tower, "
                    "darkness, ruins, overgrown")
 CARDS.update({

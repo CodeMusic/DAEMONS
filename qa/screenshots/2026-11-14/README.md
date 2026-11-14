@@ -79,3 +79,27 @@ THE WALLED GARDEN's name card, DRAFT: today's SAFARI park beside A its gate lit,
 THE WALLED GARDEN inside, DRAFT: today beside A THE ARBOUR, B THE LOBBY, C THE GLASSHOUSE -- the gate, a waiting room, the SECRET HOUSE (a game location; reviewsheet map, draft engine, 2x)
 
 ![14Nov2026 - T540 - interiors drafts A B C rooms 1 - 13](14Nov2026%20-%20T540%20-%20interiors%20drafts%20A%20B%20C%20rooms%201%20-%2013.png)
+
+### 14Nov2026 - T540 - built from the ROM - 14
+
+THE WALLED GARDEN BUILT, decoded from daemonsContent.gba at 2x: C THE GLASSHOUSE in the gate, a waiting room, the SECRET HOUSE (a game location), the OFFICE, the GATEKEEPER's shelf (the old sign to the wall), LORELEI's house; the card B over the wall
+
+![14Nov2026 - T540 - built from the ROM - 14](14Nov2026%20-%20T540%20-%20built%20from%20the%20ROM%20-%2014.png)
+
+### 14Nov2026 - T540 - theatre the gate - 15
+
+THE GATE in the theatre (debug build): the way through, the coir runner and its rings, the rails' ticket posts
+
+![14Nov2026 - T540 - theatre the gate - 15](14Nov2026%20-%20T540%20-%20theatre%20the%20gate%20-%2015.png)
+
+### 14Nov2026 - T540 - theatre a waiting room - 16
+
+a WAITING ROOM in the theatre (debug build): the desk and its ticket post, the seedling crates, the iron stools
+
+![14Nov2026 - T540 - theatre a waiting room - 16](14Nov2026%20-%20T540%20-%20theatre%20a%20waiting%20room%20-%2016.png)
+
+### 14Nov2026 - T540 - theatre the card on entry - 17
+
+THE WALLED GARDEN's card on entering from the gate (theatre): B over the wall, fading cleanly over the garden as a FOREST card
+
+![14Nov2026 - T540 - theatre the card on entry - 17](14Nov2026%20-%20T540%20-%20theatre%20the%20card%20on%20entry%20-%2017.png)

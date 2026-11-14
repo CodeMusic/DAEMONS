@@ -8,9 +8,12 @@
                                                     #   tiles.png and rows 8, 9 as .pal per direction, the GATEKEEPER's
                                                     #   shelf (museum 129..136) per direction, and the contact sheets
                                                     #   (gfx/drafts/t540_interiors/)
+    python3 tools/gbagarden.py --proof OUT.png      # the rooms and the name card as BUILT, decoded from
+                                                    #   engineGba/daemonsContent.gba, at 2x
     python3 tools/gbagarden.py --write --approved --pick X
-                                                    # into the engine -- refused unless X is in APPROVED (empty: the
-                                                    #   user has not picked)
+                                                    # into the engine -- refused unless X is in APPROVED ({"C"}: the
+                                                    #   user, 2026-11-14, C THE GLASSHOUSE); the report exits 1 when
+                                                    #   the engine is not what that write makes
 
 THE ANSWER IT FOLLOWS (the user, 2026-11-14, "the last of T-540": the inside of its buildings, as art to pick). T-538
 held the SAFARI's buildings out of its three batches until the redesign's words were built; they are (engine
@@ -39,8 +42,8 @@ ONE TILESET, SEVEN ROOMS AND A GUEST (gTileset_SafariZoneBuilding, secondary/saf
   FuchsiaCity_WardensHouse         the GATEKEEPER's own house is gTileset_Museum, whose every placed tile is already
                                    ours (gbamuseum.py, T-541 A THE SLATE). Only his shelf (129..136, his alone) is
                                    drafted here, a keepsake per direction in the museum's rows as they stand (never
-                                   recoloured); gbamuseum's --write redraws those eight tiles, so a pick here means
-                                   gbamuseum gives them up first (a GARDEN_SHELF set it skips, as gbacaves' T538_TUNNEL)
+                                   recoloured); gbamuseum gives those eight up (its LATER_T540, 2026-11-14), so
+                                   its --write keeps them as this tool wrote them; this report checks the two agree
 
 WHAT THE RULES LEAVE OUT, AND WHY. The OFFICE's desks (the checked cloths) and the SECRET HOUSE's bookcases and
 windows are primary/building's tiles, drawn by batch D and shared with every house in the game: a review desk piled
@@ -66,7 +69,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
 DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t540_interiors")
 #  The user's pick goes here ("A", "B" or "C"); --write refuses anything not in it.
-APPROVED = set()
+APPROVED = {"C"}                     # the user, 2026-11-14: C THE GLASSHOUSE (and his shelf to match)
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
@@ -1013,6 +1016,129 @@ def contact_sheets(out_dir, states):
     return paths
 
 
+# ============================================================================================ the proof, from the ROM
+#  --proof OUT.png: THE WALLED GARDEN as BUILT, decoded from engineGba/daemonsContent.gba (symbols from its .elf): the
+#  tiles, palettes and metatiles of primary/building and each room's secondary, laid on the maps' own blockdata, and
+#  the name card (sSafariZoneMapPreview*). Nothing is read from the PNGs the ROM is built from.
+def _lz77(rom, at):
+    """the GBA BIOS's LZ77 (type 0x10)"""
+    assert rom[at] == 0x10, "not LZ77 at %x" % at
+    n = rom[at + 1] | rom[at + 2] << 8 | rom[at + 3] << 16
+    out, i = bytearray(), at + 4
+    while len(out) < n:
+        flags = rom[i]
+        i += 1
+        for b in range(8):
+            if len(out) >= n:
+                break
+            if flags & (0x80 >> b):
+                hi, lo = rom[i], rom[i + 1]
+                i += 2
+                ln, off = (hi >> 4) + 3, ((hi & 15) << 8 | lo) + 1
+                for _ in range(ln):
+                    out.append(out[-off])
+            else:
+                out.append(rom[i])
+                i += 1
+    return bytes(out)
+
+
+def _rgb15(v):
+    return ((v & 31) << 3, (v >> 5 & 31) << 3, (v >> 10 & 31) << 3)
+
+
+def _tiles4(b):
+    return [[(b[t * 32 + k // 2] >> (4 * (k & 1))) & 15 for k in range(64)] for t in range(len(b) // 32)]
+
+
+def rom_proof(path):
+    import subprocess
+    rom_path = os.path.join(GBA, "daemonsContent.gba")
+    rom = open(rom_path, "rb").read()
+    sym = {}
+    for line in subprocess.run(["arm-none-eabi-nm", os.path.join(GBA, "daemonsContent.elf")], capture_output=True,
+                               text=True).stdout.splitlines():
+        a, _, n = line.split()
+        sym[n] = int(a, 16) - 0x8000000
+    pals = lambda n: [[_rgb15(struct.unpack_from("<H", rom, sym[n] + (r * 16 + i) * 2)[0]) for i in range(16)]
+                      for r in range(16)]
+    sets = {}
+    for name, mdir in (("SafariZoneBuilding", SAF.mdir), ("Museum", MUS.mdir)):
+        sets["gTileset_" + name] = (_tiles4(_lz77(rom, sym["gTilesetTiles_" + name])), pals("gTilesetPalettes_" + name),
+                                    rom[sym["gMetatiles_" + name]:sym["gMetatiles_" + name]
+                                        + os.path.getsize(os.path.join(GBA, mdir, "metatiles.bin"))])
+    pt = _tiles4(_lz77(rom, sym["gTilesetTiles_Building"]))
+    pp = pals("gTilesetPalettes_Building")
+    pmt = rom[sym["gMetatiles_Building"]:sym["gMetatiles_Building"] + 640 * 16]
+
+    def room(m):
+        l = next(x for x in G.LAYOUTS if x["id"] == G.LAYOUT_OF_MAP[m])
+        st, sp, smt = sets[l["secondary_tileset"]]
+        cols = pp[:7] + sp[7:16]
+        W, Hh = l["width"], l["height"]
+        bd = open(os.path.join(GBA, l["blockdata_filepath"]), "rb").read()
+        img = Image.new("RGB", (W * 16, Hh * 16), (0, 0, 0))
+        o = img.load()
+        for yy in range(Hh):
+            for xx in range(W):
+                b = struct.unpack_from("<H", bd, (yy * W + xx) * 2)[0] & 0x3FF
+                buf, k = (pmt, b) if b < 640 else (smt, b - 640)
+                if (k + 1) * 16 > len(buf):
+                    continue
+                e = struct.unpack_from("<8H", buf, k * 16)
+                for layer in (0, 1):
+                    for q in range(4):
+                        v = e[layer * 4 + q]
+                        t, row = v & 0x3FF, v >> 12
+                        src = pt[t] if t < 640 else (st[t - 640] if t - 640 < len(st) else [0] * 64)
+                        for ty in range(8):
+                            for tx in range(8):
+                                c = src[(7 - ty if v & 0x800 else ty) * 8 + (7 - tx if v & 0x400 else tx)]
+                                if c or not layer:
+                                    o[xx * 16 + (q % 2) * 8 + tx, yy * 16 + (q // 2) * 8 + ty] = cols[row][c]
+        return img
+    #  the card: 32x20 map, palettes 13 and 14
+    ct = _tiles4(_lz77(rom, sym["sSafariZoneMapPreviewTiles"]))
+    cm = struct.unpack("<640H", _lz77(rom, sym["sSafariZoneMapPreviewTilemap"])[:1280])
+    cp = [_rgb15(struct.unpack_from("<H", rom, sym["sSafariZoneMapPreviewPalette"] + 2 * i)[0]) for i in range(32)]
+    card = Image.new("RGB", (240, 160))
+    cpx = card.load()
+    for ty in range(20):
+        for tx in range(30):
+            e = cm[ty * 32 + tx]
+            t, p = (ct[e & 0x3FF] if (e & 0x3FF) < len(ct) else [0] * 64), (e >> 12) - 13
+            for k in range(64):
+                x, y = k % 8, k // 8
+                x, y = (7 - x if e & 0x400 else x), (7 - y if e & 0x800 else y)
+                cpx[tx * 8 + x, ty * 8 + y] = cp[(p if 0 <= p < 2 else 1) * 16 + t[k]] if t[k] else (0, 0, 0)
+    z2 = lambda im: im.resize((im.width * 2, im.height * 2), Image.NEAREST)
+    cells = [(z2(room(m)), cap) for m, cap in
+             [("FuchsiaCity_SafariZone_Entrance", "THE GATE"), ("SafariZone_Center_RestHouse", "a WAITING ROOM"),
+              ("SafariZone_SecretHouse", "the SECRET HOUSE"), ("FuchsiaCity_SafariZone_Office", "the OFFICE"),
+              ("FuchsiaCity_WardensHouse", "the GATEKEEPER's house"), (LORELEI, "LORELEI's house")]]
+    cells.append((z2(card), "the name card (the name is printed by the game over the banner); 1x beside it"))
+    pad = 12
+    rows = [cells[:3], cells[3:6], cells[6:]]
+    W = max(sum(c.width + pad for c, _ in r) for r in rows) + pad + 260
+    Ht = 34 + sum(max(c.height for c, _ in r) + 28 for r in rows)
+    sh = Image.new("RGB", (W, Ht), BG)
+    d = ImageDraw.Draw(sh)
+    d.text((pad, 10), "T-540 BUILT -- THE WALLED GARDEN decoded from %s: C THE GLASSHOUSE inside, the GATEKEEPER's "
+                      "shelf to match, the card B over the wall; 2x" % os.path.basename(rom_path), fill=INK)
+    y = 34
+    for r in rows:
+        x = pad
+        for c, cap in r:
+            d.text((x, y), cap, fill=SOFT)
+            sh.paste(c, (x, y + 16))
+            x += c.width + pad
+        if r is rows[-1]:
+            sh.paste(card, (x, y + 16))
+        y += max(c.height for c, _ in r) + 28
+    sh.save(path)
+    return path
+
+
 # ============================================================================================ report
 def report():
     print("T-540 -- THE WALLED GARDEN's buildings, inside (gTileset_SafariZoneBuilding; the GATEKEEPER's shelf)\n")
@@ -1089,8 +1215,7 @@ def report():
     else:
         print("  no primary tile is placed in row 8 or 9 in any map of this tileset")
     print("  scripted blocks: none (no setmetatile in these maps; no METATILE_ label names this tileset)")
-    print("  the GATEKEEPER's shelf: museum %s, his alone; gbamuseum.py owns them (APPROVED A) -- a pick here needs "
-          "gbamuseum to give them up first" % SHELF)
+    print("  the GATEKEEPER's shelf: museum %s, his alone; drawn here (gbamuseum's LATER_T540 leaves them)" % SHELF)
     for k, D in STYLES.items():
         sets, own = draw(D)
         n = sum(1 for (sk, t), g in own.items() if sk == "saf" and g != "lorelei" and sets["saf"][0][t] != SAF.van[t])
@@ -1101,6 +1226,9 @@ def report():
 
 
 def main():
+    if argval("--proof"):
+        print("  proof:", rom_proof(argval("--proof")))
+        return 0
     if WRITE:
         if "--approved" not in ARGS or not PICK or PICK not in APPROVED:
             print("  --write refused: T-540's interiors are a draft. APPROVED is %s; the user picks a direction first, "
@@ -1111,8 +1239,12 @@ def main():
         G.save_like(os.path.join(GBA, SAF.dir, "tiles.png"), sets["saf"][0], os.path.join(GBA, SAF.dir, "tiles.png"))
         for r in SAF.rows:
             write_pal(os.path.join(GBA, SAF.dir, "palettes", "%02d.pal" % r), sets["saf"][1][r])
-        print("  written: direction %s (safari_zone_building). The GATEKEEPER's shelf is gbamuseum's: not written "
-              "here." % PICK)
+        #  the GATEKEEPER's shelf: museum tiles 129..136 only (gbamuseum's LATER_T540), never a museum palette
+        mus = [t[:] for t in MUS.cur]
+        for t in SHELF:
+            mus[t] = sets["mus"][0][t]
+        G.save_like(os.path.join(GBA, MUS.dir, "tiles.png"), mus, os.path.join(GBA, MUS.dir, "tiles.png"))
+        print("  written: direction %s (safari_zone_building tiles, rows 8, 9; museum 129..136)" % PICK)
         return 0
     bad = report()
     if DRAFT is not None:
@@ -1141,7 +1273,38 @@ def main():
                   open(os.path.join(DRAFT, "directions.json"), "w"), indent=1)
         for p in contact_sheets(DRAFT, states):
             print("  sheet:", p)
+    if len(APPROVED) == 1:
+        bad = check_engine() or bad
     return 1 if bad else 0
+
+
+def check_engine():
+    """T-446's rule: with one direction approved, the engine must be exactly what `--write --approved --pick X` makes
+    (safari_zone_building's tiles and rows 8, 9; museum 129..136); and gbamuseum must leave the shelf to this tool"""
+    pick = next(iter(APPROVED))
+    sets, _ = draw(STYLES[pick])
+    bad = 0
+    off = [t for t in range(len(SAF.cur)) if sets["saf"][0][t] != SAF.cur[t]]
+    rows = [r for r in SAF.rows if [tuple(c) for c in sets["saf"][1][r]]
+            != [tuple(c) for c in read_pal(os.path.join(GBA, SAF.dir, "palettes/%02d.pal" % r))]]
+    shelf = [t for t in SHELF if sets["mus"][0][t] != MUS.cur[t]]
+    if off or rows or shelf:
+        print("  !! the engine differs from `--write --approved --pick %s`: safari tiles %s rows %s, shelf %s -- find "
+              "which side is right" % (pick, off[:12], rows, shelf))
+        bad = 1
+    _argv, sys.argv = sys.argv, ["gbamuseum"]
+    try:
+        with contextlib.redirect_stdout(io.StringIO()):
+            import gbamuseum as GM
+    finally:
+        sys.argv = _argv
+    if set(getattr(GM, "LATER_T540", set())) != set(SHELF):
+        print("  !! gbamuseum.LATER_T540 is not this tool's SHELF %s: its --write would revert the shelf" % SHELF)
+        bad = 1
+    if not bad:
+        print("  the engine matches `--write --approved --pick %s` (the user, 2026-11-14); gbamuseum leaves %d..%d here"
+              % (pick, SHELF[0], SHELF[-1]))
+    return bad
 
 
 if __name__ == "__main__":

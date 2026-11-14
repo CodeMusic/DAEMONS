@@ -1,0 +1,65 @@
+{
+ "rom": "debug",
+ "about": "T-540, THE WALLED GARDEN's art BUILT (the user, 2026-11-14): the interiors C THE GLASSHOUSE, the GATEKEEPER's shelf to match, and the name card B over the wall. The gate, a waiting room and the SECRET HOUSE as a player stands in them, then the card on entering the garden from the gate. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "THE GATE: the gate wall, the way through, the runner's four rings, the lane rails and their ticket posts",
+   "steps": [
+    "goto FuchsiaCity_SafariZone_Entrance 4 5",
+    "close",
+    "shot the gate"
+   ]
+  },
+  {
+   "stop": "a WAITING ROOM: the desk and its ticket post, the crates, the stools",
+   "steps": [
+    "goto SafariZone_Center_RestHouse 6 6",
+    "close",
+    "shot a waiting room"
+   ]
+  },
+  {
+   "stop": "the SECRET HOUSE",
+   "steps": [
+    "goto SafariZone_SecretHouse 6 7",
+    "close",
+    "shot the secret house"
+   ]
+  },
+  {
+   "stop": "the GATEKEEPER's house: his shelf, the old sign turned to the wall",
+   "steps": [
+    "goto FuchsiaCity_WardensHouse 6 6",
+    "close",
+    "shot the gatekeeper's house"
+   ]
+  },
+  {
+   "stop": "the name card on entering THE WALLED GARDEN from the gate",
+   "steps": [
+    "goto FuchsiaCity_SafariZone_Entrance 4 2",
+    "close",
+    "var VAR_TEMP_1 1",
+    "hold UP 18",
+    "wait 30",
+    "shot the card 1",
+    "wait 25",
+    "shot the card 2",
+    "wait 25",
+    "shot the card 3",
+    "wait 40",
+    "shot the card 4",
+    "wait 60",
+    "shot arrived"
+   ]
+  }
+ ]
+}
