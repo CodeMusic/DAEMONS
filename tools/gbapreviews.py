@@ -1323,6 +1323,8 @@ def card_init(folder, sec):
     c = CARDS[folder]
     if c["init"] == "graded":
         return paint_init(folder, sec)
+    if c["init"] == "scene":                            # T-540: no vanilla composition to grade -- drawn here
+        return GARDEN_SCENES[c["scene"]]().resize(PAINT_SIZE, Image.BICUBIC).filter(ImageFilter.GaussianBlur(2.0))
     return room_scene(c).resize(PAINT_SIZE, Image.BICUBIC).filter(ImageFilter.GaussianBlur(c.get("soften", 2.5)))
 
 
@@ -2122,6 +2124,164 @@ def drawn_entered(folder):
 
 DRAWN = dict(threads=drawn_threads, entered=drawn_entered)
 
+#  T-540 (the user, 2026-11-14): THE WALLED GARDEN's name card, three DRAFTS for the card that is still the SAFARI's
+#  park (safari_zone, PLACES, built 2026-11-05). The words are built (engine ce345c195): THE WALLED GARDEN prints in
+#  the banner at 102px of the window's 104. The garden is a curated platform behind a wall -- unsigned daemons run only
+#  inside it, guests are signed in at the gate, four RINGS count down to the SECRET HOUSE -- and visitors love it:
+#  every candidate is beautiful and safe, and none says what the wall is for or costs (craft rule 1). Vanilla's
+#  savanna has no wall to grade, so each start image is DRAWN here (init "scene": GARDEN_SCENES) in the garden's own
+#  colours -- LURID's chartreuse canopy and the grass as built, a pale dressed stone -- and painted on the server at a
+#  denoise high enough to make it a painting and low enough to keep the wall where it is drawn.
+#  STAYS A FOREST CARD. KEEPALIVE PLANT became a CAVE card (engine b9062d63a) because it is entered at a door on an
+#  indoor map's bottom edge, so a third of the screen under the fading card was void. The SAFARI's card fires on
+#  SafariZone_Center (MAP_TYPE_ROUTE, 51x36), entered at (25..27, 30) from the gate: an outdoor map, its border blocks
+#  fill past every edge and the arrival is six blocks above the bottom, so the fade crosses a full screen of grass, as
+#  the forests' cards do at their gates. Nothing to change.
+#    python3 tools/gbapreviews.py --cards --paint safari_zone_gate_a safari_zone_overwall_b safari_zone_rings_c \
+#        --draft gfx/drafts/t540_card
+#    python3 tools/gbapreviews.py --cards --only safari_zone_gate_a safari_zone_overwall_b safari_zone_rings_c \
+#        --draft gfx/drafts/t540_card                     # the drafts and t540_card.png beside today's card
+GARDEN_STONE = [(92, 86, 78), (138, 130, 116), (182, 174, 156), (218, 212, 194), (240, 236, 222)]
+GARDEN_LEAF = [(36, 72, 40), (58, 112, 52), (98, 168, 54), (160, 222, 70), (214, 246, 96)]
+GARDEN_SKY = [(150, 196, 220), (196, 222, 232), (236, 240, 228)]
+GARDEN_LAMP = (255, 214, 120)
+
+
+def _vgrad(d, box, top, bot):
+    x0, y0, x1, y1 = box
+    for y in range(y0, y1 + 1):
+        t = (y - y0) / max(1, y1 - y0)
+        d.line((x0, y, x1, y), fill=tuple(int(a + (b - a) * t) for a, b in zip(top, bot)))
+
+
+def _crowns(d, rnd, y, x0, x1, ramp, rmin=6, rmax=13, step=9):
+    """a row of round tree crowns, lit from the upper left"""
+    x = x0
+    while x < x1:
+        r = rnd.randint(rmin, rmax)
+        cy = y + rnd.randint(-3, 3)
+        d.ellipse((x - r, cy - r, x + r, cy + r), fill=ramp[1])
+        d.ellipse((x - r + 2, cy - r + 1, x + r - 3, cy + r - 4), fill=ramp[2])
+        d.ellipse((x - r + 4, cy - r + 2, x + r // 3, cy - r // 3), fill=ramp[3])
+        x += step + rnd.randint(0, 6)
+
+
+def _wall(d, y_top, y_bot, x0=0, x1=239, courses=5):
+    """a long wall of pale dressed stone, its coping lit, its courses drawn"""
+    d.rectangle((x0, y_top, x1, y_bot), fill=GARDEN_STONE[2])
+    d.rectangle((x0, y_top - 3, x1, y_top), fill=GARDEN_STONE[4])
+    d.line((x0, y_top + 1, x1, y_top + 1), fill=GARDEN_STONE[1])
+    h = max(3, (y_bot - y_top) // courses)
+    for k, y in enumerate(range(y_top + h, y_bot, h)):
+        d.line((x0, y, x1, y), fill=GARDEN_STONE[1])
+        for x in range(x0 + (k % 2) * 7, x1, 14):
+            d.line((x, y - h + 1, x, y - 1), fill=GARDEN_STONE[1])
+    d.line((x0, y_bot, x1, y_bot), fill=GARDEN_STONE[0])
+
+
+def scene_gate():
+    """A: the wall from outside, at dusk, its one gate lit -- a long pale wall across the picture, the garden's crowns
+    showing over it, an arched gate with warm light in it and a clean path running up to it through mown grass"""
+    import random
+    rnd = random.Random(5401)
+    im = Image.new("RGB", (240, 112))
+    d = ImageDraw.Draw(im)
+    _vgrad(d, (0, 0, 239, 60), (112, 132, 176), (236, 200, 160))
+    _crowns(d, rnd, 44, -4, 244, GARDEN_LEAF, 7, 14, 10)
+    _wall(d, 46, 76)
+    gx = 120
+    d.rectangle((gx - 16, 34, gx + 16, 78), fill=GARDEN_STONE[3])           # the gatehouse's piers and arch
+    d.pieslice((gx - 16, 26, gx + 16, 50), 180, 360, fill=GARDEN_STONE[3])
+    d.rectangle((gx - 10, 46, gx + 10, 78), fill=GARDEN_LAMP)
+    d.pieslice((gx - 10, 38, gx + 10, 56), 180, 360, fill=GARDEN_LAMP)
+    d.line((gx - 10, 62, gx + 10, 62), fill=GARDEN_STONE[1])               # the turnstile's bar in the light
+    for lx in (gx - 22, gx + 22):                                          # two lamps on the piers
+        d.ellipse((lx - 2, 40, lx + 2, 44), fill=GARDEN_LAMP)
+    _vgrad(d, (0, 78, 239, 111), GARDEN_LEAF[2], GARDEN_LEAF[1])
+    d.polygon([(gx - 9, 78), (gx + 9, 78), (gx + 40, 111), (gx - 40, 111)], fill=(214, 204, 176))
+    d.polygon([(gx - 6, 78), (gx + 6, 78), (gx + 10, 92), (gx - 10, 92)], fill=(240, 222, 168))   # the light on it
+    for x in range(4, 236, 22):                                            # clipped hedge balls at the wall's foot
+        if abs(x - gx) > 26:
+            d.ellipse((x, 72, x + 12, 82), fill=GARDEN_LEAF[1])
+            d.ellipse((x + 2, 72, x + 8, 77), fill=GARDEN_LEAF[3])
+    return im
+
+
+def scene_overwall():
+    """B: the garden over the wall, beautiful and contained -- seen from the top of the gate, a lawn, clipped trees,
+    a still pond and paths, all of it held in one curve of pale wall that runs right round to the far side"""
+    import random
+    rnd = random.Random(5402)
+    im = Image.new("RGB", (240, 112))
+    d = ImageDraw.Draw(im)
+    _vgrad(d, (0, 0, 239, 26), GARDEN_SKY[0], GARDEN_SKY[2])
+    d.rectangle((0, 22, 239, 111), fill=GARDEN_LEAF[0])                    # the country beyond, past the curve
+    d.ellipse((-60, 18, 300, 150), fill=GARDEN_STONE[3])                   # the far wall's curve
+    d.ellipse((-56, 22, 296, 150), fill=GARDEN_LEAF[2])                    # the lawn inside it
+    _vgrad(d, (0, 70, 239, 111), GARDEN_LEAF[2], GARDEN_LEAF[3])
+    d.ellipse((-56, 22, 296, 90), outline=None, fill=GARDEN_LEAF[2])
+    d.ellipse((70, 52, 170, 72), fill=(120, 170, 196))                     # the still pond
+    d.ellipse((76, 54, 150, 64), fill=(180, 214, 226))
+    for cx, cy in ((40, 50), (204, 48), (30, 76), (212, 78), (120, 38)):   # paths of pale gravel
+        d.line((120, 92, cx, cy), fill=(222, 212, 186), width=3)
+    _crowns(d, rnd, 34, 0, 240, GARDEN_LEAF, 4, 7, 12)                     # trees along the far wall
+    for cx, cy in ((44, 64), (196, 64), (60, 88), (180, 88), (120, 82)):   # clipped trees on the lawn
+        d.ellipse((cx - 7, cy - 9, cx + 7, cy + 5), fill=GARDEN_LEAF[1])
+        d.ellipse((cx - 4, cy - 7, cx + 3, cy - 1), fill=GARDEN_LEAF[4])
+    _wall(d, 98, 111, courses=2)                                           # the near wall, its coping at the foot
+    return im
+
+
+def scene_rings():
+    """C: the RINGS from above -- four walled rings, one inside the next, each its own garden, the gate in the outer
+    wall at the foot and a little house at the middle; seen steeply from above, nothing on it named or numbered"""
+    im = Image.new("RGB", (240, 112))
+    d = ImageDraw.Draw(im)
+    _vgrad(d, (0, 0, 239, 111), (70, 110, 60), (98, 150, 70))
+    cx, cy = 120, 58
+    greens = [GARDEN_LEAF[1], GARDEN_LEAF[2], GARDEN_LEAF[3], GARDEN_LEAF[2], GARDEN_LEAF[4]]
+    for k, (rx, ry) in enumerate(((112, 54), (86, 42), (60, 30), (34, 17))):
+        d.ellipse((cx - rx - 3, cy - ry - 3, cx + rx + 3, cy + ry + 3), fill=GARDEN_STONE[1])   # the wall's shadow
+        d.ellipse((cx - rx - 2, cy - ry - 2, cx + rx + 2, cy + ry + 2), fill=GARDEN_STONE[3])   # the wall's top
+        d.ellipse((cx - rx, cy - ry, cx + rx, cy + ry), fill=greens[k])
+        for a in range(0, 360, 30 - 5 * k):                                # trees round each ring
+            import math
+            x = cx + (rx - 7) * math.cos(math.radians(a))
+            y = cy + (ry - 5) * math.sin(math.radians(a))
+            d.ellipse((x - 3, y - 3, x + 3, y + 3), fill=GARDEN_LEAF[0])
+            d.ellipse((x - 2, y - 3, x + 1, y), fill=GARDEN_LEAF[3])
+        gy = cy + ry                                                       # each ring's gate, on the axis
+        d.rectangle((cx - 3, gy - 2, cx + 3, gy + 3), fill=GARDEN_LAMP if k == 0 else (214, 204, 176))
+    d.rectangle((cx - 7, cy - 6, cx + 7, cy + 5), fill=(196, 120, 84))     # the little house at the middle
+    d.rectangle((cx - 7, cy - 6, cx + 7, cy - 3), fill=(150, 84, 62))
+    d.line((cx, cy + 5, cx, 111), fill=(222, 212, 186), width=3)           # the one path in, ring to ring
+    return im
+
+
+GARDEN_SCENES = dict(gate=scene_gate, overwall=scene_overwall, rings=scene_rings)
+_GARDEN = dict(folder="safari_zone", banner_from="safari_zone", init="scene", denoise=0.58,
+               neg="people, animals, cars, text, signs, letters, barbed wire, fence wire, prison, guard tower, "
+                   "darkness, ruins, overgrown")
+CARDS.update({
+    "safari_zone_gate_a": dict(
+        _GARDEN, scene="gate", seed=5401, title="THE WALLED GARDEN, its gate lit",
+        prompt="a long high wall of pale dressed stone across a green meadow at dusk, the round tops of beautiful "
+               "trees showing over the wall, one arched gatehouse in the middle with warm golden light inside, a "
+               "clean gravel path running up to the lit gate, clipped round hedges along the foot of the wall, a "
+               "calm peach and lavender sky, inviting and peaceful"),
+    "safari_zone_overwall_b": dict(
+        _GARDEN, scene="overwall", seed=5402, title="THE WALLED GARDEN, over the wall",
+        prompt="a beautiful formal garden seen from the top of its wall, a bright chartreuse lawn, clipped round "
+               "trees, a still oval pond, pale gravel paths, all of it held inside one smooth curving wall of pale "
+               "stone that runs right round to the far side, soft clear morning light, perfectly kept and calm"),
+    "safari_zone_rings_c": dict(
+        _GARDEN, scene="rings", seed=5403, title="THE WALLED GARDEN, the RINGS from above",
+        prompt="aerial view looking straight down on a garden of four concentric walled rings, one inside the next, "
+               "each ring a lush green garden with a circle of round trees, pale stone walls, one small gate in "
+               "each wall on a single straight path to a tiny red roofed house at the centre, map-like and serene"),
+})
+
+
 #  the engine folders an approved candidate writes, and which candidate: at most one per folder (after every CARDS entry)
 CARDS_TAKEN = {CARDS[c]["folder"]: c for c in sorted(CARDS_APPROVED)}
 assert len(CARDS_TAKEN) == len(CARDS_APPROVED), "two approved CARDS candidates for one engine card"
@@ -2136,6 +2296,19 @@ def blackout_card_sheet(rows, path):
     d.text((12, 10), "T-546 DRAFT (2026-11-11) -- THE BLACKOUT's name card (rock_tunnel): TODAY's (left, THE OUTAGE) and "
            "three directions, black with dim green threads as a player first meets it; 2x, 1x below; nothing "
            "written", fill=(235, 235, 235), font=font(14))
+    im.save(out)
+    return out
+
+
+def garden_card_sheet(rows, path):
+    """T-540: today's card (the SAFARI's park) and the three, each at 2x with 1x beneath"""
+    out = cards_sheet(rows, path)
+    im = Image.open(out)
+    d = ImageDraw.Draw(im)
+    d.rectangle((0, 0, im.width, 40), fill=(34, 34, 40))
+    d.text((12, 10), "T-540 DRAFT (2026-11-14) -- THE WALLED GARDEN's name card (safari_zone, FOREST type kept): TODAY's "
+           "(left, the SAFARI's park) and three candidates; 2x, 1x below; nothing written", fill=(235, 235, 235),
+           font=font(14))
     im.save(out)
     return out
 
@@ -2313,6 +2486,10 @@ def main():
     if A.draft and A.cards and rows and all(CARDS[r["folder"]]["folder"] == "rock_tunnel" for r in rows):
         os.makedirs(sheets, exist_ok=True)              # T-546's own sheet; the others' left as they are
         print("  sheet -> %s" % blackout_card_sheet(rows, os.path.join(sheets, "t546_card.png")))
+        return 0
+    if A.draft and A.cards and rows and all(CARDS[r["folder"]]["folder"] == "safari_zone" for r in rows):
+        os.makedirs(sheets, exist_ok=True)              # T-540's own sheet; the others' left as they are
+        print("  sheet -> %s" % garden_card_sheet(rows, os.path.join(sheets, "t540_card.png")))
         return 0
     if A.draft and A.cards and rows and all(CARDS[r["folder"]]["folder"] == "cerulean_cave" for r in rows):
         os.makedirs(sheets, exist_ok=True)              # DOLDRUM's own sheet; the others' sheets left as they are

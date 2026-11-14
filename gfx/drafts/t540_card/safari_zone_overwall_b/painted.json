@@ -1,0 +1,29 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t540_card/safari_zone_overwall_b/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, a beautiful formal garden seen from the top of its wall, a bright chartreuse lawn, clipped round trees, a still oval pond, pale gravel paths, all of it held inside one smooth curving wall of pale stone that runs right round to the far side, soft clear morning light, perfectly kept and calm, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, people, animals, cars, text, signs, letters, barbed wire, fence wire, prison, guard tower, darkness, ruins, overgrown",
+ "seed": 5402,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.58,
+ "stop_at": null,
+ "image": "gfx/drafts/t540_card/safari_zone_overwall_b/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "model": "shaper",
+ "loras": [],
+ "references": [],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "model_files": {
+  "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 113.4,
+ "comfyui": "0.19.1",
+ "made": "2026-11-14 11:26:07"
+}

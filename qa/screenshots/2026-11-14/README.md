@@ -55,3 +55,27 @@ T-551, DRAFT, the debug ROM in the theatre (route tools/routes/t551_gatekeeper.j
 T-551, DRAFT, the debug ROM in the theatre (route tools/routes/t551_gatekeeper.json): his house's sign, the OFFICE's nickname line and GATEKEEPER LATENCY, HOLT's grandfather, the REQUEST NOTICE, and the TOKEN handed back to the GATEKEEPER
 
 ![14Nov2026 - T551 - gatekeeper in the theatre - 9](14Nov2026%20-%20T551%20-%20gatekeeper%20in%20the%20theatre%20-%209.png)
+
+### 14Nov2026 - T540 - interiors drafts A B C rooms 2 - 10
+
+THE WALLED GARDEN inside, DRAFT: the OFFICE, the GATEKEEPER's house (his shelf), LORELEI's house (five shared tiles), today beside A, B, C (2x)
+
+![14Nov2026 - T540 - interiors drafts A B C rooms 2 - 10](14Nov2026%20-%20T540%20-%20interiors%20drafts%20A%20B%20C%20rooms%202%20-%2010.png)
+
+### 14Nov2026 - T540 - interiors drafts details - 11
+
+THE WALLED GARDEN inside, DRAFT details at 4x: the gate and the runner's four rings, the waiting-room desk and its ticket post, the GATEKEEPER's shelf
+
+![14Nov2026 - T540 - interiors drafts details - 11](14Nov2026%20-%20T540%20-%20interiors%20drafts%20details%20-%2011.png)
+
+### 14Nov2026 - T540 - name card candidates - 12
+
+THE WALLED GARDEN's name card, DRAFT: today's SAFARI park beside A its gate lit, B over the wall, C the RINGS from above (2x, 1x below)
+
+![14Nov2026 - T540 - name card candidates - 12](14Nov2026%20-%20T540%20-%20name%20card%20candidates%20-%2012.png)
+
+### 14Nov2026 - T540 - interiors drafts A B C rooms 1 - 13
+
+THE WALLED GARDEN inside, DRAFT: today beside A THE ARBOUR, B THE LOBBY, C THE GLASSHOUSE -- the gate, a waiting room, the SECRET HOUSE (a game location; reviewsheet map, draft engine, 2x)
+
+![14Nov2026 - T540 - interiors drafts A B C rooms 1 - 13](14Nov2026%20-%20T540%20-%20interiors%20drafts%20A%20B%20C%20rooms%201%20-%2013.png)

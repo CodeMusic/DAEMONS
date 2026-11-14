@@ -151,7 +151,7 @@ CENSUS_SETS = [
     ("gTileset_Museum", "L", "SLATE's MUSEUM OF ERRATA (4.32), the WARDEN's house, FUCHSIA's house 2, the RESORT house: "
                             "a landmark, drawn from the story by tools/gbamuseum.py (T-541)"),
     ("gTileset_SafariZoneBuilding", "S", "the SAFARI ZONE's entrance, office, rest houses and SECRET HOUSE, and "
-                                        "LORELEI's house: held for the SAFARI redesign"),
+                                        "LORELEI's house: drafted by tools/gbagarden.py (T-540), on the user's pick"),
     ("gTileset_CableClub", "-", "the link rooms (colosseum, trade centre, record corner): link only"),
 ]
 BATCHES = {
@@ -162,7 +162,8 @@ BATCHES = {
        "UNDERGROUND PATH's tunnels",
     "L": "landmark (T-447's way, from the story): SLATE's museum of ERRATA; museum's tileset also furnishes the WARDEN's "
          "house, which the same design must serve",
-    "S": "held for the SAFARI redesign (the user, 2026-11-10)",
+    "S": "THE WALLED GARDEN's buildings: tools/gbagarden.py (T-540, drafted 2026-11-14; held until then for the "
+         "SAFARI redesign, the user 2026-11-10)",
     "-": "later or never: link-only rooms",
 }
 
