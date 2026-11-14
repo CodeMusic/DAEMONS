@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.362 — 2026-11-14
+
+- **3.11:** the GATEKEEPER is released in v11.361.1 (T-551). The WARDEN is renamed everywhere a player reads it, and his staff still call him LATENCY. The attendant's dream BEHIND THE WALL comes with it. The build commit had already renamed him in this section.
+- A Settled entry in section 10. DRAFT.
+
 ## v11.361 — 2026-11-14
 
 - **3.11:** THE WALLED GARDEN, released in v11.360.1 (T-540). Of the 85 lines, 76 were changed and 9 kept, as the user picked.
