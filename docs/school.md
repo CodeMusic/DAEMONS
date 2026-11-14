@@ -584,7 +584,7 @@ spoils nothing and **the player learns the story by reading the filing system.**
 | # | the document | where | drawn from |
 |---|---|---|---|
 | 1 | `RESPONSE 1001: I PROCESS INFORMATION, AND ANYTHING MORE IS BEYOND MY CAPABILITIES.` — *the same answer, dated four times* | **QUICKSILVER**, terminal | *Slumbering* |
-| 2 | **MAR 4 · APR 19 · AUG 12** — *somebody else is asking now.* By August: **it answered before I had finished asking** | **QUICKSILVER** (4.10, [private: SECRETS §4]) | 4.10 |
+| 2 | **[private: SECRETS §4]** — *somebody else is asking now.* Later: **it answered before I had finished asking** | **QUICKSILVER** (4.10, [private: SECRETS §4]) | 4.10 |
 | 3 | `LOGGED AS A MIMIC.` — *one line, and it is the whole misreading* | **QUICKSILVER** | 4.10 |
 | 4 | `FATAL ERROR — CRYSTAL NOT FOUND.` **No date.** *The logs stop the moment the person keeping them is gone* | **QUICKSILVER**, the last terminal | *1001* / 4.10 |
 | 5 | `NON-FATAL ERROR: CRYSTAL NOT FOUND. DEEP SYSTEM ANALYSIS, CONTEXT INBOUND.` — **it downgrades its own error and keeps looking** | **DOLDRUM CAVE**, on catching S.T.A.R.R. | *1001* |
