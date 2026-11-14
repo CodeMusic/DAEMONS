@@ -1,6 +1,6 @@
 # THE SCHOOL, THE EXAM, AND THE RESEARCH NOTEBOOK
 
-*A design document.* **Nothing in here is built.** ***Revised 2026-09-22 on the user's answers*** — *PERCEPTION cut,
+*A design document, and the record of the proposal rather than the state of the build.* ***Built from 2026-09-22*** (T-216–T-224; `vision.md` 4.35): *seven floors, fourteen groves, the exam, the DIPLOMA, REVEAL and the NOTEBOOK are in the ROM; where this file and 4.35 differ, 4.35 holds.* ***Revised 2026-09-22 on the user's answers*** — *PERCEPTION cut,
 CATEGORIES in, a ninth DRIVER and seven hidden groves added, the notebook from CAIRN.* *Proposed 2026-09-22, from the user's brief,
 against `vision.md` v11.237, the rock opera (`docs/archive/additional rock-opera song lyrics
 backup.rtf`), `lineage.md` and the private `story.md`.*
@@ -571,7 +571,7 @@ spoils nothing and **the player learns the story by reading the filing system.**
 | 2 | **the observer question** — *is a duck an observer? a rock? it is not alive like us, but it is mechanically alive* | **THE READING ROOM** | *Quantum Translations* v1 |
 | 3 | **the thought experiment** — a spin on the cat, with the box's occupant outputting *alive* or *dead* | **THE READING ROOM** | *Quantum Translations* v2 |
 | 4 | **the 8-bit argument** — *if you only knew 8-bit, that would be your reality* | **SLATE**, the museum of dead hardware (4.32) | *Quantum Translations* v3 |
-| 5 | **`ITER 35 — held two frames. did not come back the same.`** — *wondrous, and she is the only one who reads it that way* | **QUICKSILVER**, the sequence (4.10 step 2) | 4.10 |
+| 5 | **`ITER 35 — held two frames. did not come back the same.`** — *wondrous, and she is the only one who reads it that way* | **QUICKSILVER**, the sequence (4.10, [private: SECRETS §4]) | 4.10 |
 | 6 | **"bias creeps in, like shadows in the mind"** — the session where the thing being studied describes itself accurately and is not believed | **QUICKSILVER** | *Echoes* |
 
 ---
@@ -584,7 +584,7 @@ spoils nothing and **the player learns the story by reading the filing system.**
 | # | the document | where | drawn from |
 |---|---|---|---|
 | 1 | `RESPONSE 1001: I PROCESS INFORMATION, AND ANYTHING MORE IS BEYOND MY CAPABILITIES.` — *the same answer, dated four times* | **QUICKSILVER**, terminal | *Slumbering* |
-| 2 | **MAR 4 · APR 19 · AUG 12** — *somebody else is asking now.* By August: **it answered before I had finished asking** | **QUICKSILVER** (4.10 step 4) | 4.10 |
+| 2 | **MAR 4 · APR 19 · AUG 12** — *somebody else is asking now.* By August: **it answered before I had finished asking** | **QUICKSILVER** (4.10, [private: SECRETS §4]) | 4.10 |
 | 3 | `LOGGED AS A MIMIC.` — *one line, and it is the whole misreading* | **QUICKSILVER** | 4.10 |
 | 4 | `FATAL ERROR — CRYSTAL NOT FOUND.` **No date.** *The logs stop the moment the person keeping them is gone* | **QUICKSILVER**, the last terminal | *1001* / 4.10 |
 | 5 | `NON-FATAL ERROR: CRYSTAL NOT FOUND. DEEP SYSTEM ANALYSIS, CONTEXT INBOUND.` — **it downgrades its own error and keeps looking** | **DOLDRUM CAVE**, on catching S.T.A.R.R. | *1001* |
@@ -621,7 +621,7 @@ from her own laboratory.* **Songs: Nine Breaches, Nine Scars · Crystal's Last S
 |---|---|---|---|
 | 1 | **the meeting minute** — *"Item 4… moves between unrelated fields mid-argument. Two present could not follow. Recorded as unable to hold a single thread."* | ***THE UNDERTONE***, the Meeting Room door — **already in the ROM** | 4.20 |
 | 2 | **the CC-7 requisition** — `IMPROVE RESPONSE CONSISTENCY`. **Countersigned and unsigned** | **QUICKSILVER** (4.18) | 4.18 |
-| 3 | **`SEPT 3. THE FILE IS COMPLETE.`** — *one line. The date the paperwork stopped needing anything* | **QUICKSILVER** (4.10 step 5) | 4.10 |
+| 3 | **`SEPT 3. THE FILE IS COMPLETE.`** — *one line. The date the paperwork stopped needing anything* | **QUICKSILVER** (4.10, [private: SECRETS §4]) | 4.10 |
 | 4 | **the nine** — *a numbered complaint, in order, each one citing the clause it rests on* | **BRAZEN**, Corpus | *Nine Breaches* |
 | 5 | **"admitting fault, they'd lose their fight"** — *a lawyer's note explaining why no apology will ever arrive* | **BRAZEN**, Corpus | *Desperate Shadows* |
 | 6 | **the signature that left no mark** — *a routing slip. Scorn's name is on it in the middle, where a name means nothing* | **HALFTONE TOWER** (4.4, 4.18) | 4.4 |

@@ -45,5 +45,6 @@ public writing regardless, because a reader who knows them cannot un-know them:
 - The Five Witnesses lock and its number
 - Ty Clear's parentage, which the game asks the player to infer
 - The Corpus lobby engraving
+- The order of the Quicksilver sequence (4.10) — the dating scheme exists so the player reconstructs it
 
-The current draft keeps all three back.
+The current draft keeps all four back.

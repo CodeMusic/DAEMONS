@@ -28,7 +28,7 @@ is not one. The story is the same story, the towns are the same towns, and every
 - **Which daemons you meet.** Each edition simply cannot bind some of them, and the rosters lean the way the table
   above says. So the two editions are hard in different places, and two players comparing notes will each have built
   a different, sincere intuition about what is strong.
-- **What the INDEX says.** Every one of the 395 entries is written twice, and the two editions' entries disagree --
+- **What the INDEX says.** Every one of the 398 entries is written twice, and the two editions' entries disagree --
   different flat sentences about the same creature, and for some of them different heights and weights, each stated
   as fact. Nobody in the game explains it.
 - **The year.** CONTENT keeps a northern year and CONTEXT a southern one, so the seasons -- and the weather, which

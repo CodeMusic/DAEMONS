@@ -24,8 +24,9 @@ rooms included, since 2026-09-15: each member speaks in their humour, PHLEGMATIC
 unhurried, CHOLERIC arguing, MELANCHOLIC remembering CRYSTAL, SANGUINE delighted
 by what nobody planned. Their music cues and the champion reveal are kept.
 
-KEPT OUT, by the bible: nobody names CRYSTAL's son, VERA's father or the lobby
-floor; no entry dates anything at Quicksilver (4.10); and SCORN's "kid" is gone.
+KEPT OUT, by the bible: nobody names the family relations it keeps private
+([private: SECRETS §2]) or the lobby floor; no entry dates anything at Quicksilver
+(4.10); and SCORN's "kid" is gone.
 
 The data is (header, voice, pages). Voice is M or F for someone speaking, or ""
 for print. Pages are lists of lines, at most 36 characters each after control
