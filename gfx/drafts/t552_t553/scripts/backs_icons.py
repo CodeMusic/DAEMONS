@@ -24,4 +24,8 @@ for key, r in P.items():
     for kind, prompt, seed in (("back", back, 7701), ("icon", icon, 7741)):
         o = "%s/%s_%s_%d" % (OUT, key, kind, seed); print("drawing", o, flush=True)
         armc.draw(o, prompt, seed, refs=[src])
+# free the sprite server when the batch ends (the companion lane, 2026-11-14: FLUX stays loaded ~22 GB beside ACE-Step's 23 GB)
+import urllib.request
+urllib.request.urlopen(urllib.request.Request("http://roverbyteseer:8008/free", data=b'{"unload_models": true, "free_memory": true}',
+                                              headers={"Content-Type": "application/json"}), timeout=30)
 print("ALLDONE", flush=True)
