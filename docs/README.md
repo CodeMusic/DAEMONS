@@ -2,8 +2,8 @@
 
 | File | What it is | Status |
 |---|---|---|
-| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.362, working |
-| [`CONTEXT-CONTENT-design-bible-v11.362.pdf`](CONTEXT-CONTENT-design-bible-v11.362.pdf) | Typeset **snapshot** at v11.362 — the walled garden kept at its gate, and a dream of what lies behind the wall. | frozen |
+| [`vision.md`](vision.md) | **The living design bible.** Every decision, including reversed ones and the reasoning behind them. Updated as work proceeds. | v11.363, working |
+| [`CONTEXT-CONTENT-design-bible-v11.363.pdf`](CONTEXT-CONTENT-design-bible-v11.363.pdf) | Typeset **snapshot** at v11.363 — a walled garden under glass: the light comes in, and nothing is seen through it. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v11.206.pdf`](CONTEXT-CONTENT-design-bible-v11.206.pdf) | Typeset snapshot at v11.206. | frozen |
 | [`CONTEXT-CONTENT-design-bible-v1.0.pdf`](CONTEXT-CONTENT-design-bible-v1.0.pdf) | Typeset snapshot at v1.0. | frozen |
 | [`build-pdf.sh`](build-pdf.sh) · [`style.css`](style.css) | Regenerates a snapshot: `./docs/build-pdf.sh 3.1` | — |

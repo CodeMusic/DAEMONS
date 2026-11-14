@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.363 — 2026-11-14
+
+- **3.11:** THE WALLED GARDEN's art, the user's picks, released in v11.362.1. With it, T-540 is complete.
+  - **The interiors are THE GLASSHOUSE:** whitewashed panes that let the light in and show nothing.
+  - **The GATEKEEPER's shelf** matches, with the old sign turned to the wall.
+  - **The name card** shows the garden seen over its wall.
+- A Settled entry in section 10. DRAFT.
+
 ## v11.362 — 2026-11-14
 
 - **3.11:** the GATEKEEPER is released in v11.361.1 (T-551). The WARDEN is renamed everywhere a player reads it, and his staff still call him LATENCY. The attendant's dream BEHIND THE WALL comes with it. The build commit had already renamed him in this section.
