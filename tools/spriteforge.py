@@ -17,7 +17,9 @@
 been resolved into anything. T-250 wants exactly that for what a player sees without the RESOLVER -- the
 same seed without --stop-at is the thing it would have become.
 
-THE SERVER. ComfyUI at http://roverbyteseer:8008 (override with SPRITEFORGE_HOST). TWO MODELS (--model):
+THE SERVER. ComfyUI at http://roverbyteseer:8008 (override with SPRITEFORGE_HOST). When the batch's process exits it
+unloads ComfyUI's models if nothing else is queued (POST /free; 2026-11-14, so FLUX does not sit beside ACE-Step on the
+seer); SPRITEFORGE_KEEP_LOADED=1 skips that. TWO MODELS (--model):
 
   shaper   (the default, and everything before T-452's trial) the checkpoint
            `pixelArtDiffusionXL_spriteShaper.safetensors` -- the same model the pixelbyte skill wraps, driven here
@@ -184,7 +186,31 @@ def resolve(p):
     return p
 
 
+_FREE_ARMED = False
+
+
+def free_when_idle():
+    """Unload ComfyUI's models once this process's batch is done, as the hub does after its own paintings: POST /free
+    {unload_models, free_memory}, but only when ComfyUI's queue is empty, so another client's job keeps its model. FLUX
+    left loaded (~22 GB) beside ACE-Step filled roverbyteseer's 32 GB and swap on 2026-11-14 (the companion lane's
+    report). Registered at exit by run(), so a tool that paints many images in a loop frees once, at the end. Never fatal."""
+    try:
+        q = call("/queue", timeout=10)
+        if q.get("queue_running") or q.get("queue_pending"):
+            print("  (spriteforge: ComfyUI still busy; models left loaded)")
+            return
+        call("/free", {"unload_models": True, "free_memory": True}, raw=True, timeout=30)
+        print("  (spriteforge: ComfyUI's models unloaded)")
+    except Exception as e:  # the painting is already saved; a failed unload must not fail the batch
+        print("  (spriteforge: could not unload ComfyUI's models: %s)" % e)
+
+
 def run(p):
+    global _FREE_ARMED
+    if not _FREE_ARMED and not os.environ.get("SPRITEFORGE_KEEP_LOADED"):
+        import atexit
+        atexit.register(free_when_idle)
+        _FREE_ARMED = True
     p.setdefault("model", "shaper")
     p.setdefault("loras", [])
     p.setdefault("references", [])
