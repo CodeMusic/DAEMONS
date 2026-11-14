@@ -103,3 +103,27 @@ a WAITING ROOM in the theatre (debug build): the desk and its ticket post, the s
 THE WALLED GARDEN's card on entering from the gate (theatre): B over the wall, fading cleanly over the garden as a FOREST card
 
 ![14Nov2026 - T540 - theatre the card on entry - 17](14Nov2026%20-%20T540%20-%20theatre%20the%20card%20on%20entry%20-%2017.png)
+
+### 14Nov2026 - C358 - creations household - 18
+
+C-358 CREATIONS (DRAFT): HOUSEHOLD -- every piece the hub keeps, each with the cover and title its daemon painted; the check marks the one this device keeps
+
+![14Nov2026 - C358 - creations household - 18](14Nov2026%20-%20C358%20-%20creations%20household%20-%2018.jpg)
+
+### 14Nov2026 - C358 - the record player - 19
+
+C-358: the player -- the cover as a record, a tick a minute of the night around it, lit as it plays
+
+![14Nov2026 - C358 - the record player - 19](14Nov2026%20-%20C358%20-%20the%20record%20player%20-%2019.jpg)
+
+### 14Nov2026 - C358 - the spectrum - 20
+
+C-358: tap the record for the spectrum (DRIFT DOWN on)
+
+![14Nov2026 - C358 - the spectrum - 20](14Nov2026%20-%20C358%20-%20the%20spectrum%20-%2020.jpg)
+
+### 14Nov2026 - C358 - community - 21
+
+C-358: COMMUNITY -- the first piece shared to THE COMMONS
+
+![14Nov2026 - C358 - community - 21](14Nov2026%20-%20C358%20-%20community%20-%2021.jpg)
