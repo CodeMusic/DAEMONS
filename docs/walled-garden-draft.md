@@ -1,5 +1,7 @@
 # THE WALLED GARDEN -- the SAFARI ZONE redrafted (T-540, DRAFT)
 
+> **T-551 (the user, 2026-11-14): the WARDEN is now the GATEKEEPER** wherever a player reads it -- his staff still call him LATENCY (GATEKEEPER LATENCY). This file keeps WARDEN as it was drafted; read GATEKEEPER for WARDEN in every line below. One line was re-wrapped to fit 208px (his DRIVER04 line: `GATEKEEPER: Inside DRIVER04 you'll\nfind DISPLACE.`). The attendant's dream is BEHIND THE WALL (draft A's title and first line). DRAFT.
+
 **Every in-game line in this file is DRAFT.** Nothing here is in the engine, the companion or `vision.md`; it is for
 the user to pick from. Written 2026-11-10 from the user's multiple-choice decision of the same day.
 

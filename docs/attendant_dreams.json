@@ -97,9 +97,9 @@
       "led":    [["The big sleeper is up, and the", "road runs south again."]]
     },
     "safari_zone": {
-      "first":  [["I dreamt of a wild park behind a", "gate, and a little house deep in it."], ["Someone there kept a way across", "the water."]],
+      "first":  [["I dreamt of a garden behind a wall,", "and a little house deep in it."], ["Someone there kept a way across", "the water."]],
       "second": [["I dreamt of THE WALLED GARDEN", "in LURID CITY."], ["The house at its far end holds", "DRIVER03."]],
-      "title":  "BEHIND THE GATE",
+      "title":  "BEHIND THE WALL",
       "led":    [["The little house kept its way", "across the water for you."]]
     },
     "silph_co": {

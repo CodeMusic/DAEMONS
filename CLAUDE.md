@@ -238,7 +238,7 @@ the NOTEBOOK (empty, or EVERY PAGE), the school, the ticket, the FIR IN ITS KEY,
 the RESOLVER, the INTERRUPT, every GOTO point, the GUIDE, the GLOBAL INDEX and the UNDERSTANDINGS (a page, each with
 what it needs, and LET INSIGHTS ARRIVE AGAIN). `src/daemons_debug_events.c`; the kit's pieces are in `new_game.c`.
 Hold B to walk through grass. Its DEBUG
-menu's JUMP page reaches the RECORD, THE MARGINS, the DIPLOMA, DOLDRUM CAVE (with or without the understanding), ARTSAI's station, CRYSTAL home after the payload (the INDEX's page), and on its MORE page the WARDEN with his TOKEN, the singing FIR on the empty pier and the WITNESSES' reward with every understanding held, and THE NEXUS (T-395: the fir in its key, every grove found or none), without playing to them; its main page's WATCH forces dawn, day, dusk or night and relights the map at once (T-268), and SOUND plays any song or sound effect. It began as
+menu's JUMP page reaches the RECORD, THE MARGINS, the DIPLOMA, DOLDRUM CAVE (with or without the understanding), ARTSAI's station, CRYSTAL home after the payload (the INDEX's page), and on its MORE page the GATEKEEPER with his TOKEN, the singing FIR on the empty pier and the WITNESSES' reward with every understanding held, and THE NEXUS (T-395: the fir in its key, every grove found or none), without playing to them; its main page's WATCH forces dawn, day, dusk or night and relights the map at once (T-268), and SOUND plays any song or sound effect. It began as
 scaffolding for the §9.3 spike and has grown into the field test's way of reaching things without playing to them.
 
 **Never filter a build for `error:`.** agbcc prints its diagnostics as

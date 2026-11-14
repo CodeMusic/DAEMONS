@@ -1,0 +1,59 @@
+{
+ "rom": "debug",
+ "about": "T-551, THE WALLED GARDEN's WARDEN becomes the GATEKEEPER (the user, 2026-11-14), DRAFT: his house's sign, the OFFICE's nickname line (GATEKEEPER LATENCY), HOLT's grandfather, the REQUEST NOTICE, and the GATEKEEPER signed back in by his TOKEN, giving DRIVER04. Watch held at day. The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1"
+   ]
+  },
+  {
+   "stop": "the house's sign: THE WALLED GARDEN / GATEKEEPER'S HOME",
+   "steps": [
+    "goto FuchsiaCity 31 32",
+    "close",
+    "look 31 31"
+   ]
+  },
+  {
+   "stop": "the OFFICE: the nickname, and GATEKEEPER LATENCY",
+   "steps": [
+    "goto FuchsiaCity_SafariZone_Office",
+    "close",
+    "talk FuchsiaCity_SafariZone_Office_EventScript_Worker1",
+    "talk FuchsiaCity_SafariZone_Office_EventScript_Worker2"
+   ]
+  },
+  {
+   "stop": "HOLT's grandfather's house: the GATEKEEPER has kept that place",
+   "steps": [
+    "goto FuchsiaCity_House1",
+    "close",
+    "talk FuchsiaCity_House1_EventScript_Woman"
+   ]
+  },
+  {
+   "stop": "RING 0: the REQUEST NOTICE",
+   "steps": [
+    "goto SafariZone_West 27 10",
+    "close",
+    "look 27 9"
+   ]
+  },
+  {
+   "stop": "the GATEKEEPER's house: the TOKEN handed back, DRIVER04, and how it works",
+   "steps": [
+    "flag FLAG_GOT_HM04 0",
+    "flag FLAG_HIDE_SAFARI_ZONE_WEST_GOLD_TEETH 1",
+    "keyitem ITEM_GOLD_TEETH",
+    "goto FuchsiaCity_WardensHouse 3 6",
+    "close",
+    "talk FuchsiaCity_WardensHouse_EventScript_Warden",
+    "talk FuchsiaCity_WardensHouse_EventScript_Warden"
+   ]
+  }
+ ]
+}
