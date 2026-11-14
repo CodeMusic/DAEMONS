@@ -2,6 +2,7 @@
  "about": "Which part of THE COMPANION covers each page of the app (paths under daemons-companion/app/). Books found in the game (the shared/ readers, the witching hour) are covered only as the LIBRARY's first shelf, by design: the book says how things work, never where they are found. Trading (you/Trade.tsx) is PLAYING TOGETHER's; this book points there.",
  "covered": {
   "screens/today/Today.tsx": "today",
+  "screens/today/Calendar.tsx": "calendar",
   "screens/daemon/Daemon.tsx": "daemon",
   "screens/daemon/Den.tsx": "den",
   "screens/daemon/Provision.tsx": "care",
@@ -38,6 +39,7 @@
   "screens/places/Home.tsx": "home-assistant",
   "screens/places/Tv.tsx": "home-assistant",
   "screens/settings/Settings.tsx": "settings",
+  "screens/settings/Theme.tsx": "theme",
   "screens/settings/Pair.tsx": "pairing",
   "screens/settings/Saves.tsx": "settings-save",
   "screens/settings/Mind.tsx": "minds",
@@ -49,7 +51,10 @@
   "screens/you/Battle.tsx": "together-pointer",
   "screens/you/Dialogue.tsx": "together-pointer",
   "screens/daemon/Mind.tsx": "its-mind",
-  "screens/you/Guardian.tsx": "guardian"
+  "screens/you/Guardian.tsx": "guardian",
+  "screens/today/Tending.tsx": "tending",
+  "screens/game/Link.tsx": "playing",
+  "screens/daemon/Creations.tsx": "creations"
  },
  "not for players": [
   "screens/dev/Dev.tsx"

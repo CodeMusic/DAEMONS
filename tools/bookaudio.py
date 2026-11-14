@@ -51,15 +51,20 @@ VOICES = {  # picked with the user from samples, 2026-11-01
     #  THE WATCH (C-326): bright and close, a little brisk, like something you carry -- picked by the user from three
     #  samples, 2026-11-11 ("A: pocket")
     "pocket": {"blend": {"af_sky": 0.6, "bf_emma": 0.4}, "speed": 1.02, "sentence": 0.3},
+    #  THE GLASSES (C-262): soft and close, a voice in your ear -- picked by the user from three samples, 2026-11-12
+    #  ("A: near")
+    "near": {"blend": {"af_nicole": 0.6, "bf_lily": 0.4}, "speed": 0.97},
 }
 BOOK_VOICE = {"guide": "reason", "subtle": "instinct", "hermetic": "night", "eudaimon": "dawn", "unity": "whole",
               "textbook": "professor", "quick": "patient", "manual": "adventure", "companion": "friend",
-              "social": "together", "tiiny": "mind", "etymology": "elder", "origin": "musai", "watch": "pocket"}
+              "social": "together", "tiiny": "mind", "etymology": "elder", "origin": "musai", "watch": "pocket",
+              "glass": "near"}
 FILE = {"guide": "guide", "subtle": "the-subtle-layer", "hermetic": "the-vault-audio", "eudaimon": "the-vault-audio-2",
         "unity": "the-vault-audio-3", "textbook": "principles-of-mind",   # -2, -3: the names the companion fetches (C-299)
         "quick": "quick-start", "manual": "the-players-manual", "companion": "the-companion",
         "social": "playing-together", "tiiny": "a-bigger-mind", "etymology": "the-old-word",
-        "origin": "the-origin-audio", "watch": "the-watch"}
+        "origin": "the-origin-audio", "watch": "the-watch",
+        "glass": "the-glasses"}
 #  a book with no voice on purpose; --check names any other book that has none (T-543: a new book is never left silent)
 UNVOICED = {"micro": "MICRO-START, the quick start in five pages, is not on the LIBRARY's shelf"}
 RATE = {"textbook": "48k"}       # a long book a little lighter, under GitHub's 50 MB; the rest 64k
@@ -122,6 +127,7 @@ MANUALS = {
                   f"The Old Word. How daimon branched, and why it is said DAY-mons. {DRAFTED}"),
     "watch": ("docs/manual-watch", "The Watch",
               f"The Watch. Your daemon on your wrist: the T-Watch Ultra and the T-Watch S3. {DRAFTED}"),
+    "glass": ("docs/manual-glass", "The Glasses", f"The Glasses. Your daemon before your eye: the T-Glass. {DRAFTED}"),
 }
 SAY = {"←": " left ", "→": " right ", "↑": " up ", "↓": " down ", "⟷": " to ", "½": " half", "°": " degrees",
        "−": "minus ", "⚙": "the gear", "…": "...", "✚": "", "✦": "", "•": "", "▼": "", "▶": "", "○": "", "✕": "",

@@ -62,6 +62,13 @@ GBA = os.path.join(ROOT, "engineGba")
 DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t541")
 #  The user's pick goes here ("A", "B" or "C"); --write refuses anything not in it.
 APPROVED = {"A"}                     # the user, 2026-11-10: A The slate
+#  T-540 (the user, 2026-11-14: the interiors C THE GLASSHOUSE, "the GATEKEEPER's shelf redrawn to match C"): the
+#  GATEKEEPER's own shelf -- tiles 129..136, drawn by his house alone -- belongs to tools/gbagarden.py now (the old
+#  gate's sign, its face to the wall). This tool still paints them in its drafts, but draw() leaves them as the
+#  engine has them, so --write never reverts gbagarden's shelf and check_engine never calls it drift. gbagarden's
+#  report exits 1 if this set and its own SHELF part.
+LATER_T540 = set(range(129, 137))
+APPROVED_CHECK = [False]                 # draw() for the write or its check: LATER_T540 kept
 
 ARGS = sys.argv[1:]
 WRITE = "--write" in ARGS
@@ -476,6 +483,9 @@ def draw(D):
         painter(K, D)
         for t, mm in K.tiles().items():
             if t in owner or t >= MUS.nvan or t not in MUS.use:
+                continue
+            if t in LATER_T540 and (WRITE or APPROVED_CHECK[0]):
+                owner[t] = key                           # gbagarden's: kept as the engine has it
                 continue
             tiles[t] = G.resolve(mm, MUS.van[t], dict(MUS.use[t]["rows"]), Dm, own)
             owner[t] = key
@@ -1129,7 +1139,10 @@ def report():
     #  the WARDEN's shelf: his tiles carry no card mark, and the card's body is blank in every direction
     print("  the WARDEN's cases draw tiles %s; of those only 129..136 are his alone; the card body (73 74) is blank"
           % sorted({s if isinstance(s, int) else s[0] for r in WARDEN1 + WARDEN2 for s in r}))
-    others = other_claims()
+    #  gbagarden.py (T-540) writes the GATEKEEPER's shelf, 129..136, and nothing else here: LATER_T540 is that claim
+    others = [o for o in other_claims() if o != "gbagarden.py"]
+    print("  gbagarden.py writes %d..%d (LATER_T540: the GATEKEEPER's shelf, its C THE GLASSHOUSE); never a row"
+          % (min(LATER_T540), max(LATER_T540)))
     print("  other tools naming secondary/museum: %s" % (others or "none -- no tool but this one writes these tiles or "
                                                                     "rows (gbahomes lists it as a landmark, 'L', and "
                                                                     "never draws it)"))
@@ -1147,7 +1160,9 @@ def report():
 def check_engine():
     """T-446's rule: with one direction approved, the engine must be exactly what `--write --approved --pick X` makes"""
     pick = next(iter(APPROVED))
+    APPROVED_CHECK[0] = True
     sets, _ = draw(STYLES[pick])
+    APPROVED_CHECK[0] = False
     tiles, pals = sets["mus"]
     off = [t for t in range(len(MUS.cur)) if tiles[t] != MUS.cur[t]]
     rows = [r for r in MUS.rows if [tuple(c) for c in pals[r]]

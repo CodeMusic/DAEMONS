@@ -1,0 +1,29 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t540_card/safari_zone_rings_c/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, aerial view looking straight down on a garden of four concentric walled rings, one inside the next, each ring a lush green garden with a circle of round trees, pale stone walls, one small gate in each wall on a single straight path to a tiny red roofed house at the centre, map-like and serene, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, people, animals, cars, text, signs, letters, barbed wire, fence wire, prison, guard tower, darkness, ruins, overgrown",
+ "seed": 5403,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.58,
+ "stop_at": null,
+ "image": "gfx/drafts/t540_card/safari_zone_rings_c/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "model": "shaper",
+ "loras": [],
+ "references": [],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "model_files": {
+  "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 44.4,
+ "comfyui": "0.19.1",
+ "made": "2026-11-14 11:26:54"
+}

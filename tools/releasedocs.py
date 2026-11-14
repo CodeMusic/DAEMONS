@@ -76,6 +76,8 @@ REPOS = {"DAEMONS": ROOT, "engine": repo("engineGba", "pokefirered-daemons"),
 #  (repository, path prefix a commit touched) -> the surfaces that should then name it
 ROUTES = [
     ("companion", "firmware/", ["companion:wiki/Boards.md", "companion:docs/HARDWARE.md"]),
+    ("companion", "firmware/esp32/src/glass", ["companion:wiki/The-T-Glass.md", "DAEMONS:docs/manual-glass/manual.md"]),   # C-262
+    ("companion", "app/screens/places/Glass", ["DAEMONS:docs/manual-glass/manual.md"]),   # C-262: the GLASSES card
     ("companion", "hub/", ["companion:docs/HUB.md", "companion:wiki/The-hub-and-its-AI.md"]),
     ("companion", "app/", ["DAEMONS:docs/manual-companion/manual.md"]),
     ("companion", "app/screens/you/", ["DAEMONS:docs/manual-social/manual.md"]),   # TRADE, BATTLE, IN DIALOGUE
@@ -85,7 +87,7 @@ ROUTES = [
     ("playground", "", ["playground:README.md"]),
 ]
 #  a HOW TO PLAY book as a SET UP entry names it -> manual.py's book
-SETUP_BOOK = {"player": "main", "micro": "micro", "quick": "quick", "companion": "companion", "watch": "watch",
+SETUP_BOOK = {"player": "main", "micro": "micro", "quick": "quick", "companion": "companion", "watch": "watch", "glass": "glass",
               "tiiny": "tiiny", "social": "social"}
 NOT_NAMES = {"DAEMONS", "DAEMON", "DRAFT", "THE", "AI", "OK", "A", "AND", "OF", "IN", "TO", "ON", "BUILT", "DEBUG",
              "CONTENT", "CONTEXT", "DRAFTED", "DONE", "FIXED", "TODO", "WIP", "ROM", "RELEASE", "GBA", "INDEX", "HP", "LED", "USB", "PDF", "API", "QR", "SD", "TV", "NPC"}

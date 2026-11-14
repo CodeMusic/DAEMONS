@@ -109,13 +109,27 @@ def scroll(a, b=None):
 """)
 
 
-KIND = {"gba": gba, "phone": phone, "watch": watch, "link": link, "tiiny": tiiny, "scroll": scroll}
+def glasses(a, b=None):
+    """THE GLASSES: a frame seen from the front, the prism before the right lens, the daemon in its square."""
+    return _svg(f"""
+<rect x="40" y="96" width="140" height="104" rx="42" fill="#eef3f6" fill-opacity=".25" stroke="#e9e4da" stroke-width="8"/>
+<rect x="220" y="96" width="140" height="104" rx="42" fill="#eef3f6" fill-opacity=".25" stroke="#e9e4da" stroke-width="8"/>
+<path d="M180 124 Q200 106 220 124" fill="none" stroke="#e9e4da" stroke-width="8"/>
+<path d="M40 120 L8 112 M360 120 L392 112" stroke="#e9e4da" stroke-width="8" stroke-linecap="round"/>
+<rect x="300" y="70" width="96" height="30" rx="8" fill="{INK}"/>
+<rect x="244" y="104" width="92" height="92" rx="4" fill="#9fd3e6" fill-opacity=".45" stroke="#e9e4da" stroke-width="3"/>
+<rect x="252" y="112" width="76" height="76" fill="{INK}"/>
+{_sprite(a, 258, 118, 64)}
+""")
+
+
+KIND = {"gba": gba, "phone": phone, "watch": watch, "glasses": glasses, "link": link, "tiiny": tiiny, "scroll": scroll}
 
 #  the cover's own colour, and what draws its device, for every book tools/manual.py prints with the game's cover
 #  and the daemon(s) on its screen
 COVER = {"main": ("#3b2f66", "gba", ("CLUSTER",)), "quick": ("#6a4f22", "gba", ("LABEL",)),
          "micro": ("#5e2a40", "gba", ("PING",)), "companion": ("#5e2b24", "phone", ("ROVERBYTE",)),
-         "watch": ("#174d4b", "watch", ("ROVERCUB",)), "social": ("#22395c", "link", ("PENGUIN", "PENPHIN")),
+         "watch": ("#174d4b", "watch", ("ROVERCUB",)), "glass": ("#2e2a52", "glasses", ("PING",)), "social": ("#22395c", "link", ("PENGUIN", "PENPHIN")),
          "tiiny": ("#21463a", "tiiny", ("INFERENCE",)), "etymology": ("#47431c", "scroll", ("GUARDIAN",))}
 
 #  laid over each book's own manual.css: the cover in its colour, the device large, the small print still readable

@@ -1,0 +1,29 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t540_card/safari_zone_gate_a/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, a long high wall of pale dressed stone across a green meadow at dusk, the round tops of beautiful trees showing over the wall, one arched gatehouse in the middle with warm golden light inside, a clean gravel path running up to the lit gate, clipped round hedges along the foot of the wall, a calm peach and lavender sky, inviting and peaceful, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, people, animals, cars, text, signs, letters, barbed wire, fence wire, prison, guard tower, darkness, ruins, overgrown",
+ "seed": 5401,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.58,
+ "stop_at": null,
+ "image": "gfx/drafts/t540_card/safari_zone_gate_a/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "model": "shaper",
+ "loras": [],
+ "references": [],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "model_files": {
+  "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 63.9,
+ "comfyui": "0.19.1",
+ "made": "2026-11-14 11:24:13"
+}

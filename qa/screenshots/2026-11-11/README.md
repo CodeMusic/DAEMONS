@@ -541,3 +541,33 @@ T-447: the S.S. ANNE's departure wake, before (+80, y 109: through the flagstaff
 T-542 batch 4 BUILT: the last three Nintendo edges in B THE TRACE (DRAFT) -- TREASURE BEACH's sand corners at 4x from the engine's built tiles
 
 ![11Nov2026 - T542 - batch 4 B THE TRACE built - 107](11Nov2026%20-%20T542%20-%20batch%204%20B%20THE%20TRACE%20built%20-%20107.png)
+
+### 11Nov2026 - T445 - DOLDRUM CAVE card built - 108
+
+T-445 BUILT: DOLDRUM CAVE's name card, A BECALMED, decoded from the built daemonsContent.gba at 2x (DRAFT)
+
+![11Nov2026 - T445 - DOLDRUM CAVE card built - 108](11Nov2026%20-%20T445%20-%20DOLDRUM%20CAVE%20card%20built%20-%20108.png)
+
+### 11Nov2026 - T445 - DOLDRUM CAVE card directions - 109
+
+T-445 DRAFT: DOLDRUM CAVE's four directions with the unread view (the user picked A BECALMED)
+
+![11Nov2026 - T445 - DOLDRUM CAVE card directions - 109](11Nov2026%20-%20T445%20-%20DOLDRUM%20CAVE%20card%20directions%20-%20109.png)
+
+### 11Nov2026 - C296 - iOS Simulator - THE MIND SPIRITS - 110
+
+iPhone Simulator, current companion code: THE MIND's SPIRITS card under NOW (companion 6851fc0).
+
+![11Nov2026 - C296 - iOS Simulator - THE MIND SPIRITS - 110](11Nov2026%20-%20C296%20-%20iOS%20Simulator%20-%20THE%20MIND%20SPIRITS%20-%20110.png)
+
+### 11Nov2026 - C191 - iOS Simulator - THE ROAD AHEAD WAYS OPENED - 111
+
+iPhone Simulator: THE ROAD AHEAD under YOU, WAYS OPENED above OPEN TO YOU.
+
+![11Nov2026 - C191 - iOS Simulator - THE ROAD AHEAD WAYS OPENED - 111](11Nov2026%20-%20C191%20-%20iOS%20Simulator%20-%20THE%20ROAD%20AHEAD%20WAYS%20OPENED%20-%20111.png)
+
+### 11Nov2026 - C273 - iOS Simulator - LIBRARY shelf - 112
+
+iPhone Simulator: the LIBRARY shelf and its covers.
+
+![11Nov2026 - C273 - iOS Simulator - LIBRARY shelf - 112](11Nov2026%20-%20C273%20-%20iOS%20Simulator%20-%20LIBRARY%20shelf%20-%20112.png)

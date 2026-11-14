@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 250" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="10">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16161a"/></marker></defs>
+  <!-- the frame, from the front: two lenses, the bridge, the module on the right temple -->
+  <rect x="60" y="92" width="120" height="84" rx="34" fill="#eef3f6" stroke="#16161a" stroke-width="3"/>
+  <rect x="230" y="92" width="120" height="84" rx="34" fill="#eef3f6" stroke="#16161a" stroke-width="3"/>
+  <path d="M180 116 Q205 100 230 116" fill="none" stroke="#16161a" stroke-width="3"/>
+  <path d="M60 112 L36 106" stroke="#16161a" stroke-width="3"/>
+  <!-- the module: the board on the temple, the prism hanging before the right eye -->
+  <rect x="350" y="84" width="118" height="40" rx="8" fill="#2b2f45" stroke="#16161a" stroke-width="2"/>
+  <rect x="300" y="100" width="40" height="40" fill="#9fd3e6" fill-opacity=".55" stroke="#16161a" stroke-width="2"/>
+  <rect x="310" y="110" width="20" height="20" fill="#16161a"/>
+  <text x="320" y="124" fill="#e8f4ff" font-size="7" font-weight="700" text-anchor="middle">9:41</text>
+  <path d="M340 112 L350 104" stroke="#16161a" stroke-width="2"/>
+  <circle cx="398" cy="104" r="7" fill="#e8b04a" stroke="#16161a" stroke-width="1.5"/>
+  <rect x="428" y="98" width="12" height="7" rx="2" fill="#8a8170" stroke="#16161a"/>
+  <rect x="452" y="98" width="10" height="12" rx="2" fill="#8a8170" stroke="#16161a"/>
+  <rect x="468" y="96" width="8" height="16" rx="2" fill="#8a8170" stroke="#16161a"/>
+  <g stroke="#16161a" fill="none" stroke-width="0.8">
+    <path d="M240 42 L316 104" marker-end="url(#ar)"/>
+    <path d="M380 40 L396 94" marker-end="url(#ar)"/>
+    <path d="M488 40 L436 94" marker-end="url(#ar)"/>
+    <path d="M440 210 L456 114" marker-end="url(#ar)"/>
+    <path d="M500 196 L473 115" marker-end="url(#ar)"/>
+  </g>
+  <g fill="#16161a">
+    <text x="230" y="24" text-anchor="middle" font-weight="700">THE PRISM</text>
+    <text x="230" y="36" text-anchor="middle">a 126-pixel square, before one eye</text>
+    <text x="380" y="24" text-anchor="middle" font-weight="700">THE BUTTON</text>
+    <text x="380" y="36" text-anchor="middle">a touch: tap, two taps, hold</text>
+    <text x="516" y="24" text-anchor="end" font-weight="700">BOOT</text>
+    <text x="516" y="36" text-anchor="end">a tap, too</text>
+    <text x="440" y="224" text-anchor="middle" font-weight="700">USB-C</text>
+    <text x="440" y="236" text-anchor="middle">charging, and the cable</text>
+    <text x="500" y="210" text-anchor="end" font-weight="700">ON / OFF</text>
+    <text x="10" y="236" text-anchor="start" fill="#6b6b73">a drawing: where each part sits differs from frame to frame</text>
+  </g>
+</svg>

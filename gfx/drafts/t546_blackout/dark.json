@@ -1,0 +1,312 @@
+{
+ "ticket": "T-546",
+ "status": "DRAFT -- nothing in the engine (BLACKOUT_APPROVED is empty)",
+ "dim": {
+  "0": 0.4,
+  "1": 0.3,
+  "2": 0.18
+ },
+ "breath_low": 0.7,
+ "breath_lift": [
+  2,
+  0,
+  3
+ ],
+ "engine_design": [
+  "WHY NOT THE WINDOW: FRLG's dark is WIN0, a circle of radius sFlashLevelToRadius[flashLevel] (24 px unlit) drawn per scanline by HBlank DMA into WIN0H; outside it WINOUT shows only BG0 (overworld.c InitOverworldGraphicsRegisters), so the map is not drawn there at all and the backdrop shows -- no thread can be seen outside the circle. A hardware darken outside the window (BLDCNT effect 3, BLDY) keeps every colour's RATIO, so threads at 31 and a purple at 22 come out 6 and 5 at BLDY 13: never black-with-threads. An HBlank palette DMA lights a band, not a circle, and DMA0 already carries WIN0H. No spare BG for a threads layer (BG0 is the text, BG1-3 the map).",
+  "THE MECHANISM (cheapest real one): a palette override at the copy to PLTT, as T-483's pulse and T-528's aurora already do -- the buffers are never touched, so fades, the battle transition, HALFTONE and every palette reload work unchanged, and trap 30's two PLTT paths are already hooked (palette.c's TransferPlttBuffer and BeginNormalPaletteFade both call Pulse_ApplyToPltt). New src/daemons_blackout.c (+ include/daemons_blackout.h, + its .o in ld_script.ld beside daemons_pulse.o): Blackout_Tick() in main.c beside Pulse_Tick(); Blackout_ApplyToPltt() called LAST in daemons_pulse.c's Pulse_ApplyToPltt, so the dark outranks the pulse and the creator's tint and the breath rides on top of them. It acts only while DaemonsFieldOnScreen() and gMapHeader.mapLayout->secondaryTileset == &gTileset_RockTunnel (THE BLACKOUT's two maps; OTHER CAVE's header is gTileset_OtherCave, so it never darkens).",
+  "BEFORE VERBOSE (flashLevel != 0): every BG entry of rows 0..12 written 0 (black, the backdrop too) but the six thread slots (row 8: 6 7 8, row 10: 1 2 3), each its buffer colour x DIM (core 102/256, mid 77, halo 46). WINOUT gains BG1|BG2|BG3 (not OBJ) on these two maps -- in InitOverworldGraphicsRegisters and wherever WINOUT is restored -- so the map draws everywhere in the dark palette while WIN0's circle still decides which SPRITES show (the player and the follower inside 24 px, nothing beyond, as vanilla hides a trainer in the dark). No circle is seen: palette RAM is one per frame, so the screen is black and the threads, the player in it.",
+  "VERBOSE: AnimateFlash(0) (field_screen_effect.c) calls Blackout_Illuminate(frames), frames being the circle's own growth ((200 - 24) / 2 x 2 = 176): sLit climbs 0..256 in step, each entry drawn lerp(dark, lit, sLit), so the purple rises while VERBOSE's light spreads and its circle uncovers the sprites. Map load (overworld.c, where InitCurrentFlashLevelScanlineEffect runs) sets sLit = flashLevel ? 0 : 256.",
+  "AFTER (flashLevel == 0): the threads as the buffer has them (bright); every other entry of rows 8..12 scaled by BREATH_LOW + (1 - BREATH_LOW) x s and lifted (r +2, b +3 at the top), s = Pulse_Phase() / 256 -- the pulse's eight-second breath, so the cave breathes with the companion and the boards. Rows 0..7 are not touched lit.",
+  "COST: ROM about 700 bytes of code and a 12-byte slot table; IWRAM about 6 bytes (sLit, sRise, sOn: statics land in IWRAM, 2.4 KB free); EWRAM 0; palette rows 0 new (six slots vanilla left magenta); VRAM 0 (the tileset keeps its 256 tiles); vblank about 208 entries a frame for the ~3 s of the rise, 75 a frame lit, 6 + a fill unlit.",
+  "RISKS: (1) the first frame back on the field after a battle or a menu -- if CB2 is not yet CB2_Overworld when the map palettes reach PLTT unfaded, one frame shows lit purple; film it with the theatre's pburst (trap 30's method) and widen the test to the field's load callbacks if so. (2) The battle transition: TRANSITION_TYPE_FLASH (B_TRANSITION_BLUR / GRID_SQUARES) runs under CB2_Overworld, so the dark holds through it, and a fade to black reads the buffer, so the threads fade with it; a fade to WHITE would leave the black entries black -- none starts from the dark today. (3) HALFTONE: grey outranks the pulse; here the dark should still outrank grey (grey threads in the black) -- a decision. (4) THE CREATOR'S HOUR's bloom brightens inside WIN0 only (daemons_hours.c BLOOM_WININ): in the dark it would lift the circle's black toward grey; skip the bloom while Blackout is dark. (5) The follower is already hidden in the dark (daemons_follower.c FollowerIsHidden). (6) OTHER CAVE shares the tiles: its four lights hide the threads (palettes_other*, written with the tiles). (7) The rest of the game's caves: untouched -- the override is keyed on the tileset, and RockTunnel_1F/B1F are the only maps with requires_flash; a later dark cave would need its own slot table. (8) The card is drawn before the map loads (RunMapPreviewScreen, not CB2_Overworld): the override never reaches it.",
+  "OPTIONS on the same hook: the threads breathe too in the dark (DIM between 0.3 and 0.45 on the same phase -- a pulse you can see before you can see anything else); or C's fracture flows (its core, mid and halo slots rotated every 8 frames -- a palette cycle on the thread slots, 0 extra bytes)."
+ ],
+ "directions": {
+  "a": {
+   "title": "THE LIVE WIRE",
+   "slots": [
+    {
+     "row": 8,
+     "index": 6,
+     "level": "core",
+     "lit": [
+      15,
+      31,
+      19
+     ],
+     "dark": [
+      6,
+      12,
+      7
+     ]
+    },
+    {
+     "row": 8,
+     "index": 7,
+     "level": "mid",
+     "lit": [
+      5,
+      26,
+      13
+     ],
+     "dark": [
+      1,
+      7,
+      3
+     ]
+    },
+    {
+     "row": 8,
+     "index": 8,
+     "level": "halo",
+     "lit": [
+      2,
+      15,
+      8
+     ],
+     "dark": [
+      0,
+      2,
+      1
+     ]
+    },
+    {
+     "row": 10,
+     "index": 1,
+     "level": "core",
+     "lit": [
+      15,
+      31,
+      19
+     ],
+     "dark": [
+      6,
+      12,
+      7
+     ]
+    },
+    {
+     "row": 10,
+     "index": 2,
+     "level": "mid",
+     "lit": [
+      5,
+      26,
+      13
+     ],
+     "dark": [
+      1,
+      7,
+      3
+     ]
+    },
+    {
+     "row": 10,
+     "index": 3,
+     "level": "halo",
+     "lit": [
+      2,
+      15,
+      8
+     ],
+     "dark": [
+      0,
+      2,
+      1
+     ]
+    }
+   ]
+  },
+  "b": {
+   "title": "LIGHT IN THE SEAMS",
+   "slots": [
+    {
+     "row": 8,
+     "index": 6,
+     "level": "core",
+     "lit": [
+      21,
+      31,
+      15
+     ],
+     "dark": [
+      8,
+      12,
+      6
+     ]
+    },
+    {
+     "row": 8,
+     "index": 7,
+     "level": "mid",
+     "lit": [
+      5,
+      18,
+      9
+     ],
+     "dark": [
+      1,
+      5,
+      2
+     ]
+    },
+    {
+     "row": 8,
+     "index": 8,
+     "level": "halo",
+     "lit": [
+      3,
+      15,
+      7
+     ],
+     "dark": [
+      0,
+      2,
+      1
+     ]
+    },
+    {
+     "row": 10,
+     "index": 1,
+     "level": "core",
+     "lit": [
+      21,
+      31,
+      15
+     ],
+     "dark": [
+      8,
+      12,
+      6
+     ]
+    },
+    {
+     "row": 10,
+     "index": 2,
+     "level": "mid",
+     "lit": [
+      5,
+      18,
+      9
+     ],
+     "dark": [
+      1,
+      5,
+      2
+     ]
+    },
+    {
+     "row": 10,
+     "index": 3,
+     "level": "halo",
+     "lit": [
+      3,
+      15,
+      7
+     ],
+     "dark": [
+      0,
+      2,
+      1
+     ]
+    }
+   ]
+  },
+  "c": {
+   "title": "THE FAULT",
+   "slots": [
+    {
+     "row": 8,
+     "index": 6,
+     "level": "core",
+     "lit": [
+      13,
+      31,
+      24
+     ],
+     "dark": [
+      5,
+      12,
+      9
+     ]
+    },
+    {
+     "row": 8,
+     "index": 7,
+     "level": "mid",
+     "lit": [
+      4,
+      27,
+      17
+     ],
+     "dark": [
+      1,
+      8,
+      5
+     ]
+    },
+    {
+     "row": 8,
+     "index": 8,
+     "level": "halo",
+     "lit": [
+      1,
+      14,
+      10
+     ],
+     "dark": [
+      0,
+      2,
+      1
+     ]
+    },
+    {
+     "row": 10,
+     "index": 1,
+     "level": "core",
+     "lit": [
+      13,
+      31,
+      24
+     ],
+     "dark": [
+      5,
+      12,
+      9
+     ]
+    },
+    {
+     "row": 10,
+     "index": 2,
+     "level": "mid",
+     "lit": [
+      4,
+      27,
+      17
+     ],
+     "dark": [
+      1,
+      8,
+      5
+     ]
+    },
+    {
+     "row": 10,
+     "index": 3,
+     "level": "halo",
+     "lit": [
+      1,
+      14,
+      10
+     ],
+     "dark": [
+      0,
+      2,
+      1
+     ]
+    }
+   ]
+  }
+ }
+}

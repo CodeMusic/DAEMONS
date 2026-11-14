@@ -76,10 +76,10 @@ follows the real calendar's holidays, and gives each edition an instrument to pl
 daemons have all been drawn again, in a style of their own.
 
 Releases come often, each one named for the version of the design bible it was built against
-(see [Releases](Releases)); the newest is **v11.353.1**, from 2026-11-11, and
-the newest thing in it that can be told about: the last of
-the ground's edges -- a sand corner, a forest path, a cliff's foot -- are drawn like copper on a circuit board, so every
-outdoor tile is now drawn for DAEMONS. Before it, the ship's wake came to trail from her waterline. Next, the SAFARI ZONE becomes THE WALLED GARDEN. What is done and what is not is kept honestly in the
+(see [Releases](Releases)); the newest is **v11.363.1**, from 2026-11-11, and
+the newest thing in it that can be told about: THE WALLED
+GARDEN's rooms are a glasshouse -- light comes in, and nothing is seen out. Before it, the SAFARI ZONE became THE
+WALLED GARDEN, and its WARDEN its GATEKEEPER. Next, the SAFARI ZONE becomes THE WALLED GARDEN. What is done and what is not is kept honestly in the
 [design bible](https://github.com/CodeMusic/DAEMONS/blob/main/docs/vision.md) and the
 [TODO list](https://github.com/CodeMusic/DAEMONS/blob/main/docs/TODO.md).
 

@@ -1,0 +1,81 @@
+{
+ "rom": "debug",
+ "about": "The four fixes from the 2026-11-12 backlog film, filmed again (engine branch off context-content): the S.S. ANNE's departure wake behind her hull from the first frame and out of the stern (src/ss_anne.c y 121), the player drawn in front of her new funnel at the pier's end (the ship's subpriority fixed at 0xFE for the scene), and KEEPALIVE PLANT's card exiting as a CAVE card (flash and nested rectangles) instead of the FOREST cross-fade that left a seam over the void. Same stops and bursts as backlog_2026-11-12's 1 and 2, so the frames compare index for index; the PLANT's burst runs longer for the cave card's flash. Watch held at day, clear weather, follower away; the theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1",
+    "flag FLAG_FOLLOWER_OFF 1"
+   ]
+  },
+  {
+   "stop": "T-447 pair 7: the S.S. ANNE leaves VERMILION -- the wake (y 121) wholly behind her at first, the player in front of her funnel",
+   "timeout": 1200,
+   "steps": [
+    "goto VermilionCity 23 31",
+    "repel 999",
+    "close",
+    "wait 30",
+    "flag FLAG_HIDE_SS_ANNE 0",
+    "var VAR_MAP_SCENE_VERMILION_CITY 1",
+    "shot on VERMILION's quay, the departure armed",
+    "poke gDaemonsDebugWarp+1 8 1",
+    "poke gDaemonsDebugWarp+2 8 4",
+    "poke gDaemonsDebugWarp+4 16 32",
+    "poke gDaemonsDebugWarp+6 16 14",
+    "poke gDaemonsDebugWarp 8 1",
+    "burst \"departure, the horn and the first puffs\" 50 4",
+    "burst \"departure, under way\" 60 16",
+    "wait 120",
+    "close",
+    "shot back on VERMILION, the ship gone",
+    "expect VermilionCity"
+   ]
+  },
+  {
+   "stop": "T-445: KEEPALIVE PLANT's card, walked in from ROUTE 10 -- now a CAVE card: flash and nested rectangles, as MONEAN and DOLDRUM",
+   "steps": [
+    "goto Route10 7 42",
+    "repel 999",
+    "close",
+    "wait 30",
+    "to 7 41",
+    "close",
+    "wait 20",
+    "shot at the PLANT's door",
+    "burst \"KEEPALIVE PLANT card\" 50 8 UP 16",
+    "wait 120",
+    "close",
+    "shot KEEPALIVE PLANT inside",
+    "expect PowerPlant"
+   ]
+  },
+  {
+   "stop": "T-445: MONEAN CHAMBER's card (the rose pigment band), walked in from TANOBY RUINS",
+   "steps": [
+    "goto SevenIsland_TanobyRuins 120 11",
+    "repel 999",
+    "wait 30",
+    "finish",
+    "wait 90",
+    "finish",
+    "wait 120",
+    "finish",
+    "to 120 11",
+    "finish",
+    "wait 60",
+    "finish",
+    "wait 20",
+    "shot at MONEAN's door",
+    "burst \"MONEAN CHAMBER card\" 30 8 UP 16",
+    "wait 120",
+    "close",
+    "shot MONEAN CHAMBER inside",
+    "expect SevenIsland_TanobyRuins_MoneanChamber"
+   ]
+  }
+ ]
+}

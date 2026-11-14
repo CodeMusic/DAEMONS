@@ -157,6 +157,25 @@ At the top: the **day of the week**, its **note** and the **season**, then the d
 under it. Each day of the week has its own colour, note and virtue, and the whole app is dressed in the day's colour.
 CONTENT keeps the northern year's seasons; CONTEXT the southern.
 
+Beside the note is a small **tuning fork**. Tap it and a **singing bowl** opens in the day's colour, patterned with the
+day's centre and its virtue over its shadow, and it rings the day's note. Tap the bowl to ring it again; tap outside
+it, or **[x]**, to close it.
+
+## THE CALENDAR {#calendar}
+
+Beside the date is a small **calendar**, in the month's colours: the months go round the wheel of the week's hues, red
+in January to violet in December. Under the date, a line says the month's tone.
+
+Tap the calendar to open **THE CALENDAR**. At the top is the month: its name, where it comes from, its colours and
+its practice, and the month's own bowl to ring. Under it, **MONTH**, **WEEK** and **DAY** show the events in your
+phone's calendar. The first time, the phone asks to share its calendar with DAEMONS; allow full access to see and
+change your events. Tap an event to change it or remove it, or **+** to add one; a repeating event changes only at
+the time you tapped. Your events stay on the phone. Said no by mistake? The phone's Settings, **Privacy & Security**,
+**Calendars**, turns it back on.
+
+The months follow your hemisphere: CONTENT reads the northern year, CONTEXT the southern, and SETTINGS, **THEME**,
+**THE MONTH'S SEASON**, can choose the other.
+
 ## THE ONE THING {#onething}
 
 Under the day is **THE ONE THING**: the very next step of your goal, and nothing else. When you have done it, tap
@@ -164,6 +183,19 @@ Under the day is **THE ONE THING**: the very next step of your goal, and nothing
 
 With no goal yet, it says *Nothing to do yet. Add a goal, and the first step will wait here.* Goals are made on
 **JOURNEY** ([GOALS](#goals)).
+
+## THE DAY'S TENDING {#tending}
+
+Once **THE SUBTLE LAYER** stands on the LIBRARY's first shelf, TODAY has a card called **THE DAY'S TENDING**. Each day
+of the week has its own centre in the body, from **the root** on Sunday up to **the crown** on Saturday. The card gives
+that day's centre and how to tend it, in the book's own words. On a Thursday it reads: *The throat: sing, and say your
+goals aloud.*
+
+When you have done it, tap **Tended**. It counts once a day. Two days can tend themselves: on Sunday, a walk of a
+thousand steps or more tends the root, and on Friday, a dream kept tends the third eye. The card says which it was.
+
+Under it is **the week's climb**: seven circles, root to crown, starting on Sunday, with each day tended filled in and
+the days still ahead faint. They are all one purple, the book's own, never a colour for each centre. *So they climb.*
 
 ## A glance at everything {#glance}
 
@@ -243,6 +275,10 @@ you are not looking, and a day or two of care puts any of it right. A feeling is
 A daemon away grows. Every step of your goal you finish counts as a meal and gives it experience. When it has grown,
 the card says so: *Grown here: level 12 to 13. It takes that home with it.*
 
+When your daemon **changes form**, here or in the game and brought home by SYNC, it is still the same daemon. Once THE
+SUBTLE LAYER is on your shelf, for a week after the change a line sits under its own words, in the book's purple:
+*Still me.*
+
 ## The SYNC card {#synccard}
 
 Under the care is the **SYNC** card. It reads *Close the game, then SYNC to bring your save across.* When the game is
@@ -310,6 +346,29 @@ the weather on the way -- and gives the painting a title and a line about it. A 
 **THE GALLERY**, under the easel, keeps every painting, a wall for each daemon, each one framed. Tap a painting to see
 it large; hold it to see **WHAT WAS ASKED**. **TAKE IT DOWN** takes one off the wall.
 
+## CREATIONS {#creations}
+
+**CREATIONS ›**, under its card on **Yours** (and under SLEEP SOUNDS), is one gallery of everything the daemons have
+made: **SLEEP SOUNDS** and **PAINTINGS**. Choose where to look:
+
+- **MINE** -- what is on this phone.
+- **HOUSEHOLD** -- everything the hub keeps, from every device at home. A **✓** marks what this phone already has, and
+  **Only what this phone does not have** hides those.
+- **COMMUNITY** -- what homes have shared on THE COMMONS. It needs your home linked to THE COMMONS, in SETTINGS.
+
+Tap one to open it: who made it, who asked for it, and when. **DOWNLOAD TO THIS PHONE** keeps it here. From HOUSEHOLD,
+**SHARE WITH THE COMMUNITY** puts it on THE COMMONS for other homes. On this phone, **LET IT GO FROM THIS PHONE**
+removes it here, and the hub still keeps it.
+
+**A sleep piece plays like a record.** Its cover is round, with its title on a label under the hole. Around its edge
+the night is drawn clockwise, a tick a minute in the colour of DRIFT DOWN's beat that minute, lit as the night reaches
+it. Tap the record to see the music's **spectrum** instead, and tap again for the cover. **PLAY 30 MINUTES** and
+**DRIFT DOWN** work as they do on SLEEP SOUNDS, and the player says how long until it fades.
+
+**EXPORT** makes the night into a file to keep or open elsewhere: one **MP3**, an **MP3 + DRIFT DOWN** with the beat
+under the music, or a **PULSEENTRAIN** session to open in that app. The hub makes the files, so the first time can take
+a little while.
+
 ## SOUNDINGS {#soundings}
 
 **SOUNDINGS** is one quiet card for each daemon away: when it was last heard, and how it was doing then -- *No signal
@@ -321,6 +380,11 @@ nothing to fix, no score and no streak: only what was heard.
 Once your game holds a certain book, a card called **READS** joins the DAEMON page. Now and then, on a watch, your
 daemon notices something before it happens -- someone close by, rain on the way, a still night -- and gives you **a
 read**. The companion keeps count of which came true, and never says one was right before it has.
+
+Each read is kept with its day, the day's centre, and whether it came **calm** or **with argument**. Sometimes your
+daemon only **leans** one way. A lean that came true says *Landed.*; one that did not says *A misread.*, and under it
+the book's own line: the information was accurate, and the conclusion is the misread. Once there are a few, READS
+keeps a tally of how many calm reads and how many argued reads landed. *The log decides. The calm only points.*
 
 # Talking with your daemon {#talk .t-EMERGENT}
 
@@ -405,8 +469,9 @@ chooses the instruments, its feelings the key and the pace, and what it needs wh
 thirsty one, a hearth for a hungry one. **MAKE TONIGHT'S** asks the hub for it; it takes about three minutes, and is
 kept on the phone once it comes.
 
-**PLAY 30 MINUTES** plays it for half an hour, fading away over the last ten. **MAKE ANOTHER** makes a new one, and
-**KEPT FROM OTHER NIGHTS** holds the ones before.
+Each piece comes with a title, and a cover your daemon paints for it. **PLAY 30 MINUTES** plays it for half an hour,
+fading away over the last ten. **MAKE ANOTHER** makes a new one, and **CREATIONS ›** holds the ones before
+([CREATIONS](#creations)).
 
 **DRIFT DOWN** is for headphones: a slow beat between your ears under the music, easing from alpha to theta to delta
 as you fall asleep. Without headphones the music plays alone until they are on.
@@ -484,6 +549,10 @@ better.
 The first step not yet done is **THE ONE THING** on TODAY. Each step you finish counts as a meal for your daemon and
 gives it experience, which it takes home at the next SYNC. A goal met puts a gold star by it for the week.
 
+Once THE SUBTLE LAYER is on your shelf, a goal also **weathers a mark in**: a small stack of seven layers beside it,
+in the book's purple. Each day you tick a step adds one layer, however many steps you tick that day, and the mark says
+*Weathered in over 3 days.* Ticking more today says *Today counts once, however many steps.*
+
 ## WALKING {#walking}
 
 Under the goal is **WALKING**: the steps you have walked today, of a daily goal you choose -- **6k**, **8k**, **10k** or
@@ -494,7 +563,8 @@ Reaching the goal counts as activity for your daemon: *Reached: your daemon is g
 
 The **JOURNAL** is yours to keep. You can have several, each with a title.
 
-1. Under **YOUR JOURNALS**, type a title -- *This autumn* -- and tap **Start it**.
+1. Under **YOUR JOURNALS**, type a title -- *This autumn* -- choose **WHAT KIND** it is, **STANDARD** or **DREAM
+   JOURNAL**, and tap **Start it**. A dream journal is marked **DREAMS**, and its button reads **+ NEW DREAM**.
 2. Open it, and tap **+ NEW ENTRY**. Give it a title if you like, write what happened and what you noticed, and tap
    **Save entry**.
 3. Tap an entry to read it again, **Edit** it, or **Remove** it. **Rename** and **Remove** at the top change the whole
@@ -518,6 +588,21 @@ Then, beside the chapter:
 
 If it could not be written, **Try again**, or **Lay it out as written**, which sets your own entries on the page just
 as you wrote them. With no mind in the house, or on a phone on its own, that is what happens at once.
+
+## The signs {#signs}
+
+Every journal can look for what is hidden in it. Beside an entry or a chapter, tap **✦ SIGNS AND PATTERNS** -- in a
+dream journal, **✦ READ THE SIGNS**. Your daemon reads the words through the four books -- THE SUBTLE LAYER, THE
+HERMETIC LAYER, THE EUDAIMON LAYER and THE UNITY BOOK -- and finds three to six signs: an image, a creature, a
+colour, a number, a place that keeps returning. For each it shows where it appears in your words, what it may mean,
+and the books it was read through; under them, **TOGETHER**, what the signs say as one. **Read them again** asks for a
+fresh reading.
+
+In a **dream journal**, a chapter is told as your dreams in order, and its signs are read as soon as the chapter is
+written. A sign is always something your own words hold; the books are only how it is read. They offer, never
+pronounce: nothing here diagnoses, predicts or advises.
+
+With no mind in the house, or on a phone on its own, the signs come from the books' own readings of the symbols found.
 
 ::: note
 **The JOURNAL is always written at home.** Your entries go to your own hub's mind, and to nothing outside the house.
@@ -555,6 +640,9 @@ THE SUBTLE LAYER also holds **THE CARDS**, folded under its cover as a deck: tou
   Deck of Reason**, **The Deck of Instinct**, or both together. Touch the spread to draw a card; touch a card on the
   board to turn it over. Under a turned card is its prophecy, a few sentences of its own.
 - Now and then a card is **✦ SHINY ✦**, its colours inverted and its edge gold.
+- In THE SUBTLE LAYER, **PAST · PRESENT · FUTURE** is laid **once a day and kept**. Before it is drawn, all twenty-two
+  cards lie faint. Once they are turned, PAST and PRESENT stay where they fell; touch one and it says *That is the lever
+  you cannot pull.* Only the future can change: **DRAW THE FUTURE AGAIN**.
 
 The cards are only read. They never change your daemon or your save.
 
@@ -737,6 +825,12 @@ The title screen offers **PLAY** and **HOW TO PLAY**. The buttons are drawn on t
   the game, draws its layout under the game; **ON-SCREEN CONTROLS** goes back.
 - **A keyboard** on an iPad or Mac: **X** is A and **Z** is B.
 - **‹ TITLE** goes back to the title screen.
+
+On a phone paired with the companion, the title also offers **LINK CABLE**: two games joined by a cable, as two Game
+Boy Advances would be, so two players can meet at the Cable Club and trade. The companion runs both games itself, and
+each phone plays its own: pick **PLAYER 1 · CONTENT** or **PLAYER 2 · CONTEXT** at the top, and play that game's screen
+with its buttons. **‹ TITLE** goes back. It works at home or on your tailnet, where the companion's hub can be reached,
+and not away from it.
 
 The game pauses whenever another tab is shown, and plays on when you come back.
 
@@ -1063,14 +1157,23 @@ heard once -- an INDEX entry, a page -- are kept on the phone, and open away fro
 # Settings {#settings .t-HARDENED}
 
 **⚙**, at the top right, opens SETTINGS. What you see depends on where you are: a paired phone, a phone on its own, or
-the hub's own site.
+the hub's own site. Its tabs, along the top: **GENERAL**, **THEME**, **VOICES** and **SYSTEM**.
 
 {{pictures settings | SETTINGS: THIS APP, and YOUR DAEMONS SAVE.}}
 
+## THEME {#theme}
+
+- **LIGHT OR DARK** -- **Auto** follows the phone or the computer; or choose **Light** or **Dark**.
+- **THE DAY'S COLOUR** -- the colours the days wear: **The site's**, or **Rainbow**.
+- **ACCENTS FROM THE GAME** -- colours from the game. Every place you have saved in, or reached, gives its own; the hub reads them
+  from your save. **In step with the game** wears the place you saved in last, and some places **breathe**. Choose any
+  place you have unlocked to wear it instead, or **Off**, the day's colour alone. Whatever you wear, the day's colour stays: on TODAY's card,
+  on the calendar, and on the line under the header.
+- **THE MONTH'S SEASON** -- whose year THE CALENDAR's months follow: **As the edition**, **North** or **South**.
+
 ## On every screen {#settings-all}
 
-- **THIS APP** -- the build you are running, and whether a newer one is ready. **LIGHT OR DARK**: **Auto** follows the
-  phone or the computer; or choose **Light** or **Dark**.
+- **THIS APP** -- the build you are running, and whether a newer one is ready.
 - **DEVELOPER MODE** -- off unless you turn it on. It is for the people who build the companion: a **</>** tab, a
   record of what the app is doing, and ways to try things without playing to them. Nothing in it reaches your save.
 

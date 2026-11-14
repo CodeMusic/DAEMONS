@@ -95,6 +95,10 @@ ARGS = {
     #  9, 10 (SLATE's MUSEUM OF ERRATA, the WARDEN's house, SELPHY's house), and the report exits 1 when the engine is
     #  not what that write makes.
     "gbamuseum": [["--approved", "--pick", "A"]],
+    #  T-540: the same shape; the user picked "C THE GLASSHOUSE" (and the GATEKEEPER's shelf to match) on 2026-11-14.
+    #  The write redraws safari_zone_building's tiles and rows 8, 9 and museum tiles 129..136 (gbamuseum's LATER_T540),
+    #  and the report exits 1 when the engine is not what that write makes.
+    "gbagarden": [["--approved", "--pick", "C"]],
     #  T-542 batch 1: the same shape; the user picked "A Hearth" on 2026-11-10. The write redraws batch 1's 53 tiles of
     #  primary/general's tiles.png (THE ROAD GATES; never a palette, block or map), and the report exits 1 when the
     #  engine is not what that write makes. Batch 2 (THE TOWN PIECES): the user, 2026-11-10, "build as drawn; cave
@@ -128,6 +132,11 @@ ARGS = {
     #  "PLANT A, TANOBY A" on 2026-11-11 (CARDS_APPROVED); `--cards --approved` writes those two into the plant's and
     #  MONEAN's card folders, so a sandboxed write changes nothing when the engine is right. The plain run keeps the report.
     "gbapreviews": [[], ["--cards", "--approved"]],
+    #  T-546: gbacaves' --write refuses without --approved, so --writes never saw it. The user picked "B LIGHT IN THE
+    #  SEAMS" on 2026-11-11 (BLACKOUT_APPROVED); `--approved` writes every approved cave and lays THE BLACKOUT's B over
+    #  batch E's rock_tunnel last (and hides its threads in OTHER CAVE's four lights). The card ("B only the threads")
+    #  is in gbapreviews' CARDS_APPROVED, which the `--cards --approved` run above writes.
+    "gbacaves": [["--approved"]],
 }
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
 SKIPPED = {name: "docs/private/notebook_docs.json is missing (private, not in git), and gbadocs without it is not a check"
