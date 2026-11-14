@@ -370,12 +370,11 @@ PARTY = [("EEVEE", 34, 102, 102), ("CHARMANDER", 31, 88, 88), ("PIDGEY", 29, 64,
 
 
 def std_frame_box(im, x, y, wt, ht):
-    """The engine's own std frame (type1, the user's chosen TERMINAL since T-523) round a wt x ht tile window, paper
-    filled, as DrawStdFrameWithCustomTileAndPalette lays it."""
-    w, h, bd, pal, px = load_png(os.path.join(G, "text_window/type1.png"))
-    fpal = gbapal(os.path.join(G, "text_window/type1.gbapal")) if os.path.exists(
-        os.path.join(G, "text_window/type1.gbapal")) else pal
-    paper = jasc(os.path.join(G, "text_window/stdpal_0.pal"))[1]
+    """The engine's std frame round a wt x ht tile window, paper filled, as DrawStdFrameWithCustomTileAndPalette lays
+    it: graphics/text_window/std.png in stdpal_3, as LoadStdWindowGfx loads them (T-554: it is NOT type1 -- that is the
+    user frame; this mock drew type1 until 2026-11-14). std.png is read as it is now (T-554 version 1 once written)."""
+    w, h, bd, pal, px = load_png(os.path.join(G, "text_window/std.png"))
+    fpal = jasc(os.path.join(G, "text_window/stdpal_3.pal"))
     W, H = (wt + 2) * 8, (ht + 2) * 8
     g = canvas(W, H, 1)
     for ty in range(ht + 2):
@@ -386,7 +385,6 @@ def std_frame_box(im, x, y, wt, ht):
                 for xx in range(8):
                     g[ty * 8 + yy][tx * 8 + xx] = px[sy * 8 + yy][sx * 8 + xx] & 15
     fp = list(fpal) + [(0, 0, 0)] * 16
-    fp[1] = paper
     b = idx_rgba(g, fp)
     im.paste(b, (x - 8, y - 8), b)
 

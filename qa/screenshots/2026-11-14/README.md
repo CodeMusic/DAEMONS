@@ -234,3 +234,15 @@ T-554 DRAFT: the markings today (theatre or the engine's own render) beside its 
 T-554 DRAFT: the pcparts today (theatre or the engine's own render) beside its drafts at 2x and real size; nothing in the engine
 
 ![14Nov2026 - T554 - menu leftovers pcparts drafts - 43](14Nov2026%20-%20T554%20-%20menu%20leftovers%20pcparts%20drafts%20-%2043.png)
+
+### 14Nov2026 - T554 - built bag today and after - 44
+
+T-554 BUILT: the bag today beside the build (std 1, all A), filmed in the theatre on the debug ROM
+
+![14Nov2026 - T554 - built bag today and after - 44](14Nov2026%20-%20T554%20-%20built%20bag%20today%20and%20after%20-%2044.png)
+
+### 14Nov2026 - T554 - built windows today and after - 45
+
+T-554 BUILT: the MART money and quantity boxes, the save box, the party message box and the INDEX footer, today beside the build, filmed
+
+![14Nov2026 - T554 - built windows today and after - 45](14Nov2026%20-%20T554%20-%20built%20windows%20today%20and%20after%20-%2045.png)

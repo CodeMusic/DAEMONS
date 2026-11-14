@@ -56,7 +56,8 @@ ARGS = {
     "gbacalendar_ui": [["--approved"]],
     #  T-523: --write refuses without --approved and --main; the user chose A on 2026-11-06, and the write copies
     #  gfx/drafts/t523_frames/A into the engine, so a sandboxed write of it changes nothing when the engine is right.
-    "gbaframes": [["--approved", "--main", "A"]],
+    "gbaframes": [["--approved", "--main", "A"], ["--approved", "--std", "1"]],   # T-554: the std frame, version 1
+    "gbamenus3": [["--approved", "--all"]],                                        # T-554: the menu leftovers, all A
     #  T-524: the same shape; the user chose 2 Readout on 2026-11-06. The write copies gfx/drafts/t524_battle_ui/2 and
     #  splices tiles 66-70 into the elements sheet, so a sandboxed write changes nothing when the engine is right.
     "gbabattleui": [["--approved", "--main", "2"]],

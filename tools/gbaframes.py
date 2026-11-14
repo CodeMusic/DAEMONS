@@ -72,8 +72,9 @@ A = ap.parse_args() if __name__ == "__main__" else ap.parse_args([])
 
 MAIN_RECOMMENDED = "A"
 APPROVED = "A"                       # the user's pick, 2026-11-06: A TERMINAL, and the whole family with it
-#  T-554 (DRAFT 2026-11-14): the std frame, graphics/text_window/std.png. Nothing approved: --write --std refuses.
-APPROVED_STD = None
+#  T-554: the std frame, graphics/text_window/std.png. The user, 2026-11-14 (multiple choice): version 1, TERMINAL
+#  in stdpal_3 -- std.png only, no palette moves. --write --approved --std 1 writes it.
+APPROVED_STD = "1"
 STD_RECOMMENDED = "1"
 
 
@@ -824,6 +825,12 @@ def main():
         std_draft(A.std_draft)
         if not (A.write or A.draft):
             return 0
+    if A.std and not A.write:                            # report: the engine's std.png against the approved version
+        g, p3, said = std_versions()[A.std]
+        w, h, bd, pal, px = load_png(os.path.join(TW, "std.png"))
+        drift = [[v & 15 for v in r] for r in px] != g or text_pal(3) != p3
+        print("  std %s: %s" % (A.std, "DRIFT: engineGba's std.png is not this version" if drift else "the engine's"))
+        return 1 if drift and APPROVED_STD == A.std else 0
     if A.write and A.std:
         if not A.approved or APPROVED_STD != A.std:
             print("  --write --std %s refuses: APPROVED_STD is %r (the user has not picked the std frame)."

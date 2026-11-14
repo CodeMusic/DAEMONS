@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """T-554: the menu leftovers -- the Nintendo art every menu still shows, after T-523 and T-530 (batch 1 of the
-2026-11-14 re-census). DRAFT: nothing here is in the engine until the user picks.
+2026-11-14 re-census). APPROVED 2026-11-14 (the user: A for every piece; the std frame's version 1 is gbaframes').
 
     python3 tools/gbamenus3.py                      # report: each piece's engine files, its contract, APPROVED
     python3 tools/gbamenus3.py --draft [DIR]        # draw every piece's A/B/C into DIR (gfx/drafts/t554_menus/): the
@@ -73,7 +73,9 @@ NAMES = {
 }
 OFFERED = {p: "ABC" for p in PIECES}
 RECOMMENDED = {p: "A" for p in PIECES}
-APPROVED = {}          # nothing until the user picks (T-554 DRAFT, 2026-11-14)
+#  The user, 2026-11-14 (multiple choice): the bag A TERMINAL DESK, and A for every small piece (TEAL CHEVRON,
+#  SLATE KEY, TEAL CARET, RETURN KEY, KEYCAP, TERMINAL MARKS, SLAB AND RULE). --write --approved --all writes these.
+APPROVED = {p: "A" for p in PIECES}
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--draft", nargs="?", const=DRAFT_DEFAULT)
@@ -693,8 +695,8 @@ def keypad_art(direction):
             body = {"A": 1, "B": 1, "C": 3}[direction]
             for arm, pts in cells.items():
                 for dx, dy in pts:
-                    v = 4 if arm in arms else body
-                    put(g, cx + dx, cy + dy, v)
+                    v = body                      # the pressed arm keeps the face: 4 is only its pip (below),
+                    put(g, cx + dx, cy + dy, v)   # as today -- slot 4 is red in a light window, not in every one
                     if direction == "B":          # arms three wide
                         for o in (-1, 1):
                             if arm in "UD":
@@ -705,6 +707,9 @@ def keypad_art(direction):
                 for o in (-1, 1):
                     for o2 in (-1, 1):
                         put(g, cx + o, cy + o2, body)
+            for arm in arms:                      # the pressed arm's pip, one pixel, where vanilla put it
+                dx, dy = cells[arm][1]
+                put(g, cx + dx, cy + dy, 4)
             # the edge: 2 on every clear pixel right of or below the plus (the cap's shadow, as today)
             cell = [[g[y][x] for x in range(x0, x0 + 8)] for y in range(y4, y4 + 8)]
             for y in range(8):
@@ -1480,7 +1485,7 @@ NOTES = {
 
 
 def report():
-    print("gbamenus3 (T-554 DRAFT): the menu leftovers. APPROVED: %s" % (APPROVED or "none -- nothing is written"))
+    print("gbamenus3 (T-554): the menu leftovers. APPROVED: %s" % (APPROVED or "none -- nothing is written"))
     bad = 0
     for piece in PIECES:
         files = sorted(outputs(piece, "A"))
@@ -1492,7 +1497,34 @@ def report():
                 print("    %s %s: %s" % (d, NAMES[piece][d], "; ".join(errs)))
     sheet, per, ents, ents_pc, rows, miss = bag_build("A")
     print("  bag A: %d of the map's cells take a tile drawn for another cell (majority vote)" % miss)
-    return 1 if bad else 0
+    drift = differs(APPROVED)
+    for rel in drift:
+        print("  DRIFT: engineGba/graphics/%s is not what --write --approved --all makes" % rel)
+    return 1 if bad or drift else 0
+
+
+def differs(picks):
+    """The files a write of `picks` would change, compared decoded (indices and q5 colours), not byte for byte."""
+    import gbafont
+    out = []
+    for piece, d in picks.items():
+        for rel, payload in outputs(piece, d).items():
+            p = os.path.join(G, rel)
+            if not os.path.exists(p):
+                out.append(rel)
+                continue
+            if payload[0] == "png":
+                w, h, bd, plte, px = gbafont.png_load(p)
+                want = payload[1]
+                cur = [[v & 15 if payload[3] == 4 else v for v in r] for r in px]
+                pal_now = [tuple(q5(tuple(plte[i:i + 3]))) for i in range(0, len(plte), 3)]
+                n = 16 if payload[3] == 4 else len(payload[2])
+                if cur != [list(r) for r in want] or pal_now[:n] != [tuple(q5(c)) for c in payload[2]][:n]:
+                    out.append(rel)
+            elif payload[0] == "pal":
+                if [q5(c) for c in M.jasc(p)] != [q5(c) for c in payload[1]]:
+                    out.append(rel)
+    return out
 
 
 def main():
