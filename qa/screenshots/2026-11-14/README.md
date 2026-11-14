@@ -163,3 +163,21 @@ T-548 (DRAFT): with THE SUBTLE LAYER held the evolution's own words are followed
 The re-census of 14 Nov 2026: the pret/pokefirered art still in the GBA build for the top three batches, at 2x, each file in its own palette. 1, the menu leftovers: the std frame 25 screens load, the bag's background (recoloured only), the list arrows, SELECT, the bag-swap line, the close-bag arrow, the keypad glyphs and the markings. 2, the field overlays: the trainer emotes (the ! over every trainer who spots you), the quest log's frame, the HELP window, the itemfinder. 3, the 548 town and route tiles left in eleven Kanto secondaries, recoloured by T-438 but still pret's drawing.
 
 ![14Nov2026 - T438 - nintendo art left 14Nov - 28](14Nov2026%20-%20T438%20-%20nintendo%20art%20left%2014Nov%20-%2028.png)
+
+### 14Nov2026 - C362 - the song player - 32
+
+C-362 THE DAEMON SINGS (DRAFT): OVERLOADED's own song, 'Grey Skies and One Small Corner' -- its cover a record, playing from the phone's copy
+
+![14Nov2026 - C362 - the song player - 32](14Nov2026%20-%20C362%20-%20the%20song%20player%20-%2032.jpg)
+
+### 14Nov2026 - C362 - it sings - 33
+
+C-362: IT SINGS -- a prompt, your words with a style, or its own (the buttons since shortened to fit)
+
+![14Nov2026 - C362 - it sings - 33](14Nov2026%20-%20C362%20-%20it%20sings%20-%2033.jpg)
+
+### 14Nov2026 - C361 - the engine room creations - 34
+
+C-361 THE ENGINE ROOM's CREATIONS (DRAFT): every creation the hub keeps, filtered by kind and daemon, ticked and let go
+
+![14Nov2026 - C361 - the engine room creations - 34](14Nov2026%20-%20C361%20-%20the%20engine%20room%20creations%20-%2034.jpg)
