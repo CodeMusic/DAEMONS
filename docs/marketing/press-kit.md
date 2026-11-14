@@ -73,8 +73,9 @@ boards, a radio with a dial: any of them can host one, one daemon to each.
 A daemon out here can **talk** -- hold to talk, and it answers in the voice of its INDEX entry. That mind runs on
 hardware *you* own: the AX630 module on the companion's hub, LM Studio on your own computer, **or any
 OpenAI-compatible endpoint you link -- Ollama, LM Studio and their kin -- straight from the phone**, with the phone's
-own on-device model as one more mind. The player sets how far a thought may travel: anywhere, only at home, or only
-this phone. No account, no cloud required, and the app collects nothing for its developer.
+own on-device model as one more mind -- and a Tiiny on the network as another. **They are not a setting to pick
+between: THE MIND joins every one the phone can reach into one**, and each thought goes to the nearest, strongest
+mind that answers in time. The player sets how far a thought may travel: anywhere, only at home, or only this phone. No account, no cloud required, and the app collects nothing for its developer.
 :::
 
 ::: callout
@@ -160,7 +161,7 @@ One caption per card, ready to paste. Hashtags last, five at most; leave them of
 | 6 | **Two editions, one argument** | CONTENT and CONTEXT: one story, told two ways. The same type chart in both, because an argument that changes by cartridge isn't one. #DAEMONS #GBA |
 | 7 | **It doesn't have to stay in the cartridge** | In your party, choose SEND. Your daemon steps out of the game and onto your phone -- hungry, sleepy, glad to see you. SYNC, and it goes home with everything that happened. #DAEMONS #companion |
 | 8 | **One next step** | Tell your daemon what you want to get done. It finds one next step. Finish it, and that's a meal. #DAEMONS #productivity |
-| 9 | **A mind in your house** | Your daemon can talk -- and its mind runs on hardware you own, on your own network: an AX630 module, LM Studio, Ollama or any OpenAI-compatible endpoint you link, even from your phone (in testing). #DAEMONS #LocalAI #Ollama #LMStudio |
+| 9 | **A mind in your house** | Your daemon can talk -- and its mind runs on hardware you own, on your own network: an AX630 module, a Tiiny, or LM Studio, Ollama and any OpenAI-compatible model you link -- and your phone, hub and models think as one mind (in testing). #DAEMONS #LocalAI #Ollama #LMStudio |
 | 10 | **Any board can host one** | A watch, a pocket keyboard, a radio with a dial. Most LilyGO and M5Stack boards can host a daemon -- one daemon to each. #DAEMONS #ESP32 #M5Stack #LilyGO |
 | 11 | **Bring your own game** | DAEMONS is free and never sold. You bring the FireRed or LeafGreen you own; a patch makes DAEMONS from it. No ROM is ever shared. #DAEMONS #FanGame |
 | 12 | **It never explains itself** | Books hidden in the world. A record you fill in. A story told in pieces, at your own pace. You work it out. #DAEMONS |
@@ -271,9 +272,10 @@ PNGs. The colour band at the top of each is the type its idea belongs to.
 <div class="stripe"></div>
 <div class="k">09 · A MIND IN YOUR HOUSE</div>
 <h2>Its mind runs on hardware you own.</h2>
-<ul><li>The AX630 module on your hub</li><li>LM Studio on your own computer</li><li>Ollama · any OpenAI-compatible endpoint -- in testing</li></ul>
+<ul><li>The AX630 module on your hub</li><li>A Tiiny on your network</li><li>LM Studio, Ollama -- any OpenAI-compatible model</li></ul>
+<p style="font-size:8.6pt;margin-top:2mm">One mind, not a setting: your phone, the hub and every model you link think together -- the nearest, strongest one answers.</p>
 <div class="art">{{sprite.small HUNCH CLUSTER}}</div>
-<div class="foot"><span><b>DAEMONS</b> · no cloud required</span><span>collects nothing</span></div>
+<div class="foot"><span><b>DAEMONS</b> · no cloud required</span><span>in testing · collects nothing</span></div>
 </div>
 
 <div class="card t-SIGNAL">
