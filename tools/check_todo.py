@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""check_todo.py -- the record a fresh session reads first, checked (T-563).
+"""check_todo.py -- the record a fresh session reads first, checked (T-558).
 
 Fails (exit 1) on any of:
 
@@ -53,8 +53,7 @@ for l in todo:
     for m in re.finditer(r"\*\*T-(\d+)\*\*", l):
         taken.add(int(m.group(1)))
 for l in todo:
-    m = re.search(r"Reserved: T-(\d+) to T-(\d+)", l)
-    if m:
+    for m in re.finditer(r"Reserved: T-(\d+) to T-(\d+)", l):   # every block on the line, not the first
         lo, hi = int(m.group(1)), int(m.group(2))
         if all(i in taken for i in range(lo, hi + 1)):
             fail(f"reservation T-{lo} to T-{hi} is spent (every id taken) and still stands in docs/TODO.md")

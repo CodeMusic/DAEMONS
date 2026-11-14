@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""check_secrets.py -- the four things that never go in public writing, grepped for (T-560).
+"""check_secrets.py -- the four things that never go in public writing, grepped for (T-555).
 
 CLAUDE.md names four secrets the game asks the player to work out. They live in docs/private/ (gitignored). The
 2026-09-27 redaction swept them out of the tracked files once; by 2026-11-04 three of the four were readable again
@@ -13,6 +13,7 @@ passes quietly and says so: the check cannot carry the patterns itself, because 
 
 Run from the repo root; `--quiet` prints only failures. It is in the push routine's step 2.
 """
+import hashlib
 import re
 import subprocess
 import sys
@@ -22,6 +23,14 @@ ROOT = Path(__file__).resolve().parent.parent
 PATTERNS = ROOT / "docs/private/secrets_patterns.txt"
 TEXT = {".md", ".txt", ".json", ".html", ".css", ".py", ".sh", ".inc", ".c", ".h", ".s", ".yml", ".yaml", ".toml", ".mk", ".tex"}
 quiet = "--quiet" in sys.argv
+
+# Lines a pattern matches that the user judged clues, not the secret (2026-11-14): two of CALLOW SCHOOL's chalkboard
+# rows in docs/school.md, each one dated in-game line on its own. Each is accepted only as that exact line in that file
+# (a SHA-256 of the line, so the text is not repeated here): change a word and it is checked again.
+ACCEPTED = {
+    ("docs/school.md", "3df9b866529a3c1d9d3ff046977849a4be50937644899305004065f36560f9a1"),
+    ("docs/school.md", "33a20e530ad7e6260c1102eb43f4b4dfcd9fbbbcaf4b1377e8473720b3c173b2"),
+}
 
 if not PATTERNS.exists():
     print("check_secrets: no docs/private/secrets_patterns.txt here (a fresh clone, a cloud session or a worktree); "
@@ -60,7 +69,8 @@ for rel in files:
     for n, line in enumerate(text.split("\n"), 1):
         for lab, rx in patterns:
             if rx.search(line):
-                hits.append((rel, n, lab))
+                if (rel, hashlib.sha256(line.encode("utf-8")).hexdigest()) not in ACCEPTED:
+                    hits.append((rel, n, lab))
                 break
 
 if hits:
