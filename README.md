@@ -26,7 +26,7 @@ your daemon's care, talk and nights, MEETINGS, JOURNEY, the LIBRARY, the house's
 **From your own cartridge:** download a patch from [Releases](https://github.com/CodeMusic/DAEMONS/releases) and
 apply it to a *FireRed* or *LeafGreen* ROM you backed up yourself. [`ROM RELEASE/HOW_TO_PATCH.md`](ROM%20RELEASE/HOW_TO_PATCH.md)
 walks through it and lists the checksum each patch expects. **From source:** `./setup.sh`, then `./bindDaemons.sh`.
-No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.360.1**
+No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.361.1**
 (2026-11-11), and the newest thing in it that can be told about: the SAFARI
 ZONE is THE WALLED GARDEN now -- you sign in as a guest, and nothing inside leaves unvetted. Before it, a blank stone
 came to stand by the path north out of BLANCHE. Next, the SAFARI ZONE becomes THE WALLED GARDEN. Each release on GitHub carries four BPS patches — CONTENT for *FireRed* 1.0 and Rev 1, CONTEXT for
