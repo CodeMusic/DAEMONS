@@ -1,0 +1,35 @@
+{
+ "mode": "t2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t552_t553/concepts/roverbyte_7201",
+ "prompt": "pixel art sprite, chibi, pure white background, pixel art game sprite of a single cute creature, a real fluffy WHITE-furred puppy dog, soft white fur with pale grey shading, floppy ears, black nose, bright eyes, standing alert and happy, one small tuft of fur sticking straight up on its head like a little antenna, a small round tag on its collar glowing faintly blue, facing left three-quarter view, full body, chibi proportions, big round head, large expressive eyes, soft shading, clean black outline, isolated on white, centered, large in the frame, the whole body inside the picture with white space on every side, no shadow, no text, game asset",
+ "negative": "",
+ "seed": 7201,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 23.5,
+ "comfyui": "0.19.1",
+ "made": "2026-11-14 15:04:55"
+}

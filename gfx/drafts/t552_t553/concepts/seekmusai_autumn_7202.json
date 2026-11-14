@@ -1,0 +1,35 @@
+{
+ "mode": "t2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t552_t553/concepts/seekmusai_autumn_7202",
+ "prompt": "pixel art sprite, chibi, pure white background, pixel art game sprite of a single cute creature, a small natural fox-kit creature with big ears and a fluffy tail, soft fur, a few faint seam-like lines in its fur like panel lines on a machine, its ear tips end in tiny rounded nubs like antennae, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, a sturdy badger like fox kit, low and broad shouldered, big knobbly paws like rugged tyres, stripes along its back and ribs like a roll cage, a few autumn leaves caught in its fur, ready to run over rough ground, facing left three-quarter view, full body, chibi proportions, big round head, large expressive eyes, soft shading, clean black outline, isolated on white, centered, large in the frame, the whole body inside the picture with white space on every side, no shadow, no text, game asset",
+ "negative": "",
+ "seed": 7202,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 13.0,
+ "comfyui": "0.19.1",
+ "made": "2026-11-14 15:09:03"
+}

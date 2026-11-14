@@ -246,3 +246,34 @@ T-554 BUILT: the bag today beside the build (std 1, all A), filmed in the theatr
 T-554 BUILT: the MART money and quantity boxes, the save box, the party message box and the INDEX footer, today beside the build, filmed
 
 ![14Nov2026 - T554 - built windows today and after - 45](14Nov2026%20-%20T554%20-%20built%20windows%20today%20and%20after%20-%2045.png)
+
+
+### 14Nov2026 - T552 - the Rover line as built and first concepts - 35
+
+The Rover line as built (the pilot cub beside today) and the first concepts; cub 7202 and byte 7201 land, the seer redrawn in round two.
+
+![14Nov2026 - T552 - the Rover line as built and first concepts - 35](14Nov2026%20-%20T552%20-%20the%20Rover%20line%20as%20built%20and%20first%20concepts%20-%2035.png)
+
+### 14Nov2026 - T552 - the Rover line as built and first concepts - 36
+
+The Rover line as built (the pilot cub beside today) and the first concepts; cub 7202 and byte 7201 land, the seer redrawn in round two.
+
+![14Nov2026 - T552 - the Rover line as built and first concepts - 36](14Nov2026%20-%20T552%20-%20the%20Rover%20line%20as%20built%20and%20first%20concepts%20-%2036.png)
+
+### 14Nov2026 - T553 - MUSAI branch as built and two concept rounds - 37
+
+The MUSAI branch's 24 forms as built; round one (one fox-kit, too alike); round two with MUSAI's head kept, and the new seer.
+
+![14Nov2026 - T553 - MUSAI branch as built and two concept rounds - 37](14Nov2026%20-%20T553%20-%20MUSAI%20branch%20as%20built%20and%20two%20concept%20rounds%20-%2037.png)
+
+### 14Nov2026 - T553 - MUSAI branch as built and two concept rounds - 38
+
+The MUSAI branch's 24 forms as built; round one (one fox-kit, too alike); round two with MUSAI's head kept, and the new seer.
+
+![14Nov2026 - T553 - MUSAI branch as built and two concept rounds - 38](14Nov2026%20-%20T553%20-%20MUSAI%20branch%20as%20built%20and%20two%20concept%20rounds%20-%2038.png)
+
+### 14Nov2026 - T553 - MUSAI branch as built and two concept rounds - 39
+
+The MUSAI branch's 24 forms as built; round one (one fox-kit, too alike); round two with MUSAI's head kept, and the new seer.
+
+![14Nov2026 - T553 - MUSAI branch as built and two concept rounds - 39](14Nov2026%20-%20T553%20-%20MUSAI%20branch%20as%20built%20and%20two%20concept%20rounds%20-%2039.png)

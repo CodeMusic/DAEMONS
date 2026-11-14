@@ -1,0 +1,35 @@
+{
+ "mode": "t2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t552_t553/round2/roverseer_7301",
+ "prompt": "pixel art sprite, chibi, pure white background, pixel art game sprite of a single cute creature, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, a half-built robot dog whose whole lower body IS a heavy server chassis: its haunches are a box-shaped computer rack with vent slits and blinking drive lights, it cannot walk, it sits planted, thick cables grow out of its body down to the ground, its front legs are stiff metal struts, its head is a metal robot head just beginning to look like a dog, with two flat metal flaps for ears that are starting to droop like soft ears, one round glowing lens for an eye and one small dark eye, facing left three-quarter view, chibi proportions, big round head, large expressive eyes, soft shading, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, clean black outline, isolated on white, centered, large in the frame, the whole body inside the picture with white space on every side, no shadow, no text, game asset",
+ "negative": "",
+ "seed": 7301,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 18.4,
+ "comfyui": "0.19.1",
+ "made": "2026-11-14 15:23:47"
+}
