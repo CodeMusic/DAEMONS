@@ -295,7 +295,9 @@ so the repository shows what the build looked like: `python3 tools/qashot.py --t
 2. **Run the checks** -- `check_lexicon.py`, `check_reach.py`, `check_agent_vocab.py`, `companion_export.py --check`
    (the companion holds the words the game is built from, T-373), `releasedocs.py --audio-gate` (every book has its
    own voice -- a new book gets one chosen with the user from samples, T-543 -- and, on a major or minor release only,
-   a current recording, T-544), then `check_generators.py` on a quiet tree (edit neither repo while it runs).
+   a current recording, T-544), `check_secrets.py` (no tracked file states any of the four secrets; its patterns are
+   in docs/private/, T-555) and `check_todo.py` (ticket ids unique, no gaps, reservations honoured, T-558) -- both added
+   by the user, 2026-11-14 -- then `check_generators.py` on a quiet tree (edit neither repo while it runs).
 3. **Commit per ticket** in both repos -- engine first, then the docs commit that strikes the ticket through with the
    engine commit -- and push both.
 4. **Release**: `check_fresh_clone.py`, then `romrelease.py --write`, commit "ROM release vX: ...", push, then
