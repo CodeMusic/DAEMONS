@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.365**
+**A total conversion — the living design bible, v11.366**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9248,6 +9248,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The Fifth Review in play (v11.365.1)** — released: DURABLE holding at 1 HP from full (T-556), the ending's two gates with the dream's pointer to the seventh chamber (T-557), and the hideout's first grunt holding HARD CODED while AL's party greys across the rival fights (T-559); with them the menus' last FireRed pieces redrawn in TERMINAL, the user's picks (T-554: the standard window, the bag's frame and arrows, the markings, the keypad). The first release to pass the secrets and TODO checks. DRAFT.
 - **The Third Review's accepted sweeps, swept (T-559, 2026-11-12)** — 8.7's five sweeps done in the text (4.6, 7.14c, 7.9, 7.13, 4.5, 4.25, 7.11, 4.29, 4.3, 4.14, 4.17), the user's two rulings (SUSPEND being SUSPENDED kept as the joke; Brazen's B-section owned as composition), and 8.7's ideas: a HARD CODED on the hideout's first grunt, Al's party fading fight by fight (8.6a), the INDEX-sprite idea superseded by T-424's grey INDEX
 - **The ending's two gates (T-557, 2026-11-11)** — the user, by multiple choice: the sixty-daemon condition on the GLOBAL INDEX is dropped (it was dead in play since T-27; 9.17 corrected), so Act 2 opens on the REVIEW BOARD alone; and the dream the unread DOLDRUM CAVE wakes you from now ends on one line in S.T.A.R.R.'s register pointing at TANOBY's seventh chamber (DRAFT), TANOBY added to 4.34's order as step 2a
 - **DURABLE holds from full HP (T-556, 2026-11-11)** — the Fifth Review found BENCHMARK 1's one mechanic was a misreading of Gen 3's STURDY (one-hit-KO routines only); the later generations' rule is in the damage calculation, with its own line (DRAFT) and a description in 2.11's register (DRAFT); ENDURE and FAILSAFE keep precedence, a SUBSTITUTE takes the hit (2.11, 5.3, 5.3b)

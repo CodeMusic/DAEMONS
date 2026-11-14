@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.366 — 2026-11-14
+
+- Recorded from release v11.365.1, the Fifth Review in play. Each section already says what was built:
+  - **DURABLE** holds from full HP (T-556).
+  - **The ending's two gates** (T-557).
+  - **The hideout's grunt holds HARD CODED, and AL's party greys** (T-559).
+- **T-554, the menus' last FireRed pieces in TERMINAL**, the user's picks: the standard window, the bag's frame, arrows and icons, the markings, the keypad glyphs and the PC's item frame.
+- A Settled entry in section 10. DRAFT.
+
 ## v11.365 — 2026-11-14
 
 *The Fifth Review's five jobs (T-555 to T-559), done on a branch 2026-11-11 and 2026-11-12 and merged over main's v11.347 to v11.364; the branch's own version numbers and its first ticket ids (T-550 to T-554) were taken by main while it waited, so one version carries all five and the tickets moved.* *Renumbered once more on 2026-11-14 (the user), to close the gap check_lexicon caught: the branch had them as T-560 to T-564 (560→555 the secrets sweep, 561→556 DURABLE, 562→557 the ending's two gates, 563→558 the record tidied, 564→559 the Third Review's sweeps); the merge commits still say the old ids. The same day the user had four CHANGELOG lines that stated the Quicksilver order redacted to [private: SECRETS §4] going forward (history unchanged), and judged two CALLOW SCHOOL chalkboard rows clues, which check_secrets.py now accepts by exact line.*
