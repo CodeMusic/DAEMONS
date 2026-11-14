@@ -13,16 +13,18 @@ measures each against the others.
 
 | | |
 |--|-------|
-| **Review** | **4** -- *The Fourth Review*, 3 November 2026 |
-| **Design bible** | **v11.338** (`docs/vision.md`, 9,259 lines) -- DAEMONS repo at `1f9f03cb` |
-| **Newest release** | **v11.337.4** (2 November 2026), built against bible v11.337 |
-| **The game** | CodeMusic/pokefirered-daemons, `context-content` at `6b99785` |
-| **The companion** | CodeMusic/daemons-companion at `33dfa3f` |
-| **The playground** | CodeMusic/daemons-playground at `3b82267` |
+| **Review** | **4, revised** -- *The Fourth Review*, first printed 3 November 2026 at v11.338, **revised 14 November 2026 for v11.361** |
+| **Design bible** | **v11.362** (`docs/vision.md`, 9,500 lines) -- DAEMONS repo at `b924932d`. *First printing: v11.338 at `1f9f03cb`* |
+| **Newest release** | **v11.361.1** (14 November 2026, the GATEKEEPER), built against bible v11.361. *First printing: v11.337.4* |
+| **The game** | CodeMusic/pokefirered-daemons, `context-content` at `8184c63` (release engine `dc780f8c5`) |
+| **The companion** | CodeMusic/daemons-companion at `49f2da0` |
+| **The playground** | CodeMusic/daemons-playground at `6e8ca37` |
 | **Earlier reviews** | First (2026-08-31), Second, *The Third Review* (2026-09-10, bible v11.111), ruled on in bible 8.7 |
 
-**When the bible moves past v11.338, this review starts to age.** Every finding names the section or file it was
-read from, so each can be re-checked against a later version rather than trusted.
+**This revision re-checked every one of the 46 findings against v11.361** and marks each FIXED, PARTLY, OPEN or
+NOT RE-CHECKED (Part 2, and the appendix). The first printing's broad measurements -- the text census, the sprite
+count, the story's sequence -- were not re-run unless a finding depended on them; where a number is still the v11.338
+one, it says so. **When the bible moves past v11.362, this revision starts to age.**
 
 ## How it was read
 
@@ -60,12 +62,12 @@ of it being read.**
 <div class="t-ENTROPY"><b>Biggest risk</b><span>Breadth over finish</span><p>New subsystems keep arriving while the font, the region map, the battle music and the villains' barks are still vanilla.</p></div>
 <div class="t-GROWTH"><b>Cheapest big win</b><span>Play it through, once</span><p>One recorded playthrough of each edition to the end of Act 2 is worth more than the next feature.</p></div>
 <div class="t-SIGNAL"><b>Best idea in the product</b><span>The round trip</span><p>Raise it in the game, carry it in your life, bring it home changed. Nobody else has this.</p></div>
-<div class="t-LATENT"><b>Biggest product gap</b><span>A phone alone cannot talk</span><p>The headline "it talks" needs a computer or a hub today. The endpoint work fixes it.</p></div>
+<div class="t-LATENT"><b>Biggest product gap</b><span>Talk is unfiltered</span><p>Since v11.338 a phone alone can talk, to any endpoint the player links. Nothing yet checks what comes back.</p></div>
 :::
 
 ## The scorecard
 
-A reading, not a measurement: how far each part is from what its own design asks of it.
+A reading, not a measurement: how far each part is from what its own design asks of it. *Revised for v11.361: only Local AI moved enough to re-score.*
 
 ::: scores
 | Part | | Where it stands |
@@ -78,7 +80,7 @@ A reading, not a measurement: how far each part is from what its own design asks
 | **Story continuity** | <span class="bar t-ENTROPY"><i style="width:68%"></i></span> | Rulings land faster than the sweeps behind them |
 | **Sound** | <span class="bar t-LATENT"><i style="width:30%"></i></span> | 30 of 110 tracks ours; every battle theme vanilla |
 | **The companion** | <span class="bar t-SIGNAL"><i style="width:70%"></i></span> | The loop is real and careful; onboarding is long |
-| **Local AI** | <span class="bar t-LATENT"><i style="width:50%"></i></span> | Works on a hub; not yet from a phone or any endpoint |
+| **Local AI** | <span class="bar t-LATENT"><i style="width:72%"></i></span> | Any endpoint, from the hub or the phone, and on-device; unfiltered, untried by hand |
 | **Verification** | <span class="bar t-VECTOR"><i style="width:45%"></i></span> | Superb static checks; no end-to-end play on record |
 :::
 
@@ -94,6 +96,86 @@ A reading, not a measurement: how far each part is from what its own design asks
 <div class="stat t-LATENT"><b>30 / 110</b><span>songs ours</span></div>
 <div class="stat t-HARDENED"><b>494 / 520</b><span>tickets closed</span></div>
 <div class="stat t-VECTOR"><b>0</b><span>recorded playthroughs from new game to the end</span></div>
+:::
+
+# What moved, v11.338 to v11.361 {.t-HARDENED}
+
+Twelve days, **24 bible versions** (v11.339 to v11.362), **20 release groups** and **386 design commits** after the
+first printing. Every finding was re-checked against the source at v11.361.1. The short version:
+
+::: verdict
+<div class="t-GROWTH"><b>Most improved</b><span>The companion's mind</span><p>A phone alone now talks: to Apple's on-device model, the hub, or any OpenAI-compatible endpoint the player links -- one mind across all three.</p></div>
+<div class="t-GROWTH"><b>Most improved, the game</b><span>The first screens</span><p>Our own font; every place card ours; every General tile ours; every landmark ours but USER TOWER; the SAFARI is THE WALLED GARDEN.</p></div>
+<div class="t-ENTROPY"><b>Unmoved</b><span>The finishing list</span><p>No playthrough on record; the private sweep, the chart reprint and the TODO tidy all still open.</p></div>
+<div class="t-VECTOR"><b>Grew</b><span>The third book</span><p>THE UNITY BOOK is built, with an aurora, a fox, a duet and a tablet. Its exception was not narrowed.</p></div>
+:::
+
+## What was added in those twelve days
+
+The scope-discipline finding is not a criticism of any one of these; each is well made and most were chosen by the
+user line by line. It is the list, read together, against the one under *Unmoved*.
+
+| Added | Where | Kind |
+|------------|--|---|
+| **THE UNITY BOOK built** -- covers, the torn lines mended, the lens, HALFTONE's tones, the aurora, TULIKKO's sparks, the DUET | 4.40 | the third book |
+| **THE BLANK TABLET** by BLANCHE's path, read one face per half | 4.39 | the third book |
+| **THE ORIGIN OF A DAEMON**, MUSAI's book; the MUSAI branch's 24 seasonal forms | 9.34, 9.35 | new book, new art |
+| **A day's symbol** for each weekday | 9.21 | calendar |
+| **IN ITS OWN WORDS** -- each daemon's first-person telling, in the companion only | 4.2 | companion |
+| **THE WALLED GARDEN** (the SAFARI ZONE, 76 of 85 lines rewritten) and **the GATEKEEPER** | 3.11 | **finishing** |
+| **Our font; every place card; every General tile; six landmark pairs; THE BLACKOUT** | 9.29 | **finishing** |
+| **The physical/special split**, steps 1 and 2 released | 2.12 | **finishing** |
+| **Corpus's last warehouse admins** as 8.2a's remnants (T-505) | 4.37 | **finishing** |
+| **Any thinker** on the hub and the phone; **THE MIND** across phone, hub and endpoint | C-280, C-307 | **the endpoint plan** |
+
+**Five of ten are finishing work**, against roughly one in three in the fortnight before the first printing. That is
+the right direction, and it should be said plainly.
+
+## Every finding, re-checked
+
+[FIXED]{.tag .FREE} done at v11.361 · [PARTLY]{.tag .DRIFT} moved but not closed · [OPEN]{.tag .BREAK} unchanged ·
+[NOT RE-CHECKED]{.tag .RISK} a reading, or a measurement not re-run.
+
+| Finding | Now | Evidence at v11.361 |
+|----------|---|------------|
+| **A phone-only player has no AI at all** | [FIXED]{.tag .FREE} | `app/platform/endpoint.ts` and `mesh.ts`: an endpoint from the phone, the on-device model, THE MIND (C-280, C-307). *Not yet tried by hand* |
+| **Four designs of the third book, and no build** | [FIXED]{.tag .FREE} | THE UNITY BOOK is in 21 engine files, released from v11.348.2 |
+| **The first-screen vanilla** | [PARTLY]{.tag .DRIFT} | Font, place cards, General tiles, landmarks done; **region map (T-449) and every battle theme still vanilla** |
+| **Say the unrenamed nouns out loud** | [PARTLY]{.tag .DRIFT} | SAFARI 34 → 2 (THE WALLED GARDEN); S.S. ANNE 13, GAME CORNER 13, BIKE 14 unchanged |
+| **The books disagree about the books** | [PARTLY]{.tag .DRIFT} | THE SUBTLE LAYER's count fixed (51, v11.357); the GUIDE's three counts still differ |
+| **Four lexicon rows** | [PARTLY]{.tag .DRIFT} | DAEMON LEAGUE 35 → 20 beside REVIEW BOARD 24 -- still two names; CERT still in the lexicon |
+| **Bring your own mind: the endpoint plan** | [PARTLY]{.tag .DRIFT} | Registry, keys and the *at home* ring built; probe, tiers, Ollama's context and the output pipeline not |
+| **Nobody has played it from a new game to the end, on record** | [OPEN]{.tag .BREAK} | T-50 still open, still the oldest; no route spans BLANCHE to the end |
+| **What a daemon says is never filtered** | [OPEN]{.tag .BREAK} | `safeLine()` still runs only on meetings and the household talk -- **and now any endpoint can answer** |
+| **A tracked file tags a private sequence** · **the bible sentence passed on privately** | [OPEN]{.tag .BREAK} | Both still in the public tree |
+| **The published type chart is garbled** | [OPEN]{.tag .BREAK} | Still 237 broken characters; still no charset |
+| **"PROF. CRYSTAL", twice** | [OPEN]{.tag .BREAK} | Both strings still in the lab's text |
+| **"Never in a room"** | [OPEN]{.tag .BREAK} | Still in 8.2a and the warehouse script's comment |
+| **The witching hour needs a real clock** | [OPEN]{.tag .BREAK} | `DaemonsIsWitchingHour` unchanged |
+| **The Hermetic text settles 4.33's question** | [OPEN]{.tag .BREAK} | SUBSTRATE unchanged, unattributed |
+| **The one exception has lost its warrants** | [OPEN]{.tag .BREAK} | Not narrowed; THE UNITY BOOK built around it |
+| **HALFTONE's colour returns** | [OPEN]{.tag .BREAK} | Deepened, not reversed (v11.340); 3.7 still says it stays grey |
+| **Eight tickets filed under Closed** | [OPEN]{.tag .BREAK} | **Now ten or more**: T-521, T-522, T-523 joined them |
+| **Phone backups never pruned; writes not atomic** | [OPEN]{.tag .BREAK} | `app/platform/local.ts`: same write, same backup, no prune |
+| **The store record describes a different app** | [OPEN]{.tag .BREAK} | `APPSTORE.md` still answers *no gambling* |
+| **CI, for free** | [OPEN]{.tag .BREAK} | One workflow builds the site; no tests run, none in the app |
+| **Sign the patch list** · **the emulator's CDN, no cache** | [OPEN]{.tag .BREAK} | `patches.json` still read live from `main` |
+| **Two voices skip DAY-mons** | [OPEN]{.tag .BREAK} | `app/AGENTS.md` still lists both as *not covered yet* |
+| **The playground serves built ROMs** | [OPEN]{.tag .BREAK} | Unchanged |
+| **The rival's naming device** · **6F's ghost story** · **the hideout's barks** · **"I understand now"** · **"It could not have"** · **the Verdigris kid** · **Ty at Quicksilver** | [OPEN]{.tag .BREAK} | All unchanged in the ROM and the bible. T-505 rewrote the warehouse's admins' battle lines, but Admin 1's *"I understand now…"* is still spoken after the fight |
+| **T-506 unswept** · **school.md says nothing is built** · **the stale reservation** · **CLAUDE.md's v11.296** · **`still-vanilla.md`** · **no text census** · **understandings "THE MARGINS only"** | [OPEN]{.tag .BREAK} | All unchanged |
+| **The pacing risks** · **Ty a stranger** · **thirteen systems** · **the near-miss** · **the facing-page binding** · **the ferry** · **ordering the exception** · **the chart is vanilla's** · **onboarding** · **the emulator risk** | [NOT RE-CHECKED]{.tag .RISK} | Readings: nothing in the twelve days answers them. The systems count has grown by at least four |
+
+
+> **FIXED by v11.361: the phone talks to its own on-device model or to any endpoint the player links, with the hub as one more mind (C-280, C-307). Not yet tried by hand.**
+
+> **PARTLY by v11.361: THE WALLED GARDEN took SAFARI from 34 to 2. The other three are unchanged.**
+
+> **OPEN at v11.361, and more urgent: any endpoint can now answer, from the phone too.**
+::: callout
+**The one to do first has not changed: play it through, once, and read the record.** And one has become more urgent:
+**the output filter.** At v11.338 an unfiltered answer came from a 0.5B model on the user's own board. At v11.361 it
+can come from *any* model a player points the phone at.
 :::
 
 # What DAEMONS is, as one product {.t-SIGNAL}
@@ -147,12 +229,12 @@ boards -- hangs off that loop. **It is the right thing to build everything aroun
 | 3 | **Unlock SEND** -- the companion's first SYNC links the save; only then does the party menu offer SEND | [BUILT]{.tag .BUILT} |
 | 4 | **SEND a daemon AWAY** -- the game only asks; the companion answers at SYNC, re-signs the save and keeps a backup first | [BUILT]{.tag .BUILT} and tested |
 | 5 | **It lives somewhere** -- the phone and its widget, about twenty boards, a Tab5, a BOX-3 | [BUILT]{.tag .BUILT} phone; [PARTIAL]{.tag .PARTIAL} several boards not yet run |
-| 6 | **It talks** -- hold to talk, speech to text, a model answering as the daemon, text to speech | [PARTIAL]{.tag .PARTIAL} hub or computer only |
+| 6 | **It talks** -- hold to talk, speech to text, a model answering as the daemon, text to speech | [BUILT]{.tag .BUILT} *v11.361*: phone, hub or any endpoint; untried by hand |
 | 7 | **It remembers** -- the self in three lengths is built; night memory and the mind portal are designed | [DESIGNED]{.tag .DESIGNED} |
 | 8 | **SYNC home** -- friendship, growth, evolution, casino money and gifts written back; RECEIVED says what arrived | [BUILT]{.tag .BUILT} |
 
-**The game-side loop is real and unusually careful.** The AI half is real, but **only for a household that already
-runs a computer or a hub.** A phone-only player gets a daemon without a voice.
+**The game-side loop is real and unusually careful.** The AI half was, at v11.338, **only for a household that already
+ran a computer or a hub**; by v11.361 a phone alone can give its daemon a voice.
 
 # Strengths {.t-GROWTH}
 
@@ -581,6 +663,8 @@ reversal against 8.7.**
 exist yet. The project's own rule: *"If a conversation has produced three design revisions and no build, say so."*
 **Saying so.** The plan also spends **the last free bits** of the daemon record on SPIRITS, a stat nobody has played.
 Hold it until the books it belongs to exist.
+
+> **FIXED by v11.361: THE UNITY BOOK is built and released. The SPIRITS caution stands.**
 :::
 
 ::: {.finding .DRIFTf}
@@ -648,8 +732,9 @@ the same name. **Same** means byte-identical; **near** means a vocabulary swap; 
 | **Post-game -- DOLDRUM CAVE, NEXUS, groves** | [BUILT]{.tag .BUILT} | All new |
 | **Names, Index, moves, abilities, items** | [BUILT]{.tag .BUILT} | 398/412 · 1,241/1,506 Index lines · 363/383 · 129/156 · 240/376 |
 | **Sprites** | [BUILT]{.tag .BUILT} | 1,473 of 1,476 redrawn, 115 new |
-| **Overworld tiles and maps** | [PARTIAL]{.tag .PARTIAL} | 45 of 67 tilesets, 70 of 366 layouts changed |
-| **Font, region map, cave cards** | [VANILLA]{.tag .VANILLA} | Tickets open (T-437, T-449, T-445, T-456) |
+| **Overworld tiles and maps** | [PARTIAL]{.tag .PARTIAL} | v11.338: 45 of 67 tilesets, 70 of 366 layouts. **Since: every General tile ours, every landmark but USER TOWER** |
+| **Font and place cards** | [BUILT]{.tag .BUILT} | *Since v11.338*: our font (T-437); **every place card ours**, DOLDRUM CAVE's last |
+| **Region map** | [VANILLA]{.tag .VANILLA} | T-449 open |
 | **Music** | [PARTIAL]{.tag .PARTIAL} | 30 of 110 ours; **every battle theme vanilla** |
 | **Balance and the chart** | [VANILLA]{.tag .VANILLA} by design | ~24 daemons retyped; the chart is vanilla's 112 cells renamed, plus one |
 | **Engine features** | [BUILT]{.tag .BUILT} | 20,311 lines of new C: notebook, exam, follower, feelings, calendar, dreams, casino, spellbook... |
@@ -697,6 +782,8 @@ they sit on Act 2's path.
 The font, the region map, the cave preview cards, 22 tilesets and every battle theme. These are what a new player
 sees and hears in the first hour, while **about ten of the eighteen Ready tickets add features** and six finish
 existing ones.
+
+> **PARTLY by v11.361: our font, every place card, every General tile and every landmark but USER TOWER are in. The region map and every battle theme are still vanilla.**
 :::
 
 ::: {.finding .FREEf}
@@ -835,8 +922,18 @@ The plan is to let a player link **any compatible endpoint** -- Ollama, LM Studi
 than it looks: **the Tiiny client is already about 90% of a generic OpenAI-compatible adapter.** What stands in the
 way is that endpoints, prompts and timeouts are set in six places, with three conventions for the URL.
 
+::: tip
+**Revised for v11.361 -- much of this is now built.** The hub keeps a registry of up to eight ENDPOINTS: any
+OpenAI-compatible `/v1` base, a model, a key stored and never shown again, and an *at home* test for private, local
+and tailnet addresses -- spec item 1 and the privacy ring, nearly as written (C-280). The phone keeps an endpoint of
+its own in the Keychain, and THE MIND (C-307) routes hearing, thought and voice across the phone's on-device model,
+the hub and the endpoint, hedged on a deadline, inside a ring the player sets: *anywhere*, *only at home*, *only this
+phone*. **Still to come from the spec: the probe and size tiers, Ollama's `num_ctx`, and the one output pipeline --
+the safety filter above all.** *By its own ticket, not yet tried by the user.*
+:::
+
 ::: callout
-**Today: five OpenAI-style clients, three URL conventions, five answer lengths (60 to 400 tokens), four timeouts,
+**As it stood at v11.338: five OpenAI-style clients, three URL conventions, five answer lengths (60 to 400 tokens), four timeouts,
 and reasoning stripped in only one of them.** Model names are hard-coded in the server, the firmware and n8n.
 :::
 
@@ -932,6 +1029,9 @@ Ranked by what each buys for what it costs. **The first five are finishing; noth
 
 ## Now -- this week
 
+*Revised for v11.361: items 1 to 5 are all still open.*
+
+
 1. **Play it through, once, and read the record.** A theatre route or the local playtester, from a new game through
    the Review Board, the islands and DOLDRUM CAVE, in each edition. Close T-50 by acting on it.
 2. **Reprint the chart** with a charset, and add a mojibake and version check to every book the project prints.
@@ -943,9 +1043,9 @@ Ranked by what each buys for what it costs. **The first five are finishing; noth
 ## Next -- this month
 
 6. **A text census** beside the sprite census; then the CORPUS barks and Mt. Ember under the mainland register.
-7. **The first-screen vanilla**: the font, the region map, the cave cards; then the battle themes.
-8. **Phone-direct AI**, through the endpoint registry -- the highest-leverage change in the companion.
-9. **The output filter** for every talk, before any endpoint can be linked.
+7. **The first-screen vanilla**: ~~the font~~, the region map, ~~the cave cards~~; then the battle themes.
+8. ~~**Phone-direct AI**, through the endpoint registry~~ -- **built by v11.361** (C-280, C-307); try it by hand.
+9. **The output filter** for every talk -- **now the most urgent item in the companion**, since any endpoint can be linked.
 10. **A companion-only first run** with a demo daemon, and a store build without the game.
 11. **Save safety on the phone**: prune backups, write-then-rename. CI for the server and the patch flow.
 12. **The playground patches in the browser**, from the tester's own ROM.
@@ -982,57 +1082,57 @@ rewritten main story, an Act 2 built onto the islands' plot, and a companion tha
 
 # Appendix: every finding {.t-HARDENED .unnumbered}
 
-Every finding in this review, by tag. **46 in all**: 15 BREAK, 4 RISK, 19 DRIFT, 4 FREE, 4 IDEA.
+Every finding in this review, by tag, with where it stands at v11.361 (*reading*: not re-measured). **46 in all**: 15 BREAK, 4 RISK, 19 DRIFT, 4 FREE, 4 IDEA.
 
-| # | Tag | Finding | Part |
-|-|--|------------|----|
-| 1 | [BREAK]{.tag .BREAK} | "Scorn does not recognise him… they were never in a room" | Story continuity |
-| 2 | [BREAK]{.tag .BREAK} | "PROF. CRYSTAL", twice, at the hinge of Act 2 | Story continuity |
-| 3 | [BREAK]{.tag .BREAK} | "Understandings -- THE MARGINS only", against four earned on the mainland | Story continuity |
-| 4 | [BREAK]{.tag .BREAK} | The one exception has lost both of its warrants, and its reach has grown | Story continuity |
-| 5 | [BREAK]{.tag .BREAK} | The Hermetic text settles the question 4.33 says nothing may settle | Story continuity |
-| 6 | [BREAK]{.tag .BREAK} | With no cartridge clock, the witching hour never comes -- and nothing says so | Story continuity |
-| 7 | [BREAK]{.tag .BREAK} | A tracked design file still tags documents with their place in a private sequence | Story continuity |
-| 8 | [BREAK]{.tag .BREAK} | The published type chart is garbled | Story continuity |
-| 9 | [BREAK]{.tag .BREAK} | Nobody has played it from a new game to the end, on record | The game as built |
-| 10 | [BREAK]{.tag .BREAK} | Eight open tickets are filed under Closed | The game as built |
-| 11 | [BREAK]{.tag .BREAK} | A phone-only player has no AI at all | The companion and its mind |
-| 12 | [BREAK]{.tag .BREAK} | Eleven steps before a daemon reaches a phone; eighteen before it talks | The companion and its mind |
-| 13 | [BREAK]{.tag .BREAK} | Shipping an emulator and a patcher is the largest distribution risk | The companion and its mind |
-| 14 | [BREAK]{.tag .BREAK} | What a daemon says is never filtered | The companion and its mind |
-| 15 | [BREAK]{.tag .BREAK} | The phone's save backups are never pruned, and writes are not atomic | The companion and its mind |
-| 16 | [RISK]{.tag .RISK} | The whole emotional payload is post-game, behind ten gates | The core story, in the order a player meets it |
-| 17 | [RISK]{.tag .RISK} | Ty arrives a stranger for most players | The core story, in the order a player meets it |
-| 18 | [RISK]{.tag .RISK} | Thirteen systems and one quiet ending | The core story, in the order a player meets it |
-| 19 | [RISK]{.tag .RISK} | The playground serves built ROMs to other devices | The game as built |
-| 20 | [DRIFT]{.tag .DRIFT} | Ty "at Quicksilver, met at Benchmark 7" -- in four places; the ROM has him only after the Review Board | Story continuity |
-| 21 | [DRIFT]{.tag .DRIFT} | The rival's naming device is unbuilt | Story continuity |
-| 22 | [DRIFT]{.tag .DRIFT} | DAEMON TOWER 6F is still vanilla's ghost story | Story continuity |
-| 23 | [DRIFT]{.tag .DRIFT} | The Corpus register is a patchwork, and its "still to do" has no ticket | Story continuity |
-| 24 | [DRIFT]{.tag .DRIFT} | Scorn's speech grew a line that pre-empts his island beat | Story continuity |
-| 25 | [DRIFT]{.tag .DRIFT} | "The bridge reverses at the ferry" -- but the first ferry is in Act 1 | Story continuity |
-| 26 | [DRIFT]{.tag .DRIFT} | Four lexicon rows the arc has outgrown | Story continuity |
-| 27 | [DRIFT]{.tag .DRIFT} | Craft rule 2's own example is not in the ROM | Story continuity |
-| 28 | [DRIFT]{.tag .DRIFT} | Small ones, batched | Story continuity |
-| 29 | [DRIFT]{.tag .DRIFT} | An optional book now settles a core image, and three sections still say the opposite | Story continuity |
-| 30 | [DRIFT]{.tag .DRIFT} | Four designs of the third book in five days, and no build | Story continuity |
-| 31 | [DRIFT]{.tag .DRIFT} | T-506 is unswept, and the vault protects nothing | Story continuity |
-| 32 | [DRIFT]{.tag .DRIFT} | The school's own document says nothing in it is built | Story continuity |
-| 33 | [DRIFT]{.tag .DRIFT} | The books disagree about the books | Story continuity |
-| 34 | [DRIFT]{.tag .DRIFT} | The coordination files drift faster than the checks on them | The game as built |
-| 35 | [DRIFT]{.tag .DRIFT} | The villains' own lines are the least rewritten story in the game | The game as built |
-| 36 | [DRIFT]{.tag .DRIFT} | The first-screen vanilla is still on screen | The game as built |
-| 37 | [DRIFT]{.tag .DRIFT} | The store record describes a different app | The companion and its mind |
-| 38 | [DRIFT]{.tag .DRIFT} | Two voices still skip the DAY-mons respelling | The companion and its mind |
-| 39 | [FREE]{.tag .FREE} | 4.37 already solved the UNITY BOOK | Story continuity |
-| 40 | [FREE]{.tag .FREE} | A text census, beside the sprite census | The game as built |
-| 41 | [FREE]{.tag .FREE} | Say the unrenamed nouns out loud | The game as built |
-| 42 | [FREE]{.tag .FREE} | CI, for free | The companion and its mind |
-| 43 | [IDEA]{.tag .IDEA} | Order the exception after the silence | Story continuity |
-| 44 | [IDEA]{.tag .IDEA} | The CASINO's designed near-miss is the one mechanic on the villain's side | Story continuity |
-| 45 | [IDEA]{.tag .IDEA} | Say plainly that the chart is vanilla's, renamed -- before a critic does | The game as built |
-| 46 | [IDEA]{.tag .IDEA} | Sign the patch list | The companion and its mind |
+| # | Tag | Finding | Part | At v11.361 |
+|-|--|------------|----|---|
+| 1 | [BREAK]{.tag .BREAK} | "Scorn does not recognise him… they were never in a room" | Story continuity | [OPEN]{.tag .BREAK} |
+| 2 | [BREAK]{.tag .BREAK} | "PROF. CRYSTAL", twice, at the hinge of Act 2 | Story continuity | [OPEN]{.tag .BREAK} |
+| 3 | [BREAK]{.tag .BREAK} | "Understandings -- THE MARGINS only", against four earned on the mainland | Story continuity | [OPEN]{.tag .BREAK} |
+| 4 | [BREAK]{.tag .BREAK} | The one exception has lost both of its warrants, and its reach has grown | Story continuity | [OPEN]{.tag .BREAK} |
+| 5 | [BREAK]{.tag .BREAK} | The Hermetic text settles the question 4.33 says nothing may settle | Story continuity | [OPEN]{.tag .BREAK} |
+| 6 | [BREAK]{.tag .BREAK} | With no cartridge clock, the witching hour never comes -- and nothing says so | Story continuity | [OPEN]{.tag .BREAK} |
+| 7 | [BREAK]{.tag .BREAK} | A tracked design file still tags documents with their place in a private sequence | Story continuity | [OPEN]{.tag .BREAK} |
+| 8 | [BREAK]{.tag .BREAK} | The published type chart is garbled | Story continuity | [OPEN]{.tag .BREAK} |
+| 9 | [BREAK]{.tag .BREAK} | Nobody has played it from a new game to the end, on record | The game as built | [OPEN]{.tag .BREAK} |
+| 10 | [BREAK]{.tag .BREAK} | Eight open tickets are filed under Closed | The game as built | [OPEN]{.tag .BREAK} |
+| 11 | [BREAK]{.tag .BREAK} | A phone-only player has no AI at all | The companion and its mind | [FIXED]{.tag .FREE} |
+| 12 | [BREAK]{.tag .BREAK} | Eleven steps before a daemon reaches a phone; eighteen before it talks | The companion and its mind | [READING]{.tag .RISK} |
+| 13 | [BREAK]{.tag .BREAK} | Shipping an emulator and a patcher is the largest distribution risk | The companion and its mind | [OPEN]{.tag .BREAK} |
+| 14 | [BREAK]{.tag .BREAK} | What a daemon says is never filtered | The companion and its mind | [OPEN]{.tag .BREAK} |
+| 15 | [BREAK]{.tag .BREAK} | The phone's save backups are never pruned, and writes are not atomic | The companion and its mind | [OPEN]{.tag .BREAK} |
+| 16 | [RISK]{.tag .RISK} | The whole emotional payload is post-game, behind ten gates | The core story, in the order a player meets it | [READING]{.tag .RISK} |
+| 17 | [RISK]{.tag .RISK} | Ty arrives a stranger for most players | The core story, in the order a player meets it | [READING]{.tag .RISK} |
+| 18 | [RISK]{.tag .RISK} | Thirteen systems and one quiet ending | The core story, in the order a player meets it | [READING]{.tag .RISK} |
+| 19 | [RISK]{.tag .RISK} | The playground serves built ROMs to other devices | The game as built | [OPEN]{.tag .BREAK} |
+| 20 | [DRIFT]{.tag .DRIFT} | Ty "at Quicksilver, met at Benchmark 7" -- in four places; the ROM has him only after the Review Board | Story continuity | [OPEN]{.tag .BREAK} |
+| 21 | [DRIFT]{.tag .DRIFT} | The rival's naming device is unbuilt | Story continuity | [OPEN]{.tag .BREAK} |
+| 22 | [DRIFT]{.tag .DRIFT} | DAEMON TOWER 6F is still vanilla's ghost story | Story continuity | [OPEN]{.tag .BREAK} |
+| 23 | [DRIFT]{.tag .DRIFT} | The Corpus register is a patchwork, and its "still to do" has no ticket | Story continuity | [OPEN]{.tag .BREAK} |
+| 24 | [DRIFT]{.tag .DRIFT} | Scorn's speech grew a line that pre-empts his island beat | Story continuity | [OPEN]{.tag .BREAK} |
+| 25 | [DRIFT]{.tag .DRIFT} | "The bridge reverses at the ferry" -- but the first ferry is in Act 1 | Story continuity | [READING]{.tag .RISK} |
+| 26 | [DRIFT]{.tag .DRIFT} | Four lexicon rows the arc has outgrown | Story continuity | [PARTLY]{.tag .DRIFT} |
+| 27 | [DRIFT]{.tag .DRIFT} | Craft rule 2's own example is not in the ROM | Story continuity | [OPEN]{.tag .BREAK} |
+| 28 | [DRIFT]{.tag .DRIFT} | Small ones, batched | Story continuity | [READING]{.tag .RISK} |
+| 29 | [DRIFT]{.tag .DRIFT} | An optional book now settles a core image, and three sections still say the opposite | Story continuity | [OPEN]{.tag .BREAK} |
+| 30 | [DRIFT]{.tag .DRIFT} | Four designs of the third book in five days, and no build | Story continuity | [FIXED]{.tag .FREE} |
+| 31 | [DRIFT]{.tag .DRIFT} | T-506 is unswept, and the vault protects nothing | Story continuity | [OPEN]{.tag .BREAK} |
+| 32 | [DRIFT]{.tag .DRIFT} | The school's own document says nothing in it is built | Story continuity | [OPEN]{.tag .BREAK} |
+| 33 | [DRIFT]{.tag .DRIFT} | The books disagree about the books | Story continuity | [PARTLY]{.tag .DRIFT} |
+| 34 | [DRIFT]{.tag .DRIFT} | The coordination files drift faster than the checks on them | The game as built | [OPEN]{.tag .BREAK} |
+| 35 | [DRIFT]{.tag .DRIFT} | The villains' own lines are the least rewritten story in the game | The game as built | [READING]{.tag .RISK} |
+| 36 | [DRIFT]{.tag .DRIFT} | The first-screen vanilla is still on screen | The game as built | [PARTLY]{.tag .DRIFT} |
+| 37 | [DRIFT]{.tag .DRIFT} | The store record describes a different app | The companion and its mind | [OPEN]{.tag .BREAK} |
+| 38 | [DRIFT]{.tag .DRIFT} | Two voices still skip the DAY-mons respelling | The companion and its mind | [OPEN]{.tag .BREAK} |
+| 39 | [FREE]{.tag .FREE} | 4.37 already solved the UNITY BOOK | Story continuity | [READING]{.tag .RISK} |
+| 40 | [FREE]{.tag .FREE} | A text census, beside the sprite census | The game as built | [OPEN]{.tag .BREAK} |
+| 41 | [FREE]{.tag .FREE} | Say the unrenamed nouns out loud | The game as built | [PARTLY]{.tag .DRIFT} |
+| 42 | [FREE]{.tag .FREE} | CI, for free | The companion and its mind | [OPEN]{.tag .BREAK} |
+| 43 | [IDEA]{.tag .IDEA} | Order the exception after the silence | Story continuity | [READING]{.tag .RISK} |
+| 44 | [IDEA]{.tag .IDEA} | The CASINO's designed near-miss is the one mechanic on the villain's side | Story continuity | [READING]{.tag .RISK} |
+| 45 | [IDEA]{.tag .IDEA} | Say plainly that the chart is vanilla's, renamed -- before a critic does | The game as built | [READING]{.tag .RISK} |
+| 46 | [IDEA]{.tag .IDEA} | Sign the patch list | The companion and its mind | [OPEN]{.tag .BREAK} |
 
 
-*Checked against design bible v11.338 on 3 November 2026. The four lenses' full notes, with the commands that
+*First checked against design bible v11.338 on 3 November 2026; every finding re-checked against v11.361.1 on 14 November. The four lenses' full notes, with the commands that
 reproduce every number, were kept with the review's working files.*
