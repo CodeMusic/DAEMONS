@@ -75,25 +75,32 @@ instead of reading zeroes.
 `MOVE_PSYCHO_BOOST` rather than inserted, and `PERSPECTIVE` is a renamed string
 on `MOVE_TRANSFORM` rather than a new constant. Move IDs are vanilla.
 
-## The local model
+## Which mind plays
 
-`--ai` defaults to an OpenAI-compatible endpoint on `127.0.0.1:8080`:
+**`DAEMONS_MIND`** chooses, from four (engineAi's `server/src/ai/mind.js`, T-560):
 
-```
-OPENAI_BASE_URL=http://127.0.0.1:8080/v1
-OPENAI_MODEL=ternary-bonsai-8b
-```
+| | what plays |
+|---|---|
+| **`mind`** (default) | whatever mind the companion's hub is using, if it is well -- today the Tiiny through LiteLLM. The hub (daemons-hearth) is *asked* which mind, over ssh, because its own talk route speaks for the daemon and takes no tools; the harness then talks to that mind itself. Failing that, the Tiiny directly, then seer. Never OpenRouter |
+| **`tiiny`** | the Tiiny directly, `http://openai.api.tiiny/v1` |
+| **`seer`** | LiteLLM on roverbyteseer:4000 (`tiiny-35b`, `tiiny-9b` and every other name in its config) |
+| **`openrouter`** | LiteLLM's `or-*` names (`or-muse-glimmer` by default). **Paid**: never automatic |
 
-Override any of them in the environment. Set `OPENAI_BASE_URL` to nothing and
-it goes back to OpenAI unchanged.
+On the Tiiny the harness plays **Qwen3.6-35B-A3B with thinking off** -- the user's pick, 2026-11-14, from a replay
+of 13 real turns through the real client (engineAi `docs/MINDS.md`; `DAEMONS_TIINY_MODEL=9b` and `DAEMONS_THINK=1` to
+change it). The local minds are spoken to in **chat completions**, not the Responses API: the Tiiny's own
+`/v1/responses` refuses images, `reasoning` and the thinking switch. Every image is flattened to RGB first: the
+harness's RGBA grid overlay made the Tiiny fail and **unload its model**, which took the companion's talk down too.
 
-**Two things to expect.** The config sends `reasoning_effort` and
-`reasoning_summary`; lenient servers ignore unknown parameters and strict ones
-return 400 — that is the first thing to check in `ai/logs/agent.log`. And small
-models drift over long horizons: they forget the objective and loop. The
-harness already separates `OPENAI_MODEL_PATHFINDING`, which concedes the point
-— navigation is A* over a tile map, not an LLM problem, and every token spent
-on *press up, press up* is waste.
+Keys are fetched when the agent starts -- the Tiiny's from roverbyteseer's companion `seer/.seer`, LiteLLM's from its
+`~/.litellm.env` -- and never stored. The agent's log opens with what it chose: `[mind] mind:seer: tiiny-35b at ...`.
+
+*`bindDaemons.sh --ai` still defaults to `or-muse-glimmer` until its half lands (DAEMONS T-560): set
+`DAEMONS_MIND=mind` in the environment and the harness's choice wins over what the script exports.*
+
+**Two things to expect.** Small models drift over long horizons: they forget the objective and loop. And
+navigation is not a model's job here -- `path_to_location` is a BFS over the tile grid in-process
+(`DAEMONS_PATHFINDER=local`), and every token spent on *press up, press up* is waste.
 
 ## The bridge has its own venv, and why
 
