@@ -6775,7 +6775,7 @@ CODE / SEEK / CARE — the branches are single pure types, as vanilla's own eeve
 
 ***Both men are in the warehouse and Scorn does not recognise him.*** *They worked the same operation from opposite ends and were never in a room.* **Ty approaches you. Ty gives you the package.**
 
-***It goes to Crystal, and Ty does not.*** **4.14 is exact that the repair is *a fact delivered, not a feeling exchanged*** — *a feeling exchanged is precisely what 4.3 says does not transmit.* **A package obeys that. A son walking through the door would undo it**, and would undo 4.17's not-visiting being a choice on both sides.
+***It goes to Crystal, and Ty does not.*** **4.14 is exact that the repair is *a fact delivered, not a feeling exchanged*** — *a feeling exchanged is precisely what 4.3 says does not transmit.* **A package obeys that. Ty walking through the door would undo it** ([private: SECRETS §2]; redacted 2026-11-14, the user), and would undo 4.17's not-visiting being a choice on both sides.
 
 ***What this section had wrong was where she is standing when she reads it.*** **4.34 keeps every clause above and moves the last scene**, because the opera has a beat between the warehouse and the reading that this section did not know about. *The package is still the ending. It is no longer the only thing that had to happen.*
 

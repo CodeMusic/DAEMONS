@@ -3324,8 +3324,8 @@ had no way to notice.*
   — checkable on a single line, which is the only kind of rule that survives 9,500 words.
 - **The ending.** Both men are in the warehouse and **Scorn does not recognise him**; they
   worked the same operation from opposite ends and were never in a room. **Ty gives you the
-  package and Ty does not come home** — 4.14 is exact that *the repair is a fact delivered,
-  not a feeling exchanged*, and a son at the door would undo it. **She reads it. That is the
+  package and Ty does not come** — 4.14 is exact that *the repair is a fact delivered,
+  not a feeling exchanged*, and a visit would undo it ([private: SECRETS §2]; redacted 2026-11-14, the user). **She reads it. That is the
   last scene.**
 - **Tiers 0 and 1 are done. Tier 3 — naming 35 places and rewriting 9,500 words — stays
   deferred on the same condition:** *not until the rest is in play.*
