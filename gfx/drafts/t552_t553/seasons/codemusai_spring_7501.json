@@ -1,0 +1,37 @@
+{
+ "mode": "t2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t552_t553/seasons/codemusai_spring_7501",
+ "prompt": "pixel art sprite, chibi, the same creature as in the image, the same round helmet head, the same dark visor with glowing eyes, the same antennae, the same body shape and markings, now in light sleek spring fur, a small green sprout growing on its head, a few tiny blossoms, wide gliding membranes of fur between its front and back legs spread like a model aeroplane's wings, a propeller-shaped tuft on its tail, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, facing left three-quarter view, black outline, centered on a plain white background, full body, the whole body inside the picture with white space on every side, no shadow, no text, game asset",
+ "negative": "",
+ "seed": 7501,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t552_t553/round2/codemusai_summer_7302.png"
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 27.8,
+ "comfyui": "0.19.1",
+ "made": "2026-11-14 15:34:53"
+}

@@ -1,0 +1,37 @@
+{
+ "mode": "t2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t552_t553/round3/maskmusai_winter_7404",
+ "prompt": "pixel art sprite, chibi, pure white background, pixel art game sprite of a single cute creature, keep exactly the same big round smooth helmet-like head as the creature in the image, with the same dark glossy visor across its face and two small glowing eyes showing through it and the same two little antennae, but below the head a natural furry animal body, soft fur, paws, a tail, a snow hare body in thick white-grey winter fur, its two hind feet are enormous, very long, flat and narrow furry feet with turned-up toes, like a snowshoe hare's, lying flat on the snow and stretching far behind it, they are part of its body, furry feet not objects, there is nothing under it, no skis, no board, no sled, crouched low and leaning forward fast, a dark mask marking round the visor, frost sparkles, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, facing left three-quarter view, chibi proportions, big round head, large expressive eyes, soft shading, clean black outline, isolated on white, centered, large in the frame, the whole body inside the picture with white space on every side, no shadow, no text, game asset",
+ "negative": "",
+ "seed": 7404,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t452/c/armc/src/musai_romfront_512.png"
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 23.7,
+ "comfyui": "0.19.1",
+ "made": "2026-11-14 15:27:58"
+}

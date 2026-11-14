@@ -1,0 +1,37 @@
+{
+ "mode": "t2i",
+ "out": "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t552_t553/round3/maskmusai_winter_7411",
+ "prompt": "pixel art sprite, chibi, the same creature as in the image, the same round helmet head, dark visor, antennae and fluffy tail, but the two skis are now its own two hind feet: each hind foot is one very long flat narrow furry foot exactly the length and shape of a ski, with a turned-up furry tip at the front, grey fur with a pale underside, joined to its legs, part of its body, two short front paws, crouched low, gliding, frost sparkles, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, facing left three-quarter view, black outline, centered on a plain white background, full body, no shadow, game asset",
+ "negative": "",
+ "seed": 7411,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t552_t553/round2/maskmusai_winter_7302.png"
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 29.3,
+ "comfyui": "0.19.1",
+ "made": "2026-11-14 15:28:49"
+}

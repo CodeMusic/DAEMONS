@@ -277,3 +277,27 @@ The MUSAI branch's 24 forms as built; round one (one fox-kit, too alike); round 
 The MUSAI branch's 24 forms as built; round one (one fox-kit, too alike); round two with MUSAI's head kept, and the new seer.
 
 ![14Nov2026 - T553 - MUSAI branch as built and two concept rounds - 39](14Nov2026%20-%20T553%20-%20MUSAI%20branch%20as%20built%20and%20two%20concept%20rounds%20-%2039.png)
+
+### 14Nov2026 - T553 - MUSAI seasons and MASKMUSAI passes - 42
+
+T-553: MASKMUSAI's three passes at ski feet, then all six forms across the four seasons (two seeds each).
+
+![14Nov2026 - T553 - MUSAI seasons and MASKMUSAI passes - 42](14Nov2026%20-%20T553%20-%20MUSAI%20seasons%20and%20MASKMUSAI%20passes%20-%2042.png)
+
+### 14Nov2026 - T553 - MUSAI seasons and MASKMUSAI passes - 43
+
+T-553: MASKMUSAI's three passes at ski feet, then all six forms across the four seasons (two seeds each).
+
+![14Nov2026 - T553 - MUSAI seasons and MASKMUSAI passes - 43](14Nov2026%20-%20T553%20-%20MUSAI%20seasons%20and%20MASKMUSAI%20passes%20-%2043.png)
+
+### 14Nov2026 - T553 - MUSAI seasons and MASKMUSAI passes - 44
+
+T-553: MASKMUSAI's three passes at ski feet, then all six forms across the four seasons (two seeds each).
+
+![14Nov2026 - T553 - MUSAI seasons and MASKMUSAI passes - 44](14Nov2026%20-%20T553%20-%20MUSAI%20seasons%20and%20MASKMUSAI%20passes%20-%2044.png)
+
+### 14Nov2026 - T553 - MUSAI seasons and MASKMUSAI passes - 45
+
+T-553: MASKMUSAI's three passes at ski feet, then all six forms across the four seasons (two seeds each).
+
+![14Nov2026 - T553 - MUSAI seasons and MASKMUSAI passes - 45](14Nov2026%20-%20T553%20-%20MUSAI%20seasons%20and%20MASKMUSAI%20passes%20-%2045.png)
