@@ -95,10 +95,16 @@ FLAGS
                  and the archive is swept to the most recent 5 runs, since
                  --fresh is what creates them. DAEMONS_KEEP_RUNS changes the
                  number; 0 keeps everything.
-  --model NAME   use a specific model instead of the default, which is
-                 or-muse-glimmer. Names come from ai/litellm/config.yaml and
-                 from tools/ai_models.py, which reads them out of LM
-                 Studio -- e.g. qwen3-vl-8b, minicpm-v-4-6.
+  --mind NAME    which mind plays (engineAi T-555; ai/README.md): mind, the
+                 default -- ask the companion's hub which mind it is using
+                 (today the Tiiny) and play on it; tiiny, the Tiiny directly;
+                 seer, LiteLLM on roverbyteseer:4000; openrouter, hosted and
+                 PAID, never chosen for you. DAEMONS_TIINY_MODEL=35b|9b picks
+                 the model on the Tiiny (35b is the measured choice).
+  --model NAME   a specific model name on that mind instead of its default.
+                 Alone, it means seer (or openrouter for an or- name, which is
+                 PAID). Names come from ai/litellm/config.yaml and from
+                 tools/ai_models.py, which reads them out of LM Studio.
   --simple-schema  drop the three action variants that only annotate
                  (add_marker, delete_marker, restart_console), leaving five.
                  Full is now the default: markers are what draw doors and
@@ -233,8 +239,10 @@ FULL_SCHEMA=1   # full is the default now; --simple-schema opts out
 FRESH=0
 NESTED_TOOLS=0
 WANT_MODEL=""
+WANT_MIND=""
 for arg in "$@"; do
   if [[ "$WANT_MODEL" == "__next__" ]]; then WANT_MODEL="$arg"; continue; fi
+  if [[ "$WANT_MIND" == "__next__" ]]; then WANT_MIND="$arg"; continue; fi
   case "$arg" in
     content|context) EDITION="$arg" ;;
     --classic)       CLASSIC=1 ;;
@@ -247,22 +255,18 @@ for arg in "$@"; do
     --fresh)         FRESH=1 ;;
     --nested-tools)  NESTED_TOOLS=1 ;;
     --model)         WANT_MODEL="__next__" ;;
+    --mind)          WANT_MIND="__next__" ;;
     *) echo "unknown argument: $arg" >&2; usage >&2; exit 1 ;;
   esac
 done
 
-# THE DEFAULT MODEL, AND IT IS SET IN WANT_MODEL ON PURPOSE.
-#
-# The obvious place is the OPENAI_MODEL fallback further down, and that would
-# be a bug: the DAEMONS_STORE case below keys off WANT_MODEL, because `or-` is
-# this file's convention for OpenRouter entries and OpenRouter rejects the
-# Responses API's `store` parameter. Default the model down there and
-# WANT_MODEL stays empty, the case falls through to `*)`, store is left on,
-# and every request fails on a parameter nobody chose.
-#
-# So the default belongs here, where --model has already had its say and the
-# or-* test can still see the answer.
-: "${WANT_MODEL:=or-muse-glimmer}"
+# THE DEFAULT IS A MIND, NOT A MODEL (engineAi T-555, 2026-11-14). It used to be or-muse-glimmer -- OpenRouter, paid
+# -- and is now `mind`: the harness asks the companion's hub which mind it is using and plays on it. The resolution
+# (hub, Tiiny, seer, keys, the store rule for OpenRouter) lives in engineAi's server/src/ai/mind.js, so it is the same
+# whether this script or anything else starts the agent. --model alone keeps its old meaning: a LiteLLM name.
+if [[ -n "$WANT_MODEL" && -z "$WANT_MIND" ]]; then
+  case "$WANT_MODEL" in or-*) WANT_MIND=openrouter ;; *) WANT_MIND=seer ;; esac
+fi
 
 if [[ $AI -eq 1 && $CLASSIC -eq 1 ]]; then
   echo "--ai is GBA only: the harness reads pokefirered's RAM by symbol name." >&2
@@ -379,15 +383,22 @@ if [[ $AI -eq 1 ]]; then
   echo "generating symbols from this build…"
   python3 tools/gbasym.py --write
 
-  # LiteLLM, not the model server directly: the harness calls /v1/responses and
-  # local servers only speak /v1/chat/completions. See ai/litellm/README.md --
-  # and note the bridge is opt-in per model, so a config without
-  # use_chat_completions_api 404s on the first call and looks like a network
-  # fault rather than a setting.
-  #
-  # FIND THE PROXY. The tailnet name first, because it is the one that works
-  # from anywhere; the .local name second for a LAN with no tailnet; the IP
-  # last. Whichever answers /health/liveliness wins.
+  # WHICH MIND PLAYS: engineAi's server/src/ai/mind.js resolves DAEMONS_MIND into an endpoint, a model and a key
+  # (fetched over ssh, never stored here) when the agent starts. Local minds are spoken to in chat completions through
+  # its src/ai/chatBridge.js; OpenRouter keeps the Responses API through LiteLLM, with store off.
+  # Exported only when --mind (or --model) asks: otherwise the dashboard's Mind card, kept in engineAi's
+  # server/mind.local.json, decides -- and with nothing chosen there either, it is `mind`, local, never paid.
+  [[ -n "$WANT_MIND" ]] && DAEMONS_MIND="$WANT_MIND"
+  case "${DAEMONS_MIND:-}" in
+    ""|mind|tiiny|seer) ;;
+    openrouter) echo "  note      DAEMONS_MIND=openrouter is PAID: every turn is billed" ;;
+    *) echo "--mind $DAEMONS_MIND: choose mind, tiiny, seer or openrouter" >&2; exit 1 ;;
+  esac
+  [[ -n "${DAEMONS_MIND:-}" ]] && export DAEMONS_MIND
+  [[ -n "$WANT_MODEL" ]] && export DAEMONS_MODEL="$WANT_MODEL"
+  unset OPENAI_BASE_URL
+  # The proxy host still matters for the voice button below (n8n lives beside it) and is handed to mind.js for seer:
+  # the tailnet name first, then the LAN name, then the IP. Not fatal: mind and tiiny do not need it.
   LLM_HOST="${DAEMONS_LLM_HOST:-}"
   if [[ -z "$LLM_HOST" ]]; then
     for h in roverbyteseer roverbyteseer.local 10.0.0.136; do
@@ -396,149 +407,12 @@ if [[ $AI -eq 1 ]]; then
       fi
     done
   fi
-  [[ -n "$LLM_HOST" ]] || {
-    echo "no LiteLLM proxy on roverbyteseer / .local / 10.0.0.136:4000" >&2
-    echo "  is it running?  ssh roverbyte@10.0.0.136 'launchctl list | grep litellm'" >&2
-    exit 1; }
-  : "${OPENAI_BASE_URL:=http://$LLM_HOST:4000/v1}"
-
-  # THE KEY IS FETCHED, NEVER STORED HERE. It lives in ~/.litellm.env on the
-  # proxy host at mode 0600. Copying it into this repo, a dotfile or a shell
-  # history is how it ends up somewhere it should not be.
-  #
-  # AND IT OVERRIDES ANY OPENAI_API_KEY ALREADY IN THE ENVIRONMENT. Respecting
-  # a pre-set value is the usual courtesy and exactly wrong here: a real
-  # `sk-proj-...` exported from ~/.zshrc was sent to LiteLLM, which answered
-  # `400 No connected db.` -- its way of saying "unknown bearer", since it
-  # treats anything that is not the master key as a virtual key needing a
-  # database. An hour reads like a proxy fault when it is the wrong key.
-  #
-  # Worse than confusing: it points a real OpenAI credential at a local proxy
-  # that never needed one. When OPENAI_BASE_URL is ours, the key must be ours.
-  if [[ -n "${OPENAI_API_KEY:-}" && "${OPENAI_API_KEY}" != sk-daemons-* ]]; then
-    echo "  note      ignoring the OPENAI_API_KEY in your environment;"
-    echo "            --ai talks to LiteLLM, which wants its own key"
-  fi
-  OPENAI_API_KEY="$(ssh -o BatchMode=yes -o StrictHostKeyChecking=accept-new -o ConnectTimeout=6 \
-    "roverbyte@$LLM_HOST" 'sed -n "s/^LITELLM_MASTER_KEY=//p" ~/.litellm.env' 2>/dev/null || true)"
-  [[ -n "$OPENAI_API_KEY" ]] || {
-    echo "could not read the LiteLLM key from roverbyte@$LLM_HOST" >&2
-    echo "  set up the key once:  ssh-copy-id roverbyte@$LLM_HOST" >&2
-    exit 1; }
-  : "${OPENAI_MODEL:=${WANT_MODEL:-daemons}}"
-  : "${OPENAI_MODEL_PATHFINDING:=daemons-pathfinding}"
-  export OPENAI_MODEL_PATHFINDING
-
-  # CONTEXT GROWS UNTIL THE HARNESS FOLDS IT. It summarises when the running
-  # total passes OPENAI_TOKEN_LIMIT, so cost per step climbs to that ceiling,
-  # drops, and climbs again -- one run was already at 114,627 tokens after a
-  # handful of steps, 95,075 of them cached.
-  #
-  # The harness defaults to 250,000, which is a hair under qwen3-vl-8b's
-  # 262,144 and leaves no room for the summary call itself. And it is DOUBLE
-  # what gemma-3-4b can hold (131,072), so that model would overflow and fail
-  # before ever reaching the summariser -- the crash would look like the model
-  # breaking rather than the limit being wrong for it.
-  : "${OPENAI_TOKEN_LIMIT:=200000}"
-  export OPENAI_TOKEN_LIMIT
-  DAEMONS_SCHEMA=$([[ $FULL_SCHEMA -eq 1 ]] && echo full || echo lean)
-  export DAEMONS_SCHEMA
-  # Clicking a line of inner voice speaks it. n8n runs on the SAME HOST as the
-  # proxy, so it reuses $LLM_HOST -- which the probe above already resolved,
-  # already proved reachable, and already ordered tailnet-name first.
-  #
-  # THAT ORDERING IS THE WHOLE POINT AND I MISSED IT. The first version of this
-  # line hardcoded 10.0.0.136, which is a LAN address: correct on this network,
-  # dead on any other, while the proxy two lines up would have carried on
-  # working over the tailnet. One service reachable from anywhere and one
-  # pinned to the living room is not a configuration, it is a trap.
-  #
-  # AND THE PUBLIC RELAY IS THE FALLBACK, which is what it was built for. The
-  # tailnet path is direct and private and wants Tailscale up; the relay wants
-  # only an internet connection. Probed the same way the proxy is, and with the
-  # cheap GET -- daemon/health on the same host -- because probing daemon/voice
-  # would generate a clip of speech nobody asked to hear.
-  #
-  # Set it yourself to force one, or to "" to turn the button off entirely.
-  if [[ -z "${DAEMONS_VOICE_URL+x}" ]]; then
-    if curl -fsS --max-time 3 "http://$LLM_HOST:5678/webhook/daemon/health" >/dev/null 2>&1; then
-      DAEMONS_VOICE_URL="http://$LLM_HOST:5678/webhook/daemon/voice"
-    else
-      DAEMONS_VOICE_URL="https://n8n.codemusic.ca/webhook/daemon/voice"
-    fi
-  fi
-  export DAEMONS_VOICE_URL
-  # Not currently set on the n8n side -- every internal workflow guards with
-  # `if (expected && ...)`, so an unset secret means the check is skipped, and
-  # a probe of daemon/health with no header returned 200. Forwarded anyway so
-  # that turning it on there is the only change needed.
-  export DEX_SHARED_SECRET="${DEX_SHARED_SECRET:-}"
-  # Flat by default: the shape that works for qwen, which is the model that
-  # works. minicpm cannot tool-call through LM Studio in any shape.
-  DAEMONS_TOOLS=$([[ $NESTED_TOOLS -eq 1 ]] && echo nested || echo flat)
-  export DAEMONS_TOOLS
-  # LiteLLM's /responses bridge rejects a function_call_output whose `output`
-  # is an array -- the harness's way of attaching a screenshot to a tool
-  # result. Verified against the proxy: string passes, list is a flat 400
-  # "Invalid type for 'input'". Left off; the images go in a user message
-  # instead, which is the same content.
-  : "${DAEMONS_EXTEND_TOOL_OUTPUT:=0}"
-  export DAEMONS_EXTEND_TOOL_OUTPUT
-  # path_to_location is the one upstream tool that CANNOT be pointed at a
-  # local model: it runs on OpenAI's Code Interpreter, at container URLs
-  # hardcoded to api.openai.com. Without a key it fails five times per call and
-  # stalls the run. We solve it in-process with a BFS over the collision grid
-  # the frame already carries. DAEMONS_PATHFINDER=openai restores upstream's,
-  # and needs a real OPENAI_API_KEY to be worth anything.
-  # A local model needs a ceiling the hosted default never did. Upstream sends
-  # max_output_tokens 32000 at every call site; at MiniCPM's ~70 tok/s that is
-  # 457 seconds for ONE turn, and we watched a turn spend 290s emitting 21,190
-  # tokens -- 623 consecutive reasoning deltas, thinking in circles, no tool
-  # call at the end of it. Real turns here emit 180-1120.
-  #
-  # The token cap is the lever that is PROVEN to work: max_tokens shows up in
-  # mlx-vlm's own request log, so we know it is honoured. The effort setting is
-  # sent too, but whether this serving layer acts on it is unverified -- so it
-  # is the belt, and the cap is the braces.
-  # 2048 was too tight and I have the numbers to prove it: finish_reason=tool
-  # went from 37 an hour to 3, and finish_reason=length from 0 to 13. The cap
-  # was cutting turns off mid-reasoning, before they ever reached the tool
-  # call, so it traded a rare 5-minute runaway for a routine wasted turn.
-  #
-  # 4096 clears every legitimate output observed (longest ~2010) and still caps
-  # a runaway near 60s rather than 457s. The precise instrument for the actual
-  # problem -- reasoning that will not stop -- is mlx-vlm's --thinking-budget,
-  # which bounds the thinking block and leaves room for the call after it.
-  : "${DAEMONS_MAX_OUTPUT_TOKENS:=4096}"
-  : "${OPENAI_REASONING_EFFORT:=medium}"
-  : "${OPENAI_REASONING_EFFORT_BATTLE:=medium}"
-  : "${OPENAI_REASONING_EFFORT_DIALOG:=medium}"
-  export DAEMONS_MAX_OUTPUT_TOKENS OPENAI_REASONING_EFFORT \
-         OPENAI_REASONING_EFFORT_BATTLE OPENAI_REASONING_EFFORT_DIALOG
-  # No SDK retries against a local model. A retry does not replace the first
-  # call here, it runs beside it: mlx-vlm never cancels the abandoned
-  # generation. We watched in_flight reach 3 with decode at 17 tok/s instead of
-  # 100, and an orphan still decoding 256s after its client had gone.
-  : "${OPENAI_MAX_RETRIES:=0}"
-  export OPENAI_MAX_RETRIES
-  # OpenRouter refuses `store: true` outright -- invalid_value on path
-  # ["store"], "expected false" -- and LiteLLM's drop_params cannot help,
-  # because store is a legitimate Responses parameter rather than an
-  # unsupported one. Nothing in the harness depends on retention: it reads the
-  # final response out of the stream, not by fetching it back.
-  #
-  # Keyed off the model name because that is what actually determines it, and
-  # the or- prefix is this file's own convention for OpenRouter entries.
-  case "${WANT_MODEL:-}" in
-    or-*) : "${DAEMONS_STORE:=0}" ;;
-    *)    : "${DAEMONS_STORE:=1}" ;;
-  esac
-  export DAEMONS_STORE
+  : "${LLM_HOST:=roverbyteseer}"
+  export DAEMONS_SEER_HOST="$LLM_HOST"
   : "${DAEMONS_PATHFINDER:=local}"
   export DAEMONS_PATHFINDER
   : "${DAEMONS_DUMP_INPUT:=$PWD/ai/logs/last-input.json}"
   export DAEMONS_DUMP_INPUT
-  export OPENAI_BASE_URL OPENAI_API_KEY OPENAI_MODEL
   export FIRERED_SYM_PATH="$PWD/ai/pokefirered.sym"
   export FIRERED_BRIDGE_STRICT_SYMBOLS=1   # fail loudly, never read zeroes
 
@@ -684,8 +558,8 @@ sys.exit(0 if all(u.find_spec(m) for m in ("fastapi","uvicorn","pydantic","doten
 
   cat <<AIEOF
 
-  model     $OPENAI_MODEL via $OPENAI_BASE_URL
-  key       read from roverbyte@$LLM_HOST:~/.litellm.env
+  mind      ${DAEMONS_MIND:-the dashboard's Mind card, or mind}${DAEMONS_MODEL:+ ($DAEMONS_MODEL)} -- the agent's log names what it chose, '[mind] ...'
+  keys      fetched over ssh when the agent starts, never stored
   symbols   ai/pokefirered.sym (this build)
 
   ONE STEP IS STILL YOURS. mGBA 0.10.5 has no --script; that landed in 0.11.
