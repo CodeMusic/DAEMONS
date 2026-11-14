@@ -53,7 +53,8 @@
   "screens/daemon/Mind.tsx": "its-mind",
   "screens/you/Guardian.tsx": "guardian",
   "screens/today/Tending.tsx": "tending",
-  "screens/game/Link.tsx": "playing"
+  "screens/game/Link.tsx": "playing",
+  "screens/daemon/Creations.tsx": "creations"
  },
  "not for players": [
   "screens/dev/Dev.tsx"

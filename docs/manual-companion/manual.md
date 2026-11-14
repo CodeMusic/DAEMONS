@@ -346,6 +346,29 @@ the weather on the way -- and gives the painting a title and a line about it. A 
 **THE GALLERY**, under the easel, keeps every painting, a wall for each daemon, each one framed. Tap a painting to see
 it large; hold it to see **WHAT WAS ASKED**. **TAKE IT DOWN** takes one off the wall.
 
+## CREATIONS {#creations}
+
+**CREATIONS ›**, under its card on **Yours** (and under SLEEP SOUNDS), is one gallery of everything the daemons have
+made: **SLEEP SOUNDS** and **PAINTINGS**. Choose where to look:
+
+- **MINE** -- what is on this phone.
+- **HOUSEHOLD** -- everything the hub keeps, from every device at home. A **✓** marks what this phone already has, and
+  **Only what this phone does not have** hides those.
+- **COMMUNITY** -- what homes have shared on THE COMMONS. It needs your home linked to THE COMMONS, in SETTINGS.
+
+Tap one to open it: who made it, who asked for it, and when. **DOWNLOAD TO THIS PHONE** keeps it here. From HOUSEHOLD,
+**SHARE WITH THE COMMUNITY** puts it on THE COMMONS for other homes. On this phone, **LET IT GO FROM THIS PHONE**
+removes it here, and the hub still keeps it.
+
+**A sleep piece plays like a record.** Its cover is round, with its title on a label under the hole. Around its edge
+the night is drawn clockwise, a tick a minute in the colour of DRIFT DOWN's beat that minute, lit as the night reaches
+it. Tap the record to see the music's **spectrum** instead, and tap again for the cover. **PLAY 30 MINUTES** and
+**DRIFT DOWN** work as they do on SLEEP SOUNDS, and the player says how long until it fades.
+
+**EXPORT** makes the night into a file to keep or open elsewhere: one **MP3**, an **MP3 + DRIFT DOWN** with the beat
+under the music, or a **PULSEENTRAIN** session to open in that app. The hub makes the files, so the first time can take
+a little while.
+
 ## SOUNDINGS {#soundings}
 
 **SOUNDINGS** is one quiet card for each daemon away: when it was last heard, and how it was doing then -- *No signal
@@ -446,8 +469,9 @@ chooses the instruments, its feelings the key and the pace, and what it needs wh
 thirsty one, a hearth for a hungry one. **MAKE TONIGHT'S** asks the hub for it; it takes about three minutes, and is
 kept on the phone once it comes.
 
-**PLAY 30 MINUTES** plays it for half an hour, fading away over the last ten. **MAKE ANOTHER** makes a new one, and
-**KEPT FROM OTHER NIGHTS** holds the ones before.
+Each piece comes with a title, and a cover your daemon paints for it. **PLAY 30 MINUTES** plays it for half an hour,
+fading away over the last ten. **MAKE ANOTHER** makes a new one, and **CREATIONS ›** holds the ones before
+([CREATIONS](#creations)).
 
 **DRIFT DOWN** is for headphones: a slow beat between your ears under the music, easing from alpha to theta to delta
 as you fall asleep. Without headphones the music plays alone until they are on.
