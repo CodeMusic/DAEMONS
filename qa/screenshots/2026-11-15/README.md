@@ -13,3 +13,33 @@ T-563 BUILT (engine 0aee7681c): the INDEX all A -- the Kanto list on graph paper
 T-563 BUILT (engine 0aee7681c): the GOTO map's head drawn from the player's own sprite (A BUST, under the town's GOTO ring) and HEARSAY's teal cut box, today beside the built debug ROM
 
 ![15Nov2026 - T563 - built the map head and HEARSAY - 2](15Nov2026%20-%20T563%20-%20built%20the%20map%20head%20and%20HEARSAY%20-%202.png)
+
+### 15Nov2026 - T564 - the boot today filmed - 3
+
+T-564: today's boot filmed from reset on the CONTENT debug ROM (tools/routes/film_t564_boot.json) -- what is still pret's is named over each capture: the splash's band and star, the title's border tiles and slash glint.
+
+![15Nov2026 - T564 - the boot today filmed - 3](15Nov2026%20-%20T564%20-%20the%20boot%20today%20filmed%20-%203.png)
+
+### 15Nov2026 - T564 - DRAFT star today beside A B C - 4
+
+T-564 DRAFT: the star, today (pret's) beside A/B/C at 2x, in context; nothing in the engine until picked (tools/gbatitle.py --t564).
+
+![15Nov2026 - T564 - DRAFT star today beside A B C - 4](15Nov2026%20-%20T564%20-%20DRAFT%20star%20today%20beside%20A%20B%20C%20-%204.png)
+
+### 15Nov2026 - T564 - DRAFT slash today beside A B C - 5
+
+T-564 DRAFT: the slash, today (pret's) beside A/B/C at 2x, in context; nothing in the engine until picked (tools/gbatitle.py --t564).
+
+![15Nov2026 - T564 - DRAFT slash today beside A B C - 5](15Nov2026%20-%20T564%20-%20DRAFT%20slash%20today%20beside%20A%20B%20C%20-%205.png)
+
+### 15Nov2026 - T564 - DRAFT border today beside A B C - 6
+
+T-564 DRAFT: the border, today (pret's) beside A/B/C at 2x, in context; nothing in the engine until picked (tools/gbatitle.py --t564).
+
+![15Nov2026 - T564 - DRAFT border today beside A B C - 6](15Nov2026%20-%20T564%20-%20DRAFT%20border%20today%20beside%20A%20B%20C%20-%206.png)
+
+### 15Nov2026 - T564 - DRAFT band today beside A B C - 7
+
+T-564 DRAFT: the band, today (pret's) beside A/B/C at 2x, in context; nothing in the engine until picked (tools/gbatitle.py --t564).
+
+![15Nov2026 - T564 - DRAFT band today beside A B C - 7](15Nov2026%20-%20T564%20-%20DRAFT%20band%20today%20beside%20A%20B%20C%20-%207.png)

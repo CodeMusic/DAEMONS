@@ -36,6 +36,8 @@ a stop that needs longer than --stop-timeout (T-451):
     load debug|release         put the built ROM in the theatre (.theatre/rom/theatre_<kind>.gba, its save kept beside
                                it) and continue the game -- no click in the theatre's window (T-386)
     continue                   from the intro, title, menu or recap to the player free on the overworld
+    reset                      T-564: reset the ROM in the theatre and stop there, at its first frame -- to film the
+                               boot (copyright, splash, title) with `wait` and `burst`; `continue` after it plays on
     save                       save the game in the game (START, SAVE, YES): another ROM can continue from it
     savestate NAME             keep this moment in .theatre/states/NAME.ss (the theatre script's own, T-386)
     loadstate NAME             come back to it: a route can start there instead of playing up to it
@@ -1687,6 +1689,9 @@ class Runner:
             self.continue_game()
         elif op == "load":
             self.load(args[0])
+        elif op == "reset":                                             # T-564: film the boot
+            tw.run("reset")
+            self.g.p = None
         elif op in ("savestate", "loadstate"):                         # T-386
             states = os.path.join(THEATRE, "states")
             os.makedirs(states, exist_ok=True)
@@ -1944,7 +1949,7 @@ def words(line):
 # before one when it may be left off, * the rest of the line, anything. --check holds every step to its shape, so a step
 # the run would crash on (`burst 30 (sun) ...`, a label with spaces left unquoted) fails the check instead.
 SHAPES = {
-    "goto": "s ?i ?i", "fly": "s ?i ?i", "save": "", "continue": "", "load": "s", "savestate": "s", "loadstate": "s",
+    "goto": "s ?i ?i", "fly": "s ?i ?i", "save": "", "continue": "", "reset": "", "load": "s", "savestate": "s", "loadstate": "s",
     "to": "i i", "warp": "s", "edge": "s", "walkto": "s", "talk": "s ?i", "trigger": "i i ?i", "look": "i i ?i",
     "finish": "", "read": "", "press": "s ?i", "hold": "s i", "wait": "i", "shot": "*", "flag": "s i", "trainer": "s i",
     "flagis": "s i", "var": "s n", "repel": "?i", "bump": "s *", "wild": "*", "unsaid": "*", "friendship": "i i",
@@ -2003,7 +2008,7 @@ def check(route):
                     states[a[1]] = folder
                 elif a[0] == "loadstate":
                     folder = states.get(a[1])
-                elif a[0] in ("load", "continue"):
+                elif a[0] in ("load", "continue", "reset"):
                     folder = None                                         # wherever the save stands: not known here
                 elif a[0] == "fly":                                       # GOTO lands in the town's own map
                     map_index(a[1])

@@ -1,0 +1,22 @@
+{
+ "rom": "debug",
+ "about": "T-564 (the boot screens' last pieces, DRAFTS): today's boot filmed from reset to the title on the DEBUG ROM -- the copyright screen, the CodeMusic splash (the band, the flying star, the binary-and-notes glints, the wordmark and the ring), the thank-you card, then the title's reveal and its run, with a fine burst for the slash's sweep across the logo (it first crosses 540 frames into the run). The theatre's debug scratch save; nothing is saved.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, loaded",
+   "steps": [
+    "load debug"
+   ]
+  },
+  {
+   "stop": "the boot, from reset",
+   "timeout": 400,
+   "steps": [
+    "reset",
+    "burst \"boot from reset\" 160 8",
+    "burst \"the title arriving\" 120 8",
+    "burst \"the title, the slash\" 140 4"
+   ]
+  }
+ ]
+}

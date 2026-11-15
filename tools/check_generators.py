@@ -57,6 +57,9 @@ ARGS = {
     #  T-523: --write refuses without --approved and --main; the user chose A on 2026-11-06, and the write copies
     #  gfx/drafts/t523_frames/A into the engine, so a sandboxed write of it changes nothing when the engine is right.
     "gbaframes": [["--approved", "--main", "A"], ["--approved", "--std", "1"]],   # T-554: the std frame, version 1
+    #  T-564: gbatitle's other modes convert one named piece of art and need it on the command line; --t564 is its
+    #  drafting mode (the boot's last pret pieces), and its write writes APPROVED_564 -- empty while T-564 is a DRAFT.
+    "gbatitle": [["--t564", "--approved"]],
     "gbamenus3": [["--approved", "--all"],                                         # T-554: the menu leftovers, all A
                   ["--t561", "--approved", "--pick", "emotes=A,itemfinder=A,questlog=1,qldesc=A,banner=A,helpscreen=1"],
                   ["--t563", "--approved", "--all"]],
