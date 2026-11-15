@@ -636,3 +636,9 @@ T-562 BUILT (engine 0dabcb96e): each town's busiest street at 2x, v11.367.1 besi
 T-562 BUILT (engine 0dabcb96e): VERDIGRIS's fountain, its five frames, pret's beside B RINGS as built; DRAFT art
 
 ![14Nov2026 - T562 - verdigris fountain built rings - 98](14Nov2026%20-%20T562%20-%20verdigris%20fountain%20built%20rings%20-%2098.png)
+
+### 14Nov2026 - C221 - link cable as video - 99
+
+C-221: THE LINK CABLE drawing linkhost's video through a hub -- one held request, START reaching the game (a new game's CONTROLS screen)
+
+![14Nov2026 - C221 - link cable as video - 99](14Nov2026%20-%20C221%20-%20link%20cable%20as%20video%20-%2099.jpg)
