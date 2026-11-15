@@ -420,6 +420,17 @@ ENGAGE = [("would like to battle", "would like to engage"),
           ("Perfect for a battle", "Perfect for an engagement"),
           ("I concede defeat",     "I concede the score")]
 
+#  T-567. A MOVE is a ROUTINE, but "move" is ordinary English ("Move to where?", "make a move", "It occasionally
+#  moves") and cannot be swept as a word. These are the constructions that can only mean a routine: the learning
+#  and forgetting lines (in battle and at the relearner) and a type's routines missing. Found filming T-566.
+#  (Two battle lines could not take ROUTINES without a third line and were reworded by hand, DRAFT: "But, X
+#  already\nknows four ROUTINES." and "Delete one to make\nroom for Y?")
+ROUTINE_TALK = [("did not learn the\\nmove ", "did not learn the\\nROUTINE "),
+                ("teach a new\\nmove to", "teach a new\\nROUTINE to"),
+                ("has no\\nmoves left", "has no\\nROUTINES left"),
+                ("GROUND\\nmoves miss", "STRATUM\\nROUTINES miss"),
+                ("A move that\\nrecycles", "A ROUTINE that\\nrecycles")]
+
 #  T-04. Twenty-eight lines still say "a GRASS-type DAEMON", and the type
 #  names cannot be swept as WORDS -- 2.6's whole set is ordinary English and
 #  half of it is scenery, so GRASS is grass and WATER is water almost
@@ -575,7 +586,7 @@ PHRASES = sorted((TYPE_TALK +
                    ("DAEMON CENTER", "CHECKPOINT"),
                    ("DAEMON_CENTER", "CHECKPOINT"), ("DAEMON_MART", "THE_REPO"),
                    ("Daemon Center", "Checkpoint"), ("Daemon Mart", "the Repo")] +
-                  ENGAGE),
+                  ENGAGE + ROUTINE_TALK),
                  key=lambda kv: -len(kv[0]))
 #  A PHRASE WHOSE OUTPUT STILL CONTAINS ITS OWN KEY GROWS ON EVERY RUN.
 #  The stash below protects one pass; it cannot protect the NEXT run, because
