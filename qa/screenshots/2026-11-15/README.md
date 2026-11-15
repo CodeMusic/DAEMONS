@@ -85,3 +85,9 @@ T-566 DRAFT: TWO ISLAND's relearner panel and scroll arrows, today beside A GRAP
 T-566 DRAFT: the EGG (summary, party icon, hatch, shards), today beside A THE SHELL, B SEALED, C THE STAVE
 
 ![15Nov2026 - T566 - egg A B C - 14](15Nov2026%20-%20T566%20-%20egg%20A%20B%20C%20-%2014.png)
+
+### 15Nov2026 - T566 - the scenes built - 15
+
+T-566 built, the user's picks (all A), filmed on the debug ROM: an item used on graph paper, the evolution's square wave, the relearner's dotted paper, the shell egg hatching
+
+![15Nov2026 - T566 - the scenes built - 15](15Nov2026%20-%20T566%20-%20the%20scenes%20built%20-%2015.png)

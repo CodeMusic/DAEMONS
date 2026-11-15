@@ -59,7 +59,7 @@ DRAFT = os.path.join(ROOT, "gfx", "drafts", "t566_evolve")
 FRAMES = os.path.join(ROOT, ".theatre", "routes", "film_t566_evolve")      # tools/routes/film_t566_evolve.json
 
 PIECES = ["evo_bg", "sparkle", "psa_bg", "level_up", "star", "dots", "relearner", "arrows", "egg"]
-APPROVED = {}          # T-566 is a DRAFT: nothing is written until the user picks
+APPROVED = {p: "A" for p in PIECES}   # the user, 2026-11-15, by multiple choice: A for every piece (DRAFT)
 FILES = {
     "evo_bg":    ["graphics/evolution_scene/bg.png", "graphics/evolution_scene/bg.bin",
                   "graphics/evolution_scene/bg2.bin"],
