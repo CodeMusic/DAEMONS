@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.374**
+**A total conversion — the living design bible, v11.375**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -793,6 +793,8 @@ Flat. No congratulation. **The game declining to celebrate is more unsettling th
 **The rename is one string.** *Eleven player-visible strings contain `MOVE` and most are the **verb*** — `MOVE ITEMS`, `MOVE TO BAG`, `{DPAD_ANY}MOVE` all mean *relocate* and stay. **Same trap as *catchy tune*.** `KNOWN MOVES` becomes `KNOWN ROUTINES`: `POKESUM_WIN_PAGE_NAME` is 13 tiles with the printer at x=4, so the budget is 100px and it measures **84**.
 
 ***Deliberately not done:*** **`move` → `routine` inside prose.** *"moves on own" and "can't move" are verbs while "move type" is a noun*, and separating them is the move pass's job, not this one's.
+
+***The learning lines, done (T-567, released in v11.374.1; DRAFT):*** **where the noun is a daemon's move, the learning lines now say ROUTINE** -- *the relearner, battle's "four ROUTINES" (two lines reworded to fit), "has no ROUTINES left", STRATUM's routines, RECYCLE; seven lines in all, the verbs still MOVE.* *`port_vocab.py` carries it as ROUTINE_TALK; the companion's battle line says the same.*
 
 #### Two habits this pass confirmed
 
@@ -9253,6 +9255,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **A MOVE is a ROUTINE in the learning lines (T-567, v11.374.1)** — released: seven lines where the noun meant a daemon's move now say ROUTINE, two reworded to fit, the verbs left as MOVE (1's ROUTINES pass). Sealed v11.373.x. DRAFT.
 - **The islands and the caves (T-569, v11.373.1)** — released, the user's picks: the Sevii outdoors as THE ISLAND KIT, each cave's stones in their own grain, MT. SMOULDER's steam as BANKED HEAT, the cave battle background regenerated to match; THE BLACKOUT kept as T-546 drew it, for the story. The eighth and last batch of the 2026-11-14 re-census of Nintendo art (T-561 to T-569); what is left is T-570's single-index tiles, the landmarks (T-447) and the doors. Sealed v11.372.x. DRAFT.
 - **The new game and the name (T-568, v11.372.1)** — released, the user's picks (A throughout): the controls guide's buttons as KEYCAPS; CRYSTAL's scene on GRAPH PAPER with THE PAD to stand on; SEEKMUSAI's panel on graph paper with a quaver where the ball was; the naming screen's buttons and tabs as KEYCAPS, its cursor as BRACKETS, its marks as a PROMPT and its PC icon as THE TERMINAL. The naming screen's background, keyboard and palettes were already ours (T-363). Sealed v11.371.x. DRAFT.
 - **Evolving, using, learning (T-566, v11.371.1)** — released, the user's picks (A for every piece): the evolution scene's moving ground as a SQUARE WAVE with THE BIT for its sparkle; an item used from the bag over GRAPH PAPER, its level-up streaks as CARETS, its stars as THE MARK and its spiral as 0 1 .; the relearner's panel on GRAPH PAPER with a CARET for its arrows; the egg as THE SHELL. The relearner's words still say "move" (T-567). Sealed v11.370.x. DRAFT.

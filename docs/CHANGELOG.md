@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.375 — 2026-11-15
+
+- Recorded from release v11.374.1 (4d16fc0b, engine 46045ed22), which sealed v11.373.x:
+  - **A MOVE is a ROUTINE in the learning lines** (T-567): seven lines, two reworded to fit, DRAFT. Under "And moves become ROUTINES".
+- Section 10: one Settled entry.
+
 ## v11.374 — 2026-11-15
 
 - Recorded from release v11.373.1 (4afad1f6, engine 1c758c2e3 + 4c2c60d81), which sealed v11.372.x:
