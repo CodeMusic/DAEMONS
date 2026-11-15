@@ -29,7 +29,7 @@ A minor release, released with two recordings deferred (the user, 2026-11-14: "R
 
 ## The design and tools since v11.363.1
 
-- `7f0ed131` Secret 2 redacted from the public bible and CHANGELOG (the user, 2026-11-14: redact going forward, no history rewrite) -- the 'son at the door' lines now read [private: SECRETS §2]; found by check_secrets
+- `7f0ed131` Secret 2 redacted from the public bible and CHANGELOG (the user, 2026-11-14: redact going forward, no history rewrite) -- two lines now read [private: SECRETS §2]; found by check_secrets
 - `85d84b8b` THE COMPANION manual: Routines is what the daemon does -- IT SINGS (new), THE EASEL and SLEEP SOUNDS there; ITS GALLERIES (companion C-368, build 980)
 - `6821575c` T-552, T-553 followers: the 27 picked fronts at follower size (T-534's reduction), and the backs-and-icons drawing script
 - `47097a1f` ai/README: which mind plays the AI harness -- DAEMONS_MIND, the hub's mind by default, the Tiiny's 35B (T-560)
