@@ -126,6 +126,8 @@ ARGS = {
     #  sandboxed write is real; the LEAGUE and the HALL are LANDMARKS now (pair 6), and FOUR ISLAND's two post copies
     #  are recorded in generator_drift.json.
     "gbatowns": [["--approved"]],
+    #  T-562: the towns' last pret tiles; APPROVED is empty while it is a DRAFT, so its --approved write refuses.
+    "gbatownslast": [["--approved"]],
     #  T-532: genmusaiseasons needs no flag (the user decided the build 2026-11-08): it writes the 18 seasonal forms --
     #  copies of today's art until gfx/drafts/t532_musai_seasons/finals/ holds a drawing NAMED IN ITS APPROVED_FINAL
     #  (the user's picks, 2026-11-08), the approved summers into gfx/daemons/, and its table and coordinates blocks --

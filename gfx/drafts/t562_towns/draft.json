@@ -1,0 +1,461 @@
+{
+ "ticket": "T-562",
+ "status": "DRAFT -- nothing approved (APPROVED is empty)",
+ "towns": {
+  "fuchsia_city": {
+   "name": "LURID CITY and the SAFARI",
+   "left": 131,
+   "excluded": {
+    "53": "door (gbadoors.py)",
+    "54": "door (gbadoors.py)",
+    "61": "door (gbadoors.py)",
+    "62": "door (gbadoors.py)",
+    "69": "door (gbadoors.py)",
+    "70": "door (gbadoors.py)",
+    "77": "door (gbadoors.py)",
+    "78": "door (gbadoors.py)"
+   },
+   "targets": 123,
+   "redrawn": {
+    "A": 107,
+    "B": 107
+   },
+   "unchanged": [
+    28,
+    30,
+    45,
+    46,
+    47,
+    63,
+    73,
+    74,
+    128,
+    134,
+    136,
+    139,
+    151,
+    160,
+    167,
+    168
+   ],
+   "options": [
+    {
+     "option": "A",
+     "title": "LACQUER (DRAFT)",
+     "line": "the SAFARI's woods as lacquered clumps, a hot spot and a dark lip each; the pens and rest houses in stamped panels"
+    },
+    {
+     "option": "B",
+     "title": "THE HUM (DRAFT)",
+     "line": "every frontage, pen and rest house a humming sign in level scan bands; the woods as A"
+    }
+   ],
+   "seams": {
+    "A": {
+     "today": 541,
+     "draft": 541,
+     "added": []
+    },
+    "B": {
+     "today": 541,
+     "draft": 541,
+     "added": []
+    }
+   }
+  },
+  "celadon_city": {
+   "name": "VERDIGRIS CITY and ROUTES 16-18",
+   "left": 104,
+   "excluded": {
+    "63": "landmark (T-447)",
+    "71": "landmark (T-447)",
+    "83": "landmark (T-447)",
+    "84": "landmark (T-447)",
+    "85": "landmark (T-447)",
+    "86": "landmark (T-447)",
+    "100": "landmark (T-447)",
+    "113": "landmark (T-447)",
+    "114": "landmark (T-447)",
+    "115": "landmark (T-447)",
+    "116": "landmark (T-447)",
+    "128": "landmark (T-447)",
+    "129": "landmark (T-447)",
+    "130": "landmark (T-447)",
+    "131": "landmark (T-447)",
+    "132": "landmark (T-447)",
+    "142": "door (gbadoors.py)",
+    "158": "door (gbadoors.py)"
+   },
+   "targets": 86,
+   "redrawn": {
+    "A": 72,
+    "B": 71
+   },
+   "unchanged": [
+    12,
+    14,
+    49,
+    50,
+    52,
+    74,
+    75,
+    89,
+    94,
+    120,
+    121,
+    126,
+    170,
+    186
+   ],
+   "options": [
+    {
+     "option": "A",
+     "title": "BRONZE PANELS (DRAFT)",
+     "line": "the dept. store's purple front in raised stamped panels, the town's bronze trims and bloom around it"
+    },
+    {
+     "option": "B",
+     "title": "THE GREEN GLASS (DRAFT)",
+     "line": "the dept. store's front as a curtain wall -- mullions every eight, a transom every sixteen -- the rest as A"
+    }
+   ],
+   "seams": {
+    "A": {
+     "today": 541,
+     "draft": 541,
+     "added": []
+    },
+    "B": {
+     "today": 541,
+     "draft": 541,
+     "added": []
+    }
+   }
+  },
+  "saffron_city": {
+   "name": "BRAZEN CITY",
+   "left": 81,
+   "excluded": {
+    "69": "door (gbadoors.py)",
+    "70": "door (gbadoors.py)",
+    "85": "door (gbadoors.py)",
+    "86": "door (gbadoors.py)",
+    "149": "kept (gbatowns KEEP_TILES)",
+    "164": "kept (gbatowns KEEP_TILES)",
+    "165": "kept (gbatowns KEEP_TILES)",
+    "167": "kept (gbatowns KEEP_TILES)"
+   },
+   "targets": 73,
+   "redrawn": {
+    "A": 61
+   },
+   "unchanged": [
+    40,
+    41,
+    169,
+    170,
+    176,
+    181,
+    183,
+    192,
+    193,
+    195,
+    197,
+    229
+   ],
+   "options": [],
+   "seams": {
+    "A": {
+     "today": 541,
+     "draft": 541,
+     "added": []
+    }
+   }
+  },
+  "lavender_town": {
+   "name": "HALFTONE TOWN and ROUTES 8, 10, 12-14",
+   "left": 64,
+   "excluded": {
+    "147": "door (gbadoors.py)",
+    "148": "door (gbadoors.py)",
+    "149": "landmark (T-447)",
+    "150": "landmark (T-447)",
+    "151": "landmark (T-447)",
+    "152": "landmark (T-447)",
+    "153": "landmark (T-447)",
+    "158": "landmark (T-447)",
+    "163": "door (gbadoors.py)",
+    "164": "door (gbadoors.py)",
+    "165": "landmark (T-447)",
+    "166": "landmark (T-447)",
+    "167": "landmark (T-447)",
+    "168": "landmark (T-447)",
+    "169": "landmark (T-447)",
+    "170": "landmark (T-447)",
+    "171": "landmark (T-447)",
+    "172": "landmark (T-447)",
+    "174": "landmark (T-447)",
+    "176": "landmark (T-447)",
+    "177": "landmark (T-447)",
+    "181": "landmark (T-447)",
+    "182": "landmark (T-447)",
+    "183": "landmark (T-447)",
+    "184": "landmark (T-447)",
+    "185": "landmark (T-447)",
+    "186": "landmark (T-447)",
+    "187": "landmark (T-447)",
+    "188": "landmark (T-447)",
+    "189": "landmark (T-447)",
+    "197": "landmark (T-447)",
+    "198": "landmark (T-447)",
+    "199": "landmark (T-447)",
+    "200": "landmark (T-447)",
+    "201": "landmark (T-447)",
+    "202": "landmark (T-447)",
+    "203": "landmark (T-447)",
+    "204": "landmark (T-447)",
+    "205": "landmark (T-447)",
+    "206": "landmark (T-447)",
+    "213": "landmark (T-447)",
+    "214": "landmark (T-447)",
+    "215": "landmark (T-447)",
+    "216": "landmark (T-447)",
+    "217": "landmark (T-447)",
+    "218": "landmark (T-447)",
+    "219": "landmark (T-447)",
+    "220": "landmark (T-447)",
+    "221": "landmark (T-447)",
+    "222": "landmark (T-447)",
+    "232": "landmark (T-447)",
+    "233": "landmark (T-447)",
+    "235": "landmark (T-447)",
+    "238": "landmark (T-447)",
+    "248": "landmark (T-447)",
+    "249": "landmark (T-447)",
+    "250": "landmark (T-447)",
+    "251": "landmark (T-447)",
+    "252": "landmark (T-447)",
+    "254": "landmark (T-447)"
+   },
+   "targets": 4,
+   "redrawn": {
+    "A": 0
+   },
+   "unchanged": [
+    32,
+    33,
+    44,
+    246
+   ],
+   "options": [],
+   "seams": {
+    "A": {
+     "today": 541,
+     "draft": 541,
+     "added": []
+    }
+   }
+  },
+  "vermilion_city": {
+   "name": "ARDOR CITY and ROUTES 6, 11",
+   "left": 52,
+   "excluded": {
+    "36": "door (gbadoors.py)",
+    "37": "door (gbadoors.py)",
+    "52": "door (gbadoors.py)",
+    "53": "door (gbadoors.py)"
+   },
+   "targets": 48,
+   "redrawn": {
+    "A": 42
+   },
+   "unchanged": [
+    14,
+    60,
+    105,
+    106,
+    128,
+    138
+   ],
+   "options": [],
+   "seams": {
+    "A": {
+     "today": 541,
+     "draft": 541,
+     "added": []
+    }
+   }
+  },
+  "indigo_plateau": {
+   "name": "UMBRA PLATEAU and ROUTE 23",
+   "left": 43,
+   "excluded": {},
+   "targets": 43,
+   "redrawn": {
+    "A": 42
+   },
+   "unchanged": [
+    147
+   ],
+   "options": [],
+   "seams": {
+    "A": {
+     "today": 541,
+     "draft": 541,
+     "added": []
+    }
+   }
+  },
+  "cerulean_city": {
+   "name": "DOLDRUM CITY and ROUTES 4, 5, 9, 24, 25",
+   "left": 34,
+   "excluded": {
+    "7": "door (gbadoors.py)",
+    "8": "door (gbadoors.py)",
+    "23": "door (gbadoors.py)",
+    "24": "door (gbadoors.py)"
+   },
+   "targets": 30,
+   "redrawn": {
+    "A": 19
+   },
+   "unchanged": [
+    39,
+    76,
+    78,
+    90,
+    92,
+    110,
+    111,
+    123,
+    126,
+    127,
+    156
+   ],
+   "options": [],
+   "seams": {
+    "A": {
+     "today": 541,
+     "draft": 541,
+     "added": []
+    }
+   }
+  },
+  "viridian_city": {
+   "name": "CALLOW CITY",
+   "left": 18,
+   "excluded": {
+    "8": "door (gbadoors.py)",
+    "9": "door (gbadoors.py)",
+    "24": "door (gbadoors.py)",
+    "25": "door (gbadoors.py)"
+   },
+   "targets": 14,
+   "redrawn": {
+    "A": 8
+   },
+   "unchanged": [
+    73,
+    76,
+    77,
+    92,
+    93,
+    105
+   ],
+   "options": [],
+   "seams": {
+    "A": {
+     "today": 541,
+     "draft": 541,
+     "added": []
+    }
+   }
+  },
+  "pewter_city": {
+   "name": "SLATE CITY",
+   "left": 10,
+   "excluded": {
+    "36": "door (gbadoors.py)",
+    "37": "door (gbadoors.py)",
+    "52": "door (gbadoors.py)",
+    "53": "door (gbadoors.py)"
+   },
+   "targets": 6,
+   "redrawn": {
+    "A": 6
+   },
+   "unchanged": [],
+   "options": [],
+   "seams": {
+    "A": {
+     "today": 541,
+     "draft": 541,
+     "added": []
+    }
+   }
+  },
+  "cinnabar_island": {
+   "name": "QUICKSILVER IS.",
+   "left": 8,
+   "excluded": {},
+   "targets": 8,
+   "redrawn": {
+    "A": 5
+   },
+   "unchanged": [
+    2,
+    3,
+    19
+   ],
+   "options": [],
+   "seams": {
+    "A": {
+     "today": 541,
+     "draft": 541,
+     "added": []
+    }
+   }
+  },
+  "viridian_forest": {
+   "name": "THE UNDERTONE",
+   "left": 5,
+   "excluded": {},
+   "targets": 5,
+   "redrawn": {
+    "A": 0
+   },
+   "unchanged": [
+    8,
+    9,
+    24,
+    25,
+    83
+   ],
+   "options": [],
+   "seams": {
+    "A": {
+     "today": 541,
+     "draft": 541,
+     "added": []
+    }
+   }
+  }
+ },
+ "fountain": [
+  {
+   "option": "A",
+   "title": "THE BRONZE LIP (DRAFT)",
+   "line": "the basin's lip in bronze bands with a dark run every four; the jet in long unbroken streaks; pret's travelling ripple kept, so it moves as it did"
+  },
+  {
+   "option": "B",
+   "title": "RINGS (DRAFT)",
+   "line": "the jet drawn as rings that spread from its head, one step out per frame; the lip as A"
+  },
+  {
+   "option": "C",
+   "title": "STILL COLUMN (DRAFT)",
+   "line": "the jet as a calm column in level bands, one bright band stepping down it per frame (DOLDRUM's still water, in VERDIGRIS's bronze lip)"
+  }
+ ]
+}

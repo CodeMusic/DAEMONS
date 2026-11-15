@@ -372,3 +372,141 @@ As built into the ROM: all 27 (front, back, party icon, follower). ROVERSEER's a
 The nine species as the game's review sheet reads them.
 
 ![14Nov2026 - T552 - nine species review sheet - 51](14Nov2026%20-%20T552%20-%20nine%20species%20review%20sheet%20-%2051.png)
+
+### 14Nov2026 - T562 - towns last tiles today beside draft - 55
+
+T-562 DRAFT: each town's busiest street at 2x, today beside the draft (LURID and VERDIGRIS show options A and B); nothing in the engine
+
+![14Nov2026 - T562 - towns last tiles today beside draft - 55](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20today%20beside%20draft%20-%2055.png)
+
+### 14Nov2026 - T562 - towns last tiles today beside draft - 56
+
+T-562 DRAFT: each town's busiest street at 2x, today beside the draft (LURID and VERDIGRIS show options A and B); nothing in the engine
+
+![14Nov2026 - T562 - towns last tiles today beside draft - 56](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20today%20beside%20draft%20-%2056.png)
+
+### 14Nov2026 - T562 - towns last tiles today beside draft - 57
+
+T-562 DRAFT: each town's busiest street at 2x, today beside the draft (LURID and VERDIGRIS show options A and B); nothing in the engine
+
+![14Nov2026 - T562 - towns last tiles today beside draft - 57](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20today%20beside%20draft%20-%2057.png)
+
+### 14Nov2026 - T562 - towns last tiles today beside draft - 58
+
+T-562 DRAFT: each town's busiest street at 2x, today beside the draft (LURID and VERDIGRIS show options A and B); nothing in the engine
+
+![14Nov2026 - T562 - towns last tiles today beside draft - 58](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20today%20beside%20draft%20-%2058.png)
+
+### 14Nov2026 - T562 - towns last tiles today beside draft - 59
+
+T-562 DRAFT: each town's busiest street at 2x, today beside the draft (LURID and VERDIGRIS show options A and B); nothing in the engine
+
+![14Nov2026 - T562 - towns last tiles today beside draft - 59](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20today%20beside%20draft%20-%2059.png)
+
+### 14Nov2026 - T562 - towns last tiles today beside draft - 60
+
+T-562 DRAFT: each town's busiest street at 2x, today beside the draft (LURID and VERDIGRIS show options A and B); nothing in the engine
+
+![14Nov2026 - T562 - towns last tiles today beside draft - 60](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20today%20beside%20draft%20-%2060.png)
+
+### 14Nov2026 - T562 - towns last tiles today beside draft - 61
+
+T-562 DRAFT: each town's busiest street at 2x, today beside the draft (LURID and VERDIGRIS show options A and B); nothing in the engine
+
+![14Nov2026 - T562 - towns last tiles today beside draft - 61](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20today%20beside%20draft%20-%2061.png)
+
+### 14Nov2026 - T562 - towns last tiles today beside draft - 62
+
+T-562 DRAFT: each town's busiest street at 2x, today beside the draft (LURID and VERDIGRIS show options A and B); nothing in the engine
+
+![14Nov2026 - T562 - towns last tiles today beside draft - 62](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20today%20beside%20draft%20-%2062.png)
+
+### 14Nov2026 - T562 - towns last tiles today beside draft - 63
+
+T-562 DRAFT: each town's busiest street at 2x, today beside the draft (LURID and VERDIGRIS show options A and B); nothing in the engine
+
+![14Nov2026 - T562 - towns last tiles today beside draft - 63](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20today%20beside%20draft%20-%2063.png)
+
+### 14Nov2026 - T562 - towns last tiles today beside draft - 64
+
+T-562 DRAFT: each town's busiest street at 2x, today beside the draft (LURID and VERDIGRIS show options A and B); nothing in the engine
+
+![14Nov2026 - T562 - towns last tiles today beside draft - 64](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20today%20beside%20draft%20-%2064.png)
+
+### 14Nov2026 - T562 - towns last tiles today beside draft - 65
+
+T-562 DRAFT: each town's busiest street at 2x, today beside the draft (LURID and VERDIGRIS show options A and B); nothing in the engine
+
+![14Nov2026 - T562 - towns last tiles today beside draft - 65](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20today%20beside%20draft%20-%2065.png)
+
+### 14Nov2026 - T562 - towns last tiles at 4x - 66
+
+T-562 DRAFT: every changed tile at 4x, today beside each option, per town
+
+![14Nov2026 - T562 - towns last tiles at 4x - 66](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20at%204x%20-%2066.png)
+
+### 14Nov2026 - T562 - towns last tiles at 4x - 67
+
+T-562 DRAFT: every changed tile at 4x, today beside each option, per town
+
+![14Nov2026 - T562 - towns last tiles at 4x - 67](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20at%204x%20-%2067.png)
+
+### 14Nov2026 - T562 - towns last tiles at 4x - 68
+
+T-562 DRAFT: every changed tile at 4x, today beside each option, per town
+
+![14Nov2026 - T562 - towns last tiles at 4x - 68](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20at%204x%20-%2068.png)
+
+### 14Nov2026 - T562 - towns last tiles at 4x - 69
+
+T-562 DRAFT: every changed tile at 4x, today beside each option, per town
+
+![14Nov2026 - T562 - towns last tiles at 4x - 69](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20at%204x%20-%2069.png)
+
+### 14Nov2026 - T562 - towns last tiles at 4x - 70
+
+T-562 DRAFT: every changed tile at 4x, today beside each option, per town
+
+![14Nov2026 - T562 - towns last tiles at 4x - 70](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20at%204x%20-%2070.png)
+
+### 14Nov2026 - T562 - towns last tiles at 4x - 71
+
+T-562 DRAFT: every changed tile at 4x, today beside each option, per town
+
+![14Nov2026 - T562 - towns last tiles at 4x - 71](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20at%204x%20-%2071.png)
+
+### 14Nov2026 - T562 - towns last tiles at 4x - 72
+
+T-562 DRAFT: every changed tile at 4x, today beside each option, per town
+
+![14Nov2026 - T562 - towns last tiles at 4x - 72](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20at%204x%20-%2072.png)
+
+### 14Nov2026 - T562 - towns last tiles at 4x - 73
+
+T-562 DRAFT: every changed tile at 4x, today beside each option, per town
+
+![14Nov2026 - T562 - towns last tiles at 4x - 73](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20at%204x%20-%2073.png)
+
+### 14Nov2026 - T562 - towns last tiles at 4x - 74
+
+T-562 DRAFT: every changed tile at 4x, today beside each option, per town
+
+![14Nov2026 - T562 - towns last tiles at 4x - 74](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20at%204x%20-%2074.png)
+
+### 14Nov2026 - T562 - towns last tiles at 4x - 75
+
+T-562 DRAFT: every changed tile at 4x, today beside each option, per town
+
+![14Nov2026 - T562 - towns last tiles at 4x - 75](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20at%204x%20-%2075.png)
+
+### 14Nov2026 - T562 - towns last tiles at 4x - 76
+
+T-562 DRAFT: every changed tile at 4x, today beside each option, per town
+
+![14Nov2026 - T562 - towns last tiles at 4x - 76](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20at%204x%20-%2076.png)
+
+### 14Nov2026 - T562 - verdigris fountain options - 77
+
+T-562 DRAFT: VERDIGRIS's fountain, five frames, today and options A THE BRONZE LIP, B RINGS, C STILL COLUMN
+
+![14Nov2026 - T562 - verdigris fountain options - 77](14Nov2026%20-%20T562%20-%20verdigris%20fountain%20options%20-%2077.png)
