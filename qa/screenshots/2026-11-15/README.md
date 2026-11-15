@@ -49,3 +49,9 @@ T-564 DRAFT: the band, today (pret's) beside A/B/C at 2x, in context; nothing in
 T-564 built: the CodeMusic mark leads the trail, graph paper under the splash and the thank-you card, the rule at the title's band edge (filmed from reset, CONTENT debug)
 
 ![15Nov2026 - T564 - the boot built - 8](15Nov2026%20-%20T564%20-%20the%20boot%20built%20-%208.png)
+
+### 15Nov2026 - C372 - covers plain and enhanced - 9
+
+C-372: the same sleep-sounds cover, same seed and style -- left as the mind wrote the scene, right through Qwen-Image-2.1-PE-T2I first (old-paper sky, night, the watcher at the window).
+
+![15Nov2026 - C372 - covers plain and enhanced - 9](15Nov2026%20-%20C372%20-%20covers%20plain%20and%20enhanced%20-%209.png)
