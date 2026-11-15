@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.368 — 2026-11-14
+
+- Recorded from release v11.367.1 (c2ef44c1, engine d1af1713e), which sealed v11.366.x:
+  - **The ROVER line, one flow again** (T-552): the cub most machine, the seer a seated server on a rack chassis, the byte a white-furred dog. 9.31.
+  - **The MUSAI branch, creature first** (T-553): all 24 forms natural creatures keeping MUSAI's head, each season's vehicle as anatomy. 9.34.
+  - Both DRAFT; section 10, one Settled entry.
+
 ## v11.367 — 2026-11-14
 
 - Recorded from release v11.366.1 (e164ecf3, engine 9e489b46e), which sealed v11.365.x:

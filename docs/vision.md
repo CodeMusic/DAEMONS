@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.367**
+**A total conversion — the living design bible, v11.368**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9100,6 +9100,7 @@ signatures keep their ink and play soft.** *`tools/gensignature.py`; the looks i
 - ***THE NEXUS keeps its painted art*** (*1A, the user*): **its eight residents were painted as a set (T-395) and stay that way** — *drafted in the new style for reference only.*
 - ***Followers walk at their own size*** (*T-464, the user: CODEMUSAI "looked odd" beside the player*). **The follower used to draw the party icon, and the new icons fill their cell; now each daemon walks as its own small picture, at most about 22 pixels tall**, *in the icon's palette so its type colours hold.* ***A tool's report fails on any follower that would tower over the player.***
 - ***Rolling out***: **thirteen batches built by 2026-10-28, up to UNBRANCHED (289)**; *the user answers each batch's questions by multiple choice, or the recommended choices are built while they are away and asked after.* **What the batches decide, sprite by sprite, is in T-452; this section holds only the rules.**
+- ***The ROVER line, one flow again (T-552, released in v11.367.1; DRAFT)***: *the user, 2026-11-14, after T-452's cub no longer matched its line* -- **most machine, then a server, then a dog**: ROVERCUB the boxy screen-faced pup with speaker-disc ears and an antenna; **ROVERSEER sitting, its haunches a heavy rack chassis**, a dog's head forming, *it has lost mobility to become a server*; ROVERBYTE a real white-furred dog with one tell of the line, the antenna's tuft and a glowing tag. *Fronts, backs, icons and followers redrawn together.*
 
 ### 9.2 Order of operations
 
@@ -9197,6 +9198,8 @@ stated***: *no line says the daemon changed with the season; the player notices,
 
 ***All 24 drawn, and walking behind you*** (*T-532, T-534, the user 2026-11-08 and 11-11; DRAFT*): **every form's final art was drawn by 2026-11-08, and in v11.349.1 each of the 24 got a follower drawn from it, each vehicle redrawn to read at the player's size and in the form's own palette** -- *the user saw the old MUSAI walking behind the player in the DUET's picture and said "Yes, draw them".*
 
+***Creature first, released in v11.367.1*** (*T-553, the user 2026-11-14: "we made them too like the physical inspiration parts"; DRAFT*): **the 24 were one grey robot with a vehicle bolted under it; now each of the six forms is a natural small creature that keeps MUSAI's head** -- *the round helmet, the dark visor, the antennae (the user: "Keep MUSAI's head")* -- **and the season's vehicle is carried as anatomy, only alluded to**: *winter's long flat ski feet, spring's glider membranes and propeller-tuft tail, summer's broad float feet, autumn's roll-cage ribbing. Autumn keeps grey fur with its colour only in loose leaves, because 9.4 maps a body to its TYPE ramp and an orange coat would leave the type unread.* **Fronts, backs, icons and all 24 followers redrawn and built.**
+
 ### 9.35 THE ORIGIN OF A DAEMON -- *decided 2026-11-10, built 2026-11-11 (T-533); DRAFT*
 
 ***A book MUSAI tells: how the first form came to be, before it branched*** -- *a list of rules; then what it was
@@ -9248,6 +9251,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The ROVER line and the MUSAI creatures (T-552, T-553, v11.367.1)** — released: the ROVER line reads machine, server, dog (9.31); all 24 MUSAI forms redrawn as natural creatures keeping MUSAI's head, each season's vehicle carried as anatomy (9.34); fronts, backs, icons and followers for all 27. Sealed v11.366.x. DRAFT.
 - **The field overlays in TERMINAL (T-561, v11.366.1)** — released: the Nintendo art drawn over the world, the second batch of the 2026-11-14 re-census, redrawn in the A TERMINAL family by the user's picks: the emote over a trainer who spots you as A SMALL SCREEN (no longer yellow: pret's ! sat in the player's OBJ palette slot that became the shoe sole), the itemfinder's A PROMPT CHEVRON, the quest log's TERMINAL frame and SLATE description bar at every CONTINUE, the START banner as A DARK BAND, and the HELP screen in TERMINAL. Sealed v11.365.x. DRAFT.
 - **The Fifth Review in play (v11.365.1)** — released: DURABLE holding at 1 HP from full (T-556), the ending's two gates with the dream's pointer to the seventh chamber (T-557), and the hideout's first grunt holding HARD CODED while AL's party greys across the rival fights (T-559); with them the menus' last FireRed pieces redrawn in TERMINAL, the user's picks (T-554: the standard window, the bag's frame and arrows, the markings, the keypad). The first release to pass the secrets and TODO checks. DRAFT.
 - **The Third Review's accepted sweeps, swept (T-559, 2026-11-12)** — 8.7's five sweeps done in the text (4.6, 7.14c, 7.9, 7.13, 4.5, 4.25, 7.11, 4.29, 4.3, 4.14, 4.17), the user's two rulings (SUSPEND being SUSPENDED kept as the joke; Brazen's B-section owned as composition), and 8.7's ideas: a HARD CODED on the hideout's first grunt, Al's party fading fight by fight (8.6a), the INDEX-sprite idea superseded by T-424's grey INDEX
