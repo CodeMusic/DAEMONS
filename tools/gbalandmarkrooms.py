@@ -3320,7 +3320,8 @@ def report5():
         print("    gbatowns.LANDMARKS holds all seven chambers: its write keeps every TANOBY tile as it is")
     print("    gbapreviews: the chamber's name card (T-445) and the plant's -- pictures, not these tiles; gbamachines: "
           "the plant's consoles (primary/building); gbatowns: the chamber doors on SEVEN ISLAND (sevii_islands_67)")
-    known = {"gbacaves.py", "gbatowns.py", "gbamachines.py", "gbapreviews.py", "port_music.py"}
+    #  gbaislands (T-569) names TanobyRuins only to leave the chamber fronts drawn there to this pair (ONLY_LANDMARK_MAPS)
+    known = {"gbacaves.py", "gbatowns.py", "gbamachines.py", "gbapreviews.py", "port_music.py", "gbaislands.py"}
     found = set()
     me = os.path.basename(__file__)
     for f in sorted(glob.glob(os.path.join(ROOT, "tools", "*.py"))):

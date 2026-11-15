@@ -73,7 +73,9 @@ CAVES = [("seafoam_islands", "GLAUCOUS ISLES and STILLFALL"), ("cave", "DEADSTAC
          ("underground_path", "THE TUNNEL")]
 SETS = ISLES + CAVES
 NAME = dict(SETS)
-APPROVED = {ts: "A" for ts, _ in SETS if ts != "rock_tunnel"}
+#  THE TUNNEL (underground_path) is out too: gbadwellings already redrew its "pret" tiles in THE TUNNEL's colours
+#  (vanilla shapes kept on purpose, vision 3.2), so they only looked like leftovers here (found by check_generators).
+APPROVED = {ts: "A" for ts, _ in SETS if ts not in ("rock_tunnel", "underground_path")}
 APPROVED["steam"] = "A"
 #  tiles an animation overwrites (trap 39): MT. SMOULDER's steam, 896..903 -> secondary 256..263, 4 frames
 ANIM = {"mt_ember": set(range(256, 264))}
