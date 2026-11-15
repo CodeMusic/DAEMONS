@@ -642,3 +642,51 @@ T-562 BUILT (engine 0dabcb96e): VERDIGRIS's fountain, its five frames, pret's be
 C-221: THE LINK CABLE drawing linkhost's video through a hub -- one held request, START reaching the game (a new game's CONTROLS screen)
 
 ![14Nov2026 - C221 - link cable as video - 99](14Nov2026%20-%20C221%20-%20link%20cable%20as%20video%20-%2099.jpg)
+
+### 14Nov2026 - T556 - DURABLE holds at one HP - 100
+
+T-556 filmed on the v11.368.1 debug build: a wild ECHO given DURABLE at full HP (5 of 5) takes a hit for more; the DRAFT line 'did not go down to one hit!' prints and it is left on a sliver (RAM: 1 HP, then 2 after it drained 1 back).
+
+![14Nov2026 - T556 - DURABLE holds at one HP - 100](14Nov2026%20-%20T556%20-%20DURABLE%20holds%20at%20one%20HP%20-%20100.png)
+
+### 14Nov2026 - T559 - HARD CODED on the hideouts first grunt - 101
+
+T-559 (6) filmed: CORPUS STAFF FERRET, the hideout's first grunt, sends out LULL (DROWZEE); RAM reads its held item as 186, ITEM_CHOICE_BAND = HARD CODED. Nothing is said about it, as designed.
+
+![14Nov2026 - T559 - HARD CODED on the hideouts first grunt - 101](14Nov2026%20-%20T559%20-%20HARD%20CODED%20on%20the%20hideouts%20first%20grunt%20-%20101.png)
+
+### 14Nov2026 - T559 - AL fades from 161 to 24 - 102
+
+T-559 (7) filmed: AL's lead on ROUTE 22 early (PACKET, friendship 161 read from gBattleMons: red beak, pink cheek) and late (BROADCAST, friendship 24: near grey). Two of the eight steps; the lab (255) and the REVIEW BOARD (0) not filmed.
+
+![14Nov2026 - T559 - AL fades from 161 to 24 - 102](14Nov2026%20-%20T559%20-%20AL%20fades%20from%20161%20to%2024%20-%20102.png)
+
+### 14Nov2026 - T562 - LURID SAFARI and VERDIGRIS built - 103
+
+T-562 filmed on the v11.368.1 debug build, watch held at day: LURID CITY in B THE HUM (four stops), the SAFARI centre's gate, VERDIGRIS's department store and fountain (two views).
+
+![14Nov2026 - T562 - LURID SAFARI and VERDIGRIS built - 103](14Nov2026%20-%20T562%20-%20LURID%20SAFARI%20and%20VERDIGRIS%20built%20-%20103.png)
+
+### 14Nov2026 - T562 - the other seven towns built - 104
+
+T-562 filmed: BRAZEN, ARDOR, UMBRA (revised), DOLDRUM; CALLOW, SLATE, QUICKSILVER -- each at its first warp, day.
+
+![14Nov2026 - T562 - the other seven towns built - 104](14Nov2026%20-%20T562%20-%20the%20other%20seven%20towns%20built%20-%20104.png)
+
+### 14Nov2026 - T562 - VERDIGRIS fountain animating RINGS - 105
+
+T-562 filmed: VERDIGRIS's fountain as B RINGS, ten frames 4 apart -- the rings climb the column; the animation runs.
+
+![14Nov2026 - T562 - VERDIGRIS fountain animating RINGS - 105](14Nov2026%20-%20T562%20-%20VERDIGRIS%20fountain%20animating%20RINGS%20-%20105.png)
+
+### 14Nov2026 - T561 - recap with no message box yet - 106
+
+T-561 filmed again: a real CONTINUE recap (reset from the title). The description bar and frame are the built ones, but no recap scene replayed a field message, so the quest log's message box is still unseen. Note the bar's '??????????' where the rival's daemon should be named.
+
+![14Nov2026 - T561 - recap with no message box yet - 106](14Nov2026%20-%20T561%20-%20recap%20with%20no%20message%20box%20yet%20-%20106.png)
+
+### 14Nov2026 - T562 - the SAFARI centre at night - 108
+
+T-562 filmed: the SAFARI centre in B THE HUM, a walk -- gate, east, west -- under the night tint (the watch was released).
+
+![14Nov2026 - T562 - the SAFARI centre at night - 108](14Nov2026%20-%20T562%20-%20the%20SAFARI%20centre%20at%20night%20-%20108.png)

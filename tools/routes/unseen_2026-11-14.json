@@ -1,0 +1,269 @@
+{
+ "rom": "debug",
+ "about": "Verification, 2026-11-14: everything built in the v11.365-v11.368.1 run that had never been seen running -- T-556 DURABLE holding at 1 HP, T-559's HARD CODED on the hideout's first grunt and AL's party fading, T-557's dream pointing at the seventh chamber, T-562's towns (LURID and THE HUM, VERDIGRIS's store and its fountain as RINGS, and a shot of each other town), and T-561's quest-log message box in a CONTINUE recap. On the released debug build (v11.368.1, engine 0dabcb96e). The theatre's debug scratch save; the last stop saves on it and resets (gMain.callback2 poked to CB2_InitTitleScreen, an address of THIS build: re-read it with arm-none-eabi-nm after a rebuild).",
+ "stop_timeout": 900,
+ "stops": [
+  {
+   "stop": "T-556 DURABLE: a wild daemon given DURABLE at full HP takes a hit for more than its HP, and is held at 1",
+   "steps": [
+    "load debug",
+    "flag FLAG_FOLLOWER_OFF 1",
+    "goto MtMoon_1F 8 14",
+    "close",
+    "poke sWildEncounterData+6 16 30000",
+    "poke sWildEncounterData+8 8 255",
+    "wild keep",
+    "wait 30",
+    "poke gBattleMons+120 8 5",
+    "poke gBattleMons+128 16 5",
+    "poke gBattleMons+132 16 5",
+    "poke gBattleMons+94 16 1",
+    "remember foeability gBattleMons+120 8",
+    "remember foehp gBattleMons+128 16",
+    "shot the foe: DURABLE, 5 of 5 HP",
+    "press START",
+    "wait 40",
+    "poke sTheatreSlot 8 0",
+    "poke sTheatreMove 16 33",
+    "press SELECT",
+    "wait 30",
+    "press B",
+    "wait 40",
+    "press A",
+    "wait 30",
+    "shot TACKLE in slot 1",
+    "press A",
+    "burst \"the hit, and DURABLE\" 60 8",
+    "remember foehpafter gBattleMons+128 16",
+    "shot after the hit",
+    "win",
+    "wait 60"
+   ]
+  },
+  {
+   "stop": "T-559 (6): the hideout's first grunt (FERRET) and his DROWZEE's HARD CODED",
+   "steps": [
+    "trainer TRAINER_TEAM_ROCKET_GRUNT_8 0",
+    "goto RocketHideout_B1F 24 9",
+    "repel 999",
+    "close",
+    "talk Grunt1 1",
+    "wait 30",
+    "press A 3",
+    "wait 120",
+    "press A 2",
+    "wait 300",
+    "shot the battle opens",
+    "foe SPECIES_DROWZEE",
+    "remember foeitem gBattleMons+134 16",
+    "burst \"the DROWZEE (LULL) on screen, holding item 186, HARD CODED\" 4 30",
+    "win",
+    "finish"
+   ]
+  },
+  {
+   "stop": "T-559 (7): AL on ROUTE 22, early (friendship 161)",
+   "steps": [
+    "var VAR_MAP_SCENE_ROUTE22 1",
+    "goto Route22 34 5",
+    "repel 999",
+    "close",
+    "wait 30",
+    "hold LEFT 12",
+    "wait 240",
+    "press A 4",
+    "wait 120",
+    "press A 2",
+    "wait 300",
+    "shot AL's lead, ROUTE 22 early",
+    "remember alfriendship gBattleMons+131 8",
+    "burst \"AL's lead on screen\" 6 30",
+    "win",
+    "finish"
+   ]
+  },
+  {
+   "stop": "T-559 (7): AL on ROUTE 22, late (friendship 24)",
+   "steps": [
+    "var VAR_MAP_SCENE_ROUTE22 3",
+    "goto Route22 34 5",
+    "repel 999",
+    "close",
+    "wait 30",
+    "hold LEFT 12",
+    "wait 240",
+    "press A 4",
+    "wait 120",
+    "press A 4",
+    "wait 300",
+    "shot AL's lead, ROUTE 22 late",
+    "remember alfriendship gBattleMons+131 8",
+    "burst \"AL's lead on screen\" 6 30",
+    "win",
+    "finish"
+   ]
+  },
+  {
+   "stop": "T-557 (1): DOLDRUM CAVE unread -- the dream, and its new last line",
+   "steps": [
+    "flag FLAG_UNDERSTANDING_FIRST 0",
+    "flag FLAG_HIDE_CERULEAN_CAVE_GUARD 1",
+    "goto CeruleanCave_1F 25 17",
+    "close",
+    "wait 60",
+    "shot DOLDRUM CAVE, unread",
+    "var VAR_REPEL_STEP_COUNT 0",
+    "poke sWildEncounterData+6 16 30000",
+    "poke sWildEncounterData+8 8 255",
+    "burst \"a step, and the dream\" 80 8 LEFT 12",
+    "press A 6",
+    "burst \"the white, and waking\" 20 12",
+    "close",
+    "shot where the dream left us"
+   ]
+  },
+  {
+   "stop": "T-562: LURID CITY in B THE HUM -- a walk",
+   "steps": [
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1",
+    "goto FuchsiaCity 20 12",
+    "repel 999",
+    "close",
+    "wait 60",
+    "shot LURID north, the SAFARI's gate",
+    "to 30 24",
+    "wait 20",
+    "shot LURID centre",
+    "to 14 33",
+    "wait 20",
+    "shot LURID south",
+    "to 42 20",
+    "wait 20",
+    "shot LURID east"
+   ]
+  },
+  {
+   "stop": "T-562: the SAFARI centre in B THE HUM -- a walk",
+   "steps": [
+    "goto SafariZone_Center 26 28",
+    "repel 999",
+    "close",
+    "wait 60",
+    "shot the SAFARI centre, from its gate",
+    "to 40 24",
+    "wait 20",
+    "shot the SAFARI centre, east",
+    "to 12 26",
+    "wait 20",
+    "shot the SAFARI centre, west"
+   ]
+  },
+  {
+   "stop": "T-562: VERDIGRIS CITY -- the department store in A BRONZE PANELS, and the fountain as B RINGS",
+   "steps": [
+    "goto CeladonCity 13 17",
+    "repel 999",
+    "close",
+    "wait 60",
+    "shot the department store and the fountain",
+    "burst \"the fountain, RINGS\" 40 4",
+    "to 13 23",
+    "wait 20",
+    "shot the fountain from the south",
+    "burst \"the fountain from the south\" 30 4"
+   ]
+  },
+  {
+   "stop": "T-562: BRAZEN CITY",
+   "steps": [
+    "goto SaffronCity",
+    "close",
+    "wait 60",
+    "shot BRAZEN CITY"
+   ]
+  },
+  {
+   "stop": "T-562: ARDOR CITY",
+   "steps": [
+    "goto VermilionCity",
+    "close",
+    "wait 60",
+    "shot ARDOR CITY"
+   ]
+  },
+  {
+   "stop": "T-562: UMBRA PLATEAU (revised)",
+   "steps": [
+    "goto IndigoPlateau_Exterior",
+    "close",
+    "wait 60",
+    "shot UMBRA PLATEAU"
+   ]
+  },
+  {
+   "stop": "T-562: DOLDRUM CITY",
+   "steps": [
+    "goto CeruleanCity",
+    "close",
+    "wait 60",
+    "shot DOLDRUM CITY"
+   ]
+  },
+  {
+   "stop": "T-562: CALLOW CITY",
+   "steps": [
+    "goto ViridianCity",
+    "close",
+    "wait 60",
+    "shot CALLOW CITY"
+   ]
+  },
+  {
+   "stop": "T-562: SLATE CITY",
+   "steps": [
+    "goto PewterCity",
+    "close",
+    "wait 60",
+    "shot SLATE CITY"
+   ]
+  },
+  {
+   "stop": "T-562: QUICKSILVER IS.",
+   "steps": [
+    "goto CinnabarIsland",
+    "close",
+    "wait 60",
+    "shot QUICKSILVER IS."
+   ]
+  },
+  {
+   "stop": "T-561: a CONTINUE recap that replays a field message -- the quest log's own box",
+   "steps": [
+    "poke gDaemonsWatchOverride 8 0",
+    "poke gDaemonsWeatherOverride 8 0",
+    "goto PalletTown_PlayersHouse_1F 4 7",
+    "repel 999",
+    "close",
+    "wait 60",
+    "warp MAP_PALLET_TOWN",
+    "wait 60",
+    "look 4 7",
+    "wait 30",
+    "save",
+    "poke gMain+0 32 0",
+    "poke gMain+0x438 8 0",
+    "poke gMain+4 32 0x080813FD",
+    "wait 240",
+    "shot the title, after the reset",
+    "hold START 6",
+    "wait 120",
+    "shot the main menu",
+    "hold A 6",
+    "burst \"the recap\" 100 12",
+    "burst \"the recap, later\" 60 12",
+    "close"
+   ]
+  }
+ ]
+}
