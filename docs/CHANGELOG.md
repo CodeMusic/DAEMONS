@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.372 — 2026-11-15
+
+- Recorded from release v11.371.1 (5a2fdbb7, engine f85229ba1), which sealed v11.370.x:
+  - **Evolving, using, learning** (T-566), the user's picks: the evolution's square wave and its bit, graph paper and carets for an item used, the relearner's paper and caret, the egg's shell. DRAFT. T-567 (the relearner's "move") filed.
+- Section 10: one Settled entry.
+
 ## v11.371 — 2026-11-15
 
 - Recorded from release v11.370.1 (776e4530, engine fb7aeb81c), which sealed v11.369.x:
