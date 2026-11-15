@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.373 — 2026-11-15
+
+- Recorded from release v11.372.1 (da8b0dd3, engine 80271363f), which sealed v11.371.x:
+  - **The new game and the name** (T-568), the user's picks: keycaps in the controls guide, CRYSTAL's graph-paper floor and pad, SEEKMUSAI's panel with a quaver, the naming screen's keycaps, brackets, prompt and terminal icon. DRAFT.
+- Section 10: one Settled entry.
+
 ## v11.372 — 2026-11-15
 
 - Recorded from release v11.371.1 (5a2fdbb7, engine f85229ba1), which sealed v11.370.x:

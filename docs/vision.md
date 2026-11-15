@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.372**
+**A total conversion — the living design bible, v11.373**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9252,6 +9252,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The new game and the name (T-568, v11.372.1)** — released, the user's picks (A throughout): the controls guide's buttons as KEYCAPS; CRYSTAL's scene on GRAPH PAPER with THE PAD to stand on; SEEKMUSAI's panel on graph paper with a quaver where the ball was; the naming screen's buttons and tabs as KEYCAPS, its cursor as BRACKETS, its marks as a PROMPT and its PC icon as THE TERMINAL. The naming screen's background, keyboard and palettes were already ours (T-363). Sealed v11.371.x. DRAFT.
 - **Evolving, using, learning (T-566, v11.371.1)** — released, the user's picks (A for every piece): the evolution scene's moving ground as a SQUARE WAVE with THE BIT for its sparkle; an item used from the bag over GRAPH PAPER, its level-up streaks as CARETS, its stars as THE MARK and its spiral as 0 1 .; the relearner's panel on GRAPH PAPER with a CARET for its arrows; the egg as THE SHELL. The relearner's words still say "move" (T-567). Sealed v11.370.x. DRAFT.
 - **The boot screens' last Nintendo pieces (T-564, v11.370.1)** — released, the user's picks (the recommended four): the CodeMusic mark now leads the splash's trail of bits turning to notes (A THE MARK, where pret's star was), GRAPH PAPER under it in place of the navy band, BIT RAIN for the glint across the title (C), and A RULE at the title's band edge (A THE RULE). The census found the other four pieces never on screen. Sealed v11.369.x. DRAFT.
 - **The INDEX and the map in TERMINAL (T-563, v11.369.1)** — released, the user's picks (A for every piece): the INDEX's backgrounds as GRAPH PAPER, its mini card as an INDEX CARD, the AREA UNKNOWN plate; the town map's two heads, which were people against the fable rule, now the player's own animal as a BUST (drawn from the walking sprite, the tail showing); the switch cursors as a CUT BRACKET, HEARSAY's cursor and its ? as a TEAL CUT BOX and a SMALL SCREEN. Sealed v11.368.x. DRAFT.
