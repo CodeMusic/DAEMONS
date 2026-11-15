@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.369 — 2026-11-14
+
+- Recorded from release v11.368.1 (fd158d6d, engine 0dabcb96e), which sealed v11.367.x:
+  - **The towns' last Nintendo tiles** (T-562): 309 tiles in nine towns and VERDIGRIS's fountain, the user's picks. DRAFT. 9.29, beside the ground bullet.
+- Section 10: one Settled entry.
+
 ## v11.368 — 2026-11-14
 
 - Recorded from release v11.367.1 (c2ef44c1, engine d1af1713e), which sealed v11.366.x:
