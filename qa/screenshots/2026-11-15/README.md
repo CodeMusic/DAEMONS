@@ -43,3 +43,9 @@ T-564 DRAFT: the border, today (pret's) beside A/B/C at 2x, in context; nothing 
 T-564 DRAFT: the band, today (pret's) beside A/B/C at 2x, in context; nothing in the engine until picked (tools/gbatitle.py --t564).
 
 ![15Nov2026 - T564 - DRAFT band today beside A B C - 7](15Nov2026%20-%20T564%20-%20DRAFT%20band%20today%20beside%20A%20B%20C%20-%207.png)
+
+### 15Nov2026 - T564 - the boot built - 8
+
+T-564 built: the CodeMusic mark leads the trail, graph paper under the splash and the thank-you card, the rule at the title's band edge (filmed from reset, CONTENT debug)
+
+![15Nov2026 - T564 - the boot built - 8](15Nov2026%20-%20T564%20-%20the%20boot%20built%20-%208.png)
