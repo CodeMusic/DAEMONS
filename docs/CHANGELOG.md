@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.374 — 2026-11-15
+
+- Recorded from release v11.373.1 (4afad1f6, engine 1c758c2e3 + 4c2c60d81), which sealed v11.372.x:
+  - **The islands and the caves** (T-569), the user's picks: the island kit, each cave's own grain, MT. SMOULDER's banked steam, the cave battle background to match; THE BLACKOUT kept. DRAFT. 9.29, beside the towns.
+  - The last of the 2026-11-14 re-census's eight batches; T-570 holds the single-index tiles left.
+- Section 10: one Settled entry.
+
 ## v11.373 — 2026-11-15
 
 - Recorded from release v11.372.1 (da8b0dd3, engine 80271363f), which sealed v11.371.x:
