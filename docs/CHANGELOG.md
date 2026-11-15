@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.367 — 2026-11-14
+
+- Recorded from release v11.366.1 (e164ecf3, engine 9e489b46e), which sealed v11.365.x:
+  - **The field overlays in TERMINAL** (T-561), the user's picks: the trainer's emote as a small screen (no longer yellow), the itemfinder's chevron, the quest log's frame and description bar, the START banner, the HELP screen. DRAFT.
+- Section 10: one Settled entry.
+
 ## v11.366 — 2026-11-14
 
 - Recorded from release v11.365.1, the Fifth Review in play. Each section already says what was built:
