@@ -58,8 +58,10 @@ DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t569_islands")
 #  the same pixels every time and no tile another tool draws later is read as a leftover.
 BASE = "79922dc95"
 
-#  the user's picks, {piece: option}. EMPTY: nothing is approved, so --write --approved writes nothing.
-APPROVED = {}
+#  the user's picks, {piece: option}, 2026-11-15 by multiple choice: A for the islands, the caves and the steam, with
+#  one exception -- THE BLACKOUT (rock_tunnel) is left as T-546 drew it: "the blackout's purple with glowing green needs
+#  to stay as it links to the story" (the user). TANOBY's chamber fronts stay the landmark's (T-447). DRAFT.
+APPROVED = {}   # filled below, once SETS is defined
 
 #  the batch's tilesets: (tileset, its DAEMONS name)
 ISLES = [("sevii_islands_67", "SIX and SEVEN ISLAND"), ("sevii_islands_123", "ONE, TWO and THREE ISLAND, MT. SMOULDER's "
@@ -71,6 +73,8 @@ CAVES = [("seafoam_islands", "GLAUCOUS ISLES and STILLFALL"), ("cave", "DEADSTAC
          ("underground_path", "THE TUNNEL")]
 SETS = ISLES + CAVES
 NAME = dict(SETS)
+APPROVED = {ts: "A" for ts, _ in SETS if ts != "rock_tunnel"}
+APPROVED["steam"] = "A"
 #  tiles an animation overwrites (trap 39): MT. SMOULDER's steam, 896..903 -> secondary 256..263, 4 frames
 ANIM = {"mt_ember": set(range(256, 264))}
 STEAM = "data/tilesets/secondary/mt_ember/anim/steam/%d.png"

@@ -319,3 +319,9 @@ T-569 DRAFT: every cave tile drawn, today beside each option (4x)
 T-569 DRAFT: the spa's steam, 4 frames -- today beside A BANKED HEAT, B THREADS, C THE DITHER RELIT (6x)
 
 ![15Nov2026 - T569 - MT SMOULDERs steam - 53](15Nov2026%20-%20T569%20-%20MT%20SMOULDERs%20steam%20-%2053.png)
+
+### 15Nov2026 - T569 - the islands and caves built - 54
+
+T-569 built, the user's picks (A; THE BLACKOUT kept as T-546 drew it): SEVEN and SIX ISLAND, GLAUCOUS ISLES, MT. SMOULDER's outside, UMBRAL ASCENT -- rendered from the built source
+
+![15Nov2026 - T569 - the islands and caves built - 54](15Nov2026%20-%20T569%20-%20the%20islands%20and%20caves%20built%20-%2054.png)
