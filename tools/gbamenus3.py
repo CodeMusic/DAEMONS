@@ -2534,11 +2534,11 @@ def t561_main():
 
 # ================================================================================================================
 # T-563: THE INDEX AND THE MAP -- the Nintendo art those screens still draw (batch 4 of the 2026-11-14 re-census).
-# DRAFT: APPROVED_563 is empty, nothing is written to the engine until the user picks.
+# APPROVED 2026-11-14: the user picked A for every piece (APPROVED_563).
 #
 #     python3 tools/gbamenus3.py --t563                    # report: each piece's files, contract and APPROVED_563
 #     python3 tools/gbamenus3.py --t563 --draft [DIR] [--shots DIR]   # every piece into DIR (gfx/drafts/t563_index_map/)
-#     python3 tools/gbamenus3.py --t563 --write --approved --all | --pick piece=X,...   # refuses: APPROVED_563 is empty
+#     python3 tools/gbamenus3.py --t563 --write --approved --all | --pick piece=X,...   # APPROVED_563 (2026-11-14)
 #
 # The shots are the theatre's tools/routes/t563_index_map_today.json and t563_index_map_today2.json (both folders may
 # be named: --shots takes a folder and reads every PNG under it).
@@ -2595,7 +2595,10 @@ T563_NAMES = {
 T563_OFFERED = {p: "ABC" for p in T563_PIECES}
 T563_RECOMMENDED = {"dexbg": "A", "minicard": "A", "ellipse": "A", "heads": "A", "switch": "A", "famecursor": "A",
                     "fameq": "A"}
-APPROVED_563 = {}          # DRAFT: nothing is written until the user picks
+#  The user, 2026-11-14 (multiple choice): A for every piece -- dexbg A GRAPH PAPER, minicard A INDEX CARD, ellipse
+#  A PLATE, heads A BUST, switch A CUT BRACKET, famecursor A TEAL CUT BOX, fameq A SMALL SCREEN. --t563 --write
+#  --approved --all (or --pick with these) writes them; the --t563 report exits 1 on drift from them.
+APPROVED_563 = {p: "A" for p in T563_PIECES}
 
 DEXPAL = {"kanto": "pokedex/kanto_dex_bgpals.pal", "national": "pokedex/national_dex_bgpals.pal"}
 DEXTILES = {"kanto": "pokedex/kanto_dex_bgtiles.png", "national": "pokedex/national_dex_bgtiles.png"}
@@ -3085,7 +3088,9 @@ def t563_differs(picks):
                 try:
                     import gbafont
                     w, h, bd, plte, px = gbafont.png_load(p)
-                    if [[v & 15 for v in r] for r in px] != [list(r) for r in payload[1]]:
+                    pal_now = [tuple(q5(tuple(plte[i:i + 3]))) for i in range(0, len(plte), 3)][:16]
+                    if [[v & 15 for v in r] for r in px] != [list(r) for r in payload[1]] or \
+                            pal_now != [tuple(q5(c)) for c in payload[2]][:16]:
                         out.append(rel)
                 except BaseException:
                     out.append(rel)
@@ -3586,8 +3591,8 @@ def t563_draft(out, shots_dir=None):
             cols.append(("%s %s" % (d, T563_NAMES[piece][d]), T563_MOCKS[piece](shots, d)))
         notes = [T563_ROWS[piece], T563_NOTES[piece],
                  "DRAFT -- drawn in code (tools/gbamenus3.py --t563), nothing in the engine until the user picks; "
-                 "recommended: %s (%s). APPROVED_563 is empty." % (T563_RECOMMENDED[piece],
-                                                                  T563_NAMES[piece][T563_RECOMMENDED[piece]])]
+                 "recommended: %s (%s). APPROVED_563 (the user, 2026-11-14): %s." % (
+                     T563_RECOMMENDED[piece], T563_NAMES[piece][T563_RECOMMENDED[piece]], APPROVED_563.get(piece))]
         made.append(contact("T-563 THE INDEX AND THE MAP -- %s -- DRAFT" % piece.upper(), cols, notes,
                             os.path.join(out, "t563_%s_sheet.png" % piece)))
     return made
@@ -3605,7 +3610,7 @@ def t563_main():
             if piece not in T563_PIECES or d not in T563_OFFERED[piece]:
                 sys.exit("gbamenus3 --t563: unknown pick %s=%s" % (piece, d))
             if APPROVED_563.get(piece) != d:
-                sys.exit("gbamenus3 --t563: %s=%s is not APPROVED_563 (T-563 is a DRAFT)" % (piece, d))
+                sys.exit("gbamenus3 --t563: %s=%s is not APPROVED_563 (the user's pick goes in APPROVED_563 first)" % (piece, d))
         for piece, d in picks.items():
             for p in put_files(t563_outputs(piece, d), G):
                 print("  wrote", os.path.relpath(p, ROOT))

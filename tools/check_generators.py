@@ -58,8 +58,10 @@ ARGS = {
     #  gfx/drafts/t523_frames/A into the engine, so a sandboxed write of it changes nothing when the engine is right.
     "gbaframes": [["--approved", "--main", "A"], ["--approved", "--std", "1"]],   # T-554: the std frame, version 1
     "gbamenus3": [["--approved", "--all"],                                         # T-554: the menu leftovers, all A
-                  ["--t561", "--approved", "--pick", "emotes=A,itemfinder=A,questlog=1,qldesc=A,banner=A,helpscreen=1"]],
-    #              T-561: the field overlays, the user's picks of 2026-11-14 (its report exits 1 on drift)
+                  ["--t561", "--approved", "--pick", "emotes=A,itemfinder=A,questlog=1,qldesc=A,banner=A,helpscreen=1"],
+                  ["--t563", "--approved", "--all"]],
+    #              T-561: the field overlays, the user's picks of 2026-11-14 (its report exits 1 on drift); T-563: the
+    #              INDEX and the map, all A (the user, 2026-11-14; its report exits 1 on drift too)
     #  T-524: the same shape; the user chose 2 Readout on 2026-11-06. The write copies gfx/drafts/t524_battle_ui/2 and
     #  splices tiles 66-70 into the elements sheet, so a sandboxed write changes nothing when the engine is right.
     "gbabattleui": [["--approved", "--main", "2"]],
