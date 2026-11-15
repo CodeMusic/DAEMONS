@@ -29,6 +29,12 @@ import difflib, json, os, re, subprocess, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA  = os.path.join(ROOT, "engineGba")
 WRITE = "--write" in sys.argv
+#  T-571: a whole-tree write here would undo later words -- the books' stage names (AWAKENING, RETURN, REFLECT) read
+#  as the routines they share a name with, THE TWINS, line breaks chosen by hand -- so it refuses; see
+#  generator_drift.json. --over-later-work writes anyway (then read git diff).
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from driftguard import refuse_over_later_work  # noqa: E402
+refuse_over_later_work("port_vocab")
 #  Fixed-width arrays the sweep can overflow. The compiler catches these as
 #  "excess elements in array initializer", which is a link-time surprise from a
 #  text pass -- and agbcc reports it as a warning, which this project's build

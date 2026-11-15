@@ -358,5 +358,32 @@
   "files": [
    "ai:server/prompts/game.txt"
   ]
+ },
+ "port_vocab": {
+  "why": "STALE -- never --write it on the whole tree (T-571, 2026-11-15): 22 files carry words written after it last ran. Read both ways: the TREE is right for the books' stage names (AWAKENING, RETURN, REFLECT -- not the routines they share a name with), THE TWINS, CURSE/CHARM, a gym's 'ball' and the hand-chosen \\l breaks; the TOOL is right for ~80 vocabulary misses in newer writing (trainer->USER, catch->bind, faint->HALT, bag->POOL, PC->PORT, flee, defeated), which wait on the user's call.",
+  "files": [
+   "engine:data/maps/SSAnne_Deck/text.inc",
+   "engine:data/scripts/notebook.inc",
+   "engine:src/daemons_carried.c",
+   "engine:src/daemons_debug_events.c",
+   "engine:src/daemons_hermetic.c",
+   "engine:src/daemons_spellbook.c",
+   "engine:src/data/arcana_cards.h",
+   "engine:src/data/daemons_holidays.h",
+   "engine:src/data/dream_log.h",
+   "engine:src/data/eudaimon_layer.h",
+   "engine:src/data/hermetic_layer.h",
+   "engine:src/data/notebook_notes.h",
+   "engine:src/data/opus_margins.h",
+   "engine:src/data/origin_book.h",
+   "engine:src/data/pokemon/pokedex_text_lg.h",
+   "engine:src/data/subtle_layer.h",
+   "engine:src/data/text/abilities.h",
+   "engine:src/data/text/teachy_tv.h",
+   "engine:src/data/unity_layer.h",
+   "engine:src/data/wisdom.h",
+   "engine:src/move_descriptions.c",
+   "engine:src/notebook.c"
+  ]
  }
 }
