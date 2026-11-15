@@ -360,3 +360,15 @@ T-561 BUILT (engine 9e489b46e): the START banner, HELP and the recap's descripti
 T-552/T-553: all 27 at game size, front, back, icon and follower. DRAFT, not in the ROM.
 
 ![14Nov2026 - T553 - front back icon follower at game size - 49](14Nov2026%20-%20T553%20-%20front%20back%20icon%20follower%20at%20game%20size%20-%2049.png)
+
+### 14Nov2026 - T553 - all 27 as built - 50
+
+As built into the ROM: all 27 (front, back, party icon, follower). ROVERSEER's and ROVERBYTE's icons reduced from their own fronts; MUSAI's autumn leaves red maple.
+
+![14Nov2026 - T553 - all 27 as built - 50](14Nov2026%20-%20T553%20-%20all%2027%20as%20built%20-%2050.png)
+
+### 14Nov2026 - T552 - nine species review sheet - 51
+
+The nine species as the game's review sheet reads them.
+
+![14Nov2026 - T552 - nine species review sheet - 51](14Nov2026%20-%20T552%20-%20nine%20species%20review%20sheet%20-%2051.png)

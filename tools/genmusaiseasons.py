@@ -118,6 +118,9 @@ APPROVED_FINAL = {
     #  the user, 2026-11-08: Put all 8 in
     ("MASKMUSAI", "winter"), ("MASKMUSAI", "spring"), ("MASKMUSAI", "summer"), ("MASKMUSAI", "autumn"),
     ("SEEKMUSAI", "autumn"), ("LENSMUSAI", "autumn"), ("CODEMUSAI", "winter"), ("CODEMUSAI", "autumn"),
+    #  T-553 (the user, 2026-11-14: "Creature first, vehicle in anatomy", "Keep MUSAI's head", "Redraw weak, then build"):
+    #  all 24 redrawn as natural creatures under MUSAI's helmet head, from gfx/drafts/t552_t553/ -- MUSAI's own summer now too
+    ("MUSAI", "summer"),
 }
 SUMMER_KINDS = ("front", "back", "icon")                # finals/<name>_summer_<kind>.png -> gfx/daemons/<name>_<kind>.png
 
