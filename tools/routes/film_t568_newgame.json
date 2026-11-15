@@ -1,0 +1,113 @@
+{
+ "rom": "debug",
+ "about": "T-568 (the new game and the name: the Nintendo art they still draw, DRAFTS): a NEW GAME filmed on the CONTENT debug ROM from reset -- the CONTROLS guide's three pages (its GBA buttons), the intro panel SEEKMUSAI stands on (its window and watermark), CRYSTAL's scene (its backdrop and the platform under her, the daemon and the player), then the naming screen through its three pages, a key pressed (the cursor's squish) and the cursor on BACK and OK. The theatre's debug scratch save: a new game is begun and never saved, and the next `load debug` continues the save as it was.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, loaded",
+   "steps": [
+    "load debug"
+   ]
+  },
+  {
+   "stop": "the controls guide",
+   "timeout": 600,
+   "steps": [
+    "reset",
+    "wait 200",
+    "hold START 6",
+    "wait 200",
+    "hold START 6",
+    "wait 200",
+    "hold START 6",
+    "wait 200",
+    "hold DOWN 6",
+    "wait 20",
+    "shot \"the main menu, NEW GAME\"",
+    "hold A 6",
+    "wait 200",
+    "shot \"the guide, page 1\"",
+    "hold A 6",
+    "wait 120",
+    "shot \"the guide, page 2: the pad, A and B\"",
+    "hold A 6",
+    "wait 120",
+    "shot \"the guide, page 3: START, SELECT, L and R\""
+   ]
+  },
+  {
+   "stop": "the intro panel",
+   "timeout": 400,
+   "steps": [
+    "hold A 6",
+    "wait 200",
+    "shot \"the panel, page 1\"",
+    "hold A 6",
+    "wait 60",
+    "shot \"the panel, page 2\"",
+    "hold A 6",
+    "wait 60",
+    "shot \"the panel, page 3\""
+   ]
+  },
+  {
+   "stop": "CRYSTAL's scene and the platform",
+   "timeout": 600,
+   "steps": [
+    "hold A 6",
+    "wait 200",
+    "shot \"CRYSTAL on the platform\"",
+    "hold A 6",
+    "wait 150",
+    "hold A 6",
+    "wait 150",
+    "hold A 6",
+    "wait 150",
+    "hold A 6",
+    "wait 150",
+    "shot \"the daemon beside her\"",
+    "hold A 6",
+    "wait 150",
+    "hold A 6",
+    "wait 150",
+    "hold A 6",
+    "wait 150",
+    "hold A 6",
+    "wait 150",
+    "hold A 6",
+    "wait 250",
+    "shot \"the question\"",
+    "hold A 6",
+    "wait 200",
+    "shot \"the player on the platform\""
+   ]
+  },
+  {
+   "stop": "the naming screen",
+   "timeout": 600,
+   "steps": [
+    "hold A 6",
+    "wait 360",
+    "shot \"UPPER\"",
+    "hold SELECT 6",
+    "wait 40",
+    "shot \"lower\"",
+    "hold SELECT 6",
+    "wait 40",
+    "shot \"others\"",
+    "hold SELECT 6",
+    "wait 40",
+    "burst \"a key pressed\" 10 2 A",
+    "wait 30",
+    "hold LEFT 6",
+    "wait 30",
+    "burst \"the cursor on the page button\" 4 6",
+    "hold DOWN 6",
+    "wait 30",
+    "burst \"on BACK\" 4 6",
+    "hold DOWN 6",
+    "wait 30",
+    "burst \"on OK\" 4 6"
+   ]
+  }
+ ]
+}

@@ -91,3 +91,69 @@ T-566 DRAFT: the EGG (summary, party icon, hatch, shards), today beside A THE SH
 T-566 built, the user's picks (all A), filmed on the debug ROM: an item used on graph paper, the evolution's square wave, the relearner's dotted paper, the shell egg hatching
 
 ![15Nov2026 - T566 - the scenes built - 15](15Nov2026%20-%20T566%20-%20the%20scenes%20built%20-%2015.png)
+
+### 15Nov2026 - T568 - DRAFT guide today beside A B C - 16
+
+T-568 DRAFT: the CONTROLS guide's GBA buttons (bg_tiles row 3) -- A KEYCAPS, B WIREFRAME, C GRAPH CARDS; the blue field is stdpal_2's, not this batch's
+
+![15Nov2026 - T568 - DRAFT guide today beside A B C - 16](15Nov2026%20-%20T568%20-%20DRAFT%20guide%20today%20beside%20A%20B%20C%20-%2016.png)
+
+### 15Nov2026 - T568 - DRAFT panel today beside A B C - 17
+
+T-568 DRAFT: the intro panel and the Poke Ball watermark (bg_tiles row 2) -- A GRAPH PAPER (the ring), B RULED (a quaver), C SCANLINES (0 1)
+
+![15Nov2026 - T568 - DRAFT panel today beside A B C - 17](15Nov2026%20-%20T568%20-%20DRAFT%20panel%20today%20beside%20A%20B%20C%20-%2017.png)
+
+### 15Nov2026 - T568 - DRAFT backdrop today beside A B C - 18
+
+T-568 DRAFT: CRYSTAL's backdrop (oak_speech_bg + row 0) -- A GRAPH PAPER, B THE STAVE, C NIGHT GRID
+
+![15Nov2026 - T568 - DRAFT backdrop today beside A B C - 18](15Nov2026%20-%20T568%20-%20DRAFT%20backdrop%20today%20beside%20A%20B%20C%20-%2018.png)
+
+### 15Nov2026 - T568 - DRAFT platform today beside A B C - 19
+
+T-568 DRAFT: the platform under CRYSTAL and the player -- A THE PAD, B THE RING, C THE STAVE
+
+![15Nov2026 - T568 - DRAFT platform today beside A B C - 19](15Nov2026%20-%20T568%20-%20DRAFT%20platform%20today%20beside%20A%20B%20C%20-%2019.png)
+
+### 15Nov2026 - T568 - DRAFT scene together A B C - 20
+
+T-568 DRAFT: CRYSTAL's scene with the backdrop and the platform of the same letter
+
+![15Nov2026 - T568 - DRAFT scene together A B C - 20](15Nov2026%20-%20T568%20-%20DRAFT%20scene%20together%20A%20B%20C%20-%2020.png)
+
+### 15Nov2026 - T568 - the new game today filmed - 21
+
+T-568: a NEW GAME filmed from reset on the CONTENT debug ROM (tools/routes/film_t568_newgame.json, the scratch save, never saved): the CONTROLS guide, the panel SEEKMUSAI stands on, CRYSTAL's scene and its platform, the naming screen's three keyboards
+
+![15Nov2026 - T568 - the new game today filmed - 21](15Nov2026%20-%20T568%20-%20the%20new%20game%20today%20filmed%20-%2021.png)
+
+### 15Nov2026 - T568 - the new game today filmed - 22
+
+T-568: a NEW GAME filmed from reset on the CONTENT debug ROM (tools/routes/film_t568_newgame.json, the scratch save, never saved): the CONTROLS guide, the panel SEEKMUSAI stands on, CRYSTAL's scene and its platform, the naming screen's three keyboards
+
+![15Nov2026 - T568 - the new game today filmed - 22](15Nov2026%20-%20T568%20-%20the%20new%20game%20today%20filmed%20-%2022.png)
+
+### 15Nov2026 - T568 - the new game today filmed - 23
+
+T-568: a NEW GAME filmed from reset on the CONTENT debug ROM (tools/routes/film_t568_newgame.json, the scratch save, never saved): the CONTROLS guide, the panel SEEKMUSAI stands on, CRYSTAL's scene and its platform, the naming screen's three keyboards
+
+![15Nov2026 - T568 - the new game today filmed - 23](15Nov2026%20-%20T568%20-%20the%20new%20game%20today%20filmed%20-%2023.png)
+
+### 15Nov2026 - T568 - the new game today filmed - 24
+
+T-568: a NEW GAME filmed from reset on the CONTENT debug ROM (tools/routes/film_t568_newgame.json, the scratch save, never saved): the CONTROLS guide, the panel SEEKMUSAI stands on, CRYSTAL's scene and its platform, the naming screen's three keyboards
+
+![15Nov2026 - T568 - the new game today filmed - 24](15Nov2026%20-%20T568%20-%20the%20new%20game%20today%20filmed%20-%2024.png)
+
+### 15Nov2026 - T568 - DRAFT naming parts today beside A B C - 25
+
+T-568 DRAFT: the naming screen's pret-shaped sprites (BACK, OK, the swap key, cursor, arrow, underscore, PC icon) in context, T-363's palettes kept
+
+![15Nov2026 - T568 - DRAFT naming parts today beside A B C - 25](15Nov2026%20-%20T568%20-%20DRAFT%20naming%20parts%20today%20beside%20A%20B%20C%20-%2025.png)
+
+### 15Nov2026 - T568 - DRAFT naming parts today beside A B C - 26
+
+T-568 DRAFT: the naming screen's pret-shaped sprites (BACK, OK, the swap key, cursor, arrow, underscore, PC icon) in context, T-363's palettes kept
+
+![15Nov2026 - T568 - DRAFT naming parts today beside A B C - 26](15Nov2026%20-%20T568%20-%20DRAFT%20naming%20parts%20today%20beside%20A%20B%20C%20-%2026.png)

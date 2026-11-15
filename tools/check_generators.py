@@ -63,6 +63,9 @@ ARGS = {
     #  T-566: gbaevolve's --write refuses without --approved; its write writes APPROVED (the evolution, the item scene,
     #  the relearner and the egg) -- empty while T-566 is a DRAFT -- and its report exits 1 when the engine drifts.
     "gbaevolve": [["--approved"]],
+    #  T-568: gbanewgame, the same shape -- its write writes APPROVED (the new game's guide, panel, backdrop and
+    #  platform, the naming screen's sprites), empty while T-568 is a DRAFT; its report exits 1 when the engine drifts.
+    "gbanewgame": [["--approved"]],
     "gbamenus3": [["--approved", "--all"],                                         # T-554: the menu leftovers, all A
                   ["--t561", "--approved", "--pick", "emotes=A,itemfinder=A,questlog=1,qldesc=A,banner=A,helpscreen=1"],
                   ["--t563", "--approved", "--all"]],
