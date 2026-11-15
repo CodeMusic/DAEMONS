@@ -1,0 +1,998 @@
+{
+ "ticket": "T-569",
+ "status": "DRAFT -- nothing approved (APPROVED is empty)",
+ "base": "79922dc95",
+ "sets": {
+  "sevii_islands_67": {
+   "name": "SIX and SEVEN ISLAND",
+   "ours": 155,
+   "reach": 174,
+   "unreachable": 0,
+   "unused": 13,
+   "anim": 0,
+   "excluded": {
+    "4": "door (gbadoors.py)",
+    "5": "door (gbadoors.py)",
+    "6": "landmark (T-447)",
+    "7": "landmark (T-447)",
+    "8": "landmark (T-447)",
+    "9": "landmark (T-447)",
+    "10": "landmark (T-447)",
+    "11": "landmark (T-447)",
+    "12": "landmark (T-447)",
+    "13": "landmark (T-447)",
+    "15": "landmark (T-447)",
+    "20": "door (gbadoors.py)",
+    "21": "door (gbadoors.py)",
+    "22": "landmark (T-447)",
+    "23": "landmark (T-447)",
+    "24": "landmark (T-447)",
+    "25": "landmark (T-447)",
+    "26": "landmark (T-447)",
+    "27": "landmark (T-447)",
+    "29": "landmark (T-447)",
+    "31": "landmark (T-447)",
+    "38": "landmark (T-447)",
+    "39": "landmark (T-447)",
+    "40": "landmark (T-447)",
+    "41": "landmark (T-447)",
+    "42": "landmark (T-447)",
+    "43": "landmark (T-447)",
+    "45": "landmark (T-447)",
+    "55": "landmark (T-447)",
+    "56": "landmark (T-447)",
+    "57": "landmark (T-447)",
+    "58": "landmark (T-447)",
+    "60": "landmark (T-447)",
+    "61": "landmark (T-447)",
+    "62": "landmark (T-447)",
+    "71": "landmark (T-447)",
+    "72": "landmark (T-447)",
+    "73": "landmark (T-447)",
+    "74": "landmark (T-447)",
+    "76": "landmark (T-447)",
+    "77": "landmark (T-447)",
+    "78": "landmark (T-447)",
+    "86": "landmark (T-447)",
+    "87": "landmark (T-447)",
+    "88": "landmark (T-447)",
+    "89": "landmark (T-447)",
+    "90": "landmark (T-447)",
+    "91": "landmark (T-447)",
+    "92": "landmark (T-447)",
+    "97": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "98": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "102": "landmark (T-447)",
+    "104": "landmark (T-447)",
+    "105": "landmark (T-447)",
+    "108": "landmark (T-447)",
+    "109": "landmark (T-447)",
+    "113": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "114": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "115": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "116": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "117": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "118": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "119": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "120": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "121": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "122": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "123": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "124": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "134": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "135": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "136": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "137": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "138": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "139": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "140": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "144": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "145": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "146": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "149": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "150": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "151": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "152": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "156": "landmark (T-447)",
+    "157": "landmark (T-447)",
+    "158": "landmark (T-447)",
+    "159": "landmark (T-447)",
+    "160": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "166": "landmark (T-447)",
+    "170": "landmark (T-447)",
+    "172": "landmark (T-447)",
+    "173": "landmark (T-447)",
+    "174": "landmark (T-447)",
+    "175": "landmark (T-447)",
+    "176": "landmark (T-447)",
+    "177": "landmark (T-447)",
+    "178": "landmark (T-447)",
+    "179": "landmark (T-447)",
+    "182": "landmark (T-447)",
+    "183": "landmark (T-447)",
+    "186": "landmark (T-447)",
+    "188": "landmark (T-447)",
+    "189": "landmark (T-447)",
+    "191": "landmark (T-447)",
+    "192": "landmark (T-447)",
+    "193": "landmark (T-447)",
+    "194": "landmark (T-447)",
+    "195": "landmark (T-447)",
+    "208": "landmark (T-447)",
+    "209": "landmark (T-447)",
+    "210": "landmark (T-447)",
+    "211": "landmark (T-447)",
+    "224": "landmark (T-447)",
+    "225": "landmark (T-447)",
+    "226": "landmark (T-447)",
+    "333": "kept (gbatowns KEEP_TILES: the canopy hollows)",
+    "336": "kept (gbatowns KEEP_TILES: the canopy hollows)",
+    "338": "kept (gbatowns KEEP_TILES: the canopy hollows)"
+   },
+   "targets": 57,
+   "redrawn": {
+    "A": 50,
+    "B": 49,
+    "C": 50
+   },
+   "undrawn": [
+    52,
+    53,
+    216,
+    217,
+    232,
+    233,
+    365
+   ],
+   "maps": {
+    "SevenIsland_TrainerTower": 77,
+    "BirthIsland_Exterior": 41,
+    "SixIsland": 37,
+    "SevenIsland": 37,
+    "SevenIsland_TanobyRuins": 37,
+    "SixIsland_GreenPath": 21,
+    "SevenIsland_SevaultCanyon": 19,
+    "SixIsland_WaterPath": 19,
+    "SixIsland_RuinValley": 19,
+    "SevenIsland_SevaultCanyon_Entrance": 8,
+    "SixIsland_WaterPath_Grove": 8,
+    "SixIsland_OutcastIsland": 8,
+    "SevenIsland_Grove": 8
+   },
+   "options": [
+    {
+     "option": "A",
+     "title": "THE ISLAND KIT (DRAFT)",
+     "line": "the islands' own T-438 look carried on: walls in clapboard, roofs in sea-weathered board, glass level, awnings striped"
+    },
+    {
+     "option": "B",
+     "title": "LIMEWASH (DRAFT)",
+     "line": "walls as lime render -- a bleached band under every eave, worn to a darker foot; roofs and glass as A"
+    },
+    {
+     "option": "C",
+     "title": "SHIPLAP AND TAR (DRAFT)",
+     "line": "the harbours' boarding carried up the houses: eight-high boards, a tarred seam under each, joints staggered; roofs and glass as A"
+    }
+   ]
+  },
+  "sevii_islands_123": {
+   "name": "ONE, TWO and THREE ISLAND, MT. SMOULDER's outside",
+   "ours": 202,
+   "reach": 129,
+   "unreachable": 0,
+   "unused": 3,
+   "anim": 0,
+   "excluded": {
+    "4": "door (gbadoors.py)",
+    "5": "door (gbadoors.py)",
+    "20": "door (gbadoors.py)",
+    "21": "door (gbadoors.py)",
+    "74": "door (gbadoors.py)",
+    "75": "door (gbadoors.py)",
+    "90": "door (gbadoors.py)",
+    "91": "door (gbadoors.py)",
+    "154": "door (gbadoors.py)",
+    "155": "door (gbadoors.py)",
+    "170": "door (gbadoors.py)",
+    "171": "door (gbadoors.py)",
+    "333": "kept (gbatowns KEEP_TILES: the canopy hollows)",
+    "336": "kept (gbatowns KEEP_TILES: the canopy hollows)",
+    "337": "kept (gbatowns KEEP_TILES: the canopy hollows)",
+    "338": "kept (gbatowns KEEP_TILES: the canopy hollows)"
+   },
+   "targets": 113,
+   "redrawn": {
+    "A": 108,
+    "B": 106,
+    "C": 108
+   },
+   "undrawn": [
+    52,
+    53,
+    118,
+    140,
+    365
+   ],
+   "maps": {
+    "TwoIsland": 85,
+    "OneIsland": 52,
+    "OneIsland_TreasureBeach": 37,
+    "ThreeIsland_Port": 35,
+    "NavelRock_Exterior": 35,
+    "ThreeIsland_BondBridge": 28,
+    "TwoIsland_CapeBrink": 24,
+    "ThreeIsland": 24,
+    "MtEmber_Exterior": 12,
+    "OneIsland_Grove": 12,
+    "OneIsland_KindleRoad": 12,
+    "TwoIsland_Grove": 12,
+    "Breathverse": 12,
+    "MtEmber_Summit": 12
+   },
+   "options": [
+    {
+     "option": "A",
+     "title": "THE ISLAND KIT (DRAFT)",
+     "line": "the islands' own T-438 look carried on: walls in clapboard, roofs in sea-weathered board, glass level, awnings striped"
+    },
+    {
+     "option": "B",
+     "title": "LIMEWASH (DRAFT)",
+     "line": "walls as lime render -- a bleached band under every eave, worn to a darker foot; roofs and glass as A"
+    },
+    {
+     "option": "C",
+     "title": "SHIPLAP AND TAR (DRAFT)",
+     "line": "the harbours' boarding carried up the houses: eight-high boards, a tarred seam under each, joints staggered; roofs and glass as A"
+    }
+   ]
+  },
+  "sevii_islands_45": {
+   "name": "FOUR and FIVE ISLAND",
+   "ours": 212,
+   "reach": 72,
+   "unreachable": 0,
+   "unused": 21,
+   "anim": 0,
+   "excluded": {
+    "4": "door (gbadoors.py)",
+    "5": "door (gbadoors.py)",
+    "10": "door (gbadoors.py)",
+    "11": "door (gbadoors.py)",
+    "20": "door (gbadoors.py)",
+    "21": "door (gbadoors.py)",
+    "26": "door (gbadoors.py)",
+    "27": "door (gbadoors.py)",
+    "90": "door (gbadoors.py)",
+    "91": "door (gbadoors.py)",
+    "106": "door (gbadoors.py)",
+    "107": "door (gbadoors.py)"
+   },
+   "targets": 60,
+   "redrawn": {
+    "A": 56,
+    "B": 55,
+    "C": 56
+   },
+   "undrawn": [
+    52,
+    53,
+    115,
+    365
+   ],
+   "maps": {
+    "FourIsland": 58,
+    "FiveIsland": 47,
+    "FiveIsland_Meadow": 25,
+    "FiveIsland_MemorialPillar": 23,
+    "FiveIsland_ResortGorgeous": 19,
+    "FiveIsland_WaterLabyrinth": 12,
+    "FiveIsland_Meadow_Grove": 12,
+    "FourIsland_Grove": 12
+   },
+   "options": [
+    {
+     "option": "A",
+     "title": "THE ISLAND KIT (DRAFT)",
+     "line": "the islands' own T-438 look carried on: walls in clapboard, roofs in sea-weathered board, glass level, awnings striped"
+    },
+    {
+     "option": "B",
+     "title": "LIMEWASH (DRAFT)",
+     "line": "walls as lime render -- a bleached band under every eave, worn to a darker foot; roofs and glass as A"
+    },
+    {
+     "option": "C",
+     "title": "SHIPLAP AND TAR (DRAFT)",
+     "line": "the harbours' boarding carried up the houses: eight-high boards, a tarred seam under each, joints staggered; roofs and glass as A"
+    }
+   ]
+  },
+  "island_harbor": {
+   "name": "the harbours",
+   "ours": 20,
+   "reach": 32,
+   "unreachable": 0,
+   "unused": 69,
+   "anim": 0,
+   "excluded": {},
+   "targets": 32,
+   "redrawn": {
+    "A": 20,
+    "B": 20,
+    "C": 20
+   },
+   "undrawn": [
+    7,
+    8,
+    9,
+    16,
+    23,
+    24,
+    37,
+    38,
+    130,
+    146,
+    148,
+    162
+   ],
+   "maps": {
+    "BirthIsland_Harbor": 32,
+    "FiveIsland_Harbor": 32,
+    "ThreeIsland_Harbor": 32,
+    "NavelRock_Harbor": 32,
+    "TwoIsland_Harbor": 32,
+    "FourIsland_Harbor": 32,
+    "SixIsland_Harbor": 32,
+    "OneIsland_Harbor": 32,
+    "SevenIsland_Harbor": 32
+   },
+   "options": [
+    {
+     "option": "A",
+     "title": "NETS AND BOARDS (DRAFT)",
+     "line": "the harbour hall's walls and quay in the island kit's clapboard, its windows level glass, its red as nets drying"
+    },
+    {
+     "option": "B",
+     "title": "LIMEWASH (DRAFT)",
+     "line": "the hall limewashed as the islands' B, its red as A"
+    },
+    {
+     "option": "C",
+     "title": "SHIPLAP AND TAR (DRAFT)",
+     "line": "the hall in tarred shiplap as the islands' C"
+    }
+   ]
+  },
+  "berry_forest": {
+   "name": "DENSE WOOD",
+   "ours": 20,
+   "reach": 10,
+   "unreachable": 0,
+   "unused": 16,
+   "anim": 0,
+   "excluded": {},
+   "targets": 10,
+   "redrawn": {
+    "A": 6,
+    "B": 6
+   },
+   "undrawn": [
+    8,
+    9,
+    24,
+    25
+   ],
+   "maps": {
+    "ThreeIsland_BerryForest": 10
+   },
+   "options": [
+    {
+     "option": "A",
+     "title": "DENSE CANOPY (DRAFT)",
+     "line": "the wood's last pieces -- the grass edge and the berry patches -- in DENSE WOOD's own packed lobes (gbatowns m_dense)"
+    },
+    {
+     "option": "B",
+     "title": "WIND-LAID (DRAFT)",
+     "line": "the same pieces as long wind-laid ridges, lit to windward"
+    }
+   ]
+  },
+  "seafoam_islands": {
+   "name": "GLAUCOUS ISLES and STILLFALL",
+   "ours": 192,
+   "reach": 87,
+   "unreachable": 0,
+   "unused": 14,
+   "anim": 0,
+   "excluded": {},
+   "targets": 87,
+   "redrawn": {
+    "A": 46,
+    "B": 48,
+    "C": 48
+   },
+   "undrawn": [
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    32,
+    108,
+    158,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    246,
+    247,
+    248,
+    249,
+    250,
+    251,
+    252,
+    253,
+    254,
+    255,
+    261,
+    262,
+    263,
+    273,
+    274,
+    277
+   ],
+   "maps": {
+    "FourIsland_IcefallCave_1F": 67,
+    "FourIsland_IcefallCave_B1F": 57,
+    "SeafoamIslands_B1F": 55,
+    "SeafoamIslands_B2F": 55,
+    "SeafoamIslands_B3F": 53,
+    "SeafoamIslands_B4F": 39,
+    "SeafoamIslands_1F": 35,
+    "FourIsland_IcefallCave_Entrance": 20,
+    "FourIsland_IcefallCave_Back": 13,
+    "SevenIsland_House_Room1": 8
+   },
+   "options": [
+    {
+     "option": "A",
+     "title": "THE CAVE'S OWN GRAIN (DRAFT)",
+     "line": "the stones, rubble, ladders and rims GLAUCOUS ISLES and STILLFALL kept cut in its own wall motif, so its rocks are made of what its walls are"
+    },
+    {
+     "option": "B",
+     "title": "KNAPPED (DRAFT)",
+     "line": "every stone struck flat: its light cut to three planes with a struck edge on the diagonal -- the shape kept, no texture; the ladders, slides and floors as A"
+    },
+    {
+     "option": "C",
+     "title": "WATER-WORN (DRAFT)",
+     "line": "every stone rounded smooth, lit from its upper left lump by lump, its chisel marks gone; the ladders, slides and floors as A"
+    }
+   ]
+  },
+  "cave": {
+   "name": "DEADSTACK, UMBRAL ASCENT, THE WRONG WAY",
+   "ours": 185,
+   "reach": 50,
+   "unreachable": 0,
+   "unused": 6,
+   "anim": 0,
+   "excluded": {},
+   "targets": 50,
+   "redrawn": {
+    "A": 32,
+    "B": 32,
+    "C": 32
+   },
+   "undrawn": [
+    6,
+    7,
+    10,
+    11,
+    16,
+    28,
+    32,
+    37,
+    166,
+    182,
+    192,
+    193,
+    208,
+    209,
+    252,
+    253,
+    254,
+    255
+   ],
+   "maps": {
+    "VictoryRoad_2F": 40,
+    "VictoryRoad_1F": 33,
+    "VictoryRoad_3F": 31,
+    "MtMoon_B1F": 28,
+    "MtMoon_B2F": 28,
+    "MtMoon_1F": 23,
+    "FiveIsland_LostCave_Room1": 14,
+    "FiveIsland_LostCave_Room9": 6,
+    "FiveIsland_LostCave_Room2": 6,
+    "FiveIsland_LostCave_Room7": 6,
+    "FiveIsland_LostCave_Room3": 6,
+    "FiveIsland_LostCave_Room5": 6,
+    "FiveIsland_LostCave_Room8": 6,
+    "FiveIsland_LostCave_Room6": 6,
+    "FiveIsland_LostCave_Room4": 6,
+    "ThreeIsland_DunsparceTunnel": 5,
+    "FiveIsland_LostCave_Room10": 4,
+    "FiveIsland_LostCave_Entrance": 3,
+    "FiveIsland_LostCave_Room11": 2
+   },
+   "options": [
+    {
+     "option": "A",
+     "title": "THE CAVE'S OWN GRAIN (DRAFT)",
+     "line": "the stones, rubble, ladders and rims DEADSTACK, UMBRAL ASCENT, THE WRONG WAY kept cut in its own wall motif, so its rocks are made of what its walls are"
+    },
+    {
+     "option": "B",
+     "title": "KNAPPED (DRAFT)",
+     "line": "every stone struck flat: its light cut to three planes with a struck edge on the diagonal -- the shape kept, no texture; the ladders, slides and floors as A"
+    },
+    {
+     "option": "C",
+     "title": "WATER-WORN (DRAFT)",
+     "line": "every stone rounded smooth, lit from its upper left lump by lump, its chisel marks gone; the ladders, slides and floors as A"
+    }
+   ]
+  },
+  "mt_ember": {
+   "name": "MT. SMOULDER",
+   "ours": 200,
+   "reach": 44,
+   "unreachable": 0,
+   "unused": 15,
+   "anim": 8,
+   "excluded": {},
+   "targets": 44,
+   "redrawn": {
+    "A": 23,
+    "B": 20,
+    "C": 23
+   },
+   "undrawn": [
+    10,
+    11,
+    12,
+    13,
+    26,
+    27,
+    28,
+    29,
+    32,
+    37,
+    230,
+    231,
+    246,
+    247,
+    252,
+    253,
+    254,
+    255,
+    264,
+    266,
+    286
+   ],
+   "maps": {
+    "MtEmber_RubyPath_B3F": 28,
+    "MtEmber_RubyPath_B2F": 24,
+    "MtEmber_RubyPath_B5F": 15,
+    "MtEmber_RubyPath_B4F": 11,
+    "MtEmber_RubyPath_B1F": 10,
+    "MtEmber_RubyPath_B1F_Stairs": 9,
+    "MtEmber_RubyPath_B2F_Stairs": 9,
+    "OneIsland_KindleRoad_EmberSpa": 8,
+    "MtEmber_SummitPath_1F": 6,
+    "MtEmber_SummitPath_2F": 5,
+    "MtEmber_SummitPath_3F": 4,
+    "MtEmber_RubyPath_1F": 4
+   },
+   "options": [
+    {
+     "option": "A",
+     "title": "THE CAVE'S OWN GRAIN (DRAFT)",
+     "line": "the stones, rubble, ladders and rims MT. SMOULDER kept cut in its own wall motif, so its rocks are made of what its walls are"
+    },
+    {
+     "option": "B",
+     "title": "KNAPPED (DRAFT)",
+     "line": "every stone struck flat: its light cut to three planes with a struck edge on the diagonal -- the shape kept, no texture; the ladders, slides and floors as A"
+    },
+    {
+     "option": "C",
+     "title": "WATER-WORN (DRAFT)",
+     "line": "every stone rounded smooth, lit from its upper left lump by lump, its chisel marks gone; the ladders, slides and floors as A"
+    }
+   ]
+  },
+  "navel_rock": {
+   "name": "NAVEL ROCK and THE DOTS",
+   "ours": 186,
+   "reach": 33,
+   "unreachable": 0,
+   "unused": 40,
+   "anim": 0,
+   "excluded": {},
+   "targets": 33,
+   "redrawn": {
+    "A": 21,
+    "B": 22,
+    "C": 22
+   },
+   "undrawn": [
+    10,
+    11,
+    12,
+    13,
+    26,
+    27,
+    28,
+    29,
+    32,
+    37,
+    94,
+    174
+   ],
+   "maps": {
+    "NavelRock_Base": 20,
+    "NavelRock_Fork": 18,
+    "NavelRock_BasePath_B2F": 16,
+    "NavelRock_SummitPath_5F": 16,
+    "NavelRock_SummitPath_3F": 16,
+    "NavelRock_BasePath_B8F": 16,
+    "NavelRock_BasePath_B6F": 16,
+    "NavelRock_BasePath_B4F": 16,
+    "NavelRock_BasePath_B10F": 16,
+    "SixIsland_DottedHole_B2F": 14,
+    "SixIsland_DottedHole_SapphireRoom": 14,
+    "NavelRock_1F": 13,
+    "SixIsland_DottedHole_1F": 11,
+    "SixIsland_DottedHole_B1F": 10,
+    "SixIsland_DottedHole_B4F": 10,
+    "SixIsland_DottedHole_B3F": 10,
+    "NavelRock_BasePath_B3F": 8,
+    "NavelRock_BasePath_B5F": 8,
+    "NavelRock_SummitPath_2F": 8,
+    "NavelRock_BasePath_B7F": 8,
+    "NavelRock_SummitPath_4F": 8,
+    "NavelRock_B1F": 8,
+    "NavelRock_BasePath_B9F": 8,
+    "NavelRock_BasePath_B1F": 8,
+    "NavelRock_BasePath_B11F": 8,
+    "NavelRock_Summit": 4
+   },
+   "options": [
+    {
+     "option": "A",
+     "title": "THE CAVE'S OWN GRAIN (DRAFT)",
+     "line": "the stones, rubble, ladders and rims NAVEL ROCK and THE DOTS kept cut in its own wall motif, so its rocks are made of what its walls are"
+    },
+    {
+     "option": "B",
+     "title": "KNAPPED (DRAFT)",
+     "line": "every stone struck flat: its light cut to three planes with a struck edge on the diagonal -- the shape kept, no texture; the ladders, slides and floors as A"
+    },
+    {
+     "option": "C",
+     "title": "WATER-WORN (DRAFT)",
+     "line": "every stone rounded smooth, lit from its upper left lump by lump, its chisel marks gone; the ladders, slides and floors as A"
+    }
+   ]
+  },
+  "rock_tunnel": {
+   "name": "THE BLACKOUT and OTHER CAVE",
+   "ours": 171,
+   "reach": 30,
+   "unreachable": 0,
+   "unused": 26,
+   "anim": 0,
+   "excluded": {},
+   "targets": 30,
+   "redrawn": {
+    "A": 23,
+    "B": 23,
+    "C": 23
+   },
+   "undrawn": [
+    11,
+    32,
+    37,
+    252,
+    253,
+    254,
+    255
+   ],
+   "maps": {
+    "RockTunnel_B1F": 26,
+    "RockTunnel_1F": 26,
+    "SixIsland_AlteringCave": 10
+   },
+   "options": [
+    {
+     "option": "A",
+     "title": "THE CAVE'S OWN GRAIN (DRAFT)",
+     "line": "the stones, rubble, ladders and rims THE BLACKOUT and OTHER CAVE kept cut in its own wall motif, so its rocks are made of what its walls are"
+    },
+    {
+     "option": "B",
+     "title": "KNAPPED (DRAFT)",
+     "line": "every stone struck flat: its light cut to three planes with a struck edge on the diagonal -- the shape kept, no texture; the ladders, slides and floors as A"
+    },
+    {
+     "option": "C",
+     "title": "WATER-WORN (DRAFT)",
+     "line": "every stone rounded smooth, lit from its upper left lump by lump, its chisel marks gone; the ladders, slides and floors as A"
+    }
+   ]
+  },
+  "digletts_cave": {
+   "name": "TAPPOINT'S CAVE",
+   "ours": 136,
+   "reach": 25,
+   "unreachable": 0,
+   "unused": 70,
+   "anim": 0,
+   "excluded": {},
+   "targets": 25,
+   "redrawn": {
+    "A": 22,
+    "B": 20,
+    "C": 20
+   },
+   "undrawn": [
+    11,
+    28,
+    29
+   ],
+   "maps": {
+    "DiglettsCave_B1F": 19,
+    "SevenIsland_SevaultCanyon_TanobyKey": 10,
+    "DiglettsCave_SouthEntrance": 4,
+    "DiglettsCave_NorthEntrance": 4
+   },
+   "options": [
+    {
+     "option": "A",
+     "title": "THE CAVE'S OWN GRAIN (DRAFT)",
+     "line": "the stones, rubble, ladders and rims TAPPOINT'S CAVE kept cut in its own wall motif, so its rocks are made of what its walls are"
+    },
+    {
+     "option": "B",
+     "title": "KNAPPED (DRAFT)",
+     "line": "every stone struck flat: its light cut to three planes with a struck edge on the diagonal -- the shape kept, no texture; the ladders, slides and floors as A"
+    },
+    {
+     "option": "C",
+     "title": "WATER-WORN (DRAFT)",
+     "line": "every stone rounded smooth, lit from its upper left lump by lump, its chisel marks gone; the ladders, slides and floors as A"
+    }
+   ]
+  },
+  "underground_path": {
+   "name": "THE TUNNEL",
+   "ours": 35,
+   "reach": 13,
+   "unreachable": 0,
+   "unused": 1,
+   "anim": 0,
+   "excluded": {},
+   "targets": 13,
+   "redrawn": {
+    "A": 13
+   },
+   "undrawn": [],
+   "maps": {
+    "UndergroundPath_EastWestTunnel": 13,
+    "UndergroundPath_NorthSouthTunnel": 13
+   },
+   "options": [
+    {
+     "option": "A",
+     "title": "THE CAVE'S OWN GRAIN (DRAFT)",
+     "line": "the stones, rubble, ladders and rims THE TUNNEL kept cut in its own wall motif, so its rocks are made of what its walls are"
+    }
+   ]
+  }
+ },
+ "steam": [
+  {
+   "option": "A",
+   "title": "BANKED HEAT (DRAFT)",
+   "line": "the spa's steam as two soft solid wisps, lit on top and shaded under, that rise eight pixels a frame and thin as they go -- no dither"
+  },
+  {
+   "option": "B",
+   "title": "THREADS (DRAFT)",
+   "line": "two thin threads of vapour that waver up the column, a quarter wave a frame, thinning toward the top"
+  },
+  {
+   "option": "C",
+   "title": "THE DITHER RELIT (DRAFT)",
+   "line": "pret's dithered puffs where they were, each re-shaded as one lump lit from above -- the smallest change"
+  }
+ ],
+ "later": {
+  "sevii_islands_67": [
+   52,
+   53,
+   216,
+   217,
+   232,
+   233,
+   365
+  ],
+  "sevii_islands_123": [
+   52,
+   53,
+   118,
+   140,
+   365
+  ],
+  "sevii_islands_45": [
+   52,
+   53,
+   115,
+   365
+  ],
+  "island_harbor": [
+   7,
+   8,
+   9,
+   16,
+   23,
+   24,
+   37,
+   38,
+   130,
+   146,
+   148,
+   162
+  ],
+  "berry_forest": [
+   8,
+   9,
+   24,
+   25
+  ],
+  "seafoam_islands": [
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   22,
+   23,
+   24,
+   25,
+   26,
+   27,
+   28,
+   29,
+   32,
+   108,
+   158,
+   230,
+   231,
+   232,
+   233,
+   234,
+   235,
+   246,
+   247,
+   248,
+   249,
+   250,
+   251,
+   252,
+   253,
+   254,
+   255,
+   261,
+   262,
+   263,
+   273,
+   274,
+   277
+  ],
+  "cave": [
+   6,
+   7,
+   10,
+   11,
+   16,
+   28,
+   32,
+   37,
+   166,
+   182,
+   192,
+   193,
+   208,
+   209,
+   252,
+   253,
+   254,
+   255
+  ],
+  "mt_ember": [
+   10,
+   11,
+   12,
+   13,
+   26,
+   27,
+   28,
+   29,
+   32,
+   37,
+   230,
+   231,
+   246,
+   247,
+   252,
+   253,
+   254,
+   255,
+   264,
+   266,
+   286
+  ],
+  "navel_rock": [
+   10,
+   11,
+   12,
+   13,
+   26,
+   27,
+   28,
+   29,
+   32,
+   37,
+   94,
+   174
+  ],
+  "rock_tunnel": [
+   11,
+   32,
+   37,
+   252,
+   253,
+   254,
+   255
+  ],
+  "digletts_cave": [
+   11,
+   28,
+   29
+  ]
+ }
+}

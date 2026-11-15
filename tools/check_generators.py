@@ -66,6 +66,9 @@ ARGS = {
     #  T-568: gbanewgame, the same shape -- its write writes APPROVED (the new game's guide, panel, backdrop and
     #  platform, the naming screen's sprites), empty while T-568 is a DRAFT; its report exits 1 when the engine drifts.
     "gbanewgame": [["--approved"]],
+    #  T-569: gbaislands, the same shape -- its write writes APPROVED (the islands' and the caves' last pret tiles and
+    #  MT. SMOULDER's steam), empty while T-569 is a DRAFT; its report exits 1 when the engine drifts from a pick.
+    "gbaislands": [["--approved"]],
     "gbamenus3": [["--approved", "--all"],                                         # T-554: the menu leftovers, all A
                   ["--t561", "--approved", "--pick", "emotes=A,itemfinder=A,questlog=1,qldesc=A,banner=A,helpscreen=1"],
                   ["--t563", "--approved", "--all"]],

@@ -163,3 +163,159 @@ T-568 DRAFT: the naming screen's pret-shaped sprites (BACK, OK, the swap key, cu
 T-568 built, the user's picks: keycaps in the controls guide, the panel's graph paper with a quaver for the ball, CRYSTAL on the graph-paper floor and pad, the naming screen's bracket cursor, prompt and keycap buttons (filmed, CONTENT debug)
 
 ![15Nov2026 - T568 - the new game built - 27](15Nov2026%20-%20T568%20-%20the%20new%20game%20built%20-%2027.png)
+
+### 15Nov2026 - T569 - today, the crops compared - 28
+
+T-569 today: the eight crops the drafts compare, drawn by reviewsheet.py map from what the ROM is built from (2x)
+
+![15Nov2026 - T569 - today, the crops compared - 28](15Nov2026%20-%20T569%20-%20today%2C%20the%20crops%20compared%20-%2028.png)
+
+### 15Nov2026 - T569 - the islands, maps - 29
+
+T-569 DRAFT: SIX/SEVEN, ONE-THREE, FOUR/FIVE, the harbours and DENSE WOOD -- today beside A THE ISLAND KIT, B LIMEWASH, C SHIPLAP AND TAR, on the maps that show most (2x)
+
+![15Nov2026 - T569 - the islands, maps - 29](15Nov2026%20-%20T569%20-%20the%20islands%2C%20maps%20-%2029.png)
+
+### 15Nov2026 - T569 - the islands, maps - 30
+
+T-569 DRAFT: SIX/SEVEN, ONE-THREE, FOUR/FIVE, the harbours and DENSE WOOD -- today beside A THE ISLAND KIT, B LIMEWASH, C SHIPLAP AND TAR, on the maps that show most (2x)
+
+![15Nov2026 - T569 - the islands, maps - 30](15Nov2026%20-%20T569%20-%20the%20islands%2C%20maps%20-%2030.png)
+
+### 15Nov2026 - T569 - the islands, maps - 31
+
+T-569 DRAFT: SIX/SEVEN, ONE-THREE, FOUR/FIVE, the harbours and DENSE WOOD -- today beside A THE ISLAND KIT, B LIMEWASH, C SHIPLAP AND TAR, on the maps that show most (2x)
+
+![15Nov2026 - T569 - the islands, maps - 31](15Nov2026%20-%20T569%20-%20the%20islands%2C%20maps%20-%2031.png)
+
+### 15Nov2026 - T569 - the islands, maps - 32
+
+T-569 DRAFT: SIX/SEVEN, ONE-THREE, FOUR/FIVE, the harbours and DENSE WOOD -- today beside A THE ISLAND KIT, B LIMEWASH, C SHIPLAP AND TAR, on the maps that show most (2x)
+
+![15Nov2026 - T569 - the islands, maps - 32](15Nov2026%20-%20T569%20-%20the%20islands%2C%20maps%20-%2032.png)
+
+### 15Nov2026 - T569 - the islands, maps - 33
+
+T-569 DRAFT: SIX/SEVEN, ONE-THREE, FOUR/FIVE, the harbours and DENSE WOOD -- today beside A THE ISLAND KIT, B LIMEWASH, C SHIPLAP AND TAR, on the maps that show most (2x)
+
+![15Nov2026 - T569 - the islands, maps - 33](15Nov2026%20-%20T569%20-%20the%20islands%2C%20maps%20-%2033.png)
+
+### 15Nov2026 - T569 - the islands, tiles - 34
+
+T-569 DRAFT: every island tile drawn, today beside each option (4x)
+
+![15Nov2026 - T569 - the islands, tiles - 34](15Nov2026%20-%20T569%20-%20the%20islands%2C%20tiles%20-%2034.png)
+
+### 15Nov2026 - T569 - the islands, tiles - 35
+
+T-569 DRAFT: every island tile drawn, today beside each option (4x)
+
+![15Nov2026 - T569 - the islands, tiles - 35](15Nov2026%20-%20T569%20-%20the%20islands%2C%20tiles%20-%2035.png)
+
+### 15Nov2026 - T569 - the islands, tiles - 36
+
+T-569 DRAFT: every island tile drawn, today beside each option (4x)
+
+![15Nov2026 - T569 - the islands, tiles - 36](15Nov2026%20-%20T569%20-%20the%20islands%2C%20tiles%20-%2036.png)
+
+### 15Nov2026 - T569 - the islands, tiles - 37
+
+T-569 DRAFT: every island tile drawn, today beside each option (4x)
+
+![15Nov2026 - T569 - the islands, tiles - 37](15Nov2026%20-%20T569%20-%20the%20islands%2C%20tiles%20-%2037.png)
+
+### 15Nov2026 - T569 - the islands, tiles - 38
+
+T-569 DRAFT: every island tile drawn, today beside each option (4x)
+
+![15Nov2026 - T569 - the islands, tiles - 38](15Nov2026%20-%20T569%20-%20the%20islands%2C%20tiles%20-%2038.png)
+
+### 15Nov2026 - T569 - the caves, maps - 39
+
+T-569 DRAFT: the caves' kept stones, rubble and rims -- today beside A THE CAVE'S OWN GRAIN, B KNAPPED, C WATER-WORN, with UMBRAL ASCENT's, STILLFALL's and OTHER CAVE's splits in their own light (2x)
+
+![15Nov2026 - T569 - the caves, maps - 39](15Nov2026%20-%20T569%20-%20the%20caves%2C%20maps%20-%2039.png)
+
+### 15Nov2026 - T569 - the caves, maps - 40
+
+T-569 DRAFT: the caves' kept stones, rubble and rims -- today beside A THE CAVE'S OWN GRAIN, B KNAPPED, C WATER-WORN, with UMBRAL ASCENT's, STILLFALL's and OTHER CAVE's splits in their own light (2x)
+
+![15Nov2026 - T569 - the caves, maps - 40](15Nov2026%20-%20T569%20-%20the%20caves%2C%20maps%20-%2040.png)
+
+### 15Nov2026 - T569 - the caves, maps - 41
+
+T-569 DRAFT: the caves' kept stones, rubble and rims -- today beside A THE CAVE'S OWN GRAIN, B KNAPPED, C WATER-WORN, with UMBRAL ASCENT's, STILLFALL's and OTHER CAVE's splits in their own light (2x)
+
+![15Nov2026 - T569 - the caves, maps - 41](15Nov2026%20-%20T569%20-%20the%20caves%2C%20maps%20-%2041.png)
+
+### 15Nov2026 - T569 - the caves, maps - 42
+
+T-569 DRAFT: the caves' kept stones, rubble and rims -- today beside A THE CAVE'S OWN GRAIN, B KNAPPED, C WATER-WORN, with UMBRAL ASCENT's, STILLFALL's and OTHER CAVE's splits in their own light (2x)
+
+![15Nov2026 - T569 - the caves, maps - 42](15Nov2026%20-%20T569%20-%20the%20caves%2C%20maps%20-%2042.png)
+
+### 15Nov2026 - T569 - the caves, maps - 43
+
+T-569 DRAFT: the caves' kept stones, rubble and rims -- today beside A THE CAVE'S OWN GRAIN, B KNAPPED, C WATER-WORN, with UMBRAL ASCENT's, STILLFALL's and OTHER CAVE's splits in their own light (2x)
+
+![15Nov2026 - T569 - the caves, maps - 43](15Nov2026%20-%20T569%20-%20the%20caves%2C%20maps%20-%2043.png)
+
+### 15Nov2026 - T569 - the caves, maps - 44
+
+T-569 DRAFT: the caves' kept stones, rubble and rims -- today beside A THE CAVE'S OWN GRAIN, B KNAPPED, C WATER-WORN, with UMBRAL ASCENT's, STILLFALL's and OTHER CAVE's splits in their own light (2x)
+
+![15Nov2026 - T569 - the caves, maps - 44](15Nov2026%20-%20T569%20-%20the%20caves%2C%20maps%20-%2044.png)
+
+### 15Nov2026 - T569 - the caves, maps - 45
+
+T-569 DRAFT: the caves' kept stones, rubble and rims -- today beside A THE CAVE'S OWN GRAIN, B KNAPPED, C WATER-WORN, with UMBRAL ASCENT's, STILLFALL's and OTHER CAVE's splits in their own light (2x)
+
+![15Nov2026 - T569 - the caves, maps - 45](15Nov2026%20-%20T569%20-%20the%20caves%2C%20maps%20-%2045.png)
+
+### 15Nov2026 - T569 - the caves, tiles - 46
+
+T-569 DRAFT: every cave tile drawn, today beside each option (4x)
+
+![15Nov2026 - T569 - the caves, tiles - 46](15Nov2026%20-%20T569%20-%20the%20caves%2C%20tiles%20-%2046.png)
+
+### 15Nov2026 - T569 - the caves, tiles - 47
+
+T-569 DRAFT: every cave tile drawn, today beside each option (4x)
+
+![15Nov2026 - T569 - the caves, tiles - 47](15Nov2026%20-%20T569%20-%20the%20caves%2C%20tiles%20-%2047.png)
+
+### 15Nov2026 - T569 - the caves, tiles - 48
+
+T-569 DRAFT: every cave tile drawn, today beside each option (4x)
+
+![15Nov2026 - T569 - the caves, tiles - 48](15Nov2026%20-%20T569%20-%20the%20caves%2C%20tiles%20-%2048.png)
+
+### 15Nov2026 - T569 - the caves, tiles - 49
+
+T-569 DRAFT: every cave tile drawn, today beside each option (4x)
+
+![15Nov2026 - T569 - the caves, tiles - 49](15Nov2026%20-%20T569%20-%20the%20caves%2C%20tiles%20-%2049.png)
+
+### 15Nov2026 - T569 - the caves, tiles - 50
+
+T-569 DRAFT: every cave tile drawn, today beside each option (4x)
+
+![15Nov2026 - T569 - the caves, tiles - 50](15Nov2026%20-%20T569%20-%20the%20caves%2C%20tiles%20-%2050.png)
+
+### 15Nov2026 - T569 - the caves, tiles - 51
+
+T-569 DRAFT: every cave tile drawn, today beside each option (4x)
+
+![15Nov2026 - T569 - the caves, tiles - 51](15Nov2026%20-%20T569%20-%20the%20caves%2C%20tiles%20-%2051.png)
+
+### 15Nov2026 - T569 - the caves, tiles - 52
+
+T-569 DRAFT: every cave tile drawn, today beside each option (4x)
+
+![15Nov2026 - T569 - the caves, tiles - 52](15Nov2026%20-%20T569%20-%20the%20caves%2C%20tiles%20-%2052.png)
+
+### 15Nov2026 - T569 - MT SMOULDERs steam - 53
+
+T-569 DRAFT: the spa's steam, 4 frames -- today beside A BANKED HEAT, B THREADS, C THE DITHER RELIT (6x)
+
+![15Nov2026 - T569 - MT SMOULDERs steam - 53](15Nov2026%20-%20T569%20-%20MT%20SMOULDERs%20steam%20-%2053.png)
