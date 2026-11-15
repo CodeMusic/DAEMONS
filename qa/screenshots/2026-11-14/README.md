@@ -343,3 +343,15 @@ T-561 DRAFT: banner today beside each draft at 2x in theatre shots (gbamenus3.py
 T-561 DRAFT: helpscreen today beside each draft at 2x in theatre shots (gbamenus3.py --t561)
 
 ![14Nov2026 - T561 - field overlays helpscreen draft - 52](14Nov2026%20-%20T561%20-%20field%20overlays%20helpscreen%20draft%20-%2052.png)
+
+### 14Nov2026 - T561 - field overlays built the emote and itemfinder - 53
+
+T-561 BUILT (engine 9e489b46e): HEIDI's ! with MOM's shoes on and the itemfinder, today beside built, theatre
+
+![14Nov2026 - T561 - field overlays built the emote and itemfinder - 53](14Nov2026%20-%20T561%20-%20field%20overlays%20built%20the%20emote%20and%20itemfinder%20-%2053.png)
+
+### 14Nov2026 - T561 - field overlays built the banner HELP and recap - 54
+
+T-561 BUILT (engine 9e489b46e): the START banner, HELP and the recap's description bar, today beside built, theatre; the quest log message box not reached
+
+![14Nov2026 - T561 - field overlays built the banner HELP and recap - 54](14Nov2026%20-%20T561%20-%20field%20overlays%20built%20the%20banner%20HELP%20and%20recap%20-%2054.png)

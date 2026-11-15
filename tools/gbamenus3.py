@@ -1559,11 +1559,11 @@ def main():
 
 
 # ================================================================================================================
-# T-561: THE FIELD OVERLAYS -- the Nintendo art drawn over the world (batch 2 of the 2026-11-14 re-census). DRAFT.
+# T-561: THE FIELD OVERLAYS -- the Nintendo art drawn over the world (batch 2 of the 2026-11-14 re-census). APPROVED.
 #
 #     python3 tools/gbamenus3.py --t561                    # report: each piece's files, contract and APPROVED_561
 #     python3 tools/gbamenus3.py --t561 --draft [DIR] [--shots DIR]   # every piece into DIR (gfx/drafts/t561_field/)
-#     python3 tools/gbamenus3.py --t561 --write --approved --pick piece=X,...   # refuses until APPROVED_561 names it
+#     python3 tools/gbamenus3.py --t561 --write --approved --all | --pick piece=X,...   # APPROVED_561 (2026-11-14)
 #
 # genemoji.py does not own misc/emoticons.png (it writes daemon_emoji.png, the follower's own sheet with its own
 # palette), so the trainers' emotes are drawn here, beside T-554's pieces, in the follower bubble's family.
@@ -1608,7 +1608,10 @@ T561_NAMES = {
 T561_OFFERED = {p: "".join(T561_NAMES[p]) for p in T561_PIECES}
 T561_RECOMMENDED = {"emotes": "A", "itemfinder": "A", "questlog": "1", "qldesc": "A", "banner": "A",
                     "helpscreen": "1"}
-APPROVED_561 = {}          # empty until the user picks: nothing of T-561 is written
+#  The user, 2026-11-14 (multiple choice): emotes A SMALL SCREEN, itemfinder A PROMPT CHEVRON, the quest log's frame 1
+#  TERMINAL IN STDPAL_4, the description bar A SLATE BAND, the START banner A DARK BAND, the HELP screen 1 TERMINAL.
+#  --t561 --write --approved --all (or --pick with these) writes them; the --t561 report exits 1 on drift from them.
+APPROVED_561 = {"emotes": "A", "itemfinder": "A", "questlog": "1", "qldesc": "A", "banner": "A", "helpscreen": "1"}
 
 OBJ_PAL = "object_events/palettes/player.pal"
 SHOES = (12, 13)           # T-256: the sole and the trim, painted at run time -- never drawn in
@@ -2135,7 +2138,34 @@ def t561_report():
             if errs:
                 bad += 1
                 print("    %s %s: %s" % (d, T561_NAMES[piece][d], "; ".join(errs)))
-    return 1 if bad else 0
+    drift = t561_differs(APPROVED_561)
+    for rel in drift:
+        print("  DRIFT: engineGba/graphics/%s is not what --t561 --write --approved --all makes" % rel)
+    return 1 if bad or drift else 0
+
+
+def t561_differs(picks):
+    """The files a write of `picks` would change, compared decoded (indices and q5 colours)."""
+    import gbafont
+    out = []
+    for piece, d in picks.items():
+        for rel, payload in t561_outputs(piece, d).items():
+            p = os.path.join(G, rel)
+            if not os.path.exists(p):
+                out.append(rel)
+            elif payload[0] == "png":
+                try:
+                    w, h, bd, plte, px = gbafont.png_load(p)
+                except BaseException:                    # pret's quest_log.png is greyscale: not ours yet
+                    out.append(rel)
+                    continue
+                cur = [[v & 15 for v in r] for r in px]
+                pal_now = [tuple(q5(tuple(plte[i:i + 3]))) for i in range(0, len(plte), 3)][:16]
+                if cur != [list(r) for r in payload[1]] or pal_now != [tuple(q5(c)) for c in payload[2]][:16]:
+                    out.append(rel)
+            elif payload[0] == "pal" and [q5(c) for c in M.jasc(p)] != [q5(c) for c in payload[1]]:
+                out.append(rel)
+    return out
 
 
 # ------------------------------------------------------------------------------------------------ mocks
@@ -2477,9 +2507,9 @@ def t561_draft(out, shots_dir=None):
 
 def t561_main():
     if ARGS.write:
-        if not ARGS.approved or not ARGS.pick:
-            sys.exit("gbamenus3 --t561: --write needs --approved and --pick piece=X,... (the user's picks)")
-        picks = dict(kv.split("=") for kv in ARGS.pick.split(","))
+        if not ARGS.approved or not (ARGS.pick or ARGS.all):
+            sys.exit("gbamenus3 --t561: --write needs --approved and --all or --pick piece=X,... (the user's picks)")
+        picks = dict(kv.split("=") for kv in ARGS.pick.split(",")) if ARGS.pick else dict(APPROVED_561)
         for piece, d in picks.items():
             if piece not in T561_PIECES or d not in T561_OFFERED[piece]:
                 sys.exit("gbamenus3 --t561: unknown pick %s=%s" % (piece, d))

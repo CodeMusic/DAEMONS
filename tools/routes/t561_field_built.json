@@ -1,0 +1,82 @@
+{
+  "rom": "debug",
+  "about": "T-561 BUILT: the field overlays on the built debug ROM -- HEIDI's ! with MOM's shoes on (FLAG_SYS_B_DASH set, FLAG_SHOES_FROM_DAD clear: the sole slot is yellow, and the ! no longer uses it), the itemfinder, the START banner, HELP, and a save with a talk in it to CONTINUE into (the recap filmed by hand). The theatre's debug scratch save; nothing kept.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "a trainer spots you: the !",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 1",
+        "trainer TRAINER_PICNICKER_HEIDI 0",
+        "flag FLAG_SYS_B_DASH 1",
+        "flag FLAG_SHOES_FROM_DAD 0",
+        "goto Route10 11 29",
+        "wait 40",
+        "shot \"Route 10, beside HEIDI's line, out of her sight\"",
+        "burst \"spotted: the !\" 40 2 LEFT 32",
+        "win",
+        "wait 60"
+      ]
+    },
+    {
+      "stop": "the itemfinder",
+      "steps": [
+        "goto Route10 6 29",
+        "repel 999",
+        "keyitem ITEM_ITEMFINDER",
+        "register ITEM_ITEMFINDER",
+        "flag FLAG_HIDDEN_ITEM_ROUTE10_CHERI_BERRY 0",
+        "wait 30",
+        "burst \"the itemfinder: the arrow\" 40 3 SELECT 6",
+        "close"
+      ]
+    },
+    {
+      "stop": "the START menu's banner",
+      "steps": [
+        "goto Route10 5 25",
+        "wait 30",
+        "press START",
+        "wait 20",
+        "shot \"START: the description banner\"",
+        "wait 10",
+        "close"
+      ]
+    },
+    {
+      "stop": "HELP",
+      "steps": [
+        "goto Route10 5 25",
+        "wait 30",
+        "press START",
+        "wait 20",
+        "press RIGHT",
+        "press DOWN 3",
+        "wait 10",
+        "shot \"START: HELP's own banner\"",
+        "press A",
+        "wait 90",
+        "shot \"HELP: the screen\"",
+        "press A",
+        "wait 40",
+        "shot \"HELP: a page\"",
+        "close"
+      ]
+    },
+    {
+      "stop": "a save with a talk in it, for the quest log",
+      "steps": [
+        "goto ViridianCity_Mart 4 4",
+        "repel 999",
+        "flag FLAG_CLERK_NOTICED_OPUS 1",
+        "talk LOCALID_VIRIDIAN_MART_CLERK 1",
+        "close",
+        "warp MAP_VIRIDIAN_CITY",
+        "wait 60",
+        "save"
+      ]
+    }
+  ]
+}
