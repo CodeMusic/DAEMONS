@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.370 — 2026-11-15
+
+- Recorded from release v11.369.1 (0f193122, engine 0aee7681c), which sealed v11.368.x:
+  - **The INDEX and the map** (T-563), the user's picks: graph paper, index cards, the AREA UNKNOWN plate, the town map's head as the player's own animal bust, TERMINAL cursors. DRAFT.
+- Section 10: one Settled entry.
+
 ## v11.369 — 2026-11-14
 
 - Recorded from release v11.368.1 (fd158d6d, engine 0dabcb96e), which sealed v11.367.x:

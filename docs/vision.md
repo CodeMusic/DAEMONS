@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.369**
+**A total conversion — the living design bible, v11.370**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9252,6 +9252,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The INDEX and the map in TERMINAL (T-563, v11.369.1)** — released, the user's picks (A for every piece): the INDEX's backgrounds as GRAPH PAPER, its mini card as an INDEX CARD, the AREA UNKNOWN plate; the town map's two heads, which were people against the fable rule, now the player's own animal as a BUST (drawn from the walking sprite, the tail showing); the switch cursors as a CUT BRACKET, HEARSAY's cursor and its ? as a TEAL CUT BOX and a SMALL SCREEN. Sealed v11.368.x. DRAFT.
 - **The towns' last Nintendo tiles (T-562, v11.368.1)** — released: 309 roof, wall, window and fence tiles in nine towns redrawn in each town's own look, the user's picks (LURID THE HUM, VERDIGRIS's store in BRONZE PANELS and its fountain as RINGS); the landmarks and doors stay with their own tickets. Sealed v11.367.x. DRAFT.
 - **The ROVER line and the MUSAI creatures (T-552, T-553, v11.367.1)** — released: the ROVER line reads machine, server, dog (9.31); all 24 MUSAI forms redrawn as natural creatures keeping MUSAI's head, each season's vehicle carried as anatomy (9.34); fronts, backs, icons and followers for all 27. Sealed v11.366.x. DRAFT.
 - **The field overlays in TERMINAL (T-561, v11.366.1)** — released: the Nintendo art drawn over the world, the second batch of the 2026-11-14 re-census, redrawn in the A TERMINAL family by the user's picks: the emote over a trainer who spots you as A SMALL SCREEN (no longer yellow: pret's ! sat in the player's OBJ palette slot that became the shoe sole), the itemfinder's A PROMPT CHEVRON, the quest log's TERMINAL frame and SLATE description bar at every CONTINUE, the START banner as A DARK BAND, and the HELP screen in TERMINAL. Sealed v11.365.x. DRAFT.
