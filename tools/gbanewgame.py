@@ -76,7 +76,10 @@ FRAMES = os.path.join(ROOT, ".theatre", "routes", "film_t568_newgame")      # to
 sys.path.insert(0, TOOLS)
 
 PIECES = ["guide", "window", "oak_bg", "platform", "buttons", "page_swap", "cursor", "marks", "pc_icon"]
-APPROVED = {}   # DRAFT: nothing picked yet
+#  The user's picks, 2026-11-15, by multiple choice: A throughout, but the SEEKMUSAI panel takes "the musical note
+#  instead of the ball" -- A's graph paper and palette with B's quaver as its watermark ("A+B"). DRAFT.
+APPROVED = {p: "A" for p in PIECES}
+APPROVED["window"] = "A+B"
 OS, NS = "graphics/oak_speech/", "graphics/naming_screen/"
 FILES = {
     "guide":     [OS + "bg_tiles.png"],
@@ -92,7 +95,8 @@ FILES = {
 }
 NAMES = {
     "guide":     {"A": "KEYCAPS", "B": "WIREFRAME", "C": "GRAPH CARDS"},
-    "window":    {"A": "GRAPH PAPER", "B": "RULED", "C": "SCANLINES"},
+    "window":    {"A": "GRAPH PAPER", "B": "RULED", "C": "SCANLINES",
+                  "A+B": "GRAPH PAPER, THE QUAVER"},   # the user, 2026-11-15: A's paper with B's note for the ball
     "oak_bg":    {"A": "GRAPH PAPER", "B": "THE STAVE", "C": "NIGHT GRID"},
     "platform":  {"A": "THE PAD", "B": "THE RING", "C": "THE STAVE"},
     "buttons":   {"A": "KEYCAP", "B": "INVERSE", "C": "UNDERLINE"},
@@ -509,6 +513,7 @@ def _emblem(d, w, h):
 
 
 def window(d, base):
+    d, mark = d[0], d[-1]                            # "A+B": A's panel, B's emblem
     px, pal = _bgt(base)
     old = [[v % 16 for v in r] for r in px]
     T = lambda t: _tile_get(old, t)
@@ -532,7 +537,7 @@ def window(d, base):
         _tile_put(px, t, [[(32 + v) if v else 0 for v in rr] for rr in tile])
     ents, (c0, r0, c1, r1) = _window_cells(base)
     w, h = (c1 - c0 + 1) * 8, (r1 - r0 + 1) * 8
-    em = _emblem(d, w, h)
+    em = _emblem(mark, w, h)
     target = _grid(240, 160)
     for y in range(h):
         for x in range(w):
@@ -934,7 +939,7 @@ def report():
     drift = []
     for rel, v in composed(APPROVED, base).items():
         dst = P(rel)
-        same = open(dst).read() == v if isinstance(v, str) else (
+        same = open(dst, newline="").read() == v if isinstance(v, str) else (   # newline="": the .pal is CRLF
             list(Image.open(dst).getdata()) == list(v.getdata()) and Image.open(dst).getpalette() == v.getpalette())
         if not same:
             drift.append(rel)

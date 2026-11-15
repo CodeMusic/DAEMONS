@@ -157,3 +157,9 @@ T-568 DRAFT: the naming screen's pret-shaped sprites (BACK, OK, the swap key, cu
 T-568 DRAFT: the naming screen's pret-shaped sprites (BACK, OK, the swap key, cursor, arrow, underscore, PC icon) in context, T-363's palettes kept
 
 ![15Nov2026 - T568 - DRAFT naming parts today beside A B C - 26](15Nov2026%20-%20T568%20-%20DRAFT%20naming%20parts%20today%20beside%20A%20B%20C%20-%2026.png)
+
+### 15Nov2026 - T568 - the new game built - 27
+
+T-568 built, the user's picks: keycaps in the controls guide, the panel's graph paper with a quaver for the ball, CRYSTAL on the graph-paper floor and pad, the naming screen's bracket cursor, prompt and keycap buttons (filmed, CONTENT debug)
+
+![15Nov2026 - T568 - the new game built - 27](15Nov2026%20-%20T568%20-%20the%20new%20game%20built%20-%2027.png)
