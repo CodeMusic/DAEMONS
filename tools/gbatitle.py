@@ -382,7 +382,7 @@ def main():
 #  editions' palettes paint it unchanged. slash: indices 0 and 1 only (a window has no colour). band: tiles 0 and 2 as
 #  they are, palette entries 0-2 as they are (0 is the backdrop), one new shade in 3. star: index 0 transparent.
 T564_PIECES = ["star", "slash", "border", "band"]
-APPROVED_564 = {}                    # piece -> "A" | "B" | "C": empty, nothing written (T-564 is a DRAFT)
+APPROVED_564 = {"star": "A", "slash": "C", "border": "A", "band": "A"}   # the user, 2026-11-15, by multiple choice
 T564_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t564_boot")
 T564_FRAMES = os.path.join(ROOT, ".theatre", "routes", "film_t564_boot", "02")   # tools/routes/film_t564_boot.json
 T564_FILES = {
