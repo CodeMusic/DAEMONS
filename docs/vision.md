@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.370**
+**A total conversion — the living design bible, v11.371**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9252,6 +9252,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The boot screens' last Nintendo pieces (T-564, v11.370.1)** — released, the user's picks (the recommended four): the CodeMusic mark now leads the splash's trail of bits turning to notes (A THE MARK, where pret's star was), GRAPH PAPER under it in place of the navy band, BIT RAIN for the glint across the title (C), and A RULE at the title's band edge (A THE RULE). The census found the other four pieces never on screen. Sealed v11.369.x. DRAFT.
 - **The INDEX and the map in TERMINAL (T-563, v11.369.1)** — released, the user's picks (A for every piece): the INDEX's backgrounds as GRAPH PAPER, its mini card as an INDEX CARD, the AREA UNKNOWN plate; the town map's two heads, which were people against the fable rule, now the player's own animal as a BUST (drawn from the walking sprite, the tail showing); the switch cursors as a CUT BRACKET, HEARSAY's cursor and its ? as a TEAL CUT BOX and a SMALL SCREEN. Sealed v11.368.x. DRAFT.
 - **The towns' last Nintendo tiles (T-562, v11.368.1)** — released: 309 roof, wall, window and fence tiles in nine towns redrawn in each town's own look, the user's picks (LURID THE HUM, VERDIGRIS's store in BRONZE PANELS and its fountain as RINGS); the landmarks and doors stay with their own tickets. Sealed v11.367.x. DRAFT.
 - **The ROVER line and the MUSAI creatures (T-552, T-553, v11.367.1)** — released: the ROVER line reads machine, server, dog (9.31); all 24 MUSAI forms redrawn as natural creatures keeping MUSAI's head, each season's vehicle carried as anatomy (9.34); fronts, backs, icons and followers for all 27. Sealed v11.366.x. DRAFT.

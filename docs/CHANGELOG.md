@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.371 — 2026-11-15
+
+- Recorded from release v11.370.1 (776e4530, engine fb7aeb81c), which sealed v11.369.x:
+  - **The boot screens' last Nintendo pieces** (T-564), the user's picks: the CodeMusic mark leading the splash's trail, graph paper under it, bit rain across the title, a rule at its band edge. DRAFT.
+- Section 10: one Settled entry.
+
 ## v11.370 — 2026-11-15
 
 - Recorded from release v11.369.1 (0f193122, engine 0aee7681c), which sealed v11.368.x:
