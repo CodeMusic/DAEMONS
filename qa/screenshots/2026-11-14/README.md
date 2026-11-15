@@ -690,3 +690,45 @@ T-561 filmed again: a real CONTINUE recap (reset from the title). The descriptio
 T-562 filmed: the SAFARI centre in B THE HUM, a walk -- gate, east, west -- under the night tint (the watch was released).
 
 ![14Nov2026 - T562 - the SAFARI centre at night - 108](14Nov2026%20-%20T562%20-%20the%20SAFARI%20centre%20at%20night%20-%20108.png)
+
+### 14Nov2026 - T563 - INDEX backgrounds draft - 109
+
+T-563 DRAFT: the INDEX's own tiles (Kanto and GLOBAL grounds, the box, the area frame, the habitat plates) -- today beside A GRAPH PAPER, B SLATE BAND, C HAIRLINE, in the real screens
+
+![14Nov2026 - T563 - INDEX backgrounds draft - 109](14Nov2026%20-%20T563%20-%20INDEX%20backgrounds%20draft%20-%20109.png)
+
+### 14Nov2026 - T563 - INDEX mini card draft - 110
+
+T-563 DRAFT: the habitat page's mini card -- today beside A INDEX CARD, B DOG-EAR, C TICKET
+
+![14Nov2026 - T563 - INDEX mini card draft - 110](14Nov2026%20-%20T563%20-%20INDEX%20mini%20card%20draft%20-%20110.png)
+
+### 14Nov2026 - T563 - INDEX ellipse draft - 111
+
+T-563 DRAFT: AREA UNKNOWN's ellipse -- today beside A PLATE, B TAG, C BRACKETS
+
+![14Nov2026 - T563 - INDEX ellipse draft - 111](14Nov2026%20-%20T563%20-%20INDEX%20ellipse%20draft%20-%20111.png)
+
+### 14Nov2026 - T563 - town map heads draft - 112
+
+T-563 DRAFT: the town map's head, from the player's own overworld sprite (REASON and INSTINCT) -- today beside A BUST, B IN A TERMINAL RING, C HEAD
+
+![14Nov2026 - T563 - town map heads draft - 112](14Nov2026%20-%20T563%20-%20town%20map%20heads%20draft%20-%20112.png)
+
+### 14Nov2026 - T563 - town map switch cursor draft - 113
+
+T-563 DRAFT: the town map's SWITCH cursor (mocked over the GOTO map: the menu did not open on film) -- today beside A CUT BRACKET, B PROMPT CHEVRON, C AMBER TICKS
+
+![14Nov2026 - T563 - town map switch cursor draft - 113](14Nov2026%20-%20T563%20-%20town%20map%20switch%20cursor%20draft%20-%20113.png)
+
+### 14Nov2026 - T563 - HEARSAY cursor draft - 114
+
+T-563 DRAFT: HEARSAY's clue cursor -- today beside A TEAL CUT BOX, B CORNER BRACKETS, C SLATE CUT BOX
+
+![14Nov2026 - T563 - HEARSAY cursor draft - 114](14Nov2026%20-%20T563%20-%20HEARSAY%20cursor%20draft%20-%20114.png)
+
+### 14Nov2026 - T563 - HEARSAY question mark draft - 115
+
+T-563 DRAFT: HEARSAY's ? for a clue not heard (laid in place of a clue: none was hidden on the debug save) -- today beside A SMALL SCREEN, B PAPER TAG, C BARE GLYPH
+
+![14Nov2026 - T563 - HEARSAY question mark draft - 115](14Nov2026%20-%20T563%20-%20HEARSAY%20question%20mark%20draft%20-%20115.png)

@@ -50,7 +50,9 @@ THE PIECES, and what each drop-in keeps (report() prints it):
              4, 7, 9, 10, 11 its own, retinted).
 
 T-561 (DRAFT, the field overlays: the trainers' emotes, the itemfinder, the quest log's frame and bar, the START
-banner, the HELP screen) lives in its own section at the foot of this file, behind --t561.
+banner, the HELP screen) lives in its own section at the foot of this file, behind --t561; T-563 (DRAFT, the INDEX and
+the map: the INDEX's own tiles, its mini card and ellipse, the town map's heads and switch cursors, HEARSAY's cursor
+and ?) in the one after it, behind --t563.
 
 NO NEW WORDS. OK, CANCEL, SEL, START, SELECT, A, B, L, R are FireRed's words, redrawn; nothing else is painted.
 """
@@ -88,6 +90,7 @@ ap.add_argument("--approved", action="store_true")
 ap.add_argument("--pick")
 ap.add_argument("--all", action="store_true")
 ap.add_argument("--t561", action="store_true", help="T-561: the field overlays (DRAFT; see the section at the foot)")
+ap.add_argument("--t563", action="store_true", help="T-563: the INDEX and the map (DRAFT; see the section at the foot)")
 ap.add_argument("--over-later-work", action="store_true", help="accepted so check_generators --writes runs the write")
 ARGS = ap.parse_args() if __name__ == "__main__" else ap.parse_args([])
 
@@ -1534,6 +1537,8 @@ def differs(picks):
 def main():
     if ARGS.t561:
         return t561_main()
+    if ARGS.t563:
+        return t563_main()
     if ARGS.write:
         if not ARGS.approved or not (ARGS.pick or ARGS.all):
             sys.exit("gbamenus3: --write needs --approved and --all or --pick piece=A|B|C,... (the user's picks)")
@@ -2525,6 +2530,1092 @@ def t561_main():
             print("  wrote", os.path.relpath(p, ROOT))
         return 0
     return t561_report()
+
+
+# ================================================================================================================
+# T-563: THE INDEX AND THE MAP -- the Nintendo art those screens still draw (batch 4 of the 2026-11-14 re-census).
+# DRAFT: APPROVED_563 is empty, nothing is written to the engine until the user picks.
+#
+#     python3 tools/gbamenus3.py --t563                    # report: each piece's files, contract and APPROVED_563
+#     python3 tools/gbamenus3.py --t563 --draft [DIR] [--shots DIR]   # every piece into DIR (gfx/drafts/t563_index_map/)
+#     python3 tools/gbamenus3.py --t563 --write --approved --all | --pick piece=X,...   # refuses: APPROVED_563 is empty
+#
+# The shots are the theatre's tools/routes/t563_index_map_today.json and t563_index_map_today2.json (both folders may
+# be named: --shots takes a folder and reads every PNG under it).
+#
+# THE PIECES, and what each drop-in keeps:
+#   dexbg      pokedex/kanto_dex_bgtiles.png and national_dex_bgtiles.png, 8x256 (32 tiles each), charbase 0 of the
+#              INDEX: BG3 draws from it and so does BG0 (the header and footer, tile 3 in palette 15). Every tile id
+#              keeps its role, and every palette row and slot is kept (kanto/national_dex_bgpals.pal untouched):
+#                0 clear; 1 solid 5 (the box paper, BG3's first fill -- and the AREA markers' window fill,
+#                AREA_MARKER_TILE in src/pokedex_area_markers.c, T-530); 2 solid 3 (the habitat page's ground and
+#                the lower half of its card); 3 solid 2 (the header and footer, in row 15); 4-6 the box's corner, top
+#                and side (DexScreen_DrawMonDexPage and the area page: 4 and 5 flipped for the bottom); 7-11 the
+#                habitat card's divider and lower corner/edge (its own, not a flip); 12 solid 7 (the entry page's
+#                backdrop: T-481 B's hour on 7, kept solid); 13 solid 6; 14 the backdrop of the top menu and the
+#                lists (the only tile the two editions of the sheet draw differently); 15 solid 14; 16-28 the habitat
+#                page's daemon plate (page_icon_tilemap.bin, 8x8 tiles, drawn in rows 5-8 whose 2 and 8 the
+#                cursor pulses: 2 the plate, 8 its rim, 3 the ground round it; 22 the fill, solid 2); 29-31 the frame
+#                of the area page's NATIVE box (BG0, 0 inside: the paper shows through).
+#              T-481 B: the weekday is row 0's 8 (the box's corners) and the hour its 7 (tile 12): 8 is the bracket
+#              here, so the bracket is the day's trim as it is on A TERMINAL's message box; 7 stays tile 12's alone.
+#              gbacalendar_ui.py index_page() reads tiles 1, 4, 5, 6 and 12 of this sheet (it follows).
+#   minicard   pokedex/mini_page.png, 64x40: the habitat page's card under each daemon (CopyToWindowPixelBuffer into
+#              an 8x5 window, BG1 palette 0). The engine prints over it, 0 skipped: the number at (12, 0) small, the
+#              name at (2, 13), ink 1 with shadow 3, and the bound mark at (2, 3) -- so y 0-26 stays light.
+#   ellipse    pokedex/blit_wide_ellipse.png, 88x16, blitted at (4, 28) of the area page's map window when a daemon
+#              has no area; AREA UNKNOWN is printed over it centred, ink 1 shadow 3, at y 1 of it. Drawn in row 0.
+#   heads      region_map/player_icon_red.png and player_icon_leaf.png (16x16, 4 tiles) and their .pal: the head on
+#              the town map and at every GOTO. The engine picks by gSaveBlock2Ptr->playerGender, not by edition:
+#              red is REASON (OBJ_EVENT_GFX_RED_NORMAL), leaf INSTINCT (GREEN_NORMAL), and both editions show the
+#              same pair. Drawn from the player's own overworld frame (red_normal.png / green_normal.png, frame 0:
+#              facing down) in player.pal's colours, copied into the icon's own palette (its own OBJ palette tag:
+#              T-256's shoes are not painted here, so 12 and 13 are free and B uses them for the ring).
+#   switch     region_map/switch_map_cursor_left.png and _right.png (32x64: two 32x32 frames, the right the left's
+#              mirror, kept so) and switch_map_cursor.pal (its own): the town map's SWITCH menu's cursor.
+#   famecursor fame_checker/cursor.png, 32x64, two 32x32 frames (the box round HEARSAY's chosen clue and the same
+#              a pixel larger); its palette is its PNG's (cursor.gbapal), its own.
+#   fameq      fame_checker/question_mark.png, 16x32: a clue not yet heard. Its template has no palette tag and
+#              the code sets OBJ palette 2, which is not this screen's own -- so it is drawn in the three slots it
+#              uses today (10 the face, 14 the glyph, 15 the edge) and its palette is not touched.
+#
+# NO NEW WORDS. Every pixel drawn in code; the engine's files read for their shape at BASE3 (pret's art there).
+# ================================================================================================================
+T563_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t563_index_map")
+T563_PIECES = ("dexbg", "minicard", "ellipse", "heads", "switch", "famecursor", "fameq")
+T563_NAMES = {
+    "dexbg": {"A": "GRAPH PAPER", "B": "SLATE BAND", "C": "HAIRLINE"},
+    "minicard": {"A": "INDEX CARD", "B": "DOG-EAR", "C": "TICKET"},
+    "ellipse": {"A": "PLATE", "B": "TAG", "C": "BRACKETS"},
+    "heads": {"A": "BUST", "B": "IN A TERMINAL RING", "C": "HEAD"},
+    "switch": {"A": "CUT BRACKET", "B": "PROMPT CHEVRON", "C": "AMBER TICKS"},
+    "famecursor": {"A": "TEAL CUT BOX", "B": "CORNER BRACKETS", "C": "SLATE CUT BOX"},
+    "fameq": {"A": "SMALL SCREEN", "B": "PAPER TAG", "C": "BARE GLYPH"},
+}
+T563_OFFERED = {p: "ABC" for p in T563_PIECES}
+T563_RECOMMENDED = {"dexbg": "A", "minicard": "A", "ellipse": "A", "heads": "A", "switch": "A", "famecursor": "A",
+                    "fameq": "A"}
+APPROVED_563 = {}          # DRAFT: nothing is written until the user picks
+
+DEXPAL = {"kanto": "pokedex/kanto_dex_bgpals.pal", "national": "pokedex/national_dex_bgpals.pal"}
+DEXTILES = {"kanto": "pokedex/kanto_dex_bgtiles.png", "national": "pokedex/national_dex_bgtiles.png"}
+RING_PALS = ((40, 48, 64), (56, 72, 88))   # sDexScreen_CategoryCursorPals[0..1], RGB(5,6,8) and RGB(7,9,11): at rest
+
+
+def dex_rows(ed="kanto"):
+    p = jpal(DEXPAL[ed])
+    return [p[i * 16:(i + 1) * 16] for i in range(16)]
+
+
+def dex_today(ed="kanto"):
+    return [[v & 15 for v in r] for r in png(DEXTILES[ed])[3]]
+
+
+def _tile_put(g, t, blk):
+    for y in range(8):
+        g[t * 8 + y][0:8] = list(blk[y])
+
+
+def _solid(v):
+    return [[v] * 8 for _ in range(8)]
+
+
+def ringd(x, y, w, h, cut):
+    xx, yy = min(x, w - 1 - x), min(y, h - 1 - y)
+    return min(xx, yy, (xx + yy - cut) if cut else 99)
+
+
+DEX_BOX = {
+    #   rings from the outside in (0: the ground's 3, as pret's corner), the cut, the divider's rows, the bracket
+    "A": dict(rings=[3, 14, 2], cut=2, div=[14, 2, 14], bracket=[(4, 3), (5, 3), (6, 3), (3, 4), (3, 5), (3, 6)]),
+    "B": dict(rings=[3, 14, 2, 2, 12, 14], cut=2, div=[14, 2, 2, 14],
+              bracket=[(4, 3), (5, 3), (6, 3), (7, 3), (3, 4), (3, 5), (3, 6), (3, 7)]),
+    "C": dict(rings=[3, 3, 2], cut=3, div=[2], bracket=[(3, 3), (4, 3), (3, 4)]),
+}
+
+
+def box_model(d, W=5, H=7, div_row=3):
+    """The habitat card as the engine lays it (5 x 7 tiles: top 4 5 5 5 4h, paper 6 1 1 1 6h, divider 7 8 8 8 7h,
+    lower 9 2 2 2 9h, bottom 10 11 11 11 10h) drawn whole, so retile() cuts tiles 4-11 out of it."""
+    st = DEX_BOX[d]
+    w, h = W * 8, H * 8
+    g = canvas(w, h, 3)
+    rings = st["rings"]
+    for y in range(h):
+        for x in range(w):
+            k = ringd(x, y, w, h, st["cut"])
+            if k < 0:
+                g[y][x] = 3
+            elif k < len(rings):
+                g[y][x] = rings[k]
+            else:
+                g[y][x] = 5 if y < div_row * 8 else 3
+    y0 = div_row * 8
+    for i, v in enumerate(st["div"]):
+        for x in range(w):
+            if ringd(x, y0 + i, w, h, st["cut"]) >= 1:
+                g[y0 + i][x] = v
+    for (bx, by) in st["bracket"]:
+        for (X, Y) in ((bx, by), (w - 1 - bx, by), (bx, h - 1 - by), (w - 1 - bx, h - 1 - by)):
+            g[Y][X] = 8
+    if d == "C":                                   # a teal pip at each cut, the hairline's only colour
+        for (X, Y) in ((2, 2), (w - 3, 2), (2, h - 3), (w - 3, h - 3)):
+            g[Y][X] = 15
+    ents = []
+    rowsT = [[(4, 0, 0)] + [(5, 0, 0)] * (W - 2) + [(4, 1, 0)]]
+    rowsT += [[(6, 0, 0)] + [(1, 0, 0)] * (W - 2) + [(6, 1, 0)]] * (div_row - 1)
+    rowsT += [[(7, 0, 0)] + [(8, 0, 0)] * (W - 2) + [(7, 1, 0)]]
+    rowsT += [[(9, 0, 0)] + [(2, 0, 0)] * (W - 2) + [(9, 1, 0)]] * (H - div_row - 2)
+    rowsT += [[(10, 0, 0)] + [(11, 0, 0)] * (W - 2) + [(10, 1, 0)]]
+    for r in rowsT:
+        ents += [(t, hf, vf, 0) for (t, hf, vf) in r]
+    return g, ents, W
+
+
+PLATE = {   # the habitat page's daemon plate, 64x64: (cut, rings from the outside in, a bracket inside the corners)
+    "A": dict(cut=12, rings=[8, 2, 8], br=None),
+    "B": dict(cut=6, rings=[8], br=8),
+    "C": dict(cut=20, rings=[8, 8], br=None),
+}
+
+
+def plate_model(d):
+    st = PLATE[d]
+    g = canvas(64, 64, 3)
+    for y in range(64):
+        for x in range(64):
+            k = ringd(x, y, 64, 64, st["cut"])
+            if k >= 0:
+                g[y][x] = st["rings"][k] if k < len(st["rings"]) else 2
+    if st["br"]:
+        for i in range(6):
+            for (X, Y) in ((5 + i, 4), (4, 5 + i)):
+                for (XX, YY) in ((X, Y), (63 - X, Y), (X, 63 - Y), (63 - X, 63 - Y)):
+                    g[YY][XX] = st["br"]
+    return g
+
+
+FRAME = {"A": [5, 14, 2], "B": [5, 14, 2, 2], "C": [5, 5, 2]}
+
+
+def frame_model(d):
+    """The area page's NATIVE box frame (BG0, 29 corner, 30 top, 31 side; 0 inside), 4x4 tiles."""
+    g = canvas(32, 32, 0)
+    rings = FRAME[d]
+    for y in range(32):
+        for x in range(32):
+            k = ringd(x, y, 32, 32, 2)
+            if k < 0:
+                g[y][x] = 5
+            elif k < len(rings):
+                g[y][x] = rings[k]
+    if d == "B":                                   # a teal tick every 4px along the rule: a stave, as SCORE's map
+        for x in range(4, 28, 4):
+            g[1][x] = g[30][x] = 15
+        for y in range(4, 28, 4):
+            g[y][1] = g[y][30] = 15
+    ents = [(29, 0, 0, 0), (30, 0, 0, 0), (30, 0, 0, 0), (29, 1, 0, 0),
+            (31, 0, 0, 0), (0, 0, 0, 0), (0, 0, 0, 0), (31, 1, 0, 0),
+            (31, 0, 0, 0), (0, 0, 0, 0), (0, 0, 0, 0), (31, 1, 0, 0),
+            (29, 0, 1, 0), (30, 0, 1, 0), (30, 0, 1, 0), (29, 1, 1, 0)]
+    return g, ents, 4
+
+
+def backdrop_tile(d, ed):
+    """Tile 14, the top menu's and the lists' ground: the one tile the two sheets draw differently (pret: a checker
+    for Kanto, stripes for the national INDEX). Light, for the lists' dark ink; slot 4 is the one row 0 colour the
+    two palettes differ in."""
+    t = _solid(9)
+    for y in range(8):
+        for x in range(8):
+            if d == "A":                           # graph paper: Kanto squared, the national INDEX ruled
+                if ed == "kanto" and (x == 0 or y == 0):
+                    t[y][x] = 4
+                if ed == "national" and y in (0, 4):
+                    t[y][x] = 4
+                if ed == "kanto" and x == 0 and y == 0:
+                    t[y][x] = 11
+            elif d == "B":                         # a dot grid; the national INDEX's twice as fine
+                if (x, y) == (0, 0):
+                    t[y][x] = 11
+                if ed == "national" and (x, y) in ((4, 4),):
+                    t[y][x] = 11
+                if ed == "kanto" and (x, y) == (4, 4):
+                    t[y][x] = 4
+            else:                                  # hatching, 45 degrees one way or the other
+                if ed == "kanto" and (x + y) % 4 == 0:
+                    t[y][x] = 4
+                if ed == "national" and (x - y) % 4 == 0:
+                    t[y][x] = 4
+    return t
+
+
+def dexbg_art(d, ed="kanto"):
+    g = canvas(8, 256, 0)
+    for t, v in ((1, 5), (2, 3), (3, 2), (12, 7), (13, 6), (15, 14), (22, 2)):
+        _tile_put(g, t, _solid(v))
+    _tile_put(g, 14, backdrop_tile(d, ed))
+    bm, be, bw = box_model(d)
+    M.retile(g, 1, [(be, bw, bm)])
+    pm = plate_model(d)
+    M.retile(g, 1, [(map16("pokedex/page_icon_tilemap.bin"), 8, pm)])
+    fm, fe, fw = frame_model(d)
+    M.retile(g, 1, [(fe, fw, fm)])
+    for t in (1, 2, 3, 12, 13, 15, 22, 25, 26, 27):    # the solid tiles stay solid whatever the votes said; 25-27
+        _tile_put(g, t, _solid({1: 5, 2: 3, 3: 2, 12: 7, 13: 6, 15: 14, 22: 2}.get(t, 2)))   # no map names: the fill
+    return g
+
+
+# ------------------------------------------------------------------------------------------------ the mini card
+def minicard_art(d):
+    g = canvas(64, 40, 0)
+    if d == "A":       # INDEX CARD: slate rule cut at 45, paper, a dark rule, a ruled lower band, the bracket
+        cut_box(g, 0, 0, 64, 40, 2, [2], 5)
+        fill(g, 1, 26, 63, 27, 14)
+        fill(g, 1, 27, 63, 39, 3)
+        for y in (30, 33, 36):
+            fill(g, 3, y, 61, y + 1, 11)
+        for (x, y) in ((2, 2), (3, 2), (4, 2), (2, 3), (2, 4)):
+            put(g, x, y, 8)
+        for (x, y) in ((61, 37), (60, 37), (59, 37), (61, 36), (61, 35)):
+            put(g, x, y, 8)
+        cut_box(g, 0, 0, 64, 40, 2, [2])
+    elif d == "B":     # DOG-EAR: the top-right corner folded at 45, slate rule, graph paper below
+        cut_box(g, 0, 0, 64, 40, 1, [2], 5)
+        for y in range(8):
+            for x in range(64 - 8 + y, 64):
+                g[y][x] = 0
+            g[y][64 - 8 + y] = 2
+            for x in range(56, 64 - 8 + y):
+                if y < 8 and x >= 56:
+                    pass
+        for i in range(7):                         # the fold: a triangle of the lower band's colour
+            for x in range(56, 56 + i + 1):
+                g[1 + i][x] = 3 if x < 56 + i else 2
+        fill(g, 1, 26, 63, 27, 2)
+        fill(g, 1, 27, 63, 39, 9)
+        for y in range(27, 39):
+            for x in range(1, 63):
+                if (x % 4 == 0) or (y - 27) % 4 == 0:
+                    g[y][x] = 11
+    else:              # TICKET: notches at the tear line, the tear line dashed, a teal hairline under the name
+        cut_box(g, 0, 0, 64, 40, 0, [2], 5)
+        fill(g, 1, 27, 63, 39, 3)
+        for x in range(2, 62, 3):
+            put(g, x, 26, 12)
+        for (x, y) in ((0, 25), (0, 26), (0, 27), (1, 26), (63, 25), (63, 26), (63, 27), (62, 26)):
+            put(g, x, y, 0)
+        fill(g, 3, 37, 61, 38, 15)
+    return g
+
+
+# ------------------------------------------------------------------------------------------------ the ellipse
+def ellipse_art(d):
+    g = canvas(88, 16, 0)
+    if d == "A":       # PLATE: paper on a slate rule cut at 45, the day's bracket at each end
+        cut_box(g, 0, 0, 88, 16, 3, [14, 3], 5)
+        for (x, y) in ((4, 2), (5, 2), (3, 3), (3, 4)):
+            put(g, x, y, 8), put(g, 87 - x, 15 - y, 8)
+    elif d == "B":     # TAG: pointed ends, a slate rule
+        for y in range(16):
+            e = abs(y * 2 - 15) // 2               # 0 at the middle rows, 7 at the top and bottom
+            for x in range(e, 88 - e):
+                k = min(x - e, 87 - e - x, y, 15 - y)
+                g[y][x] = 2 if k == 0 else 5
+    else:              # BRACKETS: open ends, two rules and a teal bracket at each end
+        fill(g, 6, 1, 82, 15, 5)
+        fill(g, 6, 0, 82, 1, 2), fill(g, 6, 15, 82, 16, 2)
+        for x0, s in ((1, 1), (86, -1)):
+            for y in range(1, 15):
+                put(g, x0, y, 15)
+            for i in range(3):
+                put(g, x0 + s * (i + 1), 1, 15), put(g, x0 + s * (i + 1), 14, 15)
+    return g
+
+
+# ------------------------------------------------------------------------------------------------ the heads
+PLAYER_SHEETS = {"red": "object_events/pics/people/red_normal.png", "leaf": "object_events/pics/people/green_normal.png"}
+WHO = {"red": "REASON", "leaf": "INSTINCT"}
+
+
+def player_frame0(which):
+    w, h, pal, px = png(PLAYER_SHEETS[which])
+    return [[px[y][x] & 15 for x in range(16)] for y in range(32)]
+
+
+def heads_pal(d):
+    p = list(jpal(OBJ_PAL))[:16]
+    if d == "B":
+        p[12], p[13] = TEAL, SLATE_OUT
+    return p
+
+
+def head_art(d, which):
+    f = player_frame0(which)
+    g = canvas(16, 16, 0)
+    if d == "A":       # BUST: the overworld frame's rows 9-24 as they are -- hat, face, the coat's top, the tail
+        for y in range(16):
+            g[y] = list(f[9 + y])
+    elif d == "B":     # IN A TERMINAL RING: a dark plate with a teal rim behind the head; the brim breaks it
+        cut_box(g, 1, 4, 14, 12, 3, [12], 13)
+        for y in range(13):
+            for x in range(16):
+                v = f[9 + y][x]
+                if v and 1 + y < 16:
+                    g[1 + y][x] = v
+    else:              # HEAD: the hat and face alone, centred
+        for y in range(11):
+            for x in range(16):
+                g[3 + y][x] = f[9 + y][x]
+    return g
+
+
+# ------------------------------------------------------------------------------------------------ switch cursor
+SWITCH_PALS = {"A": {1: TEAL, 2: SLATE_OUT}, "B": {1: PAPER, 2: SLATE_OUT, 3: TEAL}, "C": {1: AMBER, 2: SLATE_OUT}}
+
+
+def switch_pal(d):
+    p = list(jpal("region_map/switch_map_cursor.pal"))[:16]
+    if d:
+        for k, c in SWITCH_PALS[d].items():
+            p[k] = c
+    return p
+
+
+def _outline(g, v, under=0):
+    """Ring every drawn pixel with `v` where it meets the clear, 8-neighbour."""
+    h, w = len(g), len(g[0])
+    add = []
+    for y in range(h):
+        for x in range(w):
+            if g[y][x] == under:
+                if any(0 <= y + dy < h and 0 <= x + dx < w and g[y + dy][x + dx] not in (under, v)
+                       for dy in (-1, 0, 1) for dx in (-1, 0, 1)):
+                    add.append((x, y))
+    for x, y in add:
+        g[y][x] = v
+
+
+def switch_left(d):
+    """The left half: frame 0 (rows 0-31) the bracket's outer pair, frame 1 (32-63) 2px in, as pret's."""
+    g = canvas(32, 64, 0)
+    for f, ins in ((0, 0), (1, 2)):
+        sub = canvas(32, 32, 0)
+        x0, y0, y1 = 16 + ins, 0 + ins, 31 - ins
+        if d == "A":                   # an L each end, 2px, its corner cut at 45
+            for k in range(2):
+                for x in range(x0 + 2, 32 - ins - 1):
+                    put(sub, x, y0 + 1 + k, 1), put(sub, x, y1 - 1 - k, 1)
+                for y in range(y0 + 3, y0 + 8):
+                    put(sub, x0 + 1 + k, y, 1), put(sub, x0 + 1 + k, y1 - (y - y0), 1)
+            put(sub, x0 + 2, y0 + 2, 1), put(sub, x0 + 2, y1 - 2, 1)
+            _outline(sub, 2)
+        elif d == "B":                 # a chevron pointing in, with a short rule above and below
+            cy = 15
+            for i in range(5):
+                for t in range(2):
+                    put(sub, x0 + 2 + i + t, cy - 4 + i, 3), put(sub, x0 + 2 + i + t, cy + 5 - i, 3)
+            for x in range(x0 + 2, x0 + 10):
+                put(sub, x, y0 + 1, 1), put(sub, x, y1 - 1, 1)
+            _outline(sub, 2)
+        else:                          # thin ticks in amber with a slate shadow below and right
+            for x in range(x0 + 1, x0 + 9):
+                put(sub, x, y0 + 1, 1), put(sub, x, y1 - 2, 1)
+            for y in range(y0 + 1, y0 + 6):
+                put(sub, x0 + 1, y, 1), put(sub, x0 + 1, y1 - 2 - (y - y0 - 1), 1)
+            sh = [r[:] for r in sub]
+            for y in range(32):
+                for x in range(32):
+                    if sh[y][x] == 1 and y + 1 < 32 and x + 1 < 32 and sub[y + 1][x + 1] == 0:
+                        sub[y + 1][x + 1] = 2
+        for y in range(32):
+            g[f * 32 + y] = sub[y]
+    return [r[16:] + [0] * 16 if False else r for r in g]
+
+
+def switch_art(d):
+    left = switch_left(d)
+    # pret's left half is drawn at x 0-15 of its 32 (the right half is the mirror): keep both where they were
+    L = [r[16:] + r[:16] for r in left]
+    return L, [r[::-1] for r in L]
+
+
+# ------------------------------------------------------------------------------------------------ HEARSAY
+def fame_cursor_pal(d):
+    p = png("fame_checker/cursor.png")[2][:16]
+    if d == "A":
+        p[14], p[15] = SLATE_OUT, TEAL
+    elif d == "B":
+        p[14], p[15] = SLATE_OUT, TEAL
+    elif d == "C":
+        p[14], p[15] = (232, 236, 240), SLATE_OUT
+    return p
+
+
+def _bbox(g, y0, y1):
+    pts = [(x, y) for y in range(y0, y1) for x, v in enumerate(g[y]) if v]
+    xs, ys = [p[0] for p in pts], [p[1] for p in pts]
+    return min(xs), min(ys), max(xs), max(ys)
+
+
+def fame_cursor_art(d):
+    now = [[v & 15 for v in r] for r in png("fame_checker/cursor.png")[3]]
+    g = canvas(32, 64, 0)
+    for f in (0, 1):
+        x0, y0, x1, y1 = _bbox(now, f * 32, f * 32 + 32)
+        w, h = x1 - x0 + 1, y1 - y0 + 1
+        if d == "A":
+            cut_box(g, x0, y0, w, h, 3, [14, 15, 14])
+        elif d == "B":
+            for k in range(6):
+                for (X, Y) in ((x0 + k, y0), (x0, y0 + k), (x1 - k, y0), (x1, y0 + k),
+                               (x0 + k, y1), (x0, y1 - k), (x1 - k, y1), (x1, y1 - k)):
+                    put(g, X, Y, 15)
+            for k in range(6):
+                for (X, Y) in ((x0 + 1 + k, y0 + 1), (x0 + 1, y0 + 1 + k), (x1 - 1 - k, y0 + 1), (x1 - 1, y0 + 1 + k),
+                               (x0 + 1 + k, y1 - 1), (x0 + 1, y1 - 1 - k), (x1 - 1 - k, y1 - 1), (x1 - 1, y1 - 1 - k)):
+                    if g[Y][X] == 0:
+                        put(g, X, Y, 14)
+        else:
+            cut_box(g, x0, y0, w, h, 2, [14, 15, 15, 14])
+    return g
+
+
+QGLYPH = [".####.", "##..##", "....##", "...##.", "..##..", "..##..", "......", "..##..", "..##.."]
+
+
+def fameq_art(d):
+    g = canvas(16, 32, 0)
+    # pret's tile: rows 12-30, x 1-14 (14 x 19)
+    if d == "A":       # SMALL SCREEN: dark glass (10) cut at 45, a 15 edge, the ? lit (14)
+        cut_box(g, 1, 12, 14, 19, 3, [15], 10)
+        gx, gy = 5, 17
+    elif d == "B":     # PAPER TAG: the face light (14), a 15 rule, the ? in 10, a punched hole
+        cut_box(g, 1, 12, 14, 19, 2, [15], 14)
+        put(g, 7, 14, 15), put(g, 8, 14, 15)
+        gx, gy = 5, 18
+    else:              # BARE GLYPH: no plate, the ? ringed in 15
+        gx, gy = 5, 17
+    for y, row in enumerate(QGLYPH):
+        for x, c in enumerate(row):
+            if c == "#":
+                put(g, gx + x, gy + y, 10 if d == "B" else 14)
+    if d == "C":
+        _outline(g, 15)
+    return g
+
+
+# ------------------------------------------------------------------------------------------------ outputs and checks
+def t563_outputs(piece, d):
+    if piece == "dexbg":
+        return {DEXTILES[ed]: _png(dexbg_art(d, ed), dex_rows(ed)[0]) for ed in ("kanto", "national")}
+    if piece == "minicard":
+        return {"pokedex/mini_page.png": _png(minicard_art(d), dex_rows()[0])}
+    if piece == "ellipse":
+        return {"pokedex/blit_wide_ellipse.png": _png(ellipse_art(d), dex_rows()[0])}
+    if piece == "heads":
+        out = {}
+        for which in ("red", "leaf"):
+            out["region_map/player_icon_%s.png" % which] = _png(head_art(d, which), heads_pal(d))
+            out["region_map/player_icon_%s.pal" % which] = ("pal", heads_pal(d))
+        return out
+    if piece == "switch":
+        L, R = switch_art(d)
+        return {"region_map/switch_map_cursor_left.png": _png(L, switch_pal(d)),
+                "region_map/switch_map_cursor_right.png": _png(R, switch_pal(d)),
+                "region_map/switch_map_cursor.pal": ("pal", switch_pal(d))}
+    if piece == "famecursor":
+        return {"fame_checker/cursor.png": _png(fame_cursor_art(d), fame_cursor_pal(d))}
+    if piece == "fameq":
+        return {"fame_checker/question_mark.png": _png(fameq_art(d), png("fame_checker/question_mark.png")[2][:16])}
+    return {}
+
+
+SIZES = {"pokedex/kanto_dex_bgtiles.png": (8, 256), "pokedex/national_dex_bgtiles.png": (8, 256),
+         "pokedex/mini_page.png": (64, 40), "pokedex/blit_wide_ellipse.png": (88, 16),
+         "region_map/player_icon_red.png": (16, 16), "region_map/player_icon_leaf.png": (16, 16),
+         "region_map/switch_map_cursor_left.png": (32, 64), "region_map/switch_map_cursor_right.png": (32, 64),
+         "fame_checker/cursor.png": (32, 64), "fame_checker/question_mark.png": (16, 32)}
+
+
+def t563_check(piece, d):
+    errs = []
+    for rel, payload in t563_outputs(piece, d).items():
+        if payload[0] != "png":
+            continue
+        g = payload[1]
+        if (len(g[0]), len(g)) != SIZES[rel]:
+            errs.append("%s is %dx%d, not %dx%d" % ((rel, len(g[0]), len(g)) + SIZES[rel]))
+        used = {v for r in g for v in r}
+        if piece == "dexbg":
+            T = lambda t: {v for r in g[t * 8:t * 8 + 8] for v in r}
+            for t, v in ((1, 5), (2, 3), (3, 2), (12, 7), (22, 2)):
+                if T(t) != {v}:
+                    errs.append("%s tile %d is not solid %d" % (rel, t, v))
+            if any(7 in T(t) for t in range(32) if t != 12):
+                errs.append("%s draws 7 (T-481 B's hour) outside tile 12" % rel)
+            if any(T(t) - {2, 3, 8} for t in range(16, 29)):
+                errs.append("%s: the plate (16-28) draws outside 2, 3 and 8 (rows 5-8: the cursor's pulse)" % rel)
+            if T(0) != {0}:
+                errs.append("%s tile 0 is not clear" % rel)
+        if piece == "minicard":
+            if any(v in (1,) for r in g for v in r):
+                errs.append("draws in 1 (the ink)")
+            if any(v not in (5, 8) for r in g[3:26] for v in r[2:54]):
+                errs.append("the text's rows (3-25, x 2-53) are not paper")
+        if piece == "ellipse" and any(v in (1, 7) for r in g for v in r):
+            errs.append("draws in 1 (the ink) or 7 (the hour)")
+        if piece == "fameq" and used - {0, 10, 14, 15}:
+            errs.append("draws outside 10/14/15 (OBJ palette 2 is not this screen's)")
+        if piece == "switch" and used - {0, 1, 2, 3}:
+            errs.append("draws outside 1-3")
+    if piece == "switch":
+        L, R = switch_art(d)
+        if R != [r[::-1] for r in L]:
+            errs.append("the right half is not the left's mirror")
+    return errs
+
+
+def t563_differs(picks):
+    out = []
+    for piece, d in picks.items():
+        for rel, payload in t563_outputs(piece, d).items():
+            p = os.path.join(G, rel)
+            if payload[0] == "png":
+                try:
+                    import gbafont
+                    w, h, bd, plte, px = gbafont.png_load(p)
+                    if [[v & 15 for v in r] for r in px] != [list(r) for r in payload[1]]:
+                        out.append(rel)
+                except BaseException:
+                    out.append(rel)
+            elif payload[0] == "pal" and [q5(c) for c in M.jasc(p)] != [q5(c) for c in payload[1]]:
+                out.append(rel)
+    return out
+
+
+def t563_report():
+    print("gbamenus3 --t563 (T-563): the INDEX and the map. APPROVED_563: %s" % (APPROVED_563 or "none -- nothing is written"))
+    bad = 0
+    for piece in T563_PIECES:
+        print("  %-10s %s" % (piece, ", ".join(sorted(t563_outputs(piece, "A")))))
+        for d in T563_OFFERED[piece]:
+            errs = t563_check(piece, d)
+            if errs:
+                bad += 1
+                print("    %s %s: %s" % (d, T563_NAMES[piece][d], "; ".join(errs)))
+    drift = t563_differs(APPROVED_563)
+    for rel in drift:
+        print("  DRIFT: engineGba/graphics/%s is not what --t563 --write --approved --all makes" % rel)
+    return 1 if bad or drift else 0
+
+
+# ------------------------------------------------------------------------------------------------ the real screens
+def _layer_from_map(sheet, entries, w, rows_of, x0=0, y0=0, layer=None):
+    """Index layer (240x160 of (row, idx) or None) of a tilemap drawn at tile (x0, y0)."""
+    L = layer or [[None] * 240 for _ in range(160)]
+    for i, (t, hf, vf, pn) in enumerate(entries):
+        cx, cy = x0 + i % w, y0 + i // w
+        if not (0 <= cx < 30 and 0 <= cy < 20):
+            continue
+        blk = tile_of(sheet, t, 1)
+        for y in range(8):
+            for x in range(8):
+                v = blk[7 - y if vf else y][7 - x if hf else x]
+                if v:
+                    L[cy * 8 + y][cx * 8 + x] = (rows_of(pn), v)
+    return L
+
+
+def _fill_ents(t, w, h, pn=0):
+    return [(t, 0, 0, pn)] * (w * h)
+
+
+def habitat_n(s):
+    """How many daemons the habitat shot's page holds: the layout whose plates the shot covers best (dark there)."""
+    best = None
+    for n in (1, 2, 3, 4):
+        o = dex_layers(dex_today(), "habitat", (n, HAB_COORDS[n]))
+        pts = [(x, y) for y in range(0, 160, 2) for x in range(0, 240, 2) if o[y][x] and o[y][x][0] >= 5]
+        frac = sum(1 for (x, y) in pts if sum(s.getpixel((x, y))) < 250) / max(1, len(pts))
+        if best is None or frac > best[0] + 0.02:
+            best = (frac, n)
+    return best[1]
+
+
+def card_grid(d):
+    return minicard_art(d) if d else [[v & 15 for v in r] for r in png("pokedex/mini_page.png")[3]]
+
+
+def dex_layers(sheet, page, extra=None, cards=None):
+    """The INDEX's BG3 (and the area page's BG0 frame) as the engine lays them for `page`, from `sheet`."""
+    L = [[None] * 240 for _ in range(160)]
+    if page in ("top", "list"):
+        L = _layer_from_map(sheet, _fill_ents(14, 30, 20), 30, lambda r: 0, layer=L)
+    elif page in ("entry", "area"):
+        L = _layer_from_map(sheet, _fill_ents(12, 30, 20), 30, lambda r: 0, layer=L)
+        W, H, x0, y0 = 28, 14, 0, 2
+        ents = []
+        for y in range(H + 2):
+            for x in range(W + 2):
+                top, bot, lft, rgt = y == 0, y == H + 1, x == 0, x == W + 1
+                if (top or bot) and (lft or rgt):
+                    ents.append((4, int(rgt), int(bot), 0))
+                elif top or bot:
+                    ents.append((5, 0, int(bot), 0))
+                elif lft or rgt:
+                    ents.append((6, int(rgt), 0, 0))
+                else:
+                    ents.append((1, 0, 0, 0))
+        L = _layer_from_map(sheet, ents, W + 2, lambda r: 0, x0, y0, L)
+        if page == "area":
+            W, H, x0, y0 = 10, 6, 1, 9
+            ents = []
+            for y in range(H + 2):
+                for x in range(W + 2):
+                    top, bot, lft, rgt = y == 0, y == H + 1, x == 0, x == W + 1
+                    if (top or bot) and (lft or rgt):
+                        ents.append((29, int(rgt), int(bot), 0))
+                    elif top or bot:
+                        ents.append((30, 0, int(bot), 0))
+                    elif lft or rgt:
+                        ents.append((31, int(rgt), 0, 0))
+                    else:
+                        ents.append((0, 0, 0, 0))
+            L = _layer_from_map(sheet, ents, W + 2, lambda r: 0, x0, y0, L)
+    elif page == "habitat":
+        L = _layer_from_map(sheet, _fill_ents(2, 30, 20), 30, lambda r: 0, layer=L)
+        n, coords = extra
+        icon = map16("pokedex/page_icon_tilemap.bin")
+        for slot in range(n):
+            cx, cy, mx, my = coords[slot]
+            L = _layer_from_map(sheet, icon, 8, lambda r, s=slot: 5 + s, cx, cy, L)
+            if cards is not None:                       # the card is a window on BG1, over the ground
+                g = card_grid(cards if cards else None)
+                for y in range(40):
+                    for x in range(64):
+                        X, Y = mx * 8 + x, my * 8 + y
+                        if g[y][x] and X < 240 and Y < 160:
+                            L[Y][X] = (0, g[y][x])
+    return L
+
+
+HAB_COORDS = {1: [(11, 3, 11, 11)], 2: [(3, 3, 11, 3), (18, 9, 10, 11)],
+              3: [(1, 2, 9, 2), (11, 9, 3, 11), (21, 3, 21, 11)],
+              4: [(0, 2, 6, 3), (7, 10, 0, 12), (15, 10, 22, 11), (22, 2, 15, 4)]}
+
+
+def _rgb_rows(ed="kanto"):
+    rows = [list(r) for r in dex_rows(ed)]
+    for r in (5, 6, 7, 8):
+        rows[r][2], rows[r][8] = RING_PALS
+    return rows
+
+
+def relayer(shot_im, today, draft, rows, today_card=None, draft_card=None):
+    """Replace, in a theatre shot, every pixel the old layer drew (the shot's colour there is the one the old
+    layer's index shows elsewhere) with the draft layer's pixel. The colour of each (row, index) is read off the shot
+    itself, so the hour's and the weekday's run-time colours carry over."""
+    from collections import Counter
+    out = shot_im.copy()
+    p = out.load()
+    seen = {}
+    for y in range(160):
+        for x in range(240):
+            k = today[y][x]
+            if k:
+                seen.setdefault(k, Counter())[p[x, y]] += 1
+    cm = {k: c.most_common(1)[0][0] for k, c in seen.items()}
+    for y in range(160):
+        for x in range(240):
+            k, n = today[y][x], draft[y][x]
+            if k and p[x, y] == cm[k]:
+                if n:
+                    p[x, y] = cm.get(n) or mgba(q5(rows[n[0]][n[1]]))
+    return out
+
+
+def render_layer(L, rows, bg=(0, 0, 0)):
+    im = Image.new("RGB", (240, 160), bg)
+    p = im.load()
+    for y in range(160):
+        for x in range(240):
+            if L[y][x]:
+                r, v = L[y][x]
+                p[x, y] = mgba(q5(rows[r][v]))
+    return im
+
+
+def mock_dexbg(shots, d):
+    imgs = []
+    for keys, page, ed in ((("the INDEX", "the list"), "list", "kanto"), (("GLOBAL INDEX", "the list"), "list", "national"),
+                           (("the INDEX", "an entry"), "entry", "kanto"), (("the area page",), "area", "kanto")):
+        s = shot(shots, *keys)
+        old = dex_layers(dex_today(ed), page)
+        new = dex_layers(dexbg_art(d, ed), page) if d else old
+        rows = _rgb_rows(ed)
+        if s is not None:
+            imgs.append(relayer(s, old, new, rows))
+        else:
+            imgs.append(render_layer(new, rows))
+    # the habitat page: the plates and the cards, laid as the shot has them (1-4 daemons on the page)
+    s = shot(shots, "habitat page", "plates")
+    n = habitat_n(s) if s is not None else 4
+    old = dex_layers(dex_today(), "habitat", (n, HAB_COORDS[n]), cards=None)
+    new = dex_layers(dexbg_art(d) if d else dex_today(), "habitat", (n, HAB_COORDS[n]), cards=None)
+    rows = _rgb_rows()
+    imgs.append(relayer(s, old, new, rows) if s is not None else card_over(render_layer(new, rows), None, None, n))
+    imgs.append(tiles_plate(d))
+    return imgs
+
+
+def tiles_plate(d):
+    """Every tile of both sheets at 3x: Kanto above, the national INDEX below (rows 5-8's tiles in row 5)."""
+    im = Image.new("RGB", (240, 160), (36, 40, 46))
+    for k, ed in enumerate(("kanto", "national")):
+        sheet = dexbg_art(d, ed) if d else dex_today(ed)
+        r0 = _rgb_rows(ed)
+        for t in range(32):
+            pal_row = 15 if t == 3 else (5 if 16 <= t <= 28 else 0)
+            blk = tile_of(sheet, t, 1)
+            ti = Image.new("RGB", (8, 8), (255, 0, 255))
+            for y in range(8):
+                for x in range(8):
+                    if blk[y][x]:
+                        ti.putpixel((x, y), mgba(q5(r0[pal_row][blk[y][x]])))
+            ti = ti.resize((24, 24), Image.NEAREST)
+            im.paste(ti, (4 + (t % 9) * 26, 2 + k * 80 + (t // 9) * 26))
+    return im
+
+
+def card_over(base, d, which=None, n=4):
+    """The mini cards laid where the habitat page puts them (rectangular window x/y), with a name printed."""
+    out = base.copy()
+    g = minicard_art(d) if d else [[v & 15 for v in r] for r in png("pokedex/mini_page.png")[3]]
+    r0 = _rgb_rows()[0]
+    names = ["ROVERCUB", "LABEL", "CANON", "LOCUS"]
+    for slot in range(n):
+        mx, my = HAB_COORDS[n][slot][2], HAB_COORDS[n][slot][3]
+        c = idx_rgba(g, r0)
+        out.paste(c, (mx * 8, my * 8), c)
+        say(out, mx * 8 + 12, my * 8 - 2, "No%03d" % (slot * 3 + 1), r0[1], r0[3], small=True)
+        say(out, mx * 8 + 2, my * 8 + 13 - 2, names[slot], r0[1], r0[3])
+    return out
+
+
+def mock_minicard(shots, d):
+    s = shot(shots, "habitat page", "plates")
+    imgs = []
+    rows = _rgb_rows()
+    if s is not None:                                    # today's cards lifted out of the shot, the draft's laid in
+        n = habitat_n(s)
+        old = dex_layers(dex_today(), "habitat", (n, HAB_COORDS[n]), cards="")
+        new = dex_layers(dex_today(), "habitat", (n, HAB_COORDS[n]), cards=d or "")
+        base = relayer(s, old, new, rows)
+        mx, my = HAB_COORDS[n][0][2], HAB_COORDS[n][0][3]
+        imgs.append(base)
+        imgs.append(base.crop((mx * 8 - 8, my * 8 - 8, mx * 8 + 72, my * 8 + 45)).resize((240, 160), Image.NEAREST))
+    else:
+        one = card_over(render_layer(dex_layers(dex_today(), "habitat", (1, HAB_COORDS[1])), rows), d, None, 1)
+        imgs += [one, one.crop((80, 80, 160, 133)).resize((240, 160), Image.NEAREST)]
+    return imgs
+
+
+def ellipse_now():
+    d = open(os.path.join(G, "pokedex/blit_wide_ellipse.4bpp"), "rb").read()
+    g = canvas(88, 16, 0)
+    for t in range(22):
+        tx, ty = t % 11, t // 11
+        for i in range(32):
+            b = d[t * 32 + i]
+            y, x = i // 4, (i % 4) * 2
+            g[ty * 8 + y][tx * 8 + x] = b & 15
+            g[ty * 8 + y][tx * 8 + x + 1] = b >> 4
+    return g
+
+
+def mock_ellipse(shots, d):
+    s = shot(shots, "the area page")
+    r0 = _rgb_rows()[0]
+    g = ellipse_art(d) if d else ellipse_now()
+    base = s.copy() if s is not None else _blank()
+    old = ellipse_now()
+    #  sWindowTemplate_AreaMap_Kanto is at tile (17, 4), moved down 4 tiles unless a later island is open
+    cands = [(136 + 4, (4 + v) * 8 + 28) for v in (4, 0)]
+    white = mgba(q5(r0[5]))
+    score = lambda c: sum(1 for yy in range(16) for xx in range(88) if old[yy][xx] == 5
+                          and base.getpixel((c[0] + xx, c[1] + yy)) == white)
+    x, y = max(cands, key=score)
+    hits = [(x, y)] if s is not None else []
+    if d and hits:                                       # lift today's off: the map under it is the sea, dark
+        p = base.load()
+        under = base.getpixel((x + 2, y - 2))
+        for yy in range(16):
+            for xx in range(88):
+                if old[yy][xx]:
+                    p[x + xx, y + yy] = under
+        base = _over(base, g, r0, x, y)
+        t = "AREA UNKNOWN"
+        tw = text_width(t, True)
+        say(base, x - 4 + (96 - tw) // 2, y + 1 - 2, t, r0[1], r0[3], small=True)
+    return [base, base.crop((x - 20, y - 20, x + 100, y + 60)).resize((240, 160), Image.NEAREST)]
+
+
+def find_by_colour(img, g, pal):
+    """Where index grid g sits in img, matching each index's own colour exactly (mGBA's widening): the offset most of
+    its pixels agree with -- a sprite half covered by another still lands where it is."""
+    from collections import Counter
+    p = img.load()
+    pts = [(x, y, mgba(q5(pal[v]))) for y, r in enumerate(g) for x, v in enumerate(r) if v]
+    rare = Counter(c for _, _, c in pts)
+    there = Counter(p[X, Y] for Y in range(160) for X in range(240))
+    cand = [t for t in pts if there[t[2]]]
+    if not cand:
+        return []
+    ax, ay, ac = min(cand, key=lambda t: (there[t[2]], rare[t[2]]))
+    best = None
+    for Y in range(160):
+        for X in range(240):
+            if p[X, Y] != ac:
+                continue
+            ox, oy = X - ax, Y - ay
+            n = sum(1 for (x, y, c) in pts if 0 <= ox + x < 240 and 0 <= oy + y < 160 and p[ox + x, oy + y] == c)
+            if best is None or n > best[0]:
+                best = (n, ox, oy)
+    return [best[1:]] if best and best[0] >= 8 else []
+
+
+def mock_heads(shots, d):
+    """The head as the GOTO map shows it: found by its top rows (the town's GOTO ring is drawn over its lower half),
+    lifted where it shows, the draft laid in under whatever covers it."""
+    s = shot(shots, "GOTO map", "head")
+    imgs = []
+    which = "red"
+    old = [[v & 15 for v in r] for r in png("region_map/player_icon_%s.png" % which)[3]]
+    opal = png("region_map/player_icon_%s.png" % which)[2][:16]
+    base = s.copy() if s is not None else _blank()
+    cap = [[v if v == 11 else 0 for v in r] for r in old]          # the cap's red: the part the town's ring leaves
+    hits = find_by_colour(base, cap, opal) if s is not None else []
+    x, y = hits[0] if hits else (100, 70)
+    if d and s is not None:                    # lift today's head (its 16x16, filled from the paper round it), lay
+        p = base.load()                        # the draft over it whole
+        ring = [base.getpixel((xx, max(0, y - 1))) for xx in range(x, x + 16)]
+        under = max(set(ring), key=ring.count)
+        for yy in range(16):
+            for xx in range(16):
+                if old[yy][xx] and base.getpixel((x + xx, y + yy)) != under and yy < 9:
+                    p[x + xx, y + yy] = under
+        base = _over(base, head_art(d, which), heads_pal(d), x, y)
+    imgs.append(base)
+    zx, zy = max(0, min(160, x - 32)), max(0, min(107, y - 18))
+    imgs.append(base.crop((zx, zy, zx + 80, zy + 53)).resize((240, 160), Image.NEAREST))
+    pl = []
+    for w in ("red", "leaf"):
+        if d:
+            pl.append(idx_rgba(head_art(d, w), heads_pal(d)))
+        else:
+            pl.append(idx_rgba([[v & 15 for v in r] for r in png("region_map/player_icon_%s.png" % w)[3]],
+                               png("region_map/player_icon_%s.png" % w)[2][:16]))
+    ow = [idx_rgba(player_frame0(w), list(jpal(OBJ_PAL))[:16]) for w in ("red", "leaf")]
+    imgs.append(parts_plate([pl[0], ow[0], pl[1], ow[1]], k=3, bg=(96, 112, 128)))
+    return imgs
+
+
+def mock_switch(shots, d):
+    s = shot(shots, "SWITCH menu", "its cursor")
+    old_l = [[v & 15 for v in r] for r in png("region_map/switch_map_cursor_left.png")[3]]
+    old_r = [r[::-1] for r in old_l]
+    L, R = switch_art(d) if d else (old_l, old_r)
+    pal = switch_pal(d) if d else switch_pal(None)
+    imgs = []
+    base = s.copy() if s is not None else _blank()
+    if s is not None:
+        hits = find_shape(base, old_l[:32], slack=4)
+        if hits:
+            x, y = hits[0]
+            hr = find_shape(base, old_r[:32], slack=4)
+            xr, yr = hr[0] if hr else (x + 64, y)
+            if d:
+                p = base.load()
+                for (ox, oy, og) in ((x, y, old_l[:32]), (xr, yr, old_r[:32])):
+                    for yy in range(32):
+                        for xx in range(32):
+                            if og[yy][xx] and 0 <= ox + xx < 240 and 0 <= oy + yy < 160:
+                                p[ox + xx, oy + yy] = base.getpixel((ox + xx, max(0, oy - 1)))
+                base = _over(base, L[:32], pal, x, y)
+                base = _over(base, R[:32], pal, xr, yr)
+            imgs.append(base)
+            imgs.append(base.crop((max(0, x - 16), max(0, y - 16), max(0, x - 16) + 120,
+                                   max(0, y - 16) + 80)).resize((240, 160), Image.NEAREST))
+        else:
+            imgs += [base, base]
+    else:                                               # the SWITCH menu not reached: laid over the GOTO map where
+        g = shot(shots, "GOTO map", "head") or _blank()  # the menu's cursor sits (subsprites at x 88 and 152)
+        base = g.copy()
+        base = _over(base, L[:32], pal, 88 - 16, 56)       # a 32x32 sprite's x is its centre
+        base = _over(base, R[:32], pal, 152 - 16, 56)
+        imgs += [base, base.crop((56, 40, 216, 147)).resize((240, 160), Image.NEAREST)]
+    fr = [idx_rgba(L[:32], pal), idx_rgba(R[:32], pal), idx_rgba(L[32:], pal), idx_rgba(R[32:], pal)]
+    imgs.append(parts_plate(fr, k=2, bg=(72, 96, 120)))
+    return imgs
+
+
+def mock_famecursor(shots, d):
+    s = shot(shots, "HEARSAY", "the cursor") or shot(shots, "HEARSAY", "six")
+    old = [[v & 15 for v in r] for r in png("fame_checker/cursor.png")[3]]
+    opal = png("fame_checker/cursor.png")[2][:16]
+    g = fame_cursor_art(d) if d else old
+    pal = fame_cursor_pal(d) if d else opal
+    base = s.copy() if s is not None else _blank()
+    hits = find_by_colour(base, old[:32], opal) if s is not None else []
+    x, y = hits[0] if hits else (100, 30)
+    if d and hits:                             # lift today's box: each pixel takes the one just outside the box
+        p = base.load()
+        x0, y0, x1, y1 = _bbox(old, 0, 32)
+        for yy in range(32):
+            for xx in range(32):
+                if old[yy][xx]:
+                    sx = x + (x0 - 1 if xx - x0 < x1 - xx else x1 + 1)
+                    p[x + xx, y + yy] = base.getpixel((sx, y + yy)) if (yy - y0 > 0 and y1 - yy > 0) else \
+                        base.getpixel((x + xx, y + (y0 - 1 if yy - y0 <= 0 else y1 + 1)))
+        base = _over(base, g[:32], pal, x, y)
+    zx, zy = max(0, min(160, x - 24)), max(0, min(107, y - 10))
+    return [base, base.crop((zx, zy, zx + 80, zy + 53)).resize((240, 160), Image.NEAREST),
+            parts_plate([idx_rgba(g[:32], pal), idx_rgba(g[32:], pal)], k=3, bg=(232, 208, 96))]
+
+
+def mock_fameq(shots, d):
+    """No ? was on film: the debug save has heard every clue. So the ? is laid where a clue's picture stands (the
+    one the cursor holds in the shot), in question_mark.png's own colours -- a stand-in for OBJ palette 2's."""
+    s = shot(shots, "HEARSAY", "the cursor") or shot(shots, "HEARSAY", "six")
+    old = [[v & 15 for v in r] for r in png("fame_checker/question_mark.png")[3]]
+    g = fameq_art(d) if d else old
+    pal = png("fame_checker/question_mark.png")[2][:16]
+    base = s.copy() if s is not None else _blank()
+    oc = [[v & 15 for v in r] for r in png("fame_checker/cursor.png")[3]]
+    hits = find_by_colour(base, oc[:32], png("fame_checker/cursor.png")[2][:16]) if s is not None else []
+    cx, cy = hits[0] if hits else (100, 30)
+    bx0, by0, bx1, by1 = _bbox(oc, 0, 32)
+    mx, my = cx + (bx0 + bx1) // 2, cy + (by0 + by1) // 2      # the clue's picture's centre
+    x, y = mx - 8, my - 21
+    p = base.load()
+    ground = base.getpixel((cx + bx0 - 3, my))
+    for yy in range(by0 + 1, by1):                              # the clue's picture taken off, the ? in its place
+        for xx in range(bx0 + 1, bx1):
+            p[cx + xx, cy + yy] = ground
+    base = _over(base, g, pal, x, y)
+    zx, zy = max(0, min(160, x - 32)), max(0, min(107, y))
+    return [base, base.crop((zx, zy, zx + 80, zy + 53)).resize((240, 160), Image.NEAREST),
+            parts_plate([idx_rgba(g, pal)], k=4, bg=(232, 208, 96))]
+
+
+T563_MOCKS = {"dexbg": mock_dexbg, "minicard": mock_minicard, "ellipse": mock_ellipse, "heads": mock_heads,
+              "switch": mock_switch, "famecursor": mock_famecursor, "fameq": mock_fameq}
+
+T563_ROWS = {
+    "dexbg": "Rows (theatre shots, the draft's tiles laid where the engine lays them and the old ones lifted out pixel "
+             "by pixel, the run-time colours read off the shot): the INDEX's list (Kanto: tile 14); the GLOBAL "
+             "INDEX's ground (national_dex_bgtiles' 14, rendered: GAME EVENTS' GLOBAL INDEX did not open on film); an entry (backdrop 12, the box 4/5/6/1); the area page (the "
+             "box, and the NATIVE frame 29-31 on BG0); a habitat page (ground 2, the plates 16-28 in rows 5-8 at "
+             "rest, the cards over them); every tile of both sheets at 3x.",
+    "minicard": "Rows: a habitat page with the cards laid where the engine puts them (the number and a name printed "
+                "as DexScreen prints them, ink 1, shadow 3); one card at 3x.",
+    "ellipse": "Rows: a daemon with no area (ROVERCUB): today's ellipse lifted off the map and the draft blitted where "
+               "the engine blits it (4, 28 of the map window), AREA UNKNOWN printed over it; the same at 2x.",
+    "heads": "Rows: the GOTO map (theatre: the head found and replaced, REASON's -- the debug save's player); the same at "
+             "3x; REASON's head and his overworld frame, INSTINCT's and hers, at 3x (red_normal / green_normal).",
+    "switch": "Rows: the SWITCH menu was not reached on film (the route set FLAG_SYS_SEVII_MAP_123 and walked the "
+              "cursor to SWITCH, and A did not open it), so the cursor is laid over the GOTO map where the menu puts it "
+              "(subsprites at x 88 and 152), as a mock; the same at 2x; the four frames (left, right, then each a "
+              "breath in) at 2x.",
+    "famecursor": "Rows: HEARSAY with a clue chosen (theatre: the box found and replaced); the same at 3x; both frames "
+                  "at 3x on the screen's yellow.",
+    "fameq": "Rows: no ? was on film (the debug save has heard every clue: the route stepped through CRYSTAL, VERA, "
+             "CAIRN and BASIN), so the ? is laid in place of the clue the cursor holds, in question_mark.png's own "
+             "colours as a stand-in for OBJ palette 2's (inside the today shot's orange box); the same at 3x; the "
+             "draft at 4x.",
+}
+T563_NOTES = {
+    "dexbg": "Kept: 32 tiles each, every tile's role and slot (1 solid 5 for the AREA markers' fill, 2 solid 3, 3 solid "
+             "2 in row 15, 12 solid 7 for the hour, 22 solid 2), both palettes untouched, the plate in 2/3/8 only "
+             "(the cursor's pulse), 7 in tile 12 alone; the two sheets differ only in tile 14, as pret's did. A: A "
+             "TERMINAL's box (slate rule cut at 45, the day's bracket in 8 as the message box's), graph paper behind "
+             "the lists (Kanto squared, GLOBAL ruled), the plate a dark screen with a lit inner rim; B: the message "
+             "box's own six-ring rule, dot grid, a tighter-cut plate with brackets; C: a hairline with teal pips, "
+             "hatching, an octagon plate.",
+    "minicard": "Kept: 64x40, palette row 0 as it is, y 3-25 paper (the number and the name are printed over it, "
+                "0 skipped), nothing in 1 (the ink). A: an index card -- slate rule cut at 45, a dark rule, a ruled "
+                "band, the day's bracket in two corners; B: dog-eared, graph paper below; C: a ticket, its tear line "
+                "dashed and notched.",
+    "ellipse": "Kept: 88x16, row 0, nothing in 1 (AREA UNKNOWN's ink) or 7 (the hour). A: a paper plate on a slate "
+               "rule cut at 45 with the day's bracket at each end; B: a tag with pointed ends; C: open ends, two rules, "
+               "teal brackets.",
+    "heads": "From the player's own overworld frame (facing down), the same grey monkey in the same hat, in player.pal's "
+             "colours (copied into the icon's own palette; B adds teal and slate in 12/13, which only the shoes use "
+             "on the overworld). The engine picks the head by the player's gender, not the edition: player_icon_red "
+             "is REASON, player_icon_leaf INSTINCT, in both CONTENT and CONTEXT. A shows the tail too -- REASON's "
+             "curls up on the left of the picture, INSTINCT's on the right -- the one thing that tells them apart; "
+             "C (the head alone) makes the two the same picture.",
+    "switch": "Kept: 32x64 each, two frames (the second 2px in), the right the left's mirror, its own palette "
+              "(switch_map_cursor.pal: 1-3 set). A: TERMINAL's cut corner as an L, teal with a slate edge; B: a "
+              "prompt chevron pointing in, a rule above and below; C: thin amber ticks with a slate shadow.",
+    "famecursor": "Kept: 32x64, both frames' boxes exactly where pret's were (read from the PNG), its own palette "
+                  "(14, 15 retinted). A: a teal cut-corner box between slate rules; B: corner brackets; C: a slate box "
+                  "with a light inner line.",
+    "fameq": "Kept: 16x32, the tile where pret's was (x 1-14, y 12-30), and ONLY slots 10, 14 and 15: the code puts it "
+             "in OBJ palette 2, which this screen does not load itself, so the colours are not ours to choose (the "
+             "shot shows what they are). A: a small dark screen with the ? lit, as the trainers' emotes (T-561); B: a "
+             "paper tag; C: the ? alone, edged.",
+}
+
+
+def t563_draft(out, shots_dir=None):
+    os.makedirs(out, exist_ok=True)
+    shots = {}
+    for d_ in (shots_dir or "").split(","):
+        shots.update(load_shots(d_))
+    made = []
+    for piece in T563_PIECES:
+        for d in T563_OFFERED[piece]:
+            errs = t563_check(piece, d)
+            if errs:
+                sys.exit("gbamenus3 --t563: %s %s breaks its contract: %s" % (piece, d, "; ".join(errs)))
+            put_files(t563_outputs(piece, d), os.path.join(out, d, "graphics"))
+        cols = [("TODAY (the engine)", T563_MOCKS[piece](shots, None))]
+        for d in T563_OFFERED[piece]:
+            cols.append(("%s %s" % (d, T563_NAMES[piece][d]), T563_MOCKS[piece](shots, d)))
+        notes = [T563_ROWS[piece], T563_NOTES[piece],
+                 "DRAFT -- drawn in code (tools/gbamenus3.py --t563), nothing in the engine until the user picks; "
+                 "recommended: %s (%s). APPROVED_563 is empty." % (T563_RECOMMENDED[piece],
+                                                                  T563_NAMES[piece][T563_RECOMMENDED[piece]])]
+        made.append(contact("T-563 THE INDEX AND THE MAP -- %s -- DRAFT" % piece.upper(), cols, notes,
+                            os.path.join(out, "t563_%s_sheet.png" % piece)))
+    return made
+
+
+def t563_main():
+    if ARGS.write:
+        if not ARGS.approved or not (ARGS.pick or ARGS.all):
+            sys.exit("gbamenus3 --t563: --write needs --approved and --all or --pick piece=X,... (the user's picks)")
+        picks = dict(kv.split("=") for kv in ARGS.pick.split(",")) if ARGS.pick else dict(APPROVED_563)
+        if not picks:
+            print("gbamenus3 --t563: nothing approved yet (T-563 is a DRAFT); nothing written")
+            return 0
+        for piece, d in picks.items():
+            if piece not in T563_PIECES or d not in T563_OFFERED[piece]:
+                sys.exit("gbamenus3 --t563: unknown pick %s=%s" % (piece, d))
+            if APPROVED_563.get(piece) != d:
+                sys.exit("gbamenus3 --t563: %s=%s is not APPROVED_563 (T-563 is a DRAFT)" % (piece, d))
+        for piece, d in picks.items():
+            for p in put_files(t563_outputs(piece, d), G):
+                print("  wrote", os.path.relpath(p, ROOT))
+        return 0
+    if ARGS.draft:
+        out = ARGS.draft if ARGS.draft != DRAFT_DEFAULT else T563_DRAFT
+        for p in t563_draft(out, ARGS.shots):
+            print("  wrote", os.path.relpath(p, ROOT))
+        return 0
+    return t563_report()
 
 
 if __name__ == "__main__":
