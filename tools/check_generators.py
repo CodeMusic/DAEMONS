@@ -60,6 +60,9 @@ ARGS = {
     #  T-564: gbatitle's other modes convert one named piece of art and need it on the command line; --t564 is its
     #  drafting mode (the boot's last pret pieces), and its write writes APPROVED_564 -- empty while T-564 is a DRAFT.
     "gbatitle": [["--t564", "--approved"]],
+    #  T-566: gbaevolve's --write refuses without --approved; its write writes APPROVED (the evolution, the item scene,
+    #  the relearner and the egg) -- empty while T-566 is a DRAFT -- and its report exits 1 when the engine drifts.
+    "gbaevolve": [["--approved"]],
     "gbamenus3": [["--approved", "--all"],                                         # T-554: the menu leftovers, all A
                   ["--t561", "--approved", "--pick", "emotes=A,itemfinder=A,questlog=1,qldesc=A,banner=A,helpscreen=1"],
                   ["--t563", "--approved", "--all"]],
