@@ -510,3 +510,129 @@ T-562 DRAFT: every changed tile at 4x, today beside each option, per town
 T-562 DRAFT: VERDIGRIS's fountain, five frames, today and options A THE BRONZE LIP, B RINGS, C STILL COLUMN
 
 ![14Nov2026 - T562 - verdigris fountain options - 77](14Nov2026%20-%20T562%20-%20verdigris%20fountain%20options%20-%2077.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 78
+
+T-562 BUILT (engine 0dabcb96e): each town's busiest street at 2x, v11.367.1 beside the build (reviewsheet on the built engine); DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 78](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2078.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 79
+
+T-562 BUILT (engine 0dabcb96e): each town's busiest street at 2x, v11.367.1 beside the build (reviewsheet on the built engine); DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 79](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2079.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 80
+
+T-562 BUILT (engine 0dabcb96e): each town's busiest street at 2x, v11.367.1 beside the build (reviewsheet on the built engine); DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 80](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2080.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 81
+
+T-562 BUILT (engine 0dabcb96e): each town's busiest street at 2x, v11.367.1 beside the build (reviewsheet on the built engine); DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 81](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2081.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 82
+
+T-562 BUILT (engine 0dabcb96e): each town's busiest street at 2x, v11.367.1 beside the build (reviewsheet on the built engine); DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 82](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2082.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 83
+
+T-562 BUILT (engine 0dabcb96e): each town's busiest street at 2x, v11.367.1 beside the build (reviewsheet on the built engine); DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 83](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2083.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 84
+
+T-562 BUILT (engine 0dabcb96e): each town's busiest street at 2x, v11.367.1 beside the build (reviewsheet on the built engine); DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 84](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2084.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 85
+
+T-562 BUILT (engine 0dabcb96e): each town's busiest street at 2x, v11.367.1 beside the build (reviewsheet on the built engine); DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 85](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2085.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 86
+
+T-562 BUILT (engine 0dabcb96e): every tile the build changed in one town at 4x, v11.367.1 beside the build; DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 86](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2086.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 87
+
+T-562 BUILT (engine 0dabcb96e): every tile the build changed in one town at 4x, v11.367.1 beside the build; DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 87](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2087.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 88
+
+T-562 BUILT (engine 0dabcb96e): every tile the build changed in one town at 4x, v11.367.1 beside the build; DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 88](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2088.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 89
+
+T-562 BUILT (engine 0dabcb96e): every tile the build changed in one town at 4x, v11.367.1 beside the build; DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 89](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2089.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 90
+
+T-562 BUILT (engine 0dabcb96e): every tile the build changed in one town at 4x, v11.367.1 beside the build; DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 90](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2090.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 91
+
+T-562 BUILT (engine 0dabcb96e): every tile the build changed in one town at 4x, v11.367.1 beside the build; DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 91](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2091.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 92
+
+T-562 BUILT (engine 0dabcb96e): every tile the build changed in one town at 4x, v11.367.1 beside the build; DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 92](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2092.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 93
+
+T-562 BUILT (engine 0dabcb96e): every tile the build changed in one town at 4x, v11.367.1 beside the build; DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 93](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2093.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 94
+
+T-562 BUILT (engine 0dabcb96e): every tile the build changed in one town at 4x, v11.367.1 beside the build; DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 94](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2094.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 95
+
+T-562 BUILT (engine 0dabcb96e): each town's busiest street at 2x, v11.367.1 beside the build (reviewsheet on the built engine); DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 95](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2095.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 96
+
+T-562 BUILT (engine 0dabcb96e): each town's busiest street at 2x, v11.367.1 beside the build (reviewsheet on the built engine); DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 96](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2096.png)
+
+### 14Nov2026 - T562 - towns last tiles built - 97
+
+T-562 BUILT (engine 0dabcb96e): each town's busiest street at 2x, v11.367.1 beside the build (reviewsheet on the built engine); DRAFT art
+
+![14Nov2026 - T562 - towns last tiles built - 97](14Nov2026%20-%20T562%20-%20towns%20last%20tiles%20built%20-%2097.png)
+
+### 14Nov2026 - T562 - verdigris fountain built rings - 98
+
+T-562 BUILT (engine 0dabcb96e): VERDIGRIS's fountain, its five frames, pret's beside B RINGS as built; DRAFT art
+
+![14Nov2026 - T562 - verdigris fountain built rings - 98](14Nov2026%20-%20T562%20-%20verdigris%20fountain%20built%20rings%20-%2098.png)

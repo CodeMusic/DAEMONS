@@ -9,9 +9,10 @@
                                                       #   tiles.png (option A, or the only one), tiles_B.png / _C.png
                                                       #   where a real choice exists, VERDIGRIS's fountain frames per
                                                       #   option, draft.json, and a 4x sheet of every changed tile
-    python3 tools/gbatownslast.py --write --approved [--pick ts=X,...]
-                                                      # into the engine: only the towns in APPROVED, each with the
-                                                      #   option the user picked (APPROVED is EMPTY: writes nothing)
+    python3 tools/gbatownslast.py --write --approved  # into the engine: the towns in APPROVED, each with the option
+                                                      #   the user picked (2026-11-14), drawn from BASE and laid over
+                                                      #   the engine's own tiles.png; a second write is a no-op. The
+                                                      #   report exits 1 when the engine differs from the picks
 
 WHY A SECOND PASS. gbatowns.py (T-438 batch F/G/H) redrew each town's leftovers by MATERIAL: an index a town's
 MATERIALS names is redrawn with that town's motif, and every other index keeps pret's pixel. What it left -- 548 tiles,
@@ -40,7 +41,7 @@ SEAMS (engine.md trap 14) are measured with gbatowns.seams (gbaseams' own rule) 
 DRIFT: gbatowns.py's drawn_before() reads a tile it did not draw as not vanilla, so after this tool writes, its
 leftovers shrink by these tiles and its own write stays a no-op (checked on the draft engine).
 """
-import collections, colorsys, json, os, sys
+import collections, colorsys, io, json, os, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 _argv = sys.argv
@@ -56,7 +57,32 @@ DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t562_towns")
 
 #  the user's picks, {ts: option} -- "A"; for celadon_city two letters, the town's then the fountain's ("AB").
 #  EMPTY: nothing is approved, so --write --approved writes nothing.
-APPROVED = {}
+#  The user, 2026-11-14 (by multiple choice): LURID B THE HUM; VERDIGRIS's store A BRONZE PANELS and its fountain
+#  B RINGS; BRAZEN, ARDOR, DOLDRUM, CALLOW, SLATE and QUICKSILVER as drawn; UMBRA revised first (pret's pillar-drum and
+#  tan-panel shading kept, UMBRA's long shadow cut over them) -- included as revised. HALFTONE and THE UNDERTONE draw
+#  nothing (their families have one index each) and are not listed.
+APPROVED = {"fuchsia_city": "B", "celadon_city": "AB", "saffron_city": "A", "vermilion_city": "A",
+            "cerulean_city": "A", "viridian_city": "A", "pewter_city": "A", "cinnabar_island": "A",
+            "indigo_plateau": "A"}
+
+#  THE ENGINE AS T-562 FOUND IT: every redraw starts from the tiles at this engine commit (origin/context-content,
+#  2026-11-14, before T-562's write), so a write is the same pixels every time -- a second write is a no-op and the
+#  report can check the engine against the picks -- and no tile any other tool drew afterwards is ever read as a
+#  leftover. The fountain's frames are read from pret's upstream/master.
+BASE = "7955b7bea"
+_BASE_TILES = {}
+
+
+def base_town(ts):
+    """gbatowns' Town, its `now` tiles read from BASE"""
+    town = T.Town(ts)
+    if ts not in _BASE_TILES:
+        _BASE_TILES[ts] = T.tiles_of(Image.open(io.BytesIO(T.daemonslib.upstream(
+            GBA, T.SEC + ts + "/tiles.png", binary=True, ref=BASE))))
+    town.now = [list(t) for t in _BASE_TILES[ts]]
+    town._leftovers()
+    return town
+
 
 #  the eleven sets, largest first (the re-census's order)
 TOWNS = [("fuchsia_city", "LURID CITY and the SAFARI"), ("celadon_city", "VERDIGRIS CITY and ROUTES 16-18"),
@@ -84,6 +110,13 @@ def lum(c):
     return 0.30 * c[0] + 0.59 * c[1] + 0.11 * c[2]
 
 
+#  where hue alone splits one surface: UMBRA's tan panels (13..15; ac9452 reads as orange) are one family
+FAMILY = {"indigo_plateau": {(11, 13): "tan", (11, 14): "tan", (11, 15): "tan"},
+          #  the SAFARI's ground greens under and between the trees (row 11's 10, 11, 13: the grass colours) are ground,
+          #  not leaf -- read as leaf, the lacquer lit them into a lime line at every tree's foot (2026-11-14)
+          "fuchsia_city": {(11, 10): "ground", (11, 11): "ground", (11, 13): "ground"}}
+
+
 def family(c):
     r, g, b = (v / 255.0 for v in c)
     h, s, v = colorsys.rgb_to_hsv(r, g, b)
@@ -105,11 +138,13 @@ def m_lacquer(x, y, w, h, X, Y, b):
         return b
     d, dx, dy, r = T._lobe(X, Y, T.LOBES_GLOSSY, 32)
     lit = (dx + dy) / (2 * r)
-    if d < 0.55 and lit < -0.05:
+    #  the hot spot lands only where pret's leaf was already lit, the lip only where it was already in shade: so the
+    #  dark rim at a tree's foot is never lit (the lime line the draft drew there, 2026-11-14)
+    if d < 0.55 and lit < -0.05 and b <= 0.5:
         return 0.0
-    if 0.7 < d < 1.0 and lit > 0.15:
+    if 0.7 < d < 1.0 and lit > 0.15 and b >= 0.3:
         return 1.0
-    return 0.45
+    return b
 
 
 def m_keep(x, y, w, h, X, Y, b):
@@ -131,6 +166,14 @@ def m_hum_wall(x, y, w, h, X, Y, b):
     return 0.9 if y == h - 2 else 0.5
 
 
+def m_umbra_keep(x, y, w, h, X, Y, b):
+    """UMBRA, revised (the user, 2026-11-14): pret's own shading kept -- the pillars' drums and the tan panels as pret
+    lit them -- and UMBRA's long shadow cut over it: past the diagonal of each 16 x 8 block, one step darker"""
+    row = Y // 8
+    xo, yy = (X + (8 if row % 2 else 0)) % 16, Y % 8
+    return min(1.0, b + 0.4) if xo + 2 * yy > 17 else b
+
+
 #  per town: family -> motif (the town's own T-438 motifs); "*" is any family not named
 STYLE = {
     "viridian_city": {"red": T.m_ribs_calm, "grey": T.m_slab, "yellow": T.m_awning, "orange": T.m_boards,
@@ -144,10 +187,10 @@ STYLE = {
                      "teal": T.m_patina, "blue": T.m_glass, "purple": T.m_stamped, "grey": T.m_band, "*": T.m_band},
     "saffron_city": {"yellow": T.m_rivet, "orange": T.m_rivet, "grey": T.m_grid, "blue": T.m_curtain,
                      "purple": T.m_curtain, "*": T.m_stamped},
-    "fuchsia_city": {"green": m_lacquer, "yellow": m_lacquer, "teal": m_keep, "pink": T.m_stamped,
+    "fuchsia_city": {"green": m_lacquer, "yellow": m_lacquer, "teal": m_keep, "ground": m_keep, "pink": T.m_stamped,
                      "purple": T.m_stamped, "*": T.m_stamped},
     "cinnabar_island": {"*": T.m_mercury},
-    "indigo_plateau": {"*": T.m_umbra},
+    "indigo_plateau": {"orange": m_umbra_keep, "tan": m_umbra_keep, "*": T.m_umbra},
     "viridian_forest": {"green": T.m_canopy, "teal": T.m_canopy, "*": T.m_bark},
 }
 #  the real choices: {ts: [(option, DRAFT title, one line, {family: motif} overrides)]}; A is STYLE as it stands
@@ -165,7 +208,7 @@ OPTIONS = {
                                          "transom every sixteen -- the rest as A", {"purple": T.m_curtain}),
     ],
 }
-KEEP_LIGHT = {m_keep: 0.0, T.m_dots: 0.0, T.m_dots_light: 0.0, m_hum: 0.0, m_hum_wall: 0.0, m_lacquer: 0.0, T.m_umbra: 0.15,
+KEEP_LIGHT = {m_umbra_keep: 0.0, m_keep: 0.0, T.m_dots: 0.0, T.m_dots_light: 0.0, m_hum: 0.0, m_hum_wall: 0.0, m_lacquer: 0.0, T.m_umbra: 0.15,
               T.m_canopy: 0.0}
 FOUNTAIN_OPTIONS = [
     ("A", "THE BRONZE LIP (DRAFT)", "the basin's lip in bronze bands with a dark run every four; the jet in long "
@@ -202,7 +245,7 @@ def gen_kept_copies(town):
 
 
 def recount(ts):
-    town = T.Town(ts)
+    town = base_town(ts)
     left = {t for t in town.left if t not in ANIM.get(ts, ())}
     why = collections.OrderedDict()
     lm = town.kept_by_map() | plan_boxes_tiles(town)
@@ -240,7 +283,7 @@ def materials(town):
         for i in idxs:
             if (row, i) in RESERVED or (i == dark and lum(pal[i]) < LUM_OUTLINE) or lum(pal[i]) > 246:
                 continue
-            fam[family(pal[i])].append(i)
+            fam[FAMILY.get(town.ts, {}).get((row, i)) or family(pal[i])].append(i)
         for f, ii in fam.items():
             if len(ii) >= 2:
                 for i in ii:
@@ -338,7 +381,7 @@ def styles(ts):
 
 # ================================================================== the fountain (5 frames, 8 tiles each, row 8)
 def fountain(option, k):
-    im = Image.open(os.path.join(GBA, FOUNTAIN % k)).convert("P")
+    im = Image.open(io.BytesIO(T.daemonslib.upstream(GBA, FOUNTAIN % k, binary=True))).convert("P")
     w, h = im.size
     px = im.load()
     src = [[px[x, y] & 15 for x in range(w)] for y in range(h)]
@@ -499,25 +542,75 @@ def run(draft_dir=None, seams=False):
                   open(os.path.join(draft_dir, "draft.json"), "w"), indent=1)
 
 
+def picked(ts, option):
+    """(town, {tile: pixels}) -- the tiles this tool draws for this pick, read from BASE, and nothing else"""
+    town, _, _ = recount(ts)
+    st = [s for s in styles(ts) if s[0] == option[0]][0][3]
+    new, _ = redraw(town, st)
+    return town, {t: new[t] for t in range(len(new)) if new[t] != town.now[t]}
+
+
+def engine_tiles(town, mine):
+    """the engine's tiles.png as it stands, with this tool's tiles laid over it (every other tile is left as it is)"""
+    out = [list(t) for t in town.disk]
+    for t, p in mine.items():
+        out[t] = list(p)
+    return out
+
+
+def frames_on_disk():
+    out = []
+    for k in range(5):
+        im = Image.open(os.path.join(GBA, FOUNTAIN % k)).convert("P")
+        out.append([[v & 15 for v in im.getdata()]])
+    return out
+
+
+def check_engine():
+    """the approved picks against the engine: 0 when every approved tile and frame is in it as drawn"""
+    bad = 0
+    for ts, option in APPROVED.items():
+        town, mine = picked(ts, option)
+        miss = sorted(t for t, p in mine.items() if town.disk[t] != p)
+        print("  engine %-16s pick %-2s %3d tiles%s" % (ts, option, len(mine),
+                                                       "  DIFFERS at %s" % miss[:12] if miss else "  as approved"))
+        bad += bool(miss)
+        if ts == "celadon_city" and len(option) > 1:
+            want = [[v for r in fountain(option[1], k)[2] for v in r] for k in range(5)]
+            have = [f[0] for f in frames_on_disk()]
+            same = want == have
+            print("  engine fountain         pick %s   5 frames  %s" % (option[1], "as approved" if same else "DIFFERS"))
+            bad += not same
+    return bad
+
+
 def main():
     if "--write" in ARGS:
         if "--approved" not in ARGS or not APPROVED:
-            print("  --write refused: --write needs --approved, and APPROVED names no town the user has picked "
-                  "(T-562 is a DRAFT). Nothing written.")
+            print("  --write refused: --write needs --approved, and APPROVED names no town the user has picked. "
+                  "Nothing written.")
             return 0
         for ts, option in APPROVED.items():
-            town, _, _ = recount(ts)
-            st = [s for s in styles(ts) if s[0] == option[0]][0][3]
-            new, _ = redraw(town, st)
-            if new == town.now:
-                print("  %s: nothing to write" % ts)
-                continue
-            save_tiles(town, new, os.path.join(town.dir, "tiles.png"))
-            print("  wrote %s (option %s)" % (ts, option))
+            town, mine = picked(ts, option)
+            out = engine_tiles(town, mine)
+            if out == town.disk:
+                print("  %s: already drawn (%d tiles), nothing to write" % (ts, len(mine)))
+            else:
+                if any((a == 0) != (b == 0) for t in mine for a, b in zip(out[t], town.disk[t])):
+                    raise SystemExit("  !! %s: a footprint moved -- nothing written" % ts)
+                save_tiles(town, out, os.path.join(town.dir, "tiles.png"))
+                print("  wrote %s (option %s): %d tiles" % (ts, option, sum(out[t] != town.disk[t]
+                                                                          for t in range(len(out)))))
             if ts == "celadon_city" and len(option) > 1:
+                have = [f[0] for f in frames_on_disk()]
+                n = 0
                 for k in range(5):
-                    fountain(option[1], k)[0].save(os.path.join(GBA, FOUNTAIN % k), bits=4)
-                print("  wrote VERDIGRIS's fountain, option %s" % option[1])
+                    im, _, px = fountain(option[1], k)
+                    if [v for r in px for v in r] != have[k]:
+                        im.save(os.path.join(GBA, FOUNTAIN % k), bits=4)
+                        n += 1
+                print("  VERDIGRIS's fountain, option %s: %s" % (option[1], "%d frames written" % n if n
+                                                                 else "already drawn, nothing to write"))
         return 0
     if "--draft" in ARGS:
         i = ARGS.index("--draft")
@@ -526,7 +619,9 @@ def main():
         run(d, seams=True)
         return 0
     run(None, seams="--seams" in ARGS)
-    return 0
+    bad = check_engine()
+    print("  the engine %s" % ("matches every approved pick" if not bad else "DIFFERS from %d approved picks" % bad))
+    return 1 if bad else 0
 
 
 if __name__ == "__main__":
