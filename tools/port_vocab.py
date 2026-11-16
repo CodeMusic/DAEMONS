@@ -34,7 +34,8 @@ WRITE = "--write" in sys.argv
 #  generator_drift.json. --over-later-work writes anyway (then read git diff).
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from driftguard import refuse_over_later_work  # noqa: E402
-refuse_over_later_work("port_vocab")
+if __name__ == "__main__":                      # only as its own command: companion_export and gbabudget load this
+    refuse_over_later_work("port_vocab")        # module for its tables and font, under their own --write
 #  Fixed-width arrays the sweep can overflow. The compiler catches these as
 #  "excess elements in array initializer", which is a link-time surprise from a
 #  text pass -- and agbcc reports it as a warning, which this project's build
