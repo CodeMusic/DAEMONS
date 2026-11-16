@@ -79,3 +79,9 @@ THE CALENDAR's card on the twelve-tone wheel: NOVEMBER · A♯/B♭, indigo into
 C-381 on the Mac: HOME, PARTY, CARE, STEP and SAY drawn from /api/device/state, against a scratch companion with a synthetic save (RELAY carried; a stand-in goal). FEED answered, the step ticked on, the word heard. Every word DRAFT; the 18% is the Mac's battery.
 
 ![16Nov2026 - C381 - Cardputer Zero companion screens - 14](16Nov2026%20-%20C381%20-%20Cardputer%20Zero%20companion%20screens%20-%2014.png)
+
+### 16Nov2026 - C380 - Cardputer Zero SYNC and keeping another game - 22
+
+C-380 on the Mac against a scratch companion: SYNC in HOME's row and its answer; C-215's question when the hub refuses another game's save, and the yes keeping it on the hub as a save of its own. Synthetic saves, never the user's. Every word DRAFT.
+
+![16Nov2026 - C380 - Cardputer Zero SYNC and keeping another game - 22](16Nov2026%20-%20C380%20-%20Cardputer%20Zero%20SYNC%20and%20keeping%20another%20game%20-%2022.png)
