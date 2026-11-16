@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.377 — 2026-11-16
+
+- Recorded from release v11.376.1 (c0699909, engine cd7541f4c), which sealed v11.375.x:
+  - **The books from their sources** (T-571): the four layer books rebuilt from sources that say USER; THE CONTAINER's last page three lines, two words DRAFT; the manuals reprinted. In 1.6, after T-571's paragraph.
+- Section 10: one Settled entry.
+
 ## v11.376 — 2026-11-15
 
 - Recorded from release v11.375.1 (32bfa05e, engine 45cae5c3d), which sealed v11.374.x:

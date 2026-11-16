@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.376**
+**A total conversion — the living design bible, v11.377**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -804,7 +804,7 @@ Flat. No congratulation. **The game declining to celebrate is more unsettling th
 
 *Two help-system lines the word pass pushed past the 196px box — 210 and 220 — are **rewritten rather than truncated**, both measured.*
 
-***And the writing that came after the tool (T-571, released in v11.375.1; DRAFT).*** **`port_vocab.py`'s report, read both ways, found about eighty of the game's own words missed in writing done after it last ran, and the user said: apply all, by hand** -- *trainer is USER in the four layer books, the SMALL HAND and the debug kit; bag is POOL, PC is PORT, flee is DETACH, one capture is a bind.* **Kept as written: the books' stage names (AWAKENING, RETURN, REFLECT) and the idioms the tool misread** -- *"chalk so faint", "caught yourself keeping time", coals "hot enough to catch".* *The tool now refuses a whole-tree write (driftguard), because those kept words still read to it as drift.*
+***And the writing that came after the tool (T-571, released in v11.375.1; DRAFT).*** **`port_vocab.py`'s report, read both ways, found about eighty of the game's own words missed in writing done after it last ran, and the user said: apply all, by hand** -- *trainer is USER in the four layer books, the SMALL HAND and the debug kit; bag is POOL, PC is PORT, flee is DETACH, one capture is a bind.* **Kept as written: the books' stage names (AWAKENING, RETURN, REFLECT) and the idioms the tool misread** -- *"chalk so faint", "caught yourself keeping time", coals "hot enough to catch".* *The tool now refuses a whole-tree write (driftguard), because those kept words still read to it as drift.* ***And in v11.376.1 the books themselves follow:*** **the four layer books are rebuilt from sources that say USER**, *so the book files no longer drift from the words the game prints, and THE CONTAINER's last page is three lines, two of its words DRAFT; the manuals were reprinted with the same words.*
 
 
 ### 1.6c The held items — a rack, and the Bag becomes the chart
@@ -9257,6 +9257,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The books from their sources (T-571, v11.376.1)** — released: the four layer books rebuilt from sources that say USER, THE CONTAINER's last page three lines with two DRAFT words; the manuals reprinted in the game's own words (USER CARD, POOL, PORT). Sealed v11.375.x. DRAFT.
 - **The game's own words in newer writing (T-571, v11.375.1)** — released, the user's ruling (apply all, by hand): trainer is USER in the four layer books, the SMALL HAND and the debug kit; bag is POOL, PC is PORT, flee is DETACH, a capture is a bind; the books' stage names and idioms kept; `port_vocab.py` guarded against a whole-tree write (1.6). Sealed v11.374.x. DRAFT.
 - **A MOVE is a ROUTINE in the learning lines (T-567, v11.374.1)** — released: seven lines where the noun meant a daemon's move now say ROUTINE, two reworded to fit, the verbs left as MOVE (1's ROUTINES pass). Sealed v11.373.x. DRAFT.
 - **The islands and the caves (T-569, v11.373.1)** — released, the user's picks: the Sevii outdoors as THE ISLAND KIT, each cave's stones in their own grain, MT. SMOULDER's steam as BANKED HEAT, the cave battle background regenerated to match; THE BLACKOUT kept as T-546 drew it, for the story. The eighth and last batch of the 2026-11-14 re-census of Nintendo art (T-561 to T-569); what is left is T-570's single-index tiles, the landmarks (T-447) and the doors. Sealed v11.372.x. DRAFT.
