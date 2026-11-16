@@ -97,3 +97,9 @@ C-335: FIRMWARE and UPDATE on the Ultra's own settings, a scratch hub holding a 
 C-335: FIRMWARE and UPDATE on the Ultra's own settings, a scratch hub holding a test build; then sent, after YES, UPDATE NOW (DRAFT)
 
 ![16Nov2026 - C335 - the Ultras UPDATE in PLACES - 24](16Nov2026%20-%20C335%20-%20the%20Ultras%20UPDATE%20in%20PLACES%20-%2024.jpg)
+
+### 16Nov2026 - C380 - Cardputer Zero away through the relay - 25
+
+C-380 with C-56 on the Mac: at home; away with home unreachable, the hub reached through a stand-in for the n8n relay (AWAY in the band, FEED through it); the relay down; home again. A scratch companion and a synthetic save, never the user's hub or n8n. Every word DRAFT.
+
+![16Nov2026 - C380 - Cardputer Zero away through the relay - 25](16Nov2026%20-%20C380%20-%20Cardputer%20Zero%20away%20through%20the%20relay%20-%2025.png)
