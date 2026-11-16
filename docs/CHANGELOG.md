@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.376 — 2026-11-15
+
+- Recorded from release v11.375.1 (32bfa05e, engine 45cae5c3d), which sealed v11.374.x:
+  - **The game's own words in newer writing** (T-571), the user's ruling: USER, POOL, PORT, DETACH and bind applied by hand; stage names and idioms kept; port_vocab guarded. DRAFT. In 1.6, after its two habits.
+- Section 10: one Settled entry.
+
 ## v11.375 — 2026-11-15
 
 - Recorded from release v11.374.1 (4d16fc0b, engine 46045ed22), which sealed v11.373.x:
