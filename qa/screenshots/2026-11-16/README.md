@@ -85,3 +85,15 @@ C-381 on the Mac: HOME, PARTY, CARE, STEP and SAY drawn from /api/device/state, 
 C-380 on the Mac against a scratch companion: SYNC in HOME's row and its answer; C-215's question when the hub refuses another game's save, and the yes keeping it on the hub as a save of its own. Synthetic saves, never the user's. Every word DRAFT.
 
 ![16Nov2026 - C380 - Cardputer Zero SYNC and keeping another game - 22](16Nov2026%20-%20C380%20-%20Cardputer%20Zero%20SYNC%20and%20keeping%20another%20game%20-%2022.png)
+
+### 16Nov2026 - C335 - the Ultras UPDATE in PLACES - 23
+
+C-335: FIRMWARE and UPDATE on the Ultra's own settings, a scratch hub holding a test build; then sent, after YES, UPDATE NOW (DRAFT)
+
+![16Nov2026 - C335 - the Ultras UPDATE in PLACES - 23](16Nov2026%20-%20C335%20-%20the%20Ultras%20UPDATE%20in%20PLACES%20-%2023.jpg)
+
+### 16Nov2026 - C335 - the Ultras UPDATE in PLACES - 24
+
+C-335: FIRMWARE and UPDATE on the Ultra's own settings, a scratch hub holding a test build; then sent, after YES, UPDATE NOW (DRAFT)
+
+![16Nov2026 - C335 - the Ultras UPDATE in PLACES - 24](16Nov2026%20-%20C335%20-%20the%20Ultras%20UPDATE%20in%20PLACES%20-%2024.jpg)
