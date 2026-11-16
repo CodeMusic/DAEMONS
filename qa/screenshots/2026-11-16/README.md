@@ -103,3 +103,9 @@ C-335: FIRMWARE and UPDATE on the Ultra's own settings, a scratch hub holding a 
 C-380 with C-56 on the Mac: at home; away with home unreachable, the hub reached through a stand-in for the n8n relay (AWAY in the band, FEED through it); the relay down; home again. A scratch companion and a synthetic save, never the user's hub or n8n. Every word DRAFT.
 
 ![16Nov2026 - C380 - Cardputer Zero away through the relay - 25](16Nov2026%20-%20C380%20-%20Cardputer%20Zero%20away%20through%20the%20relay%20-%2025.png)
+
+### 16Nov2026 - T570 - the last tiles built - 26
+
+T-570 built, the user's picks (all A): rungs-and-rails ladders, broken-lip holes, glare-and-glint ice, the rest in keeping -- GLAUCOUS ISLES and STILLFALL, rendered from the built source; THE BLACKOUT's 7 kept
+
+![16Nov2026 - T570 - the last tiles built - 26](16Nov2026%20-%20T570%20-%20the%20last%20tiles%20built%20-%2026.png)

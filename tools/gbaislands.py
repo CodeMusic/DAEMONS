@@ -669,7 +669,7 @@ def steam_sheet(path):
 #  rungs); anything another tool owns is left and named (LEFT_570). DRAFT until picked: APPROVED_570 is empty.
 BASE_570 = "31adf3c19"      # the engine as T-570 found it (origin/context-content, 2026-11-16; T-569's A built)
 DRAFT_570 = os.path.join(ROOT, "gfx", "drafts", "t570_islands")
-APPROVED_570 = {}           # {kind: option} -- the user's picks. EMPTY until picked.
+APPROVED_570 = {"ladders": "A", "holes": "A", "ice": "A", "other": "A"}   # the user, 2026-11-16, by multiple choice: A for every kind (DRAFT)
 
 KINDS_570 = collections.OrderedDict([
     ("ladders", dict(name="LADDERS", rec="A", options=[
