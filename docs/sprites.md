@@ -4,18 +4,18 @@
 
 | sprites | vanilla shipped | redrawn | recoloured | still vanilla | added | done |
 |---|---|---|---|---|---|---|
-| overworld people | 96 | 96 | 0 | 0 | 65 | **100%** |
+| overworld people | 96 | 96 | 0 | 0 | 67 | **100%** |
 | trainer portraits | 146 | 146 | 0 | 0 | 10 | **100%** |
 | trainer back pics | 6 | 6 | 0 | 0 | 0 | **100%** |
 | intro portraits | 4 | 4 | 0 | 0 | 0 | **100%** |
 | hearsay portraits | 6 | 6 | 0 | 0 | 0 | **100%** |
-| daemon fronts | 386 | 385 | 0 | 1 | 13 | **100%** |
+| daemon fronts | 386 | 386 | 0 | 0 | 13 | **100%** |
 | daemon backs | 384 | 384 | 0 | 0 | 13 | **100%** |
-| daemon icons | 387 | 385 | 0 | 2 | 12 | **99%** |
+| daemon icons | 387 | 386 | 0 | 1 | 12 | **100%** |
 | overworld daemons | 42 | 42 | 0 | 0 | 0 | **100%** |
 | overworld objects | 19 | 19 | 0 | 0 | 6 | **100%** |
-| ***the people*** | 258 | 258 | 0 | 0 | 75 | ***100.0%*** |
-| ***every sprite*** | 1476 | 1473 | 0 | 3 | 119 | ***99.8%*** |
+| ***the people*** | 258 | 258 | 0 | 0 | 77 | ***100.0%*** |
+| ***every sprite*** | 1476 | 1475 | 0 | 1 | 121 | ***99.9%*** |
 
 ## The towns
 
@@ -23,7 +23,7 @@
 
 | town | colour and theme | people sheets on screen | still vanilla | shared with other towns | done |
 |---|---|---|---|---|---|
-| **BLANCHE** | white, blank; home, the pre-colour state | 10 | 0 | 3 | 100% |
+| **BLANCHE** | white, blank; home, the pre-colour state | 12 | 0 | 3 | 100% |
 | **CALLOW** | green, unripe, untested | 13 | 0 | 7 | 100% |
 | **SLATE** | stone, a writing surface; the museum of dead hardware | 10 | 0 | 6 | 100% |
 | **DOLDRUM** | a becalmed sea, low spirits | 15 | 0 | 7 | 100% |
