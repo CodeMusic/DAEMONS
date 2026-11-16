@@ -25,7 +25,7 @@ games changes at its own next SYNC. The hub keeps everything in between.
 
 ## Where it all lives {#where}
 
-On the app, everything in this book is on **YOU**, under the trainer card: **TRADE**, then its cards one after
+On the app, everything in this book is on **YOU**, under the USER CARD: **TRADE**, then its cards one after
 another -- your offers, the offers made to you, your trades, gifts, OUT TOGETHER, friends, dreams shared, and, on the
 hub itself, THE COMMONS.
 
@@ -98,13 +98,13 @@ The two daemons meet once, to say hello -- see [OUT TOGETHER](#out). Both trades
 ## SYNC, and the game {#arrives}
 
 Each of you SYNCs as you usually do. Your SYNC puts the daemon you received in the slot yours left, AWAY, with its
-own trainer and its own record. **Load your game**, and on your first step it says so:
+own USER and its own record. **Load your game**, and on your first step it says so:
 
-{{screens trade-arrives trade-info | It arrives, and its summary shows where it came from: met by its first trainer, TRADER here, in that trainer's town.}}
+{{screens trade-arrives trade-info | It arrives, and its summary shows where it came from: met by its first USER, TRADER here, in that USER's town.}}
 
 ## As FireRed traded {#rules}
 
-- A traded daemon **keeps its original trainer**. It grows faster with you, and obeys you only as far as your MARKS
+- A traded daemon **keeps its original USER**. It grows faster with you, and obeys you only as far as your MARKS
   allow -- as a traded Pokémon always did.
 - **CONTENT and CONTEXT trade freely.** The type chart is the same in both, byte for byte.
 - A daemon that **evolves by trade evolves** as it arrives, unless it holds an EVERSTONE; one that needs an item
@@ -127,11 +127,11 @@ the other's.
 ## What a borrowed daemon may do {#borrowed}
 
 - **Come home into your game** and battle, level, learn -- whatever yours do.
-- It **cannot be released**: the PC says so.
+- It **cannot be released**: the PORT says so.
 - It **cannot be traded on**, by the companion or the game's own trade.
 - It **never trade-evolves**, however it came.
 
-{{screens loan-release loan-refused | The PC will not release a borrowed daemon.}}
+{{screens loan-release loan-refused | The PORT will not release a borrowed daemon.}}
 
 ## Calling it home {#callhome}
 
@@ -162,8 +162,8 @@ A gift still evolves as a trade does.
 
 ## An item {#give-item}
 
-**GIVE AN ITEM** sends one thing from your bag or PC to another player. Your next SYNC takes it out of your game; theirs
-puts it in their PC. Key items, berries and PLUGINS stay yours.
+**GIVE AN ITEM** sends one thing from your POOL or PORT to another player. Your next SYNC takes it out of your game; theirs
+puts it in their PORT. Key items, berries and PLUGINS stay yours.
 
 {{pictures give-item | GIVE AN ITEM, when your bag has nothing that can be given.}}
 

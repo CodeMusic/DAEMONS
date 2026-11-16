@@ -504,7 +504,7 @@ and ink, routes like a score, and the sea a shuffle of bits and notes.
 ## Colour is friendship {#colour}
 
 A daemon's colours fill as it comes to trust you: nearly grey, with a hint of its type, at first; half its colour once
-it is friendly; the whole of it at the most. People keep their colour. Some trainers' daemons never warm to anyone.
+it is friendly; the whole of it at the most. People keep their colour. Some USERS' daemons never warm to anyone.
 
 ## Places the game never points to {#hidden}
 
@@ -805,7 +805,7 @@ TWO VOICES, it answers only in that asking voice, a clarifying question each tur
 
 Once a day the book asks you something of its own, from its routine -- at waking, at rest, before steering -- set in
 the day's centre, word and note. What you answer is kept in **THE JOURNAL**, with the day and the centre, as the book
-tells a trainer to keep a log. On a T-Watch Ultra you can answer it aloud.
+tells a USER to keep a log. On a T-Watch Ultra you can answer it aloud.
 
 ## THE SUBTLE LAYER's cards {#cards}
 
@@ -826,7 +826,7 @@ edge, and a glint. There are three ways to draw, and no more:
 
 | | |
 |----|-----------|
-| **THE DAY'S CARD** | the same all day, and yours alone -- another trainer has their own; it is kept in THE JOURNAL beside the day's answer |
+| **THE DAY'S CARD** | the same all day, and yours alone -- another USER has their own; it is kept in THE JOURNAL beside the day's answer |
 | **DRAW A CARD** | whenever you want one: out and about, or one each with a friend |
 | **PAST · PRESENT · FUTURE** | a spread of three, never the same card twice |
 
@@ -857,7 +857,7 @@ word of it is still a draft.
 ## THE HERMETIC LAYER, a rumour {#rumour}
 
 ::: rumour
-Trainers tell of a third book. Nobody who wrote this manual has held it, and the game will not say whether it is real.
+USERS tell of a third book. Nobody who wrote this manual has held it, and the game will not say whether it is real.
 
 They call it **THE HERMETIC LAYER**, and they say it is a grimoire: not a guide and not a handbook but a book of
 workings, which does what the other two only describe and bends rules the rest of the game keeps. Some say the GUIDE's
@@ -1137,7 +1137,7 @@ name, like `{{release}}`), which edition, and how you play it. Please leave out 
 
 **RECOMPILE** -- what a daemon does when it becomes the next in its line.
 
-**ROLL CALL** -- finds trainers who want a rematch.
+**ROLL CALL** -- finds USERS who want a rematch.
 
 **ROOT** -- an understanding you hold.
 

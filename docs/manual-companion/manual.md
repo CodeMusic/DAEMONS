@@ -303,7 +303,7 @@ Tap one to open its card: its INDEX entry, and **Read aloud** on a phone.
 
 **INDEX** is every entry your save has seen, in your edition's own voice. Each card holds the daemon's number, its
 types in their colours, its height and weight, the entries of both editions, and where it is **NATIVE** -- a region,
-an edition only, its hours, its seasons, or not in the wild at all. If your bag holds OPUS, its notes in the **MARGIN**
+an edition only, its hours, its seasons, or not in the wild at all. If your POOL holds OPUS, its notes in the **MARGIN**
 are shown beside the entry.
 
 A card stays grey until your game has come to understand that kind of daemon, then takes its colours.
@@ -733,11 +733,11 @@ notes in another key are **ALMOST**.
 
 **YOU** is your game as the companion reads it from your save.
 
-{{pictures you | YOU: your trainer card, your rival, and the facts of your game.}}
+{{pictures you | YOU: your USER CARD, your rival, and the facts of your game.}}
 
 ## You as the game draws you {#card}
 
-At the top: your trainer's picture and walking figure, REASON or INSTINCT as you chose, your name, your edition and ID
+At the top: your picture and walking figure, REASON or INSTINCT as you chose, your name, your edition and ID
 number, your rival, and where you last saved. It says whether this is **your companion's game**; if no save has been
 synced yet, *Not yet synced: the first save you SYNC becomes your companion's game.*
 
@@ -750,7 +750,7 @@ the **DIPLOMA**, **OPUS**, and **THE STORY** -- *told to the end*, once it is.
 
 ## MARKS and ROOTS {#marks}
 
-**MARKS** are the trainer card's eight badges, faint until earned, with a count: *3 of 8*. Tap one you hold and it opens
+**MARKS** are the USER CARD's eight badges, faint until earned, with a count: *3 of 8*. Tap one you hold and it opens
 as a page: its badge and name, its lesson, the town it came from, what its leader says afterwards, its **UNION
 PLUGIN** once given, and its insight once it has come.
 
@@ -1193,7 +1193,7 @@ the hub's own site. Its tabs, along the top: **GENERAL**, **THEME**, **VOICES** 
 ## Your save {#settings-save}
 
 - **YOUR DAEMONS SAVE** -- **Choose a save…**, **Open the folder**, and **OR TYPE THE PATH** ([Your save](#save)).
-- **YOUR SAVES** -- when the companion knows more than one save: each one's trainer, play time, MARKS and where it was
+- **YOUR SAVES** -- when the companion knows more than one save: each one's USER, play time, MARKS and where it was
   saved, and **READING** beside the one in use. Tap another to have the companion read that one instead. Choosing
   changes nothing in any save.
 
