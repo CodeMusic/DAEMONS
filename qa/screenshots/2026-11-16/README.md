@@ -13,3 +13,9 @@ DAEMONS on the Cardputer Zero, running on the Mac before the device arrives: the
 The game in the Cardputer Zero program, filmed unseen every 150 frames from the CONTROLS screen through the new game's opening to CRYSTAL CLEAR, the keys scripted (--press).
 
 ![16Nov2026 - C377 - Cardputer Zero boot to CRYSTAL CLEAR - 2](16Nov2026%20-%20C377%20-%20Cardputer%20Zero%20boot%20to%20CRYSTAL%20CLEAR%20-%202.png)
+
+### 16Nov2026 - C380 - Cardputer Zero save sent to the hub - 3
+
+C-380 on the Mac: the game's own SAVE (START, SAVE, YES) reached a scratch companion's mirror by itself, byte for byte -- the strip says SENT. A test game (its name mashed with A), never the user's save.
+
+![16Nov2026 - C380 - Cardputer Zero save sent to the hub - 3](16Nov2026%20-%20C380%20-%20Cardputer%20Zero%20save%20sent%20to%20the%20hub%20-%203.png)
