@@ -7,8 +7,8 @@
  },
  "speed": 1.0,
  "draft": "DRAFT \u00b7 every word, until it is approved",
- "sources": "130825108e44f9e5",
- "duration": 1012.5,
+ "sources": "c1152d524ffb376e",
+ "duration": 1011.69,
  "chapters": [
   {
    "kind": "section",
@@ -32,223 +32,223 @@
    "kind": "entry",
    "title": "Where it all lives",
    "start": 88.73,
-   "end": 104.8
+   "end": 104.74
   },
   {
    "kind": "section",
    "title": "Joining the exchange",
-   "start": 104.8,
-   "end": 120.05
+   "start": 104.74,
+   "end": 119.98
   },
   {
    "kind": "entry",
    "title": "The hub's own companion",
-   "start": 120.05,
-   "end": 128.76
+   "start": 119.98,
+   "end": 128.69
   },
   {
    "kind": "entry",
    "title": "Everyone else: an invite code",
-   "start": 128.76,
-   "end": 174.19
+   "start": 128.69,
+   "end": 174.13
   },
   {
    "kind": "entry",
    "title": "A password, if you want one",
-   "start": 174.19,
-   "end": 191.01
+   "start": 174.13,
+   "end": 190.95
   },
   {
    "kind": "entry",
    "title": "A phone on its own",
-   "start": 191.01,
-   "end": 205.93
+   "start": 190.95,
+   "end": 205.87
   },
   {
    "kind": "section",
    "title": "Trading",
-   "start": 205.93,
-   "end": 220.07
+   "start": 205.87,
+   "end": 220.0
   },
   {
    "kind": "entry",
    "title": "Offering one",
-   "start": 220.07,
-   "end": 241.24
+   "start": 220.0,
+   "end": 241.18
   },
   {
    "kind": "entry",
    "title": "Taking one",
-   "start": 241.24,
-   "end": 265.9
+   "start": 241.18,
+   "end": 265.83
   },
   {
    "kind": "entry",
    "title": "SYNC, and the game",
-   "start": 265.9,
-   "end": 285.47
+   "start": 265.83,
+   "end": 285.17
   },
   {
    "kind": "entry",
    "title": "As FireRed traded",
-   "start": 285.47,
-   "end": 318.64
+   "start": 285.17,
+   "end": 318.3
   },
   {
    "kind": "section",
    "title": "Lending",
-   "start": 318.64,
-   "end": 332.22
+   "start": 318.3,
+   "end": 331.88
   },
   {
    "kind": "entry",
    "title": "Lending one",
-   "start": 332.22,
-   "end": 347.18
+   "start": 331.88,
+   "end": 346.84
   },
   {
    "kind": "entry",
    "title": "What a borrowed daemon may do",
-   "start": 347.18,
-   "end": 367.19
+   "start": 346.84,
+   "end": 366.61
   },
   {
    "kind": "entry",
    "title": "Calling it home",
-   "start": 367.19,
-   "end": 388.19
+   "start": 366.61,
+   "end": 387.61
   },
   {
    "kind": "section",
    "title": "Giving",
-   "start": 388.19,
-   "end": 395.5
+   "start": 387.61,
+   "end": 394.92
   },
   {
    "kind": "entry",
    "title": "A daemon",
-   "start": 395.5,
-   "end": 417.68
+   "start": 394.92,
+   "end": 417.1
   },
   {
    "kind": "entry",
    "title": "An item",
-   "start": 417.68,
-   "end": 434.95
+   "start": 417.1,
+   "end": 434.13
   },
   {
    "kind": "section",
    "title": "Evolving by trade",
-   "start": 434.95,
-   "end": 473.39
+   "start": 434.13,
+   "end": 472.58
   },
   {
    "kind": "entry",
    "title": "Two that need each other",
-   "start": 473.39,
-   "end": 502.2
+   "start": 472.58,
+   "end": 501.39
   },
   {
    "kind": "section",
    "title": "Fair play",
-   "start": 502.2,
-   "end": 559.31
+   "start": 501.39,
+   "end": 558.5
   },
   {
    "kind": "section",
    "title": "OUT TOGETHER",
-   "start": 559.31,
-   "end": 574.81
+   "start": 558.5,
+   "end": 574.0
   },
   {
    "kind": "entry",
    "title": "Meeting",
-   "start": 574.81,
-   "end": 600.49
+   "start": 574.0,
+   "end": 599.68
   },
   {
    "kind": "entry",
    "title": "What they may say",
-   "start": 600.49,
-   "end": 631.13
+   "start": 599.68,
+   "end": 630.32
   },
   {
    "kind": "entry",
    "title": "IN DIALOGUE",
-   "start": 631.13,
-   "end": 691.75
+   "start": 630.32,
+   "end": 690.94
   },
   {
    "kind": "section",
    "title": "BATTLE",
-   "start": 691.75,
-   "end": 747.81
+   "start": 690.94,
+   "end": 747.0
   },
   {
    "kind": "section",
    "title": "Friends and dreams at home",
-   "start": 747.81,
-   "end": 751.36
+   "start": 747.0,
+   "end": 750.55
   },
   {
    "kind": "entry",
    "title": "Friends",
-   "start": 751.36,
-   "end": 763.55
+   "start": 750.55,
+   "end": 762.74
   },
   {
    "kind": "entry",
    "title": "Dreams shared",
-   "start": 763.55,
-   "end": 781.31
+   "start": 762.74,
+   "end": 780.5
   },
   {
    "kind": "section",
    "title": "Friends' homes: THE COMMONS",
-   "start": 781.31,
-   "end": 797.87
+   "start": 780.5,
+   "end": 797.06
   },
   {
    "kind": "entry",
    "title": "Linking your home",
-   "start": 797.87,
-   "end": 826.62
+   "start": 797.06,
+   "end": 825.81
   },
   {
    "kind": "entry",
    "title": "Trading with friends' homes",
-   "start": 826.62,
-   "end": 866.08
+   "start": 825.81,
+   "end": 865.27
   },
   {
    "kind": "section",
    "title": "For the keeper",
-   "start": 866.08,
-   "end": 874.52
+   "start": 865.27,
+   "end": 873.71
   },
   {
    "kind": "entry",
    "title": "The hub",
-   "start": 874.52,
-   "end": 906.05
+   "start": 873.71,
+   "end": 905.23
   },
   {
    "kind": "entry",
    "title": "The commons",
-   "start": 906.05,
-   "end": 929.65
+   "start": 905.23,
+   "end": 928.84
   },
   {
    "kind": "section",
    "title": "Under the hood",
-   "start": 929.65,
-   "end": 971.91
+   "start": 928.84,
+   "end": 971.09
   },
   {
    "kind": "section",
    "title": "Coming next",
-   "start": 971.91,
-   "end": 1012.5
+   "start": 971.09,
+   "end": 1011.69
   }
  ]
 }

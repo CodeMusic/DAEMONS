@@ -1,0 +1,170 @@
+{
+ "book": "glass",
+ "voice": "near",
+ "blend": {
+  "af_nicole": 0.6,
+  "bf_lily": 0.4
+ },
+ "speed": 0.97,
+ "draft": "DRAFT \u00b7 every word, until it is approved",
+ "sources": "1ccf8c2bf9123bc4",
+ "duration": 693.76,
+ "chapters": [
+  {
+   "kind": "section",
+   "title": "The Glasses",
+   "start": 0.0,
+   "end": 11.91
+  },
+  {
+   "kind": "section",
+   "title": "The glasses",
+   "start": 11.91,
+   "end": 85.2
+  },
+  {
+   "kind": "entry",
+   "title": "What you need",
+   "start": 85.2,
+   "end": 117.59
+  },
+  {
+   "kind": "section",
+   "title": "First steps",
+   "start": 117.59,
+   "end": 120.46
+  },
+  {
+   "kind": "entry",
+   "title": "Charging",
+   "start": 120.46,
+   "end": 134.46
+  },
+  {
+   "kind": "entry",
+   "title": "Starting them",
+   "start": 134.46,
+   "end": 154.03
+  },
+  {
+   "kind": "entry",
+   "title": "Fitting the picture",
+   "start": 154.03,
+   "end": 201.63
+  },
+  {
+   "kind": "entry",
+   "title": "Pairing your phone",
+   "start": 201.63,
+   "end": 260.22
+  },
+  {
+   "kind": "entry",
+   "title": "Giving them a daemon",
+   "start": 260.22,
+   "end": 275.7
+  },
+  {
+   "kind": "section",
+   "title": "What they show",
+   "start": 275.7,
+   "end": 286.86
+  },
+  {
+   "kind": "entry",
+   "title": "HOME",
+   "start": 286.86,
+   "end": 307.88
+  },
+  {
+   "kind": "entry",
+   "title": "A NOTE",
+   "start": 307.88,
+   "end": 326.73
+  },
+  {
+   "kind": "entry",
+   "title": "DAEMON",
+   "start": 326.73,
+   "end": 342.87
+  },
+  {
+   "kind": "entry",
+   "title": "DARK",
+   "start": 342.87,
+   "end": 355.53
+  },
+  {
+   "kind": "entry",
+   "title": "Over whatever is showing",
+   "start": 355.53,
+   "end": 396.78
+  },
+  {
+   "kind": "section",
+   "title": "The button",
+   "start": 396.78,
+   "end": 430.88
+  },
+  {
+   "kind": "section",
+   "title": "GLASSES, in the app",
+   "start": 430.88,
+   "end": 442.78
+  },
+  {
+   "kind": "entry",
+   "title": "What the glasses should show",
+   "start": 442.78,
+   "end": 459.53
+  },
+  {
+   "kind": "entry",
+   "title": "SHOW",
+   "start": 459.53,
+   "end": 466.9
+  },
+  {
+   "kind": "entry",
+   "title": "CARE",
+   "start": 466.9,
+   "end": 484.38
+  },
+  {
+   "kind": "entry",
+   "title": "NOTES",
+   "start": 484.38,
+   "end": 545.17
+  },
+  {
+   "kind": "section",
+   "title": "Looking after the glasses",
+   "start": 545.17,
+   "end": 548.72
+  },
+  {
+   "kind": "entry",
+   "title": "The battery",
+   "start": 548.72,
+   "end": 575.3
+  },
+  {
+   "kind": "entry",
+   "title": "Putting the software on",
+   "start": 575.3,
+   "end": 601.74
+  },
+  {
+   "kind": "entry",
+   "title": "When something is wrong",
+   "start": 601.74,
+   "end": 655.45
+  },
+  {
+   "kind": "entry",
+   "title": "Still to come",
+   "start": 655.45,
+   "end": 693.76
+  }
+ ]
+}
