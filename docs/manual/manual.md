@@ -861,8 +861,8 @@ USERS tell of a third book. Nobody who wrote this manual has held it, and the ga
 
 They call it **THE HERMETIC LAYER**, and they say it is a grimoire: not a guide and not a handbook but a book of
 workings, which does what the other two only describe and bends rules the rest of the game keeps. Some say the GUIDE's
-reason and THE SUBTLE LAYER's noticing were only ever its two halves. **Some say it finds only those who have read the
-other two. It is said to keep an hour of its own.** It is said to open with a warning, and that some who read it to
+reason and THE SUBTLE LAYER's noticing were only ever its two halves. Nobody agrees how it
+is found, or whether it is found at all. It is said to open with a warning, and that some who read it to
 the end went a little mad. Its author is said to have made hats. Some say he went mad; he says he went through.
 :::
 

@@ -5,6 +5,10 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.379 — 2026-11-16
+
+- Section 10, Open: **the player's manual keeps neither of the third book's two lines** (T-506; the user, by multiple choice: "Soften to rumour"). The manual's rumour now says only that nobody agrees how THE HERMETIC LAYER is found, or whether it is found at all (DRAFT); `docs/DAEMONS-manual.pdf` printed again. The T-506 row in TODO no longer quotes the old lines.
+
 ## v11.378 — 2026-11-16
 
 - **The third book's gate leaves the public writing** (T-506, the user's 2026-10-31 ticket): 0.1's one exception, 4.39's *Why this much is allowed* and *Two ways in*, and the 2026-10-29 log line read `[private: vision-unredacted 4.39]` where the gate's detail stood; the detail is in the private copy. `docs/books/README.md` tells the third book only as rumour, and `docs/daemons-review-4.md`'s table cell is marked the same way.

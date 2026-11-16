@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.378**
+**A total conversion — the living design bible, v11.379**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9454,7 +9454,7 @@ Kept here because the reasoning is worth more than the outcome.
 
 ### Open
 
-- **Does the player's manual keep the third book's two lines?** (*T-506; the user, 2026-10-31: "no it is fine to keep for now, log it as a question later"*) **`docs/manual/manual.md` still gives two lines on how THE HERMETIC LAYER is reached** ([private: vision-unredacted 4.39]). *Everywhere else in public writing the third book is told only as rumour, and since 4.40 one of the two is no longer true; the quick start and micro start carry neither.*
+- ~~**Does the player's manual keep the third book's two lines?**~~ ***Decided 2026-11-16 by multiple choice: "Soften to rumour". The manual now says only that nobody agrees how the book is found, or whether it is found at all (DRAFT), and was printed again.*** (*T-506; the user, 2026-10-31: "no it is fine to keep for now, log it as a question later"*) **`docs/manual/manual.md` still gives two lines on how THE HERMETIC LAYER is reached** ([private: vision-unredacted 4.39]). *Everywhere else in public writing the third book is told only as rumour, and since 4.40 one of the two is no longer true; the quick start and micro start carry neither.*
 - ~~**The aurora, and the mended book**~~ ***decided 2026-11-07 by multiple choice (T-528, 4.40)***: *the user, brought by the game lane: "once the unity book is restored it creates some effect surrounding it, and that illumination goes further, the books bind, and each hemisphere sings."* **CONTENT in oxygen's red line, CONTEXT in its green; the mainland the north wind's side and the islands the south's; over the tower every night, elsewhere on some nights picked from the date, spreading grove by grove and across to each grove's conjugate; the dawn chorus; TULIKKO the fox; and the conjugate light, both lines at once, with a duet in PLAY.**
 - **What the carried line and its return say** (*2026-10-24, 9.26–9.27*). **Every in-game word is DRAFT and the user's to choose**: *"X changed while it was carried," "Something followed you home from the walk," FIRST MET's THE COMPANION, the three categories and six INDEX entries, the abilities' names.* **And the landmarks still to be asked, with their pairs: DAEMON TOWER, the REVIEW BOARD, USER TOWER, THE ANNEX (9.29).**
 - ~~**A GLITCH, where one belongs**~~ ***decided 2026-10-29 by multiple choice: only in THE HERMETIC LAYER (4.39), nowhere else (T-486).*** (*the user, 2026-09-24*). ***"Too bad we couldn't simulate a glitch effect — there are a lot of places where it would fit."*** **First candidate: the moment DOLDRUM CAVE is understood** — *the simple drawing shown once more, then the screen glitches and the cave is itself.* ***The user's own caution***: *"maybe for this case the glitching is implying things we might not want"* — **a glitch reads as the world breaking, and here the world is not breaking, the player is seeing.** *Technically it is possible (a few frames of scrambled scanline offsets and palette), so the question is only where it means the right thing.*
