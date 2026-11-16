@@ -1,0 +1,126 @@
+{
+  "rom": "debug",
+  "about": "T-547 THE BLANK TABLET (DRAFT): the stone by BLANCHE's path north, read from both sides, and the old toad by the pond. The front is read from the south (10,4) with THE HERMETIC LAYER, the back from the north (10,2) with THE EUDAIMON LAYER; three spells cast (THE AWAKENING, THE CONTRAST, THE PROCESS); the ledger leaning to REASON, then to INTUITION; each face's thirteenth line in its own hour; the toad by day and at dawn; and the stone before anything is cast. The book's words are private: file the sheets with qashot --private. The theatre's debug scratch save; the watch, the flags and the vars put back.",
+  "stop_timeout": 600,
+  "stops": [
+    {
+      "stop": "the front, from the south, with the night half; nothing cast yet",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 1",
+        "poke gDaemonsDateOverride 8 0",
+        "poke gDaemonsWatchOverride 8 1",
+        "flag FLAG_GOT_HERMETIC_LAYER 1",
+        "flag FLAG_GOT_EUDAIMON_LAYER 0",
+        "flag FLAG_UNITY_MENDED 0",
+        "var VAR_SPELLS_CAST 0",
+        "var VAR_SPELL_LEDGER 0",
+        "var VAR_SPELL_LEDGER_2 0",
+        "flag FLAG_BLANK_TABLET_FRONT_READ 0",
+        "flag FLAG_BLANK_TABLET_BACK_READ 0",
+        "goto PalletTown 10 4",
+        "wait 60",
+        "press UP",
+        "shot \"the stone, from the south\"",
+        "press A",
+        "finish",
+        "press B",
+        "wait 40"
+      ]
+    },
+    {
+      "stop": "the front, three spells cast, leaning to REASON, by day",
+      "steps": [
+        "var VAR_SPELLS_CAST 515",
+        "var VAR_SPELL_LEDGER 261",
+        "press A",
+        "finish",
+        "press B",
+        "wait 40"
+      ]
+    },
+    {
+      "stop": "the back, from the north, with only the night half: blank",
+      "steps": [
+        "goto PalletTown 10 2",
+        "wait 40",
+        "press DOWN",
+        "press A",
+        "finish",
+        "press B",
+        "wait 40"
+      ]
+    },
+    {
+      "stop": "the back, with the dawn half, leaning to INTUITION, in THE CREATOR'S HOUR: its thirteenth line",
+      "steps": [
+        "flag FLAG_GOT_HERMETIC_LAYER 0",
+        "flag FLAG_GOT_EUDAIMON_LAYER 1",
+        "var VAR_SPELL_LEDGER 1281",
+        "poke gDaemonsWatchOverride 8 9",
+        "press A",
+        "finish",
+        "press B",
+        "wait 40",
+        "flagis FLAG_BLANK_TABLET_BACK_READ 1",
+        "press A",
+        "finish",
+        "press B",
+        "wait 40"
+      ]
+    },
+    {
+      "stop": "the front, with the night half, leaning to REASON, at 3:30: its thirteenth line",
+      "steps": [
+        "flag FLAG_GOT_HERMETIC_LAYER 1",
+        "flag FLAG_GOT_EUDAIMON_LAYER 0",
+        "var VAR_SPELL_LEDGER 261",
+        "poke gDaemonsWatchOverride 8 7",
+        "goto PalletTown 10 4",
+        "wait 40",
+        "press UP",
+        "press A",
+        "finish",
+        "press B",
+        "wait 40",
+        "flagis FLAG_BLANK_TABLET_FRONT_READ 1"
+      ]
+    },
+    {
+      "stop": "the old toad by the pond, by day and at dawn",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 1",
+        "goto PalletTown 11 19",
+        "wait 40",
+        "press UP",
+        "press A",
+        "finish",
+        "press B",
+        "wait 40",
+        "poke gDaemonsWatchOverride 8 4",
+        "press A",
+        "finish",
+        "press B",
+        "wait 40",
+        "var VAR_SPELL_LEDGER 0",
+        "var VAR_SPELLS_CAST 0",
+        "press A",
+        "finish",
+        "press B",
+        "wait 40"
+      ]
+    },
+    {
+      "stop": "everything put back",
+      "steps": [
+        "poke gDaemonsWatchOverride 8 0",
+        "flag FLAG_GOT_HERMETIC_LAYER 0",
+        "flag FLAG_BLANK_TABLET_FRONT_READ 0",
+        "flag FLAG_BLANK_TABLET_BACK_READ 0",
+        "var VAR_SPELL_LEDGER_2 0",
+        "flag FLAG_FOLLOWER_OFF 0"
+      ]
+    }
+  ]
+}
