@@ -12,7 +12,10 @@
                                                       #   (today | A | B | C), rendered from the tiles the ROM is built from
     python3 tools/gbaislands.py --write --approved    # into the engine: the pieces in APPROVED, each with the option the
                                                       #   user picked, drawn from BASE and laid over the engine's own
-                                                      #   tiles.png; a second write is a no-op. EMPTY until picked.
+                                                      #   tiles.png, then T-570's picks over them (below), so the
+                                                      #   result is the engine as the user picked it; a second write
+                                                      #   is a no-op. The report also checks gbacaves' T569_ISLANDS
+                                                      #   (the tiles its write keeps) is exactly these.
 
     T-570, the last 134 (ladders, holes, slide ice, the rest), drawn by hand as shapes -- its own section and picks:
     python3 tools/gbaislands.py --t570                # report: per kind (ladders / holes and rims / slide ice /
@@ -1568,9 +1571,14 @@ def run_570(draft_dir=None, sheets=False):
     return results, unacc
 
 
+_A570 = []
+
+
 def approved_570_tiles():
-    """{ts: {tile: pixels}} of the approved T-570 picks (empty until picked)"""
-    return draw_570(APPROVED_570)[0] if APPROVED_570 else {}
+    """{ts: {tile: pixels}} of the approved T-570 picks (empty until picked); drawn once a run"""
+    if not _A570:
+        _A570.append(draw_570(APPROVED_570)[0] if APPROVED_570 else {})
+    return _A570[0]
 
 
 def check_engine_570():
@@ -1681,11 +1689,16 @@ def run(draft_dir=None, sheets=False):
     return report
 
 
+_PICKED = {}
+
+
 def picked(ts, option):
-    town, _, _, _ = census(ts)
-    st = [s for s in options(ts) if s[0] == option][0][3]
-    new, _ = redraw(town, st)
-    return town, {t: new[t] for t in range(len(new)) if new[t] != town.now[t]}
+    if (ts, option) not in _PICKED:
+        town, _, _, _ = census(ts)
+        st = [s for s in options(ts) if s[0] == option][0][3]
+        new, _ = redraw(town, st)
+        _PICKED[(ts, option)] = town, {t: new[t] for t in range(len(new)) if new[t] != town.now[t]}
+    return _PICKED[(ts, option)]
 
 
 def check_engine():
@@ -1701,6 +1714,35 @@ def check_engine():
     return bad
 
 
+def owned_tiles():
+    """{ts: {tile: pixels}} -- every tile this tool's two approved picks draw: T-569's, then T-570's over them (T-570
+    redrew some of T-569's, its ladders drawn whole), so this is the engine as the user picked it"""
+    out = {}
+    for ts, option in APPROVED.items():
+        if ts != "steam":
+            out[ts] = dict(picked(ts, option)[1])
+    for ts, tt in approved_570_tiles().items():
+        out.setdefault(ts, {}).update(tt)
+    return out
+
+
+def check_keep_sets(owned):
+    """gbacaves' write keeps the tiles this tool draws (its T569_ISLANDS); each set must be exactly ours, or its write
+    would revert a pick (or freeze a tile that is its own). 1 when one is out of step."""
+    bad = 0
+    keep = getattr(C, "T569_ISLANDS", {})
+    drawn = {k.split("/")[0] for k in C.DRAFTED + C.DRAFTED_E2 if not C.LOOKS[k].get("base")}
+    for ts in sorted(drawn & (set(owned) | set(keep))):
+        mine, theirs = set(owned.get(ts, ())), set(keep.get(ts, ()))
+        if mine != theirs:
+            print("  !! gbacaves.T569_ISLANDS[%r] is out of step with this tool's tiles: missing %s, extra %s -- its "
+                  "--write would revert T-569/T-570" % (ts, sorted(mine - theirs), sorted(theirs - mine)))
+            bad += 1
+    print("  gbacaves' keep set (T569_ISLANDS) %s" % ("matches this tool's tiles in every cave it draws" if not bad
+                                                     else "is OUT OF STEP in %d tilesets" % bad))
+    return bad
+
+
 def main():
     if "--t570" in ARGS:
         return main_570()
@@ -1709,13 +1751,13 @@ def main():
             print("  --write refused: --write needs --approved, and APPROVED names nothing the user has picked. "
                   "Nothing written.")
             return 0
-        for ts, option in APPROVED.items():
-            if ts == "steam":
-                for k in range(4):
-                    steam(option, k)[0].save(os.path.join(GBA, STEAM % k), bits=4)
-                print("  MT. SMOULDER's steam, option %s: 4 frames" % option)
-                continue
-            town, mine = picked(ts, option)
+        if "steam" in APPROVED:
+            for k in range(4):
+                steam(APPROVED["steam"], k)[0].save(os.path.join(GBA, STEAM % k), bits=4)
+            print("  MT. SMOULDER's steam, option %s: 4 frames" % APPROVED["steam"])
+        #  T-569's picks, then T-570's over them (2026-11-16: a T-569 write alone put back the ladders T-570 redrew)
+        for ts, mine in owned_tiles().items():
+            town = town570(ts)
             out = [list(t) for t in town.disk]
             for t, p in mine.items():
                 out[t] = list(p)
@@ -1723,7 +1765,7 @@ def main():
                 print("  %s: already drawn, nothing to write" % ts)
                 continue
             L.save_tiles(town, out, os.path.join(town.dir, "tiles.png"))
-            print("  wrote %s (option %s): %d tiles" % (ts, option, len(mine)))
+            print("  wrote %s: %d tiles (T-569 %s, T-570 %s)" % (ts, len(mine), APPROVED.get(ts), APPROVED_570))
         return 0
     for flag in ("--sheets", "--draft"):
         if flag in ARGS:
@@ -1736,6 +1778,7 @@ def main():
     bad = check_engine()
     print("  the engine %s" % ("matches every approved pick (none yet)" if not bad else
                                "DIFFERS from %d approved picks" % bad))
+    bad += check_keep_sets(owned_tiles())
     return 1 if bad else 0
 
 

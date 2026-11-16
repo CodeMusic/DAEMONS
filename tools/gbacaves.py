@@ -1606,6 +1606,26 @@ T538_TUNNEL = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 19, 20, 2
 T447_PLANT = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
               31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
               61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79}
+#  T-569 and T-570 (gbaislands.py, the user's picks of 2026-11-15 and 2026-11-16): the tiles this look left as vanilla
+#  drew them -- the rock clusters, rubble, ladders, hole rims and slide ice -- are drawn there, each cave in its own
+#  grain, over this look's colours. The write below keeps them as the engine has them, so it can never revert either
+#  pick (found by check_generators --writes, 2026-11-16); gbaislands' report checks each set is exactly the union of
+#  its two picks' tiles in that tileset.
+T569_ISLANDS = {
+    "cave": {3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 19, 20, 22, 24, 26, 27, 28, 29, 110, 111, 126, 127, 142, 143, 158, 159,
+             174, 175, 176, 192, 193, 208, 209, 226, 227, 228, 229, 242, 243, 244, 245, 252, 253, 254, 255},
+    "digletts_cave": {2, 3, 4, 9, 10, 11, 12, 13, 17, 19, 20, 24, 26, 27, 28, 29, 110, 111, 126, 127, 158, 159, 174,
+                      175, 184},
+    "mt_ember": {3, 4, 10, 11, 12, 13, 19, 20, 26, 27, 28, 29, 79, 94, 110, 111, 126, 127, 142, 143, 158, 159, 166, 174,
+                 175, 181, 182, 226, 227, 230, 231, 242, 243, 247, 252, 253, 254, 255},
+    "navel_rock": {3, 4, 10, 11, 12, 13, 19, 20, 26, 27, 28, 29, 108, 109, 124, 125, 140, 141, 158, 159, 174, 175, 194,
+                   195, 210, 211, 226, 227, 242, 243},
+    "seafoam_islands": {3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 108,
+                        109, 110, 111, 124, 125, 126, 127, 142, 143, 156, 157, 158, 159, 172, 173, 174, 175, 181, 182,
+                        188, 189, 226, 227, 228, 229, 230, 231, 232, 233, 234, 235, 242, 243, 244, 245, 246, 247, 248,
+                        249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 272, 273, 274, 275,
+                        276, 277, 278, 279},
+}
 
 
 def write_engine():
@@ -1635,7 +1655,11 @@ def write_engine():
         if ts == "power_plant":
             for t in T447_PLANT:
                 new[t] = list(cave.now[t])           # gbalandmarkrooms' (T-447 pair 5), as the engine has them
-        if any((a == 0) != (b == 0) for t in range(cave.n) for a, b in zip(new[t], cave.van[t])):
+        for t in T569_ISLANDS.get(ts, ()):
+            new[t] = list(cave.now[t])               # gbaislands' (T-569, T-570), as the engine has them
+        #  the footprint rule is this look's; T-570's hand-drawn ladders and holes are not held to it, and are kept
+        held = T569_ISLANDS.get(ts, set())
+        if any((a == 0) != (b == 0) for t in range(cave.n) if t not in held for a, b in zip(new[t], cave.van[t])):
             raise SystemExit("  !! %s: a tile's footprint moved -- nothing written" % key)
         tiles_png(cave, new).save(os.path.join(cave.dir, "tiles.png"), bits=4)
         rows = [r for r in range(7, 13) if pp[r] != cave.pals[r]]
