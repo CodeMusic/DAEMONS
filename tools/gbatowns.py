@@ -397,7 +397,11 @@ LANDMARKS = {
     #  whose top is ROUTE 10's rows 72..79
     "saffron_city": [("SaffronCity", 29, 16, 9, 15, "CORPUS's tower"),
                      ("SaffronCity_Connection", 19, 9, 9, 15, "CORPUS's tower (the crossings' copy)")],
-    "lavender_town": [("LavenderTown", 15, 0, 7, 7, "DAEMON TOWER"),
+    #  T-562 follow-up (2026-11-16): the two T-447 plan boxes gbatownslast already keeps (LANDMARKS_PLAN), held here
+    #  too so this tool's own write cannot redraw them
+    "celadon_city": [("CeladonCity", 31, 17, 10, 5, "the GAME CORNER (T-447 plan row 7)")],
+    "lavender_town": [("Route10", 2, 34, 11, 8, "the KEEPALIVE PLANT's front (T-447 plan row 8)"),
+                      ("LavenderTown", 15, 0, 7, 7, "DAEMON TOWER"),
                       ("Route10", 15, 72, 7, 8, "DAEMON TOWER (its top, on ROUTE 10)")],
     #  T-447's third pair (drafted 2026-10-25): the REVIEW BOARD on UMBRA, and ERRATA with its annex in SLATE
     "indigo_plateau": [("IndigoPlateau_Exterior", 6, 0, 11, 7, "the REVIEW BOARD"),
