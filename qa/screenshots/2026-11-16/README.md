@@ -73,3 +73,9 @@ T-570 DRAFT: the islands' and caves' last tiles -- other, today beside each opti
 THE CALENDAR's card on the twelve-tone wheel: NOVEMBER · A♯/B♭, indigo into violet, Friday's and Saturday's (companion C-385).
 
 ![16Nov2026 - C385 - the calendar, November on the twelve-tone wheel - 12](16Nov2026%20-%20C385%20-%20the%20calendar%2C%20November%20on%20the%20twelve-tone%20wheel%20-%2012.jpg)
+
+### 16Nov2026 - C381 - Cardputer Zero companion screens - 14
+
+C-381 on the Mac: HOME, PARTY, CARE, STEP and SAY drawn from /api/device/state, against a scratch companion with a synthetic save (RELAY carried; a stand-in goal). FEED answered, the step ticked on, the word heard. Every word DRAFT; the 18% is the Mac's battery.
+
+![16Nov2026 - C381 - Cardputer Zero companion screens - 14](16Nov2026%20-%20C381%20-%20Cardputer%20Zero%20companion%20screens%20-%2014.png)
