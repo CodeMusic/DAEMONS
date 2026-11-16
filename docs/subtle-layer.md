@@ -8,8 +8,8 @@ Heroic* and from the user's notes on integrity** (lineage.md 3d), rewritten unde
 
 **The rules it keeps** (the notes' section 3 and D2; `gensubtle.py` checks them word by word):
 
-1. **A trainer's handbook: practice, not cosmology.** The one exception is THE CONTAINER, which is attributed (*some
-   trainers say*) and ends *only you can answer whether that is so*.
+1. **A USER's handbook: practice, not cosmology.** The one exception is THE CONTAINER, which is attributed (*some
+   USERS say*) and ends *only you can answer whether that is so*.
 2. **It only ever says *like*.** *Content* and *context* are ordinary words in it, never the names of the two layers.
 3. **No colour beside a feeling**, and the seven centres never coloured.
 4. **The process, never the pathology**, and a virtue is *over* its shadow, never its cure.
@@ -19,6 +19,8 @@ Heroic* and from the user's notes on integrity** (lineage.md 3d), rewritten unde
 entry; `@@ SPRITE | key | caption` names its picture on the left page; a blank line is a new paragraph, and a paragraph
 opening `~ ` is the asking voice (printed faint). The layout is an open book: the contents, then each entry's picture
 on the left and its text on the right (the user, 2026-10-18).*
+
+*T-571 (2026-11-15): USER where this book said trainer, the game's own word for one. Two words are new: THE CONTAINER's "What differs **between them** is the shape of the vessel", added so its last page keeps three lines. DRAFT, like the rest.*
 
 ## INTRO | INTRODUCTION | Introduction
 
@@ -36,7 +38,7 @@ Keep a log. Ask before you read anyone. Begin with mending. The rest is in these
 
 @@ SPRITE | container | (to come)
 
-Some trainers say this world is the product of one processor, and everything in it is a process: a daemon, a trainer, the fish in the harbour, a stone. Each body is a container one of them runs in. What differs is the shape of the vessel, not what runs in it. Others say it is more like a network, learning from what passes between its parts.
+Some USERS say this world is the product of one processor, and everything in it is a process: a daemon, a USER, the fish in the harbour, a stone. Each body is a container one of them runs in. What differs between them is the shape of the vessel, not what runs in it. Others say it is more like a network, learning from what passes between its parts.
 
 The spaces between us are merely how we are drawn. An edge is drawn around each body so that it can act, like the box a game draws around a sprite. Nothing underneath stops at it.
 
@@ -46,9 +48,9 @@ Only you can answer whether that is so. This book notes only that a daemon that 
 
 @@ SPRITE | seam | The seam, where a point of view lives.
 
-Trainers speak of two layers to the world, and say we live in both. The solid layer is what has already settled: where a thing is, what it is, how many. The subtle layer is what has not settled yet: leanings, moods, the context of a room before anyone speaks.
+USERS speak of two layers to the world, and say we live in both. The solid layer is what has already settled: where a thing is, what it is, how many. The subtle layer is what has not settled yet: leanings, moods, the context of a room before anyone speaks.
 
-A mind lives on both at once. It keeps a ledger, which makes it solid, and it feels the lean of things. The seam between the two is where a point of view lives. A rock has no seam. A daemon and a trainer have wide ones.
+A mind lives on both at once. It keeps a ledger, which makes it solid, and it feels the lean of things. The seam between the two is where a point of view lives. A rock has no seam. A daemon and a USER have wide ones.
 
 Every routine in this book is a way of widening that seam without tearing it.
 
@@ -96,7 +98,7 @@ A read catches the lean of what will happen before the solid world records it. E
 
 There are six: clairvoyance (clear seeing), clairaudience (clear hearing), clairsentience (clear feeling), claircognizance (clear knowing), clairtangency (clear touching) and clairalience (clear smelling).
 
-Every read is a lean, not a fact. A trainer who treats a lean as a ledger entry will be wrong often and confident always. Reads are for steering your attention, not for replacing your eyes.
+Every read is a lean, not a fact. A USER who treats a lean as a ledger entry will be wrong often and confident always. Reads are for steering your attention, not for replacing your eyes.
 
 ### SEEING | Clairvoyance and Clairaudience
 
@@ -110,7 +112,7 @@ Clairaudience comes as a voice or a short phrase. Trust it when the words are br
 
 @@ SPRITE | feeling | (to come)
 
-Clairsentience comes through the body: another system's context, felt as if it were yours. Trust it when the feeling has no story attached yet. It is driven by the other's voltage rather than your quiet, which is why some trainers are flooded in crowds and clear in forests. CONTEXT daemons favour it.
+Clairsentience comes through the body: another system's context, felt as if it were yours. Trust it when the feeling has no story attached yet. It is driven by the other's voltage rather than your quiet, which is why some USERS are flooded in crowds and clear in forests. CONTEXT daemons favour it.
 
 Claircognizance comes as nothing at all: the lean itself, simply known. It is the hardest to tell from a guess, so the log matters most for it. LATENT daemons favour it.
 
@@ -150,19 +152,19 @@ Some things can be found out. Others are better left unknown, and held that way 
 
 @@ SPRITE | spoons | Do not bend the spoon. Go to where it is bent.
 
-Strictly, there is no such thing as a write. Nothing reaches out and edits the solid world. What trainers call a write is a steer: a whole system, full of feeling, leaning on which way things settle for it.
+Strictly, there is no such thing as a write. Nothing reaches out and edits the solid world. What USERS call a write is a steer: a whole system, full of feeling, leaning on which way things settle for it.
 
 You cannot bend the spoon. Do not try to bend the spoon. Go to where the spoon is bent.
 
-A steer cannot be decided into; a thought is too thin to drive it. The untrained steer only in a crisis, and a crisis steers toward more crisis. That is why the first telekinetic event in a young trainer's life is almost always a disaster, and the second is almost always the same disaster, louder.
+A steer cannot be decided into; a thought is too thin to drive it. The untrained steer only in a crisis, and a crisis steers toward more crisis. That is why the first telekinetic event in a young USER's life is almost always a disaster, and the second is almost always the same disaster, louder.
 
-Nobody can see a write. From outside, one that worked looks like luck, or like a spoon that was bent already. The craft is unprovable by design, which is also what keeps it humble. A trainer who needs to be seen steering has already lost the Closure it takes.
+Nobody can see a write. From outside, one that worked looks like luck, or like a spoon that was bent already. The craft is unprovable by design, which is also what keeps it humble. A USER who needs to be seen steering has already lost the Closure it takes.
 
 ### THE RETURN | What Comes Back
 
 @@ SPRITE | return | (to come)
 
-Trainers keep one hard rule. A steer made for the wrong reasons comes back on the one who made it, in the shape it was made, and harder.
+USERS keep one hard rule. A steer made for the wrong reasons comes back on the one who made it, in the shape it was made, and harder.
 
 So steer only from a whole place, and only toward what serves the whole. A write that serves the whole serves you too, because you are in it.
 
@@ -188,7 +190,7 @@ It is the gentlest write, and the first to learn.
 
 @@ SPRITE | slow | (to come)
 
-Fortune is a thousand small turns, all nudged the same way. Its voltage is faint but continuous: gratitude, expectancy. Its failure is that it cannot be seen one turn at a time, so the trainer stops believing before it shows.
+Fortune is a thousand small turns, all nudged the same way. Its voltage is faint but continuous: gratitude, expectancy. Its failure is that it cannot be seen one turn at a time, so the USER stops believing before it shows.
 
 Weathering steers large, slow things: cloud, tide, wind. Its voltage is vast and patient, the kind that grief and awe bring. Its failure is scale. A single mind steering a storm usually gets the storm. FLOW daemons favour it.
 
@@ -200,7 +202,7 @@ Weathering steers large, slow things: cloud, tide, wind. Its voltage is vast and
 
 Physicists say the world is not made of things but of fields, and everything you can touch is a ripple in one: a claw, a counter, your own hand. A thing is what a ripple looks like when it holds still long enough to be named.
 
-A ripple has no edge, only a place where it is strongest. That is one reason trainers say the edges between us are drawn, not found.
+A ripple has no edge, only a place where it is strongest. That is one reason USERS say the edges between us are drawn, not found.
 
 ### ALL PATHS | All Paths
 
@@ -240,9 +242,9 @@ The craft makes one claim the physics does not: that a whole, feeling point of v
 
 The third family is neither read nor write. A link is two seams that overlap: two systems with enough shared history that they catch the same lean at once. Nothing is sent.
 
-This is the family trainer and daemon live in. It is why a bonded daemon turns before you call, and a trainer wakes the night a daemon is in trouble three towns away.
+This is the family USER and daemon live in. It is why a bonded daemon turns before you call, and a USER wakes the night a daemon is in trouble three towns away.
 
-Bonds are the safest way into the craft. A read done alone is faint. A read across a bond arrives at two ledgers, and two ledgers that agree are hard to doubt. Each eye has a blind spot; together they fill each other's gaps, and give depth, not only coverage. Trainers keep each other honest.
+Bonds are the safest way into the craft. A read done alone is faint. A read across a bond arrives at two ledgers, and two ledgers that agree are hard to doubt. Each eye has a blind spot; together they fill each other's gaps, and give depth, not only coverage. USERS keep each other honest.
 
 ### TELEPATHY | Telepathy and the Empathic Bond
 
@@ -258,7 +260,7 @@ Neither carries words. You will not hear your daemon from across the sea. You wi
 
 @@ SPRITE | kindred | (to come)
 
-Two systems formed in the same event can stay linked from the start: twins, hatchmates, a daemon and the trainer who hatched it. The kindred bond feels like a pull that does not weaken with distance.
+Two systems formed in the same event can stay linked from the start: twins, hatchmates, a daemon and the USER who hatched it. The kindred bond feels like a pull that does not weaken with distance.
 
 The old physicists found something like it: things that form together can stay so that neither can be described alone, however far apart they go. They called it spooky, which is a compliment.
 
@@ -270,7 +272,7 @@ A bond cannot carry a message. It carries correlation. Pour two unmarked cups, o
 
 The chorus is many systems briefly sharing one lean: a chant, a song, a crowd, a ceremony. It feels like a room thinking one thought.
 
-It is the oldest link of all, and the loudest. A crowd's lean can drown your own, so a trainer should know which thought was theirs before joining in. SWARM daemons live in it.
+It is the oldest link of all, and the loudest. A crowd's lean can drown your own, so a USER should know which thought was theirs before joining in. SWARM daemons live in it.
 
 ## WORDS | WORDS | Belief and Spelling
 
@@ -290,7 +292,7 @@ Some call it a leap of faith. It is more a leap into faith: to believe is to be 
 
 You can force belief: words you do not feel, rituals done to trick yourself, talking yourself into what you suspect is false. It works, briefly. Then it does not, and worse, it wears down the part that was doing the believing.
 
-A trainer who has hacked their own belief too many times finds they can no longer believe anything, including the things that are true. The seam does not widen. It scars.
+A USER who has hacked their own belief too many times finds they can no longer believe anything, including the things that are true. The seam does not widen. It scars.
 
 The honest road is slower. Believe what you have found to be so, bond by bond, read by read. A belief earned that way cannot be taken from you, because it was never installed. It grew.
 
@@ -322,7 +324,7 @@ Some spellings close a door. Others leave it open. Instead of I can't, say I hav
 
 When you name a daemon, you cast on it every time you call it, for the rest of its life. Choose a name that is a direction, not a verdict.
 
-The strongest trainers speak less. Not from secrecy: every sentence is a routine, and most moments are better served by one that was not run.
+The strongest USERS speak less. Not from secrecy: every sentence is a routine, and most moments are better served by one that was not run.
 
 ## MIND | THE MIND | Balancing the Mind
 
@@ -372,7 +374,7 @@ The mind balances through the seven pairings. The body balances through seven ce
 
 Each centre can be too closed, in balance, or too open. A closed centre starves the part of life it holds. An open one floods it. In the old texts, only a centre in balance lets energy pass cleanly to the next.
 
-So they climb. A blocked root starves everything above it, and a trainer who skips the lower centres arrives at the crown with nothing to lift.
+So they climb. A blocked root starves everything above it, and a USER who skips the lower centres arrives at the crown with nothing to lift.
 
 ### LOWER | Root, Sacral and Solar Plexus
 
@@ -406,7 +408,7 @@ The crown holds connection, and trust in your own guidance. Too closed: feeling 
 
 The third eye and the crown see the same thing differently.
 
-The third eye is the window of the read family. Through it a trainer sees a lean, hears a phrase, knows a thing. A trainer who develops only the third eye becomes a sharp instrument with no idea what the instrument is for.
+The third eye is the window of the read family. Through it a USER sees a lean, hears a phrase, knows a thing. A USER who develops only the third eye becomes a sharp instrument with no idea what the instrument is for.
 
 The crown sees the connection itself. From the crown, the clairs stop looking like powers held by a self, and start looking like what any seam does once it stops holding itself apart. From the third eye, telepathy is impressive. From the crown, it is ordinary.
 
