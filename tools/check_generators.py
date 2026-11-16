@@ -294,6 +294,9 @@ SANDBOX_EXCUSED = {
     "romrelease":    "builds all four ROMs and files a release",
     "port_gamedata": "writes into the AI playtester's fork (engineAi), which is never sandboxed",
     "port_prompts":  "writes into the AI playtester's fork (engineAi), which is never sandboxed",
+    #  2026-11-16: it crashed here on companion/server/data/art -- the sandbox holds no companion/, and linking the real
+    #  one would let a sandboxed write reach it. Its report still runs in the plain check.
+    "shelfcovers":   "reads and writes the companion's shelf art (companion/server/data/art), a repo never sandboxed",
     "check_reach":   "a check, not a generator",
     #  T-476: it draws each daemon from the BUILT front.4bpp and normal.gbapal, which a fresh worktree has none of.
     "manual":        "reads the build's .4bpp and .gbapal pictures (gitignored), and writes the manual's PDF",
