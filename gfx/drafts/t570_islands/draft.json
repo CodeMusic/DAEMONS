@@ -1,0 +1,605 @@
+{
+ "ticket": "T-570",
+ "status": "DRAFT -- nothing approved (APPROVED_570 is empty)",
+ "base": "31adf3c19",
+ "kinds": {
+  "ladders": {
+   "name": "LADDERS",
+   "recommended": "A",
+   "options": [
+    {
+     "option": "A",
+     "title": "RUNGS AND RAILS (DRAFT)",
+     "line": "two straight rails and a flat rung every five pixels, outlined, lit rail left, its foot on its own shadow -- reads as a ladder at a glance"
+    },
+    {
+     "option": "B",
+     "title": "ROPE AND SLATS (DRAFT)",
+     "line": "a rope ladder: two twisted ropes and wide slats lashed across them, lit on top, shaded under"
+    },
+    {
+     "option": "C",
+     "title": "PEG POLE (DRAFT)",
+     "line": "one stout pole with pegs driven in left and right, turn about -- a climber's pole, the same gold"
+    }
+   ],
+   "objects": [
+    {
+     "tileset": "seafoam_islands",
+     "what": "the ladder (top 0x28E over foot 0x296)",
+     "tiles": [
+      10,
+      11,
+      12,
+      13,
+      26,
+      27,
+      28,
+      29
+     ],
+     "held": []
+    },
+    {
+     "tileset": "cave",
+     "what": "the ladder (top 0x28E over foot 0x296)",
+     "tiles": [
+      10,
+      11,
+      12,
+      13,
+      26,
+      27,
+      28,
+      29
+     ],
+     "held": []
+    },
+    {
+     "tileset": "mt_ember",
+     "what": "the ladder (top 0x28E over foot 0x296)",
+     "tiles": [
+      10,
+      11,
+      12,
+      13,
+      26,
+      27,
+      28,
+      29
+     ],
+     "held": []
+    },
+    {
+     "tileset": "navel_rock",
+     "what": "the ladder (top 0x28E over foot 0x296)",
+     "tiles": [
+      10,
+      11,
+      12,
+      13,
+      26,
+      27,
+      28,
+      29
+     ],
+     "held": []
+    },
+    {
+     "tileset": "digletts_cave",
+     "what": "the ladder (top 0x28E over foot 0x296)",
+     "tiles": [
+      10,
+      11,
+      12,
+      13,
+      26,
+      27,
+      28,
+      29
+     ],
+     "held": []
+    },
+    {
+     "tileset": "seafoam_islands",
+     "what": "the ladder down a hole (0x285)",
+     "tiles": [
+      8,
+      9,
+      24,
+      25
+     ],
+     "held": []
+    }
+   ],
+   "of_134": 34,
+   "t569_redrawn": 10
+  },
+  "holes": {
+   "name": "HOLES AND RIMS",
+   "recommended": "A",
+   "options": [
+    {
+     "option": "A",
+     "title": "BROKEN LIP (DRAFT)",
+     "line": "an uneven lip in the place's own rim colour, the far wall seen falling away inside, the near edge lit -- a drop, not a black disc"
+    },
+    {
+     "option": "B",
+     "title": "STEPPED SHAFT (DRAFT)",
+     "line": "a round shaft that steps down in rings -- rim, wall, a ledge, wall -- to a smaller black: deep"
+    },
+    {
+     "option": "C",
+     "title": "SPLINTERED (DRAFT)",
+     "line": "a jagged break with cracks running out into the floor, as if it gave way under someone"
+    }
+   ],
+   "objects": [
+    {
+     "tileset": "seafoam_islands",
+     "what": "the fall hole (0x286)",
+     "tiles": [
+      6,
+      7,
+      22,
+      23
+     ],
+     "held": []
+    },
+    {
+     "tileset": "cave",
+     "what": "the fall hole (0x286)",
+     "tiles": [
+      6,
+      7
+     ],
+     "held": []
+    },
+    {
+     "tileset": "seafoam_islands",
+     "what": "the ice hole (0x35B, after cracked ice)",
+     "tiles": [
+      234,
+      235,
+      250,
+      251
+     ],
+     "held": []
+    }
+   ],
+   "of_134": 10,
+   "t569_redrawn": 0
+  },
+  "ice": {
+   "name": "SLIDE ICE",
+   "recommended": "A",
+   "options": [
+    {
+     "option": "A",
+     "title": "GLARE AND GLINT (DRAFT)",
+     "line": "polished ice: deeper cyan, a soft-edged white glare and a thin one across every block, and a four-point glint -- slippery at a glance"
+    },
+    {
+     "option": "B",
+     "title": "SKATE-SCORED (DRAFT)",
+     "line": "pale ice scored with long curved blade marks, a rink someone has already slid across"
+    },
+    {
+     "option": "C",
+     "title": "FACETS (DRAFT)",
+     "line": "the ice cut into flat facets, each lit its own way with a fine seam between -- glassy, less slippery"
+    }
+   ],
+   "objects": [
+    {
+     "tileset": "seafoam_islands",
+     "what": "the slide ice (0x34B)",
+     "tiles": [
+      261,
+      262,
+      273,
+      274
+     ],
+     "held": []
+    },
+    {
+     "tileset": "seafoam_islands",
+     "what": "the slide ice's frosted edge (0x346)",
+     "tiles": [
+      260,
+      274,
+      277
+     ],
+     "held": []
+    },
+    {
+     "tileset": "seafoam_islands",
+     "what": "the floor's frosted edge (0x34C)",
+     "tiles": [
+      263,
+      275
+     ],
+     "held": []
+    },
+    {
+     "tileset": "seafoam_islands",
+     "what": "thin ice (0x359)",
+     "tiles": [
+      230,
+      231,
+      246,
+      247
+     ],
+     "held": []
+    },
+    {
+     "tileset": "seafoam_islands",
+     "what": "cracked ice (0x35A)",
+     "tiles": [
+      232,
+      233,
+      248,
+      249
+     ],
+     "held": []
+    }
+   ],
+   "of_134": 14,
+   "t569_redrawn": 2
+  },
+  "other": {
+   "name": "OTHER PIECES",
+   "recommended": "A",
+   "options": [
+    {
+     "option": "A",
+     "title": "IN KEEPING (DRAFT)",
+     "line": "each last piece drawn in its place's approved look: boards on the harbour's red, the spa's ripples, embers in the steps, berries in clusters, a press plate, lit pebbles"
+    },
+    {
+     "option": "B",
+     "title": "QUIET (DRAFT)",
+     "line": "the same pieces with one mark each instead of several -- the least drawing that is no longer pret's"
+    }
+   ],
+   "objects": [
+    {
+     "tileset": "seafoam_islands",
+     "what": "a boulder's lit cap (0x283)",
+     "tiles": [
+      158
+     ],
+     "held": [
+      159,
+      174,
+      175
+     ]
+    },
+    {
+     "tileset": "seafoam_islands",
+     "what": "a boulder on ice, its lit cap (0x347)",
+     "tiles": [
+      108
+     ],
+     "held": [
+      109,
+      124,
+      125
+     ]
+    },
+    {
+     "tileset": "navel_rock",
+     "what": "the rubble (0x283)",
+     "tiles": [
+      174
+     ],
+     "held": [
+      158,
+      159,
+      175
+     ]
+    },
+    {
+     "tileset": "cave",
+     "what": "the press plate (0x2C0, the STRENGTH button)",
+     "tiles": [
+      192,
+      193,
+      208,
+      209
+     ],
+     "held": []
+    },
+    {
+     "tileset": "mt_ember",
+     "what": "the spa's water (0x331 over 0x339)",
+     "tiles": [
+      231,
+      247
+     ],
+     "held": []
+    },
+    {
+     "tileset": "mt_ember",
+     "what": "the spa's corner (0x330)",
+     "tiles": [
+      230,
+      247
+     ],
+     "held": []
+    },
+    {
+     "tileset": "berry_forest",
+     "what": "the berry patch (0x282)",
+     "tiles": [
+      8,
+      9,
+      24,
+      25
+     ],
+     "held": []
+    },
+    {
+     "tileset": "island_harbor",
+     "what": "the hall's red wall (0x290 over 0x298)",
+     "tiles": [
+      7,
+      8,
+      23,
+      24,
+      37,
+      38
+     ],
+     "held": [
+      21,
+      22
+     ]
+    },
+    {
+     "tileset": "island_harbor",
+     "what": "the hall's corner (0x2C4)",
+     "tiles": [
+      7,
+      37,
+      130,
+      146
+     ],
+     "held": []
+    },
+    {
+     "tileset": "island_harbor",
+     "what": "the hall's corner (0x2C6)",
+     "tiles": [
+      7,
+      37,
+      130,
+      146
+     ],
+     "held": []
+    },
+    {
+     "tileset": "island_harbor",
+     "what": "the skirt by the steps (0x2CC)",
+     "tiles": [
+      23
+     ],
+     "held": []
+    },
+    {
+     "tileset": "island_harbor",
+     "what": "the skirt by the steps (0x2CE)",
+     "tiles": [
+      23,
+      162
+     ],
+     "held": []
+    },
+    {
+     "tileset": "sevii_islands_123",
+     "what": "the stall front (0x2A1)",
+     "tiles": [
+      118
+     ],
+     "held": [
+      119
+     ]
+    },
+    {
+     "tileset": "seafoam_islands",
+     "what": "the trickle down the wall (0x2EE)",
+     "tiles": [
+      252,
+      253
+     ],
+     "held": []
+    },
+    {
+     "tileset": "seafoam_islands",
+     "what": "its pool (0x2F6)",
+     "tiles": [
+      254,
+      255
+     ],
+     "held": []
+    },
+    {
+     "tileset": "cave",
+     "what": "the trickle down the wall (0x2EE)",
+     "tiles": [
+      252,
+      253
+     ],
+     "held": []
+    },
+    {
+     "tileset": "cave",
+     "what": "its pool (0x2F6)",
+     "tiles": [
+      254,
+      255
+     ],
+     "held": []
+    },
+    {
+     "tileset": "mt_ember",
+     "what": "the trickle down the wall (0x2EE)",
+     "tiles": [
+      252,
+      253
+     ],
+     "held": []
+    },
+    {
+     "tileset": "mt_ember",
+     "what": "its pool (0x2F6)",
+     "tiles": [
+      254,
+      255
+     ],
+     "held": []
+    }
+   ],
+   "of_134": 36,
+   "t569_redrawn": 0
+  }
+ },
+ "drawn": [
+  "berry_forest 24",
+  "berry_forest 25",
+  "berry_forest 8",
+  "berry_forest 9",
+  "cave 10",
+  "cave 11",
+  "cave 192",
+  "cave 193",
+  "cave 208",
+  "cave 209",
+  "cave 252",
+  "cave 253",
+  "cave 254",
+  "cave 255",
+  "cave 28",
+  "cave 6",
+  "cave 7",
+  "digletts_cave 11",
+  "digletts_cave 28",
+  "digletts_cave 29",
+  "island_harbor 130",
+  "island_harbor 146",
+  "island_harbor 162",
+  "island_harbor 23",
+  "island_harbor 24",
+  "island_harbor 37",
+  "island_harbor 38",
+  "island_harbor 7",
+  "island_harbor 8",
+  "mt_ember 10",
+  "mt_ember 11",
+  "mt_ember 12",
+  "mt_ember 13",
+  "mt_ember 230",
+  "mt_ember 231",
+  "mt_ember 247",
+  "mt_ember 252",
+  "mt_ember 253",
+  "mt_ember 254",
+  "mt_ember 255",
+  "mt_ember 26",
+  "mt_ember 27",
+  "mt_ember 28",
+  "mt_ember 29",
+  "navel_rock 10",
+  "navel_rock 11",
+  "navel_rock 12",
+  "navel_rock 13",
+  "navel_rock 174",
+  "navel_rock 26",
+  "navel_rock 27",
+  "navel_rock 28",
+  "navel_rock 29",
+  "seafoam_islands 10",
+  "seafoam_islands 108",
+  "seafoam_islands 11",
+  "seafoam_islands 12",
+  "seafoam_islands 13",
+  "seafoam_islands 158",
+  "seafoam_islands 22",
+  "seafoam_islands 23",
+  "seafoam_islands 230",
+  "seafoam_islands 231",
+  "seafoam_islands 232",
+  "seafoam_islands 233",
+  "seafoam_islands 234",
+  "seafoam_islands 235",
+  "seafoam_islands 24",
+  "seafoam_islands 246",
+  "seafoam_islands 247",
+  "seafoam_islands 248",
+  "seafoam_islands 249",
+  "seafoam_islands 25",
+  "seafoam_islands 250",
+  "seafoam_islands 251",
+  "seafoam_islands 252",
+  "seafoam_islands 253",
+  "seafoam_islands 254",
+  "seafoam_islands 255",
+  "seafoam_islands 26",
+  "seafoam_islands 261",
+  "seafoam_islands 262",
+  "seafoam_islands 263",
+  "seafoam_islands 27",
+  "seafoam_islands 273",
+  "seafoam_islands 274",
+  "seafoam_islands 277",
+  "seafoam_islands 28",
+  "seafoam_islands 29",
+  "seafoam_islands 6",
+  "seafoam_islands 7",
+  "seafoam_islands 8",
+  "seafoam_islands 9",
+  "sevii_islands_123 118"
+ ],
+ "left": {
+  "cave 16": "flat black (the void beyond a cave or over the harbour): nothing pret drew",
+  "cave 32": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "cave 37": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "cave 166": "a doorway or cave mouth (a door, gbadoors/gbaprimary's; THE DOTS' opened door is placed by its braille script)",
+  "cave 182": "a doorway or cave mouth (a door, gbadoors/gbaprimary's; THE DOTS' opened door is placed by its braille script)",
+  "island_harbor 9": "a railing's corner post: two-pixel rails that meet T-569's railing either side; drawn with them, if ever",
+  "island_harbor 16": "flat black (the void beyond a cave or over the harbour): nothing pret drew",
+  "island_harbor 148": "a doorway or cave mouth (a door, gbadoors/gbaprimary's; THE DOTS' opened door is placed by its braille script)",
+  "mt_ember 32": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "mt_ember 37": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "mt_ember 246": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "mt_ember 264": "one quarter or half of a piece whose other part another tool drew (the embers' steps beside 265/287, the red piling beside gbatowns' 364, NAVEL ROCK's summit light beside 79): a new drawing on this half alone would split the piece at the seam -- drawn with its other half, if ever (draw_embers, draw_pylon and draw_glow are kept for that)",
+  "mt_ember 266": "one quarter or half of a piece whose other part another tool drew (the embers' steps beside 265/287, the red piling beside gbatowns' 364, NAVEL ROCK's summit light beside 79): a new drawing on this half alone would split the piece at the seam -- drawn with its other half, if ever (draw_embers, draw_pylon and draw_glow are kept for that)",
+  "mt_ember 286": "one quarter or half of a piece whose other part another tool drew (the embers' steps beside 265/287, the red piling beside gbatowns' 364, NAVEL ROCK's summit light beside 79): a new drawing on this half alone would split the piece at the seam -- drawn with its other half, if ever (draw_embers, draw_pylon and draw_glow are kept for that)",
+  "navel_rock 32": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "navel_rock 37": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "navel_rock 94": "one quarter or half of a piece whose other part another tool drew (the embers' steps beside 265/287, the red piling beside gbatowns' 364, NAVEL ROCK's summit light beside 79): a new drawing on this half alone would split the piece at the seam -- drawn with its other half, if ever (draw_embers, draw_pylon and draw_glow are kept for that)",
+  "rock_tunnel 11": "THE BLACKOUT (rock_tunnel): left as T-546 drew it -- its purple and glowing green link to the story (the user); its seven are seam slivers and its pools' rim, in T-546's purple",
+  "rock_tunnel 32": "THE BLACKOUT (rock_tunnel): left as T-546 drew it -- its purple and glowing green link to the story (the user); its seven are seam slivers and its pools' rim, in T-546's purple",
+  "rock_tunnel 37": "THE BLACKOUT (rock_tunnel): left as T-546 drew it -- its purple and glowing green link to the story (the user); its seven are seam slivers and its pools' rim, in T-546's purple",
+  "rock_tunnel 252": "THE BLACKOUT (rock_tunnel): left as T-546 drew it -- its purple and glowing green link to the story (the user); its seven are seam slivers and its pools' rim, in T-546's purple",
+  "rock_tunnel 253": "THE BLACKOUT (rock_tunnel): left as T-546 drew it -- its purple and glowing green link to the story (the user); its seven are seam slivers and its pools' rim, in T-546's purple",
+  "rock_tunnel 254": "THE BLACKOUT (rock_tunnel): left as T-546 drew it -- its purple and glowing green link to the story (the user); its seven are seam slivers and its pools' rim, in T-546's purple",
+  "rock_tunnel 255": "THE BLACKOUT (rock_tunnel): left as T-546 drew it -- its purple and glowing green link to the story (the user); its seven are seam slivers and its pools' rim, in T-546's purple",
+  "seafoam_islands 32": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_123 52": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_123 53": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_123 140": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_123 365": "one quarter or half of a piece whose other part another tool drew (the embers' steps beside 265/287, the red piling beside gbatowns' 364, NAVEL ROCK's summit light beside 79): a new drawing on this half alone would split the piece at the seam -- drawn with its other half, if ever (draw_embers, draw_pylon and draw_glow are kept for that)",
+  "sevii_islands_45 52": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_45 53": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_45 115": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_45 365": "one quarter or half of a piece whose other part another tool drew (the embers' steps beside 265/287, the red piling beside gbatowns' 364, NAVEL ROCK's summit light beside 79): a new drawing on this half alone would split the piece at the seam -- drawn with its other half, if ever (draw_embers, draw_pylon and draw_glow are kept for that)",
+  "sevii_islands_67 52": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_67 53": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_67 216": "a doorway or cave mouth (a door, gbadoors/gbaprimary's; THE DOTS' opened door is placed by its braille script)",
+  "sevii_islands_67 217": "a doorway or cave mouth (a door, gbadoors/gbaprimary's; THE DOTS' opened door is placed by its braille script)",
+  "sevii_islands_67 232": "a doorway or cave mouth (a door, gbadoors/gbaprimary's; THE DOTS' opened door is placed by its braille script)",
+  "sevii_islands_67 233": "a doorway or cave mouth (a door, gbadoors/gbaprimary's; THE DOTS' opened door is placed by its braille script)",
+  "sevii_islands_67 365": "one quarter or half of a piece whose other part another tool drew (the embers' steps beside 265/287, the red piling beside gbatowns' 364, NAVEL ROCK's summit light beside 79): a new drawing on this half alone would split the piece at the seam -- drawn with its other half, if ever (draw_embers, draw_pylon and draw_glow are kept for that)"
+ },
+ "unaccounted": []
+}

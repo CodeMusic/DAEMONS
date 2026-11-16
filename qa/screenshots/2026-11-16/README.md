@@ -19,3 +19,51 @@ The game in the Cardputer Zero program, filmed unseen every 150 frames from the 
 C-380 on the Mac: the game's own SAVE (START, SAVE, YES) reached a scratch companion's mirror by itself, byte for byte -- the strip says SENT. A test game (its name mashed with A), never the user's save.
 
 ![16Nov2026 - C380 - Cardputer Zero save sent to the hub - 3](16Nov2026%20-%20C380%20-%20Cardputer%20Zero%20save%20sent%20to%20the%20hub%20-%203.png)
+
+### 16Nov2026 - T570 - ladders drafted - 4
+
+T-570 DRAFT: the islands' and caves' last tiles -- ladders, today beside each option (objects at 4x, maps at 2x)
+
+![16Nov2026 - T570 - ladders drafted - 4](16Nov2026%20-%20T570%20-%20ladders%20drafted%20-%204.png)
+
+### 16Nov2026 - T570 - ladders drafted - 5
+
+T-570 DRAFT: the islands' and caves' last tiles -- ladders, today beside each option (objects at 4x, maps at 2x)
+
+![16Nov2026 - T570 - ladders drafted - 5](16Nov2026%20-%20T570%20-%20ladders%20drafted%20-%205.png)
+
+### 16Nov2026 - T570 - holes drafted - 6
+
+T-570 DRAFT: the islands' and caves' last tiles -- holes, today beside each option (objects at 4x, maps at 2x)
+
+![16Nov2026 - T570 - holes drafted - 6](16Nov2026%20-%20T570%20-%20holes%20drafted%20-%206.png)
+
+### 16Nov2026 - T570 - holes drafted - 7
+
+T-570 DRAFT: the islands' and caves' last tiles -- holes, today beside each option (objects at 4x, maps at 2x)
+
+![16Nov2026 - T570 - holes drafted - 7](16Nov2026%20-%20T570%20-%20holes%20drafted%20-%207.png)
+
+### 16Nov2026 - T570 - ice drafted - 8
+
+T-570 DRAFT: the islands' and caves' last tiles -- ice, today beside each option (objects at 4x, maps at 2x)
+
+![16Nov2026 - T570 - ice drafted - 8](16Nov2026%20-%20T570%20-%20ice%20drafted%20-%208.png)
+
+### 16Nov2026 - T570 - ice drafted - 9
+
+T-570 DRAFT: the islands' and caves' last tiles -- ice, today beside each option (objects at 4x, maps at 2x)
+
+![16Nov2026 - T570 - ice drafted - 9](16Nov2026%20-%20T570%20-%20ice%20drafted%20-%209.png)
+
+### 16Nov2026 - T570 - other drafted - 10
+
+T-570 DRAFT: the islands' and caves' last tiles -- other, today beside each option (objects at 4x, maps at 2x)
+
+![16Nov2026 - T570 - other drafted - 10](16Nov2026%20-%20T570%20-%20other%20drafted%20-%2010.png)
+
+### 16Nov2026 - T570 - other drafted - 11
+
+T-570 DRAFT: the islands' and caves' last tiles -- other, today beside each option (objects at 4x, maps at 2x)
+
+![16Nov2026 - T570 - other drafted - 11](16Nov2026%20-%20T570%20-%20other%20drafted%20-%2011.png)

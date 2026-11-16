@@ -14,6 +14,18 @@
                                                       #   user picked, drawn from BASE and laid over the engine's own
                                                       #   tiles.png; a second write is a no-op. EMPTY until picked.
 
+    T-570, the last 134 (ladders, holes, slide ice, the rest), drawn by hand as shapes -- its own section and picks:
+    python3 tools/gbaislands.py --t570                # report: per kind (ladders / holes and rims / slide ice /
+                                                      #   other) each object, what A/B/C draw, what is left and why;
+                                                      #   exits 1 when one of the 134 is unaccounted for or the engine
+                                                      #   differs from an approved T-570 pick
+    python3 tools/gbaislands.py --t570 --draft [DIR]  # the drafts into DIR (gfx/drafts/t570_islands/): per kind and
+                                                      #   option a tiles.png per tileset, draft.json
+    python3 tools/gbaislands.py --t570 --sheets [DIR] # --draft, and DIR/sheets: every object at 4x (today | A | B
+                                                      #   | C) and map crops at 2x (today from reviewsheet.py map)
+    python3 tools/gbaislands.py --t570 --write --approved  # APPROVED_570's picks over the engine's own tiles.png.
+                                                      #   EMPTY until picked.
+
 THE CENSUS (step 1). For each tileset of the batch: a tile is OURS when its pixels differ from pret's upstream/master;
 PRET'S AND REACHABLE when it is pret's, a metatile that draws it is placed on a map (its blockdata, its border, or a
 METATILE_ label a script or the C code sets), and that map is reachable; otherwise pret's but UNUSED (no placed metatile
@@ -645,6 +657,962 @@ def steam_sheet(path):
     return path
 
 
+# ================================================================== T-570: the last tiles, drawn by hand
+#  T-569 drew by re-cutting a tile's colour families, so a tile of one index (a flat red wall, the spa's water), or one
+#  whose shape IS the thing (a ladder, a hole, the slide ice), came through as pret's: 134 of them ("later" in
+#  t569_islands/draft.json). These are drawn as SHAPES, one object at a time -- the whole ladder, the whole hole, the
+#  whole ice block -- on a canvas cut from the blocks that show it, then cut back into its tiles. The rules: no block,
+#  layer, flip, palette row, behaviour, collision or animation frame moves; only indices the object already uses are
+#  drawn (the ladders keep their gold, gbacaves: "a ladder is a thing the player looks for"); a block's outer edge
+#  keeps its seam where a neighbour meets it. A tile in an object is written only when it is one of the 134 or one
+#  this tool's T-569 pick drew (an object is redrawn whole, so a ladder is one drawing, not pret's rails under T-569's
+#  rungs); anything another tool owns is left and named (LEFT_570). DRAFT until picked: APPROVED_570 is empty.
+BASE_570 = "31adf3c19"      # the engine as T-570 found it (origin/context-content, 2026-11-16; T-569's A built)
+DRAFT_570 = os.path.join(ROOT, "gfx", "drafts", "t570_islands")
+APPROVED_570 = {}           # {kind: option} -- the user's picks. EMPTY until picked.
+
+KINDS_570 = collections.OrderedDict([
+    ("ladders", dict(name="LADDERS", rec="A", options=[
+        ("A", "RUNGS AND RAILS (DRAFT)", "two straight rails and a flat rung every five pixels, outlined, lit rail "
+                                         "left, its foot on its own shadow -- reads as a ladder at a glance"),
+        ("B", "ROPE AND SLATS (DRAFT)", "a rope ladder: two twisted ropes and wide slats lashed across them, lit on "
+                                        "top, shaded under"),
+        ("C", "PEG POLE (DRAFT)", "one stout pole with pegs driven in left and right, turn about -- a climber's "
+                                  "pole, the same gold")])),
+    ("holes", dict(name="HOLES AND RIMS", rec="A", options=[
+        ("A", "BROKEN LIP (DRAFT)", "an uneven lip in the place's own rim colour, the far wall seen falling away "
+                                    "inside, the near edge lit -- a drop, not a black disc"),
+        ("B", "STEPPED SHAFT (DRAFT)", "a round shaft that steps down in rings -- rim, wall, a ledge, wall -- to a "
+                                       "smaller black: deep"),
+        ("C", "SPLINTERED (DRAFT)", "a jagged break with cracks running out into the floor, as if it gave way "
+                                    "under someone")])),
+    ("ice", dict(name="SLIDE ICE", rec="A", options=[
+        ("A", "GLARE AND GLINT (DRAFT)", "polished ice: deeper cyan, a soft-edged white glare and a thin one across "
+                                         "every block, and a four-point glint -- slippery at a glance"),
+        ("B", "SKATE-SCORED (DRAFT)", "pale ice scored with long curved blade marks, a rink someone has already "
+                                      "slid across"),
+        ("C", "FACETS (DRAFT)", "the ice cut into flat facets, each lit its own way with a fine seam between -- "
+                                "glassy, less slippery")])),
+    ("other", dict(name="OTHER PIECES", rec="A", options=[
+        ("A", "IN KEEPING (DRAFT)", "each last piece drawn in its place's approved look: boards on the harbour's "
+                                    "red, the spa's ripples, embers in the steps, berries in clusters, a press "
+                                    "plate, lit pebbles"),
+        ("B", "QUIET (DRAFT)", "the same pieces with one mark each instead of several -- the least drawing that is "
+                               "no longer pret's")])),
+])
+
+#  every object: (kind, tileset, what it is, the blocks that show it (rows of block ids), the layer, the drawing)
+#  -- filled below the drawings
+
+
+# ---------------------------------------------------------------- the canvas
+_B570, _T570 = {}, {}
+
+
+def base570(ts):
+    """TS's tiles as BASE_570 has them"""
+    if ts not in _B570:
+        _B570[ts] = T.tiles_of(Image.open(io.BytesIO(T.daemonslib.upstream(
+            GBA, T.SEC + ts + "/tiles.png", binary=True, ref=BASE_570))))
+    return _B570[ts]
+
+
+def town570(ts):
+    if ts not in _T570:
+        _T570[ts] = T.Town(ts)
+    return _T570[ts]
+
+
+def canvas(ts, grid, layer):
+    """(pixels, owners, rows): the layer of the blocks in GRID as one index picture; owners maps a pixel to the
+    (tile, index) a write goes back to, for a secondary tile (a general tile under it is never written)"""
+    town, tiles = town570(ts), base570(ts)
+    H, W = 16 * len(grid), 16 * len(grid[0])
+    pix = [[0] * W for _ in range(H)]
+    own, rows = {}, set()
+    for by, line in enumerate(grid):
+        for bx, b in enumerate(line):
+            e = T.entries(town.mt, b - 640)
+            for q in range(4):
+                v = e[layer * 4 + q]
+                t = v & 0x3FF
+                src = town.G["tiles"][t] if t < 640 else (tiles[t - 640] if t - 640 < len(tiles) else [0] * 64)
+                if t >= 640:
+                    rows.add(v >> 12)
+                for ty in range(8):
+                    for tx in range(8):
+                        sx = 7 - tx if v & 0x400 else tx
+                        sy = 7 - ty if v & 0x800 else ty
+                        Y, X = by * 16 + (q // 2) * 8 + ty, bx * 16 + (q % 2) * 8 + tx
+                        pix[Y][X] = src[sy * 8 + sx]
+                        if t >= 640:
+                            own[(Y, X)] = (t - 640, sy * 8 + sx)
+    return pix, own, rows
+
+
+def blank(h, w):
+    return [[0] * w for _ in range(h)]
+
+
+def put(P, x, y, c):
+    if 0 <= y < len(P) and 0 <= x < len(P[0]):
+        P[y][x] = c
+
+
+class R:
+    """an object's roles: names for the palette indices it already uses"""
+    def __init__(self, **kw):
+        self.__dict__.update(kw)
+
+
+# ---------------------------------------------------------------- LADDERS (16 x 32: the ladder's top block over its foot)
+#  the ladders' own indices, per cave: outline (o, and o2 on the shaded side), lit, body, shade, the floor shadow
+LAD = {"seafoam_islands": R(o=0xB, o2=0xB, hi=5, mid=7, lo=8, sh=(3, 4)),
+       "cave": R(o=0xB, o2=0xB, hi=5, mid=7, lo=8, sh=(3, 4)),
+       "mt_ember": R(o=0xB, o2=0xB, hi=5, mid=7, lo=8, sh=(3, 4)),
+       "navel_rock": R(o=0xB, o2=0xC, hi=1, mid=5, lo=7, sh=(9, 9)),
+       "digletts_cave": R(o=0x8, o2=0xC, hi=5, mid=6, lo=7, sh=(0xB, 0xB))}
+
+
+def _foot(P, r, xs):
+    """the ladder's feet (xs: the outline columns of each foot) and its shadow on the floor"""
+    for x in range(1, 15):
+        put(P, x, 30, r.sh[0])
+    for x in range(2, 14):
+        put(P, x, 31, r.sh[1])
+    for x0, x1 in xs:
+        for x in range(x0, x1 + 1):
+            put(P, x, 30, r.o)
+
+
+def ladder_A(r, h=32):
+    P = blank(h, 16)
+    for y in range(2, 30):
+        for x0, inner in ((3, r.hi), (10, r.mid)):
+            P[y][x0], P[y][x0 + 1], P[y][x0 + 2] = r.o, inner if y < 29 else r.lo, r.o2
+    for x0 in (3, 10):
+        P[2][x0], P[2][x0 + 2], P[2][x0 + 1] = 0, 0, r.o
+    for y in range(6, 28, 5):
+        for x in range(6, 10):
+            P[y - 1][x], P[y][x], P[y + 1][x] = r.o, r.mid, r.o2
+        P[y][5], P[y][10] = r.hi, r.mid
+    _foot(P, r, [(3, 5), (10, 12)])
+    return P
+
+
+def ladder_B(r, h=32):
+    P = blank(h, 16)
+    for y in range(1, 30):
+        tw = (y // 2) % 2
+        for x0 in (2, 11):
+            a, b = (r.mid, r.lo) if tw else (r.lo, r.mid)
+            if x0 == 2:
+                P[y][2], P[y][3], P[y][4] = r.o, a, b
+            else:
+                P[y][11], P[y][12], P[y][13] = a, b, r.o2
+    for y in range(4, 28, 6):
+        for x in range(1, 15):
+            P[y - 1][x], P[y + 2][x] = r.o, r.o2
+        for x in range(2, 14):
+            P[y][x], P[y + 1][x] = r.hi, r.lo
+        P[y][1] = P[y + 1][1] = r.o
+        P[y][14] = P[y + 1][14] = r.o2
+    _foot(P, r, [(2, 4), (11, 13)])
+    return P
+
+
+def ladder_C(r, h=32):
+    P = blank(h, 16)
+    for y in range(2, 30):
+        P[y][6], P[y][7], P[y][8], P[y][9] = r.o, r.hi if y < 29 else r.lo, r.mid if y < 29 else r.lo, r.o2
+    P[1][7] = P[1][8] = r.o
+    for i, y in enumerate(range(4, 28, 4)):
+        xs = range(2, 6) if i % 2 == 0 else range(10, 14)
+        for x in xs:
+            P[y - 1][x], P[y][x], P[y + 1][x] = r.o, r.mid, r.o2
+        P[y][2 if i % 2 == 0 else 13] = r.o
+        P[y][5 if i % 2 == 0 else 10] = r.hi
+    _foot(P, r, [(6, 9)])
+    return P
+
+
+LADDER_DRAW = {"A": ladder_A, "B": ladder_B, "C": ladder_C}
+
+
+def draw_ladder(ts):
+    def f(pix, opt):
+        return LADDER_DRAW[opt](LAD[ts], len(pix))
+    return f
+
+
+# ---------------------------------------------------------------- HOLES (16 x 16, the whole bottom layer)
+#  bg: the floor round it (a pixel of one of these keeps pret's), lip: the near edge lit, rim, wall (the far side seen
+#  falling away), black: the bottom you cannot see
+HOLE = {("seafoam_islands", 0x286): R(bg={1, 2, 3, 4}, base=2, lip=4, rim=0xA, wall=0xB, black=0xC),
+        ("seafoam_islands", 0x285): R(bg={1, 2, 3, 4}, base=2, lip=4, rim=0xA, wall=0xB, black=0xC),
+        ("cave", 0x286): R(bg={1, 2, 3, 4}, base=4, lip=3, rim=0xA, wall=0xB, black=0xC),
+        ("seafoam_islands", 0x35B): R(bg={5, 6, 7}, base=5, lip=6, rim=0xA, wall=0xC, black=0xF),
+        ("cave", 0x285): R(bg={1, 2, 3, 4}, base=4, lip=3, rim=0xA, wall=0xB, black=0xC),
+        ("mt_ember", 0x2AF): R(bg={1, 2, 3, 4}, base=4, lip=3, rim=0xB, wall=0xA, black=0xC),
+        ("navel_rock", 0x2AF): R(bg={2, 3, 4}, base=4, lip=3, rim=0xA, wall=0xB, black=0xC),
+        ("navel_rock", 0x286): R(bg={2, 3, 4}, base=4, lip=3, rim=0xA, wall=0xB, black=0xC),
+        ("digletts_cave", 0x2AF): R(bg={1, 2, 3, 4}, base=3, lip=2, rim=4, wall=0xB, black=0xC)}
+#  DEADSTACK's hole: its lower half (22, 23) is drawn by others (T-569 and the cave look), so only its upper half takes
+#  the option and meets that lower half where it is
+HOLE[("cave", 0x286)].keep_rows = range(8, 16)
+
+
+def _hole_mask(opt):
+    """{(x, y): class} for a 16x16 hole: 'rim', 'in', or absent (floor); class 'crack' for C's rays"""
+    import math
+    out = {}
+    for y in range(1, 15):
+        for x in range(1, 15):
+            dx, dy = x + 0.5 - 8.0, y + 0.5 - 8.0
+            a, d = math.atan2(dy, dx), math.hypot(dx, dy)
+            if opt == "A":
+                rr = 6.3 + 0.55 * math.sin(3 * a + 1.0) + 0.35 * math.sin(5 * a + 2.0)
+            elif opt == "B":
+                rr = 6.6
+            else:
+                rr = 5.4 + 1.3 * abs(math.sin(2.5 * a + 0.4)) ** 3
+            if d <= rr - 1.0:
+                out[(x, y)] = ("in", d / rr)
+            elif d <= rr:
+                out[(x, y)] = ("rim", d / rr)
+    if opt == "C":
+        for a in (0.55, 2.2, 3.7, 5.3):
+            for s in range(5, 15):
+                x, y = int(8.0 + math.cos(a) * s * 0.5 + 0.0), int(8.0 + math.sin(a) * s * 0.5)
+                if 1 <= x <= 14 and 1 <= y <= 14 and (x, y) not in out:
+                    out[(x, y)] = ("crack", 1.0)
+    return out
+
+
+def hole(pix, opt, r):
+    P = [row[:] for row in pix]
+    m = _hole_mask(opt)
+    for y in range(16):
+        for x in range(16):
+            if (x, y) not in m and P[y][x] not in r.bg:
+                P[y][x] = r.base
+    for (x, y), (c, d) in m.items():
+        if c == "crack":
+            P[y][x] = r.rim
+            continue
+        if c == "rim":
+            P[y][x] = r.rim
+            continue
+        up = m.get((x, y - 1), ("out",))[0]
+        up2 = m.get((x, y - 2), ("out",))[0]
+        if opt == "B":
+            P[y][x] = r.wall if d > 0.72 else (r.rim if d > 0.62 else (r.wall if d > 0.45 and y < 8 else r.black))
+        elif up != "in" or (up2 != "in" and y < 8):
+            P[y][x] = r.wall
+        else:
+            P[y][x] = r.black
+    #  the near edge, lit: the floor just under the rim on the bottom half
+    for (x, y), (c, d) in m.items():
+        if c == "rim" and y >= 8 and (x, y + 1) not in m and 1 <= y + 1 <= 14:
+            P[y + 1][x] = r.lip
+    for y in getattr(r, "keep_rows", ()):
+        P[y] = pix[y][:]
+    return P
+
+
+def draw_hole(ts, b):
+    def f(pix, opt):
+        return hole(pix, opt, HOLE[(ts, b)])
+    return f
+
+
+def draw_ladder_hole(ts, b):
+    """a ladder going down a hole (GLAUCOUS ISLES' 0x285): the hole as HOLES A draws it, the ladder's top in the
+    ladder option, its rails running into the dark"""
+    def f(pix, opt):
+        P = hole(pix, "A", HOLE[(ts, b)])
+        lad = LADDER_DRAW[opt](LAD[ts], 32)
+        for y in range(16):
+            for x in range(16):
+                v = lad[y + 4][x]
+                if v and y >= 2:
+                    P[y][x] = v if y < 12 or v in (LAD[ts].o, LAD[ts].o2) else HOLE[(ts, b)].wall
+        return P
+    return f
+
+
+# ---------------------------------------------------------------- SLIDE ICE (16-pixel periodic; only ice pixels drawn)
+ICE = R(ice={5, 6, 7}, shade=5, base=6, light=7, deep=(8, 9, 0xA), crack=0xB)
+
+
+def ice_at(opt, x, y):
+    """the slide ice's index at block pixel (x, y), period 16 both ways, so blocks tile and every edge seams"""
+    import math
+    x, y = x % 16, y % 16
+    if opt == "A":
+        d = (x + y) % 16
+        if (x, y) == (13, 9) or (abs(x - 13) + abs(y - 9) == 1):
+            return ICE.light
+        if d == 3 or d == 10:
+            return ICE.light
+        if d in (2, 4):
+            return ICE.base
+        return ICE.shade
+    if opt == "B":
+        for cx, cy, rr in ((-3, 19, 15.0), (19, 21, 12.5), (6, -9, 13.0)):
+            for kx in (-16, 0, 16):
+                for ky in (-16, 0, 16):
+                    if abs(math.hypot(x + 0.5 - cx - kx, y + 0.5 - cy - ky) - rr) < 0.55:
+                        return ICE.shade
+        if (x, y) in ((4, 4), (12, 11)):
+            return ICE.light
+        return ICE.base
+    seeds = [(3, 4, ICE.light), (11, 2, ICE.base), (6, 11, ICE.base), (13, 12, ICE.shade)]
+    ds = []
+    for sx, sy, c in seeds:
+        for kx in (-16, 0, 16):
+            for ky in (-16, 0, 16):
+                ds.append((math.hypot(x + 0.5 - sx - kx, y + 0.5 - sy - ky), c))
+    ds.sort()
+    if ds[1][0] - ds[0][0] < 0.9:
+        return ICE.shade if ds[0][1] != ICE.shade else ICE.base
+    return ds[0][1]
+
+
+def draw_ice(pix, opt):
+    return [[ice_at(opt, x, y) if pix[y][x] in ICE.ice else pix[y][x] for x in range(len(pix[0]))]
+            for y in range(len(pix))]
+
+
+def _pane(x, y):
+    """thin ice's pane: a rounded square inside the block -> 0 outside, 1 its edge, 2 the ring in, 3 the middle"""
+    if not (2 <= x <= 13 and 2 <= y <= 13) or min(x - 2, 13 - x) + min(y - 2, 13 - y) < 2:
+        return 0
+    e = min(x - 2, 13 - x, y - 2, 13 - y)
+    corner = min(x - 2, 13 - x) + min(y - 2, 13 - y)
+    if e == 0 or corner == 2:
+        return 1
+    if e == 1 or corner == 3:
+        return 2
+    return 3
+
+
+CRACKS = [(7, 8), (6, 7), (5, 6), (4, 6), (3, 5), (8, 7), (9, 6), (9, 5), (10, 4), (11, 3), (8, 9), (9, 10), (10, 10),
+          (11, 11), (12, 12), (6, 9), (5, 10), (5, 11), (4, 12), (7, 10), (7, 11), (8, 12), (2, 5), (12, 2), (13, 13),
+          (3, 13), (10, 9), (11, 8), (12, 8)]
+
+
+def thin_ice(opt, cracked=False):
+    def f(pix, o):
+        P = [[0] * 16 for _ in range(16)]
+        for y in range(16):
+            for x in range(16):
+                k = _pane(x, y)
+                if k == 0:
+                    P[y][x] = ice_at(o, x, y)
+                else:
+                    P[y][x] = ICE.deep[k - 1]
+                    if k == 3:
+                        if o == "A" and (x + y) % 16 in (13, 14):
+                            P[y][x] = ICE.deep[0]
+                        if o == "B" and abs(((x - 3) ** 2 + (y - 15) ** 2) ** 0.5 - 10.0) < 0.6:
+                            P[y][x] = ICE.deep[0]
+                        if o == "C" and (x == 7 or y == 8):
+                            P[y][x] = ICE.deep[1]
+        if cracked:
+            for (x, y) in CRACKS:
+                P[y][x] = ICE.light
+                if x + 1 < 16 and (x + 1, y) not in CRACKS and _pane(x + 1, y):
+                    P[y][x + 1] = ICE.crack
+        return P
+    return f
+
+
+# ---------------------------------------------------------------- OTHER PIECES
+def keep_border(P, pix):
+    """a block's outer ring keeps pret's pixels: where a neighbour meets it, the seam stays"""
+    h, w = len(P), len(P[0])
+    for y in range(h):
+        for x in range(w):
+            if x in (0, w - 1) or y in (0, h - 1):
+                P[y][x] = pix[y][x]
+    return P
+
+
+def draw_trickle(pix, opt):
+    """the trickle down a cave wall into its pool (252/253): A, falling water -- light dashes down its lit side, a
+    drop every fourth pixel on its far one; B, one lit edge, still. Its own two waters, d and e"""
+    P = [row[:] for row in pix]
+    for y in range(16):
+        for x in range(16):
+            if not pix[y][x]:
+                continue
+            if opt == "B":
+                P[y][x] = 0xD if x < 15 else 0xE
+            elif x < 15:
+                P[y][x] = 0xD if (y // 2) % 2 == 0 else 0xE
+            else:
+                P[y][x] = 0xD if y % 4 == 1 else 0xE
+    return P
+
+
+def draw_pool(pix, opt):
+    """the pool the trickle falls into (254/255): rings spreading from where it lands (A), or one lit near edge (B)"""
+    P = [row[:] for row in pix]
+    for y in range(16):
+        for x in range(16):
+            if not pix[y][x]:
+                continue
+            if opt == "A":
+                d = ((x + 0.5 - 15.5) ** 2 + ((y + 0.5) * 1.6) ** 2) ** 0.5
+                P[y][x] = 0xD if abs(d - 4.5) < 0.6 or abs(d - 9.5) < 0.6 or abs(d - 14.5) < 0.6 else 0xE
+            else:
+                P[y][x] = 0xD if y + 1 < 16 and not pix[y + 1][x] else 0xE
+    return P
+
+
+SPA_A = {(1, 1): 2, (2, 2): 2, (3, 2): 2, (4, 1): 2, (6, 7): 2, (7, 7): 2}
+SPA_B = {(2, 2): 2, (3, 2): 2}
+
+
+def draw_spa(pix, opt):
+    """MT. SMOULDER's spa water (one index, 247 laid 2 x 2): small ripple marks on an eight-pixel beat, never in a
+    tile's rows 5 and 6, so the far edge's reflection band (230/231) is kept as it is"""
+    marks = SPA_A if opt == "A" else SPA_B
+    P = [row[:] for row in pix]
+    for y in range(len(pix)):
+        for x in range(len(pix[0])):
+            if pix[y][x] == 1:
+                P[y][x] = marks.get((x % 8, y % 8), 1)
+    return P
+
+
+def draw_embers(pix, opt):
+    """the embers in MT. SMOULDER's steps (264/266/286): pret's yellow dither, gone; two coals a tile (A) or one (B),
+    each a lit point over a dull one, set in the stone's own body"""
+    P = [row[:] for row in pix]
+    for y in range(16):
+        for x in range(16):
+            if pix[y][x] == 6:
+                P[y][x] = 0xD
+    coals = [(3, 9), (11, 10)] if opt == "A" else [(4, 9)]
+    for cx, cy in coals:
+        for (dx, dy, c) in ((0, 0, 6), (1, 0, 6), (0, 1, 0xE), (1, 1, 6) if opt == "A" else (1, 1, 0xE)):
+            if pix[cy + dy][cx + dx] in (5, 6, 0xD, 0xE):
+                P[cy + dy][cx + dx] = c
+    return P
+
+
+def draw_button(pix, opt):
+    """VICTORY ROAD's press plate (the STRENGTH button, primary row 2): its round outline kept; a lit dome, its rim
+    under it, and (A) a pressed-in chevron that says push something here"""
+    import math
+    P = [row[:] for row in pix]
+    for y in range(16):
+        for x in range(16):
+            c = pix[y][x]
+            if c in (1, 2, 4):
+                d = math.hypot(x + 0.5 - 7.0, y + 0.5 - 6.0)
+                P[y][x] = 4 if y >= 11 else (1 if d < 3.2 and (x + y) < 13 else 2)
+    if opt == "A":
+        for y, xs in ((5, range(5, 11)), (6, range(6, 10)), (7, range(7, 9))):
+            for x in xs:
+                P[y][x] = 4
+    else:
+        for x, y in ((7, 6), (8, 6)):
+            P[y][x] = 4
+    return P
+
+
+def relight(lit, body, shade, keep, quiet=False):
+    """pebbles and boulder caps: every blob lit from its upper left -- the light reaches as far as the blob goes
+    up-left of it (two steps lit, then the body, the shade at its foot); pixels of KEEP (outlines) stay"""
+    def f(pix, opt):
+        P = [row[:] for row in pix]
+        h, w = len(pix), len(pix[0])
+        for y in range(h):
+            for x in range(w):
+                c = pix[y][x]
+                if not c or c in keep:
+                    continue
+                k = 0
+                while 0 <= y - k - 1 and 0 <= x - k - 1 and pix[y - k - 1][x - k - 1] and \
+                        pix[y - k - 1][x - k - 1] not in keep:
+                    k += 1
+                j = 0
+                while y + j + 1 < h and x + j + 1 < w and pix[y + j + 1][x + j + 1] and \
+                        pix[y + j + 1][x + j + 1] not in keep:
+                    j += 1
+                if opt == "B":
+                    P[y][x] = lit if (k == 1 and j >= 3) else (shade if j == 0 else body)
+                else:
+                    P[y][x] = lit if k <= 1 else (shade if j <= 1 else body)
+        return P
+    return f
+
+
+def draw_glow(pix, opt):
+    """NAVEL ROCK's summit light (94, with 79 beside it): pret's dithered fall-off as bands, brightest at the top --
+    four (A), or two with one dithered row each between (B)"""
+    P = [row[:] for row in pix]
+    bands = {0: 8, 1: 7, 2: 6, 3: 6, 4: 5, 5: 5, 6: 5} if opt == "A" else {0: 8, 1: 7, 2: 7, 3: 6, 4: 6, 5: 5, 6: 5}
+    for y in range(7):
+        for x in range(len(pix[0])):
+            if pix[y][x] in (5, 6, 7, 8):
+                P[y][x] = bands[y] if not (opt == "B" and y in (1, 3) and x % 2) else bands[y + 1]
+    return P
+
+
+def draw_berries(pix, opt):
+    """DENSE WOOD's berry patch: pret's checker of leaves cleared, the berries in round clusters (three, lit at the
+    top left) on leaf sprigs, two small white flowers; B, two clusters and no flowers. The ring keeps its seams"""
+    P = blank(16, 16)
+    leaf, berry, lit, white = 0xC, 0xE, 0xB, 0xD
+    clusters = [(3, 3), (10, 8), (4, 11)] if opt == "A" else [(4, 4), (10, 10)]
+    for cx, cy in clusters:
+        for dx, dy in ((-2, 1), (-1, 2), (2, -1), (3, 0), (1, 3)):
+            put(P, cx + dx, cy + dy, leaf)
+        for bx, by in ((0, 0), (2, 1), (0, 2)):
+            for dx, dy in ((0, 0), (1, 0), (0, 1), (1, 1)):
+                put(P, cx + bx + dx, cy + by + dy, berry)
+            put(P, cx + bx, cy + by, lit)
+    if opt == "A":
+        for fx, fy in ((12, 3), (8, 13)):
+            for dx, dy in ((0, 0), (1, 0), (-1, 0), (0, 1), (0, -1)):
+                put(P, fx + dx, fy + dy, white)
+            put(P, fx, fy, berry)
+    return keep_border(P, pix)
+
+
+def draw_harbour(pix, opt):
+    """the harbour halls' red walls and yellow skirt (one index each): A, boards -- a tarred seam every fourth row on
+    the red, a batten every eighth pixel on the yellow; B, the red's laps lit instead, the skirt left plain"""
+    P = [row[:] for row in pix]
+    for y in range(len(pix)):
+        for x in range(len(pix[0])):
+            c = pix[y][x]
+            if c == 0xB and y % 4 == 3:
+                P[y][x] = 2 if opt == "A" else 0xD
+            elif c == 0xC and opt == "A" and x % 8 == 7:
+                P[y][x] = 0xE
+    return P
+
+
+def draw_pylon(pix, opt):
+    """the islands' red piling (365, in the sea by the halls): its cap and outline kept; the web between the rails a
+    bolted cross-brace (A) or a plain girder with a rivet row (B)"""
+    P = [row[:] for row in pix]
+    for y in range(2, 6):
+        for x in range(0, 14):
+            if opt == "A":
+                a = 2 + round(x * 3 / 13.0)
+                b = 5 - round(x * 3 / 13.0)
+                P[y][x] = 0xD if y in (a, b) else (0xE if y - 1 in (a, b) else 0)
+            else:
+                P[y][x] = 0xD if y < 4 else 0xE
+                if y == 3 and x % 4 == 1:
+                    P[y][x] = 0xA
+    return P
+
+
+def draw_stall(pix, opt):
+    """TWO ISLAND's stall front (118): its red body in slats (A) or lit along its top (B); frame and slot kept"""
+    P = [row[:] for row in pix]
+    for y in range(8, 16):
+        for x in range(16):
+            if pix[y][x] == 0xD:
+                if opt == "A" and y % 2 == 1:
+                    P[y][x] = 0xC
+                if opt == "B" and y == 10:
+                    P[y][x] = 0xC
+    return P
+
+
+#  NOT objects here: the ladders down a hole in DEADSTACK, MT. SMOULDER, NAVEL ROCK and TAPPOINT'S (0x285/0x2AF) and
+#  NAVEL ROCK's fall hole are the cave look's (gbacaves) and still draw pret's slanted ladder -- if a ladder option is
+#  picked, they want the same ladder there, drawn by that tool (the T-570 report names it)
+#  the objects: (kind, tileset, what, grid of blocks, layer, drawing). A pair of blocks that share tiles (0x2F6/0x2F7, a
+#  ladder's 0x296/0x297) is drawn once: the other shows the same tiles, mirrored or not
+OBJECTS_570 = []
+for _ts in ("seafoam_islands", "cave", "mt_ember", "navel_rock", "digletts_cave"):
+    OBJECTS_570.append(("ladders", _ts, "the ladder (top 0x28E over foot 0x296)", [[0x28E], [0x296]], 1,
+                        draw_ladder(_ts)))
+OBJECTS_570 += [
+    ("ladders", "seafoam_islands", "the ladder down a hole (0x285)", [[0x285]], 0,
+     draw_ladder_hole("seafoam_islands", 0x285)),
+    ("holes", "seafoam_islands", "the fall hole (0x286)", [[0x286]], 0, draw_hole("seafoam_islands", 0x286)),
+    ("holes", "cave", "the fall hole (0x286)", [[0x286]], 0, draw_hole("cave", 0x286)),
+    ("holes", "seafoam_islands", "the ice hole (0x35B, after cracked ice)", [[0x35B]], 0,
+     draw_hole("seafoam_islands", 0x35B)),
+    ("ice", "seafoam_islands", "the slide ice (0x34B)", [[0x34B]], 0, lambda p, o: draw_ice(p, o)),
+    ("ice", "seafoam_islands", "the slide ice's frosted edge (0x346)", [[0x346]], 0, lambda p, o: draw_ice(p, o)),
+    ("ice", "seafoam_islands", "the floor's frosted edge (0x34C)", [[0x34C]], 0, lambda p, o: draw_ice(p, o)),
+    ("ice", "seafoam_islands", "thin ice (0x359)", [[0x359]], 0, None),
+    ("ice", "seafoam_islands", "cracked ice (0x35A)", [[0x35A]], 0, None),
+    ("other", "seafoam_islands", "a boulder's lit cap (0x283)", [[0x283]], 1, relight(9, 8, 0xA, {0xD, 0xE, 0xC})),
+    ("other", "seafoam_islands", "a boulder on ice, its lit cap (0x347)", [[0x347]], 1,
+     relight(9, 8, 0xA, {0xD, 0xE, 0xC})),
+    ("other", "navel_rock", "the rubble (0x283)", [[0x283]], 1, relight(9, 0xC, 0xD, {0xE})),
+    ("other", "cave", "the press plate (0x2C0, the STRENGTH button)", [[0x2C0]], 1, draw_button),
+    ("other", "mt_ember", "the spa's water (0x331 over 0x339)", [[0x331], [0x339]], 0, draw_spa),
+    ("other", "mt_ember", "the spa's corner (0x330)", [[0x330]], 0, draw_spa),
+    ("other", "berry_forest", "the berry patch (0x282)", [[0x282]], 1, draw_berries),
+    ("other", "island_harbor", "the hall's red wall (0x290 over 0x298)", [[0x290], [0x298]], 0, draw_harbour),
+    ("other", "island_harbor", "the hall's corner (0x2C4)", [[0x2C4]], 0, draw_harbour),
+    ("other", "island_harbor", "the hall's corner (0x2C6)", [[0x2C6]], 0, draw_harbour),
+    ("other", "island_harbor", "the skirt by the steps (0x2CC)", [[0x2CC]], 0, draw_harbour),
+    ("other", "island_harbor", "the skirt by the steps (0x2CE)", [[0x2CE]], 0, draw_harbour),
+    ("other", "sevii_islands_123", "the stall front (0x2A1)", [[0x2A1]], 1, draw_stall),
+]
+for _ts in ("seafoam_islands", "cave", "mt_ember"):
+    OBJECTS_570 += [("other", _ts, "the trickle down the wall (0x2EE)", [[0x2EE]], 1, draw_trickle),
+                    ("other", _ts, "its pool (0x2F6)", [[0x2F6]], 1, draw_pool)]
+OBJECTS_570 = [(k, ts, w, g, l, f if f else thin_ice(None, cracked="cracked" in w)) for k, ts, w, g, l, f in OBJECTS_570]
+
+#  what T-570 leaves, and why (every one of the 134 not drawn above is named here, so the report adds up)
+LEFT_WHY = {
+    "blackout": "THE BLACKOUT (rock_tunnel): left as T-546 drew it -- its purple and glowing green link to the story "
+                "(the user); its seven are seam slivers and its pools' rim, in T-546's purple",
+    "sliver": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish "
+              "a neighbour's outline -- nothing to draw, and moving one moves the seam",
+    "black": "flat black (the void beyond a cave or over the harbour): nothing pret drew",
+    "door": "a doorway or cave mouth (a door, gbadoors/gbaprimary's; THE DOTS' opened door is placed by its braille "
+            "script)",
+    "half": "one quarter or half of a piece whose other part another tool drew (the embers' steps beside 265/287, "
+            "the red piling beside gbatowns' 364, NAVEL ROCK's summit light beside 79): a new drawing on this half "
+            "alone would split the piece at the seam -- drawn with its other half, if ever (draw_embers, draw_pylon "
+            "and draw_glow are kept for that)",
+    "rail": "a railing's corner post: two-pixel rails that meet T-569's railing either side; drawn with them, if ever",
+}
+
+
+def left_570():
+    """{(ts, tile): why} for the 134 this pass does not draw"""
+    out = {}
+    for t in (11, 32, 37, 252, 253, 254, 255):
+        out[("rock_tunnel", t)] = "blackout"
+    for ts, ts_tiles in (("seafoam_islands", [32]), ("cave", [32, 37]), ("mt_ember", [32, 37, 246]),
+                         ("navel_rock", [32, 37]), ("sevii_islands_67", [52, 53]), ("sevii_islands_123", [52, 53, 140]),
+                         ("sevii_islands_45", [52, 53, 115])):
+        for t in ts_tiles:
+            out[(ts, t)] = "sliver"
+    for ts, t in (("cave", 16), ("island_harbor", 16)):
+        out[(ts, t)] = "black"
+    for ts, ts_tiles in (("cave", [166, 182]), ("island_harbor", [148]), ("sevii_islands_67", [216, 217, 232, 233])):
+        for t in ts_tiles:
+            out[(ts, t)] = "door"
+    out[("island_harbor", 9)] = "rail"
+    for ts, ts_tiles in (("mt_ember", [264, 266, 286]), ("sevii_islands_67", [365]), ("sevii_islands_123", [365]),
+                         ("sevii_islands_45", [365]), ("navel_rock", [94])):
+        for t in ts_tiles:
+            out[(ts, t)] = "half"
+    return out
+
+
+#  never drawn by T-570, whatever an object reaches: the tilesets and tiles other tools own
+NEVER_570 = {"rock_tunnel", "underground_path"}
+
+
+def later_569():
+    """{ts: set of tiles} -- T-569's leftovers, from its own census (BASE), the same as draft.json's 'later'"""
+    p = os.path.join(DRAFT_DEFAULT, "draft.json")
+    return {ts: set(v) for ts, v in json.load(open(p))["later"].items()}
+
+
+_MINE569 = {}
+
+
+def mine_569(ts):
+    """the tiles T-569's approved pick drew in TS (this tool's own work, so a T-570 object may redraw them)"""
+    if ts not in _MINE569:
+        _MINE569[ts] = set(picked(ts, APPROVED[ts])[1]) if ts in APPROVED else set()
+    return _MINE569[ts]
+
+
+def draw_570(opt_of):
+    """{ts: {tile: pixels}} for the options in OPT_OF {kind: option}, and per object (kind, ts, what, written tiles,
+    tiles it reached but left, conflicts)"""
+    later = later_569()
+    out = collections.defaultdict(dict)
+    log = []
+    for kind, ts, what, grid, layer, f in OBJECTS_570:
+        if kind not in opt_of or ts in NEVER_570:
+            continue
+        pix, own, rows = canvas(ts, grid, layer)
+        new = f(pix, opt_of[kind])
+        base = base570(ts)
+        allowed = later.get(ts, set()) | mine_569(ts)
+        if kind == "other":
+            allowed = later.get(ts, set())          # the last pieces only: T-569's drawing round them stays
+        wrote, held, first, conflict = {}, set(), {}, 0
+        for (Y, X), (t, k) in sorted(own.items()):
+            if t not in allowed:
+                if new[Y][X] != pix[Y][X]:
+                    held.add(t)
+                continue
+            if (t, k) in first:
+                conflict += first[(t, k)] != new[Y][X]
+                continue
+            first[(t, k)] = new[Y][X]
+            wrote.setdefault(t, list(out[ts].get(t, base[t])))[k] = new[Y][X]
+        for t, p in wrote.items():
+            if p != base[t]:
+                out[ts][t] = p
+        log.append((kind, ts, what, sorted(t for t, p in wrote.items() if p != base[t]), sorted(held), conflict))
+    return out, log
+
+
+# ---------------------------------------------------------------- pictures
+SPLIT_PALS = {"gTileset_Stillfall": "palettes_stillfall", "gTileset_CaveUmbral": "palettes_umbral"}
+
+
+def tiles_with(ts, out):
+    base = [list(t) for t in base570(ts)]
+    for t, p in out.get(ts, {}).items():
+        base[t] = list(p)
+    return base
+
+
+def town_for(ts, m):
+    """TS's town, read in the light of map M (a palette split's own rows: STILLFALL, UMBRAL ASCENT)"""
+    town = town570(ts)
+    sec = T.layouts()[m]["secondary_tileset"]
+    return with_pals(town, SPLIT_PALS[sec]) if sec in SPLIT_PALS else town
+
+
+def block_img(ts, grid, tiles, town=None, Z=4):
+    """the blocks of GRID, both layers, from TILES, at Z x"""
+    town = town or town570(ts)
+    G = town.G
+    allp = [G["pals"][r] for r in range(7)] + [town.pals[r] for r in range(7, 16)]
+    H, W = 16 * len(grid), 16 * len(grid[0])
+    im = Image.new("RGB", (W, H), allp[0][0])
+    o = im.load()
+    for by, line in enumerate(grid):
+        for bx, b in enumerate(line):
+            e = T.entries(town.mt, b - 640)
+            for layer in (0, 1):
+                for q in range(4):
+                    v = e[layer * 4 + q]
+                    t, row = v & 0x3FF, v >> 12
+                    src = G["tiles"][t] if t < 640 else (tiles[t - 640] if t - 640 < len(tiles) else [0] * 64)
+                    for ty in range(8):
+                        for tx in range(8):
+                            sx = 7 - tx if v & 0x400 else tx
+                            sy = 7 - ty if v & 0x800 else ty
+                            c = src[sy * 8 + sx]
+                            if c:
+                                o[bx * 16 + (q % 2) * 8 + tx, by * 16 + (q // 2) * 8 + ty] = allp[row][c]
+    return im.resize((W * Z, H * Z), Image.NEAREST)
+
+
+def object_sheet(kind, results, path):
+    """every object of KIND: today | A | B | C at 4x, both layers, in its own light"""
+    K = KINDS_570[kind]
+    objs = [o for o in OBJECTS_570 if o[0] == kind and o[1] not in NEVER_570]
+    Z = 4
+    cells = []
+    for _, ts, what, grid, layer, _ in objs:
+        ims = [block_img(ts, grid, base570(ts), Z=Z)] + \
+              [block_img(ts, grid, tiles_with(ts, results[(kind, o)][0]), Z=Z) for o, _, _ in K["options"]]
+        cells.append(("%s -- %s" % (NAME.get(ts, ts), what), ims))
+    cw = max(im.width for _, ims in cells for im in ims)
+    chh = max(im.height for _, ims in cells for im in ims)
+    per = len(K["options"]) + 1
+    cols = 1
+    W = cols * (per * (cw + 8) + 24) + 16
+    H = 64 + ((len(cells) + cols - 1) // cols) * (chh + 34)
+    out = Image.new("RGB", (max(W, 760), H), T.BG)
+    d = ImageDraw.Draw(out)
+    d.text((8, 6), "T-570 %s -- today | %s, each object at %dx, both layers -- DRAFT" % (
+        K["name"], " | ".join(o for o, _, _ in K["options"]), Z), font=T.font(13), fill=(20, 20, 20))
+    for i, (o, title, line) in enumerate(K["options"]):
+        d.text((8, 24 + i * 13), "%s %s -- %s%s" % (o, title, line, "   (recommended)" if o == K["rec"] else "")[:170],
+               font=T.font(10), fill=(50, 50, 50))
+    y0 = 30 + 13 * len(K["options"])
+    for n, (label, ims) in enumerate(cells):
+        x = 8 + (n % cols) * (per * (cw + 8) + 24)
+        y = y0 + (n // cols) * (chh + 34)
+        d.text((x, y), label[:max(20, (out.width - 16) // 7)], font=T.font(11), fill=(30, 30, 30))
+        for j, im in enumerate(ims):
+            out.paste(im, (x + j * (cw + 8), y + 16))
+    out.save(path)
+    return path
+
+
+def maps_for(kind):
+    """[(ts, map, box)]: for each object of KIND, the reachable map that places its blocks most, a GBA screen round
+    the first of them; one crop per (ts, map)"""
+    reach = reachable()
+    seen, out = set(), []
+    for k, ts, what, grid, layer, f in OBJECTS_570:
+        if k != kind or ts in NEVER_570:
+            continue
+        town = town570(ts)
+        blocks = {b for line in grid for b in line}
+        best = None
+        for m in town.maps:
+            if m not in reach:
+                continue
+            g = town.grid[m]
+            n = sum(1 for v in g if v in blocks)
+            if n and (best is None or n > best[0]):
+                best = (n, m)
+        if not best or (ts, best[1]) in seen:
+            continue
+        m = best[1]
+        seen.add((ts, m))
+        l = T.layouts()[m]
+        g = town.grid[m]
+        k0 = next(i for i, v in enumerate(g) if v in blocks)
+        x, y = k0 % l["width"], k0 // l["width"]
+        W, H = min(15, l["width"]), min(10, l["height"])
+        box = (max(0, min(l["width"] - W, x - W // 2)), max(0, min(l["height"] - H, y - H // 2)), W, H)
+        out.append((ts, m, box, what))
+    return out
+
+
+def map_sheet_570(kind, results, path, tmp):
+    """today (tools/reviewsheet.py map, from what the ROM is built from) beside each option (the same window drawn
+    from the draft's tiles), at 2x, on the maps that show the kind"""
+    import subprocess
+    K = KINDS_570[kind]
+    rows = []
+    for ts, m, box, what in maps_for(kind):
+        shot = os.path.join(tmp, "today_%s_%s.png" % (kind, m))
+        subprocess.run([sys.executable, os.path.join(ROOT, "tools", "reviewsheet.py"), "map", shot, m] +
+                       [str(v) for v in box], check=True, capture_output=True)
+        tw = town_for(ts, m)
+        ims = [Image.open(shot).convert("RGB")] + \
+              [T.render(tw, m, tiles=tiles_with(ts, results[(kind, o)][0]), box=box) for o, _, _ in K["options"]]
+        rows.append(("%s  %s  cells %d,%d %dx%d  (%s)" % (NAME.get(ts, ts), m, box[0], box[1], box[2], box[3], what),
+                     ims))
+    Z = 2
+    cw, ch = 15 * 16 * Z, 10 * 16 * Z
+    per = len(K["options"]) + 1
+    W = 16 + per * (cw + 10)
+    H = 44 + max(1, len(rows)) * (ch + 34)
+    out = Image.new("RGB", (W, H), T.BG)
+    d = ImageDraw.Draw(out)
+    d.text((8, 6), "T-570 %s on the maps -- today (reviewsheet.py map) | %s, at 2x -- DRAFT" % (
+        K["name"], " | ".join("%s %s" % (o, t) for o, t, _ in K["options"])), font=T.font(12), fill=(20, 20, 20))
+    y = 28
+    for label, ims in rows:
+        d.text((8, y), label[:140], font=T.font(11), fill=(30, 30, 30))
+        for j, im in enumerate(ims):
+            out.paste(im.resize((im.width * Z, im.height * Z), Image.NEAREST), (8 + j * (cw + 10), y + 14))
+        y += ch + 34
+    out.save(path)
+    return path
+
+
+# ---------------------------------------------------------------- report, drafts, write
+def run_570(draft_dir=None, sheets=False):
+    later, left = later_569(), left_570()
+    results = {}
+    for kind, K in KINDS_570.items():
+        for o, _, _ in K["options"]:
+            results[(kind, o)] = draw_570({kind: o})
+    print("  T-570 (BASE %s): the last tiles, drawn by hand -- %d left by T-569 in %d tilesets" % (
+        BASE_570, sum(len(v) for v in later.values()), len(later)))
+    drawn = set()
+    report = collections.OrderedDict()
+    for kind, K in KINDS_570.items():
+        out, log = results[(kind, "A")]
+        n_later = sorted((ts, t) for ts, tt in out.items() for t in tt if t in later.get(ts, ()))
+        n_mine = sorted((ts, t) for ts, tt in out.items() for t in tt if t not in later.get(ts, ()))
+        drawn |= set(n_later)
+        print("\n  %-15s %d objects; option A draws %d of the 134%s" % (
+            K["name"], len(log), len(n_later), "" if not n_mine else
+            " and redraws %d of T-569's own round them (the object drawn whole)" % len(n_mine)))
+        for o, title, line in K["options"]:
+            print("      %s %-28s %s%s" % (o, title, line[:90], "  << recommended" if o == K["rec"] else ""))
+        for k, ts, what, wrote, held, conflict in log:
+            print("      %-18s %-48s writes %-3d%s%s" % (ts, what[:48], len(wrote),
+                  "  leaves %s as drawn (%s)" % (held, "the last pieces only" if k == "other" else "another tool's") if held else "", "  CONFLICT %d" % conflict if conflict else ""))
+        report[kind] = dict(name=K["name"], recommended=K["rec"],
+                            options=[dict(option=o, title=t, line=l) for o, t, l in K["options"]],
+                            objects=[dict(tileset=ts, what=w, tiles=wr, held=h) for _, ts, w, wr, h, _ in log],
+                            of_134=len(n_later), t569_redrawn=len(n_mine))
+    alll = {(ts, t) for ts, tt in later.items() for t in tt}
+    unacc = sorted(alll - drawn - set(left))
+    print("\n  left, and why (%d):" % len(left))
+    for why, text in LEFT_WHY.items():
+        tl = sorted((ts, t) for (ts, t), w in left.items() if w == why)
+        print("      %-9s %2d  %s\n                    %s" % (why, len(tl), text[:110], ", ".join(
+            "%s %d" % (ts, t) for ts, t in tl)))
+    print("\n  the 134: drawn %d, left %d, unaccounted %d%s" % (len(drawn), len(set(left) & alll), len(unacc),
+                                                              "  " + str(unacc) if unacc else ""))
+    if draft_dir:
+        os.makedirs(draft_dir, exist_ok=True)
+        for (kind, o), (out, _) in results.items():
+            for ts in out:
+                d = os.path.join(draft_dir, kind)
+                os.makedirs(d, exist_ok=True)
+                L.save_tiles(town570(ts), tiles_with(ts, out), os.path.join(d, "%s_%s.png" % (ts, o)))
+        json.dump(dict(ticket="T-570", status="DRAFT -- nothing approved (APPROVED_570 is empty)", base=BASE_570,
+                       kinds=report, drawn=sorted("%s %d" % k for k in drawn),
+                       left={"%s %d" % k: LEFT_WHY[w] for k, w in sorted(left.items())}, unaccounted=unacc),
+                  open(os.path.join(draft_dir, "draft.json"), "w"), indent=1)
+        print("  drafts in %s" % draft_dir)
+    if sheets:
+        sd = os.path.join(draft_dir, "sheets")
+        os.makedirs(sd, exist_ok=True)
+        tmp = os.path.join(sd, ".today")
+        os.makedirs(tmp, exist_ok=True)
+        for kind in KINDS_570:
+            print("  wrote %s" % object_sheet(kind, results, os.path.join(sd, "t570_%s_objects.png" % kind)))
+            print("  wrote %s" % map_sheet_570(kind, results, os.path.join(sd, "t570_%s_maps.png" % kind), tmp))
+        import shutil
+        shutil.rmtree(tmp, ignore_errors=True)
+    return results, unacc
+
+
+def approved_570_tiles():
+    """{ts: {tile: pixels}} of the approved T-570 picks (empty until picked)"""
+    return draw_570(APPROVED_570)[0] if APPROVED_570 else {}
+
+
+def check_engine_570():
+    bad = 0
+    for ts, tt in approved_570_tiles().items():
+        disk = town570(ts).disk
+        miss = [t for t, p in tt.items() if disk[t] != p]
+        print("  engine %-18s T-570 %3d tiles%s" % (ts, len(tt), "  DIFFERS" if miss else "  as approved"))
+        bad += bool(miss)
+    return bad
+
+
+def main_570():
+    if "--write" in ARGS:
+        if "--approved" not in ARGS or not APPROVED_570:
+            print("  --t570 --write refused: --write needs --approved, and APPROVED_570 names nothing the user has "
+                  "picked. Nothing written.")
+            return 0
+        for ts, tt in approved_570_tiles().items():
+            town = town570(ts)
+            out = [list(t) for t in town.disk]
+            for t, p in tt.items():
+                out[t] = list(p)
+            if out == town.disk:
+                print("  %s: already drawn, nothing to write" % ts)
+                continue
+            L.save_tiles(town, out, os.path.join(town.dir, "tiles.png"))
+            print("  wrote %s: %d tiles (T-570 %s)" % (ts, len(tt), APPROVED_570))
+        return 0
+    for flag in ("--sheets", "--draft"):
+        if flag in ARGS:
+            i = ARGS.index(flag)
+            d = ARGS[i + 1] if i + 1 < len(ARGS) and not ARGS[i + 1].startswith("--") else DRAFT_570
+            _, unacc = run_570(d, sheets=flag == "--sheets")
+            return 1 if unacc else 0
+    _, unacc = run_570(None)
+    bad = check_engine_570()
+    print("  the engine %s" % ("matches every approved T-570 pick (none yet)" if not bad else
+                               "DIFFERS from %d approved T-570 picks" % bad))
+    return 1 if bad or unacc else 0
+
+
 # ================================================================== main
 def run(draft_dir=None, sheets=False):
     report = collections.OrderedDict()
@@ -726,13 +1694,16 @@ def check_engine():
         if ts == "steam":
             continue
         town, mine = picked(ts, option)
-        miss = sorted(t for t, p in mine.items() if town.disk[t] != p)
+        later = set(approved_570_tiles().get(ts, {}))      # a tile T-570's approved pick redraws is T-570's now
+        miss = sorted(t for t, p in mine.items() if town.disk[t] != p and t not in later)
         print("  engine %-18s pick %s %3d tiles%s" % (ts, option, len(mine), "  DIFFERS" if miss else "  as approved"))
         bad += bool(miss)
     return bad
 
 
 def main():
+    if "--t570" in ARGS:
+        return main_570()
     if "--write" in ARGS:
         if "--approved" not in ARGS or not APPROVED:
             print("  --write refused: --write needs --approved, and APPROVED names nothing the user has picked. "
