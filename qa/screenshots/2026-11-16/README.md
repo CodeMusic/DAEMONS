@@ -109,3 +109,39 @@ C-380 with C-56 on the Mac: at home; away with home unreachable, the hub reached
 T-570 built, the user's picks (all A): rungs-and-rails ladders, broken-lip holes, glare-and-glint ice, the rest in keeping -- GLAUCOUS ISLES and STILLFALL, rendered from the built source; THE BLACKOUT's 7 kept
 
 ![16Nov2026 - T570 - the last tiles built - 26](16Nov2026%20-%20T570%20-%20the%20last%20tiles%20built%20-%2026.png)
+
+### 16Nov2026 - T564 - the titles BIT RAIN glint - 27
+
+T-564 on the DEBUG ROM from reset: the BIT RAIN glint sweeps DAEMONS left to right about 570 frames after the reveal, columns of 0s and 1s lighting the letters only (the OBJ window), gone by +594.
+
+![16Nov2026 - T564 - the titles BIT RAIN glint - 27](16Nov2026%20-%20T564%20-%20the%20titles%20BIT%20RAIN%20glint%20-%2027.png)
+
+### 16Nov2026 - T568 - the naming screens PC icon - 28
+
+T-568: naming BOX1 from a CHECKPOINT's PORT (MOVE DAEMON, UP to the box's name, NAME) -- BOX NAME? with the PC icon top left; it does not animate.
+
+![16Nov2026 - T568 - the naming screens PC icon - 28](16Nov2026%20-%20T568%20-%20the%20naming%20screens%20PC%20icon%20-%2028.png)
+
+### 16Nov2026 - T566 - the relearner, no scroll arrows - 29
+
+T-566: the relearner with fourteen rows (slot 0 a MR. MIME at 52) scrolls top to CANCEL, but no arrow is ever drawn: the arrow sprites are live and placed, and the screen's DISPCNT (0x0300) has OBJ display off, as pret's learn_move.c leaves it.
+
+![16Nov2026 - T566 - the relearner, no scroll arrows - 29](16Nov2026%20-%20T566%20-%20the%20relearner%2C%20no%20scroll%20arrows%20-%2029.png)
+
+### 16Nov2026 - T566 - a PLUGIN taught from the TOOLKIT - 30
+
+T-566: SYLLOGISM (No01) taught from the TOOLKIT to ARTSAI over METRONOME -- the item scene on its graph paper, the PLUGIN set on its head, then the shrink and the cool blue with 0 1 dots spiralling out.
+
+![16Nov2026 - T566 - a PLUGIN taught from the TOOLKIT - 30](16Nov2026%20-%20T566%20-%20a%20PLUGIN%20taught%20from%20the%20TOOLKIT%20-%2030.png)
+
+### 16Nov2026 - T566 - an EGGs party icon - 31
+
+T-566: an EGG in the party (slot 1 made an egg for the shot, then put back) -- the new grey shell icon at the slot's left edge.
+
+![16Nov2026 - T566 - an EGGs party icon - 31](16Nov2026%20-%20T566%20-%20an%20EGGs%20party%20icon%20-%2031.png)
+
+### 16Nov2026 - T561 - the quest logs recap box - 32
+
+T-561: a USERBOX bought at SLATE's REPO, saved, reset to the title, CONTINUE -- the recap's own box (Went to the REPO in SLATE CITY and bought one USERBOX.) under the grey scene; the clerk's field message box does not replay.
+
+![16Nov2026 - T561 - the quest logs recap box - 32](16Nov2026%20-%20T561%20-%20the%20quest%20logs%20recap%20box%20-%2032.png)
