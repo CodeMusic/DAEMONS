@@ -152,6 +152,13 @@
    "engine:data/tilesets/primary/general/tiles.png"
   ]
  },
+ "gbainkpaper": {
+  "why": "STALE -- never --write it on the whole tree: it maps the bag's colours to ink and paper by role and is not idempotent, and T-554 (engine 2ab19d87a, 2026-11-14, the user's picks in A TERMINAL, tools/gbamenus3.py) redrew item_menu/bg.png's tiles and palette and bg_female.pal after it last ran. A write re-inks T-554's colours; the tree is right (found by check_generators --writes, 2026-11-16)",
+  "files": [
+   "engine:graphics/item_menu/bg.png",
+   "engine:graphics/item_menu/bg_female.pal"
+  ]
+ },
  "gbarepo": {
   "why": "STALE -- not idempotent: a second run re-lays the REPO's bins and draws over tile 13, which metatiles 10 and 62 share (T-293); the tree is right",
   "files": [
@@ -217,7 +224,7 @@
   ]
  },
  "port_dialogue": {
-  "why": "STALE -- never --write it on the whole tree (trap 32; 2026-09-25 it reverted 89 files of later writing, and 2026-11-09 a NAMED write put T-534's DRAFT lines back to Gen 1's). These are the files a forced whole-tree write changes: 217 of its 536 ported lines carry later work (drafts, hand edits, passes after it). A named --write writes only lines still vanilla, and refuses -- naming each line -- if one it would touch carries later work; its report lists them",
+  "why": "STALE -- never --write it on the whole tree (trap 32; 2026-09-25 it reverted 89 files of later writing, and 2026-11-09 a NAMED write put T-534's DRAFT lines back to Gen 1's). These are the files a forced whole-tree write changes: 217 of its 536 ported lines carry later work (drafts, hand edits, passes after it). A named --write writes only lines still vanilla, and refuses -- naming each line -- if one it would touch carries later work; its report lists them. 2026-11-16: T-540 (engine ce345c195, THE WALLED GARDEN, the user's pick of 85 labels) rewrote lines in SSAnne_2F_Room5 and SafariZone_Center_RestHouse after it -- the tree is right",
   "files": [
    "engine:data/maps/CeladonCity/text.inc",
    "engine:data/maps/CeladonCity_DepartmentStore_1F/text.inc",
@@ -282,8 +289,10 @@
    "engine:data/maps/Route7/text.inc",
    "engine:data/maps/Route8/text.inc",
    "engine:data/maps/Route9/text.inc",
+   "engine:data/maps/SSAnne_2F_Room5/text.inc",
    "engine:data/maps/SSAnne_CaptainsOffice/text.inc",
    "engine:data/maps/SafariZone_Center/text.inc",
+   "engine:data/maps/SafariZone_Center_RestHouse/text.inc",
    "engine:data/maps/SafariZone_East/text.inc",
    "engine:data/maps/SafariZone_East_RestHouse/text.inc",
    "engine:data/maps/SafariZone_North/text.inc",
@@ -354,7 +363,7 @@
   ]
  },
  "port_prompts": {
-  "why": "STALE -- never --write it on the whole tree: game.txt is maintained by hand past what this tool knows (2026-09-26, T-319). Its write would rename the vanilla words in the brief's own glossary ('| Pokémon | **DAEMONS** |', 'you do not catch it'), turn the verb in 'will not move' into ROUTINE, and write 'a UNBOUND daemon'. Edit the prompts by hand.",
+  "why": "STALE -- never --write it on the whole tree: game.txt is maintained by hand past what this tool knows (2026-09-26, T-319). Its write would rename the vanilla words in the brief's own glossary ('| Pok\u00e9mon | **DAEMONS** |', 'you do not catch it'), turn the verb in 'will not move' into ROUTINE, and write 'a UNBOUND daemon'. Edit the prompts by hand.",
   "files": [
    "ai:server/prompts/game.txt"
   ]

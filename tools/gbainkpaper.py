@@ -18,6 +18,7 @@ list: they are read as colours, and changing them is a different question.
 """
 import colorsys, os, sys, daemonslib
 from PIL import Image
+from driftguard import refuse_over_later_work
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GBA = os.path.join(ROOT, "engineGba")
@@ -64,6 +65,7 @@ def write_pal(p, cols):
 
 
 def main():
+    refuse_over_later_work("gbainkpaper")    # T-554 redrew the bag after this ran; generator_drift.json says what
     changed = []
     for rel, n in PNGS:
         p = os.path.join(GBA, rel)
