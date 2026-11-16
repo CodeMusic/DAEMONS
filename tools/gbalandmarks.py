@@ -2562,8 +2562,11 @@ def sheets_pair2(ts, before_maps, before, after, out):
 def run_group(g):
     use(g)
     gt = gbatowns_landmarks().get(g["dir"], [])
-    if sorted(gt) != sorted(OWNS[g["dir"]]):
-        raise SystemExit("  gbatowns.py's LANDMARKS and OWNS disagree for %s:\n    %s\n    %s" % (g["dir"], gt, OWNS[g["dir"]]))
+    #  LANDMARKS must hold every box this tool owns; it may hold other landmarks' boxes too (2026-11-16: the KEEPALIVE
+    #  PLANT's front, T-447 plan row 8, shares lavender_town with DAEMON TOWER and is not drawn here)
+    missing = [b for b in OWNS[g["dir"]] if b not in gt]
+    if missing:
+        raise SystemExit("  gbatowns.py's LANDMARKS lacks this tool's boxes for %s:\n    %s" % (g["dir"], missing))
     ts = Tileset(g["dir"], g["symbol"])
     before = dict(mt=bytes(ts.mt), tiles=ts.tiles.copy(), pals=dict(ts.pals))
     before_bd = {k: bytes(v["bd"]) for k, v in ts.maps.items()}
