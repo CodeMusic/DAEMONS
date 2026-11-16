@@ -4,107 +4,107 @@
  "pictures": {
   "today": {
    "from": "docs/manual-companion/pictures/today.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "TODAY, its top: the day and THE ONE THING"
   },
   "today-more": {
    "from": "docs/manual-companion/pictures/today-more.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "TODAY under the day: THE ONE THING, your daemon with its care keys, YOUR GAME"
   },
   "daemon": {
    "from": "docs/manual-companion/pictures/daemon.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "DAEMON, Yours: the daemon in its den, its care bars and the care keys"
   },
   "daemon-sync": {
    "from": "docs/manual-companion/pictures/daemon-sync.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "DAEMON, Yours: the SYNC card and NEARBY under it"
   },
   "party": {
    "from": "docs/manual-companion/pictures/party.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "DAEMON, Party: the party as the game draws it, one ON YOUR DEVICE"
   },
   "index": {
    "from": "docs/manual-companion/pictures/index.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "DAEMON, INDEX: the first entries, with NATIVE and LISTEN"
   },
   "dreams": {
    "from": "docs/manual-companion/pictures/dreams.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "DAEMON, DREAMS: the journal of nights, with REASON, INSTINCT and WHOLE"
   },
   "meetings": {
    "from": "docs/manual-companion/pictures/meetings.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "DAEMON, MEETINGS: RECORD A MEETING, FROM A VOICE MEMO, the meetings and VOICE NOTES"
   },
   "goals": {
    "from": "docs/manual-companion/pictures/goals.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "JOURNEY, GOALS: YOUR GOAL with its steps and a milestone, and WALKING"
   },
   "journal": {
    "from": "docs/manual-companion/pictures/journal.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "JOURNEY, JOURNAL: YOUR JOURNALS and Start it"
   },
   "library": {
    "from": "docs/manual-companion/pictures/library.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "LIBRARY: the bookcase, a shelf per kind of book"
   },
   "school": {
    "from": "docs/manual-companion/pictures/school.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "LIBRARY, CALLOW SCHOOL: the DIPLOMA, THE FLOORS and THE PAPER, TO SIT AGAIN"
   },
   "songbook": {
    "from": "docs/manual-companion/pictures/songbook.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "LIBRARY, SONGBOOK: each song learned on its staff, and LISTEN"
   },
   "you": {
    "from": "docs/manual-companion/pictures/you.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "YOU, its top: the trainer, the region maps and the facts"
   },
   "marks": {
    "from": "docs/manual-companion/pictures/marks.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "YOU: MARKS and ROOTS"
   },
   "road": {
    "from": "docs/manual-companion/pictures/road.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "YOU: THE ROAD AHEAD"
   },
   "casino": {
    "from": "docs/manual-companion/pictures/casino.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "DAEMON, Routines, THE CASINO: the reels, BET - and BET +, SPIN, and THE HOUSE"
   },
   "nearby": {
    "from": "docs/manual-companion/pictures/nearby.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "DAEMON, Yours: NEARBY, with the box to Say and the acts"
   },
   "places": {
    "from": "docs/manual-companion/pictures/places.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "PLACES, its top: THE HUB card and WHO ANSWERS FIRST WHEN YOU TALK"
   },
   "every-settings": {
    "from": "docs/manual-companion/pictures/every-settings.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "PLACES: EVERY DEVICE'S SETTINGS"
   },
   "settings": {
    "from": "docs/manual-companion/pictures/settings.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "SETTINGS, its top: THIS APP, DEVELOPER MODE and YOUR DAEMONS SAVE (kept short: WHO ANSWERS WHEN YOU TALK, lower down, shows the house computer's name as THE TIINY's placeholder)"
   },
   "settings-mind": {
@@ -124,7 +124,7 @@
   },
   "whatsnew": {
    "from": "docs/manual-companion/pictures/whatsnew.png",
-   "taken": "2026-11-11",
+   "taken": "2026-11-16",
    "shows": "WHAT'S NEW, opened from the header: at 400 wide the header's button reads ✦ NEW until this build's notes are read"
   }
  }

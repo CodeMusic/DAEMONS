@@ -219,7 +219,8 @@ the day's note. At the foot is which build of the software the watch runs.
 ## SETTINGS {#settings}
 
 **SOUND ON** or **SOUND OFF**, a tap to change it. Silent means no tunes, no ticks and no buzzing. Everything else --
-the volume, the face, the quick buttons, how long the screen stays lit -- is set in the app, the site or the Tab5.
+the volume, the face, the quick buttons, how long the screen stays lit -- is set in the app, the site or the Tab5. A
+voice read aloud plays as loud as the watch's sounds, so the one volume serves both.
 
 ## WHO ANSWERS FIRST {#whoanswers}
 
@@ -346,7 +347,7 @@ FIND IT needs the watch to be in reach of the companion.
 
 BOOKS opens as **tiles**, four to a screen, each with its picture: an open book for a book, a **?** for each way of
 asking, a card for the cards, four squares for THE INDEX, and, on the Ultra, a memory card for KEEP ON THE CARD.
-**Swipe** for the next four; **tap** a tile to open it.
+**Swipe** for the next four; **tap** a tile to open it. Leave BOOKS, and you are back where you opened it.
 
 A book opens on its chapters, as tiles numbered 1, 2, 3 and on. Inside a chapter, **swipe** to turn the page, and
 **LISTEN** to have it read aloud; a tap, a hold or the crown stops the reading. THE GUIDE and THE SUBTLE LAYER are

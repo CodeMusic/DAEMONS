@@ -859,8 +859,11 @@ The game pauses whenever another tab is shown, and plays on when you come back.
 closed the menu. Play never stops for it: whatever SYNC writes -- a daemon away, a trade, the CASINO's coins -- goes
 into the running game as well as the save.
 
-Paired with a hub, the device's save is the real one, and the hub keeps a **mirror** of it, so your watch and the
-house see the same daemons.
+Paired with a hub, the hub keeps a **mirror** of your save, so your watch and the house see the same daemons -- and
+the mirror is the true one. A trade made on the link cable or a daemon away changes the mirror, and the phone takes it
+at its next look. If the phone and the companion both saved since they last agreed, the companion's goes on and the
+phone's is set aside, never lost: each time a save moves, the hub keeps a copy (**SAVES**, in
+[THE ENGINE ROOM](#engine-room)).
 
 If you begin a new game in the app, the hub will not let it replace the game it follows. The app offers to **Keep it**
 on the companion as a save of its own instead. You choose which save the companion reads in SETTINGS, **YOUR SAVES**
@@ -1140,6 +1143,28 @@ ring. Its key stays on the hub and is never shown again; its dot says whether it
 
 {{pictures endpoints | THE HUB'S ENDPOINTS: each kept on the hub, in the order they are asked.}}
 
+## THE MESH {#mesh}
+
+Your daemon's work is not all thinking: a song is made, a sleep piece is turned into an MP3, a voice is spoken. The
+hub is a small machine, so the house shares that work out. **THE MESH** is every machine that has joined: the hub, a
+computer in your home set up as a node, the Tiiny, and a phone that lends. Each says what it can do and how busy it is,
+and each job goes to **the most reliable machine with the most free now**. A job that is slow to start, or slower than
+it should be, is started on the next one too, and the first to finish wins. The hub itself is always the last resort.
+
+- **In THE MIND AT WORK**, under the web: **THE MESH**, each machine with its score now as a bar -- its power, cores,
+  how busy, how reliable, what it can do (**THOUGHT**, **PROCESSING**, **PICTURES**, **MUSIC**) -- and **← the next
+  job** beside the one the next would go to. A machine not heard from lately is faded.
+- **THIS PHONE IN THE MESH**, in THE MIND, says when your phone thinks for the household, on its own model:
+
+| choice | what it means |
+|---|---|
+| **CHARGING AT HOME** | only while plugged in and at home, so it never costs the battery or data (the first choice) |
+| **WHENEVER OPEN** | whenever the app is open, or briefly in the background |
+| **ONLY ITS OWN WORK** | never the household's; its own model still answers your talks when the others are slow |
+| **NEVER** | the phone's processing is never used, not even for its own talks |
+
+Below it, the phone says whether it is lending now, and how many thoughts it has given the household.
+
 ## THE MIND AT WORK {#mind-at-work}
 
 **THE MIND AT WORK** shows everything the house's mind is doing, and has done.
@@ -1162,7 +1187,16 @@ a web app the hub serves at **/admin/** on your home network and the tailnet, ne
 on a phone's home screen like an app, and is paired once with a code from the hub's screen.
 
 Its pages are **THE HUB**, **THE MIND** (everyone's work, and **LATER**), **THE HOUSE**, **VOICES**, **DEVICES**,
-**EXCHANGE** and **THE COMMONS**. Where the app used to hold one of these -- THE HOUSE, making the voices again,
+**EXCHANGE**, **THE COMMONS**, **KEYS**, **JOBS**, **CREATIONS** and **SAVES**.
+
+- **CREATIONS** -- everything the daemons made that the hub keeps, sleep sounds and paintings, by kind and by daemon;
+  tick one or many and let them go, files, cover and all.
+- **SAVES** -- one save, wherever the game is played; each time it moves, a copy is kept here: **THE TRAIL**, newest
+  first, each saying how it moved (**SAVED IN THE GAME**, **SYNC**, **LINK CABLE**, **KEPT BY NAME**, **SET ASIDE**,
+  **WENT BACK**), from where, and when. **GO BACK TO THIS** (then **YES, GO BACK**) undoes the game since, so it is
+  for the rare day two saves were made at once. **WHEN BOTH MOVED** chooses whose save goes on when a device and the
+  companion both saved: **THE COMPANION'S** (the first choice) or **THE DEVICE'S**. The other is set aside, never
+  lost. Where the app used to hold one of these -- THE HOUSE, making the voices again,
 forgetting a device, invite codes, the commons' link -- it now says so, with **Open THE ENGINE ROOM ›**.
 
 ## The voice, quickly {#voice}
