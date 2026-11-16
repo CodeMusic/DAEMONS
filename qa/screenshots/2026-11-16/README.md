@@ -67,3 +67,9 @@ T-570 DRAFT: the islands' and caves' last tiles -- other, today beside each opti
 T-570 DRAFT: the islands' and caves' last tiles -- other, today beside each option (objects at 4x, maps at 2x)
 
 ![16Nov2026 - T570 - other drafted - 11](16Nov2026%20-%20T570%20-%20other%20drafted%20-%2011.png)
+
+### 16Nov2026 - C385 - the calendar, November on the twelve-tone wheel - 12
+
+THE CALENDAR's card on the twelve-tone wheel: NOVEMBER · A♯/B♭, indigo into violet, Friday's and Saturday's (companion C-385).
+
+![16Nov2026 - C385 - the calendar, November on the twelve-tone wheel - 12](16Nov2026%20-%20C385%20-%20the%20calendar%2C%20November%20on%20the%20twelve-tone%20wheel%20-%2012.jpg)
