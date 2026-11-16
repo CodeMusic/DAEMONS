@@ -446,7 +446,7 @@ came after is tied to the calendar, or to another book.**
 | **THE PROGRAMMER'S GUIDE** (4.36) | ONE ISLAND, Act 2 | The bridge run backwards: the mind reached through machine learning, *only ever "like"* | [BUILT]{.tag .BUILT} | Load-bearing |
 | **The second joining, SOUNDINGS** (4.37, 9.30) | After THE ANNEX | A merger that holds both; the companion made part of the story | [BUILT]{.tag .BUILT} | Load-bearing |
 | **THE SUBTLE LAYER** (4.38) | A shelf in Brazen | Intuition as a logged practice the game never vouches for | [BUILT]{.tag .BUILT} | Sound; crowded by the hour and decks |
-| **THE HERMETIC LAYER** (4.39) | The night, with both other books | The one stated exception to craft rule 1 | [BUILT]{.tag .BUILT} | **At risk** |
+| **THE HERMETIC LAYER** (4.39) | [private: vision-unredacted 4.39] | The one stated exception to craft rule 1 | [BUILT]{.tag .BUILT} | **At risk** |
 | **THE UNITY BOOK** (4.40) | The halves found and mended | A third book, read from three places | [DESIGNED]{.tag .DESIGNED} no engine code | **At risk of overruling the core** |
 | **HOLIDAYS · WEATHER · backgrounds** (3.6, 3.7, 3.10) | All game | Colour keeps the date; quiet days stay quiet | [BUILT]{.tag .BUILT} | Ornament, done with tact |
 | **THE DREAM LOG** (3.8) | Dawn after milestones; the companion | Milestones echoed as images, never explained | [BUILT]{.tag .BUILT} | Ornament (three dream systems) |

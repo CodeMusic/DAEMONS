@@ -14,9 +14,9 @@ these by hand.** Every word in them is still a DRAFT, as it is in the game.
 
 ## The vaults
 
-People who have read both books sometimes talk about a third one. They call it THE HERMETIC LAYER, or just the
-spellbook, and no two of them describe it the same way. It is said to open with a warning, to treat words as spells,
-and to come after the other two, and late. The [wiki's page on it](https://github.com/CodeMusic/DAEMONS/wiki/The-Hermetic-Layer)
+People sometimes talk about a third book. They call it THE HERMETIC LAYER, or just the
+spellbook, and no two of them describe it the same way. It is said to open with a warning, and to treat words as
+spells. The [wiki's page on it](https://github.com/CodeMusic/DAEMONS/wiki/The-Hermetic-Layer)
 collects what is said about it, and the real history the rumour grew from.
 
 `the-vault.zip` is locked with a password. It might hold that book, or it might hold nothing worth the trouble.
