@@ -163,11 +163,13 @@ it, or **[x]**, to close it.
 
 ## THE CALENDAR {#calendar}
 
-Beside the date is a small **calendar**, in the month's colours: the months go round the wheel of the week's hues, red
-in January to violet in December. Under the date, a line says the month's tone.
+Beside the date is a small **calendar**, in the month's colours. The months go round the twelve notes of the octave as
+the days go round the seven: January is C and red, February C♯ and red into orange, March D and orange, on to November,
+A♯, indigo into violet, and December, B, violet. A month on a black key wears the colours of the two days either side
+of it. Under the date, a line says the month's tone.
 
-Tap the calendar to open **THE CALENDAR**. At the top is the month: its name, where it comes from, its colours and
-its practice, and the month's own bowl to ring. Under it, **MONTH**, **WEEK** and **DAY** show the events in your
+Tap the calendar to open **THE CALENDAR**. At the top is the month: its name and its note, where it comes from, its
+colours and its practice, and the month's own bowl to ring. Under it, **MONTH**, **WEEK** and **DAY** show the events in your
 phone's calendar. The first time, the phone asks to share its calendar with DAEMONS; allow full access to see and
 change your events. Tap an event to change it or remove it, or **+** to add one; a repeating event changes only at
 the time you tapped. Your events stay on the phone. Said no by mistake? The phone's Settings, **Privacy & Security**,
@@ -354,7 +356,8 @@ keeps it; this is the daemon's own telling, and only the app's.
 In **Routines** is **THE EASEL**, when the companion is with a hub. Type what it should paint, under
 *What should it paint?*, and **PAINT**: your daemon walks to its easel and paints while you wait, the canvas filling a
 stroke at a time. It paints in a style of its own, from how it is today -- how it feels, what it needs, your goals,
-the weather on the way -- and gives the painting a title and a line about it. A painting takes a minute or two.
+the weather on the way -- and gives the painting a title and a line about it. Its colours are the day's: the
+background in the month's colour, the main form in the weekday's. A painting takes a minute or two.
 
 **THE GALLERY**, under the easel, keeps every painting, a wall for each daemon, each one framed. Tap a painting to see
 it large; hold it to see **WHAT WAS ASKED**. **TAKE IT DOWN** takes one off the wall.
@@ -362,7 +365,8 @@ it large; hold it to see **WHAT WAS ASKED**. **TAKE IT DOWN** takes one off the 
 ## CREATIONS {#creations}
 
 **ITS GALLERIES ›**, under its card on **Yours** (and under SLEEP SOUNDS), is one gallery of everything the daemons
-have made: **SLEEP SOUNDS**, **SONGS** and **PAINTINGS**. Choose where to look:
+have made: **SLEEP SOUNDS**, **SONGS** and **PAINTINGS**, grouped by the month they were made in, each month under a
+band of its colour. Choose where to look:
 
 - **MINE** -- what is on this phone.
 - **HOUSEHOLD** -- everything the hub keeps, from every device at home. A **✓** marks what this phone already has, and
@@ -478,16 +482,18 @@ the morning.
 ## SLEEP SOUNDS {#sleepsounds}
 
 In **Routines**, and above the dreams, **SLEEP SOUNDS** is music made for your daemon as it is tonight, to fall asleep to together. Its kind
-chooses the instruments, its feelings the key and the pace, and what it needs what the music carries -- rain for a
-thirsty one, a hearth for a hungry one. **MAKE TONIGHT'S** asks the hub for it; it takes about three minutes, and is
+chooses the instruments, the month its key (major or minor as it feels), its feelings the pace, and what it needs
+what the music carries -- rain for a thirsty one, a hearth for a hungry one. **MAKE TONIGHT'S** asks the hub for it; it takes about three minutes, and is
 kept on the phone once it comes.
 
 Each piece comes with a title, and a cover your daemon paints for it. **PLAY 30 MINUTES** plays it for half an hour,
-fading away over the last ten. **MAKE ANOTHER** makes a new one, and **CREATIONS ›** holds the ones before
+fading away over the last ten. **MAKE ANOTHER** makes a new one, still in the month's key but from everything your
+daemon is tonight -- its own telling, last night's dream, your goals, what you have been writing -- and **CREATIONS ›** holds the ones before
 ([CREATIONS](#creations)).
 
 **DRIFT DOWN** is for headphones: a slow beat between your ears under the music, easing from alpha to theta to delta
-as you fall asleep. Without headphones the music plays alone until they are on.
+as you fall asleep. The tone it rides on is the month's note, and the day sets each beat: the slowest of each stage on
+a Sunday, quicker through the week to the quickest on a Saturday. Without headphones the music plays alone until they are on.
 
 ## The dream goes home {#dream-home}
 
