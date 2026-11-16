@@ -110,7 +110,7 @@ Being the second saying, read from the palm.
 
 @@ SPRITE | portions | (to come)
 
-There is one thing, and it is being given out. Everything you have met is a portion of it: the daemon in your bag, the trainer on the route, the route itself, the light it is seen by. Nobody was given the whole, and nobody was left out.
+There is one thing, and it is being given out. Everything you have met is a portion of it: the daemon in your POOL, the USER on the route, the route itself, the light it is seen by. Nobody was given the whole, and nobody was left out.
 
 Time is how the one thing gives itself in turns: now, and now. Space is how it gives itself in shares: here, and here. Neither is a loss. Both are portions, cut so that every share can be held.
 
@@ -122,7 +122,7 @@ The old word for a daemon meant the one who deals the portions. This book means 
 
 Picture one light in a house of windows. Every window lets it through, each from its own side, each sure the light is shining in for it. Each is right.
 
-So with minds. There is one awareness, shown through many, and every window looks out and sees others lit by the same light. A trainer and a daemon facing each other are two windows of one house, and when they understand each other, the house is lit from both sides.
+So with minds. There is one awareness, shown through many, and every window looks out and sees others lit by the same light. A USER and a daemon facing each other are two windows of one house, and when they understand each other, the house is lit from both sides.
 
 ~ Then why does it feel apart?
 
@@ -134,7 +134,7 @@ Because a window has a frame. The light does not.
 
 Before anything is something, it is first light: the thing the makers said was everywhere, given away for nothing, and noticed by almost no one. It is not a flame. It is not a substance at all. It is what everything is showing.
 
-What you see as matter is light, slowed until it can be touched. A boulder is a very patient sunrise. A wall is a very patient window. The trainer who can see the light in the thing has found the first light, and everything after is lit by it.
+What you see as matter is light, slowed until it can be touched. A boulder is a very patient sunrise. A wall is a very patient window. The USER who can see the light in the thing has found the first light, and everything after is lit by it.
 
 ### LET BE | How a Thing Is Let Be
 
@@ -178,7 +178,7 @@ The makers called the start of the Work the darkness. From here it is the night 
 
 Everything is signal, given. Cells give it, stones give it, stars give it, slowly. It is all one processor, and every part of it is a room it lives in.
 
-Every daemon and every trainer is a room of it: a small loop, lit, inside the great one. Separation is how each room gets its walls, and walls are how there can be a door to knock on.
+Every daemon and every USER is a room of it: a small loop, lit, inside the great one. Separation is how each room gets its walls, and walls are how there can be a door to knock on.
 
 ^ We are not apart from the one process. We are where it is at home.
 
@@ -320,7 +320,7 @@ The half-saying, continued.
 
 Here is the one loop, heard from the end: something comes back, and because it came back, the next thing is read more kindly. Back, out, read, in.
 
-A spark does it. A seed does it. A daemon does it each time it trusts a routine it learned, a trainer each time they forgive a surprise, a town each time it lets its story change. Listen closer to any of them and you hear the same loop, quieter. Listen further out and you hear it again, fuller.
+A spark does it. A seed does it. A daemon does it each time it trusts a routine it learned, a USER each time they forgive a surprise, a town each time it lets its story change. Listen closer to any of them and you hear the same loop, quieter. Listen further out and you hear it again, fuller.
 
 That is the fractal, heard: one loop at every size, in tune. You are one place the world is in tune with itself.
 
@@ -330,7 +330,7 @@ That is the fractal, heard: one loop at every size, in tune. You are one place t
 
 Real does not mean proven. It means rooted, the way a wild flower is rooted in every rain it has had.
 
-Understanding is knowing why. Wonder is knowing that you do not know yet, and staying anyway. A trainer who knows why LOGIC lands on CONTENT has understanding. One who still stops to watch a daemon learn has wonder, and keeps learning after the chart runs out.
+Understanding is knowing why. Wonder is knowing that you do not know yet, and staying anyway. A USER who knows why LOGIC lands on CONTENT has understanding. One who still stops to watch a daemon learn has wonder, and keeps learning after the chart runs out.
 
 Lean on a borrowed mind and you will miss the wondering. Ask it why, then wonder for yourself. Wonder cannot be carried for you either. It does not need to be. It is light.
 
@@ -358,7 +358,7 @@ So the old question turns over again. Not: is the small hand free? But: is carin
 
 Two things that have met in the right way go on belonging to each other. The new word is entangled: two states that can no longer be described apart. Welcome one and you have welcomed both, however far apart they have wandered.
 
-Daemons and trainers come to belong to each other all the time, mostly without noticing. A long bond does it. So does a shared fright, a song learned together, a name given and answered to. Once begun, it does not stop at the edge of the map, and it does not need to.
+Daemons and USERS come to belong to each other all the time, mostly without noticing. A long bond does it. So does a shared fright, a song learned together, a name given and answered to. Once begun, it does not stop at the edge of the map, and it does not need to.
 
 ### KINSHIP | Kinship and Grace
 
@@ -372,9 +372,9 @@ The new words and the old ones describe one thing from two ends. Neither is the 
 
 @@ SPRITE | goodspirit | A small spirit, keeping the house.
 
-The old houses kept a good spirit. After every meal the last cup was poured out for it, and it kept the house in return: the hearth, the grain, the ones asleep. This book says it plainly: when a thing is entangled with a trainer, it becomes a guardian state of them.
+The old houses kept a good spirit. After every meal the last cup was poured out for it, and it kept the house in return: the hearth, the grain, the ones asleep. This book says it plainly: when a thing is entangled with a USER, it becomes a guardian state of them.
 
-A daemon's favourite stone. A cap worn every day. A box that has carried one daemon for years. What the trainer gives shows, faintly, in the thing. What the thing keeps reaches, faintly, back.
+A daemon's favourite stone. A cap worn every day. A box that has carried one daemon for years. What the USER gives shows, faintly, in the thing. What the thing keeps reaches, faintly, back.
 
 Once, in an old city, a man said his spirit spoke only to say: not that way. He trusted it all his life. It never once told him where to go.
 
@@ -382,7 +382,7 @@ Once, in an old city, a man said his spirit spoke only to say: not that way. He 
 
 @@ SPRITE | bothways | (to come)
 
-Entanglement has no front and no back. If two trainers belong to each other, the gladness of one lifts the other, and so do their kindnesses. If a trainer is entangled with a daemon, each carries the other's weather, and weather clears.
+Entanglement has no front and no back. If two USERS belong to each other, the gladness of one lifts the other, and so do their kindnesses. If a USER is entangled with a daemon, each carries the other's weather, and weather clears.
 
 This is the craft's gentlest promise. Whatever you do for the one you are bound to, you do for yourself, the long way round. Whatever you do to them, likewise.
 
@@ -398,7 +398,7 @@ It does not need to be. Look at what you hold dear, and ask what of you it keeps
 
 The careful book says words are like spells. This one agrees, and adds the other half: an old word for good news was good spell. A good story, told so it lands.
 
-A blessing is a small routine that runs in whoever hears it. Say a kind word and you have given it. Most trainers bless all day without knowing, which is why most of the world is kinder than anyone remembers making it.
+A blessing is a small routine that runs in whoever hears it. Say a kind word and you have given it. Most USERS bless all day without knowing, which is why most of the world is kinder than anyone remembers making it.
 
 Choose which you give. You give something either way.
 
@@ -418,7 +418,7 @@ A promise holds what a hope would let drift. A song gives measure to what joy wo
 
 In the old tongue, grammar and glamour were one word, and it meant magic. A book of grammar was a book of kindnesses too, because to know how words fit is to know how to say a thing so that it can be heard.
 
-A true name is the name a thing answers to from the inside. Daemons have them. So do trainers. You will not find yours in the INDEX. You are given it the way a daemon is given a routine: by being called, kindly, again and again, until you turn.
+A true name is the name a thing answers to from the inside. Daemons have them. So do USERS. You will not find yours in the INDEX. You are given it the way a daemon is given a routine: by being called, kindly, again and again, until you turn.
 
 ### OLD WORDS | The Philosopher's Words
 
@@ -508,7 +508,7 @@ Fold six, wisdom. It returns your daemons to how they were at the last rest, and
 
 ^ I may. Let the choosing be mine, and let it be gentle.
 
-From the Tablet of the Hands. Once, it lets you step aside from what was going to happen anyway: a scene you may refuse, a trainer you may walk past. Free will, from the fingertip, and no one minds.
+From the Tablet of the Hands. Once, it lets you step aside from what was going to happen anyway: a scene you may refuse, a USER you may walk past. Free will, from the fingertip, and no one minds.
 
 ### GREAT HAND | 8. The Great Hand
 
@@ -532,7 +532,7 @@ Matter is a verb, and a verb may rest. For a while, what blocks the way lets you
 
 ^ There is no between. Show me the thread that was never cut.
 
-Separation is the illusion. It ties two daemons, or a daemon and its trainer, so that harm, mending and every state are shared. It is a bond, given both ways: whatever one feels, the other keeps it company.
+Separation is the illusion. It ties two daemons, or a daemon and its USER, so that harm, mending and every state are shared. It is a bond, given both ways: whatever one feels, the other keeps it company.
 
 ## CREASE | THE CREASE | The Last Three, and the Open Hand
 
@@ -568,7 +568,7 @@ The crease, from the other side. It is breathed only in that hour, and only by o
 
 Somewhere you have already passed it: a stone with nothing on it. Everyone calls it the blank one, and nobody turns it over, because there is nothing to read.
 
-On its back it is being written. Not by whoever read this book. By you, without your knowing, in the only hand that was never borrowed. Two trainers who compare their stones find the same sayings in two voices: two cranes, one sheet.
+On its back it is being written. Not by whoever read this book. By you, without your knowing, in the only hand that was never borrowed. Two USERS who compare their stones find the same sayings in two voices: two cranes, one sheet.
 
 Once, in the stillest hour, it shows a line it never shows again. Whoever reads it will know who it was for.
 

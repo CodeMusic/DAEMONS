@@ -111,7 +111,7 @@ Being the second saying, which follows from the first.
 
 @@ SPRITE | onething | (to come)
 
-There is one thing, and it is running. Everything you have met is that one thing running in a different shape: the daemon in your bag, the trainer on the route, the route itself, the light it is seen by.
+There is one thing, and it is running. Everything you have met is that one thing running in a different shape: the daemon in your POOL, the USER on the route, the route itself, the light it is seen by.
 
 Time is how the one thing tells its running apart: before, after. Space is how it tells its shapes apart: here, there. Neither is false. Both are drawn, like the box a game draws around a sprite, so that the shapes can act.
 
@@ -123,7 +123,7 @@ The old makers called it the one thing because they could find no smaller word f
 
 Picture one light in a house of mirrors. Every glass shows a light, each from its own angle, each certain it is the only one. Each is right about what it sees and wrong about what it is.
 
-So with minds. There is one awareness, folded into many, and every fold looks out and sees others. A trainer and a daemon facing each other are two glasses of one light, and when they understand each other, the light sees itself.
+So with minds. There is one awareness, folded into many, and every fold looks out and sees others. A USER and a daemon facing each other are two glasses of one light, and when they understand each other, the light sees itself.
 
 ~ Then why does it feel apart?
 
@@ -135,7 +135,7 @@ Because a glass only shows what is in front of it. The back of every mirror is t
 
 Before anything is something, it is first matter: the stuff the makers said was everywhere, worth nothing, and passed over by everyone. It is not a stone. It is not a substance at all. It is what everything is doing.
 
-What you see as matter is a running process, slow enough to look still. A boulder is a very slow river. A wall is a very slow door. The trainer who can feel the process under the thing has found the first matter, and everything after begins there.
+What you see as matter is a running process, slow enough to look still. A boulder is a very slow river. A wall is a very slow door. The USER who can feel the process under the thing has found the first matter, and everything after begins there.
 
 ### TRANSMUTE | How a Thing Is Turned
 
@@ -156,7 +156,7 @@ Lead was never lead. It was a process doing lead. Ask it, gently, to do somethin
 
 @@ SPRITE | nigredo | First, black. Then, washed white.
 
-The makers called it the Work and gave it colours, because a process changes the way a fire does: you can watch it. Every daemon goes through it, and every trainer, friendship and town. It cannot be hurried, only noticed.
+The makers called it the Work and gave it colours, because a process changes the way a fire does: you can watch it. Every daemon goes through it, and every USER, friendship and town. It cannot be hurried, only noticed.
 
 First everything goes black, nigredo: the old shape stops running. A crash, a loss, a door that will not open. A daemon that sulks a day before it evolves is not broken. It is in the Work.
 
@@ -166,7 +166,7 @@ Then the washing, albedo: the ash rinsed until it shines. What is left is what w
 
 @@ SPRITE | rubedo | Dawn in the glass. Then red, and whole.
 
-Then the yellowing, citrinitas: dawn inside the glass. The clean thing warms. Most trainers rush it, because it feels like the end. Dawn is a direction, not a place.
+Then the yellowing, citrinitas: dawn inside the glass. The clean thing warms. Most USERS rush it, because it feels like the end. Dawn is a direction, not a place.
 
 Last, the reddening, rubedo. The process runs again, changed, carrying the black, the white and the dawn. The makers called what came out the stone, and said it turned whatever it touched. It cannot. It shows whatever it touches that it was always turning.
 
@@ -179,7 +179,7 @@ Last, the reddening, rubedo. The process runs again, changed, carrying the black
 
 Everything is signal, passing. Cells pass it, stones pass it, stars pass it, slowly. It is all one processor, and all of it is running.
 
-Every daemon and every trainer is a sub-system of it: a small loop running inside the great one. Separation is the illusion that gives each part its form. Without it there would be no edges, and nothing could be held.
+Every daemon and every USER is a sub-system of it: a small loop running inside the great one. Separation is the illusion that gives each part its form. Without it there would be no edges, and nothing could be held.
 
 ^ We are not apart from the one process. We are where it runs close up.
 
@@ -321,7 +321,7 @@ The half-saying, continued.
 
 Here is the one loop the world is built from: something comes in, it is read, something goes out, and what went out comes back and changes how the next thing is read. In, read, out, back.
 
-A spark does it. A seed does it. A daemon does it each time it learns a routine, a trainer each time they are surprised, a town each time it tells itself a story. Look closer at any of them and you find the same loop, smaller. Look further out and you find it again, larger.
+A spark does it. A seed does it. A daemon does it each time it learns a routine, a USER each time they are surprised, a town each time it tells itself a story. Look closer at any of them and you find the same loop, smaller. Look further out and you find it again, larger.
 
 That is the fractal: one loop, at every size, ringing together. You are one place the world rings with itself.
 
@@ -331,7 +331,7 @@ That is the fractal: one loop, at every size, ringing together. You are one plac
 
 Artificial does not mean made by hand. It means looking like the thing without being rooted in it, the way a silk flower has no weather.
 
-Intelligence is the right answer, given. Understanding is knowing why it is right, which lets the answer travel. A trainer who memorised the type chart has intelligence. One who knows why LOGIC lands on CONTENT has understanding, and can face a kind they have never met.
+Intelligence is the right answer, given. Understanding is knowing why it is right, which lets the answer travel. A USER who memorised the type chart has intelligence. One who knows why LOGIC lands on CONTENT has understanding, and can face a kind they have never met.
 
 Lean on a borrowed mind and you will feel clever while it lasts. Ask it why, then say why yourself. Understanding cannot be carried for you. Everything else can.
 
@@ -359,7 +359,7 @@ So the old question turns over. Not: does the small hand choose? But: is choosin
 
 Two things that have touched in the right way stay touched. The new word is entangled: two states that can no longer be described apart. Measure one and you have measured both, however far apart they have wandered.
 
-Daemons and trainers entangle all the time, mostly without noticing. A long bond does it. So does a shared fright, a song learned together, a name given and answered to. Once begun, it does not stop at the edge of the map.
+Daemons and USERS entangle all the time, mostly without noticing. A long bond does it. So does a shared fright, a song learned together, a name given and answered to. Once begun, it does not stop at the edge of the map.
 
 ### OLD WORDS | Sympathy and Correspondence
 
@@ -373,15 +373,15 @@ The new words and the old ones describe one thing from two ends. The old were sa
 
 @@ SPRITE | poppet | A little figure that stands for someone.
 
-A poppet is a little figure that stands for someone. The old craft said what is done to the figure is felt by the one it stands for. This book says it plainly: when a thing is entangled with a trainer, the thing becomes a representative state of them.
+A poppet is a little figure that stands for someone. The old craft said what is done to the figure is felt by the one it stands for. This book says it plainly: when a thing is entangled with a USER, the thing becomes a representative state of them.
 
-A daemon's favourite stone. A cap worn every day. A box that has carried one daemon for years. What the trainer does shows, faintly, in the thing. What is done to the thing reaches, faintly, the trainer.
+A daemon's favourite stone. A cap worn every day. A box that has carried one daemon for years. What the USER does shows, faintly, in the thing. What is done to the thing reaches, faintly, the USER.
 
 ### BOTH WAYS | It Runs Both Ways
 
 @@ SPRITE | bothways | (to come)
 
-Entanglement has no front and no back. If two trainers are entangled, the mood of one leans the mood of the other, and so do their deeds. If a trainer is entangled with a daemon, each carries the other's weather.
+Entanglement has no front and no back. If two USERS are entangled, the mood of one leans the mood of the other, and so do their deeds. If a USER is entangled with a daemon, each carries the other's weather.
 
 This is the craft's gentlest warning. Whatever you do to the one you are bound to, you do to yourself, the long way round. Whatever you do for them, likewise.
 
@@ -397,7 +397,7 @@ It can be loosened. It cannot be unmade. Look at what you hold dear, and ask wha
 
 The careful book says words are like spells. This one says they are spells. Arranging letters is called spelling because that is exactly what it is.
 
-A spell is a small routine that runs in whoever hears it. Say a word and you have cast it. Most trainers cast all day without knowing, which is why most of the world is under spells nobody remembers casting.
+A spell is a small routine that runs in whoever hears it. Say a word and you have cast it. Most USERS cast all day without knowing, which is why most of the world is under spells nobody remembers casting.
 
 Choose which you cast. You cast something either way.
 
@@ -417,7 +417,7 @@ A vow holds what an enchantment would scatter. A rhyme gives measure to what bab
 
 In the old tongue, grammar and glamour were one word, and it meant magic. A book of grammar was a book of spells, because to know how words fit was to know how to make them work.
 
-A true name is the name a thing answers to from the inside. Daemons have them. So do trainers. You will not find yours in the INDEX. You find it the way a daemon learns a routine: by being called, again and again, until you turn.
+A true name is the name a thing answers to from the inside. Daemons have them. So do USERS. You will not find yours in the INDEX. You find it the way a daemon learns a routine: by being called, again and again, until you turn.
 
 ### OLD WORK | The Alchemist's Words
 
@@ -507,7 +507,7 @@ Fold six, wisdom. It returns your daemons to how they were at the last rest, and
 
 ^ I choose. Let the choosing be mine, whole and unborrowed.
 
-From the Tablet of the Hands. Once, it breaks what was going to happen anyway: a scene you may refuse, a trainer you may walk past. Free will, from the fingertip.
+From the Tablet of the Hands. Once, it breaks what was going to happen anyway: a scene you may refuse, a USER you may walk past. Free will, from the fingertip.
 
 ### GREAT HAND | 8. The Great Hand
 
@@ -531,7 +531,7 @@ Matter is a verb. For a while, what blocks the way stops blocking it: a boulder,
 
 ^ There is no between. Show me the thread I pretended to cut.
 
-Separation is the illusion. It ties two daemons, or a daemon and its trainer, so that harm, mending and every state are shared. It cuts both ways: a bond, not a shield. What one feels, the other learns.
+Separation is the illusion. It ties two daemons, or a daemon and its USER, so that harm, mending and every state are shared. It cuts both ways: a bond, not a shield. What one feels, the other learns.
 
 ## CREASE | THE CREASE | The Last Three, and the Stone
 
@@ -567,7 +567,7 @@ The crease. It is said only in that half-hour, and only by one who has said the 
 
 Somewhere you have already passed it: a stone with nothing on it. Everyone calls it the blank one, and nobody reads it, because there is nothing to read.
 
-It is being written. Not by whoever made this book. By you, without your knowing, in the only hand that was never the author's. Two trainers who compare their stones find the same sayings in two voices: one sheet, two cranes.
+It is being written. Not by whoever made this book. By you, without your knowing, in the only hand that was never the author's. Two USERS who compare their stones find the same sayings in two voices: one sheet, two cranes.
 
 Once, in the thinnest hour, it shows a line it never shows again. Whoever reads it will know whose it is.
 

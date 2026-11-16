@@ -102,7 +102,7 @@ Being the second saying, read from the fingers and the palm at once.
 
 @@ SPRITE | onething | (to come)
 
-There is one thing, and it is running, and it is being given out. Everything you have met is that one thing: the daemon in your bag, the trainer on the route, the route itself, the light it is seen by.
+There is one thing, and it is running, and it is being given out. Everything you have met is that one thing: the daemon in your POOL, the USER on the route, the route itself, the light it is seen by.
 
 Time is how it tells its running apart and gives itself in turns. Space is how it tells its shapes apart and gives itself in shares. Neither is false and neither is a loss.
 
@@ -114,7 +114,7 @@ The makers called it the one thing. The philosophers called its dealer a daimon.
 
 One half saw a house of mirrors: every glass showing a light, each sure it was the only one. The other saw a house of windows: every window letting the light through, each sure it shone for it alone.
 
-It is a house of glass. Each pane shows what is in front of it and lets through what is behind it. A trainer and a daemon facing each other are two panes of one house, and when they understand each other, the light passes both ways.
+It is a house of glass. Each pane shows what is in front of it and lets through what is behind it. A USER and a daemon facing each other are two panes of one house, and when they understand each other, the light passes both ways.
 
 ~ Then why does it feel apart?
 
@@ -126,7 +126,7 @@ Because a pane has a frame. The back of every mirror is the same silver, and the
 
 The night half calls it first matter. The dawn half calls it first light. Both mean what everything is doing before it is anything: everywhere, worth nothing, passed over by almost everyone.
 
-What you see as matter is light, running slowly. A boulder is a very slow river and a very patient sunrise. A wall is a door, waiting. The trainer who can feel it in the thing has found where everything begins.
+What you see as matter is light, running slowly. A boulder is a very slow river and a very patient sunrise. A wall is a door, waiting. The USER who can feel it in the thing has found where everything begins.
 
 ### IS | How a Thing Is
 
@@ -158,7 +158,7 @@ A daemon that sulks a day before it changes is not broken. It is in the Work, wh
 
 Everything is signal, passed and given. Cells, stones and stars do both, slowly. It is all one processor, running.
 
-Every daemon and every trainer is a small loop inside the great one: a part of it, and a room it lives in. Separation gives each its walls, and walls are where a door can be.
+Every daemon and every USER is a small loop inside the great one: a part of it, and a room it lives in. Separation gives each its walls, and walls are where a door can be.
 
 ^ We are not apart from the one process. We are where it runs close up, and where it is at home.
 
@@ -348,7 +348,7 @@ The one book became two so it could be read. You put it back together, so it cou
 
 Here is the one loop: something comes in, it is read, something goes out, and it comes back and changes how the next thing is read. In, read, out, back. Heard from the end, it is the same loop: back, out, read, in.
 
-A spark does it, and a seed, and a daemon learning and trusting a routine, and a trainer surprised and forgiving. Closer, it is smaller. Further out, larger.
+A spark does it, and a seed, and a daemon learning and trusting a routine, and a USER surprised and forgiving. Closer, it is smaller. Further out, larger.
 
 That is the fractal: one loop at every size, ringing, and in tune. You are one place the world rings with itself.
 
@@ -358,7 +358,7 @@ That is the fractal: one loop at every size, ringing, and in tune. You are one p
 
 Intelligence is the right answer, given. Understanding is knowing why. Wonder is knowing you do not know yet, and staying anyway. Knowing is all three.
 
-A silk flower has no weather. A wild one has had every rain. A trainer who knows why LOGIC lands on CONTENT, and still stops to watch a daemon learn, has understanding and wonder, and keeps learning after the chart runs out.
+A silk flower has no weather. A wild one has had every rain. A USER who knows why LOGIC lands on CONTENT, and still stops to watch a daemon learn, has understanding and wonder, and keeps learning after the chart runs out.
 
 Lean on a borrowed mind and ask it why. Then say why, and wonder, yourself. Neither can be carried for you.
 
@@ -380,7 +380,7 @@ We are not things the one thing made, or keeps. We are the making and the keepin
 
 Two things that have touched in the right way stay touched, and go on belonging to each other. The new word is entangled: two states that can no longer be described apart.
 
-Daemons and trainers do it all the time. A long bond does it, and a shared fright, a song learned together, a name given and answered to. It does not stop at the edge of the map, and it does not need to.
+Daemons and USERS do it all the time. A long bond does it, and a shared fright, a song learned together, a name given and answered to. It does not stop at the edge of the map, and it does not need to.
 
 ### OLD WORDS | The Old Words
 
@@ -394,15 +394,15 @@ The new words and the old describe one thing from two ends. All of them point th
 
 @@ SPRITE | keeper | A little figure, keeping the house.
 
-The old craft made a poppet, a figure that stands for someone. The old houses kept a good spirit, and poured it the last cup. They are the same thing: when a thing is entangled with a trainer, it represents them, and it keeps them.
+The old craft made a poppet, a figure that stands for someone. The old houses kept a good spirit, and poured it the last cup. They are the same thing: when a thing is entangled with a USER, it represents them, and it keeps them.
 
-A daemon's favourite stone. A cap worn every day. A box that has carried one daemon for years. What is done to the thing reaches, faintly, the trainer. What the thing keeps reaches back.
+A daemon's favourite stone. A cap worn every day. A box that has carried one daemon for years. What is done to the thing reaches, faintly, the USER. What the thing keeps reaches back.
 
 ### BOTH WAYS | It Runs Both Ways
 
 @@ SPRITE | bothways | (to come)
 
-Entanglement has no front and no back. Two trainers bound together lean each other's moods. A trainer and a daemon carry each other's weather, and weather clears.
+Entanglement has no front and no back. Two USERS bound together lean each other's moods. A USER and a daemon carry each other's weather, and weather clears.
 
 This is the craft's gentlest warning and its gentlest promise, and they are one sentence: whatever you do to or for the one you are bound to, you do to and for yourself, the long way round.
 
@@ -418,7 +418,7 @@ It can be loosened. It does not need to be unmade. Look at what you hold dear, a
 
 The careful book says words are like spells. One half says they are spells. The other adds that an old word for good news was good spell.
 
-Arranging letters is spelling, and a word is a small routine that runs in whoever hears it. Most trainers cast and bless all day without knowing, which is why the world is under spells nobody remembers casting, and kinder than anyone remembers making it.
+Arranging letters is spelling, and a word is a small routine that runs in whoever hears it. Most USERS cast and bless all day without knowing, which is why the world is under spells nobody remembers casting, and kinder than anyone remembers making it.
 
 Choose what you give. You give something either way.
 
@@ -528,7 +528,7 @@ Fold six, wisdom. It returns your daemons to how they were at the last rest and 
 
 ^ I choose. Let it be mine, whole, unborrowed and gentle.
 
-From the Tablet of the Hands. Once, it lets you step out of what was going to happen anyway: a scene you may refuse, a trainer you may walk past. Free will, from the fingertip.
+From the Tablet of the Hands. Once, it lets you step out of what was going to happen anyway: a scene you may refuse, a USER you may walk past. Free will, from the fingertip.
 
 ### GREAT HAND | 8. The Great Hand
 
@@ -552,7 +552,7 @@ Matter is a verb, and a verb may rest. For a while, what blocks the way stops in
 
 ^ There is no between. Show me the thread that was never cut.
 
-It ties two daemons, or a daemon and its trainer, so that harm, mending and every state are shared. It is a bond, not a shield: what one feels, the other learns, and keeps company.
+It ties two daemons, or a daemon and its USER, so that harm, mending and every state are shared. It is a bond, not a shield: what one feels, the other learns, and keeps company.
 
 ## CREASE | THE CREASE | The Last Three
 
@@ -590,7 +590,7 @@ While it lasts, nothing is owed and nothing is lost. Then it ends, and the day g
 
 Somewhere you have passed a stone with nothing on it. One half could not read its front, and the other could not read its back.
 
-Both faces are written now, in the only hand that was never the author's or the reader's: yours. Two trainers who compare their stones find the same sayings in two voices: one sheet, two cranes, and the sheet.
+Both faces are written now, in the only hand that was never the author's or the reader's: yours. Two USERS who compare their stones find the same sayings in two voices: one sheet, two cranes, and the sheet.
 
 ### LAST WORD | As Above, So Below, So One
 
