@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.380 — 2026-11-16
+
+- Recorded from release v11.379.1 (c8518a50, engine 251e985ce), which sealed v11.376.x:
+  - **The last island and cave tiles** (T-570), the user's picks: rungs-and-rails ladders, broken-lip holes, glare-and-glint ice, the rest in keeping; 94 of 134 drawn, 40 left as named. DRAFT. In 9.29, after the islands and the caves.
+  - Also in the release, outside the bible: T-560's smoke run from the title screen on the Tiiny's 35B, and every book's recording made current.
+- Section 10: one Settled entry.
+
 ## v11.379 — 2026-11-16
 
 - Section 10, Open: **the player's manual keeps neither of the third book's two lines** (T-506; the user, by multiple choice: "Soften to rumour"). The manual's rumour now says only that nobody agrees how THE HERMETIC LAYER is found, or whether it is found at all (DRAFT); `docs/DAEMONS-manual.pdf` printed again. The T-506 row in TODO no longer quotes the old lines.
