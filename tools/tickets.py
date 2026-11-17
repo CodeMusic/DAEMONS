@@ -9,7 +9,7 @@ This first slice touches nothing on the network. It parses both files into the p
 subject, description, status, custom fields -- and proves the cut-over loses nothing: the files are rebuilt from that
 payload alone (plus the frame, the prose around the tables) and compared byte for byte with the originals.
 
-    python3 tools/tickets.py migrate --dry-run              # counts, irregular rows, and the round trip
+    python3 tools/tickets.py migrate --dry-run              # counts, irregular rows, and the round trip (also: bare)
     python3 tools/tickets.py migrate --dry-run --json OUT   # also write the payload
     python3 tools/tickets.py mirror --from OUT [--write]    # rebuild the TODO files from a payload
 
@@ -237,7 +237,7 @@ def round_trip(data):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    sub = ap.add_subparsers(dest="cmd", required=True)
+    sub = ap.add_subparsers(dest="cmd")
     mg = sub.add_parser("migrate")
     mg.add_argument("--dry-run", action="store_true", required=True,
                     help="the only mode so far: nothing is sent to Redmine")
@@ -245,7 +245,12 @@ def main():
     mr = sub.add_parser("mirror")
     mr.add_argument("--from", dest="src", required=True, help="a payload written by migrate --json")
     mr.add_argument("--write", action="store_true")
-    a = ap.parse_args()
+    # check_generators.py runs every tool bare (and with --write in its sandbox): both are the dry run, which writes
+    # nothing -- there is no Redmine write to make from here yet.
+    argv = sys.argv[1:]
+    if argv in ([], ["--write"]):
+        argv = ["migrate", "--dry-run"]
+    a = ap.parse_args(argv)
 
     if a.cmd == "migrate":
         data = load_all()
