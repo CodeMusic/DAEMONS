@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.387 — 2026-11-17
+
+- Recorded from release v11.386.1 (8995d388, engine d74da2006 and aa19d5924), which sealed v11.385.x:
+  - **The battle music** (T-565 batch 2, the Musical Instruments lane): all nine slots in voice C, over pret's in place. DRAFT.
+  - **The battle sounds** (T-565 batch 4, the game lane): 24 sounds apart from moves, C BOTH. DRAFT. Both in 9.5, after the menus.
+  - Also in the release, outside the bible: T-575 to T-580 filed (C-357's game half, the user's picks); T-581's first slice (tickets.py, a dry run); THE COMPANION recorded again.
+- Section 10: one Settled entry.
+
 ## v11.386 — 2026-11-17
 
 - Recorded from release v11.385.1 (df3c0726, engine eeab33eec), which sealed v11.384.x:

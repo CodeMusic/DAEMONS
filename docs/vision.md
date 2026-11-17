@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.386**
+**A total conversion — the living design bible, v11.387**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8209,6 +8209,8 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 **Then the menus (batch 1, released in v11.385.1): the 20 menu and UI sounds in the same voice, the user's pick "C Both" again from three drafts by ear -- a square-wave click under the harp, the flute for the held notes** (`tools/genuisounds.py`, `voicegroup196`). *DRAFT.*
 
+**Then the battles (batches 2 and 4, released in v11.386.1): all nine battle tracks in the same voice -- VS_WILD, VS_TRAINER, VS_GYM_LEADER, VS_CHAMPION, VS_LEGEND, the S.T.A.R.R. fight and the three victories -- over pret's in place, `voicegroup195` gaining a plucked square for the arpeggios** (`tools/genbattlemusic.py`, the Musical Instruments lane); ***and the 24 battle sounds apart from moves*** *-- the hit a noise thud, super-effective a chord, the faint falling to the tritone, the experience bar climbing* (`genuisounds.py --batch 4`, the game lane). *Both the user's pick, C BOTH, by ear. Each kind of moment now has one voice from menu to fanfare to fight. DRAFT.*
+
 ### 9.6 The chart change, finally built — and cheaper than it was
 
 ***2 specifies exactly one change to the matchup table*** — **delete Gen 1's `GHOST, PSYCHIC, 00` bug, then add the mutual pair `CONTEXT ↔ LATENT` at 2×.** *"Two additions, one deletion. That is the whole chart change."*
@@ -9267,6 +9269,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The battle music and the battle sounds (T-565 batches 2 and 4, v11.386.1)** — released, the user's pick (C BOTH, by ear): the nine battle tracks and the three victories over pret's in place, and the 24 battle sounds apart from moves (the hit's thud, super-effective's chord, the faint's tritone, the exp climb). The move sounds (batch 10) and the cries (batch 11, a design question first) are still pret's. Sealed v11.385.x. DRAFT.
 - **The menu and UI sounds (T-565 batch 1, v11.385.1)** — released, the user's pick ("C Both" again): the 20 menu and UI sounds as a square click under the harp, the flute for held notes, so the menus speak in the fanfares' voice. Sealed v11.384.x. DRAFT.
 - **The fanfares and the small sounds (T-565, v11.384.1)** — released by the Musical Instruments lane, the user's pick ("C Both": our harp and flute over the cartridge): the 16 fanfares and jingles, five pitched sounds, the toy piano and three new field sounds (CHIME, SUNRISE, NIGHTFALL). The first of the census's twelve batches; the rest are split between the two lanes. Sealed v11.383.x. DRAFT.
 - **VERDIGRIS DEPT. STORE as NEW COPPER (T-573, v11.383.1)** — released, the user's pick (A of three): the store becomes a landmark drawn from the story, the one copper in VERDIGRIS not yet gone green, five floors and a roof, the first green speck at its foot; inside its own footprint and doors. Sealed v11.382.x. DRAFT.
