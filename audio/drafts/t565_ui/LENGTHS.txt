@@ -1,0 +1,22 @@
+# T-565 batch 1 drafts (tools/genuisounds.py --draft): style, sound, pret's frames, ours, velocity scale
+# A TERMINAL / B HARP KEYS / C BOTH
+select         pret  9  A  8 x1.00  B  6 x0.44  C  6 x0.65
+boo            pret 18  A 18 x1.00  B 18 x0.38  C 18 x0.43
+click          pret  8  A  8 x1.00  B  8 x0.40  C  8 x0.71
+use_item       pret 26  A 26 x1.00  B 26 x0.28  C 26 x0.50
+win_open       pret 12  A 12 x0.57  B 12 x0.34  C 12 x0.49
+pc_off         pret 20  A 20 x1.00  B 20 x0.34  C 20 x0.57
+pc_on          pret 58  A 58 x1.00  B 58 x0.31  C 58 x0.44
+card_open      pret 41  A 41 x1.00  B 41 x0.77  C 41 x1.00
+card_flip      pret  3  A  3 x0.88  B  3 x0.60  C  3 x0.70
+card_flipping  pret 20  A 20 x0.97  B 12 x0.24  C 20 x0.30
+bag_pocket     pret  2  A  2 x1.00  B  2 x1.00  C  2 x1.00
+bag_cursor     pret  1  A  1 x1.00  B  1 x1.00  C  1 x1.00
+rs_shop        pret 27  A 27 x1.00  B 27 x0.76  C 27 x1.00
+save           pret 42  A 42 x1.00  B 42 x1.00  C 42 x1.00
+rotating_gate  pret 20  A 16 x1.00  B 14 x1.00  C 16 x1.00
+dex_scroll     pret  3  A  2 x0.62  B  2 x0.20  C  2 x0.40
+dex_page       pret 10  A 10 x0.42  B 10 x0.14  C 10 x0.20
+help_open      pret 29  A 29 x1.00  B 29 x0.37  C 29 x0.66
+help_close     pret 29  A 29 x1.00  B 29 x0.51  C 29 x0.87
+help_error     pret 17  A 17 x1.00  B 17 x0.61  C 17 x0.81
