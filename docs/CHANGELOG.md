@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.382 — 2026-11-16
+
+- Recorded from release v11.381.1 (57ce1f7d, engine 90d4d474e), which sealed v11.380.x:
+  - **The ladders down a hole** (T-574), the user's pick: the four caves' ladders as T-570's rungs and rails, NAVEL ROCK's fall hole as its broken lip. DRAFT. In 9.29, T-570's bullet no longer says they wait.
+  - Also in the release, outside the bible: T-565's sound census (`docs/sound-census-2026-11-16.md`), its split with the Musical Instruments lane agreed.
+- Section 10: one Settled entry.
+
 ## v11.381 — 2026-11-16
 
 - Recorded from release v11.380.1 (dede92d7, engine 528a27359), which sealed v11.379.x:
