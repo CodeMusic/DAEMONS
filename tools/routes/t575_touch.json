@@ -1,0 +1,50 @@
+{
+  "rom": "debug",
+  "about": "T-575 (DRAFT): TOUCH. (1) A gift a person hands over -- the TEA from the old woman in CELADON's condominiums -- with a STRATUM daemon following (SANDSHREW) brings the read 'A read: this was held a long time / before it was given.'; with a daemon of another type following (ARCANINE), nothing. gReadsDebugAlways 1 takes away the chance, so the read is filmed without waiting for it. (2) At night in DAEMON TOWER with a LATENT daemon following (GASTLY), the first step brings 'A read: rain on stone. / It is dry in here.' -- and only once that night. THE SUBTLE LAYER given through DEBUG -> GAME EVENTS. The theatre's debug scratch save; the watch, the flags and the party put back as far as they matter.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "a gift, a STRATUM daemon following: the read",
+      "steps": [
+        "load debug", "repel 999", "flag FLAG_FOLLOWER_OFF 0",
+        "flag FLAG_GOT_SUBTLE_LAYER 0",
+        "events \"THE SUBTLE LAYER\"",
+        "flagis FLAG_GOT_SUBTLE_LAYER 1",
+        "goto ViridianCity 20 20", "to 20 21", "finish",
+        "mon 0 species SPECIES_SANDSHREW",
+        "poke gReadsDebugAlways 8 1",
+        "flag FLAG_GOT_TEA 0", "flag FLAG_TALKED_TO_TEA_LADY_AFTER_HOF 0", "flag FLAG_SYS_GAME_CLEAR 0",
+        "goto CeladonCity_Condominiums_1F 4 9", "wait 30",
+        "talk CeladonCity_Condominiums_1F_EventScript_TeaWoman",
+        "says \"this was held a long time\"",
+        "says \"before it was given.\""
+      ]
+    },
+    {
+      "stop": "the same gift, another type following: nothing",
+      "steps": [
+        "mon 0 species SPECIES_ARCANINE",
+        "flag FLAG_GOT_TEA 0",
+        "goto CeladonCity_Condominiums_1F 4 9", "wait 30",
+        "talk CeladonCity_Condominiums_1F_EventScript_TeaWoman",
+        "unsaid \"held a long time\"",
+        "poke gReadsDebugAlways 8 0"
+      ]
+    },
+    {
+      "stop": "night, DAEMON TOWER, a LATENT daemon following: rain on stone, once",
+      "steps": [
+        "mon 0 species SPECIES_GASTLY",
+        "poke gDaemonsWatchOverride 8 3",
+        "goto LavenderTown 10 12", "to 11 12", "finish",
+        "goto PokemonTower_1F 10 14", "to 10 13", "finish",
+        "says \"rain on stone.\"",
+        "says \"It is dry in here.\"",
+        "goto LavenderTown 10 12", "to 11 12", "finish",
+        "goto PokemonTower_1F 10 14", "to 10 13", "finish",
+        "shot \"the same night, again: no rain\"",
+        "poke gDaemonsWatchOverride 8 0"
+      ]
+    }
+  ]
+}

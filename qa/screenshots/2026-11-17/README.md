@@ -79,3 +79,21 @@ T-577 (DRAFT): ten seconds at VIRIDIAN CITY's pond with the follower -- two ring
 T-577 (DRAFT): ten seconds at VIRIDIAN CITY's pond with the follower -- two rings spread from the two reflections and meet, then the read 'A read: two ripples, one pond. / Where is the line?'; CELADON CITY's pond the same; without THE SUBTLE LAYER, nothing
 
 ![17Nov2026 - T577 - two ripples, one pond - 16](17Nov2026%20-%20T577%20-%20two%20ripples%2C%20one%20pond%20-%2016.png)
+
+### 17Nov2026 - T575 - TOUCH, a gift and rain on stone - 17
+
+T-575 (DRAFT): TOUCH -- the TEA handed over with a STRATUM daemon following brings 'A read: this was held a long time / before it was given.', with an ENTROPY one nothing; at night in DAEMON TOWER (HALFTONE's grey) with a LATENT one, 'A read: rain on stone. / It is dry in here.', once that night
+
+![17Nov2026 - T575 - TOUCH, a gift and rain on stone - 17](17Nov2026%20-%20T575%20-%20TOUCH%2C%20a%20gift%20and%20rain%20on%20stone%20-%2017.png)
+
+### 17Nov2026 - T575 - TOUCH, a gift and rain on stone - 18
+
+T-575 (DRAFT): TOUCH -- the TEA handed over with a STRATUM daemon following brings 'A read: this was held a long time / before it was given.', with an ENTROPY one nothing; at night in DAEMON TOWER (HALFTONE's grey) with a LATENT one, 'A read: rain on stone. / It is dry in here.', once that night
+
+![17Nov2026 - T575 - TOUCH, a gift and rain on stone - 18](17Nov2026%20-%20T575%20-%20TOUCH%2C%20a%20gift%20and%20rain%20on%20stone%20-%2018.png)
+
+### 17Nov2026 - T575 - TOUCH, a gift and rain on stone - 19
+
+T-575 (DRAFT): TOUCH -- the TEA handed over with a STRATUM daemon following brings 'A read: this was held a long time / before it was given.', with an ENTROPY one nothing; at night in DAEMON TOWER (HALFTONE's grey) with a LATENT one, 'A read: rain on stone. / It is dry in here.', once that night
+
+![17Nov2026 - T575 - TOUCH, a gift and rain on stone - 19](17Nov2026%20-%20T575%20-%20TOUCH%2C%20a%20gift%20and%20rain%20on%20stone%20-%2019.png)
