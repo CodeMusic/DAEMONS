@@ -348,7 +348,7 @@ def same_issue(have, want, statuses):
     return all(hv.get(c["id"], "") == c["value"] for c in want["custom_fields"])
 
 
-def sync(write, create_only=False):
+def sync(write, create_only=False, only=None):
     """Files -> Redmine, until the cut-over: creates what is missing, updates what differs, deletes nothing.
     create_only (after the cut-over, before each mirror): a row someone added to a TODO file by hand becomes a ticket
     instead of being refused, and no ticket Redmine already holds is touched."""
@@ -370,6 +370,8 @@ def sync(write, create_only=False):
         created = updated = same = 0
         for n, t in enumerate(d["tickets"], 1):
             key = t["fields"]["Ticket"]
+            if only and key not in only:
+                continue
             want = redmine_payload(t, p, statuses, versions.get(want_versions.get(key)))
             if key not in have:
                 created += 1
@@ -389,6 +391,26 @@ def sync(write, create_only=False):
         verb = "" if write else "would be "
         print(f"{project}: {created} {verb}created, {updated} {verb}updated, {same} the same"
               f"{'; only in Redmine: ' + ' '.join(extra) if extra else ''}")
+
+
+def carry(since, write):
+    """After the cut-over, before each mirror: a ticket row edited (or added) by hand since the last mirror is carried
+    into Redmine instead of being overwritten -- nothing a session wrote is lost. `since` holds the files as last
+    mirrored (`mirror --from-redmine --write --save DIR` keeps them)."""
+    keys = set()
+    for project, d in load_all().items():
+        old = Path(since) / f"{project}.md"
+        if not old.exists():
+            print(f"{project}: no saved mirror in {since}; carrying only rows Redmine lacks")
+            keys |= {t["fields"]["Ticket"] for t in d["tickets"]} - {cf(i).get("Ticket") for i in Redmine().issues(project)}
+            continue
+        _, before, _ = parse(project, old.read_text(encoding="utf-8"))
+        was = {t["fields"]["Ticket"]: render_row(t) for t in before}
+        mine = [t["fields"]["Ticket"] for t in d["tickets"] if was.get(t["fields"]["Ticket"]) != render_row(t)]
+        print(f"{project}: {len(mine)} row(s) changed by hand since the last mirror{': ' + ' '.join(mine) if mine else ''}")
+        keys |= set(mine)
+    if keys:
+        sync(write, only=keys)
 
 
 def from_redmine(rm, project, d, statuses_by_id):
@@ -418,7 +440,7 @@ def from_redmine(rm, project, d, statuses_by_id):
     return out
 
 
-def mirror_from_redmine(write):
+def mirror_from_redmine(write, save=None):
     """Redmine -> both TODO files. Refuses (exit 1) if any ticket in a file is missing from Redmine: an emptied or
     re-created Redmine must never be mirrored over the files and pushed."""
     rm, data = Redmine(), load_all()
@@ -436,6 +458,9 @@ def mirror_from_redmine(write):
             continue
         text = render(d["frame"], tickets)
         original = path.read_text(encoding="utf-8")
+        if save:
+            Path(save).mkdir(parents=True, exist_ok=True)
+            (Path(save) / f"{project}.md").write_text(text, encoding="utf-8")
         if text == original:
             print(f"{path}: current ({len(tickets)} tickets, identical to Redmine)")
             continue
@@ -621,8 +646,13 @@ def main():
     mr.add_argument("--from", dest="src", help="a payload written by migrate --json")
     mr.add_argument("--from-redmine", action="store_true", help="rebuild the files from Redmine (refuses a loss)")
     mr.add_argument("--write", action="store_true")
+    mr.add_argument("--save", help="keep a copy of what was mirrored here (for `carry` next time)")
+    ca = sub.add_parser("carry", help="after the cut-over: carry rows edited by hand since the last mirror into Redmine")
+    ca.add_argument("--since", required=True, help="the folder `mirror --save` wrote")
+    ca.add_argument("--write", action="store_true")
     sy = sub.add_parser("sync", help="files -> Redmine until the cut-over; creates and updates, never deletes")
     sy.add_argument("--write", action="store_true")
+    sy.add_argument("--only", nargs="+", help="after the cut-over: carry these rows' hand edits into Redmine (T-565 ...)")
     sy.add_argument("--create-only", action="store_true", help="after the cut-over: add hand-written rows, touch nothing else")
     nw = sub.add_parser("new", help="a new ticket with the next id (after the cut-over)")
     nw.add_argument("--lane", required=True)
@@ -709,13 +739,15 @@ def main():
     if a.cmd == "export":
         export(a.out)
         return
+    if a.cmd == "carry":
+        return carry(a.since, a.write)
     if a.cmd == "new":
         return new_ticket(a)
     if a.cmd == "sync":
-        sync(a.write, a.create_only)
+        sync(a.write, a.create_only, {norm_key(k) for k in a.only} if a.only else None)
         return
     if a.from_redmine:
-        sys.exit(0 if mirror_from_redmine(a.write) else 1)
+        sys.exit(0 if mirror_from_redmine(a.write, a.save) else 1)
     if not a.src:
         ap.error("mirror needs --from FILE or --from-redmine")
     data = json.loads(Path(a.src).read_text(encoding="utf-8"))

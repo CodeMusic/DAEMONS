@@ -89,9 +89,10 @@ for attempt in 1 2 3; do
   fresh "$D" && fresh "$C" || fail "could not fetch"
   cd "$D" || fail "no clone"
   if [ "$TRUTH" = redmine ]; then
-    # a row someone wrote into a TODO file by hand becomes a ticket rather than being refused or lost
-    $PY tools/tickets.py sync --write --create-only | grep -v -E '^  .*: [0-9]+/' || fail "create-only sync"
-    $PY tools/tickets.py mirror --from-redmine --write || fail "the mirror refused (a ticket in the files is not in Redmine); nothing committed"
+    # a row someone wrote or changed in a TODO file by hand since the last mirror is carried into Redmine first, so
+    # the mirror never overwrites it (T-565's row, the hour of the cut-over, is why)
+    $PY tools/tickets.py carry --since "$BASE/last-mirror" --write | grep -v -E '^  .*: [0-9]+/' || fail "carry"
+    $PY tools/tickets.py mirror --from-redmine --write --save "$BASE/last-mirror" || fail "the mirror refused (a ticket in the files is not in Redmine); nothing committed"
   else
     $PY tools/tickets.py sync --write | grep -v -E '^  .*: [0-9]+/' || fail "sync"
     $PY tools/tickets.py mirror --from-redmine | grep -E 'current|differs|REFUSED' || true
