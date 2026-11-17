@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.380**
+**A total conversion — the living design bible, v11.381**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9258,6 +9258,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The relearner's carets seen, and two drifts put right (v11.380.1)** — released: the relearner's CARET arrows (T-566) now show, after three vanilla bugs had kept them hidden (its sprites off, the down arrow lost, the list never asking) -- the user's yes; the ROVERBYTE and MUSAI credit cards rebuilt from their redrawn fronts; DENSE WOOD's grove tell one pixel back on its trunk. Each found by reading the tools' drift both ways (T-292). Sealed v11.379.x.
 - **The last island and cave tiles (T-570, v11.379.1)** — released, the user's picks: ladders RUNGS AND RAILS, holes BROKEN LIP, slide ice GLARE AND GLINT, the rest IN KEEPING; 94 of 134 drawn by hand as whole objects in their own indices, 40 left as named, THE BLACKOUT kept for the story. Closes the 2026-11-14 re-census's leftovers; the landmarks (T-447) and the doors remain. Sealed v11.376.x. DRAFT.
 - **The books from their sources (T-571, v11.376.1)** — released: the four layer books rebuilt from sources that say USER, THE CONTAINER's last page three lines with two DRAFT words; the manuals reprinted in the game's own words (USER CARD, POOL, PORT). Sealed v11.375.x. DRAFT.
 - **The game's own words in newer writing (T-571, v11.375.1)** — released, the user's ruling (apply all, by hand): trainer is USER in the four layer books, the SMALL HAND and the debug kit; bag is POOL, PC is PORT, flee is DETACH, a capture is a bind; the books' stage names and idioms kept; `port_vocab.py` guarded against a whole-tree write (1.6). Sealed v11.374.x. DRAFT.

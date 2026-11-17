@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.381 — 2026-11-16
+
+- Recorded from release v11.380.1 (dede92d7, engine 528a27359), which sealed v11.379.x:
+  - **The relearner's CARET arrows seen** (T-566 follow-up): three vanilla bugs had hidden them; fixed on the user's yes.
+  - **Two drifts put right**: the ROVERBYTE and MUSAI credit cards rebuilt from their redrawn fronts, and DENSE WOOD's grove tell one pixel back on its trunk.
+  - Also in the release, outside the bible: generator guards for T-569, T-570 and the landmarks, the books reprinted after T-571, and the unseen pieces filmed.
+- Section 10: one Settled entry.
+
 ## v11.380 — 2026-11-16
 
 - Recorded from release v11.379.1 (c8518a50, engine 251e985ce), which sealed v11.376.x:
