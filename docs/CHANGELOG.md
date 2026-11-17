@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.383 — 2026-11-16
+
+- Recorded from release v11.382.1 (fea739dd, engine 04464cc40), which sealed v11.381.x:
+  - **The head over the ring** (T-572), the user's pick: the player's head draws over the GOTO map's rings, so REASON and INSTINCT can be told apart at a town. DRAFT.
+  - Also in the release, outside the bible: THE CARDPUTERS, the eleventh manual (C-393, DRAFT), released before its recording by the user's choice ("Release now, record after"); T-573's department store drafted, nothing picked.
+- Section 10: one Settled entry.
+
 ## v11.382 — 2026-11-16
 
 - Recorded from release v11.381.1 (57ce1f7d, engine 90d4d474e), which sealed v11.380.x:

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.382**
+**A total conversion — the living design bible, v11.383**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9258,6 +9258,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The head over the ring (T-572, v11.382.1)** — released, the user's pick: on the GOTO map the player's BUST head (T-563) draws over the town's ring, so REASON and INSTINCT can be told apart at a town; the cursor stays on top, and the TOWN MAP, which has no rings, is unchanged. Sealed v11.381.x. DRAFT.
 - **The ladders down a hole (T-574, v11.381.1)** — released, the user's pick: the four caves' ladders down a hole as T-570's RUNGS AND RAILS and NAVEL ROCK's fall hole as its BROKEN LIP, from the same drawing; DEADSTACK's and TAPPOINT'S read grey and brown, in their rows' own colours. Sealed v11.380.x. DRAFT.
 - **The relearner's carets seen, and two drifts put right (v11.380.1)** — released: the relearner's CARET arrows (T-566) now show, after three vanilla bugs had kept them hidden (its sprites off, the down arrow lost, the list never asking) -- the user's yes; the ROVERBYTE and MUSAI credit cards rebuilt from their redrawn fronts; DENSE WOOD's grove tell one pixel back on its trunk. Each found by reading the tools' drift both ways (T-292). Sealed v11.379.x.
 - **The last island and cave tiles (T-570, v11.379.1)** — released, the user's picks: ladders RUNGS AND RAILS, holes BROKEN LIP, slide ice GLARE AND GLINT, the rest IN KEEPING; 94 of 134 drawn by hand as whole objects in their own indices, 40 left as named, THE BLACKOUT kept for the story. Closes the 2026-11-14 re-census's leftovers; the landmarks (T-447) and the doors remain. Sealed v11.376.x. DRAFT.
