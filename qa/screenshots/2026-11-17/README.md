@@ -31,3 +31,9 @@ C-395: GAMES on the Zero -- CONTENT and CONTEXT, each a release (11.385.1) or a 
 T-565 batch 2, the battle music as built in v11.386.1 (engine d74da2006): the nine MIDIs the ROM is compiled from, read back -- voice C, the harp and flute over the cartridge as the fanfares, all nine slots (DRAFT)
 
 ![17Nov2026 - T565 - battle music as built - 5](17Nov2026%20-%20T565%20-%20battle%20music%20as%20built%20-%205.png)
+
+### 17Nov2026 - T580 - the follower turns - 6
+
+T-580 (DRAFT): after THE SUBTLE LAYER's LAST WORD, the follower looks away a beat, then turns to face the player (top); straight below the player, the turn is the flip (bottom)
+
+![17Nov2026 - T580 - the follower turns - 6](17Nov2026%20-%20T580%20-%20the%20follower%20turns%20-%206.png)
