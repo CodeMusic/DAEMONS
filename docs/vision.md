@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.384**
+**A total conversion — the living design bible, v11.385**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8201,6 +8201,12 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 **`SaffronCity/map.json` now plays `MUS_BRAZEN`.** *Viridian keeps `MUS_PEWTER`, which is correct:* **7.4 has Callow sharing Cities 1 with Slate in the Game Boy build too.**
 
+#### The fanfares and the small sounds (T-565, released in v11.384.1)
+
+***A census came first*** (`docs/sound-census-2026-11-16.md`): **of the music still played, 30 tracks were ours and 66 pret's; of the sound effects, 18 ours and 221 pret's; every cry pret's.** *Twelve batches were proposed and split with the Musical Instruments lane: the notes are theirs, the menu, battle, field and move sounds and the cries ours (a design question first).*
+
+**The first of them is built: the 16 fanfares and jingles (LEVEL_UP, HEAL, BADGE, CAUGHT, the INTERRUPT, the eyes-meet jingles, the boot's falling note and the rest), five pitched sounds, the toy piano's eight notes, and three new field sounds -- SE_CHIME, SE_SUNRISE, SE_NIGHTFALL.** ***Their voice is the user's pick from three drafted on one set of notes: "C Both" -- our harp and flute over the cartridge*** (`tools/genfanfares.py`, `voicegroup195`). *Each fanfare waits only as long as its notes, never longer than pret's. DRAFT.*
+
 ### 9.6 The chart change, finally built — and cheaper than it was
 
 ***2 specifies exactly one change to the matchup table*** — **delete Gen 1's `GHOST, PSYCHIC, 00` bug, then add the mutual pair `CONTEXT ↔ LATENT` at 2×.** *"Two additions, one deletion. That is the whole chart change."*
@@ -9259,6 +9265,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The fanfares and the small sounds (T-565, v11.384.1)** — released by the Musical Instruments lane, the user's pick ("C Both": our harp and flute over the cartridge): the 16 fanfares and jingles, five pitched sounds, the toy piano and three new field sounds (CHIME, SUNRISE, NIGHTFALL). The first of the census's twelve batches; the rest are split between the two lanes. Sealed v11.383.x. DRAFT.
 - **VERDIGRIS DEPT. STORE as NEW COPPER (T-573, v11.383.1)** — released, the user's pick (A of three): the store becomes a landmark drawn from the story, the one copper in VERDIGRIS not yet gone green, five floors and a roof, the first green speck at its foot; inside its own footprint and doors. Sealed v11.382.x. DRAFT.
 - **The head over the ring (T-572, v11.382.1)** — released, the user's pick: on the GOTO map the player's BUST head (T-563) draws over the town's ring, so REASON and INSTINCT can be told apart at a town; the cursor stays on top, and the TOWN MAP, which has no rings, is unchanged. Sealed v11.381.x. DRAFT.
 - **The ladders down a hole (T-574, v11.381.1)** — released, the user's pick: the four caves' ladders down a hole as T-570's RUNGS AND RAILS and NAVEL ROCK's fall hole as its BROKEN LIP, from the same drawing; DEADSTACK's and TAPPOINT'S read grey and brown, in their rows' own colours. Sealed v11.380.x. DRAFT.

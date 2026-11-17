@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.385 — 2026-11-16
+
+- Recorded from release v11.384.1 (a3372181, engine 4e66bd3d3), the Musical Instruments lane's, which sealed v11.383.x:
+  - **The fanfares and the small sounds** (T-565, batches 3 and 7 and the pitched sounds), the user's pick "C Both": 16 fanfares and jingles, five pitched sounds, the toy piano, and SE_CHIME, SE_SUNRISE and SE_NIGHTFALL. DRAFT. In 9.5, a new last part, with the sound census and the split.
+- Section 10: one Settled entry.
+
 ## v11.384 — 2026-11-16
 
 - Recorded from release v11.383.1 (c067c8de, engine 62de521c0), which sealed v11.382.x:
