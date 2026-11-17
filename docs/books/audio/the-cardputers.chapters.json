@@ -1,0 +1,219 @@
+{
+ "book": "cardputer",
+ "voice": "tinkerer",
+ "blend": {
+  "am_eric": 0.6,
+  "am_puck": 0.4
+ },
+ "speed": 1.03,
+ "sentence": 0.3,
+ "draft": "DRAFT \u00b7 every word, until it is approved",
+ "sources": "7824d358dee97658",
+ "duration": 1469.03,
+ "chapters": [
+  {
+   "kind": "section",
+   "title": "The Cardputers",
+   "start": 0.0,
+   "end": 11.03
+  },
+  {
+   "kind": "section",
+   "title": "The Cardputers",
+   "start": 11.03,
+   "end": 134.35
+  },
+  {
+   "kind": "entry",
+   "title": "What you need",
+   "start": 134.35,
+   "end": 170.16
+  },
+  {
+   "kind": "section",
+   "title": "The keys",
+   "start": 170.16,
+   "end": 180.13
+  },
+  {
+   "kind": "entry",
+   "title": "On the Cardputer and the A D V",
+   "start": 180.13,
+   "end": 215.18
+  },
+  {
+   "kind": "entry",
+   "title": "On the Zero",
+   "start": 215.18,
+   "end": 281.79
+  },
+  {
+   "kind": "section",
+   "title": "The Cardputer and the A D V",
+   "start": 281.79,
+   "end": 311.62
+  },
+  {
+   "kind": "entry",
+   "title": "Putting the software on",
+   "start": 311.62,
+   "end": 339.9
+  },
+  {
+   "kind": "entry",
+   "title": "Linking it",
+   "start": 339.9,
+   "end": 388.6
+  },
+  {
+   "kind": "entry",
+   "title": "The corner",
+   "start": 388.6,
+   "end": 408.05
+  },
+  {
+   "kind": "entry",
+   "title": "Its pages",
+   "start": 408.05,
+   "end": 447.63
+  },
+  {
+   "kind": "entry",
+   "title": "Care",
+   "start": 447.63,
+   "end": 466.16
+  },
+  {
+   "kind": "entry",
+   "title": "A word to every daemon",
+   "start": 466.16,
+   "end": 514.26
+  },
+  {
+   "kind": "entry",
+   "title": "Routines",
+   "start": 514.26,
+   "end": 572.12
+  },
+  {
+   "kind": "entry",
+   "title": "Sound and light",
+   "start": 572.12,
+   "end": 596.57
+  },
+  {
+   "kind": "section",
+   "title": "The Cardputer Zero",
+   "start": 596.57,
+   "end": 651.03
+  },
+  {
+   "kind": "entry",
+   "title": "What you need",
+   "start": 651.03,
+   "end": 697.83
+  },
+  {
+   "kind": "entry",
+   "title": "Installing it",
+   "start": 697.83,
+   "end": 731.76
+  },
+  {
+   "kind": "entry",
+   "title": "Making the game",
+   "start": 731.76,
+   "end": 799.18
+  },
+  {
+   "kind": "entry",
+   "title": "Playing",
+   "start": 799.18,
+   "end": 835.38
+  },
+  {
+   "kind": "entry",
+   "title": "Your save",
+   "start": 835.38,
+   "end": 871.8
+  },
+  {
+   "kind": "entry",
+   "title": "Linking to the hub",
+   "start": 871.8,
+   "end": 931.02
+  },
+  {
+   "kind": "entry",
+   "title": "SYNC",
+   "start": 931.02,
+   "end": 974.07
+  },
+  {
+   "kind": "entry",
+   "title": "Away from home",
+   "start": 974.07,
+   "end": 991.91
+  },
+  {
+   "kind": "entry",
+   "title": "The companion on it",
+   "start": 991.91,
+   "end": 1058.22
+  },
+  {
+   "kind": "entry",
+   "title": "Not on the Zero yet",
+   "start": 1058.22,
+   "end": 1088.62
+  },
+  {
+   "kind": "section",
+   "title": "The caps",
+   "start": 1088.62,
+   "end": 1134.63
+  },
+  {
+   "kind": "entry",
+   "title": "The Cap LoRa twelve sixty-two",
+   "start": 1134.63,
+   "end": 1194.7
+  },
+  {
+   "kind": "entry",
+   "title": "The Cap C C eleven oh one + NFC",
+   "start": 1194.7,
+   "end": 1272.79
+  },
+  {
+   "kind": "section",
+   "title": "Looking after them",
+   "start": 1272.79,
+   "end": 1275.7
+  },
+  {
+   "kind": "entry",
+   "title": "The batteries",
+   "start": 1275.7,
+   "end": 1321.26
+  },
+  {
+   "kind": "entry",
+   "title": "Bringing them up to date",
+   "start": 1321.26,
+   "end": 1340.73
+  },
+  {
+   "kind": "entry",
+   "title": "When something is wrong",
+   "start": 1340.73,
+   "end": 1422.47
+  },
+  {
+   "kind": "entry",
+   "title": "Still to come",
+   "start": 1422.47,
+   "end": 1469.03
+  }
+ ]
+}
