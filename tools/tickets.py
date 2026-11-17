@@ -15,6 +15,11 @@ payload alone (plus the frame, the prose around the tables) and compared byte fo
     python3 tools/tickets.py sync [--write]                 # files -> Redmine until the cut-over (never deletes)
     python3 tools/tickets.py mirror --from-redmine [--write] # Redmine -> files; refuses if any ticket would be lost
     python3 tools/tickets.py export [--out FILE]            # every ticket with its history, for git (docs/tickets/)
+    python3 tools/tickets.py show T-581 [--lane game]       # one ticket
+    python3 tools/tickets.py mine --lane game               # a lane's open tickets
+    python3 tools/tickets.py assign T-581 --to ops          # give a ticket to a lane
+    python3 tools/tickets.py claim T-581 --lane ops --branch main      # after the cut-over only
+    python3 tools/tickets.py close T-581 --lane ops --commit DAEMONS@6ff940f9   # after the cut-over only
 
 Redmine's address and key come from ~/.redmine.env (0600, outside every repo); the key is never printed. The Redmine
 side is set up by tools/redmine_setup_tickets.rb (statuses, trackers, priorities, fields, projects, membership).
@@ -255,9 +260,14 @@ FIELD_NAMES = ["Ticket", "Run", "Order", "Shown as", "Commits", "Branch", "Where
 
 
 class Redmine:
-    def __init__(self):
+    def __init__(self, lane=None):
         env = dict(l.split("=", 1) for l in ENV.read_text().split("\n") if "=" in l and not l.startswith("#"))
-        self.url, self._key = env["REDMINE_URL"].rstrip("/"), env["REDMINE_API_KEY"].strip()
+        name = f"REDMINE_KEY_{lane.upper().replace('-', '_')}" if lane else "REDMINE_API_KEY"
+        if name not in env:
+            raise SystemExit(f"no key for lane {lane!r} in {ENV} (lanes: "
+                             + ", ".join(k[12:].lower().replace("_", "-") for k in env if k.startswith("REDMINE_KEY_"))
+                             + ")")
+        self.url, self._key, self.lane = env["REDMINE_URL"].rstrip("/"), env[name].strip(), lane
 
     def call(self, method, path, body=None):
         req = urllib.request.Request(self.url + path, method=method,
@@ -459,6 +469,86 @@ def export(out):
     print(f"export: {sum(len(p['issues']) for p in doc['projects'].values())} tickets -> {out}")
 
 
+# ---- lanes: a session works as its lane (the user, 2026-11-17: tickets assigned to lanes, sessions pick them up) ----
+TRUTH = Path.home() / ".local/share/daemons-tickets/truth"
+PROJECT_OF = {"T": "daemons", "C": "companion"}
+
+
+def truth():
+    try:
+        return TRUTH.read_text().strip() or "files"
+    except OSError:
+        return "files"
+
+
+def norm_key(k):
+    m = re.fullmatch(r"\s*([TCtc])-0*(\d+)([a-z]?)\s*", k)
+    if not m:
+        raise SystemExit(f"not a ticket id: {k!r} (T-581, C-397)")
+    return f"{m.group(1).upper()}-{int(m.group(2))}{m.group(3)}"
+
+
+def find(rm, key):
+    project = PROJECT_OF[key[0]]
+    p = rm.project(project)
+    hits = rm.call("GET", f"/issues.json?project_id={project}&status_id=*&cf_{p['fields']['Ticket']}={key}")["issues"]
+    hits = [i for i in hits if cf(i).get("Ticket") == key]
+    if len(hits) != 1:
+        raise SystemExit(f"{key}: {len(hits)} tickets in Redmine carry this id")
+    return p, rm.call("GET", f"/issues/{hits[0]['id']}.json?include=journals")["issue"]
+
+
+def lane_ids(rm):
+    out = {}
+    for project in PROJECT_OF.values():
+        for m in rm.call("GET", f"/projects/{project}/memberships.json?limit=100")["memberships"]:
+            u = m.get("user")
+            if u and u["name"].startswith("Lane "):
+                out[u["name"][5:]] = u["id"]
+    return out
+
+
+def show(rm, key):
+    p, i = find(rm, key)
+    c = cf(i)
+    print(f"{key}  #{i['id']}  {i['status']['name']}"
+          f"{'  -> ' + i['assigned_to']['name'] if i.get('assigned_to') else ''}"
+          f"{'  [' + i['fixed_version']['name'] + ']' if i.get('fixed_version') else ''}")
+    print(i["subject"])
+    for n in ("Branch", "Commits", "Where", "From", "Blocked on"):
+        if c.get(n):
+            print(f"  {n}: {c[n][:200]}")
+    print("  " + (i.get("description") or "")[:600])
+    for j in [j for j in i.get("journals", []) if j.get("notes")][-3:]:
+        print(f"  -- {j['user']['name']}, {j['created_on'][:10]}: {j['notes'][:200]}")
+    print(f"  {rm.url}/issues/{i['id']}")
+
+
+def mine(rm, project=None):
+    me = rm.call("GET", "/users/current.json")["user"]
+    for proj in ([project] if project else PROJECT_OF.values()):
+        issues = rm.call("GET", f"/issues.json?project_id={proj}&assigned_to_id=me&status_id=open"
+                                f"&sort=priority:desc,id&limit=100")["issues"]
+        print(f"{proj}: {len(issues)} open for {me['login']}")
+        for i in issues:
+            print(f"  {i['subject'][:110]}  ({i['status']['name']}, {i['priority']['name']})")
+
+
+def needs_cutover(what):
+    if truth() != "redmine":
+        raise SystemExit(f"{what} waits for the cut-over: until then the TODO files are the truth and the nightly sync "
+                         f"would undo it. Claim and close in TODO.md as before ({TRUTH} says {truth()!r}).")
+
+
+def update(rm, key, issue, note):
+    p, i = find(rm, key)
+    issue = dict(issue)
+    if note:
+        issue["notes"] = note
+    rm.call("PUT", f"/issues/{i['id']}.json", {"issue": issue})
+    return p, i
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd")
@@ -474,6 +564,24 @@ def main():
     sy.add_argument("--write", action="store_true")
     ex = sub.add_parser("export", help="Redmine -> one JSON file with every ticket's history (for git)")
     ex.add_argument("--out", default=str(ROOT / "docs/tickets/redmine-export.json"))
+    for name, hlp in (("show", "one ticket, its fields and its last notes"), ("mine", "the open tickets of a lane"),
+                      ("assign", "give a ticket to a lane"), ("claim", "take a ticket: In progress, yours, a branch"),
+                      ("close", "close a ticket with the commit that closed it")):
+        x = sub.add_parser(name, help=hlp)
+        x.add_argument("--lane", help="work as this lane (its key in ~/.redmine.env): game, story, audio, art, app, "
+                                      "hub, esp32, pi-zero, playground, docs, ops")
+        if name != "mine":
+            x.add_argument("ticket")
+        else:
+            x.add_argument("--project", choices=list(PROJECT_OF.values()))
+        if name == "assign":
+            x.add_argument("--to", required=True, help="the lane to give it to")
+        if name == "claim":
+            x.add_argument("--branch", required=True)
+        if name == "close":
+            x.add_argument("--commit", required=True, action="append", help="repo@sha; more than once for several")
+        if name in ("assign", "claim", "close"):
+            x.add_argument("--note", default="")
     # check_generators.py runs every tool bare (and with --write in its sandbox): both are the dry run, which writes
     # nothing -- there is no Redmine write to make from here yet.
     argv = sys.argv[1:]
@@ -491,6 +599,43 @@ def main():
             print(f"\npayload written to {a.json}")
         sys.exit(0 if ok else 1)
 
+    if a.cmd in ("show", "mine", "assign", "claim", "close"):
+        if a.cmd in ("mine", "claim", "close") and not a.lane:
+            ap.error(f"{a.cmd} needs --lane (whose tickets, who is working)")
+        rm = Redmine(a.lane)
+        if a.cmd == "mine":
+            return mine(rm, a.project)
+        key = norm_key(a.ticket)
+        if a.cmd == "show":
+            return show(rm, key)
+        statuses = rm.statuses()
+        if a.cmd == "assign":
+            ids = lane_ids(rm)
+            if a.to not in ids:
+                raise SystemExit(f"no lane {a.to!r}; lanes: {', '.join(sorted(ids))}")
+            update(rm, key, {"assigned_to_id": ids[a.to]}, a.note)
+            print(f"{key}: assigned to lane {a.to}")
+            return
+        needs_cutover(a.cmd)
+        me = rm.call("GET", "/users/current.json")["user"]
+        if a.cmd == "claim":
+            p, i = find(rm, key)
+            if i["status"]["name"] == "In progress" and (i.get("assigned_to") or {}).get("id") != me["id"]:
+                raise SystemExit(f"{key} is already In progress for {i['assigned_to']['name']}")
+            update(rm, key, {"status_id": statuses["In progress"], "assigned_to_id": me["id"],
+                             "custom_fields": [{"id": p["fields"]["Branch"], "value": a.branch}]},
+                   a.note or f"Claimed by {me['login']} on {a.branch}.")
+            print(f"{key}: In progress, {me['login']}, {a.branch}")
+            return
+        p, i = find(rm, key)
+        old = [x for x in (cf(i).get("Commits") or "").split("\n") if x]
+        commits = old + [c for c in a.commit if c not in old]
+        update(rm, key, {"status_id": statuses["Closed"],
+                         "custom_fields": [{"id": p["fields"]["Commits"], "value": "\n".join(commits)},
+                                           {"id": p["fields"]["Branch"], "value": ""}]},
+               a.note or f"Closed by {me['login']}: {', '.join(a.commit)}.")
+        print(f"{key}: Closed ({', '.join(a.commit)})")
+        return
     if a.cmd == "export":
         export(a.out)
         return

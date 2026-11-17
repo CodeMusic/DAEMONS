@@ -68,6 +68,22 @@ commit_push() {   # repo, message, paths...
 }
 
 log "start (truth: $TRUTH)"
+# A release in progress must not get a ticket commit pushed into the middle of it (The Subtle Layer, 2026-11-17: a
+# HOLD is only a message, and a push during one is not refused). Wait while a release runs or a lane holds the lock
+# file, checking every 5 minutes for up to 3 hours; then skip the night rather than push into it.
+HOLD_FILE="$HOME/.cache/daemons/release.hold"
+releasing() {
+  [ -e "$HOLD_FILE" ] && { echo "the hold file ($(head -c 120 "$HOLD_FILE" 2>/dev/null))"; return 0; }
+  p=$(pgrep -fl '^[^ ]*python[0-9.]*( -[^ ]+)* [^ ]*(romrelease|check_fresh_clone|ghrelease|releasedocs)\.py|^[^ ]*make .*(firered|leafgreen)' | head -1)
+  [ -n "$p" ] && { echo "a release process (${p:0:80})"; return 0; }
+  return 1
+}
+for wait in $(seq 1 36); do
+  why=$(releasing) || break
+  [ "$wait" -eq 36 ] && { log "skipped: a release was still in progress after 3 hours -- $why"; exit 0; }
+  [ "$wait" -eq 1 ] && log "waiting: $why"
+  sleep 300
+done
 setup || fail "could not clone"
 for attempt in 1 2 3; do
   fresh "$D" && fresh "$C" || fail "could not fetch"
