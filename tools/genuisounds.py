@@ -174,6 +174,7 @@ SOUNDS_4 = [
          notes="s:30 &C5:4 F#5:4 C6:4 F#6:4 ~C6:40 r:6 ^F#5:4 ^C5:20"),
 ]
 APPROVED_4 = {}                                    # the user's picks for batch 4; --write refuses while it is empty
+APPROVED_4.update({s["id"]: "C" for s in SOUNDS_4})   # the user, 2026-11-17, by multiple choice: C BOTH (DRAFT)
 LEFT_OUT_4 = ["every SE_M_* move sound (batch 10)", "the instruments lane's SE_SUCCESS, SE_FAILURE, SE_DING_DONG, "
               "SE_PC_LOGIN and SE_SHOP", "the songs and fanfares (MUS_CAUGHT, MUS_LEVEL_UP...)"]
 # The "battle moment" clip: (seconds, sound[, stopped at]) -- sent out, a hit, super-effective, not-very-effective,
