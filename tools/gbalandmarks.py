@@ -1830,6 +1830,9 @@ def store_lm(opt):
                 signs=[], row=STORE_ROW, colours=STORE_KEPT + STORE_COLOURS[opt], kept_indices=(1, 2, 3, 4),
                 cells_only={(x, y) for x in range(9, 18) for y in range(5, 16)} - STORE_STEPS,
                 crop=[("CeladonCity_Layout", 4, 3, 19, 14)],
+                #  the art fills the top layer; below, the grass, as the REVIEW BOARD and SLATE: vanilla's own bottom
+                #  layer here (tiles 58 and 62 in row 10) would point row 10 at tiles redrawn for row 7 (check_lexicon)
+                ground=lambda x, y: 0x001, ground_always=True,
                 caption=[STORE_TITLES[opt][1]])
 
 
@@ -2728,11 +2731,15 @@ def sheets(ts, before, after, out):
 
 # ============================================================================================ main
 def gbatownslast_plan():
+    """gbatownslast's plan boxes and its LATER_LANDMARKS (a box built after T-562's picks, kept out of them), merged"""
     src = open(os.path.join(ROOT, "tools", "gbatownslast.py")).read()
+    out = {}
     for node in ast.parse(src).body:
-        if isinstance(node, ast.Assign) and any(getattr(t, "id", "") == "LANDMARKS_PLAN" for t in node.targets):
-            return ast.literal_eval(node.value)
-    return {}
+        if isinstance(node, ast.Assign) and any(getattr(t, "id", "") in ("LANDMARKS_PLAN", "LATER_LANDMARKS")
+                                                for t in node.targets):
+            for k, v in ast.literal_eval(node.value).items():
+                out.setdefault(k, []).extend(v)
+    return out
 
 
 def gbatowns_landmarks():

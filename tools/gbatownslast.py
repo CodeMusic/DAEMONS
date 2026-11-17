@@ -108,7 +108,7 @@ LANDMARKS_PLAN = {"celadon_city": [("CeladonCity", 31, 17, 10, 5, "the GAME CORN
 PICK_PIN = {"celadon_city": "4b6fa7867"}
 _PIN_TILES = {}
 
-LATER_LANDMARKS = {"celadon_city": [("CeladonCity", 9, 5, 9, 11, "VERDIGRIS DEPT. STORE (T-573, gbalandmarks)")]}
+LATER_LANDMARKS = {"celadon_city": [("CeladonCity", 9, 5, 9, 11, "VERDIGRIS DEPT. STORE (T-573)")]}
 
 
 def later_landmark_tiles(ts):
