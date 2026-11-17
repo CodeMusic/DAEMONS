@@ -145,3 +145,9 @@ T-566: an EGG in the party (slot 1 made an egg for the shot, then put back) -- t
 T-561: a USERBOX bought at SLATE's REPO, saved, reset to the title, CONTINUE -- the recap's own box (Went to the REPO in SLATE CITY and bought one USERBOX.) under the grey scene; the clerk's field message box does not replay.
 
 ![16Nov2026 - T561 - the quest logs recap box - 32](16Nov2026%20-%20T561%20-%20the%20quest%20logs%20recap%20box%20-%2032.png)
+
+### 16Nov2026 - T566 - the relearners caret arrows - 33
+
+T-566 follow-up: the relearner's caret arrows now show -- down only at the top, both mid-list, up only at the bottom (three vanilla bugs fixed; filmed on the debug ROM)
+
+![16Nov2026 - T566 - the relearners caret arrows - 33](16Nov2026%20-%20T566%20-%20the%20relearners%20caret%20arrows%20-%2033.png)
