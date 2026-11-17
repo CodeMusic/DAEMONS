@@ -13,18 +13,19 @@ measures each against the others.
 
 | | |
 |--|-------|
-| **Review** | **4, revised** -- *The Fourth Review*, first printed 3 November 2026 at v11.338, **revised 14 November 2026 for v11.361** |
-| **Design bible** | **v11.362** (`docs/vision.md`, 9,500 lines) -- DAEMONS repo at `b924932d`. *First printing: v11.338 at `1f9f03cb`* |
-| **Newest release** | **v11.361.1** (14 November 2026, the GATEKEEPER), built against bible v11.361. *First printing: v11.337.4* |
-| **The game** | CodeMusic/pokefirered-daemons, `context-content` at `8184c63` (release engine `dc780f8c5`) |
-| **The companion** | CodeMusic/daemons-companion at `49f2da0` |
+| **Review** | **4, revised** -- *The Fourth Review*, first printed 3 November 2026 at v11.338, **revised 14 November 2026 for v11.361 and v11.365, and 17 November for v11.382.1** |
+| **Design bible** | **v11.382** -- DAEMONS repo at `642e5760`. *First printing: v11.338 at `1f9f03cb`* |
+| **Newest release** | **v11.382.1**. *First printing: v11.337.4* |
+| **The game** | CodeMusic/pokefirered-daemons, `context-content` at `4b6fa78` (release engine `04464cc40`) |
+| **The companion** | CodeMusic/daemons-companion at `d23c044` |
 | **The playground** | CodeMusic/daemons-playground at `6e8ca37` |
+| **Later review** | *The Fifth Review* (`docs/daemons-review-5.md`), read 4 November at v11.338; its jobs released in v11.365.1 |
 | **Earlier reviews** | First (2026-08-31), Second, *The Third Review* (2026-09-10, bible v11.111), ruled on in bible 8.7 |
 
-**This revision re-checked every one of the 46 findings against v11.361** and marks each FIXED, PARTLY, OPEN or
+**This revision re-checked every one of the 46 findings against v11.382.1** and marks each FIXED, PARTLY, OPEN or
 NOT RE-CHECKED (Part 2, and the appendix). The first printing's broad measurements -- the text census, the sprite
 count, the story's sequence -- were not re-run unless a finding depended on them; where a number is still the v11.338
-one, it says so. **When the bible moves past v11.362, this revision starts to age.**
+one, it says so. **When the bible moves past v11.382, this revision starts to age.**
 
 ## How it was read
 
@@ -67,7 +68,7 @@ of it being read.**
 
 ## The scorecard
 
-A reading, not a measurement: how far each part is from what its own design asks of it. *Revised for v11.361: only Local AI moved enough to re-score.*
+A reading, not a measurement: how far each part is from what its own design asks of it. *Revised for v11.365: Local AI and Verification moved enough to re-score.*
 
 ::: scores
 | Part | | Where it stands |
@@ -81,7 +82,7 @@ A reading, not a measurement: how far each part is from what its own design asks
 | **Sound** | <span class="bar t-LATENT"><i style="width:30%"></i></span> | 30 of 110 tracks ours; every battle theme vanilla |
 | **The companion** | <span class="bar t-SIGNAL"><i style="width:70%"></i></span> | The loop is real and careful; onboarding is long |
 | **Local AI** | <span class="bar t-LATENT"><i style="width:72%"></i></span> | Any endpoint, from the hub or the phone, and on-device; unfiltered, untried by hand |
-| **Verification** | <span class="bar t-VECTOR"><i style="width:45%"></i></span> | Superb static checks; no end-to-end play on record |
+| **Verification** | <span class="bar t-VECTOR"><i style="width:55%"></i></span> | Superb static checks, now secrets and TODO too; the local playtester runs, no full play yet |
 :::
 
 ## The numbers
@@ -98,84 +99,84 @@ A reading, not a measurement: how far each part is from what its own design asks
 <div class="stat t-VECTOR"><b>0</b><span>recorded playthroughs from new game to the end</span></div>
 :::
 
-# What moved, v11.338 to v11.361 {.t-HARDENED}
+# What moved, v11.338 to v11.382.1 {.t-HARDENED}
 
-Twelve days, **24 bible versions** (v11.339 to v11.362), **20 release groups** and **386 design commits** after the
-first printing. Every finding was re-checked against the source at v11.361.1. The short version:
+Two weeks and three revisions after the first printing: **44 bible versions** (v11.339 to v11.382) and about **550
+design commits**. This review was revised for v11.361.1, for **v11.365.1** (the release that carried the **Fifth
+Review**'s game changes), and again for **v11.382.1**, after seventeen more releases of mostly finishing work. The Fifth (`docs/daemons-review-5.md`) read the design repo the day after
+the Fourth and took up several of its findings as tickets (T-555 to T-559). Every finding was re-checked against the source at v11.382.1. The
+short version:
 
 ::: verdict
-<div class="t-GROWTH"><b>Most improved</b><span>The companion's mind</span><p>A phone alone now talks: to Apple's on-device model, the hub, or any OpenAI-compatible endpoint the player links -- one mind across all three.</p></div>
-<div class="t-GROWTH"><b>Most improved, the game</b><span>The first screens</span><p>Our own font; every place card ours; every General tile ours; every landmark ours but USER TOWER; the SAFARI is THE WALLED GARDEN.</p></div>
-<div class="t-ENTROPY"><b>Unmoved</b><span>The finishing list</span><p>No playthrough on record; the private sweep, the chart reprint and the TODO tidy all still open.</p></div>
-<div class="t-VECTOR"><b>Grew</b><span>The third book</span><p>THE UNITY BOOK is built, with an aurora, a fox, a duet and a tablet. Its exception was not narrowed.</p></div>
+<div class="t-GROWTH"><b>Most improved</b><span>The record</span><p>The private leaks swept and guarded by a check; the TODO re-filed and guarded by another; CLAUDE.md no longer carries a version to drift.</p></div>
+<div class="t-GROWTH"><b>Most improved, the product</b><span>The mind</span><p>A phone alone talks, to any endpoint or the phone's own model; the Tiiny now runs, and has played the ROM.</p></div>
+<div class="t-ENTROPY"><b>Still unmoved</b><span>The ROM's loose ends</span><p>PROF. CRYSTAL, the tower's ghost story, the Admin who "understands now", the garbled chart, the witching hour without a clock.</p></div>
+<div class="t-VECTOR"><b>Still the first job</b><span>Play it through</span><p>T-50 is open. The Tiiny has played 15 turns and a smoke run from the title screen -- a start, not a playthrough.</p></div>
+<div class="t-GROWTH"><b>Most improved since v11.365</b><span>The first screens</span><p>Every town tile, the islands and caves, the boot screens, the INDEX and map, the menus and overlays -- the vanilla chrome is almost gone.</p></div>
+<div class="t-SIGNAL"><b>Swept since v11.365</b><span>The third book's gate</span><p>T-506 is closed: the gate is out of the public writing, and the manual keeps only a rumour.</p></div>
 :::
 
-## What was added in those twelve days
+## What happened between the revisions
 
-The scope-discipline finding is not a criticism of any one of these; each is well made and most were chosen by the
-user line by line. It is the list, read together, against the one under *Unmoved*.
+| Between | What landed | Kind |
+|--|----------|---|
+| **v11.338 → v11.361** | THE UNITY BOOK built; THE BLANK TABLET; THE ORIGIN OF A DAEMON; the MUSAI branch's seasons; a day's symbol; IN ITS OWN WORDS | new |
+| **v11.338 → v11.361** | THE WALLED GARDEN; our font; every place card; every General tile; the landmarks; THE BLACKOUT; the physical/special split | **finishing** |
+| **v11.338 → v11.361** | Any thinker, on the hub and the phone; THE MIND across phone, hub and endpoint | **the endpoint plan** |
+| **v11.361 → v11.365** | **The secrets swept again** and `check_secrets.py` (T-555) | **this review's flag** |
+| **v11.361 → v11.365** | **The record tidied**: open tickets re-filed, the stale reservation cleared, CLAUDE.md's version removed, `check_todo.py` (T-553, T-558) | **this review's flag** |
+| **v11.361 → v11.365** | **The ending's two gates** (T-557): TANOBY's seventh chamber named in the ending's own order; the dead *sixty daemons* check removed | **this review's flag, corrected** |
+| **v11.361 → v11.365** | **The Third Review's accepted sweeps** (T-559): the colour and tempo sweeps, AL's party greying, a hideout grunt with a HARD CODED | finishing |
+| **v11.361 → v11.365** | The GATEKEEPER; THE WALLED GARDEN's art; three more SUBTLE LAYER pages; the menus' last FireRed pieces in TERMINAL | finishing and new |
+| **v11.361 → v11.365** | **The Tiiny runs** -- the hub reads dreams on its 9B, and the local playtester played 15 turns on its 35B (T-560) | **the mind** |
+| **v11.365 → v11.381** | **The last Nintendo pieces on screen**: the field overlays, every town tile, the INDEX and the map, the boot screens, evolving and learning, the new game and naming, the islands and caves, the island and cave tiles, the ladders (T-561 to T-574) | **finishing** |
+| **v11.365 → v11.381** | **The ROVER line one flow again** and the MUSAI branch creature-first (T-552, T-553) | finishing |
+| **v11.365 → v11.381** | **The game's own words in newer writing** -- USER, POOL, PORT, DETACH, bind -- and `port_vocab.py` guarded (T-571); MOVE is ROUTINE (T-567) | finishing |
+| **v11.365 → v11.381** | **The third book's gate out of the public writing** (T-506) | **this review's flag** |
+| **v11.365 → v11.381** | **A sound census** (T-565), the Tiiny's smoke run from the title screen (T-560) | **measuring** |
 
-| Added | Where | Kind |
-|------------|--|---|
-| **THE UNITY BOOK built** -- covers, the torn lines mended, the lens, HALFTONE's tones, the aurora, TULIKKO's sparks, the DUET | 4.40 | the third book |
-| **THE BLANK TABLET** by BLANCHE's path, read one face per half | 4.39 | the third book |
-| **THE ORIGIN OF A DAEMON**, MUSAI's book; the MUSAI branch's 24 seasonal forms | 9.34, 9.35 | new book, new art |
-| **A day's symbol** for each weekday | 9.21 | calendar |
-| **IN ITS OWN WORDS** -- each daemon's first-person telling, in the companion only | 4.2 | companion |
-| **THE WALLED GARDEN** (the SAFARI ZONE, 76 of 85 lines rewritten) and **the GATEKEEPER** | 3.11 | **finishing** |
-| **Our font; every place card; every General tile; six landmark pairs; THE BLACKOUT** | 9.29 | **finishing** |
-| **The physical/special split**, steps 1 and 2 released | 2.12 | **finishing** |
-| **Corpus's last warehouse admins** as 8.2a's remnants (T-505) | 4.37 | **finishing** |
-| **Any thinker** on the hub and the phone; **THE MIND** across phone, hub and endpoint | C-280, C-307 | **the endpoint plan** |
+::: note
+**A correction, owed.** The first printing counted **ten gates** between the Review Board and the ending, the second
+being *own 60 daemons and visit ONE ISLAND*. Reading the scripts for T-557 found that check already dead in play since
+T-27: the aide hands over the GLOBAL INDEX on Crystal's absence alone. The bible's 9.17 was stale, and this review
+repeated it. **The real count is nine, and the ending is now pointed at.** The finding stands as a reading -- the
+payload is still post-game -- but the number was wrong.
+:::
 
-**Five of ten are finishing work**, against roughly one in three in the fortnight before the first printing. That is
-the right direction, and it should be said plainly.
+## Every finding, re-checked at v11.382.1
 
-## Every finding, re-checked
+[FIXED]{.tag .FREE} done · [PARTLY]{.tag .DRIFT} moved but not closed · [OPEN]{.tag .BREAK} unchanged ·
+[READING]{.tag .RISK} a reading, or a measurement not re-run.
 
-[FIXED]{.tag .FREE} done at v11.361 · [PARTLY]{.tag .DRIFT} moved but not closed · [OPEN]{.tag .BREAK} unchanged ·
-[NOT RE-CHECKED]{.tag .RISK} a reading, or a measurement not re-run.
-
-| Finding | Now | Evidence at v11.361 |
+| Finding | Now | Evidence at v11.382.1 |
 |----------|---|------------|
-| **A phone-only player has no AI at all** | [FIXED]{.tag .FREE} | `app/platform/endpoint.ts` and `mesh.ts`: an endpoint from the phone, the on-device model, THE MIND (C-280, C-307). *Not yet tried by hand* |
-| **Four designs of the third book, and no build** | [FIXED]{.tag .FREE} | THE UNITY BOOK is in 21 engine files, released from v11.348.2 |
-| **The first-screen vanilla** | [PARTLY]{.tag .DRIFT} | Font, place cards, General tiles, landmarks done; **region map (T-449) and every battle theme still vanilla** |
-| **Say the unrenamed nouns out loud** | [PARTLY]{.tag .DRIFT} | SAFARI 34 → 2 (THE WALLED GARDEN); S.S. ANNE 13, GAME CORNER 13, BIKE 14 unchanged |
-| **The books disagree about the books** | [PARTLY]{.tag .DRIFT} | THE SUBTLE LAYER's count fixed (51, v11.357); the GUIDE's three counts still differ |
-| **Four lexicon rows** | [PARTLY]{.tag .DRIFT} | DAEMON LEAGUE 35 → 20 beside REVIEW BOARD 24 -- still two names; CERT still in the lexicon |
-| **Bring your own mind: the endpoint plan** | [PARTLY]{.tag .DRIFT} | Registry, keys and the *at home* ring built; probe, tiers, Ollama's context and the output pipeline not |
-| **Nobody has played it from a new game to the end, on record** | [OPEN]{.tag .BREAK} | T-50 still open, still the oldest; no route spans BLANCHE to the end |
-| **What a daemon says is never filtered** | [OPEN]{.tag .BREAK} | `safeLine()` still runs only on meetings and the household talk -- **and now any endpoint can answer** |
-| **A tracked file tags a private sequence** · **the bible sentence passed on privately** | [OPEN]{.tag .BREAK} | Both still in the public tree |
-| **The published type chart is garbled** | [OPEN]{.tag .BREAK} | Still 237 broken characters; still no charset |
-| **"PROF. CRYSTAL", twice** | [OPEN]{.tag .BREAK} | Both strings still in the lab's text |
-| **"Never in a room"** | [OPEN]{.tag .BREAK} | Still in 8.2a and the warehouse script's comment |
-| **The witching hour needs a real clock** | [OPEN]{.tag .BREAK} | `DaemonsIsWitchingHour` unchanged |
-| **The Hermetic text settles 4.33's question** | [OPEN]{.tag .BREAK} | SUBSTRATE unchanged, unattributed |
-| **The one exception has lost its warrants** | [OPEN]{.tag .BREAK} | Not narrowed; THE UNITY BOOK built around it |
-| **HALFTONE's colour returns** | [OPEN]{.tag .BREAK} | Deepened, not reversed (v11.340); 3.7 still says it stays grey |
-| **Eight tickets filed under Closed** | [OPEN]{.tag .BREAK} | **Now ten or more**: T-521, T-522, T-523 joined them |
-| **Phone backups never pruned; writes not atomic** | [OPEN]{.tag .BREAK} | `app/platform/local.ts`: same write, same backup, no prune |
-| **The store record describes a different app** | [OPEN]{.tag .BREAK} | `APPSTORE.md` still answers *no gambling* |
-| **CI, for free** | [OPEN]{.tag .BREAK} | One workflow builds the site; no tests run, none in the app |
-| **Sign the patch list** · **the emulator's CDN, no cache** | [OPEN]{.tag .BREAK} | `patches.json` still read live from `main` |
-| **Two voices skip DAY-mons** | [OPEN]{.tag .BREAK} | `app/AGENTS.md` still lists both as *not covered yet* |
-| **The playground serves built ROMs** | [OPEN]{.tag .BREAK} | Unchanged |
-| **The rival's naming device** · **6F's ghost story** · **the hideout's barks** · **"I understand now"** · **"It could not have"** · **the Verdigris kid** · **Ty at Quicksilver** | [OPEN]{.tag .BREAK} | All unchanged in the ROM and the bible. T-505 rewrote the warehouse's admins' battle lines, but Admin 1's *"I understand now…"* is still spoken after the fight |
-| **T-506 unswept** · **school.md says nothing is built** · **the stale reservation** · **CLAUDE.md's v11.296** · **`still-vanilla.md`** · **no text census** · **understandings "THE MARGINS only"** | [OPEN]{.tag .BREAK} | All unchanged |
-| **The pacing risks** · **Ty a stranger** · **thirteen systems** · **the near-miss** · **the facing-page binding** · **the ferry** · **ordering the exception** · **the chart is vanilla's** · **onboarding** · **the emulator risk** | [NOT RE-CHECKED]{.tag .RISK} | Readings: nothing in the twelve days answers them. The systems count has grown by at least four |
+| **A tracked file tags a private sequence** · **the bible sentence passed on privately** | [FIXED]{.tag .FREE} | Both swept (T-555, `7f0ed131`, `02ec7161`); the bible PDF rebuilt; `check_secrets.py` in the push routine |
+| **Eight open tickets filed under Closed** · **the coordination files drift** | [FIXED]{.tag .FREE} | 21 rows re-filed; the T-267 reservation cleared; CLAUDE.md carries no version; `check_todo.py` in the push routine (T-558) |
+| **The school's own document says nothing in it is built** | [FIXED]{.tag .FREE} | The line is gone (T-558) |
+| **A phone-only player has no AI at all** | [FIXED]{.tag .FREE} | v11.361: endpoint and on-device mind from the phone (C-280, C-307) |
+| **Four designs of the third book, and no build** | [FIXED]{.tag .FREE} | v11.361: THE UNITY BOOK built and released |
+| **The whole emotional payload is post-game, behind ten gates** | [PARTLY]{.tag .DRIFT} | **Nine, not ten** (the sixty was dead); the seventh chamber now named in the ending's order (T-557). Still post-game |
+| **Nobody has played it from a new game to the end, on record** | [PARTLY]{.tag .DRIFT} | The Tiiny's playtester: 15 turns, then a smoke run from the title screen (T-560). **T-50 still open; no full run** |
+| **The first-screen vanilla** | [PARTLY]{.tag .DRIFT} | **Nearly closed**: font, cards, landmarks, menus, overlays, every town tile, the islands and caves, the boot screens, the INDEX and map pieces (T-554, T-561 to T-574). **T-449's region map still open, and every battle theme still vanilla** -- now measured by the sound census (T-565) |
+| **The Corpus register is a patchwork** | [PARTLY]{.tag .DRIFT} | A hideout grunt now fields a HARD CODED (T-559); the barks are still vanilla (*"Intruder alert!"*) |
+| **Say the unrenamed nouns out loud** | [PARTLY]{.tag .DRIFT} | SAFARI 34 → 2; S.S. ANNE, GAME CORNER, BIKE unchanged |
+| **The books disagree about the books** | [PARTLY]{.tag .DRIFT} | THE SUBTLE LAYER's count fixed; the GUIDE's three counts still differ |
+| **Four lexicon rows** | [PARTLY]{.tag .DRIFT} | DAEMON LEAGUE 20 beside REVIEW BOARD 24; CERT still in the lexicon |
+| **Bring your own mind: the endpoint plan** | [PARTLY]{.tag .DRIFT} | Registry, keys, the *at home* ring, the mesh built; probe, tiers, Ollama's context and the output pipeline not |
+| **What a daemon says is never filtered** | [OPEN]{.tag .BREAK} | `safeLine()` still only on meetings and household talk -- **the most urgent item in the companion** |
+| **The published type chart is garbled** | [OPEN]{.tag .BREAK} | Still 237 broken characters |
+| **"PROF. CRYSTAL", twice** · **"never in a room"** · **"It could not have"** · **"I understand now…"** · **6F's ghost story** · **the rival's naming device** · **the Verdigris kid** · **Ty at Quicksilver** | [OPEN]{.tag .BREAK} | All unchanged in the ROM and the bible |
+| **T-506 is unswept** | [FIXED]{.tag .FREE} | Swept (v11.378): the gate is out of 0.1 and 4.39; the manual keeps only a rumour (v11.379) |
+| **The witching hour needs a real clock** · **SUBSTRATE** · **the exception's warrants** · **HALFTONE's colour** · **understandings "THE MARGINS only"** | [OPEN]{.tag .BREAK} | All unchanged; 3.6 and 3.7 still say HALFTONE stays grey |
+| **Phone backups** · **the store record** · **CI** · **the patch list** · **two voices skip DAY-mons** · **the playground's ROMs** | [OPEN]{.tag .BREAK} | All unchanged in the companion and the playground |
+| **A text census** · **`still-vanilla.md`** | [OPEN]{.tag .BREAK} | Neither made nor moved |
+| **Ty a stranger** · **thirteen systems** · **the near-miss** · **the facing-page binding** · **the ferry** · **ordering the exception** · **the chart is vanilla's** · **onboarding** · **the emulator risk** · **the villains' lines** · **small ones** | [READING]{.tag .RISK} | Not re-measured. **Since v11.365 the work has been almost all finishing** -- the right direction, and the one this review asked for |
 
-
-> **FIXED by v11.361: the phone talks to its own on-device model or to any endpoint the player links, with the hub as one more mind (C-280, C-307). Not yet tried by hand.**
-
-> **PARTLY by v11.361: THE WALLED GARDEN took SAFARI from 34 to 2. The other three are unchanged.**
-
-> **OPEN at v11.361, and more urgent: any endpoint can now answer, from the phone too.**
 ::: callout
-**The one to do first has not changed: play it through, once, and read the record.** And one has become more urgent:
-**the output filter.** At v11.338 an unfiltered answer came from a 0.5B model on the user's own board. At v11.361 it
-can come from *any* model a player points the phone at.
+**The two to do next have still not changed: play it through once and read the record -- the Tiiny can now do it --
+and put the output filter in front of every mind that can answer.** After them, the battle music: the sound census
+says it is where a player spends the most listening time, and all of it is still vanilla. The fastest cheap wins left are all fifteen-minute
+ROM edits: the two PROF. strings, the Admin's *"I understand now"*, and the chart's charset.
 :::
 
 # What DAEMONS is, as one product {.t-SIGNAL}
@@ -395,6 +396,8 @@ who stops at the champion never meets Ty, S.T.A.R.R. or the ending**, and leaves
 is *levels*. That is a complete and good Act 1 ending -- but the trailer-worthy material is all past it. **Pull one
 hook forward**: one line from Crystal at the Hall of Fame, or vanilla's unreached *"I will start at ONE ISLAND"*
 restored to Al's exit.
+
+> **CORRECTED at v11.365: nine, not ten. The sixty-daemons gate was already dead in play since T-27; T-557 removed the check and named the seventh chamber in the ending's order.**
 :::
 
 ::: {.finding .RISKf}
@@ -636,6 +639,8 @@ The redaction swept the bible, the TODO, the lineage, the changelog and two revi
 own header says it names that sequence, was not swept, and still labels three NOTEBOOK documents with their step in
 it. **The file was named to the author directly. Move the step labels to `docs/private/`.** *A second, similar slip
 -- one sentence in the public bible that gives away a private relationship -- was also passed on privately.*
+
+> **FIXED by v11.365: both lines swept (T-555), the bible PDF rebuilt, and check_secrets.py now runs on every push.**
 :::
 
 ::: {.finding .BREAKf}
@@ -673,6 +678,8 @@ Hold it until the books it belongs to exist.
 T-506 rules that public writing tells the third book only as rumour, *never how it is reached*. The public bible's 4.39
 still says how. The sealed vault's hint is answerable from public text, and what it seals is already public as the
 book's source. **Sweep 4.39; keep the vault as theatre if that is the intent, and say so.**
+
+> **FIXED by v11.378: the gate is out of the public writing, and the manual keeps only a rumour (T-506). The vault note stands.**
 :::
 
 ::: {.finding .DRIFTf}
@@ -682,6 +689,8 @@ book's source. **Sweep 4.39; keep the vault as theatre if that is the intent, an
 `docs/README.md` say **seven** groves, 4.35 says seven and fourteen a paragraph apart. **Fourteen are in the ROM**,
 with the seven floors, the lift, the exam, the DIPLOMA and REVEAL. *"A ruling nobody swept is not a decision, it is
 a draft."*
+
+> **FIXED by v11.365 (T-558).**
 :::
 
 ::: {.finding .DRIFTf}
@@ -748,6 +757,8 @@ The record shows the slice (770 agent steps), the school's batches played throug
 the 76 theatre routes spans BLANCHE to the Review Board, and none goes through Act 2.** T-50 -- *read the playtest
 and act on it* -- is the **oldest open ticket** and has never run. Every check reads a table; nothing reads a session.
 **This is the single most valuable thing the project could do next.** The local playtester on the Tiiny is allowed.
+
+> **PARTLY by v11.365: the local playtester now runs on the Tiiny and has played 15 turns (T-560). T-50 is still open.**
 :::
 
 ::: {.finding .BREAKf}
@@ -756,6 +767,8 @@ and act on it* -- is the **oldest open ticket** and has never run. Every check r
 T-462, T-465, T-483, T-490, T-506, T-509, T-518 and T-519 have no strikethrough and sit below the Closed heading --
 including the in-flight physical/special split and T-506, the very sweep two findings above ask for. A reader or a
 script treating *Ready* as the queue misses the newest work.
+
+> **FIXED by v11.365: every open row re-filed (T-558); check_todo.py keeps it so.**
 :::
 
 ::: {.finding .DRIFTf}
@@ -765,6 +778,8 @@ CLAUDE.md quotes the bible at v11.296; it is v11.338, and every fresh session re
 id reservation from 25 September still stands; ids reach T-520. `still-vanilla.md` calls itself stale under a name
 that says the opposite. **One small checker -- open rows outside Ready, stale reservations, the version in
 CLAUDE.md -- would catch all three.**
+
+> **FIXED by v11.365: the reservation cleared, CLAUDE.md carries no version, and check_todo.py checks the rest (T-558).**
 :::
 
 ::: {.finding .DRIFTf}
@@ -1029,14 +1044,14 @@ Ranked by what each buys for what it costs. **The first five are finishing; noth
 
 ## Now -- this week
 
-*Revised for v11.361: items 1 to 5 are all still open.*
+*Revised for v11.365: item 3 is done (T-555), item 4 is done (T-558); items 1, 2 and 5 are still open.*
 
 
 1. **Play it through, once, and read the record.** A theatre route or the local playtester, from a new game through
    the Review Board, the islands and DOLDRUM CAVE, in each edition. Close T-50 by acting on it.
 2. **Reprint the chart** with a charset, and add a mojibake and version check to every book the project prints.
-3. **The private sweep**: the tracked file and the bible sentence passed on privately; T-506 in 4.39.
-4. **Tidy the TODO**: the eight misfiled tickets, the stale reservation, CLAUDE.md's version -- and a checker so it
+3. ~~**The private sweep**~~ -- **done** (T-555, `check_secrets.py`): the tracked file and the bible sentence passed on privately; T-506 in 4.39.
+4. ~~**Tidy the TODO**~~ -- **done** (T-558, `check_todo.py`): the eight misfiled tickets, the stale reservation, CLAUDE.md's version -- and a checker so it
    stays tidy.
 5. **Close the exception**: restore one warrant, attribute SUBSTRATE and FEELING, bind the mended book face to face.
 
@@ -1082,9 +1097,9 @@ rewritten main story, an Act 2 built onto the islands' plot, and a companion tha
 
 # Appendix: every finding {.t-HARDENED .unnumbered}
 
-Every finding in this review, by tag, with where it stands at v11.361 (*reading*: not re-measured). **46 in all**: 15 BREAK, 4 RISK, 19 DRIFT, 4 FREE, 4 IDEA.
+Every finding in this review, by tag, with where it stands at v11.382.1 (*reading*: not re-measured). **46 in all**: 15 BREAK, 4 RISK, 19 DRIFT, 4 FREE, 4 IDEA.
 
-| # | Tag | Finding | Part | At v11.361 |
+| # | Tag | Finding | Part | At v11.382.1 |
 |-|--|------------|----|---|
 | 1 | [BREAK]{.tag .BREAK} | "Scorn does not recognise him… they were never in a room" | Story continuity | [OPEN]{.tag .BREAK} |
 | 2 | [BREAK]{.tag .BREAK} | "PROF. CRYSTAL", twice, at the hinge of Act 2 | Story continuity | [OPEN]{.tag .BREAK} |
@@ -1092,23 +1107,23 @@ Every finding in this review, by tag, with where it stands at v11.361 (*reading*
 | 4 | [BREAK]{.tag .BREAK} | The one exception has lost both of its warrants, and its reach has grown | Story continuity | [OPEN]{.tag .BREAK} |
 | 5 | [BREAK]{.tag .BREAK} | The Hermetic text settles the question 4.33 says nothing may settle | Story continuity | [OPEN]{.tag .BREAK} |
 | 6 | [BREAK]{.tag .BREAK} | With no cartridge clock, the witching hour never comes -- and nothing says so | Story continuity | [OPEN]{.tag .BREAK} |
-| 7 | [BREAK]{.tag .BREAK} | A tracked design file still tags documents with their place in a private sequence | Story continuity | [OPEN]{.tag .BREAK} |
+| 7 | [BREAK]{.tag .BREAK} | A tracked design file still tags documents with their place in a private sequence | Story continuity | [FIXED]{.tag .FREE} |
 | 8 | [BREAK]{.tag .BREAK} | The published type chart is garbled | Story continuity | [OPEN]{.tag .BREAK} |
-| 9 | [BREAK]{.tag .BREAK} | Nobody has played it from a new game to the end, on record | The game as built | [OPEN]{.tag .BREAK} |
-| 10 | [BREAK]{.tag .BREAK} | Eight open tickets are filed under Closed | The game as built | [OPEN]{.tag .BREAK} |
+| 9 | [BREAK]{.tag .BREAK} | Nobody has played it from a new game to the end, on record | The game as built | [PARTLY]{.tag .DRIFT} |
+| 10 | [BREAK]{.tag .BREAK} | Eight open tickets are filed under Closed | The game as built | [FIXED]{.tag .FREE} |
 | 11 | [BREAK]{.tag .BREAK} | A phone-only player has no AI at all | The companion and its mind | [FIXED]{.tag .FREE} |
 | 12 | [BREAK]{.tag .BREAK} | Eleven steps before a daemon reaches a phone; eighteen before it talks | The companion and its mind | [READING]{.tag .RISK} |
 | 13 | [BREAK]{.tag .BREAK} | Shipping an emulator and a patcher is the largest distribution risk | The companion and its mind | [OPEN]{.tag .BREAK} |
 | 14 | [BREAK]{.tag .BREAK} | What a daemon says is never filtered | The companion and its mind | [OPEN]{.tag .BREAK} |
 | 15 | [BREAK]{.tag .BREAK} | The phone's save backups are never pruned, and writes are not atomic | The companion and its mind | [OPEN]{.tag .BREAK} |
-| 16 | [RISK]{.tag .RISK} | The whole emotional payload is post-game, behind ten gates | The core story, in the order a player meets it | [READING]{.tag .RISK} |
+| 16 | [RISK]{.tag .RISK} | The whole emotional payload is post-game, behind ten gates | The core story, in the order a player meets it | [PARTLY]{.tag .DRIFT} |
 | 17 | [RISK]{.tag .RISK} | Ty arrives a stranger for most players | The core story, in the order a player meets it | [READING]{.tag .RISK} |
 | 18 | [RISK]{.tag .RISK} | Thirteen systems and one quiet ending | The core story, in the order a player meets it | [READING]{.tag .RISK} |
 | 19 | [RISK]{.tag .RISK} | The playground serves built ROMs to other devices | The game as built | [OPEN]{.tag .BREAK} |
 | 20 | [DRIFT]{.tag .DRIFT} | Ty "at Quicksilver, met at Benchmark 7" -- in four places; the ROM has him only after the Review Board | Story continuity | [OPEN]{.tag .BREAK} |
 | 21 | [DRIFT]{.tag .DRIFT} | The rival's naming device is unbuilt | Story continuity | [OPEN]{.tag .BREAK} |
 | 22 | [DRIFT]{.tag .DRIFT} | DAEMON TOWER 6F is still vanilla's ghost story | Story continuity | [OPEN]{.tag .BREAK} |
-| 23 | [DRIFT]{.tag .DRIFT} | The Corpus register is a patchwork, and its "still to do" has no ticket | Story continuity | [OPEN]{.tag .BREAK} |
+| 23 | [DRIFT]{.tag .DRIFT} | The Corpus register is a patchwork, and its "still to do" has no ticket | Story continuity | [PARTLY]{.tag .DRIFT} |
 | 24 | [DRIFT]{.tag .DRIFT} | Scorn's speech grew a line that pre-empts his island beat | Story continuity | [OPEN]{.tag .BREAK} |
 | 25 | [DRIFT]{.tag .DRIFT} | "The bridge reverses at the ferry" -- but the first ferry is in Act 1 | Story continuity | [READING]{.tag .RISK} |
 | 26 | [DRIFT]{.tag .DRIFT} | Four lexicon rows the arc has outgrown | Story continuity | [PARTLY]{.tag .DRIFT} |
@@ -1116,10 +1131,10 @@ Every finding in this review, by tag, with where it stands at v11.361 (*reading*
 | 28 | [DRIFT]{.tag .DRIFT} | Small ones, batched | Story continuity | [READING]{.tag .RISK} |
 | 29 | [DRIFT]{.tag .DRIFT} | An optional book now settles a core image, and three sections still say the opposite | Story continuity | [OPEN]{.tag .BREAK} |
 | 30 | [DRIFT]{.tag .DRIFT} | Four designs of the third book in five days, and no build | Story continuity | [FIXED]{.tag .FREE} |
-| 31 | [DRIFT]{.tag .DRIFT} | T-506 is unswept, and the vault protects nothing | Story continuity | [OPEN]{.tag .BREAK} |
-| 32 | [DRIFT]{.tag .DRIFT} | The school's own document says nothing in it is built | Story continuity | [OPEN]{.tag .BREAK} |
+| 31 | [DRIFT]{.tag .DRIFT} | T-506 is unswept, and the vault protects nothing | Story continuity | [FIXED]{.tag .FREE} |
+| 32 | [DRIFT]{.tag .DRIFT} | The school's own document says nothing in it is built | Story continuity | [FIXED]{.tag .FREE} |
 | 33 | [DRIFT]{.tag .DRIFT} | The books disagree about the books | Story continuity | [PARTLY]{.tag .DRIFT} |
-| 34 | [DRIFT]{.tag .DRIFT} | The coordination files drift faster than the checks on them | The game as built | [OPEN]{.tag .BREAK} |
+| 34 | [DRIFT]{.tag .DRIFT} | The coordination files drift faster than the checks on them | The game as built | [FIXED]{.tag .FREE} |
 | 35 | [DRIFT]{.tag .DRIFT} | The villains' own lines are the least rewritten story in the game | The game as built | [READING]{.tag .RISK} |
 | 36 | [DRIFT]{.tag .DRIFT} | The first-screen vanilla is still on screen | The game as built | [PARTLY]{.tag .DRIFT} |
 | 37 | [DRIFT]{.tag .DRIFT} | The store record describes a different app | The companion and its mind | [OPEN]{.tag .BREAK} |
@@ -1134,5 +1149,5 @@ Every finding in this review, by tag, with where it stands at v11.361 (*reading*
 | 46 | [IDEA]{.tag .IDEA} | Sign the patch list | The companion and its mind | [OPEN]{.tag .BREAK} |
 
 
-*First checked against design bible v11.338 on 3 November 2026; every finding re-checked against v11.361.1 on 14 November. The four lenses' full notes, with the commands that
+*First checked against design bible v11.338 on 3 November 2026; every finding re-checked against v11.361.1 and v11.365.1 on 14 November, and against v11.382.1 on 17 November. The four lenses' full notes, with the commands that
 reproduce every number, were kept with the review's working files.*
