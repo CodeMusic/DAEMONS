@@ -11,6 +11,9 @@
     python3 tools/gbalandmarks.py --only saffron_city ...  # one tileset's group only
     python3 tools/gbalandmarks.py --write --approved    # into the engine -- REFUSES without --approved, and writes only
                                                         #   the landmarks in APPROVED (the first pair, approved 2026-10-24)
+    python3 tools/gbalandmarks.py --only celadon_city --option B   # T-573: one of the DEPT. STORE's options (default:
+                                                        #   all three; drafts in gfx/drafts/t573_dept_store/, sheets
+                                                        #   t573_dept_store_city.png and _3x.png)
 
 THE FIRST PAIR (the user, 2026-10-24) -- QUICKSILVER IS., one tileset (secondary/cinnabar_island), one campus:
 
@@ -1726,6 +1729,361 @@ def draw_errata():
     return k
 
 
+# ============================================================================================ T-573: the DEPT. STORE
+#  VERDIGRIS DEPT. STORE (CeladonCity 9x11 at (9,5), its two doors (11,14) and (15,14)). The user, 2026-11-16, by
+#  multiple choice: the store is a landmark -- art of its own from the story, not the town kit's BRONZE PANELS (T-562's
+#  pick, which drew it until now). DRAFTED 2026-11-16, NOT approved: three options, A/B/C, each a landmark of its own
+#  (dept_store_A, _B, _C); STORE_APPROVED is None, so `--write --approved` writes none of them.
+#
+#  WHAT IT IS IN THE STORY. Craft rule 2 (vision 0.1): ONE NPC NEARLY NOTICES -- "a kid in Verdigris says the town felt
+#  greener before the store went up. Wrong -- but wrong in the right direction." So the store is the town's NEW thing:
+#  VERDIGRIS is "green corrosion on bronze", its sign says "Green On Every Old Thing", and the store went up after. Its
+#  own sign: "Five Floors And A Roof!"; 1F the SERVICE COUNTER, 2F the USER'S MARKET ("Everything a USER needs, and some
+#  things they don't"), 3F the TV GAME SHOP, 4F WISE MAN GIFTS, 5F UPGRADES (the stat enhancers, "bought only here"),
+#  the ROOFTOP SQUARE's vending machines. Under the town, not under the store, CORPUS rots (the GAME CORNER's
+#  basement); nothing on the store says so.
+#
+#    A  NEW COPPER        the one thing in VERDIGRIS not yet green: five floors of polished copper and glass, the
+#                         rooftop's vending machines on a stone deck ruled like graph paper, and at its left foot the
+#                         first green speck -- the kid is wrong, and the store will turn too (recommended)
+#    B  FIVE FLOORS AND A ROOF   its directory board as the building: four lit floor bands over a lit shopfront, each
+#                         floor's centre bay showing what it sells (5F a chip, 4F a gift, 3F a terminal, 2F a bag),
+#                         the floor's numeral on its first pier, the vending machines on the roof
+#    C  THE MIRROR FRONT  a curtain wall of mirror glass that gives the town back to itself a shade greyer: the sky in
+#                         its upper floors, the trees across the street in its lower ones -- grey, in a green town
+#
+#  KEPT. The footprint and every cell's attributes, collision and elevation (no cell moves); the two door cells WHOLE --
+#  block 0x294 (METATILE_CeladonCity_DeptStoreDoor, labelled, field_door.c finds its frames by id; gbadoors.py's
+#  DOORS["dept_store"]) and its tiles in rows 3 and 8 -- so the doors open as they do; (11,15) and (15,15) are general's
+#  paving (primary 0x16E), the steps, and not ours; the sign at (18,14) is outside the box.
+#  ROWS. Row 10 is the store's purple today, but the GAME CORNER (T-447 plan row 7, not drawn yet) draws it too, at
+#  (33..35, 19..21): it is not the store's to recolour. Row 7 is free past index 4 -- its 1..4 are the BENCHMARK's
+#  trees' greens (10..12, 29..30) -- so the store takes row 7's 5..15 (eleven colours of its own) and READS 1..4 as they
+#  stand (kept_indices: never changed, checked). Those four greens are VERDIGRIS's own, which is the point of A's speck.
+#  THE BOXES, once one is picked (not before: the user, T-573): gbatowns.py LANDMARKS["celadon_city"] and
+#  gbatownslast.py LANDMARKS_PLAN["celadon_city"] each gain ("CeladonCity", 9, 5, 9, 11, "VERDIGRIS DEPT. STORE
+#  (T-573)"); this tool refuses a --write until both hold it (the report lists them).
+STORE_ROW = 7
+STORE_KEPT = [  # row 7's 1..4 as they stand: the BENCHMARK's trees -- read, never changed
+    ("VGREENL", (165, 201, 167)),
+    ("VGREEN",  (92, 158, 96)),
+    ("VGREEND", (57, 97, 59)),
+    ("VGREENX", (32, 55, 33)),
+]
+STORE_COLOURS = {
+    "A": [("OUT",     (52, 34, 30)),     # outline, the deepest copper
+          ("COPPERD", (124, 64, 40)),    # copper in shade, the slabs' undersides
+          ("COPPER",  (178, 98, 56)),    # copper
+          ("COPPERM", (212, 136, 80)),   # copper, lit
+          ("COPPERL", (240, 184, 122)),  # copper catching the light
+          ("SHINE",   (255, 236, 200)),  # the polish: one point on every mullion, the rivets
+          ("GLASSD",  (36, 62, 84)),     # glass under each slab
+          ("GLASS",   (70, 116, 148)),   # glass
+          ("GLASSL",  (156, 200, 220)),  # the glint
+          ("STONE",   (214, 208, 196)),  # the rooftop square, the plinth
+          ("STONED",  (160, 152, 140))], # its joints (ruled like graph paper), shadows on the deck
+    "B": [("OUT",     (50, 50, 62)),
+          ("SLAB",    (110, 110, 124)),  # the floor slabs, the numerals
+          ("WALLD",   (150, 150, 162)),  # concrete in shade, the mullions
+          ("WALL",    (200, 200, 208)),  # concrete
+          ("WALLL",   (238, 238, 242)),  # concrete, lit
+          ("LIT",     (255, 230, 150)),  # a lit floor
+          ("LITD",    (222, 168, 86)),   # its counters
+          ("RED",     (200, 64, 56)),    # 4F's gift, a vending machine
+          ("BLUE",    (70, 120, 200)),   # 2F's bag, a vending machine
+          ("CHIP",    (64, 68, 84)),     # 5F's chip, 3F's terminal
+          ("WHITE",   (255, 255, 255))], # the ribbon, the machines' lights
+    "C": [("OUT",     (30, 32, 40)),
+          ("FRAMED",  (56, 60, 72)),     # the curtain wall's mullions and transoms
+          ("FRAME",   (92, 96, 110)),
+          ("FRAMEL",  (140, 146, 160)),
+          ("SKYL",    (226, 230, 234)),  # the sky in the glass, its sheen
+          ("SKY",     (196, 202, 210)),
+          ("SKYD",    (160, 168, 178)),
+          ("REFL",    (150, 156, 150)),  # the town's trees in the glass: grey
+          ("REF",     (116, 122, 117)),
+          ("REFD",    (84, 90, 86)),
+          ("STONE",   (186, 186, 190))], # the plinth, the street in the lowest panes
+}
+STORE_TITLES = {
+    "A": ("NEW COPPER (DRAFT)", "the one thing in VERDIGRIS not yet green: polished copper and glass, five floors and "
+                                "a roof, and at its foot the first green speck"),
+    "B": ("FIVE FLOORS AND A ROOF (DRAFT)", "the store's directory board as the building: each lit floor shows what "
+                                            "it sells, its numeral on the first pier, the vending machines on top"),
+    "C": ("THE MIRROR FRONT (DRAFT)", "a mirror curtain wall that gives the town back a shade greyer: sky above, the "
+                                      "trees across the street below -- grey, in a green town"),
+}
+STORE_RECOMMENDED = "A"
+STORE_APPROVED = None      # the user's pick, "A" / "B" / "C": None, so nothing is written
+STORE_BOX = ("CeladonCity", 9, 5, 9, 11, "VERDIGRIS DEPT. STORE (T-573)")
+STORE_DOORS = [(11, 14), (15, 14)]
+STORE_STEPS = {(11, 15), (15, 15)}         # general's paving under each door: not ours
+SW, SH = 144, 176                          # the canvas: 9x11 cells
+SXA, SXB, SBACK, STOP, SBOT = 2, 141, 4, 64, 159   # the box: its x span, the deck's back, the face's top, its foot
+SFLOORS = (72, 88, 104, 120)               # 5F, 4F, 3F, 2F: each band 16 high, on the 8px grid
+S1F = 136                                  # 1F's fascia (136..143), then the shopfront (144..159) with the doors
+
+
+def store_lm(opt):
+    return dict(name="dept_store_" + opt, title="VERDIGRIS DEPT. STORE, " + opt, option=opt,
+                map="CeladonCity", x0=9, y0=5, w=9, h=11, door=STORE_DOORS[0], keep=list(STORE_DOORS), inplace=[],
+                signs=[], row=STORE_ROW, colours=STORE_KEPT + STORE_COLOURS[opt], kept_indices=(1, 2, 3, 4),
+                cells_only={(x, y) for x in range(9, 18) for y in range(5, 16)} - STORE_STEPS,
+                crop=[("CeladonCity_Layout", 4, 3, 19, 14)],
+                caption=[STORE_TITLES[opt][1]])
+
+
+def store_box():
+    return box_mask(SXA, SXB, SBACK, STOP, SBOT, c=CHAMFER)
+
+
+def store_draw(opt, face, deck):
+    """the shared massing (a chamfered box from the south and above, as pair 2's), each pixel asked of the option:
+    face(x, yf, side) with yf the face's own row (the chamfers lean, the floors stay level across them), deck(x, y)"""
+    k = Canvas(SW, SH, role_map(STORE_KEPT + STORE_COLOURS[opt]))
+    m = store_box()
+    for (x, y), part in m.items():
+        if part == "deck":
+            r = deck(x, y, m)
+        else:
+            r = face(x, y + lean(x, SXA, SXB), side_of(x, SXA, SXB))
+        if r:
+            k.px(x, y, r)
+    outline(k, m)
+    return k, m
+
+
+def store_band(yf):
+    """(floor index 0..3 for 5F..2F, the row within its band) or None"""
+    for i, y0 in enumerate(SFLOORS):
+        if y0 <= yf < y0 + 16:
+            return i, yf - y0
+    return None
+
+
+def deck_edge(m, x, y, n):
+    """n pixels from the deck's edge (its parapet), or from where it meets the face"""
+    return any(m.get((x + dx, y + dy)) != "deck" for dx, dy in ((n, 0), (-n, 0), (0, n), (0, -n)))
+
+
+def machines(x, y, body, front, light):
+    """three vending machines at the deck's back, 16 apart (each one tile pair, so they share tiles)"""
+    for x0 in (48, 64, 80):
+        if x0 + 2 <= x <= x0 + 13 and 12 <= y <= 31:
+            if y == 12 or x in (x0 + 2, x0 + 13):
+                return "OUT"
+            if 15 <= y <= 24 and x0 + 4 <= x <= x0 + 11:
+                return light if (y == 15 or x == x0 + 4) else front
+            return body
+        if x0 + 3 <= x <= x0 + 14 and y == 32:
+            return "SHADOW"
+    return None
+
+
+# ---------------------------------------------------------------------------------------------- A, NEW COPPER
+def draw_store_a():
+    def face(x, yf, side):
+        g = x % 16
+        if yf < STOP + 8:                                          # the cornice
+            return ("COPPERL", "COPPERM", "COPPERM", "COPPER", "COPPER", "COPPER", "COPPERD", "OUT")[yf - STOP]
+        if side != "front":                                        # the chamfers: copper ribs, lit or in shade
+            lit = side == "lit"
+            if yf >= SBOT - 2:
+                return "STONE" if lit else "STONED"
+            return ("COPPERL" if x % 2 else "COPPERM") if lit else ("COPPER" if x % 2 else "COPPERD")
+        b = store_band(yf)
+        if b is not None:
+            _, r = b
+            if r == 0:
+                return "COPPERL"
+            if r == 1:
+                return "COPPER"
+            if r == 2:
+                return "COPPERD"
+            if g == 0:
+                return "SHINE" if r == 4 else "COPPERM"
+            if g == 1:
+                return "COPPERD"
+            if r == 3:
+                return "GLASSD"
+            return "GLASSL" if 5 <= r <= 13 and (g + r) % 16 in (13, 14) else "GLASS"
+        if yf < S1F + 8:                                           # 1F's fascia, riveted and polished
+            r = yf - S1F
+            if r == 0:
+                return "COPPERL"
+            if r == 7:
+                return "OUT"
+            if r == 6:
+                return "COPPERD"
+            return "SHINE" if r == 3 and g == 8 else "COPPERM" if r == 1 else "COPPER"
+        r = yf - S1F - 8                                           # the shopfront
+        if r >= 14:
+            return "STONED" if r == 15 else "STONE"
+        if g == 0:
+            return "COPPERM"
+        if g == 1:
+            return "COPPERD"
+        if r == 0:
+            return "GLASSD"
+        return "GLASSL" if (g + r) % 16 in (13, 14) else "GLASS"
+
+    def deck(x, y, m):
+        if deck_edge(m, x, y, 1):
+            return "COPPERM"
+        if deck_edge(m, x, y, 2):
+            return "COPPERD"
+        mc = machines(x, y, "COPPER", "GLASS", "GLASSL")
+        if mc:
+            return "STONED" if mc == "SHADOW" else mc
+        return "STONED" if (x % 16 == 8 or y % 16 == 4) else "STONE"   # the rooftop square, ruled like graph paper
+
+    k, m = store_draw("A", face, deck)
+    #  the first green: at the left corner's foot, where the rain runs off the lit chamfer -- a few runs of VERDIGRIS's
+    #  own green climbing the copper (wrong in the right direction: the store will turn too)
+    for x, y0, y1 in ((4, 148, 154), (5, 145, 152), (6, 149, 152), (8, 147, 150), (9, 150, 151), (11, 152, 155),
+                      (12, 154, 155)):
+        for y in range(y0, y1 + 1):
+            if k.get(x, y) not in (0, k.v("OUT")):
+                k.px(x, y, "VGREENL" if y == y0 else "VGREEN" if (x + y) % 3 else "VGREEND")
+    return k
+
+
+# ---------------------------------------------------------------------------------------------- B, FIVE FLOORS
+DIGITS = {"1": ("010", "110", "010", "010", "111"), "2": ("110", "001", "010", "100", "111"),
+          "3": ("110", "001", "010", "001", "110"), "4": ("101", "101", "111", "001", "001"),
+          "5": ("111", "100", "110", "001", "110")}
+B_ICONS = {  # 5F..2F: a 12x8 picture in the centre bay's window, the floor's goods (rows of role letters)
+    0: ("..C.C.C.C...", ".CCCCCCCCC..", "CC.......CC.", ".C.WWWWW.C..", "CC.WWWWW.CC.", ".C.......C..",
+        ".CCCCCCCCC..", "..C.C.C.C..."),                                                # 5F UPGRADES: a chip
+    1: ("....W.W.....", ".....W......", ".RRRRWRRRR..", ".RRRRWRRRR..", ".WWWWWWWWW..", ".RRRRWRRRR..",
+        ".RRRRWRRRR..", ".RRRRWRRRR.."),                                                # 4F GIFTS: a box, a bow
+    2: (".CCCCCCCCC..", ".CGGGGGGGC..", ".CGHGGHHGC..", ".CGGGGGGGC..", ".CGHHGGGGC..", ".CCCCCCCCC..",
+        "....CCC.....", "..CCCCCCC..."),                                                # 3F TV GAMES: a terminal
+    3: ("...B...B....", "..B.....B...", ".BBBBBBBBB..", ".BBBBBBBBB..", ".BBWBBBBBB..", ".BBBBBBBBB..",
+        ".BBBBBBBBB..", "..BBBBBBB..."),                                                # 2F MARKET: a bag
+}
+B_ROLE = {"C": "CHIP", "W": "WHITE", "R": "RED", "B": "BLUE", "G": "VGREEND", "H": "VGREENL"}
+
+
+def draw_store_b():
+    def face(x, yf, side):
+        g = x % 16
+        if yf < STOP + 8:
+            return ("WALLL", "WALLL", "WALL", "WALL", "WALL", "WALL", "WALLD", "SLAB")[yf - STOP]
+        b = store_band(yf)
+        if side != "front":
+            lit = side == "lit"
+            if b is not None and 4 <= b[1] <= 12:
+                return "LIT" if lit else "LITD"
+            return "WALLL" if lit else "WALLD"
+        if b is not None:
+            i, r = b
+            if r <= 1:
+                return "WALLL" if r == 0 else "WALL"
+            if r in (2, 3):
+                return "WALL"
+            if r == 14:
+                return "WALLD"
+            if r == 15:
+                return "SLAB"
+            if g in (0, 1):
+                return "WALLD" if g == 0 else "WALL"
+            if 64 <= x < 80 and 4 <= r <= 11:                       # the centre bay: the floor's goods
+                c = B_ICONS[i][r - 4][x - 66] if 66 <= x < 78 else "."
+                if c != ".":
+                    return B_ROLE[c]
+            if x < 16 and 12 <= x <= 14 and 5 <= r <= 9:            # the floor's numeral on its first pier
+                return "SLAB" if DIGITS["5432"[i]][r - 5][x - 12] == "1" else "LIT"
+            return "LITD" if r >= 11 else "LIT"
+        if yf < S1F + 8:                                            # 1F's fascia: the 1 on the first pier
+            r = yf - S1F
+            if 12 <= x <= 14 and 1 <= r <= 5:
+                return "SLAB" if DIGITS["1"][r - 1][x - 12] == "1" else "WALLD"
+            return "WALLL" if r == 0 else "SLAB" if r == 7 else "WALLD"
+        r = yf - S1F - 8
+        if r >= 14:
+            return "SLAB" if r == 15 else "WALL"
+        if g == 0:
+            return "WALLD"
+        return "LITD" if r >= 10 else "LIT"
+
+    def deck(x, y, m):
+        if deck_edge(m, x, y, 1):
+            return "WALLL"
+        if deck_edge(m, x, y, 2):
+            return "WALLD"
+        y_front = STOP - lean(x, SXA, SXB)
+        if y == y_front - 6 or (y_front - 9 <= y < y_front - 6 and x % 8 == 4):   # the roof's rail
+            return "SLAB"
+        x0 = 48 if x < 64 else 64 if x < 80 else 80
+        mc = machines(x, y, "RED" if x0 != 64 else "BLUE", "WHITE", "WALLL")
+        if mc:
+            return "WALLD" if mc == "SHADOW" else mc
+        return "WALLD" if (x % 16 == 8 or y % 16 == 4) else "WALL"
+
+    k, _ = store_draw("B", face, deck)
+    return k
+
+
+# ---------------------------------------------------------------------------------------------- C, THE MIRROR FRONT
+def mirror(x, yf):
+    """what the glass shows at (x, yf): the sky above, the trees across the street below -- in grey"""
+    #  the trees: round crowns every 32 across, their tops at 104..112, standing on the street's line at 150
+    cx = (x // 32) * 32 + 16
+    cy = 122
+    d = ((x + 0.5 - cx) ** 2 + ((yf + 0.5 - cy) * 1.15) ** 2) ** 0.5
+    if d < 15 or yf >= 136:
+        if yf >= 152:
+            return "STONE"
+        if d < 15 and (x + 0.5 - cx) + (yf + 0.5 - cy) < -10:
+            return "REFL"
+        return "REFD" if yf >= 144 or (d >= 11 and (x - cx) + (yf - cy) > 6) else "REF"
+    return "SKYL" if yf < 88 else "SKY" if yf < 104 else "SKYD"
+
+
+def draw_store_c():
+    def face(x, yf, side):
+        g = x % 16
+        if yf < STOP + 8:
+            return ("FRAMEL", "FRAME", "FRAME", "FRAME", "FRAMED", "FRAMED", "FRAMED", "OUT")[yf - STOP]
+        if side != "front":
+            return "SKYL" if side == "lit" else "SKYD"
+        if g == 0 or (yf >= SFLOORS[0] and (yf - SFLOORS[0]) % 16 == 0) or yf == S1F + 7:
+            return "FRAMED"                                          # the curtain wall's grid
+        if yf >= SBOT - 1:
+            return "FRAME"
+        p = mirror(x, yf)
+        if p.startswith("SKY") and (g - (yf % 16)) % 16 in (3, 4):  # the sheen, one diagonal per pane
+            return "SKYL" if p != "SKYL" else "SKY"
+        return p
+
+    def deck(x, y, m):
+        if deck_edge(m, x, y, 1):
+            return "FRAMEL"
+        if deck_edge(m, x, y, 2):
+            return "FRAME"
+        mc = machines(x, y, "FRAME", "SKY", "SKYL")
+        if mc:
+            return "OUT" if mc == "SHADOW" else mc
+        if x < 128 and 8 <= x % 32 <= 23 and 38 <= y <= 53 and not (x % 32 in (8, 23) or y in (38, 53)):
+            return "SKYL" if (x % 32) + (y - 38) < 22 else "SKY"   # mirror skylights in the dark deck
+        return "FRAMED"
+
+    k, _ = store_draw("C", face, deck)
+    return k
+
+
+STORE_DRAW = {"A": draw_store_a, "B": draw_store_b, "C": draw_store_c}
+
+
+def store_landmarks(opt):
+    return [(store_lm(opt), STORE_DRAW[opt])]
+
+
+if STORE_APPROVED:
+    APPROVED.add("dept_store_" + STORE_APPROVED)
+
+
 # ============================================================================================ the tilesets
 #  One group per secondary tileset: its landmarks are drawn, cut and placed together, because they share its tiles,
 #  blocks and rows. The first pair keeps exactly the behaviour it was built with (a fresh block per cell, appended);
@@ -1756,6 +2114,15 @@ GROUPS = [
          place="SLATE / PewterCity", town="SLATE", tag="t447g", pair=3,
          landmarks=[(ERRATA, draw_errata)], reuse_blocks=True, skip_unused_layouts=True,
          view=[("PewterCity_Layout", 2, 0, 36, 20)]),
+    #  T-573 (drafted 2026-11-16, NOT approved): VERDIGRIS DEPT. STORE, three options drawn one at a time (`options`);
+    #  its boxes are not in gbatowns' LANDMARKS until one is picked (`pending`), so a report lists them and a write
+    #  refuses. Row 10 is the GAME CORNER's too: the store draws in row 7's free 5..15 (store_lm's kept_indices).
+    dict(dir="celadon_city", symbol="gTileset_CeladonCity", layout="CeladonCity_Layout",
+         place="VERDIGRIS / CeladonCity", town="VERDIGRIS", tag="t573", pair="T-573",
+         landmarks=store_landmarks(STORE_APPROVED or STORE_RECOMMENDED), options=("A", "B", "C"),
+         pending=[STORE_BOX], reuse_blocks=True, skip_unused_layouts=True,
+         draft_dir=os.path.join(ROOT, "gfx", "drafts", "t573_dept_store"),
+         view=[("CeladonCity_Layout", 4, 3, 19, 14)]),
 ]
 #  this tool's claim; gbatowns.py's LANDMARKS keeps the same boxes out of its passes (by map name)
 OWNS = {"cinnabar_island": [("CinnabarIsland", 5, 0, 7, 5, "the MANSION"),
@@ -1768,7 +2135,8 @@ OWNS = {"cinnabar_island": [("CinnabarIsland", 5, 0, 7, 5, "the MANSION"),
                           ("Route10", 15, 72, 7, 8, "DAEMON TOWER (its top, on ROUTE 10)")],
         "indigo_plateau": [("IndigoPlateau_Exterior", 6, 0, 11, 7, "the REVIEW BOARD"),
                            ("IndigoPlateau_Exterior", 10, 7, 3, 2, "the REVIEW BOARD's porch")],
-        "pewter_city": [("PewterCity", 12, 0, 16, 7, "ERRATA, the museum and its annex")]}
+        "pewter_city": [("PewterCity", 12, 0, 16, 7, "ERRATA, the museum and its annex")],
+        "celadon_city": [STORE_BOX]}
 GROUP = TILESET = LANDMARKS_HERE = None
 
 
@@ -2359,6 +2727,14 @@ def sheets(ts, before, after, out):
 
 
 # ============================================================================================ main
+def gbatownslast_plan():
+    src = open(os.path.join(ROOT, "tools", "gbatownslast.py")).read()
+    for node in ast.parse(src).body:
+        if isinstance(node, ast.Assign) and any(getattr(t, "id", "") == "LANDMARKS_PLAN" for t in node.targets):
+            return ast.literal_eval(node.value)
+    return {}
+
+
 def gbatowns_landmarks():
     src = open(os.path.join(ROOT, "tools", "gbatowns.py")).read()
     tree = ast.parse(src)
@@ -2401,6 +2777,31 @@ def row_check(ts, lm, ours, row=None, colours=None):
     colours = lm["colours"] if colours is None else colours
     cur, want = ts.pals[row], row_pal(ts, lm, row, colours)
     n = len(colours)
+    kept = lm.get("kept_indices") if row == lm["row"] else None
+    if kept:
+        #  T-573: a row whose first indices another block draws (VERDIGRIS's row 7, the BENCHMARK's trees): the
+        #  landmark names those colours exactly as they stand and takes only the rest. Checked: the kept RGB is
+        #  unchanged, and every other cell drawing the row uses no index past them.
+        bad = [i for i in kept if tuple(cur[i]) != tuple(want[i])]
+        if bad:
+            raise SystemExit("  row %d: kept indices %s would change colour" % (row, bad))
+        others = row_users(ts, row) - set(ours)
+        used = set()
+        for (name, x, y) in others:
+            b = ts.cell(name, x, y) & 0x3FF
+            if b >= NUM_PRIMARY and b - NUM_PRIMARY < ts.nblocks:
+                for e in ts.entries(b):
+                    if e >> 12 == row and (e & 0x3FF) >= NUM_PRIMARY:
+                        used |= set(ts.px[(e & 0x3FF) - NUM_PRIMARY])
+        if used - {0} - set(kept):
+            raise SystemExit("  row %d: other cells draw indices %s the landmark would take"
+                             % (row, sorted(used - {0} - set(kept))))
+        rest = [i for i in range(1, 1 + n) if i not in kept]
+        if all(tuple(cur[i]) in ((0, 0, 0), (0, 0, 255)) for i in rest):
+            return "free past %d (1..%d kept, %d other cells)" % (max(kept), max(kept), len(others))
+        if all(tuple(cur[i]) == tuple(want[i]) for i in rest):
+            return "ours (1..%d kept)" % max(kept)
+        raise SystemExit("  row %d: indices past %d are neither free nor ours" % (row, max(kept)))
     if all(c in ((0, 0, 0), (0, 0, 255)) for c in cur[1:1 + n]):
         return "free"
     if list(cur[1:1 + n]) == list(want[1:1 + n]):
@@ -2558,6 +2959,91 @@ def sheets_pair2(ts, before_maps, before, after, out):
     return paths
 
 
+# ============================================================================================ T-573's sheets
+STORE_RUNS = []        # (option, today's maps, today's tileset, the draft's maps, the draft) per option drawn
+
+
+def wrap(text, n):
+    out, line = [], ""
+    for w in text.split():
+        if len(line) + len(w) + 1 > n:
+            out.append(line)
+            line = w
+        else:
+            line = (line + " " + w).strip()
+    return out + [line]
+
+
+def store_today(view):
+    """TODAY as tools/reviewsheet.py draws the map (the user's review sheet), checked against this tool's render"""
+    import subprocess, tempfile
+    layout, x0, y0, w, h = view
+    with tempfile.TemporaryDirectory() as tmp:
+        p = os.path.join(tmp, "today.png")
+        subprocess.run([sys.executable, os.path.join(ROOT, "tools", "reviewsheet.py"), "map", p,
+                        layout.replace("_Layout", ""), str(x0), str(y0), str(w), str(h)],
+                       check=True, stdout=subprocess.DEVNULL)
+        return Image.open(p).convert("RGB")
+
+
+def store_sheet(g, out):
+    """today beside A, B and C at 2x on the city map; then the store alone at 3x, each with its budget"""
+    os.makedirs(out, exist_ok=True)
+    F, Fs, Fb = font(14), font(12), font(22)
+    view = g["view"][0]
+    _, before_maps, before, _, _ = STORE_RUNS[0]
+    mine = render_pieces(MapState(before_maps), before["mt"], before["tiles"], before["pals"], [view])
+    today = store_today(view)
+    if today.size != mine.size or list(today.getdata()) != list(mine.getdata()):
+        print("  note: reviewsheet's TODAY differs from this tool's render (%s vs %s); the sheet shows reviewsheet's"
+              % (today.size, mine.size))
+    panels = [("TODAY", "BRONZE PANELS (T-562, built): the town kit over vanilla's silhouette", None, today)]
+    for opt, _, _, dmaps, after in STORE_RUNS:
+        im = render_pieces(dmaps, after["mt"], after["tiles"], after["pals"], [view])
+        tag = STORE_TITLES[opt][0] + ("  -- recommended" if opt == STORE_RECOMMENDED else "")
+        panels.append(("%s  %s" % (opt, tag), STORE_TITLES[opt][1], after["budget"][0], im))
+    paths = []
+    #  1: the city at 2x, two by two
+    pw, ph = today.width * 2, today.height * 2
+    W, Hp = 24 + (pw + 24) * 2, ph + 110
+    s = Image.new("RGB", (W, 90 + Hp * 2), BG)
+    d = ImageDraw.Draw(s)
+    label(d, (24, 16), "VERDIGRIS DEPT. STORE -- T-573 DRAFTS (gbalandmarks.py)", FG, Fb)
+    label(d, (24, 48), "CeladonCity 9x11 at (9,5), doors (11,14) (15,14) kept whole; row 7's 5..15 (1..4 the "
+                       "BENCHMARK's trees, kept). City cells %d..%d x %d..%d at 2x." % (
+                           view[1], view[1] + view[3] - 1, view[2], view[2] + view[4] - 1), DIM, F)
+    for i, (title, line, budget, im) in enumerate(panels):
+        x, y = 24 + (i % 2) * (pw + 24), 90 + (i // 2) * Hp
+        s.paste(up(im, 2), (x, y))
+        label(d, (x, y + ph + 6), title, GOLD if i else FG, F)
+        for j, ln in enumerate(wrap(line, 84)[:2]):
+            label(d, (x, y + ph + 26 + j * 16), ln, FG if i else DIM, Fs)
+        if budget:
+            label(d, (x, y + ph + 62), budget, DIM, font(10))
+    p = os.path.join(out, "%s_dept_store_city.png" % g["tag"])
+    s.save(p)
+    paths.append(p)
+    #  2: the store alone at 3x
+    box = ("CeladonCity_Layout", 8, 4, 11, 13)
+    crops = [render_pieces(MapState(before_maps), before["mt"], before["tiles"], before["pals"], [box])]
+    for opt, _, _, dmaps, after in STORE_RUNS:
+        crops.append(render_pieces(dmaps, after["mt"], after["tiles"], after["pals"], [box]))
+    cw, chh = crops[0].width * 3, crops[0].height * 3
+    s = Image.new("RGB", (24 + (cw + 24) * len(crops), chh + 120 + crops[0].height + 30), BG)
+    d = ImageDraw.Draw(s)
+    label(d, (24, 16), "VERDIGRIS DEPT. STORE at 3x, then 1x -- today | " +
+          " | ".join(o for o, *_ in STORE_RUNS) + "   (T-573 DRAFT)", FG, F)
+    for i, im in enumerate(crops):
+        x = 24 + i * (cw + 24)
+        s.paste(up(im, 3), (x, 48))
+        label(d, (x, 52 + chh), panels[i][0], GOLD if i else FG, Fs)
+        s.paste(im, (x, 80 + chh))
+    p = os.path.join(out, "%s_dept_store_3x.png" % g["tag"])
+    s.save(p)
+    paths.append(p)
+    return paths
+
+
 # ============================================================================================ main
 def run_group(g):
     use(g)
@@ -2565,6 +3051,17 @@ def run_group(g):
     #  LANDMARKS must hold every box this tool owns; it may hold other landmarks' boxes too (2026-11-16: the KEEPALIVE
     #  PLANT's front, T-447 plan row 8, shares lavender_town with DAEMON TOWER and is not drawn here)
     missing = [b for b in OWNS[g["dir"]] if b not in gt]
+    if g.get("pending"):
+        #  T-573: the store's box joins gbatowns' LANDMARKS and gbatownslast's LANDMARKS_PLAN only once an option is
+        #  picked (the user): until then the report names them and a write refuses
+        plan = gbatownslast_plan().get(g["dir"], [])
+        lacking = [("gbatowns.py LANDMARKS", b) for b in g["pending"] if b not in gt] + \
+                  [("gbatownslast.py LANDMARKS_PLAN", b) for b in g["pending"] if b not in plan]
+        for where, b in lacking:
+            print("  to add once picked -- %s[%r]: %r" % (where, g["dir"], b))
+        if WRITE and lacking and any(lm["name"] in APPROVED for lm, _ in g["landmarks"]):
+            raise SystemExit("  not written: add the boxes above first (T-573)")
+        missing = [b for b in missing if b not in g["pending"]]
     if missing:
         raise SystemExit("  gbatowns.py's LANDMARKS lacks this tool's boxes for %s:\n    %s" % (g["dir"], missing))
     ts = Tileset(g["dir"], g["symbol"])
@@ -2616,8 +3113,10 @@ def run_group(g):
     after_view = dict(mt=after["mt"], tiles=after["tiles"], pals=after["pals"], cut=cut, owned=after["owned"],
                       free=after["free"], plan=after["plan"], drawings=after["drawings"], budget=after["budget"])
     changed = [k for k, v in ts.maps.items() if bytes(v["bd"]) != before_bd[k]]
+    draft = g.get("draft_dir", DRAFT) if DRAFT == DRAFTS else DRAFT
+    opt = g["landmarks"][0][0].get("option")
     if DRAFT is not None:
-        tsd = os.path.join(DRAFT, g["dir"])
+        tsd = os.path.join(draft, g["dir"] + ("_" + opt if opt else ""))
         os.makedirs(os.path.join(tsd, "palettes"), exist_ok=True)
         after["tiles"].save(os.path.join(tsd, "tiles.png"))
         open(os.path.join(tsd, "metatiles.bin"), "wb").write(after["mt"])
@@ -2629,7 +3128,7 @@ def run_group(g):
         for lm, _ in LANDMARKS_HERE:
             for row, cols in lm_rows(lm):
                 write_pal(os.path.join(tsd, "palettes", "%02d.pal" % row), row_pal(ts, lm, row, cols))
-            d = os.path.join(DRAFT, lm["name"])
+            d = os.path.join(draft, lm["name"])
             os.makedirs(d, exist_ok=True)
             k = after["drawings"][lm["name"]]
             im = drawing_rgb(k, lm_rgb(lm) if lm.get("extra_rows") else lm["colours"])
@@ -2653,12 +3152,15 @@ def run_group(g):
                        slots_used=[s for s, _ in cut.placed], blocks=[after["old_nblocks"], after["nblocks"]],
                        num_tiles=[ts.num_tiles, after["num_tiles"]]), open(os.path.join(tsd, "budget.json"), "w"), indent=1)
         print("  draft: %s (tileset) and %s" % (os.path.relpath(tsd, ROOT),
-                                               ", ".join(os.path.relpath(os.path.join(DRAFT, lm["name"]), ROOT)
+                                               ", ".join(os.path.relpath(os.path.join(draft, lm["name"]), ROOT)
                                                          for lm, _ in LANDMARKS_HERE)))
         if SHEETS:
             #  today is rendered from the untouched maps, the draft from the repointed ones
             before_maps = {k: dict(v, bd=bytearray(before_bd[k])) for k, v in ts.maps.items()}
-            if g["dir"] == "cinnabar_island":
+            if g.get("options"):                       # T-573: one sheet of every option, made in main()
+                STORE_RUNS.append((opt, before_maps, before, MapState(ts.maps), after_view))
+                paths = []
+            elif g["dir"] == "cinnabar_island":
                 paths = sheets_two(ts, before_maps, before, after_view, SHEETS)
             else:
                 paths = sheets_pair2(ts, before_maps, before, after_view, SHEETS)
@@ -2699,6 +3201,16 @@ def main():
     only = argval("--only")
     for g in GROUPS:
         if only and only != g["dir"]:
+            continue
+        if g.get("options"):                           # T-573: each option drawn as its own landmark
+            pick = argval("--option")
+            opts = [pick] if pick else [STORE_APPROVED] if WRITE and STORE_APPROVED else list(g["options"])
+            for o in opts:
+                print("%s (secondary/%s), option %s: %s" % (g["town"], g["dir"], o, STORE_TITLES[o][0]))
+                run_group(dict(g, landmarks=store_landmarks(o)))
+            if SHEETS and STORE_RUNS:
+                for p in store_sheet(g, SHEETS):
+                    print("  sheet: %s" % p)
             continue
         print("%s (secondary/%s)" % (g["town"], g["dir"]))
         run_group(g)

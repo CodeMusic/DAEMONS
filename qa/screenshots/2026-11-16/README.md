@@ -187,3 +187,15 @@ T-572 built: tools/routes/t572_head_over_ring.json on the debug ROM -- the TOWN 
 T-572 built: tools/routes/t572_head_over_ring.json on the debug ROM -- the TOWN MAP and the GOTO map, each at CALLOW CITY and on ROUTE 1, the cursor moved off. The head draws above the GOTO ring; the map-name box, the MOVE/OK bar and the dungeon icons are as before.
 
 ![16Nov2026 - T572 - town map and GOTO map, town and route - 40](16Nov2026%20-%20T572%20-%20town%20map%20and%20GOTO%20map%2C%20town%20and%20route%20-%2040.png)
+
+### 16Nov2026 - T573 - dept store A B C on the city - 41
+
+VERDIGRIS DEPT. STORE, T-573 DRAFTS: today beside A NEW COPPER (recommended), B FIVE FLOORS AND A ROOF, C THE MIRROR FRONT, at 2x on CeladonCity
+
+![16Nov2026 - T573 - dept store A B C on the city - 41](16Nov2026%20-%20T573%20-%20dept%20store%20A%20B%20C%20on%20the%20city%20-%2041.png)
+
+### 16Nov2026 - T573 - dept store at 3x - 42
+
+VERDIGRIS DEPT. STORE, T-573 DRAFTS: the store alone at 3x and 1x, today then A, B, C
+
+![16Nov2026 - T573 - dept store at 3x - 42](16Nov2026%20-%20T573%20-%20dept%20store%20at%203x%20-%2042.png)
