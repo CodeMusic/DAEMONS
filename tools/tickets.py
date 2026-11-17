@@ -28,6 +28,7 @@ Read-only by default, like every tool here; `mirror --write` is the only write, 
 Stdlib only.
 """
 import argparse
+import os
 import difflib
 import json
 import re
@@ -280,6 +281,10 @@ class Redmine:
         except urllib.error.HTTPError as e:
             msg = e.read().decode(errors="replace").replace(self._key, "<key>")
             raise SystemExit(f"Redmine {method} {path}: {e.code} {msg[:300]}")
+        except (urllib.error.URLError, TimeoutError) as e:
+            print(f"Redmine unreachable at {self.url} ({getattr(e, 'reason', e)}): off the tailnet, or roverbyteseer "
+                  f"is down", file=sys.stderr)
+            sys.exit(3)
 
     def project(self, ident):
         p = self.call("GET", f"/projects/{ident}.json?include=trackers,issue_custom_fields")["project"]
@@ -343,8 +348,10 @@ def same_issue(have, want, statuses):
     return all(hv.get(c["id"], "") == c["value"] for c in want["custom_fields"])
 
 
-def sync(write):
-    """Files -> Redmine, until the cut-over: creates what is missing, updates what differs, deletes nothing."""
+def sync(write, create_only=False):
+    """Files -> Redmine, until the cut-over: creates what is missing, updates what differs, deletes nothing.
+    create_only (after the cut-over, before each mirror): a row someone added to a TODO file by hand becomes a ticket
+    instead of being refused, and no ticket Redmine already holds is touched."""
     rm, data = Redmine(), load_all()
     statuses = rm.statuses()
     for project, d in data.items():
@@ -368,6 +375,8 @@ def sync(write):
                 created += 1
                 if write:
                     rm.call("POST", "/issues.json", {"issue": want})
+            elif create_only:
+                same += 1
             elif not same_issue(have[key], want, statuses):
                 updated += 1
                 if write:
@@ -390,8 +399,8 @@ def from_redmine(rm, project, d, statuses_by_id):
     out = []
     for i in rm.issues(project):
         c = cf(i)
-        if not c.get("Ticket"):
-            continue
+        if not c.get("Ticket") or "-clash-" in c["Ticket"]:
+            continue  # an id clash that `new` set aside is not a row
         run = int(c["Run"])
         closed = statuses_by_id[i["status"]["id"]] in ("Closed", "Superseded")
         f = {"Ticket": c["Ticket"], "Run": run, "Order": int(c["Order"])}
@@ -475,6 +484,8 @@ PROJECT_OF = {"T": "daemons", "C": "companion"}
 
 
 def truth():
+    if os.environ.get("TICKETS_TRUTH"):   # for a test against a scratch ticket only
+        return os.environ["TICKETS_TRUTH"]
     try:
         return TRUTH.read_text().strip() or "files"
     except OSError:
@@ -549,6 +560,56 @@ def update(rm, key, issue, note):
     return p, i
 
 
+def new_ticket(a):
+    """A new ticket, given the next id. Redmine has no per-project sequence, so: take max+1, create, read back; if
+    another session took the same id at the same moment, the later-created one moves up and tries again."""
+    needs_cutover("new")
+    for text in (a.title, a.body, a.where, a.source):
+        if "\n" in text or " | " in text or text.endswith(" |"):
+            raise SystemExit("a ticket is one table row: no newlines and no ' | ' in its text")
+    rm = Redmine(a.lane)
+    p, statuses = rm.project(a.project), rm.statuses()
+    prefix = {v: k for k, v in PROJECT_OF.items()}[a.project]
+    me = rm.call("GET", "/users/current.json")["user"]
+    owner = me["id"]
+    if a.to:
+        ids = lane_ids(rm)
+        if a.to not in ids:
+            raise SystemExit(f"no lane {a.to!r}; lanes: {', '.join(sorted(ids))}")
+        owner = ids[a.to]
+    # the Ready table: the run of the open tickets (the companion has one table)
+    issues = rm.issues(a.project)
+    ready = [cf(i) for i in issues if i["status"]["name"] == "Ready"] or [cf(i) for i in issues]
+    run = max(int(c["Run"]) for c in ready if c.get("Run"))
+    desc = f"**{a.title}** (*{a.source}*)" + (f": {a.body}" if a.body else "")
+    for attempt in range(5):
+        issues = rm.issues(a.project)
+        nums = [int(m.group(1)) for m in (re.fullmatch(r"[TC]-(\d+)[a-z]?", c.get("Ticket") or "")
+                                          for c in map(cf, issues)) if m]
+        order = max(int(c["Order"]) for c in map(cf, issues) if c.get("Order")) + 1
+        key = f"{prefix}-{max(nums) + 1}"
+        vals = {"Ticket": key, "Run": str(run), "Order": str(order)}
+        if a.project == "daemons":   # | | what | where | from |
+            vals.update({"Where": a.where or EMPTY, "From": a.source})
+        else:                        # | | Ticket | State | See |  (the companion: a state line, then related tickets)
+            vals.update({"State": EMPTY, "See": a.where or EMPTY})
+        made = rm.call("POST", "/issues.json", {"issue": {
+            "project_id": p["id"], "tracker_id": next(x["id"] for x in p["trackers"] if x["name"] == "Job"),
+            "status_id": statuses["Ready"], "assigned_to_id": owner, "subject": subject_of(desc, key),
+            "description": desc, "notes": f"Opened by {me['login']}.",
+            "custom_fields": [{"id": p["fields"][n], "value": v} for n, v in vals.items()]}})["issue"]
+        twins = sorted(i["id"] for i in rm.issues(a.project) if cf(i).get("Ticket") == key)
+        if twins == [made["id"]] or twins[0] == made["id"]:
+            print(f"{key}: opened, Ready, for {a.to or me['login']}  {rm.url}/issues/{made['id']}")
+            return
+        # we lost the race: leave this issue superseded under a note, and take the next id
+        rm.call("PUT", f"/issues/{made['id']}.json", {"issue": {
+            "status_id": statuses["Superseded"], "subject": f"(id clash, see {key}) {a.title}"[:250],
+            "custom_fields": [{"id": p["fields"]["Ticket"], "value": f"{key}-clash-{made['id']}"}],
+            "notes": f"Another session took {key} at the same moment; opened again under the next id."}})
+    raise SystemExit("could not get an id after five tries")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd")
@@ -562,6 +623,15 @@ def main():
     mr.add_argument("--write", action="store_true")
     sy = sub.add_parser("sync", help="files -> Redmine until the cut-over; creates and updates, never deletes")
     sy.add_argument("--write", action="store_true")
+    sy.add_argument("--create-only", action="store_true", help="after the cut-over: add hand-written rows, touch nothing else")
+    nw = sub.add_parser("new", help="a new ticket with the next id (after the cut-over)")
+    nw.add_argument("--lane", required=True)
+    nw.add_argument("--project", choices=["daemons", "companion"], required=True)
+    nw.add_argument("--title", required=True, help="the bold title")
+    nw.add_argument("--body", default="", help="the rest of the 'what' cell, one line")
+    nw.add_argument("--where", default="", help="daemons: the where column; companion: the See column")
+    nw.add_argument("--from", dest="source", required=True, help="who asked and when: the user, 2026-11-17")
+    nw.add_argument("--to", help="assign to this lane (default: your own)")
     ex = sub.add_parser("export", help="Redmine -> one JSON file with every ticket's history (for git)")
     ex.add_argument("--out", default=str(ROOT / "docs/tickets/redmine-export.json"))
     for name, hlp in (("show", "one ticket, its fields and its last notes"), ("mine", "the open tickets of a lane"),
@@ -639,8 +709,10 @@ def main():
     if a.cmd == "export":
         export(a.out)
         return
+    if a.cmd == "new":
+        return new_ticket(a)
     if a.cmd == "sync":
-        sync(a.write)
+        sync(a.write, a.create_only)
         return
     if a.from_redmine:
         sys.exit(0 if mirror_from_redmine(a.write) else 1)

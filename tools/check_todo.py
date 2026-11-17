@@ -108,6 +108,27 @@ if newest:
 else:
     say("ok    no release folders found (fresh clone?)")
 
+# ---- the tickets' mirror (T-581) ------------------------------------------------------------------------------
+# After the cut-over (the word `redmine` in ~/.local/share/daemons-tickets/truth) the ticket rows in both TODO files
+# are Redmine's: a row edited by hand here would be overwritten by the nightly mirror, so the push stops on it.
+import subprocess
+truth_file = Path.home() / ".local/share/daemons-tickets/truth"
+truth = truth_file.read_text().strip() if truth_file.exists() else "files"
+if truth != "redmine":
+    say("ok    tickets: the TODO files are still the truth (no mirror to check)")
+elif not (Path.home() / ".redmine.env").exists():
+    say("ok    tickets: no ~/.redmine.env here; the mirror is not checked")
+else:
+    r = subprocess.run([sys.executable, str(ROOT / "tools/tickets.py"), "mirror", "--from-redmine"],
+                       capture_output=True, text=True, timeout=600)
+    if r.returncode == 3:
+        say("WARN  tickets: Redmine unreachable; the mirror is not checked")
+    elif r.returncode != 0 or "differs" in r.stdout:
+        fail("a TODO file is not Redmine's mirror: change tickets with tools/tickets.py, then "
+             "`python3 tools/tickets.py mirror --from-redmine --write` (" + (r.stdout + r.stderr).strip()[:200] + ")")
+    else:
+        say("ok    both TODO files are Redmine's mirror")
+
 if failures:
     print(f"\n{len(failures)} failure(s).")
     sys.exit(1)

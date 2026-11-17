@@ -89,6 +89,8 @@ for attempt in 1 2 3; do
   fresh "$D" && fresh "$C" || fail "could not fetch"
   cd "$D" || fail "no clone"
   if [ "$TRUTH" = redmine ]; then
+    # a row someone wrote into a TODO file by hand becomes a ticket rather than being refused or lost
+    $PY tools/tickets.py sync --write --create-only | grep -v -E '^  .*: [0-9]+/' || fail "create-only sync"
     $PY tools/tickets.py mirror --from-redmine --write || fail "the mirror refused (a ticket in the files is not in Redmine); nothing committed"
   else
     $PY tools/tickets.py sync --write | grep -v -E '^  .*: [0-9]+/' || fail "sync"
