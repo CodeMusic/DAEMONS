@@ -1,0 +1,48 @@
+{
+  "rom": "debug",
+  "about": "T-578 (DRAFT): KINDRED, the two cups. With THE SUBTLE LAYER held, a badger in CELADON's condominiums (the TEA woman's) pours two cups from one pot, hands the player one and goes with the other; the player drinks theirs. In LAVENDER TOWN the badger already knows: 'You had the TEA. / I tasted water.' Before the book the badger is not there, and LAVENDER has no badger until the cups are poured. THE SUBTLE LAYER given through DEBUG -> GAME EVENTS. The theatre's debug scratch save; the flags put back.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "before the book: no badger in either place",
+      "steps": [
+        "load debug", "repel 999", "flag FLAG_FOLLOWER_OFF 1",
+        "flag FLAG_GOT_SUBTLE_LAYER 1",
+        "events \"THE SUBTLE LAYER\"",
+        "flagis FLAG_GOT_SUBTLE_LAYER 0",
+        "flag FLAG_KINDRED_POURED 0",
+        "goto CeladonCity_Condominiums_1F 3 13", "wait 40",
+        "shot \"CELADON, no book: no badger\"",
+        "goto LavenderTown 15 17", "wait 40",
+        "shot \"LAVENDER, nothing poured: no badger\""
+      ]
+    },
+    {
+      "stop": "the book held: two cups, poured from one pot",
+      "steps": [
+        "events \"THE SUBTLE LAYER\"",
+        "flagis FLAG_GOT_SUBTLE_LAYER 1",
+        "goto CeladonCity_Condominiums_1F 3 13", "wait 40",
+        "shot \"CELADON, the book held: the badger\"",
+        "talk CeladonCity_Condominiums_1F_EventScript_KindredBadger",
+        "says \"Two cups, poured from one pot.\"",
+        "says \"You drink yours.\"",
+        "flagis FLAG_KINDRED_POURED 1",
+        "shot \"the badger gone, with the other cup\""
+      ]
+    },
+    {
+      "stop": "LAVENDER TOWN: it already knows",
+      "steps": [
+        "goto LavenderTown 15 17", "wait 40",
+        "shot \"LAVENDER: the badger\"",
+        "talk LavenderTown_EventScript_KindredBadger",
+        "says \"You had the TEA.\"",
+        "says \"I tasted water.\"",
+        "goto CeladonCity_Condominiums_1F 3 13", "wait 40",
+        "shot \"CELADON after: no badger\"",
+        "flag FLAG_KINDRED_POURED 0"
+      ]
+    }
+  ]
+}

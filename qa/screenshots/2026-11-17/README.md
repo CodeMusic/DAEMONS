@@ -121,3 +121,21 @@ T-576 (DRAFT): THE THREE at C4 A4 V4 -- SLANT (PSYBEAM) lands without an address
 T-576 (DRAFT): THE THREE at C4 A4 V4 -- SLANT (PSYBEAM) lands without an address: 'Something moved. / Not the thing you meant.'; an ENTROPY lead at VOLTAGE 4 rolls EMBER's burn at 20 (and it burned), at AUTO at 10
 
 ![17Nov2026 - T576 - no address at high VOLTAGE - 23](17Nov2026%20-%20T576%20-%20no%20address%20at%20high%20VOLTAGE%20-%2023.png)
+
+### 17Nov2026 - T578 - the two cups - 24
+
+T-578 (DRAFT): no badger before the book; with it, the badger in CELADON's condominiums pours two cups, hands one over and goes with the other, and you drink yours; in LAVENDER TOWN it already knows: 'You had the TEA. / I tasted water.'
+
+![17Nov2026 - T578 - the two cups - 24](17Nov2026%20-%20T578%20-%20the%20two%20cups%20-%2024.png)
+
+### 17Nov2026 - T578 - the two cups - 25
+
+T-578 (DRAFT): no badger before the book; with it, the badger in CELADON's condominiums pours two cups, hands one over and goes with the other, and you drink yours; in LAVENDER TOWN it already knows: 'You had the TEA. / I tasted water.'
+
+![17Nov2026 - T578 - the two cups - 25](17Nov2026%20-%20T578%20-%20the%20two%20cups%20-%2025.png)
+
+### 17Nov2026 - T578 - the two cups - 26
+
+T-578 (DRAFT): no badger before the book; with it, the badger in CELADON's condominiums pours two cups, hands one over and goes with the other, and you drink yours; in LAVENDER TOWN it already knows: 'You had the TEA. / I tasted water.'
+
+![17Nov2026 - T578 - the two cups - 26](17Nov2026%20-%20T578%20-%20the%20two%20cups%20-%2026.png)
