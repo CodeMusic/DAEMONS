@@ -399,7 +399,8 @@ LANDMARKS = {
                      ("SaffronCity_Connection", 19, 9, 9, 15, "CORPUS's tower (the crossings' copy)")],
     #  T-562 follow-up (2026-11-16): the two T-447 plan boxes gbatownslast already keeps (LANDMARKS_PLAN), held here
     #  too so this tool's own write cannot redraw them
-    "celadon_city": [("CeladonCity", 31, 17, 10, 5, "the GAME CORNER (T-447 plan row 7)")],
+    "celadon_city": [("CeladonCity", 31, 17, 10, 5, "the GAME CORNER (T-447 plan row 7)"),
+                     ("CeladonCity", 9, 5, 9, 11, "VERDIGRIS DEPT. STORE (T-573)")],
     "lavender_town": [("Route10", 2, 34, 11, 8, "the KEEPALIVE PLANT's front (T-447 plan row 8)"),
                       ("LavenderTown", 15, 0, 7, 7, "DAEMON TOWER"),
                       ("Route10", 15, 72, 7, 8, "DAEMON TOWER (its top, on ROUTE 10)")],

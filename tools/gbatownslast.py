@@ -100,6 +100,33 @@ FOUNTAIN = "data/tilesets/secondary/celadon_city/anim/fountain/%d.png"
 LANDMARKS_PLAN = {"celadon_city": [("CeladonCity", 31, 17, 10, 5, "the GAME CORNER (T-447 plan row 7)")],
                   "lavender_town": [("Route10", 2, 34, 11, 8, "KEEPALIVE PLANT's front (T-447 plan row 8)")]}
 
+#  Landmarks built AFTER T-562's picks (2026-11-16): not in the plan above, because adding a box there changes the
+#  families T-562's pick was cut from (and so its pixels). Instead the pick simply never writes a tile these boxes draw
+#  in the engine as it stands -- they are the landmark's now (gbalandmarks).
+#  the engine just before a later landmark was built: its tiles of this tool's pick are the approved pixels (the
+#  family cut reads its neighbours' seams, so it no longer recomputes them byte for byte once the landmark moved in)
+PICK_PIN = {"celadon_city": "4b6fa7867"}
+_PIN_TILES = {}
+
+LATER_LANDMARKS = {"celadon_city": [("CeladonCity", 9, 5, 9, 11, "VERDIGRIS DEPT. STORE (T-573, gbalandmarks)")]}
+
+
+def later_landmark_tiles(ts):
+    """the secondary tiles the later landmarks' cells draw in the engine now"""
+    boxes = LATER_LANDMARKS.get(ts, ())
+    if not boxes:
+        return set()
+    town = T.Town(ts)
+    out = set()
+    for m, x0, y0, w, h, _ in boxes:
+        W = T.layouts()[m]["width"]
+        for y in range(y0, y0 + h):
+            for x in range(x0, x0 + w):
+                b = town.grid[m][y * W + x]
+                if b >= 640:
+                    out |= {(v & 0x3FF) - 640 for v in T.entries(town.mt, b - 640) if v & 0x3FF >= 640}
+    return out
+
 #  general's tiles T-542 left as pret's on purpose (gbaprimary: "4, 301 and 503, the path edges")
 T542_KEPT = {4, 301, 503}
 LUM_OUTLINE = 100
@@ -248,7 +275,9 @@ def recount(ts):
     town = base_town(ts)
     left = {t for t in town.left if t not in ANIM.get(ts, ())}
     why = collections.OrderedDict()
-    lm = town.kept_by_map() | plan_boxes_tiles(town)
+    #  a LATER landmark's tiles (gbatowns.LANDMARKS holds it too) stay targets here, so T-562's families are cut as
+    #  they were approved; picked() then never writes them
+    lm = (town.kept_by_map() - later_landmark_tiles(ts)) | plan_boxes_tiles(town)
     gk = gen_kept_copies(town)
     for t in sorted(left):
         if t in town.door_tiles:
@@ -547,7 +576,15 @@ def picked(ts, option):
     town, _, _ = recount(ts)
     st = [s for s in styles(ts) if s[0] == option[0]][0][3]
     new, _ = redraw(town, st)
-    return town, {t: new[t] for t in range(len(new)) if new[t] != town.now[t]}
+    later = later_landmark_tiles(ts)
+    mine = {t: new[t] for t in range(len(new)) if new[t] != town.now[t] and t not in later}
+    if ts in PICK_PIN:                                 # T-562's pixels as built, before a later landmark moved its seams
+        if (ts, PICK_PIN[ts]) not in _PIN_TILES:
+            _PIN_TILES[(ts, PICK_PIN[ts])] = T.tiles_of(Image.open(io.BytesIO(T.daemonslib.upstream(
+                GBA, T.SEC + ts + "/tiles.png", binary=True, ref=PICK_PIN[ts]))))
+        pinned = _PIN_TILES[(ts, PICK_PIN[ts])]
+        mine = {t: list(pinned[t]) for t in mine}
+    return town, mine
 
 
 def engine_tiles(town, mine):

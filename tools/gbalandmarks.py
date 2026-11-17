@@ -1814,7 +1814,7 @@ STORE_TITLES = {
                                       "trees across the street below -- grey, in a green town"),
 }
 STORE_RECOMMENDED = "A"
-STORE_APPROVED = None      # the user's pick, "A" / "B" / "C": None, so nothing is written
+STORE_APPROVED = "A"       # the user, 2026-11-16, by multiple choice: A NEW COPPER (DRAFT)
 STORE_BOX = ("CeladonCity", 9, 5, 9, 11, "VERDIGRIS DEPT. STORE (T-573)")
 STORE_DOORS = [(11, 14), (15, 14)]
 STORE_STEPS = {(11, 15), (15, 15)}         # general's paving under each door: not ours
@@ -3204,7 +3204,8 @@ def main():
             continue
         if g.get("options"):                           # T-573: each option drawn as its own landmark
             pick = argval("--option")
-            opts = [pick] if pick else [STORE_APPROVED] if WRITE and STORE_APPROVED else list(g["options"])
+            #  once one is approved and built, only it can be drawn over the engine (the others would meet its rows)
+            opts = [pick] if pick else [STORE_APPROVED] if STORE_APPROVED and not SHEETS else list(g["options"])
             for o in opts:
                 print("%s (secondary/%s), option %s: %s" % (g["town"], g["dir"], o, STORE_TITLES[o][0]))
                 run_group(dict(g, landmarks=store_landmarks(o)))

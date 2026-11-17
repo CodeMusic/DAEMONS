@@ -199,3 +199,9 @@ VERDIGRIS DEPT. STORE, T-573 DRAFTS: today beside A NEW COPPER (recommended), B 
 VERDIGRIS DEPT. STORE, T-573 DRAFTS: the store alone at 3x and 1x, today then A, B, C
 
 ![16Nov2026 - T573 - dept store at 3x - 42](16Nov2026%20-%20T573%20-%20dept%20store%20at%203x%20-%2042.png)
+
+### 16Nov2026 - T573 - the dept store built - 43
+
+T-573 built, the user's pick: VERDIGRIS DEPT. STORE as NEW COPPER -- the one thing in town not yet green, rendered from the build
+
+![16Nov2026 - T573 - the dept store built - 43](16Nov2026%20-%20T573%20-%20the%20dept%20store%20built%20-%2043.png)
