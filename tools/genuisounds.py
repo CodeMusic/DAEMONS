@@ -10,6 +10,8 @@
     python3 tools/genuisounds.py --write --approved    # write APPROVED into engineGba (refuses while it is empty)
     python3 tools/genuisounds.py --batch 4 [MODE]      # the same for batch 4, the battle sounds (APPROVED_4, its own
                                                        # drafts in audio/drafts/t565_battle and a "battle moment" clip)
+    python3 tools/genuisounds.py --batch 6 [MODE]      # the same for batch 6, the field sounds (APPROVED_6, its own
+                                                       # drafts in audio/drafts/t565_field and an "a walk" clip)
 
 THE SPLIT (docs/TODO.md T-565, agreed with the Musical Instruments lane 2026-11-16): the menu and UI sounds are the
 game lane's; SE_SUCCESS, SE_FAILURE, SE_DING_DONG, SE_PC_LOGIN and SE_SHOP are pitched sounds whose notes are the
@@ -55,6 +57,17 @@ bigger -- a hit has a noise thud under it, super-effective lands on a chord, not
 falls through the pentatonic to the tritone. A sound's tracks never exceed its player's (SE1 3, SE2 9, SE3 1:
 SE_LOW_HEALTH has one track, so C plays it with no square under the harp), and SE_LOW_HEALTH keeps pret's loop
 (markers "[" and "]", 36 frames). The moves' SE_M_* sounds are batch 10; the instruments lane's are not here.
+
+BATCH 6 (--batch 6), the field sounds: the same three styles on voicegroup196. A door is a thunk (a noise thud under a
+short decaying square, a low harp pluck in B), not a melody; the weather is the noise channel -- rain is many small
+ticks, "x=74:2" naming a tick's noise key, a lower key a lower noise, so thunder rolls down through the keys -- with
+the harp's drips over it in B and C; the warps, the PIN, the unlock and the item sounds keep to the pentatonic. The
+weather plays on SE3 (one track), so a "merge" sound puts every layer on that one track (m4a takes a note's voice
+when the note starts, so the noise and the harp can share it: one program change before each note, in order); rain,
+downpour and thunderstorm keep pret's loops ("[" at 16 frames, "]" at its end). Pret bends and sweeps several of
+these (SE_FALL, SE_THUNDER, SE_ESCALATOR, SE_DOOR...); ours use none: a fall is stepped down the pentatonic.
+The field uses of SE_M_CUT and SE_M_STRENGTH share their .mid with the battle animations, so they are batch 10's:
+here they are SKETCHES only, heard in the "a walk" clip and drafted under batch10_sketch/, never written.
 """
 import math, os, re, struct, subprocess, sys, wave
 
@@ -184,6 +197,119 @@ SESSION_4 = [(0.00, "ball_open"), (0.90, "effective"), (1.90, "super_effective")
 PLAYER_4 = {"low_health": 3, "ball_trade": 2, "ball_tray_exit": 2}   # song_table.inc: the rest play on SE1
 TRACKS = {1: 3, 2: 9, 3: 1}                        # music_player_table.inc: NUM_TRACKS_SE1, _SE2, _SE3
 
+# ---------------------------------------------------------------------------------------------------------------------
+# BATCH 6: the field sounds (docs/sound-census-2026-11-16.md, "Field"). Physical things are physical -- a door is a
+# noise thud under a short decaying square, a wall a bump, the weather the noise channel -- and anything musical
+# (a warp, the PIN, the unlock, the item sounds) keeps to Blanche's C pentatonic; the poison step borrows the falling
+# tritone. "x=74:2" is a tick on noise key 74: lower is a lower noise, so thunder rolls down through the keys.
+# ---------------------------------------------------------------------------------------------------------------------
+def _ticks(frames, keys, gaps, start_key=0):
+    """A run of noise ticks `frames` long: rain, applause. Deterministic: the keys and gaps cycle."""
+    out, at, k = [], 0, start_key
+    while at < frames:
+        g = gaps[k % len(gaps)]
+        g = min(g, frames - at)
+        out.append("x=%d:%d" % (keys[k % len(keys)], g))
+        at += g
+        k += 1
+    return " ".join(out)
+
+
+_RAIN_IN = "x=78:4 r:5 x=72:3 r:4"                     # 16 frames: the first drops
+_RAIN = _ticks(41, (76, 70, 80, 73, 68, 78, 71), (3, 2, 4, 3, 2, 3, 4, 2))      # the loop, 16..57
+_RAIN_B = "^G6:8 ^E6:8 r:8 ^C7:8 ^A6:9"                # B's drips over the loop (41 frames)
+_POUR = _ticks(25, (66, 60, 70, 63, 58, 68), (2, 2, 1, 2, 2, 1, 2))            # downpour's loop, 16..41
+_STORM = _ticks(41, (70, 62, 74, 66, 60, 72), (2, 3, 2, 2, 3, 2))               # thunderstorm's loop, 16..57
+_APPLAUSE = _ticks(240, (82, 76, 86, 72, 80, 78, 84, 74, 79), (3, 2, 4, 2, 3, 2, 3, 5, 2, 3))
+
+SOUNDS_6 = [
+    # doors and the ways in and out
+    dict(id="door", what="a door opening, in or out (every house, every shop)", notes="X:3 &^G3:3 ^C3:10"),
+    dict(id="sliding_door", what="an automatic door (the CHECKPOINTS, the marts)", notes="s:10 &^E5:2 ^A5:8"),
+    dict(id="exit", what="stepping out over a mat (14 call sites)", notes="x:2 &^G4:3 r:3 x:2 &^E4:3 r:3 x:2 &^C4:10"),
+    dict(id="rs_door", what="the Game Corner's and the League's doors", notes="X:4 &^D3:4 r:2 ^A3:4 ^D3:12"),
+    dict(id="warp_in", what="a warp taking the player (27 sites: PLAY's door, THE NEXUS, the pads)",
+         notes="C5:3 D5:3 E5:3 G5:3 A5:3 C6:3 D6:3 E6:3 ~G6:18"),
+    dict(id="warp_out", what="arriving from a warp", notes="G6:3 E6:3 D6:3 C6:3 A5:3 G5:3 E5:3 D5:3 ~C5:20"),
+    dict(id="lavaridge_fall_warp", what="dropping through the floor (a field effect; the Tanoby key)",
+         notes="s:30 &A5:4 G5:4 E5:4 D5:4 C5:4 A4:4 G4:4 E4:4 D4:4 C4:4 X:8 &^C3:8"),
+    dict(id="m_dive", what="diving (a field-only move sound: nothing in battle plays it; pret's FRLG has no sea to "
+         "dive in, so it is likely never heard)", notes="s:16 &^G4:3 ^E4:3 ^C4:3 X:4 &^G3:4 r:6 ^C5:3 ^E5:3 ^G5:6"),
+    # moving about
+    dict(id="ledge", what="a ledge hopped", notes="^E5:3 r:3 X:3 &^C4:3"),
+    dict(id="wall_hit", what="walking into a wall (SE2; every step against one)", notes="X:4 &^C3:6"),
+    dict(id="bike_hop", what="the bike's hop", notes="x:1 ^G5:3"),
+    dict(id="bike_bell", what="the bike's bell", notes="E6:2 G6:10 r:4 E6:2 G6:40"),
+    dict(id="puddle", what="a step in a puddle (SE2)", notes="s:6 &^A5:2 ^E6:6"),
+    dict(id="fall", what="falling down a hole: pret's is a pitch sweep; ours steps down the pentatonic",
+         notes="s:20 &^C6:3 ^A5:3 ^G5:3 ^E5:3 ^D5:3 ^C5:3 ^A4:3 ^G4:3 X:8 &^C3:8"),
+    dict(id="ice_break", what="the floor's ice giving way (Victory Road)",
+         notes="X:4 &s:14 &^G6:2 ^D6:2 ^A5:2 ^E5:3 ^C5:6"),
+    dict(id="ice_crack", what="the floor's ice cracking", notes="x:2 &^E6:2 ^A6:3"),
+    dict(id="escalator", what="the escalator's hum", notes="s:96 &^C4:4 r:44 ^G3:4"),
+    dict(id="elevator", what="the lift (the school's): a hum, then the ding on arrival",
+         notes="s:150 &^C3:4 r:60 ^G2:4 r:82 E5:4 ~C6:40"),
+    # events
+    dict(id="pin", what='the "!" over a head (31 sites), and an item found', notes="x:1 &C6:3 ~G6:14"),
+    dict(id="unlock", what="a lock opening (18 sites; SE2)", notes="x:2 &^G4:2 r:3 X:3 &C5:3 G5:4 ~C6:10"),
+    dict(id="repel", what="a REPEL sprayed", notes="s:16 &^C6:2 ^G5:2 ^E5:2 ^C5:8"),
+    dict(id="itemfinder", what="the ITEMFINDER's ping", notes="^C6:3 r:5 ^C6:3 r:5 E6:3 ~G6:12"),
+    dict(id="field_poison", what="a poisoned daemon hurt by a step: the falling tritone, buzzed",
+         notes="!F#4:4 r:2 !C4:10"),
+    dict(id="egg_hatch", what="an egg hatching: two cracks and out", notes="X:2 &^E5:2 r:2 X:2 &^G5:2 r:2 x:2 &C6:4 ~E6:9"),
+    dict(id="applause", what="the Hall of Fame's applause", notes=_APPLAUSE,
+         b="^C6:6 r:20 ^E6:6 r:16 ^G6:6 r:24 ^A6:6 r:14 ^C7:6 r:30 ^G6:6 r:20 ^E6:6 r:40 ^C6:6"),
+    dict(id="vend", what="a drink dropping from the machine", notes="X:3 &^C4:3 x:2 ^G4:4"),
+    dict(id="bang", what="a heavy door forced open (the Dotted Hole)", notes="X:12 &^C3:12 r:4 X=46:20 &^G2:20"),
+    dict(id="ship", what="the SEAGALLOP under way: an engine's thrum",
+         notes="s:100 &^C3:3 r:22 ^C3:3 r:22 ^C3:3 r:22 ^C3:3"),
+    dict(id="ss_anne_horn", what="the ship's horn: two blasts", notes="~G3:60 &~C3:60 r:20 ~G3:100 &~C3:100"),
+    dict(id="truck_move", what="a great weight moving (the Tanoby key; loops, as pret's does, until the script stops it)",
+         notes="X=46:6 &^C3:6 r:18 X=42:6 &^G2:6 r:18 " * 4 + "X=46:6 &^C3:6 r:18 X=42:6 &^G2:6 r:18 " * 4,
+         loop=(96, 384)),
+    dict(id="contest_curtain_fall", what="Bill's teleporter", notes="s:10 &^C6:2 ^G5:2 ^E5:2 ^C5:4"),
+    dict(id="contest_mons_turn", what="the VS SEEKER charging", notes="^C5:2 ^E5:2 ^G5:2 ^C6:2 ^E6:2 ^G6:2 r:2 ~C6:8"),
+    dict(id="contest_place", what="the slot machine's reel stopping (SE2)", notes="X:3 &C5:3 r:2 G5:4 r:2 ~C6:16"),
+    # weather: SE3, one track -- every layer merged onto it
+    dict(id="rain", what="rain beginning, then falling (loops 16..57 frames, as pret's)", mono="merge",
+         notes=_RAIN_IN + " " + _RAIN, b="^C6:4 r:12 " + _RAIN_B, loop=(16, 57)),
+    dict(id="rain_stop", what="rain stopping: the drops thin out", mono="merge",
+         notes="x=76:3 r:3 x=70:3 r:5 x=78:2 r:7 x=72:2 r:8", b="^G6:6 r:10 ^E6:8 r:9"),
+    dict(id="downpour", what="a downpour (loops 16..41)", mono="merge",
+         notes="x=70:3 r:2 x=64:3 r:2 x=68:2 r:2 x=62:2 " + _POUR, b="^C6:4 r:12 ^G5:6 ^E6:6 r:6 ^A5:7",
+         loop=(16, 41)),
+    dict(id="downpour_stop", what="a downpour easing", mono="merge",
+         notes="x=66:2 r:1 x=60:2 r:2 x=68:2 r:3 x=62:2 r:5 x=70:2 r:6 x=64:2", b="^E6:6 r:10 ^C6:10"),
+    dict(id="thunderstorm", what="a thunderstorm's rain (loops 16..57; the thunder is SE_THUNDER's)", mono="merge",
+         notes="x=72:3 r:3 x=64:3 r:3 x=70:4 " + _STORM, b="^A5:4 r:12 ^E6:8 r:8 ^C6:8 r:8 ^G5:9",
+         loop=(16, 57)),
+    dict(id="thunderstorm_stop", what="a thunderstorm passing", mono="merge",
+         notes="x=70:3 r:2 x=62:3 r:4 x=74:2 r:6 x=66:2 r:9", b="^E6:6 r:12 ^A5:12"),
+    dict(id="thunder", what="thunder: a crack, then a roll down through the noise keys",
+         notes="x=88:3 X=58:10 X=50:16 X=44:24 X=40:30", b="^C4:3 ^G2:30 &^C3:30 r:20 ^G2:28"),
+    dict(id="thunder2", what="thunder, the second (a nearer strike)",
+         notes="X=60:4 X=52:12 X=46:22 X=40:30", b="^G2:4 ^C3:34 &^G2:34 r:20 ^C2:10"),
+    # SKETCHES for batch 10: the field uses of two move sounds that share their .mid with the battle animations.
+    dict(id="m_cut", what="SKETCH (batch 10): Cut in the field, a swish and a snip -- shares se_m_cut.mid with battle",
+         notes="s:8 &^G5:3 ^D5:3 x=86:2 &^A5:2 r:2 ^E5:6", sketch=True),
+    dict(id="m_strength", what="SKETCH (batch 10): Strength pushing a boulder -- shares se_m_strength.mid with battle",
+         notes="X=50:6 &^C3:6 r:2 X=44:12 &^G2:12", sketch=True),
+]
+APPROVED_6 = {}                                    # the user's picks for batch 6; --write refuses while it is empty
+LEFT_OUT_6 = ["the field uses of SE_M_CUT, STRENGTH, ROCK_THROW, FLY, DIG and TELEPORT (one .mid each, shared with "
+              "the battle animations: batch 10; Cut and Strength sketched here for the clip only)",
+              "SE_GLASS_FLUTE (an instrument: the instruments lane's)", "the toy piano SE_NOTE_*",
+              "SE_CHIME, SE_SUNRISE, SE_NIGHTFALL (the instruments lane's, built)",
+              "the field SE_M_HEAL_BELL and SE_M_MORNING_SUN (the instruments lane's notes)",
+              "SE_POKE_JUMP_FAILURE (named only in a comment in start_menu.c; otherwise the wireless minigame)"]
+# The "a walk" clip: in at a door, out over the mat, a ledge, the PIN on a found item, a lock, a warp there and back,
+# a bush cut and a boulder pushed (batch 10 sketches), then rain with one thunder, and the rain stopping.
+SESSION_6 = [(0.00, "door"), (1.00, "exit"), (1.90, "ledge"), (2.60, "pin"), (3.30, "unlock"), (4.10, "warp_in"),
+             (5.00, "warp_out"), (5.90, "m_cut"), (6.60, "m_strength"), (7.20, "rain", 9.80), (8.30, "thunder"),
+             (9.80, "rain_stop")]
+PLAYER_6 = {"wall_hit": 2, "unlock": 2, "puddle": 2, "contest_place": 2, "rain": 3, "rain_stop": 3, "downpour": 3,
+            "downpour_stop": 3, "thunderstorm": 3, "thunderstorm_stop": 3}   # song_table.inc: the rest play on SE1
+
 
 def use_batch(n):
     """Point the module at batch n's sounds, picks, drafts folder and clip."""
@@ -192,14 +318,22 @@ def use_batch(n):
         SOUNDS, APPROVED, LEFT_OUT, SESSION, PLAYER = SOUNDS_4, APPROVED_4, LEFT_OUT_4, SESSION_4, PLAYER_4
         DRAFTS = os.path.join(ROOT, "audio", "drafts", "t565_battle")
         BATCH, LABEL, CLIP = 4, "T-565 batch 4", "battle_moment"
+    elif n == 6:
+        SOUNDS, APPROVED, LEFT_OUT, SESSION, PLAYER = SOUNDS_6, APPROVED_6, LEFT_OUT_6, SESSION_6, PLAYER_6
+        DRAFTS = os.path.join(ROOT, "audio", "drafts", "t565_field")
+        BATCH, LABEL, CLIP = 6, "T-565 batch 6", "a_walk"
+        bad = [s["id"] for s in SOUNDS if s.get("sketch") and s["id"] in APPROVED]
+        if bad:
+            sys.exit("genuisounds: %s are batch 10's sketches (shared with battle), never written here" % bad)
     elif n != 1:
-        sys.exit("genuisounds: --batch is 1 (menus) or 4 (battle)")
+        sys.exit("genuisounds: --batch is 1 (menus), 4 (battle) or 6 (field)")
 
 # velocity by kind and style; C's square layer is quieter than A's
 VEL = {"n": 100, "h": 92, "b": 110, "t": 72, "x": 90, "s": 64, "X": 110}
 C_SQUARE = 0.9
 C_SAMPLE = 0.6
 
+NOISE_RE = re.compile(r"^([xsX])(?:=(\d+))?$")
 NOTE_RE = re.compile(r"^([~!^]?)([A-G]#?)(-?\d)$")
 SEMI = {"C": 0, "C#": 1, "D": 2, "D#": 3, "E": 4, "F": 5, "F#": 6, "G": 7, "G#": 8, "A": 9, "A#": 10, "B": 11}
 
@@ -215,8 +349,9 @@ def tokens(score):
         last = at
         if what == "r":
             pass
-        elif what in ("x", "s", "X"):
-            out.append((at, frames, what, NOISE_KEY[what]))
+        elif NOISE_RE.match(what):
+            m = NOISE_RE.match(what)
+            out.append((at, frames, m.group(1), int(m.group(2)) if m.group(2) else NOISE_KEY[m.group(1)]))
         else:
             m = NOTE_RE.match(what)
             assert m, "bad token %r" % tok
@@ -228,11 +363,13 @@ def tokens(score):
 
 def voiced(snd, style):
     """[(frame, frames, channel, program, key, velocity)] -- the style's notes, before any loudness scaling.
-    A "mono" sound (a one-track player, SE3) leaves C's square and noise out: the harp and flute alone."""
+    A "mono" sound (a one-track player, SE3) leaves C's square and noise out: the harp and flute alone. A "merge"
+    sound (batch 6's weather, also SE3) keeps every layer and puts them all on the one track."""
     a = tokens(snd.get("a", snd["notes"]))
     b = tokens(snd.get("b", snd["notes"]))
     out, square_at = [], set()
-    if style == "A" or (style == "C" and not snd.get("mono")):
+    merge = snd.get("mono") == "merge"
+    if style == "A" or (style == "C" and (merge or not snd.get("mono"))):
         k = 1.0 if style == "A" else C_SQUARE
         for at, n, kind, key in a:
             if kind in ("x", "s", "X"):
@@ -254,7 +391,17 @@ def voiced(snd, style):
                 continue
             prog = FLUTE if (style == "C" and kind == "h") else HARP
             out.append((at, n, CH_SAMPLE, prog, key + 12 if kind == "b" else key, VEL[kind] * k))
+    if merge:
+        out = [(at, n, CH_SAMPLE, p, key, v) for at, n, ch, p, key, v in out]
     return out
+
+
+def loop_span(snd):
+    """(start, end) in frames of a sound's loop, or None. An int loop starts at 0 (SE_LOW_HEALTH)."""
+    lp = snd.get("loop")
+    if lp is None:
+        return None
+    return (0, lp) if isinstance(lp, int) else tuple(lp)
 
 
 def vlq(n):
@@ -266,18 +413,20 @@ def vlq(n):
     return bytes(out)
 
 
-def to_midi(notes, scale=1.0, loop=None):
-    """Format 0, one track, a channel per hardware voice; the program set before each note that changes it. With
-    `loop` (frames), mid2agb's loop markers "[" at 0 and "]" there, as pret's SE_LOW_HEALTH has."""
+def to_midi(notes, scale=1.0, loop=None, merge=False):
+    """Format 0, one track, a channel per hardware voice; the program set before each note that changes it (with
+    `merge`, just before it, so two voices can start on the one channel on one frame). With `loop` (frames, or (start, end)),
+    mid2agb's loop markers "[" and "]", as pret's SE_LOW_HEALTH and SE_RAIN have."""
     ev = [(0, 0, b"\xFF\x51\x03" + struct.pack(">I", TEMPO_US)[1:])]
     if loop:
-        ev += [(0, 0, b"\xFF\x06\x01["), (loop, 4, b"\xFF\x06\x01]")]
+        start, end = (0, loop) if isinstance(loop, int) else loop
+        ev += [(start, 0, b"\xFF\x06\x01["), (end, 4, b"\xFF\x06\x01]")]
     for ch in sorted({n[2] for n in notes}):
         ev.append((0, 1, bytes((0xB0 | ch, 7, 127))))
     prog = {}
     for at, n, ch, p, key, vel in sorted(notes):
         if prog.get(ch) != p:
-            ev.append((at, 2, bytes((0xC0 | ch, p))))
+            ev.append((at, 3 if merge else 2, bytes((0xC0 | ch, p))))
             prog[ch] = p
         v = max(1, min(127, int(round(vel * scale))))
         ev.append((at, 3, bytes((0x90 | ch, key, v))))
@@ -346,7 +495,7 @@ def parse_midi(data):
                 events.append((t, "cc", ch, a, b))
             elif hi == 0xE0:
                 events.append((t, "bend", ch, a, b))
-    order = {"prog": 0, "cc": 0, "bend": 0, "off": 1, "on": 2}
+    order = {"prog": 2, "cc": 0, "bend": 0, "off": 1, "on": 2}    # a program change keeps its place among the notes
     events.sort(key=lambda e: (e[0], order[e[1]]))
     return tempo / 1e6 / tpq, events
 
@@ -548,6 +697,31 @@ def render_note(voice, key, vel, sec):
     return y[:len(envs)] * envs * PSG_GAIN
 
 
+_KEYSPLIT = {}
+
+
+def keysplit(voice, key):
+    """A voice_keysplit's voice for this key (pret's SE_CONTEST_PLACE plays one): voicegroupNNN, KeySplitTableN."""
+    m = re.match(r"voice_keysplit\s+voicegroup(\d+),\s*(\w+)", voice.strip())
+    if not m:
+        return voice
+    table = m.group(2)
+    if table not in _KEYSPLIT:
+        t = git_show("sound/keysplit_tables.inc")
+        rows = (t.decode() if t else open(os.path.join(GBA, "sound", "keysplit_tables.inc")).read()).split("\n")
+        i = next(k for k, r in enumerate(rows) if r.startswith(".set %s," % table))
+        first, out = int(re.search(r"- (\d+)", rows[i]).group(1)), {}
+        for r in rows[i + 1:]:
+            b = re.match(r"\s*\.byte\s+(\d+)", r)
+            if not b:
+                break
+            out[first + len(out)] = int(b.group(1))
+        _KEYSPLIT[table] = out
+    split = _KEYSPLIT[table]
+    k = min(max(int(key), min(split)), max(split))
+    return voicegroup(int(m.group(1)))[split[k]]
+
+
 def render(midi_bytes, voices, master=127):
     """The whole sound, mono floats at SR. A PSG note ends the one before it on the same hardware channel (there is
     one square 1, one square 2, one wave, one noise); a sample's notes ring over each other, as m4a's do. A volume
@@ -584,7 +758,7 @@ def render(midi_bytes, voices, master=127):
         return None
     parts = []
     for t0, dt, ch, key, v, vl, p in sorted(notes):
-        y = render_note(voices[p], key, v / 127 * vl / 127 * master / 127, dt * spt)
+        y = render_note(keysplit(voices[p], key), key, v / 127 * vl / 127 * master / 127, dt * spt)
         changes = [(tt, vv) for tt, vv in vol_at.get(ch, []) if t0 < tt]
         if changes and vl:
             g = np.ones(len(y))
@@ -625,11 +799,15 @@ def drafted(snd, style, pret_peak=None):
     scale = 1.0
     if pret_peak is not None:
         for _ in range(12):
-            peak = np.abs(render(to_midi(notes, scale, snd.get("loop")), our_voices(), master)).max()
+            peak = np.abs(render(midi_of(snd, notes, scale), our_voices(), master)).max()
             if peak <= pret_peak * 1.0001:
                 break
             scale *= min(0.97, pret_peak / peak)
-    return to_midi(notes, scale, snd.get("loop")), scale
+    return midi_of(snd, notes, scale), scale
+
+
+def midi_of(snd, notes, scale=1.0):
+    return to_midi(notes, scale, snd.get("loop"), snd.get("mono") == "merge")
 
 
 def all_drafts(verbose=False):
@@ -677,6 +855,7 @@ def check_tracks():
 def write_wav_or_mp3(path_noext, y):
     import numpy as np
     y = np.clip(y, -1, 1)
+    os.makedirs(os.path.dirname(path_noext), exist_ok=True)
     wav = path_noext + ".wav"
     w = wave.open(wav, "wb")
     w.setnchannels(1)
@@ -696,9 +875,11 @@ def heard(name, y):
     """A sound as its own preview: a looping one three times round (its loop's length each), then a short silence."""
     import numpy as np
     snd = next(s for s in SOUNDS if s["id"] == name)
-    if snd.get("loop"):
-        n = int(snd["loop"] / 60 * SR)
-        y = np.tile(np.concatenate([y, np.zeros(max(0, n - len(y)))])[:n], 3)
+    span = loop_span(snd)
+    if span:
+        a, b = int(span[0] / 60 * SR), int(span[1] / 60 * SR)
+        y = np.concatenate([y, np.zeros(max(0, b - len(y)))])
+        y = np.concatenate([y[:a], np.tile(y[a:b], 3)])
     return np.concatenate([y, np.zeros(SR // 8)])
 
 
@@ -712,10 +893,11 @@ def session_mix(get):
         stop = row[2] if len(row) > 2 else None
         y = get(name)
         snd = next(s for s in SOUNDS if s["id"] == name)
-        if snd.get("loop") and stop is not None:
-            n = int(snd["loop"] / 60 * SR)
-            cycle = np.concatenate([y, np.zeros(max(0, n - len(y)))])[:n]
-            y = np.tile(cycle, int(math.ceil((stop - t) * SR / n)) + 1)
+        span = loop_span(snd)
+        if span and stop is not None:
+            a, b = int(span[0] / 60 * SR), int(span[1] / 60 * SR)
+            y = np.concatenate([y, np.zeros(max(0, b - len(y)))])
+            y = np.concatenate([y[:a], np.tile(y[a:b], int(math.ceil((stop - t) * SR / (b - a))) + 1)])
         if stop is not None:
             y = y[:int((stop - t) * SR)]
         clips.append((int(t * SR), PLAYER.get(name, 1), y))
@@ -746,7 +928,7 @@ def previews(outdir):
             data, scale, pp = drafts[(snd["id"], st)]
             y = render(data, our_voices(), master_of(pret_flags(snd["id"])))
             cache[snd["id"]] = y
-            written.append(write_wav_or_mp3(os.path.join(d, "se_%s" % snd["id"]), heard(snd["id"], y)))
+            written.append(write_wav_or_mp3(os.path.join(d, sketch_name(snd)), heard(snd["id"], y)))
         written.insert(0, write_wav_or_mp3(os.path.join(outdir, "%s_%s_%s" % (CLIP, st, STYLE_NAMES[st].replace(" ", "_"))),
                                            session_mix(lambda n: cache[n])))
     print("  previews: %d files in %s" % (len(written), outdir))
@@ -768,19 +950,26 @@ def pret_ref(outdir):
     print("  pret's reference: %d sounds and the clip in %s (retail audio: keep it out of git)" % (len(cache), outdir))
 
 
+def sketch_name(snd):
+    """A draft's file name in a style folder: batch 10's sketches go in batch10_sketch/, out of --write's way."""
+    return ("batch10_sketch/se_%s" if snd.get("sketch") else "se_%s") % snd["id"]
+
+
 def draft(outdir):
     drafts = all_drafts()
     for st in STYLES:
         d = os.path.join(outdir, st)
         os.makedirs(d, exist_ok=True)
         for snd in SOUNDS:
-            open(os.path.join(d, "se_%s.mid" % snd["id"]), "wb").write(drafts[(snd["id"], st)][0])
+            path = os.path.join(d, sketch_name(snd) + ".mid")
+            os.makedirs(os.path.dirname(path), exist_ok=True)
+            open(path, "wb").write(drafts[(snd["id"], st)][0])
     open(os.path.join(outdir, "voicegroup%03d.inc" % VOICEGROUP), "w").write(MARK_VG + "\n" + "\n".join(VOICES) + "\n")
     rows = ["# %s drafts (tools/genuisounds.py %s--draft): style, sound, pret's frames, ours, velocity scale" % (LABEL, "--batch %d " % BATCH if BATCH != 1 else ""),
             "# A %s / B %s / C %s" % tuple(STYLE_NAMES[s] for s in STYLES)]
     for snd in SOUNDS:
         pret = frames_of(pret_midi(snd["id"]))
-        rows.append("%-14s pret %2d  " % (snd["id"], pret) + "  ".join(
+        rows.append("%-14s pret %2d  " % (snd["id"] + (" (SKETCH, batch 10)" if snd.get("sketch") else ""), pret) + "  ".join(
             "%s %2d x%.2f" % (st, frames_of(drafts[(snd["id"], st)][0]), drafts[(snd["id"], st)][1]) for st in STYLES))
     open(os.path.join(outdir, "LENGTHS.txt"), "w").write("\n".join(rows) + "\n")
     print("  drafts: %d sounds x %d styles in %s" % (len(SOUNDS), len(STYLES), outdir))
