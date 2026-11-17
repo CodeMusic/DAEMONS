@@ -296,6 +296,7 @@ SOUNDS_6 = [
          notes="X=50:6 &^C3:6 r:2 X=44:12 &^G2:12", sketch=True),
 ]
 APPROVED_6 = {}                                    # the user's picks for batch 6; --write refuses while it is empty
+APPROVED_6.update({s["id"]: "C" for s in SOUNDS_6 if s["id"] not in ("m_cut", "m_strength")})   # the user, 2026-11-17, by multiple choice: C BOTH (DRAFT)
 LEFT_OUT_6 = ["the field uses of SE_M_CUT, STRENGTH, ROCK_THROW, FLY, DIG and TELEPORT (one .mid each, shared with "
               "the battle animations: batch 10; Cut and Strength sketched here for the clip only)",
               "SE_GLASS_FLUTE (an instrument: the instruments lane's)", "the toy piano SE_NOTE_*",
