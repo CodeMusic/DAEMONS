@@ -205,3 +205,9 @@ VERDIGRIS DEPT. STORE, T-573 DRAFTS: the store alone at 3x and 1x, today then A,
 T-573 built, the user's pick: VERDIGRIS DEPT. STORE as NEW COPPER -- the one thing in town not yet green, rendered from the build
 
 ![16Nov2026 - T573 - the dept store built - 43](16Nov2026%20-%20T573%20-%20the%20dept%20store%20built%20-%2043.png)
+
+### 16Nov2026 - T565 - fanfares and pitched sounds as built - 44
+
+T-565 BUILT (DRAFT): the fanfares, jingles and pitched sounds in voice C, our harp and flute over the cartridge -- every piece's notes as tools/genfanfares.py writes them, each fanfare's wait, and the loops
+
+![16Nov2026 - T565 - fanfares and pitched sounds as built - 44](16Nov2026%20-%20T565%20-%20fanfares%20and%20pitched%20sounds%20as%20built%20-%2044.png)
