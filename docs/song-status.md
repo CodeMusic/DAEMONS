@@ -15,8 +15,10 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | Brazen | `mus_brazen` (appended, 347) | BRAZEN and its six interiors |
 | Verdigris, Ardor, Halftone, Quicksilver | vanilla's own town slots | each town, as vanilla grouped it |
 | Corpus building, ruined lab, the dark places | `mus_silph`, `mus_poke_mansion`, `mus_mt_moon` | as vanilla grouped them |
+| *Poly and Fields* (hook and chords, G) | **`mus_doldrum`** (appended, 386) | DOLDRUM, its five houses and the bike shop (*T-565 batch 5, `tools/genoverworldmusic.py`; the bass never leaves G*) |
+| 12 *ScornSolutions Blues* (hook, E minor) | **`mus_lurid`** (appended, 387) | LURID, its three houses, the warden's house, the gates of THE WALLED GARDEN (*T-565 batch 5: a twelve-bar blues on the hook*) |
 
-**`mus_pewter` is vanilla's again** — *CALLOW, the school and the gatehouses play it until CALLOW's own theme exists (T-05, T-226).*
+**`mus_pewter` is ours: THRESHOLD** (*T-565 batch 5, 2026-11-17*) — *every gatehouse, the Underground Path's entrances, Route 2's buildings and the Day Care; CALLOW has had its own theme since T-05. Batch 5 also wrote the main road, the coast road, Routes 24-25, the CHECKPOINT, the BENCHMARK, THE UNDERTONE, cycling and surfing, all in the fanfares' voice (`tools/genoverworldmusic.py`); MUS_FUCHSIA keeps pret's tune for its six other maps.*
 
 ## Act 1 — *The Fall of Blind Ambition*
 
@@ -33,7 +35,7 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | 09 | Nine Scars, Nine Breaches | D minor | 128 | ✅ | ✅ | **the Corpus building** |
 | 10 | 1001 Fatal Error | B♭ minor | 128 | ✅ | ✅ | **the ruined lab** |
 | 11 | Crystal's Stand | D minor | 128 | ✅ ² | ✅ | — |
-| 12 | ScornSolutions Blues | E minor | 118 | ✅ ² | ✅ | — |
+| 12 | ScornSolutions Blues | E minor | 118 | ✅ ² | ✅ | **Lurid** |
 
 ## Act 2 — *The Rise of Perspective Thinking*
 
@@ -49,7 +51,7 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | 19 | Crystal's Reply ³ | A major | 128 | ✅ | ✅ | — |
 | 20 | Betrayal's Sting ³ | D minor | 128 | ✅ | ✅ | — |
 | 21 | Empire of Scorn ³ ⁴ | C minor | 135 | ✅ | ✅ | — |
-| — | Poly and Fields ³ ⁵ | G major | 110 | ✅ | ✅ | — ⁶ |
+| — | Poly and Fields ³ ⁵ | G major | 110 | ✅ | ✅ | **Doldrum** ⁶ |
 | — | Whispers in the Wires ³ ⁵ | A minor | 128 | ✅ | ✅ | *never* — 4.21 |
 | — | Owl and the Code | C major | 128 | ✅ ² | ✅ | **Mr. Psychic's house**, music pending |
 
@@ -202,7 +204,7 @@ answer to "will they fit": at ~200 bytes each there is room for roughly **eighte
 
 ### Still unassigned
 
-**11** *Crystal's Stand*, **12** *ScornSolutions Blues*, **14.25** *Desperate Shadows*, **14.5** *Quantum Translations*, **16** *S.T.A.R.R.'s Revelation*, **17**/**18** *Ty's Redemption*, **19** *Crystal's Reply*, **20** *Betrayal's Sting*, **06**, the Owl, and *Poly and Fields*.
+**11** *Crystal's Stand*, **14.25** *Desperate Shadows*, **14.5** *Quantum Translations*, **16** *S.T.A.R.R.'s Revelation*, **17**/**18** *Ty's Redemption*, **19** *Crystal's Reply*, **20** *Betrayal's Sting*, **06** and the Owl. *(12 and Poly and Fields went to LURID and DOLDRUM, T-565 batch 5, 2026-11-17.)*
 
 **Callow, Doldrum and Lurid share `Cities1`/`Cities2` with other maps**, so giving them
 their derived keys (F, G, E) means repointing individual maps in `data/maps/songs.asm`

@@ -81,7 +81,9 @@ TRACKS = [
 # BRAZEN commit said CALLOW sharing it matched the Game Boy; it did not -- there
 # CALLOW shares vanilla's Cities1, which is what it gets back here.
 # So mus_pewter is RESTORED from upstream, and SLATE is mus_slate.
-VANILLA = ["mus_pewter"]
+# T-565 batch 5 (2026-11-17): mus_pewter is ours again -- THRESHOLD, every gatehouse's, written by
+# tools/genoverworldmusic.py -- so nothing is restored any more; restoring it here would undo that tool.
+VANILLA = []
 
 # Which maps play each town's theme -- and one building that is not a town's. A town's houses play the town's music --
 # vanilla's own grouping, kept -- so a theme follows its town indoors and no
@@ -104,6 +106,13 @@ MAP_MUSIC = {
     # too; the Game Boy, the record, files it with the hideout (Dungeon1), and so does this. The Route 21
     # station keeps the lab's: it is a room cut from the Mansion's basement, terminals and all (T-74).
     "MUS_ROCKET_HIDEOUT": ["PowerPlant"],
+    # T-565 batch 5 (the user, 2026-11-17, "Split them"; the game lane's go-ahead): DOLDRUM and LURID shared
+    # MUS_FUCHSIA; vision 7.4 gives each its own song in its own key, written by tools/genoverworldmusic.py into two
+    # appended slots. MUS_FUCHSIA keeps pret's tune for its other six maps.
+    "MUS_DOLDRUM": ["CeruleanCity", "CeruleanCity_BikeShop", "CeruleanCity_House1", "CeruleanCity_House2",
+                    "CeruleanCity_House3", "CeruleanCity_House4", "CeruleanCity_House5"],
+    "MUS_LURID": ["FuchsiaCity", "FuchsiaCity_House1", "FuchsiaCity_House2", "FuchsiaCity_House3",
+                  "FuchsiaCity_SafariZone_Entrance", "FuchsiaCity_SafariZone_Office", "FuchsiaCity_WardensHouse"],
 }
 
 SEMI = {"C_": 0, "C#": 1, "D_": 2, "D#": 3, "E_": 4, "F_": 5,
