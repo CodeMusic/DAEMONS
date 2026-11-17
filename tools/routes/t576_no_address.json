@@ -1,0 +1,61 @@
+{
+  "rom": "debug",
+  "about": "T-576 (DRAFT): MOVE AND BURN. THE THREE set by hand through DEBUG -> GAME EVENTS -> THE THREE (CLOSURE 4, ATTUNEMENT 4, VOLTAGE 4 -- high VOLTAGE, as just after a party HALT) and THE LOG at nine reads, so a CONTEXT routine with power is a WRITE. (1) gThreeDebugNoAddress 1 takes away the chance: PSYBEAM lands without an address -- the box says 'Something moved. / Not the thing you meant.' in the lean's purple. (2) An ENTROPY lead (ARCANINE) at VOLTAGE 4: EMBER's chance to burn is rolled at 20, not 10 (gThreeDebugBurnChance); (3) with VOLTAGE back to AUTO, at 10. The type chart is untouched. THE SUBTLE LAYER given through GAME EVENTS. The theatre's debug scratch save; nothing kept.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "a WRITE at high VOLTAGE, no address",
+      "steps": [
+        "load debug", "repel 999", "flag FLAG_FOLLOWER_OFF 1",
+        "flag FLAG_GOT_SUBTLE_LAYER 0",
+        "events \"THE SUBTLE LAYER\"",
+        "flagis FLAG_GOT_SUBTLE_LAYER 1",
+        "var VAR_READS_GIVEN 9",
+        "events \"THE THREE >\" \"> CLOSURE: AUTO, 0-4\" \"> CLOSURE: AUTO, 0-4\" \"> CLOSURE: AUTO, 0-4\" \"> CLOSURE: AUTO, 0-4\" \"> CLOSURE: AUTO, 0-4\" \"> ATTUNEMENT: AUTO, 0-4\" \"> ATTUNEMENT: AUTO, 0-4\" \"> ATTUNEMENT: AUTO, 0-4\" \"> ATTUNEMENT: AUTO, 0-4\" \"> ATTUNEMENT: AUTO, 0-4\" \"> VOLTAGE: AUTO, 0-4\" \"> VOLTAGE: AUTO, 0-4\" \"> VOLTAGE: AUTO, 0-4\" \"> VOLTAGE: AUTO, 0-4\" \"> VOLTAGE: AUTO, 0-4\"",
+        "poke gThreeDebugNoAddress 8 1",
+        "goto Route22 15 9",
+        "wild 1 keep",
+        "wait 150",
+        "poke gBattleMons+0x0C 16 60", "poke gBattleMons+0x24 8 20",
+        "shot \"the first turn\"",
+        "hold A 4", "wait 30", "hold A 4",
+        "burst \"PSYBEAM, no address\" 24 20",
+        "win", "finish",
+        "poke gThreeDebugNoAddress 8 0"
+      ]
+    },
+    {
+      "stop": "an ENTROPY lead at VOLTAGE 4: EMBER rolls its burn at 20",
+      "steps": [
+        "mon 0 species SPECIES_ARCANINE",
+        "poke gThreeDebugBurnChance 8 0",
+        "goto Route22 15 9",
+        "wild 1 keep",
+        "wait 150",
+        "poke gBattleMons+0x0C 16 52", "poke gBattleMons+0x24 8 20", "poke gBattleMons+0x02 16 1", "poke gBattleMons+0x08 16 1",
+        "hold A 4", "wait 30", "hold A 4",
+        "wait 400",
+        "remember burn gThreeDebugBurnChance 8",
+        "shot \"after EMBER\"",
+        "win", "finish"
+      ]
+    },
+    {
+      "stop": "VOLTAGE back to AUTO: EMBER rolls its burn at 10",
+      "steps": [
+        "events \"THE THREE >\" \"> VOLTAGE: AUTO, 0-4\"",
+        "poke gThreeDebugBurnChance 8 0",
+        "goto Route22 15 9",
+        "wild 1 keep",
+        "wait 150",
+        "poke gBattleMons+0x0C 16 52", "poke gBattleMons+0x24 8 20", "poke gBattleMons+0x02 16 1", "poke gBattleMons+0x08 16 1",
+        "hold A 4", "wait 30", "hold A 4",
+        "wait 400",
+        "remember burn2 gThreeDebugBurnChance 8",
+        "shot \"after EMBER, VOLTAGE AUTO\"",
+        "win", "finish",
+        "events \"THE THREE >\" \"EVERY ONE AUTO AGAIN\""
+      ]
+    }
+  ]
+}

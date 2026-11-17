@@ -103,3 +103,21 @@ T-575 (DRAFT): TOUCH -- the TEA handed over with a STRATUM daemon following brin
 T-565 batch 5, the everyday overworld music as built (engine 410682153): the eleven MIDIs the ROM is compiled from, read back -- voice C, the harp and flute over the cartridge; the nine slots in place and DOLDRUM's and LURID's own (DRAFT)
 
 ![17Nov2026 - T565 - overworld music as built - 20](17Nov2026%20-%20T565%20-%20overworld%20music%20as%20built%20-%2020.png)
+
+### 17Nov2026 - T576 - no address at high VOLTAGE - 21
+
+T-576 (DRAFT): THE THREE at C4 A4 V4 -- SLANT (PSYBEAM) lands without an address: 'Something moved. / Not the thing you meant.'; an ENTROPY lead at VOLTAGE 4 rolls EMBER's burn at 20 (and it burned), at AUTO at 10
+
+![17Nov2026 - T576 - no address at high VOLTAGE - 21](17Nov2026%20-%20T576%20-%20no%20address%20at%20high%20VOLTAGE%20-%2021.png)
+
+### 17Nov2026 - T576 - no address at high VOLTAGE - 22
+
+T-576 (DRAFT): THE THREE at C4 A4 V4 -- SLANT (PSYBEAM) lands without an address: 'Something moved. / Not the thing you meant.'; an ENTROPY lead at VOLTAGE 4 rolls EMBER's burn at 20 (and it burned), at AUTO at 10
+
+![17Nov2026 - T576 - no address at high VOLTAGE - 22](17Nov2026%20-%20T576%20-%20no%20address%20at%20high%20VOLTAGE%20-%2022.png)
+
+### 17Nov2026 - T576 - no address at high VOLTAGE - 23
+
+T-576 (DRAFT): THE THREE at C4 A4 V4 -- SLANT (PSYBEAM) lands without an address: 'Something moved. / Not the thing you meant.'; an ENTROPY lead at VOLTAGE 4 rolls EMBER's burn at 20 (and it burned), at AUTO at 10
+
+![17Nov2026 - T576 - no address at high VOLTAGE - 23](17Nov2026%20-%20T576%20-%20no%20address%20at%20high%20VOLTAGE%20-%2023.png)
