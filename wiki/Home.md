@@ -77,7 +77,7 @@ follows the real calendar's holidays, and gives each edition an instrument to pl
 daemons have all been drawn again, in a style of their own.
 
 Releases come often, each one named for the version of the design bible it was built against
-(see [Releases](Releases)); the newest is **v11.386.1**, from 2026-11-17, and
+(see [Releases](Releases)); the newest is **v11.387.1**, from 2026-11-17, and
 the newest thing in it that can be told about: every battle has music of its own -- our harp and flute over the
 cartridge. Before it, THE WALLED
 GARDEN's rooms became a glasshouse -- light comes in, and nothing is seen out. Before that, the SAFARI ZONE became THE
