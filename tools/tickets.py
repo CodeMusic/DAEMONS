@@ -12,6 +12,12 @@ payload alone (plus the frame, the prose around the tables) and compared byte fo
     python3 tools/tickets.py migrate --dry-run              # counts, irregular rows, and the round trip (also: bare)
     python3 tools/tickets.py migrate --dry-run --json OUT   # also write the payload
     python3 tools/tickets.py mirror --from OUT [--write]    # rebuild the TODO files from a payload
+    python3 tools/tickets.py sync [--write]                 # files -> Redmine until the cut-over (never deletes)
+    python3 tools/tickets.py mirror --from-redmine [--write] # Redmine -> files; refuses if any ticket would be lost
+    python3 tools/tickets.py export [--out FILE]            # every ticket with its history, for git (docs/tickets/)
+
+Redmine's address and key come from ~/.redmine.env (0600, outside every repo); the key is never printed. The Redmine
+side is set up by tools/redmine_setup_tickets.rb (statuses, trackers, priorities, fields, projects, membership).
 
 Read-only by default, like every tool here; `mirror --write` is the only write, and it writes only the two TODO files.
 Stdlib only.
@@ -235,6 +241,224 @@ def round_trip(data):
     return ok
 
 
+# ---- Redmine ---------------------------------------------------------------------------------------------------
+# The key is read from ~/.redmine.env (0600, outside every repo) and sent only as a header; it is never printed, and an
+# error message has it removed before it is shown.
+import urllib.request
+import urllib.error
+
+ENV = Path.home() / ".redmine.env"
+EMPTY = "(empty)"  # a cell that is there and empty; Redmine cannot tell "" from no value (C-242's rows)
+NO_TAIL = "(none)"  # a row with no closing " |"
+FIELD_NAMES = ["Ticket", "Run", "Order", "Shown as", "Commits", "Branch", "Where", "From", "Blocked on", "Why not yet",
+               "Closed by", "State", "See", "Extra cells", "Row tail"]
+
+
+class Redmine:
+    def __init__(self):
+        env = dict(l.split("=", 1) for l in ENV.read_text().split("\n") if "=" in l and not l.startswith("#"))
+        self.url, self._key = env["REDMINE_URL"].rstrip("/"), env["REDMINE_API_KEY"].strip()
+
+    def call(self, method, path, body=None):
+        req = urllib.request.Request(self.url + path, method=method,
+                                     data=json.dumps(body).encode() if body is not None else None,
+                                     headers={"X-Redmine-API-Key": self._key, "Content-Type": "application/json"})
+        try:
+            with urllib.request.urlopen(req, timeout=60) as r:
+                raw = r.read()
+                return json.loads(raw) if raw.strip() else {}
+        except urllib.error.HTTPError as e:
+            msg = e.read().decode(errors="replace").replace(self._key, "<key>")
+            raise SystemExit(f"Redmine {method} {path}: {e.code} {msg[:300]}")
+
+    def project(self, ident):
+        p = self.call("GET", f"/projects/{ident}.json?include=trackers,issue_custom_fields")["project"]
+        p["fields"] = {f["name"]: f["id"] for f in p["issue_custom_fields"]}
+        missing = [n for n in FIELD_NAMES if n not in p["fields"]]
+        if missing:
+            raise SystemExit(f"Redmine project {ident} lacks fields {missing}: run tools/redmine_setup_tickets.rb")
+        return p
+
+    def statuses(self):
+        return {s["name"]: s["id"] for s in self.call("GET", "/issue_statuses.json")["issue_statuses"]}
+
+    def issues(self, ident):
+        out, offset = [], 0
+        while True:
+            page = self.call("GET", f"/issues.json?project_id={ident}&subproject_id=!*&status_id=*"
+                                    f"&sort=id&limit=100&offset={offset}")
+            out += page["issues"]
+            offset += 100
+            if offset >= page["total_count"]:
+                return out
+
+    def versions(self, ident):
+        return {v["name"]: v["id"] for v in self.call("GET", f"/projects/{ident}/versions.json")["versions"]}
+
+
+def cf(issue):
+    return {c["name"]: c.get("value") for c in issue.get("custom_fields", [])}
+
+
+def redmine_payload(t, p, statuses, version_id=None):
+    """A parsed ticket -> the issue Redmine is sent. The id cell is kept only when it is not the plain form for its
+    status (struck through when Closed), so a status change in Redmine moves the strike in the mirror."""
+    f = t["fields"]
+    key = f["Ticket"]
+    closed = t["status"] in ("Closed", "Superseded")
+    shown = f.get("Shown as") or canonical_id_cell(key, t["struck"])
+    vals = {"Ticket": key, "Run": str(f["Run"]), "Order": str(f["Order"]),
+            "Shown as": shown if shown != canonical_id_cell(key, closed) else "",
+            "Commits": "\n".join(f.get("Commits", [])),
+            "Extra cells": json.dumps(f["Extra cells"], ensure_ascii=False) if "Extra cells" in f else "",
+            "Row tail": (f["Row tail"] or NO_TAIL) if "Row tail" in f else ""}
+    for n in t["columns"][1:]:
+        vals[col(n)] = (f[col(n)] or EMPTY) if col(n) in f else ""
+    issue = {"project_id": p["id"], "tracker_id": next(x["id"] for x in p["trackers"] if x["name"] == "Job"),
+             "status_id": statuses[t["status"]], "subject": t["subject"], "description": t["description"],
+             "custom_fields": [{"id": p["fields"][n], "value": v} for n, v in vals.items() if n in p["fields"]]}
+    if version_id:
+        issue["fixed_version_id"] = version_id
+    return issue
+
+
+def same_issue(have, want, statuses):
+    if have["subject"] != want["subject"] or (have.get("description") or "") != want["description"]:
+        return False
+    if have["status"]["id"] != want["status_id"]:
+        return False
+    if want.get("fixed_version_id") and (have.get("fixed_version") or {}).get("id") != want["fixed_version_id"]:
+        return False
+    hv = {c["id"]: (c.get("value") or "") for c in have.get("custom_fields", [])}
+    return all(hv.get(c["id"], "") == c["value"] for c in want["custom_fields"])
+
+
+def sync(write):
+    """Files -> Redmine, until the cut-over: creates what is missing, updates what differs, deletes nothing."""
+    rm, data = Redmine(), load_all()
+    statuses = rm.statuses()
+    for project, d in data.items():
+        p = rm.project(project)
+        versions = rm.versions(project)
+        want_versions = {}
+        for v in d["versions"]:  # newest goal list first in the file: a ticket goes to the newest that names it
+            if v["name"] not in versions and write:
+                versions[v["name"]] = rm.call("POST", f"/projects/{project}/versions.json",
+                                              {"version": {"name": v["name"]}})["version"]["id"]
+            for k in v["tickets"]:
+                want_versions.setdefault(k, v["name"])
+        have = {}
+        for i in rm.issues(project):
+            have.setdefault(cf(i).get("Ticket"), i)
+        created = updated = same = 0
+        for n, t in enumerate(d["tickets"], 1):
+            key = t["fields"]["Ticket"]
+            want = redmine_payload(t, p, statuses, versions.get(want_versions.get(key)))
+            if key not in have:
+                created += 1
+                if write:
+                    rm.call("POST", "/issues.json", {"issue": want})
+            elif not same_issue(have[key], want, statuses):
+                updated += 1
+                if write:
+                    rm.call("PUT", f"/issues/{have[key]['id']}.json", {"issue": want})
+            else:
+                same += 1
+            if write and n % 100 == 0:
+                print(f"  {project}: {n}/{len(d['tickets'])}", flush=True)
+        extra = sorted(k for k in have if k not in {t["fields"]["Ticket"] for t in d["tickets"]})
+        verb = "" if write else "would be "
+        print(f"{project}: {created} {verb}created, {updated} {verb}updated, {same} the same"
+              f"{'; only in Redmine: ' + ' '.join(extra) if extra else ''}")
+
+
+def from_redmine(rm, project, d, statuses_by_id):
+    """Redmine's issues -> tickets in the shape render() takes, using the file's frame for each table's columns."""
+    runs = {}
+    for t in d["tickets"]:
+        runs.setdefault(t["fields"]["Run"], t["columns"])
+    out = []
+    for i in rm.issues(project):
+        c = cf(i)
+        if not c.get("Ticket"):
+            continue
+        run = int(c["Run"])
+        closed = statuses_by_id[i["status"]["id"]] in ("Closed", "Superseded")
+        f = {"Ticket": c["Ticket"], "Run": run, "Order": int(c["Order"])}
+        if c.get("Shown as"):
+            f["Shown as"] = c["Shown as"]
+        if c.get("Row tail"):
+            f["Row tail"] = "" if c["Row tail"] == NO_TAIL else c["Row tail"]
+        if c.get("Extra cells"):
+            f["Extra cells"] = json.loads(c["Extra cells"])
+        for n in runs.get(run, [])[1:]:
+            if c.get(col(n)):
+                f[col(n)] = "" if c[col(n)] == EMPTY else c[col(n)]
+        out.append({"struck": closed, "columns": runs.get(run, []), "description": i.get("description") or "",
+                    "fields": f})
+    return out
+
+
+def mirror_from_redmine(write):
+    """Redmine -> both TODO files. Refuses (exit 1) if any ticket in a file is missing from Redmine: an emptied or
+    re-created Redmine must never be mirrored over the files and pushed."""
+    rm, data = Redmine(), load_all()
+    by_id = {v: k for k, v in rm.statuses().items()}
+    ok = True
+    for project, d in data.items():
+        tickets = from_redmine(rm, project, d, by_id)
+        have = {t["fields"]["Ticket"] for t in tickets}
+        lost = [t["fields"]["Ticket"] for t in d["tickets"] if t["fields"]["Ticket"] not in have]
+        path = Path(d["path"])
+        if lost:
+            ok = False
+            print(f"{path}: REFUSED -- {len(lost)} ticket(s) in the file are not in Redmine "
+                  f"({' '.join(lost[:8])}{' ...' if len(lost) > 8 else ''}); nothing written")
+            continue
+        text = render(d["frame"], tickets)
+        original = path.read_text(encoding="utf-8")
+        if text == original:
+            print(f"{path}: current ({len(tickets)} tickets, identical to Redmine)")
+            continue
+        diff = list(difflib.unified_diff(original.split("\n"), text.split("\n"), "file", "redmine", lineterm="", n=0))
+        print(f"{path}: differs from Redmine, {len([l for l in diff if l[:1] in '+-'])} changed line(s)")
+        for l in diff[:10]:
+            print("    " + l[:160])
+        if write:
+            tmp = path.with_suffix(".md.mirror-tmp")
+            tmp.write_text(text, encoding="utf-8")
+            tmp.replace(path)
+            print(f"{path}: written")
+    return ok
+
+
+def export(out):
+    """Every ticket with its history (journals), relations, attachments' names and watchers, and each project's
+    versions -- what a rebuilt Redmine would need beyond the TODO rows. No address, key, email or password: it is
+    committed to a public repository. Sorted and stable, so a quiet night changes nothing."""
+    rm = Redmine()
+    doc = {"what": "T-581: the tickets as Redmine held them; rebuild with tools/tickets.py", "projects": {}}
+    for project in FILES:
+        issues = []
+        for i in rm.issues(project):
+            x = rm.call("GET", f"/issues/{i['id']}.json?include=journals,relations,attachments,watchers")["issue"]
+            for a in x.get("attachments", []):
+                a.pop("content_url", None)
+                a.pop("thumbnail_url", None)
+            issues.append(x)
+        issues.sort(key=lambda x: x["id"])
+        versions = sorted(rm.call("GET", f"/projects/{project}/versions.json")["versions"], key=lambda v: v["id"])
+        doc["projects"][project] = {"versions": versions, "issues": issues}
+    text = json.dumps(doc, ensure_ascii=False, indent=1, sort_keys=True) + "\n"
+    if rm.url in text:
+        raise SystemExit("export: Redmine's address is in the export; refusing to write it")
+    Path(out).parent.mkdir(parents=True, exist_ok=True)
+    tmp = Path(str(out) + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    tmp.replace(out)
+    print(f"export: {sum(len(p['issues']) for p in doc['projects'].values())} tickets -> {out}")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd")
@@ -243,8 +467,13 @@ def main():
                     help="the only mode so far: nothing is sent to Redmine")
     mg.add_argument("--json", help="write the payload here")
     mr = sub.add_parser("mirror")
-    mr.add_argument("--from", dest="src", required=True, help="a payload written by migrate --json")
+    mr.add_argument("--from", dest="src", help="a payload written by migrate --json")
+    mr.add_argument("--from-redmine", action="store_true", help="rebuild the files from Redmine (refuses a loss)")
     mr.add_argument("--write", action="store_true")
+    sy = sub.add_parser("sync", help="files -> Redmine until the cut-over; creates and updates, never deletes")
+    sy.add_argument("--write", action="store_true")
+    ex = sub.add_parser("export", help="Redmine -> one JSON file with every ticket's history (for git)")
+    ex.add_argument("--out", default=str(ROOT / "docs/tickets/redmine-export.json"))
     # check_generators.py runs every tool bare (and with --write in its sandbox): both are the dry run, which writes
     # nothing -- there is no Redmine write to make from here yet.
     argv = sys.argv[1:]
@@ -262,6 +491,16 @@ def main():
             print(f"\npayload written to {a.json}")
         sys.exit(0 if ok else 1)
 
+    if a.cmd == "export":
+        export(a.out)
+        return
+    if a.cmd == "sync":
+        sync(a.write)
+        return
+    if a.from_redmine:
+        sys.exit(0 if mirror_from_redmine(a.write) else 1)
+    if not a.src:
+        ap.error("mirror needs --from FILE or --from-redmine")
     data = json.loads(Path(a.src).read_text(encoding="utf-8"))
     for project, d in data.items():
         path = Path(d["path"])
