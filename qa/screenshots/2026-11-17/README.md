@@ -55,3 +55,27 @@ T-579 (DRAFT): a read is fixed by the day and the place -- ROUTE 1 gives the sam
 T-579 (DRAFT): a read is fixed by the day and the place -- ROUTE 1 gives the same read each arrival, and again after the save is loaded; PALLET TOWN's is the west one day and the east on another
 
 ![17Nov2026 - T579 - a read fixed by the day and the place - 12](17Nov2026%20-%20T579%20-%20a%20read%20fixed%20by%20the%20day%20and%20the%20place%20-%2012.png)
+
+### 17Nov2026 - T577 - two ripples, one pond - 13
+
+T-577 (DRAFT): ten seconds at VIRIDIAN CITY's pond with the follower -- two rings spread from the two reflections and meet, then the read 'A read: two ripples, one pond. / Where is the line?'; CELADON CITY's pond the same; without THE SUBTLE LAYER, nothing
+
+![17Nov2026 - T577 - two ripples, one pond - 13](17Nov2026%20-%20T577%20-%20two%20ripples%2C%20one%20pond%20-%2013.png)
+
+### 17Nov2026 - T577 - two ripples, one pond - 14
+
+T-577 (DRAFT): ten seconds at VIRIDIAN CITY's pond with the follower -- two rings spread from the two reflections and meet, then the read 'A read: two ripples, one pond. / Where is the line?'; CELADON CITY's pond the same; without THE SUBTLE LAYER, nothing
+
+![17Nov2026 - T577 - two ripples, one pond - 14](17Nov2026%20-%20T577%20-%20two%20ripples%2C%20one%20pond%20-%2014.png)
+
+### 17Nov2026 - T577 - two ripples, one pond - 15
+
+T-577 (DRAFT): ten seconds at VIRIDIAN CITY's pond with the follower -- two rings spread from the two reflections and meet, then the read 'A read: two ripples, one pond. / Where is the line?'; CELADON CITY's pond the same; without THE SUBTLE LAYER, nothing
+
+![17Nov2026 - T577 - two ripples, one pond - 15](17Nov2026%20-%20T577%20-%20two%20ripples%2C%20one%20pond%20-%2015.png)
+
+### 17Nov2026 - T577 - two ripples, one pond - 16
+
+T-577 (DRAFT): ten seconds at VIRIDIAN CITY's pond with the follower -- two rings spread from the two reflections and meet, then the read 'A read: two ripples, one pond. / Where is the line?'; CELADON CITY's pond the same; without THE SUBTLE LAYER, nothing
+
+![17Nov2026 - T577 - two ripples, one pond - 16](17Nov2026%20-%20T577%20-%20two%20ripples%2C%20one%20pond%20-%2016.png)

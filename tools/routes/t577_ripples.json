@@ -1,0 +1,50 @@
+{
+  "rom": "debug",
+  "about": "T-577 (DRAFT): RIPPLES -- at a still pond, the player and the follower stand side by side on the edge for ten seconds; two rings spread from the two reflections and meet, then the purple read, kept in THE LOG. VIRIDIAN CITY's pond and CELADON CITY's; then once more without THE SUBTLE LAYER, when nothing comes. THE SUBTLE LAYER given through DEBUG -> GAME EVENTS. The theatre's debug scratch save; nothing kept.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "VIRIDIAN CITY's pond: ten seconds, two rings, the read",
+      "steps": [
+        "load debug", "repel 999", "flag FLAG_FOLLOWER_OFF 0", "mon 0 species SPECIES_ARCANINE",
+        "flag FLAG_GOT_SUBTLE_LAYER 0",
+        "events \"THE SUBTLE LAYER\"",
+        "flagis FLAG_GOT_SUBTLE_LAYER 1",
+        "goto ViridianCity 20 20", "to 20 21", "finish",
+        "goto ViridianCity 14 25", "to 15 25", "finish",
+        "follower shown -1 0",
+        "remember ponds gFollowerDebugPond 8",
+        "shot \"at the edge, side by side\"",
+        "wait 560",
+        "burst rings 12 10",
+        "finish",
+        "says \"two ripples, one pond.\"",
+        "says \"Where is the line?\"",
+        "moved ponds"
+      ]
+    },
+    {
+      "stop": "CELADON CITY's pond",
+      "steps": [
+        "goto CeladonCity 24 20", "to 25 20", "finish",
+        "follower shown -1 0",
+        "wait 560",
+        "burst rings 12 10",
+        "finish",
+        "says \"two ripples, one pond.\""
+      ]
+    },
+    {
+      "stop": "without THE SUBTLE LAYER: nothing comes",
+      "steps": [
+        "flag FLAG_GOT_SUBTLE_LAYER 0",
+        "goto ViridianCity 14 25", "to 15 25", "finish",
+        "remember ponds2 gFollowerDebugPond 8",
+        "wait 760",
+        "shot \"twelve seconds, no rings\"",
+        "unsaid \"two ripples\"",
+        "flag FLAG_GOT_SUBTLE_LAYER 1"
+      ]
+    }
+  ]
+}
