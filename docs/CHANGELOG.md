@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.386 — 2026-11-17
+
+- Recorded from release v11.385.1 (df3c0726, engine eeab33eec), which sealed v11.384.x:
+  - **The menu and UI sounds** (T-565 batch 1), the user's pick "C Both": 20 sounds, a square click under the harp, the flute for held notes. DRAFT. In 9.5, after the fanfares.
+  - Also in the release, outside the bible: THE COMPANION's manual names THE WATCH, THE GLASSES and THE CARDPUTERS (C-396), reprinted.
+- Section 10: one Settled entry.
+
 ## v11.385 — 2026-11-16
 
 - Recorded from release v11.384.1 (a3372181, engine 4e66bd3d3), the Musical Instruments lane's, which sealed v11.383.x:
