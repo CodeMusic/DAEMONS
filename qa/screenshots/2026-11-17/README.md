@@ -25,3 +25,9 @@ C-397: back on HOME after the game saved, the Zero SYNCs and shows RECEIVED -- P
 C-395: GAMES on the Zero -- CONTENT and CONTEXT, each a release (11.385.1) or a testing build, made from the player's own FireRed and LeafGreen
 
 ![17Nov2026 - C395 - Cardputer Zero GAMES - 4](17Nov2026%20-%20C395%20-%20Cardputer%20Zero%20GAMES%20-%204.png)
+
+### 17Nov2026 - T565 - battle music as built - 5
+
+T-565 batch 2, the battle music as built in v11.386.1 (engine d74da2006): the nine MIDIs the ROM is compiled from, read back -- voice C, the harp and flute over the cartridge as the fanfares, all nine slots (DRAFT)
+
+![17Nov2026 - T565 - battle music as built - 5](17Nov2026%20-%20T565%20-%20battle%20music%20as%20built%20-%205.png)
