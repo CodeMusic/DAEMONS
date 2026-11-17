@@ -21,12 +21,28 @@ are daemons and the type chart is an argument about consciousness. **Design is w
   no number is kept here, because this file drifted from it for five weeks) and a decision
   log with a **Reversed** table — check that before re-suggesting something.
 - **`docs/CHANGELOG.md`** is what moved and when.
-- **`docs/TODO.md`** is work that has been **decided and not done.** The rule
-  that keeps it from duplicating the bible's Open log: *the Open log holds a
-  **question**, TODO holds a **job***, and an item moves across the moment it
-  stops being a decision. **Put a request here the moment it would otherwise
-  live only in a conversation** — that is what the file is for. Ids are
-  permanent; a closed ticket is struck through with its commit, never deleted.
+- **The tickets live in Redmine** (T-581; the user, 2026-11-17): http://roverbyteseer:3333, projects `daemons` (T-)
+  and `companion` (C-), over the tailnet. **`docs/TODO.md` and the companion's `TODO.md` are its mirror** -- rebuilt
+  from Redmine every night at 04:45 and committed, with every ticket's history in `docs/tickets/redmine-export.json`,
+  so a fresh clone or a cloud session can still read every ticket. **Never edit a ticket row in a TODO file by hand**:
+  the mirror overwrites it and `check_todo.py` stops the push. The prose around the tables (the rules, the companion's
+  dated goal lists) is still edited in the file.
+  A ticket is still work that has been **decided and not done** -- *the Open log holds a **question**, a ticket holds
+  a **job***, and an item moves across the moment it stops being a decision. **A request becomes a ticket the moment
+  it would otherwise live only in a conversation.** Ids are permanent; a closed ticket keeps its commit, never deleted.
+  **Every session works as its lane** (game, story, audio, art, app, hub, esp32, pi-zero, playground, docs, ops; the
+  keys are in `~/.redmine.env`):
+  ```sh
+  python3 tools/tickets.py mine --lane game                 # your lane's open tickets, most important first
+  python3 tools/tickets.py show T-581                       # one ticket, its fields and last notes
+  python3 tools/tickets.py claim T-581 --lane game --branch main      # replaces the WIP mark
+  python3 tools/tickets.py new --lane game --project daemons --title "..." --from "the user, 2026-11-18"
+  python3 tools/tickets.py close T-581 --lane game --commit engineGba@18e3558 --commit DAEMONS@4c3f819
+  python3 tools/tickets.py mirror --from-redmine --write    # bring both TODO files current before a push
+  ```
+  `new` takes the next id itself, safely when several sessions open tickets at once -- **no more reserved blocks**.
+  Off the tailnet (a cloud session) the tool says Redmine is unreachable: read the mirror, change nothing, and say
+  what you would have filed in the handoff.
 - **`docs/lineage.md`** is where the ideas came from — three blogs, 2011–2026.
   Read it before writing anything about the theory.
 - **`docs/engine.md`** is the hardware, not the design: the three memory
@@ -298,8 +314,9 @@ so the repository shows what the build looked like: `python3 tools/qashot.py --t
    a current recording, T-544), `check_secrets.py` (no tracked file states any of the four secrets; its patterns are
    in docs/private/, T-555) and `check_todo.py` (ticket ids unique, no gaps, reservations honoured, T-558) -- both added
    by the user, 2026-11-14 -- then `check_generators.py` on a quiet tree (edit neither repo while it runs).
-3. **Commit per ticket** in both repos -- engine first, then the docs commit that strikes the ticket through with the
-   engine commit -- and push both.
+3. **Commit per ticket** in both repos -- engine first -- and push; then **close the ticket in Redmine with those
+   commits** (`tickets.py close T-n --lane L --commit engineGba@sha --commit DAEMONS@sha`) and commit the mirror
+   (`tickets.py mirror --from-redmine --write`, then `git commit -- docs/TODO.md`).
 4. **Release**: `check_fresh_clone.py`, then `romrelease.py --write`, commit "ROM release vX: ...", push, then
    `ghrelease.py --write`.
 5. **Bring the docs current from WHAT'S NEW** (T-544; "Releasing ROMs" below): `python3 tools/releasedocs.py --online`.

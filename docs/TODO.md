@@ -25,19 +25,17 @@ conversation.** That is what this file is for.
 
 ### Claim a ticket before you start it
 
-**Sessions run in parallel and cannot see each other's working trees.** Six
-version numbers have now been taken twice because two branches both reached for
-the next one, and a ticket is the same hazard with more of the day attached.
+**Sessions run in parallel and cannot see each other's working trees** -- which is why the tickets moved into
+Redmine (T-581, 2026-11-17): a claim there is seen by every session the moment it is made.
 
-> **Mark the ticket `WIP — <branch>`, and get that mark onto `main` BEFORE
-> doing the work.** An uncommitted claim is invisible, which makes it worse than
-> no claim: it looks like diligence and prevents nothing.
+> **Claim with `python3 tools/tickets.py claim T-n --lane <yours> --branch <branch>` BEFORE doing the work**: the
+> ticket goes In progress, assigned to your lane, with your branch on it. **Open a ticket with `tickets.py new`**: it
+> takes the next id itself, safely when several sessions open tickets at once. The `WIP — <branch>` mark and the
+> reserved id blocks are retired. **The ticket rows below are Redmine's mirror**, rebuilt every night: change a ticket
+> with `tickets.py`, never by editing its row here. This prose around the tables is still edited in this file.
 
-***Two sessions at once cannot both take "the next id".*** **The second takes a block further up and says so here, in one line the check reads** — *those ids may stand empty until the session that holds them writes its rows:*
-
-
-*Clear the mark when the ticket closes.* **A stale `WIP` is the one failure mode
-here** — if a branch is gone and the mark is still on, the ticket is free.
+*Close a ticket with the commits that closed it* (`tickets.py close T-n --lane <yours> --commit repo@sha`). **A stale
+claim is the one failure mode here** -- if a branch is gone and the ticket is still In progress, it is free.
 
 ### Read the ticket, then check it — the oldest ones are the least true
 
