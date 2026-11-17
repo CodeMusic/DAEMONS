@@ -1,0 +1,81 @@
+{
+  "rom": "debug",
+  "about": "T-579 (DRAFT): a read is fixed by the day and the place. gReadsDebugAlways 1 brings a read on every arrival, so what each one says is shown without waiting on the chance (which is drawn from the same fixed generator). ROUTE 1 twice in one session, with PALLET TOWN between; then the game saved in PALLET TOWN, ROUTE 1's read taken, the save loaded again (load + continue) and ROUTE 1 walked into once more: the same read in the same words. Then another day (DEBUG DATE: A QUIET DAY). THE SUBTLE LAYER given through DEBUG -> GAME EVENTS. The theatre's debug scratch save; nothing kept. The theatre's save has a dream waiting, which the first step after a load takes, so each load is walked off in VIRIDIAN CITY first.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "one day: ROUTE 1, PALLET TOWN, ROUTE 1 again",
+      "steps": [
+        "load debug",
+        "repel 999",
+        "flag FLAG_FOLLOWER_OFF 1",
+        "flag FLAG_GOT_SUBTLE_LAYER 0",
+        "events \"THE SUBTLE LAYER\"",
+        "flagis FLAG_GOT_SUBTLE_LAYER 1",
+        "poke gDaemonsDateOverride 8 0",
+        "poke gReadsDebugAlways 8 1",
+        "goto ViridianCity 20 20",
+        "to 20 21",
+        "finish",
+        "goto Route1 12 23",
+        "to 12 22",
+        "finish",
+        "says \"A read:\"",
+        "shot \"ROUTE 1, first arrival\"",
+        "goto PalletTown 10 6",
+        "to 11 6",
+        "finish",
+        "goto Route1 12 23",
+        "to 12 22",
+        "finish",
+        "shot \"ROUTE 1, again the same day\""
+      ]
+    },
+    {
+      "stop": "saved, the read taken, the save loaded again: the same read",
+      "steps": [
+        "goto PalletTown 10 6",
+        "to 11 6",
+        "finish",
+        "save",
+        "goto Route1 12 23",
+        "to 12 22",
+        "finish",
+        "shot \"ROUTE 1 after the save\"",
+        "load debug",
+        "continue",
+        "poke gDaemonsDateOverride 8 0",
+        "poke gReadsDebugAlways 8 1",
+        "goto ViridianCity 20 20",
+        "to 20 21",
+        "finish",
+        "goto Route1 12 23",
+        "to 12 22",
+        "finish",
+        "says \"A read:\"",
+        "shot \"ROUTE 1 after the save was loaded again\""
+      ]
+    },
+    {
+      "stop": "another day: ROUTE 1's read is that day's",
+      "steps": [
+        "poke gDaemonsDateOverride 8 1",
+        "goto PalletTown 10 6",
+        "to 11 6",
+        "finish",
+        "goto Route1 12 23",
+        "to 12 22",
+        "finish",
+        "shot \"ROUTE 1 on A QUIET DAY\"",
+        "goto PalletTown 10 6",
+        "to 11 6",
+        "finish",
+        "goto Route1 12 23",
+        "to 12 22",
+        "finish",
+        "shot \"ROUTE 1 on A QUIET DAY, again\"",
+        "poke gDaemonsDateOverride 8 0"
+      ]
+    }
+  ]
+}
