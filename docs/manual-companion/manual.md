@@ -686,6 +686,9 @@ The second shelf holds DAEMONS' own printed books, kept on your phone once fetch
 | **QUICK START** | what DAEMONS is, and how to play it, step by step |
 | **THE PLAYER'S MANUAL** | every way to play DAEMONS, and how it all works |
 | **THE COMPANION** | this book |
+| **THE WATCH** | your daemon on your wrist: the T-Watch Ultra and the T-Watch S3 |
+| **THE GLASSES** | your daemon before your eye: the T-Glass |
+| **THE CARDPUTERS** | your daemon under your fingers: the Cardputer, the ADV and the Zero |
 | **PLAYING TOGETHER** | trading, loans and gifts, OUT TOGETHER, friends, dreams and THE COMMONS |
 | **A BIGGER MIND** | setting up a Tiiny Pocket for the companion |
 
