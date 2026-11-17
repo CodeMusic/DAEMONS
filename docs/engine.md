@@ -476,6 +476,16 @@ screenshot of it beside the source line settles it in a minute.***
 
 ***Symptom (2026-10-05, T-376):*** *VERA, tending a daemon, said* **"/235 settles."** *Her line printed `{STR_VAR_1}` after `special ChoosePartyMon` and before `special BufferMonNickname` filled it* -- **and the party screen draws every daemon's level and HP through `gStringVar1` and `gStringVar2`**, *so the buffer still held the last HP it drew.* **The three string buffers belong to whoever wrote last**: *a party screen, the PORT, a move tutor, any battle and a mart all write them for their own drawing.* ***A message may print a buffer only once something has filled it since the last of those***: *`check_reach.py` walks every script along its flow (gotos, branches, calls), tracks what has been overwritten and not refilled (a `buffer*` command, or a special whose body fills it two calls down), and fails on a message that prints one -- with VERA's old line planted each run to prove it still fires (T-377).*
 
+### 44. A bass note the cartridge cannot play
+
+***Caught before it shipped (2026-11-16, T-565):*** *the drafted MUS_CAUGHT walked its bass down to A1 and B1 on the
+wave channel.* **m4a plays every PSG key under 36 (C2) as C2** -- `MidiKeyToCgbFreq` (`src/m4a.c`) sets the key to the
+bottom of its table and drops the fine tuning -- *so the two notes would have sounded as one wrong C, with no warning
+from mid2agb, the build or the preview (which synthesises any pitch it is given).* **The squares and the wave start at
+C2; DirectSound voices have no such floor.** *`tools/genfanfares.py` now refuses a PSG note under 36, and the bass went
+up an octave.* ***A preview proves the notes, not the hardware***: *the drafts were rendered off the ROM, so anything
+the mixer clamps, rounds or drops has to be checked against `src/m4a.c` or heard from the build.*
+
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
 **Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**
