@@ -157,3 +157,33 @@ T-566 follow-up: the relearner's caret arrows now show -- down only at the top, 
 T-574: the ladders down a hole in DEADSTACK (and UMBRAL ASCENT, THE WRONG WAY), MT. SMOULDER, NAVEL ROCK and TAPPOINT'S, before (pret's slant) and after, drawn by gbacaves with T-570's own ladder A RUNGS AND RAILS (imported from gbaislands, so they match GLAUCOUS ISLES', shown last); NAVEL ROCK's fall hole in THE DOTS as T-570's holes A BROKEN LIP. Footprints, rows, behaviours and collision kept; THE BLACKOUT untouched. DRAFT.
 
 ![16Nov2026 - T574 - the ladders down a hole - 34](16Nov2026%20-%20T574%20-%20the%20ladders%20down%20a%20hole%20-%2034.png)
+
+### 16Nov2026 - T572 - head over the ring zoomed - 36
+
+T-572 built (engine uncommitted, DRAFT): the GOTO map at CALLOW CITY, cursor on, then cursor off -- the BUST now draws over the town's GOTO ring, brim and shoulders whole; then on ROUTE 1 below a town, cursor on and off. The cursor still draws over the head, as before.
+
+![16Nov2026 - T572 - head over the ring zoomed - 36](16Nov2026%20-%20T572%20-%20head%20over%20the%20ring%20zoomed%20-%2036.png)
+
+### 16Nov2026 - T572 - town map and GOTO map, town and route - 37
+
+T-572 built: tools/routes/t572_head_over_ring.json on the debug ROM -- the TOWN MAP and the GOTO map, each at CALLOW CITY and on ROUTE 1, the cursor moved off. The head draws above the GOTO ring; the map-name box, the MOVE/OK bar and the dungeon icons are as before.
+
+![16Nov2026 - T572 - town map and GOTO map, town and route - 37](16Nov2026%20-%20T572%20-%20town%20map%20and%20GOTO%20map%2C%20town%20and%20route%20-%2037.png)
+
+### 16Nov2026 - T572 - town map and GOTO map, town and route - 38
+
+T-572 built: tools/routes/t572_head_over_ring.json on the debug ROM -- the TOWN MAP and the GOTO map, each at CALLOW CITY and on ROUTE 1, the cursor moved off. The head draws above the GOTO ring; the map-name box, the MOVE/OK bar and the dungeon icons are as before.
+
+![16Nov2026 - T572 - town map and GOTO map, town and route - 38](16Nov2026%20-%20T572%20-%20town%20map%20and%20GOTO%20map%2C%20town%20and%20route%20-%2038.png)
+
+### 16Nov2026 - T572 - town map and GOTO map, town and route - 39
+
+T-572 built: tools/routes/t572_head_over_ring.json on the debug ROM -- the TOWN MAP and the GOTO map, each at CALLOW CITY and on ROUTE 1, the cursor moved off. The head draws above the GOTO ring; the map-name box, the MOVE/OK bar and the dungeon icons are as before.
+
+![16Nov2026 - T572 - town map and GOTO map, town and route - 39](16Nov2026%20-%20T572%20-%20town%20map%20and%20GOTO%20map%2C%20town%20and%20route%20-%2039.png)
+
+### 16Nov2026 - T572 - town map and GOTO map, town and route - 40
+
+T-572 built: tools/routes/t572_head_over_ring.json on the debug ROM -- the TOWN MAP and the GOTO map, each at CALLOW CITY and on ROUTE 1, the cursor moved off. The head draws above the GOTO ring; the map-name box, the MOVE/OK bar and the dungeon icons are as before.
+
+![16Nov2026 - T572 - town map and GOTO map, town and route - 40](16Nov2026%20-%20T572%20-%20town%20map%20and%20GOTO%20map%2C%20town%20and%20route%20-%2040.png)

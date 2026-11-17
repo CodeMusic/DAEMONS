@@ -1,0 +1,57 @@
+{
+  "rom": "debug",
+  "about": "T-572: the player's head (T-563's BUST) drawn above the GOTO ring -- the TOWN MAP and the GOTO map, each opened at a town (VIRIDIAN) and on a route (ROUTE 1), then the cursor moved off so the head shows alone. The theatre's debug scratch save; nothing kept.",
+  "stop_timeout": 900,
+  "stops": [
+    {
+      "stop": "the TOWN MAP at a town",
+      "steps": [
+        "load debug", "repel 999", "flag FLAG_FOLLOWER_OFF 1",
+        "goto ViridianCity 20 20", "wait 30",
+        "keyitem ITEM_TOWN_MAP", "register ITEM_TOWN_MAP",
+        "press SELECT", "wait 200",
+        "shot \"TOWN MAP at VIRIDIAN\"",
+        "press RIGHT 2", "wait 30",
+        "shot \"TOWN MAP at VIRIDIAN cursor off\"",
+        "press B", "wait 150"
+      ]
+    },
+    {
+      "stop": "the TOWN MAP on a route",
+      "steps": [
+        "load debug", "repel 999", "flag FLAG_FOLLOWER_OFF 1",
+        "goto Route1 10 20", "wait 30",
+        "keyitem ITEM_TOWN_MAP", "register ITEM_TOWN_MAP",
+        "press SELECT", "wait 200",
+        "shot \"TOWN MAP on ROUTE 1\"",
+        "press RIGHT 2", "wait 30",
+        "shot \"TOWN MAP on ROUTE 1 cursor off\"",
+        "press B", "wait 150"
+      ]
+    },
+    {
+      "stop": "the GOTO map at a town",
+      "steps": [
+        "load debug", "repel 999", "flag FLAG_FOLLOWER_OFF 1",
+        "goto ViridianCity 20 20", "wait 30",
+        "open DAEMON", "wait 60", "press A", "wait 30", "press DOWN 2", "press A", "wait 150",
+        "shot \"GOTO map at VIRIDIAN\"",
+        "press RIGHT 2", "wait 30",
+        "shot \"GOTO map at VIRIDIAN cursor off\"",
+        "press B", "wait 100", "press B", "wait 60", "press B", "wait 60"
+      ]
+    },
+    {
+      "stop": "the GOTO map on a route",
+      "steps": [
+        "load debug", "repel 999", "flag FLAG_FOLLOWER_OFF 1",
+        "goto Route1 10 20", "wait 30",
+        "open DAEMON", "wait 60", "press A", "wait 30", "press DOWN 2", "press A", "wait 150",
+        "shot \"GOTO map on ROUTE 1\"",
+        "press RIGHT 2", "wait 30",
+        "shot \"GOTO map on ROUTE 1 cursor off\"",
+        "press B", "wait 100", "press B", "wait 60", "press B", "wait 60"
+      ]
+    }
+  ]
+}
