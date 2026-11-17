@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.384 — 2026-11-16
+
+- Recorded from release v11.383.1 (c067c8de, engine 62de521c0), which sealed v11.382.x:
+  - **VERDIGRIS DEPT. STORE as NEW COPPER** (T-573), the user's pick: a landmark drawn from the story, the one copper in the town not yet green. DRAFT. In 9.29, after T-570.
+  - Also in the release, outside the bible: THE CARDPUTERS recorded (C-393, the user's "record after" honoured); The Fourth Review revised for v11.382.1.
+- Section 10: one Settled entry.
+
 ## v11.383 — 2026-11-16
 
 - Recorded from release v11.382.1 (fea739dd, engine 04464cc40), which sealed v11.381.x:
