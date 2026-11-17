@@ -16,6 +16,7 @@ BOUND and the eleven tracks carried from the classic build are. One voicegroup, 
     4 SQ2     square 2, 12.5%, plucked (harm: a second line -- never in a piece that has a pad, so never at once)
     5 WAVE    the wave, voicegroup192's ProgrammableWaveData_6 (bass)
     6 NOISE   a closed tick        7 NOISE  a burst        8 NOISE  a long shimmer
+    9 SQ1     square 1, 12.5%, plucked (the battle music's broken chords: tools/genbattlemusic.py, T-565 batch 2)
 
 THE NOTES are written once below, a token at a time (NOTE:BEATS, NOTE+NOTE:BEATS, r:BEATS; h s c for the noise), and
 the drafts heard three voices of them (docs/TODO.md T-565). Every MIDI here REPLACES pret's in place, so no constant
@@ -57,6 +58,7 @@ VOICES = [
     "\tvoice_noise_alt 60, 0, 0, 0, 1, 0, 0",
     "\tvoice_noise_alt 60, 0, 0, 0, 2, 0, 1",
     "\tvoice_noise_alt 60, 0, 0, 2, 7, 3, 4",
+    "\tvoice_square_1_alt 60, 0, 0, 0, 0, 2, 6, 1",     # 9: genbattlemusic.py's arp (T-565 batch 2)
 ]
 # role -> (MIDI channel, program, track volume, velocity); the noise's three are by letter
 CHANNELS = {"lead": (0, 0, 100, 100), "sing": (1, 1, 100, 96), "pad_hi": (2, 2, 52, 100), "pad_lo": (3, 3, 52, 100),
