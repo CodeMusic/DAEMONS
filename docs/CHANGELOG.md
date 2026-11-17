@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.388 — 2026-11-17
+
+- Recorded from release v11.387.1 (04363c24, engine ed754fb57 and 410682153), which sealed v11.386.x:
+  - **THE SUBTLE LAYER's six scenes** (T-575 to T-580, C-357's game half), the user's picks, all A, confirmed "keep as built": TOUCH, MOVE AND BURN, RIPPLES, KINDRED's two cups, a read fixed by the day and the place, the follower turning after the last page. DRAFT. In 4.38, after the three pages of T-548 to T-550.
+  - **The overworld music** (T-565 batch 5, the Musical Instruments lane): the everyday roads, gatehouses, cycling and surfing in voice C; **LURID and DOLDRUM split from `MUS_FUCHSIA`**. DRAFT. 7.4's table no longer says the two share `Cities2` on the GBA, and a paragraph says so.
+  - Also in the release, outside the bible: T-581, the tickets in Redmine (sync, mirror, export, a nightly job).
+- Section 10: one Settled entry.
+
 ## v11.387 — 2026-11-17
 
 - Recorded from release v11.386.1 (8995d388, engine d74da2006 and aa19d5924), which sealed v11.385.x:

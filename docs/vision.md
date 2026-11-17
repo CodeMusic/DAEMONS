@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.387**
+**A total conversion — the living design bible, v11.388**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5023,6 +5023,13 @@ take off.*
   - **CONTAINER, at evolving (T-548)**: *after the evolution's own words, one line,* "Still me." *-- the same one, in a new vessel; the companion says the same (C-357).*
   - **SAY INSTEAD, at naming (T-549)**: *a daemon's naming screen, and never the player's or the rival's, carries* "A direction, not a verdict." *faintly on the banner.*
   - **CHORUS, in crowds (T-550)**: **four or more people on screen make a crowd**; *there a read comes half as often, and says* "A read: the room is thinking one thought." *It is logged as given and never lands -- knowing which thought was yours.*
+- ***Six more pages heard in play (T-575 to T-580, the user's picks 2026-11-17, all A; released in v11.387.1, kept as built)***, *each only while the book is held, the words in the lean's purple, all DRAFT:*
+  - **TOUCH (T-575)**: *a gift handed over, with a STRATUM daemon following, now and then brings* "A read: this was held a long time / before it was given." *(a third of the time); and with a LATENT one, once a night, the first step into DAEMON TOWER or the burned mansion:* "A read: rain on stone. / It is dry in here."
+  - **MOVE AND BURN (T-576)**: **at high VOLTAGE a WRITE now and then lands without an address** -- *it misses, and the box says* "Something moved. / Not the thing you meant." *An ENTROPY lead at high VOLTAGE raises every routine's chance to burn, on both sides of the field.* **The type chart is untouched.**
+  - **RIPPLES (T-577)**: *at a still pond, ten seconds side by side with the follower, two rings spread from the two reflections and meet:* "A read: two ripples, one pond. / Where is the line?"
+  - **KINDRED (T-578)**: **a badger in VERDIGRIS's tea room pours two cups from one pot, hands the player one and goes with the other; in HALFTONE TOWN the badger already knows:** "You had the TEA. / I tasted water." *Nothing travelled, and nobody says so.*
+  - **HACKED (T-579)**: **a read cannot be taken again** -- *each is fixed by the day and the place, so a reloaded save walks into the same read, true or not, in the same words. No words.*
+  - **THE LAST WORD (T-580)**: *after the book's last page, back in the field, the follower looks away a beat and turns to face the player. No words.*
 
 #### The witching hour (T-480, C-236, the user, 2026-10-29)
 
@@ -5521,11 +5528,13 @@ Visible light runs **C to roughly A**. **A# and B have no wavelength.** There is
 | **Ardor** | C | 03 *Scorn's Solution* | ✅ |
 | **Brazen** | D# | 07 *Fit for Work* | ✅ |
 | **Verdigris** | F# | 15 *Awakening S.T.A.R.R.* | ✅ |
-| **Lurid** | E | 12 *ScornSolutions Blues* | shares `Cities2` |
+| **Lurid** | E | 12 *ScornSolutions Blues* | shares `Cities2` on the Game Boy; ✅ its own on the GBA (`MUS_LURID`) |
 | **Callow** | F | 14.25 *Desperate Shadows* | shares `Cities1` |
-| **Doldrum** | G | *Poly and Fields* | shares `Cities2` |
+| **Doldrum** | G | *Poly and Fields* | shares `Cities2` on the Game Boy; ✅ its own on the GBA (`MUS_DOLDRUM`) |
 
 ***On the GBA build, CALLOW has its own (T-05, the user by ear, 2026-10-19)***: *CALLOW, its houses and the school play The Christmas Cloak of Self -- 68.68-96.92 s of the user's recording, 12 bars at 102 BPM in D major, on a SCHOOLBELL band (piano, glockenspiel, strings, bass), made by `tools/gengrovemusic.py` as a town entry -- and THE BLEED keeps its own tune, so the two no longer share. No PLAY song's section is used, so the town never gives a motif away.*
+
+***And LURID and DOLDRUM have theirs (T-565 batch 5, released in v11.387.1)***: **the split this table planned is done on the GBA build** -- *`MUS_DOLDRUM` (386, Poly and Fields) and `MUS_LURID` (387, ScornSolutions Blues) are new songs, their 14 maps re-pointed by `port_music.py`'s MAP_MUSIC; `MUS_FUCHSIA` keeps pret's tune for the six other maps that use it. So on the GBA every coloured town has its own song; the Game Boy reference build still shares, below.*
 
 **Three of the six are in.** The other three are not blocked — **they share a music slot with maps that are not towns**, so they need a repoint in `data/maps/songs.asm` rather than a body swap. A different edit, not a harder one.
 
@@ -9269,6 +9278,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **THE SUBTLE LAYER's six scenes and the overworld music (T-575 to T-580, T-565 batch 5; v11.387.1)** — released: TOUCH, MOVE AND BURN, RIPPLES, KINDRED's two cups, a read fixed by the day and the place, and the follower turning after the last page, the user's picks (all A), confirmed "keep as built" (4.38). The everyday overworld music in voice C, and LURID and DOLDRUM given their own songs as 7.4 planned. Sealed v11.386.x. DRAFT.
 - **The battle music and the battle sounds (T-565 batches 2 and 4, v11.386.1)** — released, the user's pick (C BOTH, by ear): the nine battle tracks and the three victories over pret's in place, and the 24 battle sounds apart from moves (the hit's thud, super-effective's chord, the faint's tritone, the exp climb). The move sounds (batch 10) and the cries (batch 11, a design question first) are still pret's. Sealed v11.385.x. DRAFT.
 - **The menu and UI sounds (T-565 batch 1, v11.385.1)** — released, the user's pick ("C Both" again): the 20 menu and UI sounds as a square click under the harp, the flute for held notes, so the menus speak in the fanfares' voice. Sealed v11.384.x. DRAFT.
 - **The fanfares and the small sounds (T-565, v11.384.1)** — released by the Musical Instruments lane, the user's pick ("C Both": our harp and flute over the cartridge): the 16 fanfares and jingles, five pitched sounds, the toy piano and three new field sounds (CHIME, SUNRISE, NIGHTFALL). The first of the census's twelve batches; the rest are split between the two lanes. Sealed v11.383.x. DRAFT.
