@@ -113,6 +113,11 @@ MAP_MUSIC = {
                     "CeruleanCity_House3", "CeruleanCity_House4", "CeruleanCity_House5"],
     "MUS_LURID": ["FuchsiaCity", "FuchsiaCity_House1", "FuchsiaCity_House2", "FuchsiaCity_House3",
                   "FuchsiaCity_SafariZone_Entrance", "FuchsiaCity_SafariZone_Office", "FuchsiaCity_WardensHouse"],
+    # T-565 batch 8 (the user, 2026-11-17, "its own slot"; the game lane's go-ahead): THE WALLED GARDEN played the
+    # evolution loop (MUS_EVOLUTION); its own song is written by tools/genstorymusic.py into an appended slot.
+    "MUS_WALLED_GARDEN": ["SafariZone_Center", "SafariZone_Center_RestHouse", "SafariZone_East",
+                          "SafariZone_East_RestHouse", "SafariZone_North", "SafariZone_North_RestHouse",
+                          "SafariZone_SecretHouse", "SafariZone_West", "SafariZone_West_RestHouse"],
 }
 
 SEMI = {"C_": 0, "C#": 1, "D_": 2, "D#": 3, "E_": 4, "F_": 5,

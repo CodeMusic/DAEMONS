@@ -17,8 +17,9 @@ Every track reviewed for **music** (a transcribed hook, verified) and **story**
 | Corpus building, ruined lab, the dark places | `mus_silph`, `mus_poke_mansion`, `mus_mt_moon` | as vanilla grouped them |
 | *Poly and Fields* (hook and chords, G) | **`mus_doldrum`** (appended, 386) | DOLDRUM, its five houses and the bike shop (*T-565 batch 5, `tools/genoverworldmusic.py`; the bass never leaves G*) |
 | 12 *ScornSolutions Blues* (hook, E minor) | **`mus_lurid`** (appended, 387) | LURID, its three houses, the warden's house, the gates of THE WALLED GARDEN (*T-565 batch 5: a twelve-bar blues on the hook*) |
+| THE WALLED GARDEN's own (E, a tune inside five notes) | **`mus_walled_garden`** (appended, 388) | its nine areas and rest houses, which played the evolution loop (*T-565 batch 8, `tools/genstorymusic.py`*) |
 
-**`mus_pewter` is ours: THRESHOLD** (*T-565 batch 5, 2026-11-17*) — *every gatehouse, the Underground Path's entrances, Route 2's buildings and the Day Care; CALLOW has had its own theme since T-05. Batch 5 also wrote the main road, the coast road, Routes 24-25, the CHECKPOINT, the BENCHMARK, THE UNDERTONE, cycling and surfing, all in the fanfares' voice (`tools/genoverworldmusic.py`); MUS_FUCHSIA keeps pret's tune for its six other maps.*
+**`mus_pewter` is ours: THRESHOLD** (*T-565 batch 5, 2026-11-17*) — *every gatehouse, the Underground Path's entrances, Route 2's buildings and the Day Care; CALLOW has had its own theme since T-05. Batch 5 also wrote the main road, the coast road, Routes 24-25, the CHECKPOINT, the BENCHMARK, THE UNDERTONE, cycling and surfing, all in the fanfares' voice (`tools/genoverworldmusic.py`); MUS_FUCHSIA keeps pret's tune for its six other maps.* *Batch 8 (2026-11-17) wrote the story set-pieces in the same voice (`tools/genstorymusic.py`): CRYSTAL CLEAR's entrance and lab (her Lament and her Reply), the new game's two, AL CLEAR's two, a leader's summons, the S.S. ANNE, the hideout, DAEMON TOWER, THE UMBRAL ASCENT, TRAINER TOWER, THE RECORD, BLANCHE slowed and the credits.*
 
 ## Act 1 — *The Fall of Blind Ambition*
 
