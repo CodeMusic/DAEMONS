@@ -1,0 +1,26 @@
+# T-565 batch 4 drafts (tools/genuisounds.py --batch 4 --draft): style, sound, pret's frames, ours, velocity scale
+# A TERMINAL / B HARP KEYS / C BOTH
+ball_open      pret 25  A 25 x1.00  B 25 x1.00  C 25 x1.00
+effective      pret 65  A 34 x1.00  B 34 x1.00  C 34 x1.00
+super_effective pret 85  A 43 x1.00  B 49 x1.00  C 49 x0.93
+not_effective  pret 15  A 15 x1.00  B 15 x1.00  C 15 x1.00
+faint          pret 47  A 47 x1.00  B 47 x1.00  C 47 x1.00
+exp            pret 98  A 98 x1.00  B 98 x1.00  C 98 x1.00
+exp_max        pret 16  A 16 x1.00  B 16 x1.00  C 16 x1.00
+low_health     pret 24  A 24 x0.78  B 24 x0.25  C 24 x0.42
+flee           pret 39  A 35 x0.62  B 35 x0.32  C 35 x0.40
+mugshot        pret 147  A 120 x0.70  B 130 x0.28  C 130 x0.26
+switch         pret  8  A  8 x0.80  B  8 x0.44  C  8 x0.59
+ball_throw     pret 24  A 24 x1.00  B 24 x1.00  C 24 x1.00
+ball           pret  6  A  6 x0.67  B  6 x0.40  C  6 x0.62
+ball_bounce_1  pret 12  A 12 x1.00  B 12 x1.00  C 12 x1.00
+ball_bounce_2  pret 12  A 12 x1.00  B 12 x1.00  C 12 x1.00
+ball_bounce_3  pret 12  A 12 x1.00  B 12 x1.00  C 12 x1.00
+ball_bounce_4  pret 12  A 12 x1.00  B 12 x1.00  C 12 x1.00
+ball_click     pret  5  A  5 x1.00  B  5 x0.94  C  5 x1.00
+ball_trade     pret 15  A 15 x1.00  B 15 x0.89  C 15 x1.00
+ball_tray_enter pret  9  A  9 x0.82  B  9 x0.45  C  9 x0.55
+ball_tray_ball pret  3  A  3 x1.00  B  3 x0.89  C  3 x1.00
+ball_tray_exit pret  2  A  2 x0.57  B  2 x0.21  C  2 x0.22
+shiny          pret 33  A 33 x1.00  B 33 x1.00  C 33 x1.00
+deoxys_move    pret 110  A 86 x0.57  B 86 x0.33  C 86 x0.35

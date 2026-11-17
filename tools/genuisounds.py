@@ -8,6 +8,8 @@
     python3 tools/genuisounds.py --pret-ref DIR        # pret's own twenty and its session, rendered the same way, for
                                                        # comparing by ear -- RETAIL AUDIO: never into a tracked folder
     python3 tools/genuisounds.py --write --approved    # write APPROVED into engineGba (refuses while it is empty)
+    python3 tools/genuisounds.py --batch 4 [MODE]      # the same for batch 4, the battle sounds (APPROVED_4, its own
+                                                       # drafts in audio/drafts/t565_battle and a "battle moment" clip)
 
 THE SPLIT (docs/TODO.md T-565, agreed with the Musical Instruments lane 2026-11-16): the menu and UI sounds are the
 game lane's; SE_SUCCESS, SE_FAILURE, SE_DING_DONG, SE_PC_LOGIN and SE_SHOP are pitched sounds whose notes are the
@@ -34,7 +36,9 @@ THE TOKENS (time in FRAMES: the MIDI is 150 bpm at 24 ticks a beat, so a tick is
     G5:3   a note          ~E6:10  a held note (A: a held square; B: harp; C: flute)
     !E4:6  a buzz (an error; A plays the written key, B and C the harp an octave up)
     ^A5:1  a thin note (a cursor; A: the thin square; B: a quiet pluck)
-    x:2    a noise tick    s:20  a noise shimmer    r:4  a rest
+    x:2    a noise tick    s:20  a noise shimmer    X:6  a noise thud (a hit landing)    r:4  a rest
+    &...   (batch 4) starts with the token before it rather than after it: "X:6 &G4:4" is a thud under a note, and
+           "C5:30 &G5:30" a chord. The square layer plays only the first note that starts on a frame (one square 1).
 Notes are written in the harp's register; A plays them (not buzzes) an octave up. "b" in a sound replaces its notes
 for B (and so for C's harp); "a" the same for A.
 
@@ -42,7 +46,15 @@ LENGTH AND LOUDNESS: no sound's last note ends later than pret's (pret's frames 
 and none is louder than pret's at its peak: --previews renders pret's MIDI and ours through the same model and
 scales a style's velocities down until it is not. --draft runs the same scaling, so a draft .mid is what was heard.
 The model (--previews): m4a's mixer at 13379 Hz for the samples, the PSG synthesised with m4a's frame envelopes, the
-noise from m4a's own gNoiseTable. A preview, not the GBA; the sweep and the echo are not modelled.
+noise from m4a's own gNoiseTable. A preview, not the GBA; the sweep and the echo are not modelled, and a pitch bend
+is read at a note's start only (so pret's own swoops -- SE_EXP's rise, SE_MUGSHOT, SE_SHINY -- are heard as flat
+notes in --pret-ref; ours use no bends, so ours are heard as they are).
+
+BATCH 4 (--batch 4), the battle sounds apart from moves: the same three styles and the same voicegroup196, a little
+bigger -- a hit has a noise thud under it, super-effective lands on a chord, not-very-effective deflates, the faint
+falls through the pentatonic to the tritone. A sound's tracks never exceed its player's (SE1 3, SE2 9, SE3 1:
+SE_LOW_HEALTH has one track, so C plays it with no square under the harp), and SE_LOW_HEALTH keeps pret's loop
+(markers "[" and "]", 36 frames). The moves' SE_M_* sounds are batch 10; the instruments lane's are not here.
 """
 import math, os, re, struct, subprocess, sys, wave
 
@@ -74,7 +86,7 @@ VOICES = [
 ]
 HARP, FLUTE, KEY, THIN, BUZZ, CLICK, TICK, SHIMMER = range(8)
 CH_SAMPLE, CH_SQUARE, CH_NOISE = 0, 1, 2          # three tracks at most: SE1 holds three (music_player_table.inc)
-NOISE_KEY = {"x": 80, "s": 70}
+NOISE_KEY = {"x": 80, "s": 70, "X": 54}
 TEMPO_US = 400000                                 # 150 bpm, 24 ticks a beat: a tick is a frame
 TPQ = 24
 
@@ -120,9 +132,70 @@ SESSION = [(0.00, "win_open"), (0.45, "select"), (0.75, "select"), (1.05, "selec
            (6.25, "dex_scroll"), (6.40, "dex_scroll"), (6.55, "dex_scroll"), (7.00, "select"), (7.40, "save"),
            (8.40, "select")]
 PLAYER = {"select": 2}                             # song_table.inc: every other one here plays on SE1
+BATCH, LABEL, CLIP = 1, "T-565 batch 1", "menu_session"
+
+# ---------------------------------------------------------------------------------------------------------------------
+# BATCH 4: the battle sounds apart from moves (docs/sound-census-2026-11-16.md). The same motif family: Blanche's C
+# pentatonic for everything that goes well, the falling tritone (F# to C) for the faint.
+# ---------------------------------------------------------------------------------------------------------------------
+SOUNDS_4 = [
+    dict(id="ball_open", what="a daemon sent out: the ball opening (every battle, every switch)",
+         notes="x:2 C5:3 G5:3 ~C6:17"),
+    dict(id="effective", what="a hit that lands as the chart expects (every ordinary hit)",
+         notes="X:6 &G4:4 C4:30"),
+    dict(id="super_effective", what="a hit the chart favours: it lands -- two strikes up, then a chord",
+         notes="X:5 &C4:3 G4:3 C5:3 X:8 &E5:34 &G5:34 &~C6:40"),
+    dict(id="not_effective", what="a hit the chart resists: it deflates, a falling fourth, quiet",
+         notes="X:3 &G4:4 r:1 ^D4:10"),
+    dict(id="faint", what="a daemon fainting: down the pentatonic to the falling tritone",
+         notes="A5:4 G5:4 E5:4 D5:4 C5:5 r:2 F#4:6 ~C4:18"),
+    dict(id="exp", what="the EXP bar filling (stopped when the bar is full, so any point is an ending)",
+         notes="^C4:8 ^D4:8 ^E4:8 ^G4:8 ^A4:8 ^C5:8 ^D5:8 ^E5:8 ^G5:8 ^A5:8 ^C6:18"),
+    dict(id="exp_max", what="the EXP bar full", notes="G5:4 ~C6:12"),
+    dict(id="low_health", what="the low-HP alarm: loops (pret's 36-frame loop) on SE3, which has ONE track",
+         notes="E4:6 r:6 ~C4:12", loop=36, mono=True),
+    dict(id="flee", what="got away safely: a shimmer and a quick scurry up", notes="s:16 &E5:3 G5:3 A5:3 C6:3 D6:3 ~E6:20"),
+    dict(id="mugshot", what="the leaders' and the Four's VS banners: a long rise, then a struck chord",
+         notes="s:50 &C4:5 D4:5 E4:5 G4:5 A4:5 C5:5 D5:5 E5:5 G5:5 A5:5 X:6 &C5:70 &G5:70 &~C6:80"),
+    dict(id="switch", what="a daemon called back", notes="x:2 G5:3 C5:3"),
+    dict(id="ball_throw", what="a ball thrown: a shimmer under a rising arc", notes="s:14 &C5:4 E5:4 G5:4 C6:12"),
+    dict(id="ball", what="the ball striking the daemon", notes="x:1 E5:2 C5:3"),
+    dict(id="ball_bounce_1", what="the ball's first bounce", notes="x:1 G5:11"),
+    dict(id="ball_bounce_2", what="the second, lower", notes="x:1 E5:11"),
+    dict(id="ball_bounce_3", what="the third", notes="x:1 ^D5:11"),
+    dict(id="ball_bounce_4", what="the fourth, the quietest", notes="x:1 ^C5:11"),
+    dict(id="ball_click", what="the ball locking: caught (MUS_CAUGHT follows)", notes="x:2 G5:1 C6:2"),
+    dict(id="ball_trade", what="a ball in the trade and the capture's wobble (SE2)", notes="s:4 &E5:3 G5:3 C6:9"),
+    dict(id="ball_tray_enter", what="the party tray sliding in", notes="s:6 &^C6:3 ^E6:6"),
+    dict(id="ball_tray_ball", what="a ball on the party tray", notes="^G5:3"),
+    dict(id="ball_tray_exit", what="the party tray sliding out (SE2)", notes="x:2", b="^C6:2"),
+    dict(id="shiny", what="a shiny daemon's sparkle", notes="^G5:3 ^C6:3 ^E6:3 ^G6:3 r:3 ^C6:3 ^E6:3 ~G6:12"),
+    dict(id="deoxys_move", what="Birth Island's triangle moving (rare): the tritone, rising and falling",
+         notes="s:30 &C5:4 F#5:4 C6:4 F#6:4 ~C6:40 r:6 ^F#5:4 ^C5:20"),
+]
+APPROVED_4 = {}                                    # the user's picks for batch 4; --write refuses while it is empty
+LEFT_OUT_4 = ["every SE_M_* move sound (batch 10)", "the instruments lane's SE_SUCCESS, SE_FAILURE, SE_DING_DONG, "
+              "SE_PC_LOGIN and SE_SHOP", "the songs and fanfares (MUS_CAUGHT, MUS_LEVEL_UP...)"]
+# The "battle moment" clip: (seconds, sound[, stopped at]) -- sent out, a hit, super-effective, not-very-effective,
+# the EXP bar filling and full, the low-HP alarm looping until the faint, then running away.
+SESSION_4 = [(0.00, "ball_open"), (0.90, "effective"), (1.90, "super_effective"), (3.30, "not_effective"),
+             (4.00, "exp", 5.30), (5.30, "exp_max"), (5.90, "low_health", 7.90), (7.90, "faint"), (9.00, "flee")]
+PLAYER_4 = {"low_health": 3, "ball_trade": 2, "ball_tray_exit": 2}   # song_table.inc: the rest play on SE1
+TRACKS = {1: 3, 2: 9, 3: 1}                        # music_player_table.inc: NUM_TRACKS_SE1, _SE2, _SE3
+
+
+def use_batch(n):
+    """Point the module at batch n's sounds, picks, drafts folder and clip."""
+    global SOUNDS, APPROVED, LEFT_OUT, SESSION, PLAYER, DRAFTS, BATCH, LABEL, CLIP
+    if n == 4:
+        SOUNDS, APPROVED, LEFT_OUT, SESSION, PLAYER = SOUNDS_4, APPROVED_4, LEFT_OUT_4, SESSION_4, PLAYER_4
+        DRAFTS = os.path.join(ROOT, "audio", "drafts", "t565_battle")
+        BATCH, LABEL, CLIP = 4, "T-565 batch 4", "battle_moment"
+    elif n != 1:
+        sys.exit("genuisounds: --batch is 1 (menus) or 4 (battle)")
 
 # velocity by kind and style; C's square layer is quieter than A's
-VEL = {"n": 100, "h": 92, "b": 110, "t": 72, "x": 90, "s": 64}
+VEL = {"n": 100, "h": 92, "b": 110, "t": 72, "x": 90, "s": 64, "X": 110}
 C_SQUARE = 0.9
 C_SAMPLE = 0.6
 
@@ -131,14 +204,17 @@ SEMI = {"C": 0, "C#": 1, "D": 2, "D#": 3, "E": 4, "F": 5, "F#": 6, "G": 7, "G#":
 
 
 def tokens(score):
-    """[(frame, frames, kind, key)] -- kind n h b t x s."""
-    out, at = [], 0
+    """[(frame, frames, kind, key)] -- kind n h b t x s X. A token starting "&" starts with the one before it."""
+    out, at, last = [], 0, 0
     for tok in score.split():
         what, frames = tok.rsplit(":", 1)
         frames = int(frames)
+        if what.startswith("&"):
+            what, at = what[1:], last
+        last = at
         if what == "r":
             pass
-        elif what in ("x", "s"):
+        elif what in ("x", "s", "X"):
             out.append((at, frames, what, NOISE_KEY[what]))
         else:
             m = NOTE_RE.match(what)
@@ -150,16 +226,21 @@ def tokens(score):
 
 
 def voiced(snd, style):
-    """[(frame, frames, channel, program, key, velocity)] -- the style's notes, before any loudness scaling."""
+    """[(frame, frames, channel, program, key, velocity)] -- the style's notes, before any loudness scaling.
+    A "mono" sound (a one-track player, SE3) leaves C's square and noise out: the harp and flute alone."""
     a = tokens(snd.get("a", snd["notes"]))
     b = tokens(snd.get("b", snd["notes"]))
-    out = []
-    if style in ("A", "C"):
+    out, square_at = [], set()
+    if style == "A" or (style == "C" and not snd.get("mono")):
         k = 1.0 if style == "A" else C_SQUARE
         for at, n, kind, key in a:
-            if kind in ("x", "s"):
-                out.append((at, n, CH_NOISE, TICK if kind == "x" else SHIMMER, key, VEL[kind] * k))
-            elif kind == "b":
+            if kind in ("x", "s", "X"):
+                out.append((at, n, CH_NOISE, SHIMMER if kind == "s" else TICK, key, VEL[kind] * k))
+                continue
+            if at in square_at:                       # one square 1: a chord's other notes are the harp's
+                continue
+            square_at.add(at)
+            if kind == "b":
                 out.append((at, n, CH_SQUARE, BUZZ, key, VEL["b"] * k))
             elif style == "A":
                 out.append((at, n, CH_SQUARE, THIN if kind == "t" else KEY, key + 12, VEL[kind]))
@@ -168,7 +249,7 @@ def voiced(snd, style):
     if style in ("B", "C"):
         k = 1.0 if style == "B" else C_SAMPLE
         for at, n, kind, key in b:
-            if kind in ("x", "s"):
+            if kind in ("x", "s", "X"):
                 continue
             prog = FLUTE if (style == "C" and kind == "h") else HARP
             out.append((at, n, CH_SAMPLE, prog, key + 12 if kind == "b" else key, VEL[kind] * k))
@@ -184,9 +265,12 @@ def vlq(n):
     return bytes(out)
 
 
-def to_midi(notes, scale=1.0):
-    """Format 0, one track, a channel per hardware voice; the program set before each note that changes it."""
+def to_midi(notes, scale=1.0, loop=None):
+    """Format 0, one track, a channel per hardware voice; the program set before each note that changes it. With
+    `loop` (frames), mid2agb's loop markers "[" at 0 and "]" there, as pret's SE_LOW_HEALTH has."""
     ev = [(0, 0, b"\xFF\x51\x03" + struct.pack(">I", TEMPO_US)[1:])]
+    if loop:
+        ev += [(0, 0, b"\xFF\x06\x01["), (loop, 4, b"\xFF\x06\x01]")]
     for ch in sorted({n[2] for n in notes}):
         ev.append((0, 1, bytes((0xB0 | ch, 7, 127))))
     prog = {}
@@ -540,11 +624,11 @@ def drafted(snd, style, pret_peak=None):
     scale = 1.0
     if pret_peak is not None:
         for _ in range(12):
-            peak = np.abs(render(to_midi(notes, scale), our_voices(), master)).max()
+            peak = np.abs(render(to_midi(notes, scale, snd.get("loop")), our_voices(), master)).max()
             if peak <= pret_peak * 1.0001:
                 break
             scale *= min(0.97, pret_peak / peak)
-    return to_midi(notes, scale), scale
+    return to_midi(notes, scale, snd.get("loop")), scale
 
 
 def all_drafts(verbose=False):
@@ -577,6 +661,18 @@ def check_lengths():
     return bad
 
 
+def check_tracks():
+    """Every style's channels fit its player's tracks (a MIDI channel is a track to mid2agb)."""
+    bad = []
+    for snd in SOUNDS:
+        cap = TRACKS[PLAYER.get(snd["id"], 1)]
+        for st in STYLES:
+            n = len({v[2] for v in voiced(snd, st)})
+            if n > cap:
+                bad.append("%s %s: %d tracks, SE%d holds %d" % (snd["id"], st, n, PLAYER.get(snd["id"], 1), cap))
+    return bad
+
+
 def write_wav_or_mp3(path_noext, y):
     import numpy as np
     y = np.clip(y, -1, 1)
@@ -595,20 +691,44 @@ def write_wav_or_mp3(path_noext, y):
     return wav
 
 
-def session_mix(get):
-    """The menu session: each sound placed at its time; a sound cuts the one before it on the same player."""
+def heard(name, y):
+    """A sound as its own preview: a looping one three times round (its loop's length each), then a short silence."""
     import numpy as np
-    clips = [(int(t * SR), PLAYER.get(name, 1), get(name)) for t, name in SESSION]
+    snd = next(s for s in SOUNDS if s["id"] == name)
+    if snd.get("loop"):
+        n = int(snd["loop"] / 60 * SR)
+        y = np.tile(np.concatenate([y, np.zeros(max(0, n - len(y)))])[:n], 3)
+    return np.concatenate([y, np.zeros(SR // 8)])
+
+
+def session_mix(get):
+    """The clip: each sound placed at its time; a sound cuts the one before it on the same player, a third field
+    stops it there (SE_EXP when the bar is full), and a sound with a loop repeats its loop until then."""
+    import numpy as np
+    clips = []
+    for row in SESSION:
+        t, name = row[0], row[1]
+        stop = row[2] if len(row) > 2 else None
+        y = get(name)
+        snd = next(s for s in SOUNDS if s["id"] == name)
+        if snd.get("loop") and stop is not None:
+            n = int(snd["loop"] / 60 * SR)
+            cycle = np.concatenate([y, np.zeros(max(0, n - len(y)))])[:n]
+            y = np.tile(cycle, int(math.ceil((stop - t) * SR / n)) + 1)
+        if stop is not None:
+            y = y[:int((stop - t) * SR)]
+        clips.append((int(t * SR), PLAYER.get(name, 1), y))
     total = max(i + len(y) for i, _, y in clips) + SR // 4
     mix = np.zeros(total)
     for k, (i, player, y) in enumerate(clips):
         nxt = next((j for j, p, _ in clips[k + 1:] if p == player), None)
         y = y.copy()
+        cut = len(SESSION[k]) > 2
         if nxt is not None and i + len(y) > nxt:
-            y = y[:nxt - i]
-            fade = min(len(y), int(0.004 * SR))
-            if fade:
-                y[-fade:] *= np.linspace(1, 0, fade)
+            y, cut = y[:nxt - i], True
+        fade = min(len(y), int(0.004 * SR))
+        if cut and fade:
+            y[-fade:] *= np.linspace(1, 0, fade)
         mix[i:i + len(y)] += y
     return mix
 
@@ -625,8 +745,8 @@ def previews(outdir):
             data, scale, pp = drafts[(snd["id"], st)]
             y = render(data, our_voices(), master_of(pret_flags(snd["id"])))
             cache[snd["id"]] = y
-            written.append(write_wav_or_mp3(os.path.join(d, "se_%s" % snd["id"]), np.concatenate([y, np.zeros(SR // 8)])))
-        written.insert(0, write_wav_or_mp3(os.path.join(outdir, "menu_session_%s_%s" % (st, STYLE_NAMES[st].replace(" ", "_"))),
+            written.append(write_wav_or_mp3(os.path.join(d, "se_%s" % snd["id"]), heard(snd["id"], y)))
+        written.insert(0, write_wav_or_mp3(os.path.join(outdir, "%s_%s_%s" % (CLIP, st, STYLE_NAMES[st].replace(" ", "_"))),
                                            session_mix(lambda n: cache[n])))
     print("  previews: %d files in %s" % (len(written), outdir))
     return written
@@ -642,9 +762,9 @@ def pret_ref(outdir):
     os.makedirs(outdir, exist_ok=True)
     cache = {snd["id"]: pret_render(snd["id"]) for snd in SOUNDS}
     for name, y in cache.items():
-        write_wav_or_mp3(os.path.join(outdir, "se_%s" % name), np.concatenate([y, np.zeros(SR // 8)]))
-    write_wav_or_mp3(os.path.join(outdir, "menu_session_pret"), session_mix(lambda n: cache[n]))
-    print("  pret's reference: %d sounds and the session in %s (retail audio: keep it out of git)" % (len(cache), outdir))
+        write_wav_or_mp3(os.path.join(outdir, "se_%s" % name), heard(name, y))
+    write_wav_or_mp3(os.path.join(outdir, "%s_pret" % CLIP), session_mix(lambda n: cache[n]))
+    print("  pret's reference: %d sounds and the clip in %s (retail audio: keep it out of git)" % (len(cache), outdir))
 
 
 def draft(outdir):
@@ -655,7 +775,7 @@ def draft(outdir):
         for snd in SOUNDS:
             open(os.path.join(d, "se_%s.mid" % snd["id"]), "wb").write(drafts[(snd["id"], st)][0])
     open(os.path.join(outdir, "voicegroup%03d.inc" % VOICEGROUP), "w").write(MARK_VG + "\n" + "\n".join(VOICES) + "\n")
-    rows = ["# T-565 batch 1 drafts (tools/genuisounds.py --draft): style, sound, pret's frames, ours, velocity scale",
+    rows = ["# %s drafts (tools/genuisounds.py %s--draft): style, sound, pret's frames, ours, velocity scale" % (LABEL, "--batch %d " % BATCH if BATCH != 1 else ""),
             "# A %s / B %s / C %s" % tuple(STYLE_NAMES[s] for s in STYLES)]
     for snd in SOUNDS:
         pret = frames_of(pret_midi(snd["id"]))
@@ -694,9 +814,11 @@ def main():
         i = args.index(flag)
         return args[i + 1] if i + 1 < len(args) and not args[i + 1].startswith("--") else default
 
-    bad = check_lengths()
+    if "--batch" in args:
+        use_batch(int(arg_after("--batch", "1")))
+    bad = check_lengths() + check_tracks()
     if bad:
-        sys.exit("genuisounds: longer than pret's: " + "; ".join(bad))
+        sys.exit("genuisounds: longer than pret's, or more tracks than its player: " + "; ".join(bad))
     if "--draft" in args:
         draft(os.path.abspath(arg_after("--draft", DRAFTS)))
     if "--previews" in args:
@@ -709,7 +831,7 @@ def main():
         if "--approved" not in args:
             sys.exit("genuisounds: --write needs --approved (it writes APPROVED, the user's picks)")
         if not APPROVED:
-            print("genuisounds (T-565 batch 1): APPROVED is empty -- nothing is written until the user picks")
+            print("genuisounds (%s): APPROVED is empty -- nothing is written until the user picks" % LABEL)
             return 0
         for path, want in engine_target().items():
             mode = "wb" if isinstance(want, bytes) else "w"
@@ -719,8 +841,7 @@ def main():
                 print("  wrote %s" % os.path.relpath(path, ROOT))
         return 0
     # report
-    print("genuisounds (T-565 batch 1): %d menu and UI sounds in three styles; the instruments lane's %s left out"
-          % (len(SOUNDS), ", ".join(LEFT_OUT)))
+    print("genuisounds (%s): %d sounds in three styles; left out: %s" % (LABEL, len(SOUNDS), "; ".join(LEFT_OUT)))
     for snd in SOUNDS:
         pret = frames_of(pret_midi(snd["id"]))
         ours = [frames_of(to_midi(voiced(snd, st))) for st in STYLES]
