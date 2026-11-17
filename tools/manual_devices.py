@@ -123,14 +123,35 @@ def glasses(a, b=None):
 """)
 
 
-KIND = {"gba": gba, "phone": phone, "watch": watch, "glasses": glasses, "link": link, "tiiny": tiiny, "scroll": scroll}
+def cardputer(a, b=None):
+    """THE CARDPUTERS: a Cardputer held flat, the daemon on its small screen, four rows of keys under it, a cap with its
+    antenna along the top (C-393)."""
+    keys = "".join('<rect x="%d" y="%d" width="16" height="13" rx="2" fill="#3e3e46"/>' % (86 + c * 17.6, 160 + r * 16)
+                   for r in range(4) for c in range(13))
+    return _svg(f"""
+<rect x="104" y="26" width="192" height="22" rx="5" fill="#2f6b4f" stroke="#e9e4da" stroke-width="3"/>
+<rect x="262" y="0" width="9" height="30" rx="3" fill="#8a8170"/>
+<rect x="72" y="44" width="256" height="196" rx="16" fill="#e9e4da"/>
+<rect x="104" y="58" width="144" height="88" rx="6" fill="{INK}"/>
+<rect x="112" y="64" width="128" height="76" rx="2" fill="{SCREEN}"/>
+<path d="M112 120 Q176 104 240 120 L240 140 L112 140z" fill="#9cc58f"/>
+{_sprite(a, 146, 66, 60)}
+<circle cx="288" cy="86" r="11" fill="#e8b04a" stroke="{INK}" stroke-width="2"/>
+<circle cx="288" cy="122" r="5" fill="#9cc58f"/>
+{keys}
+""")
+
+
+KIND = {"gba": gba, "phone": phone, "watch": watch, "glasses": glasses, "link": link, "tiiny": tiiny, "scroll": scroll,
+        "cardputer": cardputer}
 
 #  the cover's own colour, and what draws its device, for every book tools/manual.py prints with the game's cover
 #  and the daemon(s) on its screen
 COVER = {"main": ("#3b2f66", "gba", ("CLUSTER",)), "quick": ("#6a4f22", "gba", ("LABEL",)),
          "micro": ("#5e2a40", "gba", ("PING",)), "companion": ("#5e2b24", "phone", ("ROVERBYTE",)),
          "watch": ("#174d4b", "watch", ("ROVERCUB",)), "glass": ("#2e2a52", "glasses", ("PING",)), "social": ("#22395c", "link", ("PENGUIN", "PENPHIN")),
-         "tiiny": ("#21463a", "tiiny", ("INFERENCE",)), "etymology": ("#47431c", "scroll", ("GUARDIAN",))}
+         "tiiny": ("#21463a", "tiiny", ("INFERENCE",)), "etymology": ("#47431c", "scroll", ("GUARDIAN",)),
+         "cardputer": ("#7a3a16", "cardputer", ("PUNCHCARD",))}   # C-393
 
 #  laid over each book's own manual.css: the cover in its colour, the device large, the small print still readable
 CSS = """.cover[style*="--cbg"] { background: var(--cbg); }

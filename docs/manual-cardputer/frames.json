@@ -1,0 +1,105 @@
+{
+ "about": "THE CARDPUTERS' pictures (C-393): the Cardputer Zero's program on a computer, filed in qa/screenshots/2026-11-16 (C-377, C-380, C-381), each cropped to one 320x170 screen. Nothing of the Cardputer or the ADV is captured by any tool yet, and nothing of the Zero on the device itself; its drawings are in diagrams/.",
+ "frames": {},
+ "pictures": {
+  "z_title": {
+   "from": "qa/screenshots/2026-11-16/16Nov2026 - C377 - Cardputer Zero program on the Mac - 1.png",
+   "crop": [
+    1000,
+    90,
+    1960,
+    600
+   ]
+  },
+  "z_crystal": {
+   "from": "qa/screenshots/2026-11-16/16Nov2026 - C377 - Cardputer Zero program on the Mac - 1.png",
+   "crop": [
+    20,
+    640,
+    980,
+    1150
+   ]
+  },
+  "z_make": {
+   "from": "qa/screenshots/2026-11-16/16Nov2026 - C377 - Cardputer Zero program on the Mac - 1.png",
+   "crop": [
+    1000,
+    640,
+    1960,
+    1150
+   ]
+  },
+  "z_sent": {
+   "from": "qa/screenshots/2026-11-16/16Nov2026 - C380 - Cardputer Zero save sent to the hub - 3.png",
+   "crop": [
+    680,
+    452,
+    1320,
+    792
+   ]
+  },
+  "z_sync": {
+   "from": "qa/screenshots/2026-11-16/16Nov2026 - C380 - Cardputer Zero SYNC and keeping another game - 22.png",
+   "crop": [
+    16,
+    30,
+    656,
+    370
+   ]
+  },
+  "z_offer": {
+   "from": "qa/screenshots/2026-11-16/16Nov2026 - C380 - Cardputer Zero SYNC and keeping another game - 22.png",
+   "crop": [
+    672,
+    30,
+    1312,
+    370
+   ]
+  },
+  "z_home": {
+   "from": "qa/screenshots/2026-11-16/16Nov2026 - C381 - Cardputer Zero companion screens - 14.png",
+   "crop": [
+    16,
+    30,
+    656,
+    370
+   ]
+  },
+  "z_party": {
+   "from": "qa/screenshots/2026-11-16/16Nov2026 - C381 - Cardputer Zero companion screens - 14.png",
+   "crop": [
+    672,
+    30,
+    1312,
+    370
+   ]
+  },
+  "z_care": {
+   "from": "qa/screenshots/2026-11-16/16Nov2026 - C381 - Cardputer Zero companion screens - 14.png",
+   "crop": [
+    672,
+    400,
+    1312,
+    740
+   ]
+  },
+  "z_step": {
+   "from": "qa/screenshots/2026-11-16/16Nov2026 - C381 - Cardputer Zero companion screens - 14.png",
+   "crop": [
+    16,
+    770,
+    656,
+    1110
+   ]
+  },
+  "z_say": {
+   "from": "qa/screenshots/2026-11-16/16Nov2026 - C381 - Cardputer Zero companion screens - 14.png",
+   "crop": [
+    672,
+    770,
+    1312,
+    1110
+   ]
+  }
+ }
+}

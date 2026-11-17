@@ -78,6 +78,9 @@ ROUTES = [
     ("companion", "firmware/", ["companion:wiki/Boards.md", "companion:docs/HARDWARE.md"]),
     ("companion", "firmware/esp32/src/glass", ["companion:wiki/The-T-Glass.md", "DAEMONS:docs/manual-glass/manual.md"]),   # C-262
     ("companion", "app/screens/places/Glass", ["DAEMONS:docs/manual-glass/manual.md"]),   # C-262: the GLASSES card
+    ("companion", "firmware/pizero/", ["DAEMONS:docs/manual-cardputer/manual.md"]),   # C-393: the Cardputer Zero's program
+    ("companion", "firmware/esp32/src/cardputer", ["DAEMONS:docs/manual-cardputer/manual.md"]),   # C-393: the two keyboards
+    ("companion", "docs/CARDPUTERZERO.md", ["DAEMONS:docs/manual-cardputer/manual.md"]),   # C-393: the Zero's plan
     ("companion", "hub/", ["companion:docs/HUB.md", "companion:wiki/The-hub-and-its-AI.md"]),
     ("companion", "app/", ["DAEMONS:docs/manual-companion/manual.md"]),
     ("companion", "app/screens/you/", ["DAEMONS:docs/manual-social/manual.md"]),   # TRADE, BATTLE, IN DIALOGUE
@@ -88,7 +91,7 @@ ROUTES = [
 ]
 #  a HOW TO PLAY book as a SET UP entry names it -> manual.py's book
 SETUP_BOOK = {"player": "main", "micro": "micro", "quick": "quick", "companion": "companion", "watch": "watch", "glass": "glass",
-              "tiiny": "tiiny", "social": "social"}
+              "tiiny": "tiiny", "social": "social", "cardputer": "cardputer"}   # C-393: THE CARDPUTERS
 NOT_NAMES = {"DAEMONS", "DAEMON", "DRAFT", "THE", "AI", "OK", "A", "AND", "OF", "IN", "TO", "ON", "BUILT", "DEBUG",
              "CONTENT", "CONTEXT", "DRAFTED", "DONE", "FIXED", "TODO", "WIP", "ROM", "RELEASE", "GBA", "INDEX", "HP", "LED", "USB", "PDF", "API", "QR", "SD", "TV", "NPC"}
 TICKET = re.compile(r"\b([TC]-\d+)\b")

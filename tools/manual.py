@@ -15,6 +15,7 @@ everything has images from the game and really communicates everthing includes t
     python3 tools/manual.py --book companion --write   # THE COMPANION: the whole app, its pictures from the site (C-321)
     python3 tools/manual.py --book watch --write       # THE WATCH: the T-Watch Ultra and S3 on the wrist (C-326)
     python3 tools/manual.py --book glass --write       # THE GLASSES: the T-Glass before one eye (C-262)
+    python3 tools/manual.py --book cardputer --write   # THE CARDPUTERS: the Cardputer, the ADV, the Zero, their caps (C-393)
 
 Rebuild it every release: the version, the patches and every daemon's picture and INDEX entry are read from the
 build, so a release that changes them changes the manual.
@@ -133,6 +134,18 @@ BOOKS = {
               "subject": "The DAEMONS companion on glasses: the LilyGO T-Glass",
               "sprites": ("PING", "LOOKOUT", "ECHO"),
               "strip": ("SENTINEL", "PACKET", "RELAY", "KEEPER", "HEARTBEAT", "ROVERCUB", "INFERENCE", "ROVERBYTE")},
+    # the eleventh: THE CARDPUTERS, M5Stack's three -- the Cardputer and the ADV (the boards' firmware, C-136) and the
+    # Cardputer Zero (the game played on it, C-377) -- and the caps that fit the ADV or the Zero (C-393; asked by the
+    # Cardputer Zero lane, 2026-11-16: "as we did for the watch and the glasses"). Read from the companion's
+    # docs/HARDWARE.md, docs/CARDPUTERZERO.md, firmware/pizero/README.md and the Boards wiki; the Zero's pictures are its
+    # program on a computer (qa 16Nov2026 C377-C381), the rest drawings (diagrams/)
+    "cardputer": {"src": "docs/manual-cardputer", "out": "docs/DAEMONS-cardputer-manual.pdf",
+                  "title": "DAEMONS: the Cardputers", "tag": "THE CARDPUTERS",
+                  "sub": "Your daemon under your fingers: the Cardputer, the ADV and the Zero", "foot": "the cardputers",
+                  "subject": "The DAEMONS companion and game on M5Stack's Cardputers: the Cardputer, the Cardputer ADV and "
+                             "the Cardputer Zero, and their caps",
+                  "sprites": ("PUNCHCARD", "SHELL", "KERNEL"),
+                  "strip": ("FIRMWARE", "BOOTROM", "SAVESTATE", "HANDSHAKE", "DATAGRAM", "TOKENRING", "SYN", "ACK")},
 }
 BOOK = BOOKS["main"]
 THEATRE = os.path.join(ROOT, ".theatre/routes")

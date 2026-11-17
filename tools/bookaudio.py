@@ -54,17 +54,20 @@ VOICES = {  # picked with the user from samples, 2026-11-01
     #  THE GLASSES (C-262): soft and close, a voice in your ear -- picked by the user from three samples, 2026-11-12
     #  ("A: near")
     "near": {"blend": {"af_nicole": 0.6, "bf_lily": 0.4}, "speed": 0.97},
+    #  THE CARDPUTERS (C-393): bright and quick, curious, someone showing you a gadget they love -- picked by the user from
+    #  three samples, 2026-11-16 ("A: tinkerer")
+    "tinkerer": {"blend": {"am_eric": 0.6, "am_puck": 0.4}, "speed": 1.03, "sentence": 0.3},
 }
 BOOK_VOICE = {"guide": "reason", "subtle": "instinct", "hermetic": "night", "eudaimon": "dawn", "unity": "whole",
               "textbook": "professor", "quick": "patient", "manual": "adventure", "companion": "friend",
               "social": "together", "tiiny": "mind", "etymology": "elder", "origin": "musai", "watch": "pocket",
-              "glass": "near"}
+              "glass": "near", "cardputer": "tinkerer"}
 FILE = {"guide": "guide", "subtle": "the-subtle-layer", "hermetic": "the-vault-audio", "eudaimon": "the-vault-audio-2",
         "unity": "the-vault-audio-3", "textbook": "principles-of-mind",   # -2, -3: the names the companion fetches (C-299)
         "quick": "quick-start", "manual": "the-players-manual", "companion": "the-companion",
         "social": "playing-together", "tiiny": "a-bigger-mind", "etymology": "the-old-word",
         "origin": "the-origin-audio", "watch": "the-watch",
-        "glass": "the-glasses"}
+        "glass": "the-glasses", "cardputer": "the-cardputers"}
 #  a book with no voice on purpose; --check names any other book that has none (T-543: a new book is never left silent)
 UNVOICED = {"micro": "MICRO-START, the quick start in five pages, is not on the LIBRARY's shelf"}
 RATE = {"textbook": "48k"}       # a long book a little lighter, under GitHub's 50 MB; the rest 64k
@@ -128,10 +131,28 @@ MANUALS = {
     "watch": ("docs/manual-watch", "The Watch",
               f"The Watch. Your daemon on your wrist: the T-Watch Ultra and the T-Watch S3. {DRAFTED}"),
     "glass": ("docs/manual-glass", "The Glasses", f"The Glasses. Your daemon before your eye: the T-Glass. {DRAFTED}"),
+    "cardputer": ("docs/manual-cardputer", "The Cardputers",   # C-393
+                  f"The Cardputers. Your daemon under your fingers: the Cardputer, the A D V and the Zero. {DRAFTED}"),
 }
 SAY = {"←": " left ", "→": " right ", "↑": " up ", "↓": " down ", "⟷": " to ", "½": " half", "°": " degrees",
        "−": "minus ", "⚙": "the gear", "…": "...", "✚": "", "✦": "", "•": "", "▼": "", "▶": "", "○": "", "✕": "",
        "‹": "", "›": ""}   # what the manuals draw rather than say
+#  a book's own words respelled before they are said, where Kokoro would misread them; a book's own, so no other
+#  book's recording moves. THE CARDPUTERS (C-393): its keys by name (a bare ; or . is only a pause), its model names
+#  and numbers as they are spoken
+KEY_NAMES = {";": "semicolon", ",": "comma", ".": "period", "/": "slash", ":": "colon", "`": "backtick", "-": "dash"}
+SPOKEN = {"cardputer": [
+    (r"^\s*--\s*$", "none"), (r"\*; \.\*", "semicolon and period"),
+    (r"\*\*([;,./:`-])\*\*", lambda m: KEY_NAMES[m.group(1)]),
+    (r"\bADV\b", "A D V"), (r"CC1101", "C C eleven oh one"), (r"LoRa-1262", "LoRa twelve sixty-two"),
+    (r"ESP32-S3", "E S P 32 S 3"), (r"1750 mAh", "seventeen fifty milliamp hour"), (r"868/915", "868 or 915"),
+    (r"240 x 135", "two forty by one thirty-five"), (r"320 x 170", "three twenty by one seventy")]}
+
+
+def spoken(book, t):
+    for pat, to in SPOKEN.get(book, ()):
+        t = re.sub(pat, to, t)
+    return t
 
 
 def plain(t: str, letters=False) -> str:
@@ -178,7 +199,7 @@ def manual_script(book):
     school = {f["floor"]: f for f in json.load(open(f"{DATA}/school.json"))["floors"]} if book == "textbook" else {}
     lines = [("section", name, opening)]
     divs, chapter, skip_h1, para, rows, fence = [], 0, False, [], [], False
-    def say(t): return plain(t, letters=book == "etymology")
+    def say(t): return plain(spoken(book, t), letters=book == "etymology")
 
     def flush():
         if rows:
