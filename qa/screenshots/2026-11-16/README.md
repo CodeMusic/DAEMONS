@@ -151,3 +151,9 @@ T-561: a USERBOX bought at SLATE's REPO, saved, reset to the title, CONTINUE -- 
 T-566 follow-up: the relearner's caret arrows now show -- down only at the top, both mid-list, up only at the bottom (three vanilla bugs fixed; filmed on the debug ROM)
 
 ![16Nov2026 - T566 - the relearners caret arrows - 33](16Nov2026%20-%20T566%20-%20the%20relearners%20caret%20arrows%20-%2033.png)
+
+### 16Nov2026 - T574 - the ladders down a hole - 34
+
+T-574: the ladders down a hole in DEADSTACK (and UMBRAL ASCENT, THE WRONG WAY), MT. SMOULDER, NAVEL ROCK and TAPPOINT'S, before (pret's slant) and after, drawn by gbacaves with T-570's own ladder A RUNGS AND RAILS (imported from gbaislands, so they match GLAUCOUS ISLES', shown last); NAVEL ROCK's fall hole in THE DOTS as T-570's holes A BROKEN LIP. Footprints, rows, behaviours and collision kept; THE BLACKOUT untouched. DRAFT.
+
+![16Nov2026 - T574 - the ladders down a hole - 34](16Nov2026%20-%20T574%20-%20the%20ladders%20down%20a%20hole%20-%2034.png)

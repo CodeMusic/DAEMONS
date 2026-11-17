@@ -1588,6 +1588,9 @@ def report():
     print("\n  T-546 THE BLACKOUT in purple with threads of green: DRAFT directions %s (--blackout); approved: %s" % (
         ", ".join("%s %s" % (d.upper(), v["title"]) for d, v in BLACKOUT_DIRS.items()),
         ", ".join(sorted(BLACKOUT_APPROVED)) or "none -- nothing written"))
+    print("\n  T-574 the ladders down a hole, in T-570's approved ladder (gbaislands' drawing): %s" % "; ".join(
+        "%s %s (tiles %s)" % (ts, ", ".join("0x%X %s" % bk for bk in T574_BLOCKS[ts]), sorted(t574_tiles(ts)))
+        for ts in T574_BLOCKS))
     print("\n  OTHER CAVE, a light per entry (a cycle of four, built):")
     for l in PER_ENTRY:
         print("      " + "\n        ".join(_wrap(l, 108)))
@@ -1610,11 +1613,11 @@ T447_PLANT = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20
 #  drew them -- the rock clusters, rubble, ladders, hole rims and slide ice -- are drawn there, each cave in its own
 #  grain, over this look's colours. The write below keeps them as the engine has them, so it can never revert either
 #  pick (found by check_generators --writes, 2026-11-16); gbaislands' report checks each set is exactly the union of
-#  its two picks' tiles in that tileset.
+#  its two picks' tiles in that tileset. The ladders down a hole (t574_tiles, below) are this tool's again (T-574).
 T569_ISLANDS = {
-    "cave": {3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 19, 20, 22, 24, 26, 27, 28, 29, 110, 111, 126, 127, 142, 143, 158, 159,
+    "cave": {3, 4, 6, 7, 10, 11, 12, 13, 19, 20, 22, 26, 27, 28, 29, 110, 111, 126, 127, 142, 143, 158, 159,
              174, 175, 176, 192, 193, 208, 209, 226, 227, 228, 229, 242, 243, 244, 245, 252, 253, 254, 255},
-    "digletts_cave": {2, 3, 4, 9, 10, 11, 12, 13, 17, 19, 20, 24, 26, 27, 28, 29, 110, 111, 126, 127, 158, 159, 174,
+    "digletts_cave": {2, 3, 4, 10, 11, 12, 13, 17, 19, 20, 26, 27, 28, 29, 110, 111, 126, 127, 158, 159, 174,
                       175, 184},
     "mt_ember": {3, 4, 10, 11, 12, 13, 19, 20, 26, 27, 28, 29, 79, 94, 110, 111, 126, 127, 142, 143, 158, 159, 166, 174,
                  175, 181, 182, 226, 227, 230, 231, 242, 243, 247, 252, 253, 254, 255},
@@ -1626,6 +1629,64 @@ T569_ISLANDS = {
                         249, 250, 251, 252, 253, 254, 255, 256, 257, 258, 259, 260, 261, 262, 263, 272, 273, 274, 275,
                         276, 277, 278, 279},
 }
+
+
+#  T-574 (the user, 2026-11-16, by multiple choice): the ladders down a hole in DEADSTACK / UMBRAL ASCENT / THE WRONG
+#  WAY, MT. SMOULDER, NAVEL ROCK and TAPPOINT'S, and NAVEL ROCK's fall hole, are this look's tiles and drew pret's
+#  slanted ladder; they are drawn as T-570's picks -- ladders A RUNGS AND RAILS down a hole BROKEN LIP -- by
+#  gbaislands' own drawing (imported, never copied: draw_ladder_hole and hole with its LAD/HOLE roles, so GLAUCOUS
+#  ISLES' ladder down a hole, T-570's, and these always agree). One block each, the layer-0 tiles it alone uses; only
+#  indices the block already uses; no block, row, flip, behaviour or collision moves. THE BLACKOUT has no ladder down
+#  a hole and keeps T-546's threads; THE TUNNEL is gbadwellings'. gbaislands' T-569 pick leaves these tiles (its
+#  picked() drops T574_TILES), so neither write reverts the other.
+T574_BLOCKS = {"cave": [(0x285, "ladder")], "mt_ember": [(0x2AF, "ladder")], "digletts_cave": [(0x2AF, "ladder")],
+               "navel_rock": [(0x2AF, "ladder"), (0x286, "hole")]}
+
+
+def t574_tiles(ts):
+    """the secondary tiles T-574 draws in TS: every tile of its blocks' layer 0 (each used by no other drawing)"""
+    if ts not in T574_BLOCKS:
+        return set()
+    mt = open(os.path.join(GBA, SEC + ts, "metatiles.bin"), "rb").read()
+    return {(v & 0x3FF) - 640 for b, _ in T574_BLOCKS[ts] for v in entries(mt, b - 640)[:4] if v & 0x3FF >= 640}
+
+
+def _islands():
+    """gbaislands, imported late (it imports this module, and gbatowns reads its flags at import)"""
+    if "gbaislands" not in sys.modules:
+        sys.modules.setdefault("gbacaves", sys.modules[__name__])
+        saved, sys.argv = sys.argv, sys.argv[:1]
+        try:
+            import gbaislands
+        finally:
+            sys.argv = saved
+    return sys.modules["gbaislands"]
+
+
+def ladders_574(cave, new):
+    """T574_BLOCKS drawn over NEW (this look's tiles, the keep sets applied) in T-570's approved ladder and hole:
+    {tile: what}. Each block's layer 0 is cut into a 16x16 canvas, drawn whole, and cut back."""
+    I = _islands()
+    what = {}
+    for b, kind in T574_BLOCKS.get(cave.ts, ()):
+        e = entries(cave.mt, b - 640)[:4]
+        pix, own = [[0] * 16 for _ in range(16)], {}
+        for q, v in enumerate(e):
+            t = (v & 0x3FF) - 640
+            for ty in range(8):
+                for tx in range(8):
+                    sx, sy = (7 - tx if v & 0x400 else tx), (7 - ty if v & 0x800 else ty)
+                    Y, X = (q // 2) * 8 + ty, (q % 2) * 8 + tx
+                    pix[Y][X] = new[t][sy * 8 + sx]
+                    own[(Y, X)] = (t, sy * 8 + sx)
+        if kind == "ladder":
+            out = I.draw_ladder_hole(cave.ts, b)(pix, I.APPROVED_570["ladders"])
+        else:
+            out = I.hole(pix, I.APPROVED_570["holes"], I.HOLE[(cave.ts, b)])
+        for (Y, X), (t, k) in own.items():
+            new[t][k] = out[Y][X]
+            what[t] = "T-574 %s down a hole (0x%X)" % ("a ladder" if kind == "ladder" else "the fall", b)
+    return what
 
 
 def write_engine():
@@ -1657,6 +1718,8 @@ def write_engine():
                 new[t] = list(cave.now[t])           # gbalandmarkrooms' (T-447 pair 5), as the engine has them
         for t in T569_ISLANDS.get(ts, ()):
             new[t] = list(cave.now[t])               # gbaislands' (T-569, T-570), as the engine has them
+        new = [list(p) for p in new]
+        what.update(ladders_574(cave, new))          # T-574: T-570's ladder down a hole, over this look
         #  the footprint rule is this look's; T-570's hand-drawn ladders and holes are not held to it, and are kept
         held = T569_ISLANDS.get(ts, set())
         if any((a == 0) != (b == 0) for t in range(cave.n) if t not in held for a, b in zip(new[t], cave.van[t])):

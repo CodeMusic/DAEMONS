@@ -1232,8 +1232,9 @@ def draw_stall(pix, opt):
 
 
 #  NOT objects here: the ladders down a hole in DEADSTACK, MT. SMOULDER, NAVEL ROCK and TAPPOINT'S (0x285/0x2AF) and
-#  NAVEL ROCK's fall hole are the cave look's (gbacaves) and still draw pret's slanted ladder -- if a ladder option is
-#  picked, they want the same ladder there, drawn by that tool (the T-570 report names it)
+#  NAVEL ROCK's fall hole are the cave look's (gbacaves). T-574 (2026-11-16) draws them there with this tool's own
+#  draw_ladder_hole and hole, in APPROVED_570's ladder and hole, so they always match GLAUCOUS ISLES' (below); T-569's
+#  pick leaves their tiles (picked() drops gbacaves.t574_tiles)
 #  the objects: (kind, tileset, what, grid of blocks, layer, drawing). A pair of blocks that share tiles (0x2F6/0x2F7, a
 #  ladder's 0x296/0x297) is drawn once: the other shows the same tiles, mirrored or not
 OBJECTS_570 = []
@@ -1697,7 +1698,8 @@ def picked(ts, option):
         town, _, _, _ = census(ts)
         st = [s for s in options(ts) if s[0] == option][0][3]
         new, _ = redraw(town, st)
-        _PICKED[(ts, option)] = town, {t: new[t] for t in range(len(new)) if new[t] != town.now[t]}
+        cave574 = C.t574_tiles(ts)          # T-574: the ladders down a hole are gbacaves' (T-570's ladder, drawn there)
+        _PICKED[(ts, option)] = town, {t: new[t] for t in range(len(new)) if new[t] != town.now[t] and t not in cave574}
     return _PICKED[(ts, option)]
 
 
