@@ -97,3 +97,9 @@ T-575 (DRAFT): TOUCH -- the TEA handed over with a STRATUM daemon following brin
 T-575 (DRAFT): TOUCH -- the TEA handed over with a STRATUM daemon following brings 'A read: this was held a long time / before it was given.', with an ENTROPY one nothing; at night in DAEMON TOWER (HALFTONE's grey) with a LATENT one, 'A read: rain on stone. / It is dry in here.', once that night
 
 ![17Nov2026 - T575 - TOUCH, a gift and rain on stone - 19](17Nov2026%20-%20T575%20-%20TOUCH%2C%20a%20gift%20and%20rain%20on%20stone%20-%2019.png)
+
+### 17Nov2026 - T565 - overworld music as built - 20
+
+T-565 batch 5, the everyday overworld music as built (engine 410682153): the eleven MIDIs the ROM is compiled from, read back -- voice C, the harp and flute over the cartridge; the nine slots in place and DOLDRUM's and LURID's own (DRAFT)
+
+![17Nov2026 - T565 - overworld music as built - 20](17Nov2026%20-%20T565%20-%20overworld%20music%20as%20built%20-%2020.png)
