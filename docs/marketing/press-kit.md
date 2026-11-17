@@ -4,7 +4,7 @@ title: DAEMONS press kit
 
 # How to use this kit {.t-CONTEXT .unnumbered}
 
-This is the promotional companion to *The Fourth Review* (revised for release **v11.361.1**, design bible **v11.362**, 14 November 2026). The review says what is true and what is not yet; this kit says it out loud, and it **only says things the
+This is the promotional companion to *The Fourth Review* (revised for release **v11.382.1**, design bible **v11.382**, 17 November 2026). The review says what is true and what is not yet; this kit says it out loud, and it **only says things the
 review found to be true**. Where a feature is in testing, the copy says so.
 
 Three kinds of page are in here:
@@ -79,9 +79,9 @@ mind that answers in time. The player sets how far a thought may travel: anywher
 :::
 
 ::: callout
-**Honest footing for the third pillar** (revised for v11.361). The AX630 and LM Studio paths run. Linking any
-endpoint, from the hub or the phone, and the phone's on-device mind are **built and in testing -- not yet tried by
-hand**, and the Tiiny is built and not yet run on the device. Say **"in testing"** for those until they have been.
+**Honest footing for the third pillar** (revised for v11.365). The AX630, LM Studio and **Tiiny** paths run -- the
+Tiiny now answers on the hub. Linking any endpoint, from the hub or the phone, and the phone's on-device mind are
+**built and in testing -- not yet tried by hand**. Say **"in testing"** for those until they have been.
 And until the review's output filter lands, never promote linking an *uncensored* model.
 :::
 
@@ -94,10 +94,10 @@ And until the review's output filter lands, never promote linking an *uncensored
 | **Editions** | **CONTENT** (made from FireRed) and **CONTEXT** (made from LeafGreen) |
 | **Platforms** | Your own cartridge's ROM, patched (mGBA, Delta, a flash cart); in a browser on your own network (the *playground*); **one app for iPhone, iPad and Apple Silicon Mac** -- game and companion together (in TestFlight testing) |
 | **Companion hosts** | Phone and home-screen widget; LilyGO T-Embed, T-Deck, T-Watch S3 and Ultra, T-Display; M5Stack Stick, Core, Dial, Cardputer, Tab5; ESP32-S3-BOX-3 as a Home Assistant voice |
-| **Local AI** | AX630 module on the hub; LM Studio via the companion server; Tiiny (built, first run pending); any OpenAI-compatible endpoint -- Ollama, LM Studio -- from the hub or the phone, and the phone's on-device model (*in testing*) |
+| **Local AI** | AX630 module on the hub; LM Studio via the companion server; Tiiny (runs on the hub); any OpenAI-compatible endpoint -- Ollama, LM Studio -- from the hub or the phone, and the phone's on-device model (*in testing*) |
 | **Price** | Free. A fan project, never sold |
 | **What you need** | A FireRed or LeafGreen you own. **No ROM is distributed** -- a patch is applied to yours |
-| **Current release** | v11.361.1 (14 November 2026), built against design bible v11.361 |
+| **Current release** | v11.382.1 (17 November 2026) |
 | **Manuals** | MICRO-START (5 pp) · QUICK-START (25 pp, large type) · the player's manual · *Playing together* · *A bigger mind* (Tiiny) · *The Old Word* (why DAY-mons) · *Principles of Mind* (the in-game school's textbook) |
 | **Source** | github.com/CodeMusic -- DAEMONS (design), pokefirered-daemons (the game), daemons-companion (app, server, firmware), daemons-playground (browser) |
 
