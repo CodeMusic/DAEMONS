@@ -166,6 +166,9 @@ ARGS = {
     #  TYPE'S VOICE shaped by B THE NAME, the user's pick 2026-11-17; APPROVED is empty while they are a DRAFT), and its
     #  report exits 1 when the engine drifts from an approved cry.
     "gencries": [["--approved"]],
+    #  T-490 step 3: gbasplit, the same shape -- its write writes APPROVED (contact is physical, with the user's ten
+    #  keeps of 2026-11-18) into battle_moves.h's .split lines, so a sandboxed write changes nothing when the engine is right.
+    "gbasplit": [["--approved"]],
 }
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
 SKIPPED = {name: "docs/private/notebook_docs.json is missing (private, not in git), and gbadocs without it is not a check"

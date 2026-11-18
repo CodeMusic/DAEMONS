@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""T-490 step 3: CONTACT IS PHYSICAL, applied to the routines step 2 left as candidates. DRAFT.
+"""T-490 step 3: CONTACT IS PHYSICAL, applied to the routines step 2 left as candidates. Approved 2026-11-18.
 
     python3 tools/gbasplit.py                       # report: every routine the rule would move, and the judgement calls
-    python3 tools/gbasplit.py --write --approved    # write APPROVED into engineGba's battle_moves.h (none yet)
+    python3 tools/gbasplit.py --write --approved    # write APPROVED into engineGba's battle_moves.h (the ruling of 2026-11-18)
 
 THE RULE (the user, 2026-10-30; recorded at struct BattleMove's .split in include/pokemon.h): a routine that touches
 the foe is PHYSICAL; beams, sound, signals, data and anything thrown or spread without touching are SPECIAL. The engine
@@ -42,8 +42,20 @@ NAMES = os.path.join(GBA, "src/data/text/move_names.h")
 TYPES = os.path.join(GBA, "src/battle_main.c")
 DESCS = os.path.join(GBA, "src/move_descriptions.c")
 
-#  The user's ruling. None while T-490 step 3 is a DRAFT: --write writes nothing.
-APPROVED = None
+#  The user's ruling (2026-11-18, by multiple choice: "every recommendation"). 67 of the 77 go to the rule's side;
+#  these ten stay where they are, each for the reason on the sheet (JUDGEMENT below).
+APPROVED = {"date": "2026-11-18", "keep": {
+    "ICE_PUNCH":    "freezing weights is data; the contact flag is vanilla's punch",
+    "VINE_WHIP":    "backpropagation is a signal; the contact flag is vanilla's whip",
+    "BITE":         "blocking light touches nothing",
+    "PETAL_DANCE":  "training is data",
+    "CLAMP":        "a channel is BANDWIDTH's own word (1.6d)",
+    "DRAGON_CLAW":  "an emergence touches nothing",
+    "OVERHEAT":     "its SP. ATK -2 cost has to land on the side it strikes from",
+    "EARTHQUAKE":   "mass on a body (Gen 4's reading too); SCORN keeps his fight",
+    "MAGNITUDE":    "as UPHEAVAL",
+    "SKY_ATTACK":   "the body falls on them, as REBOUND does",
+}}
 
 #  The judgement calls: MOVE -> (the group it is ruled with, why the rule is not the whole answer, reading A (the
 #  rule's side), reading B (stays), the recommendation: "rule" or "keep"). A group is ruled as one.
@@ -154,13 +166,16 @@ def report():
         print("  %-13s %-9s %3d/%-3s %-10s %-8s -> %-8s MOVE_%s%s"
               % (r["name"], r["type"], r["power"], r["acc"] or "--", "contact" if r["contact"] else "no contact",
                  r["split"], rule, r["move"], mark))
+    if not cs:
+        print("  nothing left to move: every damaging routine is on the rule's side or kept by ruling")
     to_p = sum(1 for _, s in cs if s == "PHYSICAL")
     js = [r for r, _ in cs if r["move"] in JUDGEMENT]
     groups = sorted({JUDGEMENT[r["move"]][0] for r in js})
     keep_rec = sum(1 for r in js if JUDGEMENT[r["move"]][4] == "keep")
-    print("  %d routines move: %d to PHYSICAL, %d to SPECIAL; %d of them in %d judgement calls (%s)"
-          % (len(cs), to_p, len(cs) - to_p, len(js), len(groups), ", ".join(groups)))
-    print("  following every recommendation, %d move and %d stay" % (len(cs) - keep_rec, keep_rec))
+    if cs:
+        print("  %d routines move: %d to PHYSICAL, %d to SPECIAL; %d of them in %d judgement calls (%s)"
+              % (len(cs), to_p, len(cs) - to_p, len(js), len(groups), ", ".join(groups)))
+        print("  following every recommendation, %d move and %d stay" % (len(cs) - keep_rec, keep_rec))
     named = {r["move"]: r for r in rs}
     for mv, why in sorted((APPROVED or {}).get("keep", {}).items()):
         r = named.get(mv, {"name": mv, "split": "?"})
@@ -184,6 +199,9 @@ def write():
             sys.exit("gbasplit: %s has no .split line; nothing written" % mv)
         out += [src[pos:a], new]
         pos, n = b, n + 1
+    if n == 0:
+        print("  nothing to write: every routine already stands where the ruling puts it")
+        return 0
     out.append(src[pos:])
     text = "".join(out)
     if read(MOVES) != src:
