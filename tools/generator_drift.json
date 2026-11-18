@@ -106,8 +106,10 @@
   ]
  },
  "gbacivictown": {
-  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 967863e4d T-164 pilot: Doldrum's house kit restyled through the sprite server; and b3cc6cb50 T-438 batch A: BRAZEN's blocks 0x392/0x393 moved onto four freed saffron_city slots so nothing draws tiles 376-383 (a write puts them back and the door frames return); and f8fa96614 T-438 batch F: HALFTONE's leftovers redrawn by gbatowns.py (the roofs dotted whole, a sixteen-slot tile row added for the roofs' copy of 702), which a write would undo (found by check_generators --writes 2026-10-24); and 27e785a73 T-447 pair 2: DAEMON TOWER took tile slots in lavender_town, so a write lays the CHECKPOINT/REPO detail tiles into other slots and renumbers metatiles 226-260 (the same picture; T-476 checked it block by block), while its tiles.png write still redraws blocks 16, 17 and 20",
+  "why": "STALE -- never --write it on the whole tree: its files were changed after it last ran, by 967863e4d T-164 pilot: Doldrum's house kit restyled through the sprite server; and b3cc6cb50 T-438 batch A: BRAZEN's blocks 0x392/0x393 moved onto four freed saffron_city slots so nothing draws tiles 376-383 (a write puts them back and the door frames return); and f8fa96614 T-438 batch F: HALFTONE's leftovers redrawn by gbatowns.py (the roofs dotted whole, a sixteen-slot tile row added for the roofs' copy of 702), which a write would undo (found by check_generators --writes 2026-10-24); and 27e785a73 T-447 pair 2: DAEMON TOWER took tile slots in lavender_town, so a write lays the CHECKPOINT/REPO detail tiles into other slots and renumbers metatiles 226-260 (the same picture; T-476 checked it block by block), while its tiles.png write still redraws blocks 16, 17 and 20; and T-438 batch F's VERDIGRIS leftovers (f8fa96614), T-562's last pret tiles (0dabcb96e) and T-573's VERDIGRIS DEPT. STORE landmark (907d1b241, 62de521c0, tools/gbalandmarks.py) redrew celadon_city after it last wrote, so its write lays its detail tiles back over them -- 46 blocks 0x375-0x3a3 and about 5,900 pixels of tiles 139-341 (found by check_generators --writes, T-588)",
   "files": [
+   "engine:data/tilesets/secondary/celadon_city/metatiles.bin",
+   "engine:data/tilesets/secondary/celadon_city/tiles.png",
    "engine:data/tilesets/secondary/cerulean_city/metatiles.bin",
    "engine:data/tilesets/secondary/cerulean_city/tiles.png",
    "engine:data/tilesets/secondary/lavender_town/metatiles.bin",
@@ -193,12 +195,6 @@
    "engine:data/tilesets/secondary/vermilion_gym/tiles.png",
    "engine:data/tilesets/secondary/viridian_gym/tiles.png",
    "engine:tileset_rules.mk"
-  ]
- },
- "gbatowns": {
-  "why": "KNOWN -- read before a whole-tree --write --approved: its batch C rule copies a redrawn general tile's drawing into a town's copy of it, and T-542 batch 2 (engine 2ec006aa1, 2026-11-10) redrew general tiles 552/568 (the blue house's timber corner posts) after gbatowns last wrote, so its write would carry the new post into FOUR ISLAND's two copies (sevii_islands_45 tiles 70/86, blocks 0x2B8/0x2BA, 13 pixels, one shade 9->8). The tool is the consistent side; the art is left as it is until the user wants FOUR ISLAND's houses to match (T-447 pair 6's finding, 2026-11-11)",
-  "files": [
-   "engine:data/tilesets/secondary/sevii_islands_45/tiles.png"
   ]
  },
  "genbacks": {

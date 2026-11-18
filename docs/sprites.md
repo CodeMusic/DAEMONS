@@ -4,7 +4,7 @@
 
 | sprites | vanilla shipped | redrawn | recoloured | still vanilla | added | done |
 |---|---|---|---|---|---|---|
-| overworld people | 96 | 96 | 0 | 0 | 67 | **100%** |
+| overworld people | 96 | 96 | 0 | 0 | 72 | **100%** |
 | trainer portraits | 146 | 146 | 0 | 0 | 10 | **100%** |
 | trainer back pics | 6 | 6 | 0 | 0 | 0 | **100%** |
 | intro portraits | 4 | 4 | 0 | 0 | 0 | **100%** |
@@ -14,8 +14,8 @@
 | daemon icons | 387 | 386 | 0 | 1 | 12 | **100%** |
 | overworld daemons | 42 | 42 | 0 | 0 | 0 | **100%** |
 | overworld objects | 19 | 19 | 0 | 0 | 6 | **100%** |
-| ***the people*** | 258 | 258 | 0 | 0 | 77 | ***100.0%*** |
-| ***every sprite*** | 1476 | 1475 | 0 | 1 | 121 | ***99.9%*** |
+| ***the people*** | 258 | 258 | 0 | 0 | 82 | ***100.0%*** |
+| ***every sprite*** | 1476 | 1475 | 0 | 1 | 126 | ***99.9%*** |
 
 ## The towns
 
@@ -28,8 +28,8 @@
 | **SLATE** | stone, a writing surface; the museum of dead hardware | 10 | 0 | 6 | 100% |
 | **DOLDRUM** | a becalmed sea, low spirits | 15 | 0 | 7 | 100% |
 | **ARDOR** | flush and heat, brash zeal; the port | 10 | 0 | 6 | 100% |
-| **HALFTONE** | dots that only look like grey; the tower | 11 | 0 | 5 | 100% |
-| **VERDIGRIS** | green corrosion on bronze; Corpus rotting beneath | 12 | 0 | 8 | 100% |
+| **HALFTONE** | dots that only look like grey; the tower | 12 | 0 | 6 | 100% |
+| **VERDIGRIS** | green corrosion on bronze; Corpus rotting beneath | 13 | 0 | 9 | 100% |
 | **LURID** | garish glow; spectacle and toxicity | 9 | 0 | 5 | 100% |
 | **BRAZEN** | brass over base metal; corporate capture | 13 | 0 | 7 | 100% |
 | **QUICKSILVER** | mercury: alive, unstable; the ruined lab | 14 | 0 | 6 | 100% |

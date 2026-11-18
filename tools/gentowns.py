@@ -493,7 +493,10 @@ def full_palette(colours):
     return [KEY] + list(colours) + [(255, 255, 255), (0, 0, 0)]
 
 
-KEEP_SCRIPTS = {"CheckpointFloor2_EventScript_CompanionLemur"}   # characters, not townsfolk (T-404)
+#  characters, not townsfolk: T-404's companion lemur on every CHECKPOINT 2F, and T-578's KINDRED, the one badger who
+#  pours two cups in CELADON's condominiums and is met again in LAVENDER TOWN (a write made him each town's adult, T-588)
+KEEP_SCRIPTS = {"CheckpointFloor2_EventScript_CompanionLemur",
+                "CeladonCity_Condominiums_1F_EventScript_KindredBadger", "LavenderTown_EventScript_KindredBadger"}
 
 
 def plan_maps(prefix, name, roles=ROLES):

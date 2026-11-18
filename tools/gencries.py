@@ -170,9 +170,20 @@ def voice(label):
     import numpy as np
     if label in _V:
         return _V[label]
+    #  T-588: the voice is what the BUILD makes of the .wav (audio_rules.mk: wav2agb -b), made here from the .wav every
+    #  time -- never the .bin a build left behind, which a fresh clone or check_generators' sandbox does not have (and
+    #  whose fallback below renders every cry differently: --writes read all 399 as drifting), and which can be stale.
     b = os.path.join(SAMPLES, label + ".bin")
+    td = None
+    if os.access(WAV2AGB, os.X_OK):
+        td = tempfile.mkdtemp(prefix="gencries-voice-")
+        b = os.path.join(td, label + ".bin")
+        subprocess.run([WAV2AGB, "-b", os.path.join(SAMPLES, label + ".wav"), b], check=True, capture_output=True)
     if os.path.exists(b):
         d = open(b, "rb").read()
+        if td:
+            import shutil
+            shutil.rmtree(td, ignore_errors=True)
         flags, freq, loop, size = struct.unpack("<IIII", d[:16])
         x = np.frombuffer(d[16:16 + size], dtype=np.int8).astype(float) / 128
         _V[label] = (x, freq / 1024, loop if flags & 0x40000000 else None)
