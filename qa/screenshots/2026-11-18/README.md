@@ -157,3 +157,9 @@ T-591 (DRAFT): the seven day symbols at 32x32 for the game, each with each of th
 All 48 songs of T-565 batches 2, 5, 8, 9 and 12 heard on debug ROM 33353408: each capture nearest its own draft (DTW over chroma), and each slot's song header in RAM this build's own.
 
 ![18Nov2026 - T565 - all 48 songs heard - 29](18Nov2026%20-%20T565%20-%20all%2048%20songs%20heard%20-%2029.png)
+
+### 18Nov2026 - T490 - contact is physical, applied - 30
+
+v11.401.1, T-490 step 3: the user's ruling applied -- 67 routines change side, 10 kept; the blast and Thick Fat follow the hit's side; PAGE FAULT's words (DRAFT); every leader matchup as recommended
+
+![18Nov2026 - T490 - contact is physical, applied - 30](18Nov2026%20-%20T490%20-%20contact%20is%20physical%2C%20applied%20-%2030.png)
