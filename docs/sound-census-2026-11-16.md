@@ -12,6 +12,36 @@ the game never reaches, or a reference only in the wireless, link, Mystery Gift 
 "How often a player hears it" is estimated from the structure of the game (how many maps, how many trainers, which
 events). No play-time data was recorded.
 
+## Where it stands, 2026-11-18: the twelve batches done
+
+*Updated by the Musical Instruments lane after T-565's last batch. The rest of this file is the census as taken on
+2026-11-16, kept as the record of where the work began.*
+
+| # | Batch | Lane | Released | Tool |
+|---|---|---|---|---|
+| 1 | menu and UI sounds | game | v11.385.1 | `genuisounds.py` |
+| 2 | battle music, nine slots | instruments | v11.386.1 | `genbattlemusic.py` |
+| 3, 7 | fanfares and jingles; the toy piano; the pitched sounds | instruments | v11.384.1 | `genfanfares.py` |
+| 4 | battle sounds apart from moves | game | v11.386.1 | `genuisounds.py --batch 4` |
+| 5 | everyday overworld music, with LURID's and DOLDRUM's own | instruments | v11.387.1 | `genoverworldmusic.py` |
+| 6 | field sounds | game | v11.388.1 | `genuisounds.py --batch 6` |
+| 8 | story set-pieces, the credits, THE WALLED GARDEN's own | instruments | v11.388.1 | `genstorymusic.py` |
+| 9 | the islands | instruments | v11.390.1 | `genislandmusic.py` |
+| 10 | move sounds | game | v11.389.1 | `genuisounds.py` |
+| 11 | cries, all 388 | game | v11.391.1 | (the game lane's) |
+| 12 | our own instruments under voicegroup191 and the dawn chorus | instruments | v11.392.1 | `genbank.py` |
+
+**Every song and sound effect in the game is ours now, except these.** *Music, 23 slots still pret's:* the six maps left on
+`MUS_FUCHSIA` (the Ember Spa, the Sea Cottage, a house each in HALFTONE and ARDOR, two on SIX ISLAND's water path) and
+the two game corners' `MUS_GAME_CORNER` with its jingles (`MUS_SLOTS_WIN`, `MUS_SLOTS_JACKPOT`, `MUS_TOO_BAD`); the
+union room; scripted scenes (`MUS_FOLLOW_ME` at QUICKSILVER, `MUS_JIGGLYPUFF` in SLATE's CHECKPOINT, `MUS_SCHOOL`,
+`MUS_PHOTO`, `MUS_TEACHY_TV_MENU`/`_SHOW`, `MUS_OBTAIN_ITEM`); the legendary and link battle `MUS_RS_VS_TRAINER` and
+`MUS_RS_VS_GYM_LEADER`; and what an event ticket or nothing reaches (`MUS_ENCOUNTER_DEOXYS`, `MUS_VS_DEOXYS`,
+`MUS_MYSTERY_GIFT`, `MUS_BERRY_PICK`, `MUS_POKE_JUMP`, `MUS_OBTAIN_BERRY`, `MUS_INTRO_FIGHT`, `MUS_HEAL_UNUSED`).
+*Sound effects, 43 still pret's:* mostly the wireless games, contests and berries the build never reaches
+(`SE_BALLOON_*`, `SE_CONTEST_*`, `SE_POKE_JUMP_*`, `SE_BERRY_BLENDER`, `SE_POKENAV_*`, the truck), the game corner's
+roulette, and eleven move sounds no routine of ours plays. **Whether any of these is drafted is the user's call.**
+
 ## Headline
 
 | | Constants | Ours | Pret's, still played | Pret's, not played |
