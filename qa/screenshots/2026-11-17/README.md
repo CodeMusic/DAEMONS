@@ -145,3 +145,9 @@ T-578 (DRAFT): no badger before the book; with it, the badger in CELADON's condo
 T-565 batch 8, the story set-pieces as built in v11.388.1 (engine 586ed7e8b): the sixteen MIDIs the ROM is compiled from, read back -- voice C; THE WALLED GARDEN's own song and the credits medley (DRAFT)
 
 ![17Nov2026 - T565 - story music as built - 27](17Nov2026%20-%20T565%20-%20story%20music%20as%20built%20-%2027.png)
+
+### 17Nov2026 - T565 - island music as built - 28
+
+T-565 batch 9, the islands as built in v11.390.1 (engine 7e6abcda8): the seven MIDIs the ROM is compiled from, read back -- voice C, in B-flat and B (DRAFT)
+
+![17Nov2026 - T565 - island music as built - 28](17Nov2026%20-%20T565%20-%20island%20music%20as%20built%20-%2028.png)
