@@ -85,3 +85,9 @@ v11.396.1, T-585 THE GARDEN OF ECHOES in ROUTE 24's grove (DRAFT): the hare's on
 v11.396.1, T-585 THE GARDEN OF ECHOES in ROUTE 24's grove (DRAFT): the hare's one visit, the magpie and the cold stone with its purple read, the mole's three visits, PLAY with the mole there, and the grove before the key
 
 ![18Nov2026 - T585 - the garden of echoes - 14](18Nov2026%20-%20T585%20-%20the%20garden%20of%20echoes%20-%2014.png)
+
+### 18Nov2026 - T584 - cries of their own - 15
+
+v11.397.1, T-584 cries of their own (DRAFT): the eleven that borrowed a cry, now each its own by A+B, and HUNCH vs MIME before and after the no-twins rule
+
+![18Nov2026 - T584 - cries of their own - 15](18Nov2026%20-%20T584%20-%20cries%20of%20their%20own%20-%2015.png)
