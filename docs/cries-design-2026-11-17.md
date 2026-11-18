@@ -3,6 +3,9 @@
 *2026-11-17. Options for the user to choose from, by ear. **Nothing is built and nothing has gone into the engine.**
 Every example below is a DRAFT.*
 
+**Picked (the user, 2026-11-17): A, shaped by B** -- the type's motif, its order and rhythm from the name, a line
+sharing a contour, lower and slower as it evolves. All 388 to be drafted by `tools/gencries.py`, DRAFT.
+
 The census (`docs/sound-census-2026-11-16.md`) left the cries for last: **388 of them, every one still pret's**, heard
 at least twice a battle, at every switch-in, on every INDEX page and party screen. A cry is the one sound that belongs
 to a single daemon, so it is a design question before it is an audio one: *what does a daemon say when it arrives?*
