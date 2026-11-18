@@ -348,6 +348,16 @@ def same_issue(have, want, statuses):
     return all(hv.get(c["id"], "") == c["value"] for c in want["custom_fields"])
 
 
+def keep_place(want, have, p):
+    """A carried hand edit changes a ticket's words, never its place: Run and Order stay Redmine's."""
+    held = {c["id"]: c.get("value") for c in have.get("custom_fields", [])}
+    place = {p["fields"]["Run"], p["fields"]["Order"]}
+    want = dict(want)
+    want["custom_fields"] = [dict(c, value=held.get(c["id"], c["value"])) if c["id"] in place else c
+                             for c in want["custom_fields"]]
+    return want
+
+
 def sync(write, create_only=False, only=None):
     """Files -> Redmine, until the cut-over: creates what is missing, updates what differs, deletes nothing.
     create_only (after the cut-over, before each mirror): a row someone added to a TODO file by hand becomes a ticket
@@ -379,7 +389,9 @@ def sync(write, create_only=False, only=None):
                     rm.call("POST", "/issues.json", {"issue": want})
             elif create_only:
                 same += 1
-            elif not same_issue(have[key], want, statuses):
+            elif not same_issue(have[key], want, statuses) if not only else not same_issue(
+                    have[key], keep_place(want, have[key], p), statuses):
+                want = keep_place(want, have[key], p) if only else want
                 updated += 1
                 if write:
                     rm.call("PUT", f"/issues/{have[key]['id']}.json", {"issue": want})
@@ -406,7 +418,13 @@ def carry(since, write):
             continue
         _, before, _ = parse(project, old.read_text(encoding="utf-8"))
         was = {t["fields"]["Ticket"]: render_row(t) for t in before}
-        mine = [t["fields"]["Ticket"] for t in d["tickets"] if was.get(t["fields"]["Ticket"]) != render_row(t)]
+        # a row that matches Redmine is not a hand edit, even when it is new since the saved copy: a session that ran
+        # `new`/`close` and then `mirror --write` committed Redmine's own row (T-583..T-588, the night of 2026-11-18)
+        rm = Redmine()
+        now = {t["fields"]["Ticket"]: render_row(t)
+               for t in from_redmine(rm, project, d, {v: k for k, v in rm.statuses().items()})}
+        mine = [t["fields"]["Ticket"] for t in d["tickets"]
+                if was.get(t["fields"]["Ticket"]) != render_row(t) and now.get(t["fields"]["Ticket"]) != render_row(t)]
         print(f"{project}: {len(mine)} row(s) changed by hand since the last mirror{': ' + ' '.join(mine) if mine else ''}")
         keys |= set(mine)
     if keys:
