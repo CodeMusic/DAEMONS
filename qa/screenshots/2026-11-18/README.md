@@ -91,3 +91,9 @@ v11.396.1, T-585 THE GARDEN OF ECHOES in ROUTE 24's grove (DRAFT): the hare's on
 v11.397.1, T-584 cries of their own (DRAFT): the eleven that borrowed a cry, now each its own by A+B, and HUNCH vs MIME before and after the no-twins rule
 
 ![18Nov2026 - T584 - cries of their own - 15](18Nov2026%20-%20T584%20-%20cries%20of%20their%20own%20-%2015.png)
+
+### 18Nov2026 - T583 - each types own move sounds - 16
+
+v11.398.1, T-583 (DRAFT): COMET PUNCH's hit, MINIMIZE's stat tick and MOONLIGHT's light now play the move's own type's sound; green exact, yellow the nearest shape, white CONTENT's own
+
+![18Nov2026 - T583 - each types own move sounds - 16](18Nov2026%20-%20T583%20-%20each%20types%20own%20move%20sounds%20-%2016.png)
