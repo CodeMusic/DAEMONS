@@ -29,7 +29,7 @@ and Zero, the last of which plays the game itself.
 **From your own cartridge:** download a patch from [Releases](https://github.com/CodeMusic/DAEMONS/releases) and
 apply it to a *FireRed* or *LeafGreen* ROM you backed up yourself. [`ROM RELEASE/HOW_TO_PATCH.md`](ROM%20RELEASE/HOW_TO_PATCH.md)
 walks through it and lists the checksum each patch expects. **From source:** `./setup.sh`, then `./bindDaemons.sh`.
-No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.397.1**
+No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.398.1**
 (2026-11-17), and the newest thing in it that can be told about: our own songs play on our own instruments
 now, sixteen made for them. Before it, THE MARGINS had their music, in the two keys the spectrum leaves without a
 colour; the story had its music, from CRYSTAL CLEAR's first

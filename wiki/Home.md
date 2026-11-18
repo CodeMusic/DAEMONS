@@ -77,7 +77,7 @@ follows the real calendar's holidays, and gives each edition an instrument to pl
 daemons have all been drawn again, in a style of their own.
 
 Releases come often, each one named for the version of the design bible it was built against
-(see [Releases](Releases)); the newest is **v11.397.1**, from 2026-11-17, and
+(see [Releases](Releases)); the newest is **v11.398.1**, from 2026-11-17, and
 the newest thing in it that can be told about: our own songs play on our own instruments now, sixteen made for
 them. Before it, THE MARGINS had their music, in the two keys the spectrum leaves without a colour; the story had its music, from CRYSTAL CLEAR's first entrance to credits made of
 the game's own songs; before that, every battle had its music, our harp and flute over the
