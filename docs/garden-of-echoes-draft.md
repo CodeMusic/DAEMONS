@@ -117,7 +117,7 @@ a choice in itself.
 
 ## Picked
 
-**A, the three at the fir** (*the user, 2026-11-17, by multiple choice*). Filed as **T-585** for the game lane; in vision 3.4. ***The magpie found the stone, not took it*** (*the user, 2026-11-17*): *it was given the light as the hare was; its mistake is the keeping, not the taking.*
+**A, the three at the fir** (*the user, 2026-11-17, by multiple choice*). Filed as **T-585** for the game lane; in vision 3.4. ***Built in ROUTE 24's grove and released in v11.396.1*** (*engine c20d4b757*). ***The magpie found the stone, not took it*** (*the user, 2026-11-17*): *it was given the light as the hare was; its mistake is the keeping, not the taking.*
 
 ## Recommendation
 

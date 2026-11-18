@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.397 — 2026-11-18
+
+- Recorded from release v11.396.1 (525243bd, engine c20d4b757), which sealed v11.395.x:
+  - **THE GARDEN OF ECHOES, built** (T-585) in ROUTE 24's grove: the hare, the magpie, the cairn, the mole, its sheaf and the tracks, five new sprites. DRAFT. In 3.4, where the paragraph now names the grove.
+- Section 10: one Settled entry.
+
 ## v11.396 — 2026-11-18
 
 - Recorded from release v11.395.1 (84fbdbdf, engine 521ac9c67 and 3dd7db7fc), which sealed v11.392.x:
