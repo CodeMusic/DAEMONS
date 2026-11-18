@@ -60,7 +60,7 @@ The biggest tenants after it:
 |---|---|---|---|
 | `.rodata` | 4.8 MB | 6.6 MB | 1.8 MB |
 | `gfx_data` | 1.7 MB | 1.8 MB | 96.7 KB |
-| `.text` | 1.4 MB | 1.5 MB | 105.5 KB |
+| `.text` | 1.4 MB | 1.5 MB | 105.7 KB |
 | `script_data` | 496.9 KB | 547.8 KB | 50.9 KB |
 | `extra` | 0 B | 376.6 KB | 376.6 KB |
 | `multiboot_data` | 188.8 KB | 188.8 KB | 0 B |
