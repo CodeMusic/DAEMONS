@@ -1,0 +1,119 @@
+{
+ "rom": "debug",
+ "about": "T-586 DAVID's compass and the NEXUS arrival (DRAFT): DAVID told to keep reading (seasick, the ship waits), then to look out the porthole (PRUNE, the band's sheet and the COMPASS); the rose set wrong -- the needle spins -- then N E S W, where it holds and settles; a trip from ROUTE 1's grove fir into THE NEXUS before the compass is read (the Christmas tree) and after (beside ROUTE 1's own tree). The theatre's debug scratch save, its flags set in RAM; nothing is saved. Watch held at day.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued, DAVID not yet met",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1",
+    "repel 999",
+    "flag FLAG_GOT_HM01 0",
+    "flag FLAG_COMPASS_READ 0",
+    "flag FLAG_NOTEBOOK_LOOSE_KEY 0",
+    "var VAR_MAP_SCENE_VERMILION_CITY 0"
+   ]
+  },
+  {
+   "stop": "DAVID, rubbed, back at his book -- told KEEP READING: still seasick, and the ship waits",
+   "steps": [
+    "goto SSAnne_CaptainsOffice",
+    "close",
+    "wait 30",
+    "talk LOCALID_SS_ANNE_CAPTAIN 5",
+    "read",
+    "press A 1",
+    "finish",
+    "flagis FLAG_GOT_HM01 0",
+    "flagis FLAG_NOTEBOOK_LOOSE_KEY 0"
+   ]
+  },
+  {
+   "stop": "DAVID asked again -- told LOOK OUT THE PORTHOLE: he steadies, and gives PRUNE, the band's sheet and the COMPASS",
+   "steps": [
+    "talk LOCALID_SS_ANNE_CAPTAIN 1",
+    "read",
+    "press DOWN 1",
+    "press A 1",
+    "finish",
+    "flagis FLAG_GOT_HM01 1",
+    "flagis FLAG_NOTEBOOK_LOOSE_KEY 1",
+    "flagis FLAG_COMPASS_READ 0",
+    "talk LOCALID_SS_ANNE_CAPTAIN"
+   ]
+  },
+  {
+   "stop": "the COMPASS from the bag: its rose as given, M V H D, and the needle spinning",
+   "steps": [
+    "bag ITEM_COMPASS 1 first",
+    "open BAG",
+    "close",
+    "register ITEM_COMPASS",
+    "press SELECT 1",
+    "wait 30",
+    "burst \"the needle, spinning\" 4 8"
+   ]
+  },
+  {
+   "stop": "the rose set wrong: N, then E, then S, and the last letter a step short -- the needle still spins",
+   "steps": [
+    "hold UP 4", "wait 12",
+    "hold RIGHT 4", "wait 12",
+    "hold UP 4", "wait 12", "hold UP 4", "wait 12", "hold UP 4", "wait 12",
+    "hold UP 4", "wait 12", "hold UP 4", "wait 12", "hold UP 4", "wait 12",
+    "hold UP 4", "wait 12", "hold UP 4", "wait 12", "hold UP 4", "wait 12",
+    "hold RIGHT 4", "wait 12",
+    "hold UP 4", "wait 12", "hold UP 4", "wait 12", "hold UP 4", "wait 12", "hold UP 4", "wait 12",
+    "hold UP 4", "wait 12", "hold UP 4", "wait 12", "hold UP 4", "wait 12", "hold UP 4", "wait 12",
+    "hold UP 4", "wait 12", "hold UP 4", "wait 12", "hold UP 4", "wait 12",
+    "hold RIGHT 4", "wait 12",
+    "hold DOWN 4", "wait 12", "hold DOWN 4", "wait 12", "hold DOWN 4", "wait 12",
+    "hold DOWN 4", "wait 12", "hold DOWN 4", "wait 12", "hold DOWN 4", "wait 12",
+    "burst \"N E S X: still spinning\" 4 8",
+    "flagis FLAG_COMPASS_READ 0"
+   ]
+  },
+  {
+   "stop": "the rose set right, N E S W: it holds, and the needle settles north with one quiet sound -- the compass READ",
+   "steps": [
+    "hold DOWN 4",
+    "burst \"N E S W: settling\" 9 6",
+    "wait 60",
+    "shot \"settled\"",
+    "flagis FLAG_COMPASS_READ 1",
+    "press B 1",
+    "close"
+   ]
+  },
+  {
+   "stop": "before the compass is read: ROUTE 1's grove fir comes out at the Christmas tree",
+   "steps": [
+    "flag FLAG_COMPASS_READ 0",
+    "flag FLAG_FIR_IN_KEY 1",
+    "flag FLAG_NEXUS_VISITED 1",
+    "flag FLAG_ROUTE1_GROVE_FOUND 1",
+    "goto Route1_Grove 11 4",
+    "close",
+    "wait 30",
+    "talk 11,3",
+    "wait 90",
+    "shot \"THE NEXUS: by the Christmas tree\"",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "after the compass is read: ROUTE 1's grove fir comes out beside ROUTE 1's own tree",
+   "steps": [
+    "flag FLAG_COMPASS_READ 1",
+    "goto Route1_Grove 11 4",
+    "close",
+    "wait 30",
+    "talk 11,3",
+    "wait 90",
+    "shot \"THE NEXUS: by ROUTE 1's tree\"",
+    "expect Nexus 3 5"
+   ]
+  }
+ ]
+}

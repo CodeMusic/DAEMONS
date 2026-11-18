@@ -157,3 +157,45 @@ T-565 batch 9, the islands as built in v11.390.1 (engine 7e6abcda8): the seven M
 T-565 batch 12, our own instruments as built in v11.392.1 (engine 02b44f853): the sixteen samples the ROM includes, read back -- waveform (a loop shaded) and spectrum (DRAFT)
 
 ![17Nov2026 - T565 - our instruments as built - 29](17Nov2026%20-%20T565%20-%20our%20instruments%20as%20built%20-%2029.png)
+
+### 17Nov2026 - T586 - DAVID keep reading - 30
+
+T-586 (DRAFT): DAVID, rubbed, back at his book; told KEEP READING he stays seasick and the ship waits
+
+![17Nov2026 - T586 - DAVID keep reading - 30](17Nov2026%20-%20T586%20-%20DAVID%20keep%20reading%20-%2030.png)
+
+### 17Nov2026 - T586 - DAVID looks out the porthole - 31
+
+T-586 (DRAFT): asked again and told LOOK OUT THE PORTHOLE, DAVID steadies and gives PRUNE, the band's sheet and the COMPASS
+
+![17Nov2026 - T586 - DAVID looks out the porthole - 31](17Nov2026%20-%20T586%20-%20DAVID%20looks%20out%20the%20porthole%20-%2031.png)
+
+### 17Nov2026 - T586 - the rose as given - 32
+
+T-586 (DRAFT): the COMPASS in the bag, and its rose as given, M V H D, the needle spinning
+
+![17Nov2026 - T586 - the rose as given - 32](17Nov2026%20-%20T586%20-%20the%20rose%20as%20given%20-%2032.png)
+
+### 17Nov2026 - T586 - the rose set wrong - 33
+
+T-586 (DRAFT): the rose set N E S X, one letter short -- the needle still spins
+
+![17Nov2026 - T586 - the rose set wrong - 33](17Nov2026%20-%20T586%20-%20the%20rose%20set%20wrong%20-%2033.png)
+
+### 17Nov2026 - T586 - the rose set right - 34
+
+T-586 (DRAFT): N E S W -- the rose holds, the needle settles north with one quiet sound, the compass READ
+
+![17Nov2026 - T586 - the rose set right - 34](17Nov2026%20-%20T586%20-%20the%20rose%20set%20right%20-%2034.png)
+
+### 17Nov2026 - T586 - grove to NEXUS before the compass - 35
+
+T-586: before the compass is read, ROUTE 1's grove fir still comes out at the Christmas tree
+
+![17Nov2026 - T586 - grove to NEXUS before the compass - 35](17Nov2026%20-%20T586%20-%20grove%20to%20NEXUS%20before%20the%20compass%20-%2035.png)
+
+### 17Nov2026 - T586 - grove to NEXUS after the compass - 36
+
+T-586 (DRAFT): with the compass read, ROUTE 1's grove fir comes out beside ROUTE 1's own tree
+
+![17Nov2026 - T586 - grove to NEXUS after the compass - 36](17Nov2026%20-%20T586%20-%20grove%20to%20NEXUS%20after%20the%20compass%20-%2036.png)

@@ -117,6 +117,11 @@ UNIVERSES = {
 }
 
 
+def arrive_at(xy):
+    """T-586: where a player with the COMPASS read comes out by a grove's door -- the cell below its foot, facing it."""
+    return (xy[0], xy[1] + 2)
+
+
 def sign_at(x, y):
     """Beside a door's 2x2 crown at (x, y): right of it on the mainland's (left) side, left of it on the islands'."""
     return (x + 2, y + 1) if x < W // 2 else (x - 1, y + 1)
@@ -812,11 +817,22 @@ def scripts(states, ts):
             "\tgoto_if_eq VAR_RESULT, NO, EventScript_SingingFir_Stay",
             "\tcall_if_unset FLAG_NEXUS_VISITED, EventScript_SingingFir_FirstTime",
             "\tplayse SE_WARP_IN",
+            "\tgoto_if_unset FLAG_COMPASS_READ, EventScript_SingingFir_ToTheTree",
+            "\tspecial Compass_CurrentMap"] + \
+           ["\tgoto_if_eq VAR_RESULT, %s, EventScript_SingingFir_ToDoor%d" % (grove.map_const(rows[n]), k)
+            for k, (n, _) in enumerate(DOORS)] + \
+           ["EventScript_SingingFir_ToTheTree::",
             "\twarp %s, %d, %d" % ((MAPC,) + ARRIVE),
             "\twaitstate",
             "\trelease",
             "\tend",
-            "",
+            ""]
+    #  T-586: DAVID's COMPASS, read, brings a player out of a grove's fir beside that grove's own tree -- the cell its
+    #  door answers from (arrive_at); the pier's fir, and every fir without it, still at the Christmas tree.
+    for k, (n, xy) in enumerate(DOORS):
+        out += ["EventScript_SingingFir_ToDoor%d::" % k, "\twarp %s, %d, %d" % ((MAPC,) + arrive_at(xy)),
+                "\twaitstate", "\trelease", "\tend", ""]
+    out += [
             "EventScript_SingingFir_FirstTime::",
             "\tmsgbox Text_SingingFir_FirstTime",
             "\treturn",
