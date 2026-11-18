@@ -1,0 +1,194 @@
+{
+ "rom": "debug",
+ "about": "T-587 what DAVID's compass does once read (DRAFT): the rose opened from the field (SELECT, registered) in THE BLACKOUT -- dark, the needle the one faint glow, pointing to the way in; DOLDRUM CAVE before it is understood (spinning) and after (settled on the way in); far from home in DOLDRUM CITY (toward MOM's house); surfing off BLANCHE TOWN (the nearest shore); HALFTONE TOWN without the torn book's halves (home) and with both (DAEMON TOWER's door); and a BENCHMARK gym (it will not settle). The theatre's debug scratch save, its flags set in RAM; nothing is saved. Watch held at day.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued, the COMPASS read and registered",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1",
+    "repel 999",
+    "flag FLAG_COMPASS_READ 1",
+    "flag FLAG_UNDERSTANDING_FIRST 0",
+    "flag FLAG_GOT_HERMETIC_LAYER 0",
+    "flag FLAG_GOT_EUDAIMON_LAYER 0",
+    "bag ITEM_COMPASS 1 first",
+    "register ITEM_COMPASS"
+   ]
+  },
+  {
+   "stop": "THE BLACKOUT, in by ROUTE 10's north door and down the passage: the rose dark, the needle a faint glow pointing back to the way in",
+   "steps": [
+    "goto RockTunnel_1F",
+    "close",
+    "wait 60",
+    "finish",
+    "wait 30",
+    "finish",
+    "repel 999",
+    "hold DOWN 16",
+    "wait 8",
+    "hold DOWN 16",
+    "wait 8",
+    "hold DOWN 16",
+    "wait 8",
+    "hold DOWN 16",
+    "wait 30",
+    "shot \"THE BLACKOUT, a few steps from the way in\"",
+    "finish",
+    "press SELECT 1",
+    "wait 90",
+    "shot \"the needle: back to the way in\"",
+    "press B 1",
+    "close"
+   ]
+  },
+  {
+   "stop": "DOLDRUM CAVE before it is understood, in from DOLDRUM CITY's door: the needle spins",
+   "steps": [
+    "flag FLAG_UNDERSTANDING_FIRST 0",
+    "goto CeruleanCave_1F",
+    "close",
+    "wait 60",
+    "finish",
+    "wait 30",
+    "finish",
+    "repel 999",
+    "hold UP 16",
+    "wait 8",
+    "hold LEFT 16",
+    "wait 8",
+    "hold LEFT 16",
+    "wait 8",
+    "hold UP 16",
+    "wait 30",
+    "wait 20",
+    "finish",
+    "press SELECT 1",
+    "wait 20",
+    "burst \"spinning\" 4 8",
+    "press B 1",
+    "close"
+   ]
+  },
+  {
+   "stop": "DOLDRUM CAVE understood, in from DOLDRUM CITY's door: the needle settles, on the way in",
+   "steps": [
+    "flag FLAG_UNDERSTANDING_FIRST 1",
+    "goto CeruleanCave_1F",
+    "close",
+    "wait 60",
+    "finish",
+    "wait 30",
+    "finish",
+    "repel 999",
+    "hold UP 16",
+    "wait 8",
+    "hold LEFT 16",
+    "wait 8",
+    "hold LEFT 16",
+    "wait 8",
+    "hold UP 16",
+    "wait 30",
+    "wait 20",
+    "shot \"DOLDRUM CAVE, understood; a few steps from the way in\"",
+    "finish",
+    "press SELECT 1",
+    "wait 90",
+    "shot \"the needle: back to the way in\"",
+    "press B 1",
+    "close"
+   ]
+  },
+  {
+   "stop": "far from home, in DOLDRUM CITY: the needle leans toward MOM's house",
+   "steps": [
+    "goto CeruleanCity 22 22",
+    "close",
+    "wait 30",
+    "press SELECT 1",
+    "wait 90",
+    "shot \"DOLDRUM CITY: south-west, toward home\"",
+    "press B 1",
+    "close"
+   ]
+  },
+  {
+   "stop": "surfing off BLANCHE TOWN: the needle points to the nearest shore",
+   "steps": [
+    "goto PalletTown 5 18",
+    "close",
+    "wait 60",
+    "close",
+    "to 6 18",
+    "close",
+    "hold RIGHT 3",
+    "wait 20",
+    "press A",
+    "press A",
+    "press A",
+    "wait 120",
+    "hold DOWN 4",
+    "wait 20",
+    "hold DOWN 4",
+    "wait 20",
+    "hold RIGHT 4",
+    "wait 20",
+    "hold RIGHT 4",
+    "wait 20",
+    "shot \"surfing\"",
+    "press SELECT 1",
+    "wait 90",
+    "shot \"the needle: the nearest shore\"",
+    "press B 1",
+    "close"
+   ]
+  },
+  {
+   "stop": "HALFTONE TOWN without the torn book's halves: home, as anywhere",
+   "steps": [
+    "flag FLAG_GOT_HERMETIC_LAYER 0",
+    "flag FLAG_GOT_EUDAIMON_LAYER 0",
+    "goto LavenderTown 10 13",
+    "close",
+    "wait 30",
+    "press SELECT 1",
+    "wait 90",
+    "shot \"HALFTONE, no halves: toward home\"",
+    "press B 1",
+    "close"
+   ]
+  },
+  {
+   "stop": "HALFTONE TOWN holding both halves: the needle leans to DAEMON TOWER",
+   "steps": [
+    "flag FLAG_GOT_HERMETIC_LAYER 1",
+    "flag FLAG_GOT_EUDAIMON_LAYER 1",
+    "goto LavenderTown 10 13",
+    "close",
+    "wait 30",
+    "press SELECT 1",
+    "wait 90",
+    "shot \"HALFTONE, both halves: north-east, DAEMON TOWER\"",
+    "press B 1",
+    "close",
+    "flag FLAG_GOT_HERMETIC_LAYER 0",
+    "flag FLAG_GOT_EUDAIMON_LAYER 0"
+   ]
+  },
+  {
+   "stop": "a BENCHMARK gym (SLATE CITY's): the needle will not settle",
+   "steps": [
+    "goto PewterCity_Gym 6 12",
+    "close",
+    "wait 30",
+    "press SELECT 1",
+    "wait 20",
+    "burst \"will not settle\" 4 8",
+    "press B 1",
+    "close"
+   ]
+  }
+ ]
+}
