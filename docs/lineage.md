@@ -478,6 +478,27 @@ And nominalization returns for the third time, now aimed at physics itself: *"La
 
 *Harm Disguised as Care* (30 September 2025) traces **projection + ignorance → labelling → intervention → harm**, wrapped in helpful words, and names the loop: *label → expectation → behaviour → evidence for the label.* It is a 2025 restatement of the 2011 self-fulfilling prophecy, now aimed at institutional safety systems — and it is the strongest theoretical support in the corpus for a *sympathetic* antagonist.
 
+### 4.7 The garden — three ways of holding one experience
+
+***Added 2026-11-17, when the user brought it to the design.*** [*The Garden of Echoes*](https://seeingsharpca.wordpress.com/2025/06/11/the-garden-of-echoes/) (11 June 2025) **is a parable, not an essay** -- *the only post in the corpus that tells the thesis as a fable rather than arguing it.* A garden that blooms only when someone listens; a tree that bears light instead of fruit; three wanderers who touch it:
+
+- **Luma** takes the light, says thank you and walks on with open palms; *it stays in her as trust.*
+- **Kael** clutches a stone, builds a shrine, repeats the memory until it dulls and tells visitors what it means; *a child touches the stone and finds it cold.*
+- **Solen** feels only a faint pull and studies the garden instead -- *the Cartographer, filling pages, losing presence.*
+
+**Read in the project's own terms, the three are three ways a learner can hold one sample**: *Kael overfits* (one example memorised until it is dead, the record mistaken for the thing); *Solen builds the model and loses the signal* (the map for the territory -- 0.2's pigment throughline, the Index as a reproduction that loses the original); *Luma generalises and keeps learning.* **It is content, context and the loop (0.3) as three people.**
+
+***And its form is the game's form, inverted.*** **The post ends on its moral** -- *"The Garden isn't a book to be read."* **The game is a fable with its last line removed (vision 0.1).** *So the post can come into the game only without that line: the story, then nothing.*
+
+**Where it already is in the game**, *none of it placed on purpose:*
+
+- **The singing fir** (vision 3.4, 3.5) -- *flat until the player gives it its key, and it hums back "Close" when the shape is right and the key wrong. A tree that answers only when listened to.*
+- **THE SUBTLE LAYER** (4.38) -- *"every read is a lean, not a fact" is Luma's stance; TOUCH (T-575) says an object keeps a tilt from what was held in strong feeling, and Kael's stone is that turned inside out: held so hard it went cold.*
+- **THE WALLED GARDEN** (3.11) is its opposite -- *owned, vetted, kept, and nothing in it surprises anybody. Kael's shrine is where a walled garden starts.*
+- **Solen is a fair portrait of the design bible itself** -- *a map that keeps growing; section 8's scope discipline is the same warning in engineering terms.*
+
+**What went in**: *nothing yet.* ***Three ways in are drafted in `docs/garden-of-echoes-draft.md` (DRAFT), for the user to pick.***
+
 ---
 
 ## 6. FIVE IDEAS, FIFTEEN YEARS
@@ -732,6 +753,7 @@ For re-reading, in dependency order.
 | 2024-10-07 | The Ah-Hah Moment | **Emotion as the felt experience of a rewrite** |
 | 2025-04-19 | The Colour We Never See | Purple; symbols as compression |
 | 2025-04-23 | The Stereo Mind | **The thesis, in its final wording** |
+| 2025-06-11 | **The Garden of Echoes** | **The thesis as a parable; three ways of holding one experience. The only fable in the corpus** |
 | 2025-06-18 | Does Feeling Require Chemistry? | Chemistry as medium, not feeling |
 | 2025-07-24 | CFM — July 2025 Edition | Substrate independence; no bird is the V |
 | 2025-08-07 | The Awareness-First Model | The flip |
