@@ -14,8 +14,8 @@ step at a time.
 the world, the daemons and the types, the BENCHMARKS, the INDEX, the NOTEBOOK, PLAY, the GAME CORNER and the companion,
 and a glossary, in one PDF. Like this wiki, it says how things work, never where.
 
-**Carrying your daemons AWAY? [THE COMPANION](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-companion-manual.pdf)** (71 pages) is the companion app's own manual -- TODAY, your daemon's care, talk and nights, MEETINGS, JOURNEY, the LIBRARY, the house's mind, the devices and every setting.
-**On a device of its own?** [THE WATCH](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-watch-manual.pdf) (26 pages), [THE GLASSES](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-glass-manual.pdf) (12) and [THE CARDPUTERS](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-cardputer-manual.pdf) (23) -- the T-Watch, the T-Glass, and M5Stack's Cardputer, ADV and Zero, the last of which plays the game itself.
+**Carrying your daemons AWAY? [THE COMPANION](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-companion-manual.pdf)** (76 pages) is the companion app's own manual -- TODAY, your daemon's care, talk and nights, MEETINGS, JOURNEY, the LIBRARY, the house's mind, the devices and every setting.
+**On a device of its own?** [THE WATCH](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-watch-manual.pdf) (26 pages), [THE GLASSES](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-glass-manual.pdf) (12) and [THE CARDPUTERS](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-cardputer-manual.pdf) (24) -- the T-Watch, the T-Glass, and M5Stack's Cardputer, ADV and Zero, the last of which plays the game itself.
 **Why the name? [THE OLD WORD](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-etymology.pdf)** (19 pages) tells how the Greek *daimon* branched, and why it is said *DAY-mons*.
 **From CALLOW SCHOOL: [PRINCIPLES OF MIND](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-textbook.pdf)** (82 pages), its TEXTBOOK written out as a university textbook -- seven floors, Language to Error, each taught from the research.
 
