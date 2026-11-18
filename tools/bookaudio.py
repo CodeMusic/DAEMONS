@@ -182,8 +182,9 @@ def chalk(text):
 
 def table(rows, say=plain):
     """A table, row by row: two columns as "this: that"; more, each cell after its column's heading."""
+    #  only a line of dashes is the separator: a header left empty (| | |) is a header, or its first row went unsaid
     cells = [[say(c) for c in r.strip().strip("|").split("|")]
-             for r in rows if not re.match(r"^\|[\s|:-]+\|$", r.strip())]
+             for r in rows if not re.match(r"^\|[\s|:]*-[\s|:-]*\|$", r.strip())]
     head, body = cells[0], cells[1:]
     if len(head) == 2:
         return [f"{r[0]}: {r[1]}." for r in body]
