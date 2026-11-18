@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.400 — 2026-11-18
+
+- Recorded from release v11.399.1 (44d79e91, engine 08fcde731), which sealed v11.398.x:
+  - **The stat arrow by type** (T-589): the arrow after a stat change plays the causing move's type's sound. DRAFT. In 9.5.
+- **Corrected**: v11.399 said the sound census closed with every sound the game plays ours. **23 song slots and 43 sound effects are still pret's** (`docs/sound-census-2026-11-16.md`), and whether any is drafted is the user's call. 9.5 and its Settled entry now say so.
+- **A day's symbol** (9.21): drawn for the companion's DREAMS (C-407), the game's DREAM LOG next (T-591); **and a dream's symbol says which centre** (the user, by multiple choice, "B: which centre"): a spine of seven dots, the dream's centre lit in the day's colour, the writer's to name, else the day's own.
+- Section 10: two Settled entries.
+
 ## v11.399 — 2026-11-18
 
 - Recorded from release v11.398.1 (4c6f3540, engine 8a6d96dc8), which sealed v11.397.x:
