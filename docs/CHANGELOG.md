@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.393 — 2026-11-17
+
+- Recorded from release v11.392.1 (21ea79d9, engine 02b44f853), which sealed v11.391.x:
+  - **Our own instruments** (T-565 batch 12, the Musical Instruments lane): sixteen synthesized samples, PLAY's harp and flute, the dawn chorus's choir, under our older songs. DRAFT. In 9.5, the last of its batches; the census's twelve are done.
+- Section 10: one Settled entry.
+
 ## v11.392 — 2026-11-17
 
 - Recorded from release v11.391.1 (ea54b57b, engine ba5c05d43), which sealed v11.390.x:
