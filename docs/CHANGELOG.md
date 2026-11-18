@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.399 — 2026-11-18
+
+- Recorded from release v11.398.1 (4c6f3540, engine 8a6d96dc8), which sealed v11.397.x:
+  - **The shared move sounds by type** (T-583): the three shared sounds play each type's own. DRAFT. In 9.5.
+  - **The sound census is closed** (T-565, from 2026-11-16): every song, sound effect, cry and instrument the game plays is the project's own. 9.5 says so.
+- Section 10: one Settled entry.
+
 ## v11.398 — 2026-11-18
 
 - Recorded from release v11.397.1 (1ec722ba, engine ecb28b38f), which sealed v11.396.x:
