@@ -56,7 +56,7 @@ FRAME = 1 / 59.7275
 DOUBLES_S, GROWL_S, HOLD_FRAMES, FAINT_SEMIS = 20 * FRAME, 15 * FRAME, 140, (15360 - 14440) / 256
 
 # The user's picks: {"*": "A+B"} for all, or {"Cry_Bulbasaur": "A+B", ...}. --write refuses while it is empty.
-APPROVED = {}
+APPROVED = {"*": "A+B"}   # the user, 2026-11-17, by multiple choice: all 388, A shaped by B (DRAFT)
 
 STAGE_DROP = {1: 0, 2: -5, 3: -12}
 PENTA = [0, 2, 4, 7, 9, 12, 14, 16, 19, 21]                # Blanche's C pentatonic, two octaves: a letter's degree
