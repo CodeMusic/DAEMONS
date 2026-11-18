@@ -4905,7 +4905,9 @@ def report6():
         print("    gbatowns.LANDMARKS holds the five LEAGUE rooms and the HALL: its write keeps every tile they draw")
     print("    gbafieldfx: the RECORD's monitor sprite (hof_monitor) -- a sprite, not these tiles; the six lights are "
           "kept where FLDEFF_HALL_OF_FAME_RECORD sets the balls; the statues in I's corridor are primary/building's")
-    known = {"gbatowns.py", "gbafieldfx.py", "port_dialogue.py", "port_hearsay.py", "check_generators.py"}
+    #  genstorymusic names MUS_HALL_OF_FAME, a song, not these tiles (T-565 batch 8)
+    known = {"gbatowns.py", "gbafieldfx.py", "port_dialogue.py", "port_hearsay.py", "check_generators.py",
+             "genstorymusic.py"}
     found = set()
     me = os.path.basename(__file__)
     for f in sorted(glob.glob(os.path.join(ROOT, "tools", "*.py"))):
@@ -6529,8 +6531,9 @@ def report7():
     else:
         print("    the smoke at x %+d, y %d (src/ss_anne.c): column %d of the ship, in the funnel's mouth (%d..%d)" %
               (kx, ky, kx + 32, FUNNEL_MOUTH[0], FUNNEL_MOUTH[1]))
+    #  genstorymusic (MUS_SS_ANNE) and genuisounds (SE_SS_ANNE_HORN) name sounds, not the ship's tiles (T-565)
     known = {"gbatowns.py", "gbadoors.py", "genships.py", "companion_export.py", "check_reach.py", "gbagrove.py",
-             "gbanexusmap.py", "gbaprimary.py", "gbawater.py", "port_dialogue.py", "check_generators.py"}
+             "gbanexusmap.py", "gbaprimary.py", "gbawater.py", "port_dialogue.py", "check_generators.py", "genstorymusic.py", "genuisounds.py"}
     found = set()
     me = os.path.basename(__file__)
     for f in sorted(glob.glob(os.path.join(ROOT, "tools", "*.py"))):
