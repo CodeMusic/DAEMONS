@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.394 — 2026-11-17
+
+- **THE GARDEN OF ECHOES enters the design** (T-585; the user, by multiple choice: "A, the three at the fir"): a grove where a hare comes once, a magpie keeps a cold stone, and a mole fills pages until the player plays the fir's song; the source post's moral is never said. In 3.4, after THE NEXUS's design note. Its lineage is `docs/lineage.md` 4.7; the three drafted ways in, `docs/garden-of-echoes-draft.md`. DRAFT; nothing in the engine.
+- Section 10: one Settled entry.
+
 ## v11.393 — 2026-11-17
 
 - Recorded from release v11.392.1 (21ea79d9, engine 02b44f853), which sealed v11.391.x:

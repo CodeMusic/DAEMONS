@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.393**
+**A total conversion — the living design bible, v11.394**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2222,6 +2222,8 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 - **Eight residents of its own** *(REFLECTION, LODESTAR, PERIHELION, LYUBOV, MULTIMAL › ILLUMINED, LYNX › BASTET: INDEX 387–394, MISSINGNO one past them at 395 -- 398 since the carried line took 395–397, 9.27)*, **PENGUIN in its meadow, and PHOENIX once.**
 
 *The design in full, its cast and every word: `docs/nexus.md`. Built by `tools/gbanexus.py` (the residents), `tools/gbagrove.py` (the fir in every grove) and `tools/gbanexusmap.py` (the place).*
+
+***And one grove keeps three animals at its fir (T-585; the user, 2026-11-17, by multiple choice: "A, the three at the fir")*** -- *lineage: THE GARDEN OF ECHOES (Seeing Sharp, 2025; lineage.md 4.7), a parable of three ways of holding one experience.* **A hare comes once, touches the fir, says thank you and goes; after, only its tracks lead out. A magpie keeps a pale stone on a cairn at the fir's foot -- "It was warm, the day I took it" -- and the stone is cold to the touch; with THE SUBTLE LAYER held, a read: "this was held too long." A mole half out of its hole fills pages about the grove, more each visit, and stops writing for one line only when the player PLAYs the fir's song in its key: "Where was that? I had it written."** *The post ends on its moral; the game is a fable with its last line removed (0.1), so that line is never said, nobody explains the three, and nobody says which is right. The one thing that moves the mole is the player listening, the fir's own mechanic (craft rule 5). The game lane picks the grove. Optional; gates nothing. Every word DRAFT (`docs/garden-of-echoes-draft.md`, A).*
 
 ### 3.5 PLAY — an instrument, and a SONGBOOK (T-417, the user, 2026-10-17)
 
@@ -9292,6 +9294,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The three at the fir (T-585, 2026-11-17)** — the user's pick, A of three: THE GARDEN OF ECHOES (lineage 4.7) enters as a grove with a hare that comes once, a magpie whose kept stone is cold, and a mole filling pages that stops only when the player plays the fir's song; the post's moral never said (0.1). In 3.4. To be built by the game lane. DRAFT.
 - **Our own instruments (T-565 batch 12, v11.392.1)** — released, the user's pick: sixteen synthesized samples and PLAY's harp and flute in `voicegroup191`'s nineteen played slots, the dawn chorus's choir ours too; no note, bank or envelope moved. The last of the sound census's twelve batches; T-583 and T-584 remain. Sealed v11.391.x. DRAFT.
 - **The cries (T-565 batch 11, v11.391.1)** — released, the user's pick after a design question of four: A, THE TYPE'S VOICE, shaped by B, THE NAME PLAYED -- every one of the 388 its type's motif, ordered and timed by its name, a line sharing one contour, lower and slower as it evolves. Eleven borrowed cries and one identical pair wait on T-584. Sealed v11.390.x. DRAFT.
 - **THE MARGINS' music (T-565 batch 9, v11.390.1)** — released, the user's pick: the islands, their roads, caves, TANOBY and ONE ISLAND's CHECKPOINT in voice C, in B-flat and B, keys none of the coloured towns uses, so the region off the spectrum sounds off it too (7.4). Sealed v11.389.x. DRAFT.

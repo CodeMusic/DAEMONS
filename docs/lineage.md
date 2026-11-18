@@ -497,7 +497,7 @@ And nominalization returns for the third time, now aimed at physics itself: *"La
 - **THE WALLED GARDEN** (3.11) is its opposite -- *owned, vetted, kept, and nothing in it surprises anybody. Kael's shrine is where a walled garden starts.*
 - **Solen is a fair portrait of the design bible itself** -- *a map that keeps growing; section 8's scope discipline is the same warning in engineering terms.*
 
-**What went in**: *nothing yet.* ***Three ways in are drafted in `docs/garden-of-echoes-draft.md` (DRAFT), for the user to pick.***
+**What went in**: *nothing built yet.* ***The user picked A, the three at the fir (2026-11-17): a hare, a magpie and its cold stone, a mole filling pages, in a grove with a singing fir (vision 3.4, T-585; `docs/garden-of-echoes-draft.md`, DRAFT).***
 
 ---
 

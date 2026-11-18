@@ -115,6 +115,10 @@ a choice in itself.
 
 ---
 
+## Picked
+
+**A, the three at the fir** (*the user, 2026-11-17, by multiple choice*). Filed as **T-585** for the game lane; in vision 3.4.
+
 ## Recommendation
 
 **A.** It keeps the whole parable, it happens rather than being told (craft rule 1), the one thing that moves the mole is
