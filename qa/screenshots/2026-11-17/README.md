@@ -151,3 +151,9 @@ T-565 batch 8, the story set-pieces as built in v11.388.1 (engine 586ed7e8b): th
 T-565 batch 9, the islands as built in v11.390.1 (engine 7e6abcda8): the seven MIDIs the ROM is compiled from, read back -- voice C, in B-flat and B (DRAFT)
 
 ![17Nov2026 - T565 - island music as built - 28](17Nov2026%20-%20T565%20-%20island%20music%20as%20built%20-%2028.png)
+
+### 17Nov2026 - T565 - our instruments as built - 29
+
+T-565 batch 12, our own instruments as built in v11.392.1 (engine 02b44f853): the sixteen samples the ROM includes, read back -- waveform (a loop shaded) and spectrum (DRAFT)
+
+![17Nov2026 - T565 - our instruments as built - 29](17Nov2026%20-%20T565%20-%20our%20instruments%20as%20built%20-%2029.png)
