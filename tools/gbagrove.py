@@ -285,6 +285,29 @@ RATE = 20
 #  the islet's own (tools/gbabreathverse.py builds it; it is not one of the fourteen, so it has no row above).
 OTHER_DOORS = [("Route2_EventScript_Breathverse", "Breathverse_EventScript_Leave")]
 
+#  T-585 THE GARDEN OF ECHOES (the user, 2026-11-17, by multiple choice: "A, the three at the fir"; vision 3.4; the
+#  game lane's pick of grove, 2026-11-18): three animals at ROUTE 24's grove fir, there only once the fir is in its key.
+#  Their scripts and words are the engine's data/scripts/garden_of_echoes.inc, the sprites tools/gengarden.py's. This
+#  tool writes what is the grove's: the objects below, after every other (so the fir is 1 and 2 and the LARK 3, as
+#  EventScript_SingingFir and the garden's own local ids expect), and two hooks in its map scripts -- the arrival, which
+#  decides every hide flag, and the frame table that plays the hare's one visit. Positions: the fir stands at (11,3); the
+#  cairn at its foot on the left, the magpie beside the cairn; the mole across the clearing, its sheaf beside it; the
+#  hare on the fir's right, and its tracks down the east side where it hopped out, on bare ground above the grass.
+GARDEN_GROVE = "Route24_Grove"
+_garden = lambda gfx, x, y, move, script, flag: {
+    "type": "object", "graphics_id": gfx, "x": x, "y": y, "elevation": 3, "movement_type": move,
+    "movement_range_x": 0, "movement_range_y": 0, "trainer_type": "TRAINER_TYPE_NONE",
+    "trainer_sight_or_berry_tree_id": "0", "script": script, "flag": flag}
+GARDEN_OBJECTS = [                                                                      # local ids 4..10
+    _garden("OBJ_EVENT_GFX_GARDEN_HARE", 12, 3, "MOVEMENT_TYPE_FACE_LEFT", "EventScript_Garden_Nothing", "FLAG_HIDE_GARDEN_HARE"),
+    _garden("OBJ_EVENT_GFX_GARDEN_MAGPIE", 9, 3, "MOVEMENT_TYPE_FACE_DOWN", "EventScript_Garden_Magpie", "FLAG_HIDE_GARDEN"),
+    _garden("OBJ_EVENT_GFX_GARDEN_STONES", 10, 3, "MOVEMENT_TYPE_FACE_DOWN", "EventScript_Garden_Cairn", "FLAG_HIDE_GARDEN"),
+    _garden("OBJ_EVENT_GFX_GARDEN_MOLE", 3, 3, "MOVEMENT_TYPE_FACE_DOWN", "EventScript_Garden_Mole", "FLAG_HIDE_GARDEN"),
+    _garden("OBJ_EVENT_GFX_GARDEN_SHEAF", 4, 3, "MOVEMENT_TYPE_FACE_DOWN", "EventScript_Garden_Nothing", "FLAG_HIDE_GARDEN"),
+    _garden("OBJ_EVENT_GFX_GARDEN_STONES", 13, 4, "MOVEMENT_TYPE_FACE_UP", "EventScript_Garden_Nothing", "FLAG_HIDE_GARDEN_TRACKS"),
+    _garden("OBJ_EVENT_GFX_GARDEN_STONES", 13, 5, "MOVEMENT_TYPE_FACE_UP", "EventScript_Garden_Nothing", "FLAG_HIDE_GARDEN_TRACKS"),
+]
+
 FIR_SYNTH = (11, 3)                                     # the fir in a drawn clearing: row 1's open ground, right of the way out
 FLAG_BASE = 0x110                                       # FLAG_<GROVE>_FOUND, DAEMONS_FLAGS_START + 0x110 up, in GROVES order
 
@@ -494,13 +517,19 @@ def main():
             "bg_events": [{"type": "sign", "x": lx, "y": ly, "elevation": 0, "player_facing_dir": "BG_EVENT_PLAYER_FACING_NORTH",
                            "script": "%s_EventScript_Leave" % name} for (lx, ly) in leave_at],
         }
+        garden = name == GARDEN_GROVE           # T-585: the three at the fir (data/scripts/garden_of_echoes.inc)
         scripts = ("@ T-221: a grove (tools/gbagrove.py writes this).\n"
-                   "%s_MapScripts::\n\tmap_script MAP_SCRIPT_ON_TRANSITION, %s_OnTransition\n\t.byte 0\n\n"
+                   "%s_MapScripts::\n\tmap_script MAP_SCRIPT_ON_TRANSITION, %s_OnTransition\n%s\t.byte 0\n\n"
                    "@ T-395: found, so its tree in THE NEXUS is an ordinary one; and the fir as it stands (flat until the key).\n"
-                   "%s_OnTransition::\n\tsetflag %s\n\tcall EventScript_FirKeyFlags\n\tend\n\n"
+                   "%s%s_OnTransition::\n\tsetflag %s\n\tcall EventScript_FirKeyFlags\n%s\tend\n\n"
                    "@ The grove's own lone tree takes you back. Nothing is said.\n"
                    "%s_EventScript_Leave::\n\tlockall\n\tplayse SE_M_CUT\n\twarp %s, %d, %d\n\twaitstate\n\treleaseall\n\tend\n"
-                   % (name, name, name, found_flag(mapc), name, parentc, bx, by))
+                   % (name, name,
+                      "\tmap_script MAP_SCRIPT_ON_FRAME_TABLE, EventScript_Garden_OnFrame\n" if garden else "",
+                      "@ T-585: and, the fir in its key, THE GARDEN OF ECHOES -- who is here this time.\n" if garden else "",
+                      name, found_flag(mapc),
+                      "\tcall EventScript_Garden_OnTransition\n" if garden else "",
+                      name, parentc, bx, by))
         enter_label = "%s_EventScript_Grove" % parent
         enter = ("\n@ T-221: the tree that stands alone answers A -- the way into a grove. Nothing is said; REVEAL makes it\n"
                  "@ twinkle (src/reveal.c), and pressing A on the right tree finds it without.\n"
@@ -525,6 +554,8 @@ def main():
             for k in ("object_events", "warp_events", "coord_events", "bg_events"):
                 mapjson[k] = mapjson[k] + [e for e in mapjson_now.get(k) or []
                                            if e.get("script") != "%s_EventScript_Leave" % name and e not in mapjson[k]]
+        if name == GARDEN_GROVE:                # T-585: the garden's objects last, whatever else stands there
+            mapjson["object_events"] = [e for e in mapjson["object_events"] if e not in GARDEN_OBJECTS] + GARDEN_OBJECTS
         todo = []
         if not have_layout: todo.append("layout %dx%d %s" % (w, h, "drawn" if g.get("synth") else "cut from %s" % parent))
         elif layout_now != crop: todo.append("the clearing redrawn")

@@ -1,0 +1,134 @@
+{
+ "rom": "debug",
+ "about": "T-585 THE GARDEN OF ECHOES (DRAFT, every word and pixel): ROUTE 24's grove with its singing fir in its key. The first keyed visit -- the hare touches the fir, the fir hums its first bar, 'Oh. Thank you.', and it hops out down the east side; the magpie by the cairn twice; the cairn cold, then with THE SUBTLE LAYER held the read in purple; the mole's first lines beside a few pages. The second visit -- the hare's tracks, a pile of pages, the mole's second line. The third -- a heap, the third line. Then O CHRISTMAS TREE in B FLAT played to the fir with the mole there: the mole's two lines before the branches part. And the grove before the key, as it always was. The theatre's debug scratch save, its flags set in RAM; nothing is saved. Watch held at day.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued, the fir in its key and the garden as new",
+   "steps": [
+    "load debug",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1",
+    "repel 999",
+    "flag FLAG_NOTEBOOK_LOOSE_KEY 1",
+    "flag FLAG_FIR_IN_KEY 1",
+    "flag FLAG_GARDEN_HARE_GONE 0",
+    "flag FLAG_GARDEN_STONE_READ 0",
+    "flag FLAG_GOT_SUBTLE_LAYER 0",
+    "var VAR_GARDEN_VISITS 0"
+   ]
+  },
+  {
+   "stop": "the first keyed visit: the hare touches the fir, the fir hums one bar, and it goes",
+   "steps": [
+    "goto Route24_Grove 8 8",
+    "wait 40",
+    "shot \"the three at the fir, the hare beside it\"",
+    "finish",
+    "says \"Thank you\"",
+    "wait 60",
+    "shot \"the hare gone into the grass\"",
+    "flagis FLAG_GARDEN_HARE_GONE 1"
+   ]
+  },
+  {
+   "stop": "the magpie, twice, and the cairn without and with THE SUBTLE LAYER",
+   "steps": [
+    "talk 9,3",
+    "says \"so it stays\"",
+    "talk 9,3",
+    "says \"Gently\"",
+    "to 10 4",
+    "hold UP 4",
+    "wait 12",
+    "press A",
+    "finish",
+    "says \"The stone is cold\"",
+    "flag FLAG_GOT_SUBTLE_LAYER 1",
+    "to 10 4",
+    "hold UP 4",
+    "wait 12",
+    "press A",
+    "finish",
+    "says \"held too long\"",
+    "shot \"the read, in the lean's purple\"",
+    "flagis FLAG_GARDEN_STONE_READ 1"
+   ]
+  },
+  {
+   "stop": "the mole's first lines, a few pages beside it",
+   "steps": [
+    "to 3 4",
+    "hold UP 4",
+    "wait 12",
+    "press A",
+    "finish",
+    "says \"nearly all of it\"",
+    "shot \"a few pages\""
+   ]
+  },
+  {
+   "stop": "the second visit: the tracks, a pile of pages, the mole's second line",
+   "steps": [
+    "goto Route24_Grove 8 8",
+    "wait 40",
+    "finish",
+    "shot \"the tracks leading out, no hare\"",
+    "to 3 4",
+    "hold UP 4",
+    "wait 12",
+    "press A",
+    "finish",
+    "says \"I have it down\"",
+    "shot \"a pile\""
+   ]
+  },
+  {
+   "stop": "the third visit: a heap, the mole's third line",
+   "steps": [
+    "goto Route24_Grove 8 8",
+    "wait 40",
+    "finish",
+    "to 3 4",
+    "hold UP 4",
+    "wait 12",
+    "press A",
+    "finish",
+    "says \"beautiful\"",
+    "shot \"a heap\""
+   ]
+  },
+  {
+   "stop": "PLAY: O CHRISTMAS TREE in B FLAT to the fir with the mole there -- it stops writing, then the branches part",
+   "steps": [
+    "goto Route24_Grove 11 4",
+    "wait 40",
+    "finish",
+    "hold UP 4",
+    "wait 20",
+    "bag ITEM_HARP 1 first",
+    "register ITEM_HARP",
+    "var VAR_PLAY_KEY 10",
+    "press SELECT",
+    "wait 60",
+    "press A",
+    "play 5 1 1 1 2 3 3 3",
+    "wait 60",
+    "shot played",
+    "finish",
+    "says \"I had it written\"",
+    "wait 120",
+    "expect Nexus 12 5"
+   ]
+  },
+  {
+   "stop": "before the key: the grove as it always was -- the fir flat, nobody at it",
+   "steps": [
+    "flag FLAG_FIR_IN_KEY 0",
+    "goto Route24_Grove 8 8",
+    "wait 40",
+    "finish",
+    "shot \"before the key\""
+   ]
+  }
+ ]
+}
