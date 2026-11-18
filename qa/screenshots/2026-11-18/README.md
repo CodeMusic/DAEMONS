@@ -97,3 +97,15 @@ v11.397.1, T-584 cries of their own (DRAFT): the eleven that borrowed a cry, now
 v11.398.1, T-583 (DRAFT): COMET PUNCH's hit, MINIMIZE's stat tick and MOONLIGHT's light now play the move's own type's sound; green exact, yellow the nearest shape, white CONTENT's own
 
 ![18Nov2026 - T583 - each types own move sounds - 16](18Nov2026%20-%20T583%20-%20each%20types%20own%20move%20sounds%20-%2016.png)
+
+### 18Nov2026 - C358 - imedx in PulseEntrain - 17
+
+C-358: a DAEMONS sleep piece exported from the hub as .imedx (Dust Moths Drifting Home), opened in PulseEntrain's own Studio (Open...) and played in its player -- the beat steps 8/4/1 Hz over 30:00, carrier 156, the music and the round cover all carried
+
+![18Nov2026 - C358 - imedx in PulseEntrain - 17](18Nov2026%20-%20C358%20-%20imedx%20in%20PulseEntrain%20-%2017.jpg)
+
+### 18Nov2026 - C358 - imedx in PulseEntrain - 18
+
+C-358: a DAEMONS sleep piece exported from the hub as .imedx (Dust Moths Drifting Home), opened in PulseEntrain's own Studio (Open...) and played in its player -- the beat steps 8/4/1 Hz over 30:00, carrier 156, the music and the round cover all carried
+
+![18Nov2026 - C358 - imedx in PulseEntrain - 18](18Nov2026%20-%20C358%20-%20imedx%20in%20PulseEntrain%20-%2018.jpg)
