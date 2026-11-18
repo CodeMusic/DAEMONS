@@ -109,3 +109,21 @@ C-358: a DAEMONS sleep piece exported from the hub as .imedx (Dust Moths Driftin
 C-358: a DAEMONS sleep piece exported from the hub as .imedx (Dust Moths Drifting Home), opened in PulseEntrain's own Studio (Open...) and played in its player -- the beat steps 8/4/1 Hz over 30:00, carrier 156, the music and the round cover all carried
 
 ![18Nov2026 - C358 - imedx in PulseEntrain - 18](18Nov2026%20-%20C358%20-%20imedx%20in%20PulseEntrain%20-%2018.jpg)
+
+### 18Nov2026 - C328 - battle between two players - 20
+
+C-328 between two players: KIT's companion asks ROVER's (the site, phone width), ROVER accepts with SPIKE, the battle across both companions, ROVER outscored KIT! and SPIKE +297 EXP. Scratch servers, synthetic saves. DRAFT
+
+![18Nov2026 - C328 - battle between two players - 20](18Nov2026%20-%20C328%20-%20battle%20between%20two%20players%20-%2020.png)
+
+### 18Nov2026 - C328 - battle between two players - 21
+
+C-328 between two players: KIT's companion asks ROVER's (the site, phone width), ROVER accepts with SPIKE, the battle across both companions, ROVER outscored KIT! and SPIKE +297 EXP. Scratch servers, synthetic saves. DRAFT
+
+![18Nov2026 - C328 - battle between two players - 21](18Nov2026%20-%20C328%20-%20battle%20between%20two%20players%20-%2021.png)
+
+### 18Nov2026 - C328 - battle between two players - 22
+
+C-328 between two players: KIT's companion asks ROVER's (the site, phone width), ROVER accepts with SPIKE, the battle across both companions, ROVER outscored KIT! and SPIKE +297 EXP. Scratch servers, synthetic saves. DRAFT
+
+![18Nov2026 - C328 - battle between two players - 22](18Nov2026%20-%20C328%20-%20battle%20between%20two%20players%20-%2022.png)
