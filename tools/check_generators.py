@@ -161,6 +161,10 @@ ARGS = {
     #  sounds; the user picked C BOTH for all twenty on 2026-11-17), so a sandboxed write changes nothing when the
     #  engine is right, and its report exits 1 when the engine drifts from a pick.
     "genuisounds": [["--approved"]],
+    #  T-565 batch 11: gencries, the same shape -- its write writes APPROVED's cries over pret's .wav (the 388, A THE
+    #  TYPE'S VOICE shaped by B THE NAME, the user's pick 2026-11-17; APPROVED is empty while they are a DRAFT), and its
+    #  report exits 1 when the engine drifts from an approved cry.
+    "gencries": [["--approved"]],
 }
 #  A tool given no runs above is SKIPPED, and says so (T-421): gbadocs used to vanish from the count without a word.
 SKIPPED = {name: "docs/private/notebook_docs.json is missing (private, not in git), and gbadocs without it is not a check"

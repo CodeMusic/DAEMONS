@@ -10,6 +10,31 @@ The census (`docs/sound-census-2026-11-16.md`) left the cries for last: **388 of
 at least twice a battle, at every switch-in, on every INDEX page and party screen. A cry is the one sound that belongs
 to a single daemon, so it is a design question before it is an audio one: *what does a daemon say when it arrives?*
 
+## Drafted: all 388 (`tools/gencries.py`, DRAFT, not in the engine)
+
+*A shaped by B, as picked.* **The type's motif turned by the line's first name, so a line shares its contour; lower
+(0, a fourth, an octave) and slower (20% a stage) as it evolves; and the daemon's own name sets how many notes, their
+rhythm and accents (a vowel long and soft, a consonant short and struck), a pickup from its initial and an approach
+to the held note from its last letter.** Each within pret's length for the same species. `APPROVED` is empty, so
+`--write --approved` writes nothing yet; `check_generators.py` runs it.
+
+- **Bytes, built by wav2agb: 1,320,274 for the 388, against pret's 1,630,415** (242 s of cries against 300 s).
+- **The three checks, every cry: 0 fail.** DOUBLES (20 frames: two notes at least, an eighth of the loudest energy),
+  BACKWARD (the last 15 frames, which Growl plays first, not near-silent) and FAINT (3.6 semitones down: no note below
+  E2, and inside the cry player's 140 frames). *They pass largely by construction* -- the register floor and the pace
+  were set to meet them -- so they guard a later change more than they judge this one.
+- **Said, not failed: in 127 of the 172 two-type cries, the second type's held note comes after the 20-frame cut**, so
+  in a double battle those daemons are heard by their first type only.
+- **One pair is still identical: HUNCH and MIME** (both CONTEXT, stage 1, which has no noise texture to tell them
+  apart). The pickup from the initial separated the other four pairs a first pass made.
+- **Eleven daemons borrow another's cry** (`SpeciesToCryId`: the NEXUS residents and the carried line), so each is
+  heard in a cry shaped by the lender's name and type: REFLECTION in MIGHTYENA's, HANDSHAKE in PICHU's, and so on.
+
+The clips, in `audio/drafts/t565_cries/all/`: **`sampler.mp3`** (30 cries, 35 s: three whole lines, a daemon of every
+type and several grown up, the shortest and the longest; `SAMPLER.txt` lists them), `six_doubles_cut.mp3`,
+`six_backwards.mp3`, `six_fainting.mp3` (the six above, in each mode), `cries/<id>_<daemon>.mp3` (all 388),
+`CRIES.txt` (each cry's shaping, bytes and checks) and `sampler.png`.
+
 ## What the engine does with a cry (the facts)
 
 - **The format.** Each cry is a recorded sample, `sound/direct_sound_samples/cries/<species>.wav`: **mono, 8-bit, 10512

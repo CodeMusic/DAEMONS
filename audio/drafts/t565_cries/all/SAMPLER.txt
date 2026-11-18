@@ -1,0 +1,31 @@
+The sampler, in order (tools/gencries.py --previews). DRAFT.
+ 1  HEAP        LEGACY/STRATUM      stage 1 of the HEAP line
+ 2  STACK       LEGACY/STRATUM      stage 2 of the HEAP line
+ 3  MONOLITH    LEGACY/STRATUM      stage 3 of the HEAP line
+ 4  CRAWLER     SWARM               stage 1 of the CRAWLER line
+ 5  PENDING     SWARM               stage 2 of the CRAWLER line
+ 6  INDEXER     SWARM/VECTOR        stage 3 of the CRAWLER line
+ 7  CANARY      EMERGENT            stage 1 of the CANARY line
+ 8  EMERGENCE   EMERGENT            stage 2 of the CANARY line
+ 9  SINGULAR    EMERGENT/VECTOR     stage 3 of the CANARY line
+10  LABEL       CONTENT             stage 1 of the LABEL line
+11  CANON       CONTENT/LOGIC       stage 3 of the LABEL line
+12  PREEMPT     LOGIC               stage 1 of the PREEMPT line
+13  LIVELOCK    LOGIC               stage 2 of the PREEMPT line
+14  CLUSTER     VECTOR              stage 1 of the CLUSTER line
+15  MANIFOLD    VECTOR/LATENT       stage 3 of the CLUSTER line
+16  WORM        CORRUPT             stage 1 of the WORM line
+17  OUTBREAK    CORRUPT             stage 2 of the WORM line
+18  SECTOR      STRATUM             stage 1 of the SECTOR line
+19  PARTITION   STRATUM             stage 2 of the SECTOR line
+20  DANGLING    LATENT/CORRUPT      stage 1 of the DANGLING line
+21  HAUNTPROC   LATENT/CORRUPT      stage 3 of the DANGLING line
+22  FLICKER     ENTROPY             stage 1 of the FLICKER line
+23  FAULT       FLOW                stage 1 of the FAULT line
+24  ROVERCUB    GROWTH              stage 1 of the ROVERCUB line
+25  SPIKE       SIGNAL              stage 2 of the STATIC line
+26  HUNCH       CONTEXT             stage 1 of the HUNCH line
+27  COLDREAD    FROZEN/CONTEXT      stage 2 of the TELL line
+28  HARDLINE    HARDENED/STRATUM    stage 2 of the BACKBONE line
+29  OMEN        OPAQUE/VECTOR       stage 1 of the OMEN line
+30  PACKET      CONTENT/VECTOR      stage 1 of the PACKET line

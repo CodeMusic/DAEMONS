@@ -1,0 +1,391 @@
+T-565 batch 11 -- every cry, A (the type's voice) shaped by B (the name). DRAFT. tools/gencries.py --sheets
+
+id   cry              daemon      types               st line        pret s ours s  bytes  checks
+0    Bulbasaur        ROVERCUB    GROWTH              1  ROVERCUB     0.779  0.721   3927  ok
+1    Ivysaur          ROVERSEER   GROWTH              2  ROVERCUB     0.779  0.728   3961  ok
+2    Venusaur         ROVERBYTE   GROWTH/SIGNAL       3  ROVERCUB     0.910  0.845   4598  ok (doubles: the second type's note comes after the cut)
+3    Charmander       LABEL       CONTENT             1  LABEL        0.679  0.607   3305  ok
+4    Charmeleon       RUBRIC      CONTENT             2  LABEL        0.682  0.626   3410  ok
+5    Charizard        CANON       CONTENT/LOGIC       3  LABEL        0.908  0.818   4451  ok (doubles: the second type's note comes after the cut)
+6    Squirtle         CLUSTER     VECTOR              1  CLUSTER      0.679  0.488   2662  ok
+7    Wartortle        LOCUS       VECTOR              2  CLUSTER      0.812  0.507   2763  ok
+8    Blastoise        MANIFOLD    VECTOR/LATENT       3  CLUSTER      0.908  0.783   4259  ok (doubles: the second type's note comes after the cut)
+9    Caterpie         CRAWLER     SWARM               1  CRAWLER      0.391  0.363   1986  ok
+10   Metapod          PENDING     SWARM               2  CRAWLER      1.098  0.541   2950  ok
+11   Butterfree       INDEXER     SWARM/VECTOR        3  CRAWLER      0.470  0.445   2426  ok
+12   Weedle           SCRAPER     SWARM/CORRUPT       1  SCRAPER      0.765  0.464   2533  ok
+13   Kakuna           BUFFER      SWARM/CORRUPT       2  SCRAPER      0.858  0.545   2970  ok (doubles: the second type's note comes after the cut)
+14   Beedrill         INJECTOR    SWARM/CORRUPT       3  SCRAPER      0.911  0.738   4018  ok (doubles: the second type's note comes after the cut)
+15   Pidgey           PACKET      CONTENT/VECTOR      1  PACKET       0.181  0.181    997  ok
+16   Pidgeotto        RELAY       CONTENT/VECTOR      2  PACKET       0.707  0.644   3504  ok (doubles: the second type's note comes after the cut)
+17   Pidgeot          BROADCAST   CONTENT/VECTOR      3  PACKET       0.809  0.750   4080  ok (doubles: the second type's note comes after the cut)
+18   Rattata          NIBBLE      CONTENT             1  NIBBLE       0.369  0.361   1973  ok
+19   Raticate         OVERFLOW    CONTENT             2  NIBBLE       0.446  0.435   2373  ok
+20   Spearow          PING        CONTENT/VECTOR      1  PING         0.830  0.627   3417  ok (doubles: the second type's note comes after the cut)
+21   Fearow           FLOOD       CONTENT/VECTOR      2  PING         0.811  0.730   3971  ok (doubles: the second type's note comes after the cut)
+22   Ekans            WORM        CORRUPT             1  WORM         0.908  0.815   4434  ok
+23   Arbok            OUTBREAK    CORRUPT             2  WORM         0.910  0.838   4559  ok
+24   Pikachu          SPIKE       SIGNAL              2  STATIC       0.783  0.512   2790  ok
+25   Raichu           SURGE       SIGNAL              3  STATIC       1.119  0.587   3198  ok
+26   Sandshrew        SECTOR      STRATUM             1  SECTOR       0.437  0.433   2364  ok
+27   Sandslash        PARTITION   STRATUM             2  SECTOR       0.638  0.614   3342  ok
+28   NidoranF         FORK        CORRUPT             1  FORK         0.454  0.438   2388  ok
+29   Nidorina         THREAD      CORRUPT             2  FORK         0.600  0.569   3100  ok
+30   Nidoqueen        SCHEDULER   CORRUPT/STRATUM     3  FORK         0.794  0.743   4044  ok (doubles: the second type's note comes after the cut)
+31   NidoranM         BRANCH      CORRUPT             1  BRANCH       0.488  0.470   2562  ok
+32   Nidorino         PREDICTOR   CORRUPT             2  BRANCH       0.567  0.546   2973  ok
+33   Nidoking         PIPELINE    CORRUPT/STRATUM     3  BRANCH       1.150  1.053   5723  ok (doubles: the second type's note comes after the cut)
+34   Clefairy         ANOMALY     CONTENT             2  RESIDUAL     0.395  0.390   2132  ok
+35   Clefable         OUTLIER     CONTENT             3  RESIDUAL     0.496  0.479   2610  ok
+36   Vulpix           FLICKER     ENTROPY             1  FLICKER      1.121  0.490   2671  ok
+37   Ninetales        OVERRUN     ENTROPY             2  FLICKER      1.150  0.614   3343  ok
+38   Jigglypuff       SUSPEND     CONTENT             2  STANDBY      0.251  0.251   1377  ok
+39   Wigglytuff       HIBERNATE   CONTENT             3  STANDBY      0.317  0.317   1734  ok
+40   Zubat            ECHO        CORRUPT/VECTOR      1  ECHO         0.914  0.816   4442  ok (doubles: the second type's note comes after the cut)
+41   Golbat           TRACER      CORRUPT/VECTOR      2  ECHO         0.913  0.835   4545  ok (doubles: the second type's note comes after the cut)
+42   Oddish           SPRAWL      GROWTH/CORRUPT      1  SPRAWL       0.686  0.637   3469  ok (doubles: the second type's note comes after the cut)
+43   Gloom            SKEW        GROWTH/CORRUPT      2  SPRAWL       0.586  0.555   3022  ok (doubles: the second type's note comes after the cut)
+44   Vileplume        BADSEED     GROWTH/CORRUPT      3  SPRAWL       1.206  1.093   5939  ok (doubles: the second type's note comes after the cut)
+45   Paras            PAYLOAD     SWARM/GROWTH        1  PAYLOAD      1.317  0.494   2694  ok
+46   Parasect         ROOTKIT     SWARM/GROWTH        2  PAYLOAD      1.433  0.581   3166  ok (doubles: the second type's note comes after the cut)
+47   Venonat          RESIDENT    SWARM/CORRUPT       1  RESIDENT     0.729  0.544   2966  ok (doubles: the second type's note comes after the cut)
+48   Venomoth         SPYWARE     SWARM/CORRUPT       2  RESIDENT     0.754  0.545   2970  ok (doubles: the second type's note comes after the cut)
+49   Diglett          TAPPOINT    STRATUM             1  TAPPOINT     0.915  0.847   4608  ok
+50   Dugtrio          WIRETAP     STRATUM             2  TAPPOINT     0.914  0.850   4624  ok
+51   Meowth           COOKIE      CONTENT             1  COOKIE       0.448  0.429   2339  ok
+52   Persian          TRACKER     CONTENT             2  COOKIE       0.888  0.798   4339  ok
+53   Psyduck          FAULT       FLOW                1  FAULT        0.618  0.566   3083  ok
+54   Golduck          HANDLER     FLOW                2  FAULT        0.529  0.502   2735  ok
+55   Mankey           PREEMPT     LOGIC               1  PREEMPT      0.770  0.696   3787  ok
+56   Primeape         LIVELOCK    LOGIC               2  PREEMPT      0.761  0.701   3818  ok
+57   Growlithe        SENTRY      ENTROPY             1  SENTRY       0.629  0.490   2671  ok
+58   Arcanine         GUARDIAN    ENTROPY             2  SENTRY       0.811  0.678   3692  ok
+59   Poliwag          LOOP        FLOW                1  LOOP         0.521  0.487   2654  ok
+60   Poliwhirl        SPINLOCK    FLOW                2  LOOP         0.311  0.311   1704  ok
+61   Poliwrath        MUTEX       FLOW/LOGIC          3  LOOP         0.523  0.497   2710  ok
+62   Abra             HUNCH       CONTEXT             1  HUNCH        1.101  0.627   3417  ok
+63   Kadabra          INFERENCE   CONTEXT             2  HUNCH        1.268  0.990   5384  ok
+64   Alakazam         CONJECTURE  CONTEXT             3  HUNCH        1.490  1.146   6226  ok
+65   Machop           PROOF       LOGIC               1  PROOF        0.629  0.570   3103  ok
+66   Machoke          THEOREM     LOGIC               2  PROOF        0.637  0.594   3236  ok
+67   Machamp          LEMMA MIND  LOGIC               3  PROOF        0.778  0.722   3928  ok
+68   Bellsprout       SNARE       GROWTH/CORRUPT      1  SNARE        0.353  0.353   1928  ok
+69   Weepinbell       HONEYPOT    GROWTH/CORRUPT      2  SNARE        0.688  0.651   3545  ok (doubles: the second type's note comes after the cut)
+70   Victreebel       TARPIT      GROWTH/CORRUPT      3  SNARE        0.908  0.838   4556  ok (doubles: the second type's note comes after the cut)
+71   Tentacool        DRIFTNET    FLOW/CORRUPT        1  DRIFTNET     0.750  0.682   3716  ok (doubles: the second type's note comes after the cut)
+72   Tentacruel       DRAGNET     FLOW/CORRUPT        2  DRIFTNET     1.082  0.837   4551  ok (doubles: the second type's note comes after the cut)
+73   Geodude          HEAP        LEGACY/STRATUM      1  HEAP         1.116  0.881   4789  ok (doubles: the second type's note comes after the cut)
+74   Graveler         STACK       LEGACY/STRATUM      2  HEAP         1.315  0.967   5258  ok (doubles: the second type's note comes after the cut)
+75   Golem            MONOLITH    LEGACY/STRATUM      3  HEAP         0.666  0.635   3456  ok (doubles: the second type's note comes after the cut)
+76   Ponyta           HOTPATH     ENTROPY             1  HOTPATH      0.708  0.489   2666  ok
+77   Rapidash         OVERDRIVE   ENTROPY             2  HOTPATH      0.876  0.678   3690  ok
+78   Slowpoke         LATENCY     FLOW/CONTEXT        1  LATENCY      0.346  0.346   1893  ok
+79   Slowbro          SHELL       FLOW/CONTEXT        2  LATENCY      0.631  0.582   3168  ok (doubles: the second type's note comes after the cut)
+80   Magnemite        SENTINEL    SIGNAL/HARDENED     1  SENTINEL     0.906  0.576   3140  ok (doubles: the second type's note comes after the cut)
+81   Magneton         QUORUM      SIGNAL/HARDENED     2  SENTINEL     1.126  0.616   3355  ok (doubles: the second type's note comes after the cut)
+82   Farfetchd        EDGECASE    CONTENT/VECTOR      1  EDGECASE     0.350  0.350   1916  ok
+83   Doduo            DUALCORE    CONTENT/VECTOR      1  DUALCORE     0.907  0.817   4444  ok (doubles: the second type's note comes after the cut)
+84   Dodrio           TRIPLECORE  CONTENT/VECTOR      2  DUALCORE     0.916  0.831   4518  ok (doubles: the second type's note comes after the cut)
+85   Seel             HEATSINK    FLOW                1  HEATSINK     0.844  0.764   4159  ok
+86   Dewgong          ARCHIVER    FLOW/FROZEN         2  HEATSINK     0.995  0.901   4899  ok (doubles: the second type's note comes after the cut)
+87   Grimer           DEADLETTER  CORRUPT             1  DEADLETTER   0.494  0.478   2607  ok
+88   Muk              LANDFILL    CORRUPT             2  DEADLETTER   0.694  0.652   3550  ok
+89   Shellder         CAPSULE     FLOW                1  CAPSULE      0.726  0.657   3577  ok
+90   Cloyster         COLDVAULT   FLOW/FROZEN         2  CAPSULE      0.977  0.882   4796  ok (doubles: the second type's note comes after the cut)
+91   Gastly           DANGLING    LATENT/CORRUPT      1  DANGLING     1.098  1.008   5478  ok (doubles: the second type's note comes after the cut)
+92   Haunter          RESPAWN     LATENT/CORRUPT      2  DANGLING     1.107  1.018   5533  ok (doubles: the second type's note comes after the cut)
+93   Gengar           HAUNTPROC   LATENT/CORRUPT      3  DANGLING     0.693  0.667   3629  ok (doubles: the second type's note comes after the cut)
+94   Onix             BACKBONE    LEGACY/STRATUM      1  BACKBONE     1.166  1.028   5589  ok (doubles: the second type's note comes after the cut)
+95   Drowzee          LULL        CONTEXT             1  LULL         1.371  0.627   3417  ok
+96   Hypno            BUSYWAIT    CONTEXT             2  LULL         1.367  0.990   5384  ok
+97   Krabby           ACQUIRE     FLOW                1  ACQUIRE      1.145  0.755   4106  ok
+98   Kingler          LOCKUP      FLOW                2  ACQUIRE      1.146  0.837   4551  ok
+99   Voltorb          FUSE        SIGNAL              1  FUSE         1.167  0.435   2372  ok
+100  Electrode        BREAKER     SIGNAL              2  FUSE         1.187  0.614   3345  ok
+101  Exeggcute        BOOTSTRAP   GROWTH/CONTEXT      1  BOOTSTRAP    0.888  0.814   4430  ok (doubles: the second type's note comes after the cut)
+102  Exeggutor        ENSEMBLE    GROWTH/CONTEXT      2  BOOTSTRAP    1.503  1.301   7066  ok (doubles: the second type's note comes after the cut)
+103  Cubone           ARTEFACT    STRATUM             1  ARTEFACT     0.711  0.674   3669  ok
+104  Marowak          COREFILE    STRATUM             2  ARTEFACT     0.679  0.649   3533  ok
+105  Hitmonlee        AXIOMKICK   LOGIC               2  PREMISE      0.879  0.804   4371  ok
+106  Hitmonchan       REBUTTAL    LOGIC               2  PREMISE      0.840  0.769   4182  ok
+107  Lickitung        SLURP       CONTENT             1  SLURP        0.712  0.625   3403  ok
+108  Koffing          EXHAUST     CORRUPT             1  EXHAUST      0.958  0.867   4718  ok
+109  Weezing          SMOGSTACK   CORRUPT             2  EXHAUST      1.020  0.931   5060  ok
+110  Rhyhorn          HARDCODE    STRATUM/LEGACY      1  HARDCODE     0.914  0.849   4616  ok (doubles: the second type's note comes after the cut)
+111  Rhydon           MIGRATE     STRATUM/LEGACY      2  HARDCODE     0.961  0.892   4852  ok (doubles: the second type's note comes after the cut)
+112  Chansey          UPTIME      CONTENT             1  UPTIME       0.695  0.634   3454  ok
+113  Tangela          SPAGHETTI   GROWTH              1  SPAGHETTI    0.711  0.661   3600  ok
+114  Kangaskhan       KEEPER      CONTENT             1  KEEPER       0.880  0.751   4089  ok
+115  Horsea           BOTTLENECK  FLOW                1  BOTTLENECK   0.444  0.433   2363  ok
+116  Seadra           BACKPRESS   FLOW                2  BOTTLENECK   0.394  0.391   2137  ok
+117  Goldeen          SPAWN       FLOW                1  SPAWN        0.462  0.435   2373  ok
+118  Seaking          UPSTREAM    FLOW                2  SPAWN        0.911  0.825   4489  ok
+119  Staryu           BEACON      FLOW                1  BEACON       0.937  0.755   4107  ok
+120  Starmie          CRON        FLOW/CONTEXT        2  BEACON       0.982  0.741   4032  ok (doubles: the second type's note comes after the cut)
+121  MrMime           MIME        CONTEXT             1  MIME         0.891  0.627   3414  ok
+122  Scyther          REAPER      SWARM/VECTOR        1  REAPER       0.627  0.494   2694  ok
+123  Jynx             COLDREAD    FROZEN/CONTEXT      2  TELL         2.238  0.641   3493  ok (doubles: the second type's note comes after the cut)
+124  Electabuzz       DYNAMO      SIGNAL              2  CRANK        1.455  0.614   3345  ok
+125  Magmar           FORGE       ENTROPY             2  CINDER       0.728  0.511   2787  ok
+126  Pinsir           BLOCKING    SWARM               1  BLOCKING     0.581  0.511   2785  ok
+127  Tauros           STAMPEDE    CONTENT             1  STAMPEDE     0.863  0.772   4200  ok
+128  Magikarp         STUB        FLOW                1  STUB         0.895  0.627   3417  ok
+129  Gyarados         ESCALATE    FLOW/VECTOR         2  STUB         0.951  0.863   4694  ok (doubles: the second type's note comes after the cut)
+130  Lapras           FERRY       FLOW/FROZEN         1  FERRY        0.697  0.627   3412  ok (doubles: the second type's note comes after the cut)
+131  Ditto            MOCK        CONTENT             1  MOCK         0.522  0.482   2631  ok
+132  Eevee            MUSAI       CONTENT             1  MUSAI        0.668  0.600   3269  ok
+133  Vaporeon         CAREMUSAI   CONTEXT             2  MUSAI        1.040  0.939   5104  ok
+134  Jolteon          SEEKMUSAI   VECTOR              2  MUSAI        0.744  0.655   3567  ok
+135  Flareon          CODEMUSAI   LOGIC               2  MUSAI        0.729  0.675   3674  ok
+136  Porygon          SUBSTRATE   CONTENT             1  SUBSTRATE    0.944  0.784   4268  ok
+137  Omanyte          MAGTAPE     LEGACY/FLOW         1  MAGTAPE      0.627  0.587   3197  ok (doubles: the second type's note comes after the cut)
+138  Omastar          MAINFRAME   LEGACY/FLOW         2  MAGTAPE      0.626  0.597   3249  ok (doubles: the second type's note comes after the cut)
+139  Kabuto           DRUM        LEGACY/FLOW         1  DRUM         0.579  0.542   2955  ok
+140  Kabutops         PUNCHCARD   LEGACY/FLOW         2  DRUM         0.645  0.612   3332  ok (doubles: the second type's note comes after the cut)
+141  Aerodactyl       FOSSILNET   LEGACY/VECTOR       1  FOSSILNET    1.147  1.035   5626  ok (doubles: the second type's note comes after the cut)
+142  Snorlax          DEADLOCK    CONTENT             1  DEADLOCK     0.244  0.244   1340  ok
+143  Articuno         ORPHEUS     FROZEN/VECTOR       1  ORPHEUS      1.114  0.491   2678  ok
+144  Zapdos           ASCLEPIUS   SIGNAL/VECTOR       1  ASCLEPIUS    0.727  0.577   3142  ok (doubles: the second type's note comes after the cut)
+145  Moltres          PROMETHEUS  ENTROPY/VECTOR      1  PROMETHEUS   1.114  0.577   3142  ok (doubles: the second type's note comes after the cut)
+146  Dratini          CANARY      EMERGENT            1  CANARY       0.545  0.520   2834  ok
+147  Dragonair        EMERGENCE   EMERGENT            2  CANARY       0.784  0.732   3983  ok
+148  Dragonite        SINGULAR    EMERGENT/VECTOR     3  CANARY       0.896  0.834   4534  ok (doubles: the second type's note comes after the cut)
+149  Mewtwo           STARR       CONTEXT/EMERGENT    1  STARR        1.433  0.627   3416  ok (doubles: the second type's note comes after the cut)
+150  Mew              ARTSAI      CONTEXT             1  ARTSAI       1.433  0.707   3849  ok
+151  Chikorita        PRIMER      GROWTH              1  PRIMER       0.245  0.245   1343  ok
+152  Bayleef          SYLLABUS    GROWTH              2  PRIMER       0.412  0.412   2250  ok
+153  Meganium         CURRICULUM  GROWTH              3  PRIMER       0.763  0.721   3923  ok
+154  Cyndaquil        TEPID       ENTROPY             1  TEPID        0.328  0.312   1709  ok
+155  Quilava          SEETHE      ENTROPY             2  TEPID        0.559  0.512   2791  ok
+156  Typhlosion       HEATDEATH   ENTROPY             3  TEPID        1.794  0.782   4253  ok
+157  Totodile         LEARNRATE   FLOW                1  LEARNRATE    0.863  0.780   4243  ok
+158  Croconaw         MOMENTUM    FLOW                2  LEARNRATE    0.953  0.865   4704  ok
+159  Feraligatr       STEEPEST    FLOW                3  LEARNRATE    1.201  1.084   5892  ok
+160  Sentret          ALARM       CONTENT             1  ALARM        0.193  0.193   1061  ok
+161  Furret           LOOKOUT     CONTENT             2  ALARM        0.294  0.294   1608  ok
+162  Hoothoot         POLL        CONTENT/VECTOR      1  POLL         0.511  0.476   2594  ok
+163  Noctowl          SUPERVISOR  CONTENT/VECTOR      2  POLL         0.997  0.902   4906  ok (doubles: the second type's note comes after the cut)
+164  Ledyba           HUDDLE      SWARM/VECTOR        1  HUDDLE       0.326  0.315   1721  ok
+165  Ledian           GATHERING   SWARM/VECTOR        2  HUDDLE       0.393  0.380   2075  ok
+166  Spinarak         AMBUSH      SWARM/CORRUPT       1  AMBUSH       0.629  0.494   2696  ok
+167  Ariados          ENTRAPMENT  SWARM/CORRUPT       2  AMBUSH       0.579  0.532   2900  ok (doubles: the second type's note comes after the cut)
+168  Crobat           MULTICAST   CORRUPT/VECTOR      3  ECHO         1.092  1.003   5452  ok (doubles: the second type's note comes after the cut)
+169  Chinchou         PILOT       FLOW/SIGNAL         1  PILOT        0.596  0.544   2965  ok
+170  Lanturn          SOUNDING    FLOW/SIGNAL         2  PILOT        0.495  0.477   2604  ok
+171  Pichu            STATIC      SIGNAL              1  STATIC       0.343  0.328   1793  ok
+172  Cleffa           RESIDUAL    CONTENT             1  RESIDUAL     0.277  0.277   1516  ok
+173  Igglybuff        STANDBY     CONTENT             1  STANDBY      0.327  0.327   1788  ok
+174  Togepi           TRUST       CONTENT             1  TRUST        0.512  0.473   2579  ok
+175  Togetic          HOPE        CONTENT/VECTOR      2  TRUST        0.328  0.328   1792  ok
+176  Natu             VIGILANCE   CONTEXT/VECTOR      1  VIGILANCE    0.496  0.473   2582  ok
+177  Xatu             PRESCIENCE  CONTEXT/VECTOR      2  VIGILANCE    0.695  0.645   3511  ok (doubles: the second type's note comes after the cut)
+178  Mareep           TENSION     SIGNAL              1  TENSION      0.344  0.326   1785  ok
+179  Flaaffy          BUILDUP     SIGNAL              2  TENSION      0.644  0.579   3157  ok
+180  Ampharos         RELEASE     SIGNAL              3  TENSION      0.776  0.696   3789  ok
+181  Bellossom        GOLDSET     GROWTH              3  SPRAWL       0.662  0.627   3414  ok
+182  Marill           MOOD        FLOW                2  VALENCE      0.614  0.570   3108  ok
+183  Azumarill        ELATION     FLOW                3  VALENCE      0.796  0.734   3993  ok
+184  Sudowoodo        FAKEROOT    LEGACY              1  FAKEROOT     0.761  0.705   3838  ok
+185  Politoed         SEMAPHORE   FLOW                3  LOOP         0.859  0.792   4310  ok
+186  Hoppip           WHIM        GROWTH/VECTOR       1  WHIM         0.394  0.388   2119  ok
+187  Skiploom         CAPRICE     GROWTH/VECTOR       2  WHIM         0.612  0.580   3158  ok (doubles: the second type's note comes after the cut)
+188  Jumpluff         ABANDON     GROWTH/VECTOR       3  WHIM         0.763  0.716   3896  ok (doubles: the second type's note comes after the cut)
+189  Aipom            GRASP       CONTENT             1  GRASP        0.664  0.598   3257  ok
+190  Sunkern          STARVED     GROWTH              1  STARVED      0.378  0.377   2060  ok
+191  Sunflora         QUOTA       GROWTH              2  STARVED      0.746  0.693   3770  ok
+192  Yanma            PERIPHERY   SWARM/VECTOR        1  PERIPHERY    0.801  0.544   2966  ok (doubles: the second type's note comes after the cut)
+193  Wooper           APATHY      FLOW/STRATUM        1  APATHY       0.345  0.345   1887  ok
+194  Quagsire         TORPOR      FLOW/STRATUM        2  APATHY       0.628  0.583   3176  ok (doubles: the second type's note comes after the cut)
+195  Espeon           LENSMUSAI   CONTEXT             2  MUSAI        0.927  0.840   4568  ok
+196  Umbreon          MASKMUSAI   OPAQUE              2  MUSAI        0.729  0.682   3715  ok
+197  Murkrow          OMEN        OPAQUE/VECTOR       1  OMEN         0.788  0.721   3922  ok (doubles: the second type's note comes after the cut)
+198  Slowking         KERNEL      FLOW/CONTEXT        2  LATENCY      1.125  0.837   4552  ok (doubles: the second type's note comes after the cut)
+199  Misdreavus       DREAD       LATENT              1  DREAD        0.546  0.525   2861  ok
+200  Unown            SYMBOL      CONTEXT             1  SYMBOL       0.618  0.568   3095  ok
+201  Wobbuffet        RESENTMENT  CONTEXT             2  RANKLE       0.970  0.879   4779  ok
+202  Girafarig        DUPLEX      CONTENT/CONTEXT     1  DUPLEX       0.691  0.628   3421  ok (doubles: the second type's note comes after the cut)
+203  Pineco           STARTLE     SWARM               1  STARTLE      0.629  0.462   2518  ok
+204  Forretress       WITHDRAWAL  SWARM/HARDENED      2  STARTLE      0.943  0.605   3296  ok (doubles: the second type's note comes after the cut)
+205  Dunsparce        BLINDSPOT   CONTENT             1  BLINDSPOT    0.746  0.677   3685  ok
+206  Gligar           GLIDEPATH   STRATUM/VECTOR      1  GLIDEPATH    0.569  0.553   3011  ok (doubles: the second type's note comes after the cut)
+207  Steelix          HARDLINE    HARDENED/STRATUM    2  BACKBONE     1.799  0.933   5072  ok (doubles: the second type's note comes after the cut)
+208  Snubbull         WARNING     CONTENT             1  WARNING      0.679  0.617   3359  ok
+209  Granbull         CRYWOLF     CONTENT             2  WARNING      1.113  0.834   4540  ok
+210  Qwilfish         BRISTLE     FLOW/CORRUPT        1  BRISTLE      0.545  0.508   2770  ok
+211  Scizor           SIGKILL     SWARM/HARDENED      2  REAPER       1.083  0.545   2971  ok (doubles: the second type's note comes after the cut)
+212  Shuckle          HOARDING    SWARM/LEGACY        1  HOARDING     0.478  0.442   2413  ok
+213  Heracross        DRIVE       SWARM/LOGIC         1  DRIVE        0.862  0.414   2262  ok
+214  Sneasel          CUNNING     OPAQUE/FROZEN       1  CUNNING      0.428  0.420   2291  ok
+215  Teddiursa        COMFORT     CONTENT             1  COMFORT      0.779  0.697   3797  ok
+216  Ursaring         CRAVING     CONTENT             2  COMFORT      1.406  0.834   4540  ok
+217  Slugma           SIMMER      ENTROPY             1  SIMMER       0.804  0.489   2666  ok
+218  Magcargo         CALLOUS     ENTROPY/LEGACY      2  SIMMER       0.990  0.576   3141  ok (doubles: the second type's note comes after the cut)
+219  Swinub           INSTINCT    FROZEN/STRATUM      1  INSTINCT     0.594  0.539   2936  ok (doubles: the second type's note comes after the cut)
+220  Piloswine        IMPULSE     FROZEN/STRATUM      2  INSTINCT     0.609  0.554   3017  ok (doubles: the second type's note comes after the cut)
+221  Corsola          OLDBRANCH   FLOW/LEGACY         1  OLDBRANCH    0.605  0.562   3061  ok (doubles: the second type's note comes after the cut)
+222  Remoraid         ATTACHMENT  FLOW                1  ATTACHMENT   0.495  0.476   2597  ok
+223  Octillery        CLINGING    FLOW                2  ATTACHMENT   1.237  0.933   5072  ok
+224  Delibird         REPAY       FROZEN/VECTOR       1  REPAY        0.762  0.438   2389  ok
+225  Mantine          BUOYANCY    FLOW/VECTOR         1  BUOYANCY     0.742  0.684   3726  ok (doubles: the second type's note comes after the cut)
+226  Skarmory         ARMOURING   HARDENED/VECTOR     1  ARMOURING    1.132  0.883   4805  ok (doubles: the second type's note comes after the cut)
+227  Houndour         FIXATION    OPAQUE/ENTROPY      1  FIXATION     0.595  0.565   3077  ok (doubles: the second type's note comes after the cut)
+228  Houndoom         OBSESSION   OPAQUE/ENTROPY      2  FIXATION     0.926  0.854   4648  ok (doubles: the second type's note comes after the cut)
+229  Kingdra          TURBULENCE  FLOW/EMERGENT       3  BOTTLENECK   0.651  0.617   3358  ok (doubles: the second type's note comes after the cut)
+230  Phanpy           RECALL      STRATUM             1  RECALL       0.531  0.517   2817  ok
+231  Donphan          ENGRAM      STRATUM             2  RECALL       0.806  0.756   4112  ok
+232  Porygon2         OVERLAY     CONTENT             2  SUBSTRATE    0.739  0.678   3692  ok
+233  Stantler         ILLUSION    CONTENT             1  ILLUSION     1.058  0.831   4523  ok
+234  Smeargle         IMITATION   CONTENT             1  IMITATION    0.479  0.459   2506  ok
+235  Tyrogue          PREMISE     LOGIC               1  PREMISE      0.760  0.683   3720  ok
+236  Hitmontop        CIRCULAR    LOGIC               2  PREMISE      0.652  0.610   3323  ok
+237  Smoochum         TELL        FROZEN/CONTEXT      1  TELL         0.550  0.438   2388  ok
+238  Elekid           CRANK       SIGNAL              1  CRANK        0.495  0.436   2377  ok
+239  Magby            CINDER      ENTROPY             1  CINDER       0.679  0.489   2666  ok
+240  Miltank          CACHE       CONTENT             1  CACHE        0.698  0.625   3402  ok
+241  Blissey          HEARTBEAT   CONTENT             2  UPTIME       0.780  0.717   3902  ok
+242  Raikou           BRONTES     SIGNAL              1  BRONTES      0.820  0.489   2667  ok
+243  Entei            TYPHON      ENTROPY             1  TYPHON       0.962  0.489   2666  ok
+244  Suicune          BOREAS      FLOW                1  BOREAS       0.860  0.755   4109  ok
+245  Larvitar         RUMINATE    LEGACY/STRATUM      1  RUMINATE     0.596  0.566   3085  ok (doubles: the second type's note comes after the cut)
+246  Pupitar          BROODING    LEGACY/STRATUM      2  RUMINATE     0.395  0.395   2157  ok
+247  Tyranitar        GRIEVANCE   LEGACY/OPAQUE       3  RUMINATE     1.101  1.010   5492  ok (doubles: the second type's note comes after the cut)
+248  Lugia            TRITON      CONTEXT/VECTOR      1  TRITON       1.790  0.707   3849  ok (doubles: the second type's note comes after the cut)
+249  HoOh             PHOENIX     ENTROPY/VECTOR      1  PHOENIX      1.063  0.523   2852  ok (doubles: the second type's note comes after the cut)
+250  Celebi           KAIROS      CONTEXT/GROWTH      1  KAIROS       0.680  0.622   3390  ok (doubles: the second type's note comes after the cut)
+251  Kecleon          UNNOTICED   CONTENT             1  UNNOTICED    0.392  0.385   2102  ok
+252  Roselia          LACED       GROWTH/CORRUPT      1  LACED        0.504  0.479   2611  ok
+253  Torkoal          SLOWBURN    ENTROPY             1  SLOWBURN     0.436  0.405   2214  ok
+254  Electrike        CRACKLE     SIGNAL              1  CRACKLE      0.581  0.488   2660  ok
+255  Manectric        ARCFLASH    SIGNAL              2  CRACKLE      0.990  0.640   3484  ok
+256  Duskull          FADING      LATENT              1  FADING       0.497  0.488   2664  ok
+257  Latias           POLYDEUCES  EMERGENT/CONTEXT    1  POLYDEUCES   0.572  0.546   2974  ok (doubles: the second type's note comes after the cut)
+258  Wynaut           RANKLE      CONTEXT             1  RANKLE       0.652  0.596   3247  ok
+259  Seviper          FORGERY     CORRUPT             1  FORGERY      0.546  0.517   2817  ok
+260  Sharpedo         RIPTIDE     FLOW/OPAQUE         2  UNDERTOW     1.085  0.837   4551  ok (doubles: the second type's note comes after the cut)
+261  Zangoose         PRISTINE    CONTENT             1  PRISTINE     0.448  0.430   2348  ok
+262  Azurill          VALENCE     CONTENT             1  VALENCE      0.488  0.462   2521  ok
+263  Swablu           DATAGRAM    CONTENT/VECTOR      1  DATAGRAM     0.261  0.261   1430  ok
+264  Altaria          TRADEWIND   EMERGENT/VECTOR     2  DATAGRAM     0.522  0.507   2765  ok (doubles: the second type's note comes after the cut)
+265  Unused265        UNUSED265   CONTENT             1  UNUSED265    0.437  0.419   2288  ok
+266  Taillow          SHORTJUMP   CONTENT/VECTOR      1  SHORTJUMP    0.280  0.280   1533  ok
+267  Swellow          LONGJUMP    CONTENT/VECTOR      2  SHORTJUMP    0.423  0.415   2266  ok
+268  Unused268        UNUSED268   CONTENT             1  UNUSED268    0.832  0.745   4056  ok
+269  Spinda           HASHCODE    CONTENT             1  HASHCODE     0.584  0.541   2950  ok
+270  Torchic          COINFLIP    ENTROPY             1  COINFLIP     0.453  0.423   2308  ok
+271  Combusken        MONTECARLO  ENTROPY/LOGIC       2  COINFLIP     1.358  0.680   3701  ok (doubles: the second type's note comes after the cut)
+272  Blaziken         LASVEGAS    ENTROPY/LOGIC       3  COINFLIP     1.485  0.784   4263  ok (doubles: the second type's note comes after the cut)
+273  Treecko          STUMP       GROWTH              1  STUMP        0.547  0.516   2811  ok
+274  Grovyle          BOOSTING    GROWTH              2  STUMP        0.962  0.885   4815  ok
+275  Sceptile         CANOPY      GROWTH              3  STUMP        1.230  1.117   6073  ok
+276  Mudkip           RUNOFF      FLOW                1  RUNOFF       0.351  0.350   1916  ok
+277  Marshtomp        ALLUVIUM    FLOW/STRATUM        2  RUNOFF       0.801  0.735   4000  ok (doubles: the second type's note comes after the cut)
+278  Swampert         DELTA       FLOW/STRATUM        3  RUNOFF       1.060  0.854   4647  ok (doubles: the second type's note comes after the cut)
+279  Pelipper         JACOBIAN    FLOW/VECTOR         2  TANGENT      0.553  0.526   2870  ok (doubles: the second type's note comes after the cut)
+280  Wingull          TANGENT     FLOW/VECTOR         1  TANGENT      0.576  0.533   2906  ok (doubles: the second type's note comes after the cut)
+281  Banette          SUBTEXT     LATENT              2  UNSPOKEN     0.595  0.574   3130  ok
+282  Shuppet          UNSPOKEN    LATENT              1  UNSPOKEN     0.386  0.386   2111  ok
+283  Lotad            TEMPO       FLOW/GROWTH         1  TEMPO        0.205  0.205   1125  ok
+284  Lombre           CADENCE     FLOW/GROWTH         2  TEMPO        0.685  0.634   3455  ok (doubles: the second type's note comes after the cut)
+285  Ludicolo         CYCLICAL    FLOW/GROWTH         3  TEMPO        0.791  0.734   3992  ok (doubles: the second type's note comes after the cut)
+286  Seedot           WARMUP      GROWTH              1  WARMUP       0.383  0.381   2082  ok
+287  Nuzleaf          SHAPING     GROWTH/OPAQUE       2  WARMUP       0.536  0.515   2806  ok (doubles: the second type's note comes after the cut)
+288  Shiftry          POLICY      GROWTH/OPAQUE       3  WARMUP       0.930  0.859   4671  ok (doubles: the second type's note comes after the cut)
+289  Carvanha         UNDERTOW    FLOW/OPAQUE         1  UNDERTOW     0.472  0.454   2475  ok
+290  Wurmple          HASHSEED    SWARM               1  HASHSEED     0.412  0.383   2094  ok
+291  Silcoon          IFTRUE      SWARM               2  HASHSEED     0.760  0.543   2957  ok
+292  Beautifly        THENCASE    SWARM/VECTOR        3  HASHSEED     0.385  0.376   2053  ok
+293  Cascoon          IFFALSE     SWARM               2  HASHSEED     0.765  0.579   3153  ok
+294  Dustox           OTHERWISE   SWARM/CORRUPT       3  HASHSEED     0.595  0.551   3003  ok (doubles: the second type's note comes after the cut)
+295  Ralts            GUESSWORK   CONTEXT             1  GUESSWORK    0.474  0.455   2484  ok
+296  Kirlia           ATTUNE      CONTEXT             2  GUESSWORK    0.573  0.540   2944  ok
+297  Gardevoir        MENTALIZE   CONTEXT             3  GUESSWORK    1.148  1.039   5647  ok
+298  Slakoth          DAYDREAM    CONTENT             1  DAYDREAM     0.399  0.391   2133  ok
+299  Vigoroth         RESTLESS    CONTENT             2  DAYDREAM     0.674  0.625   3404  ok
+300  Slaking          MINDWANDER  CONTENT             3  DAYDREAM     0.465  0.453   2474  ok
+301  Nincada          PREFORK     SWARM/STRATUM       1  PREFORK      0.301  0.295   1614  ok
+302  Ninjask          BURSTMODE   SWARM/VECTOR        2  PREFORK      0.571  0.522   2846  ok (doubles: the second type's note comes after the cut)
+303  Shedinja         DEFUNCT     SWARM/LATENT        2  PREFORK      0.361  0.351   1918  ok
+304  Makuhita         POSTULATE   LOGIC               1  POSTULATE    0.345  0.345   1884  ok
+305  Hariyama         DEDUCTION   LOGIC               2  POSTULATE    0.786  0.723   3935  ok
+306  Nosepass         GRADIENT    LEGACY              1  GRADIENT     0.629  0.593   3232  ok
+307  Glalie           STALEMATE   FROZEN              2  LOCKFILE     0.983  0.668   3636  ok
+308  Plusle           ANODE       SIGNAL              1  ANODE        0.421  0.388   2118  ok
+309  Minun            CATHODE     SIGNAL              1  CATHODE      0.754  0.488   2662  ok
+310  Surskit          PARTICLE    SWARM/FLOW          1  PARTICLE     0.492  0.454   2476  ok
+311  Masquerain       FLOCKING    SWARM/VECTOR        2  PARTICLE     0.927  0.605   3296  ok (doubles: the second type's note comes after the cut)
+312  Skitty           LOOPBACK    CONTENT             1  LOOPBACK     0.331  0.331   1810  ok
+313  Delcatty         QUINE       CONTENT             2  LOOPBACK     0.993  0.796   4332  ok
+314  Gulpin           GREEDY      CORRUPT             1  GREEDY       0.375  0.375   2048  ok
+315  Swalot           BLOATWARE   CORRUPT             2  GREEDY       0.818  0.760   4138  ok
+316  Numel            PIXELBYTE   ENTROPY/STRATUM     1  PIXELBYTE    0.436  0.411   2243  ok
+317  Camerupt         REFORGE     ENTROPY/STRATUM     2  PIXELBYTE    1.089  0.616   3356  ok (doubles: the second type's note comes after the cut)
+318  Barboach         SEEPAGE     FLOW/STRATUM        1  SEEPAGE      0.433  0.418   2281  ok
+319  Whiscash         AQUIFER     FLOW/STRATUM        2  SEEPAGE      0.799  0.733   3988  ok (doubles: the second type's note comes after the cut)
+320  Corphish         BACKFLOW    FLOW                1  BACKFLOW     0.564  0.528   2878  ok
+321  Crawdaunt        BLACKWATER  FLOW/OPAQUE         2  BACKFLOW     1.164  1.029   5591  ok (doubles: the second type's note comes after the cut)
+322  Spoink           BREATHING   CONTEXT             1  BREATHING    0.339  0.339   1855  ok
+323  Grumpig          GUTFEEL     CONTEXT             2  BREATHING    0.593  0.555   3024  ok
+324  Trapinch         SINKHOLE    STRATUM             1  SINKHOLE     0.475  0.467   2548  ok
+325  Vibrava          SHIMMER     STRATUM/EMERGENT    2  SINKHOLE     0.658  0.630   3429  ok (doubles: the second type's note comes after the cut)
+326  Flygon           DUSTDEVIL   STRATUM/EMERGENT    3  SINKHOLE     1.227  1.131   6148  ok (doubles: the second type's note comes after the cut)
+327  Cacnea           FEWSHOT     GROWTH              1  FEWSHOT      0.419  0.412   2249  ok
+328  Cacturne         ZEROSHOT    GROWTH/OPAQUE       2  FEWSHOT      1.068  0.976   5308  ok (doubles: the second type's note comes after the cut)
+329  Baltoy           LIKELIHOOD  STRATUM/CONTEXT     1  LIKELIHOOD   0.588  0.569   3099  ok (doubles: the second type's note comes after the cut)
+330  Claydol          POSTERIOR   STRATUM/CONTEXT     2  LIKELIHOOD   0.912  0.854   4647  ok (doubles: the second type's note comes after the cut)
+331  Lunatone         LILENDIAN   LEGACY/CONTEXT      1  LILENDIAN    1.130  1.020   5547  ok (doubles: the second type's note comes after the cut)
+332  Solrock          BIGENDIAN   LEGACY/CONTEXT      1  BIGENDIAN    0.761  0.707   3846  ok (doubles: the second type's note comes after the cut)
+333  Feebas           SADDLE      FLOW                1  SADDLE       0.366  0.361   1973  ok
+334  Milotic          OPTIMUM     FLOW                2  SADDLE       1.851  0.894   4863  ok
+335  Absol            REDACTED    OPAQUE              1  REDACTED     0.492  0.477   2602  ok
+336  Meditite         WITNESS     LOGIC/CONTEXT       1  WITNESS      0.380  0.372   2033  ok
+337  Medicham         MINDSIGHT   LOGIC/CONTEXT       2  WITNESS      0.777  0.713   3881  ok (doubles: the second type's note comes after the cut)
+338  Spheal           PENGUIN     FLOW                1  PENGUIN      0.266  0.266   1459  ok
+339  Sealeo           STOPGRAD    FROZEN/FLOW         1  STOPGRAD     0.556  0.505   2751  ok (doubles: the second type's note comes after the cut)
+340  Walrein          PERMAFROST  FROZEN/FLOW         2  STOPGRAD     1.711  0.680   3701  ok (doubles: the second type's note comes after the cut)
+341  Clamperl         BIFURCATE   FLOW                1  BIFURCATE    0.862  0.779   4241  ok
+342  Huntail          DEEPWELL    FLOW                2  BIFURCATE    0.748  0.691   3761  ok
+343  Gorebyss         SHALLOWS    FLOW                2  BIFURCATE    1.055  0.932   5069  ok
+344  Lileep           SAVESTATE   LEGACY/GROWTH       1  SAVESTATE    0.453  0.444   2423  ok
+345  Cradily          WARMSTART   LEGACY/GROWTH       2  SAVESTATE    1.376  1.224   6651  ok (doubles: the second type's note comes after the cut)
+346  Anorith          TOKENRING   LEGACY/SWARM        1  TOKENRING    0.550  0.527   2871  ok (doubles: the second type's note comes after the cut)
+347  Armaldo          TRUNKLINE   LEGACY/SWARM        2  TOKENRING    1.075  0.979   5322  ok (doubles: the second type's note comes after the cut)
+348  Beldum           SINGLETON   HARDENED/CONTEXT    1  SINGLETON    0.452  0.435   2372  ok
+349  Metang           PAIRWISE    HARDENED/CONTEXT    2  SINGLETON    0.886  0.809   4398  ok (doubles: the second type's note comes after the cut)
+350  Metagross        FEDERATED   HARDENED/CONTEXT    3  SINGLETON    1.861  1.146   6226  ok (doubles: the second type's note comes after the cut)
+351  Bagon            INKLING     EMERGENT            1  INKLING      0.366  0.366   2003  ok
+352  Shelgon          GESTALT     EMERGENT            2  INKLING      0.943  0.861   4681  ok
+353  Regirock         DEUCALION   LEGACY              1  DEUCALION    1.501  1.157   6285  ok
+354  Regice           KHIONE      FROZEN              1  KHIONE       1.508  0.519   2829  ok
+355  Registeel        TALOS       HARDENED            1  TALOS        1.084  0.623   3396  ok
+356  Castform         OVERLOADED  CONTENT             1  OVERLOADED   0.592  0.551   3003  ok
+357  Volbeat          SYN         SWARM               1  SYN          0.541  0.362   1981  ok
+358  Illumise         ACK         SWARM               1  ACK          0.804  0.361   1974  ok
+359  Poochyena        SMUDGE      OPAQUE              1  SMUDGE       0.435  0.425   2319  ok
+360  Mightyena        ECLIPSE     OPAQUE              2  SMUDGE       0.920  0.843   4588  ok
+361  Dusclops         FORGETTING  LATENT              2  FADING       0.645  0.620   3377  ok
+362  Sableye          BACKDOOR    OPAQUE/LATENT       1  BACKDOOR     0.547  0.522   2846  ok (doubles: the second type's note comes after the cut)
+363  Mawile           HONEYTRAP   HARDENED            1  HONEYTRAP    0.540  0.511   2788  ok
+364  Aron             BOOTROM     HARDENED/LEGACY     1  BOOTROM      0.430  0.415   2265  ok
+365  Lairon           FIRMWARE    HARDENED/LEGACY     2  BOOTROM      0.981  0.885   4814  ok (doubles: the second type's note comes after the cut)
+366  Aggron           BIGIRON     HARDENED/LEGACY     3  BOOTROM      1.208  1.033   5613  ok (doubles: the second type's note comes after the cut)
+367  Relicanth        STILLRUN    FLOW/LEGACY         1  STILLRUN     0.950  0.787   4281  ok (doubles: the second type's note comes after the cut)
+368  Luvdisc          CONFLUENCE  FLOW                1  CONFLUENCE   0.226  0.226   1241  ok
+369  Groudon          GAIA        STRATUM             1  GAIA         1.746  1.288   6997  ok
+370  Kyogre           PONTUS      FLOW                1  PONTUS       1.684  0.707   3850  ok
+371  Rayquaza         OURANOS     EMERGENT/VECTOR     1  OURANOS      1.375  1.051   5714  ok (doubles: the second type's note comes after the cut)
+372  Salamence        EPIPHANY    EMERGENT/VECTOR     3  INKLING      1.183  1.081   5875  ok (doubles: the second type's note comes after the cut)
+373  Breloom          CHECKMATE   GROWTH/LOGIC        2  SPARRING     0.599  0.572   3115  ok (doubles: the second type's note comes after the cut)
+374  Shroomish        SPARRING    GROWTH              1  SPARRING     0.414  0.410   2239  ok
+375  Linoone          UNBRANCHED  CONTENT             2  DETOUR       1.443  0.988   5369  ok
+376  Tropius          TRANSFER    GROWTH/VECTOR       1  TRANSFER     1.545  1.030   5599  ok (doubles: the second type's note comes after the cut)
+377  Wailmer          DOLPHIN     VECTOR/FLOW         1  DOLPHIN      1.337  0.491   2679  ok
+378  Zigzagoon        DETOUR      CONTENT             1  DETOUR       0.543  0.507   2765  ok
+379  Exploud          WRAPAROUND  CONTENT             3  LOWBIT       1.332  1.143   6214  ok
+380  Loudred          SHIFTLEFT   CONTENT             2  LOWBIT       0.618  0.578   3152  ok
+381  Wailord          PENPHIN     CONTEXT/FLOW        2  DOLPHIN      1.983  0.837   4552  ok (doubles: the second type's note comes after the cut)
+382  Whismur          LOWBIT      CONTENT             1  LOWBIT       0.381  0.372   2032  ok
+383  Snorunt          LOCKFILE    FROZEN              1  LOCKFILE     0.801  0.538   2933  ok
+384  Latios           CASTOR      EMERGENT/CONTEXT    1  CASTOR       1.035  0.923   5018  ok (doubles: the second type's note comes after the cut)
+385  Jirachi          ELPIS       HARDENED/CONTEXT    1  ELPIS        0.635  0.576   3139  ok (doubles: the second type's note comes after the cut)
+386  Deoxys           PROTEUS     CONTEXT             1  PROTEUS      0.980  0.707   3848  ok
+387  Chimecho         OVERTONE    CONTEXT             1  OVERTONE     0.472  0.453   2472  ok
