@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.390**
+**A total conversion — the living design bible, v11.391**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -5542,6 +5542,8 @@ Visible light runs **C to roughly A**. **A# and B have no wavelength.** There is
 
 *And the achromatic towns take value instead:* **Blanche** is C pentatonic, high and open; **Halftone** takes D minor from the story, not the spectrum; **Quicksilver** keeps its own. **Slate and Umbra are still unwritten.**
 
+***And THE MARGINS take keys no coloured town uses (T-565 batch 9, released in v11.390.1)***: **B-flat and B.** *The islands are outside the spectrum the mainland is keyed by, so their music is too -- ONE to THREE ISLAND one tune over major, then minor ground; FOUR and FIVE phrases and white space, the harp writing in the margin; SIX and SEVEN B-flat answered in B; the island roads the mainland's road mirrored; the caves sinking an octave; TANOBY in bars of seven; ONE ISLAND's CHECKPOINT two halves meeting* (`tools/genislandmusic.py`, voice C, over pret's in place; the user's pick, DRAFT).
+
 **Five towns still have no hue**, and 7.2 explains rather than excuses it. White is *every* wavelength, black is none, grey is all of them evenly. They cannot take a pitch from the spectrum because they are not on it.
 
 **Proposal, unchanged and now better founded:** hue sets the **key**; value sets **register and density**. White high and open, greys middle and filling in, black at the bottom. Umbra is then the floor of a descent the player has been making all game — and it is where colour arrives.
@@ -8226,6 +8228,8 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 **Then the routines (batch 10, released in v11.389.1): the 115 move sounds in C BOTH, each type with a palette of its own -- a motif, a register, a texture -- shaped to what the sound does; hits on the noise channel, a stat falling on the tritone** (`genuisounds.py --batch 10`, the game lane; the user's pick). ***A type is now heard as well as seen*** *-- the sprites are coloured by type (9.4), and the routines sound by it.* *Three sounds shared across types (COMET_PUNCH, MINIMIZE's stat tick, MOONLIGHT) still speak CONTENT for all of them, until each type's own is picked per routine (T-583, later). Left pret's: the cries (batch 11, a design question first) and the retail samples. DRAFT.*
 
+**Then THE MARGINS (batch 9, released in v11.390.1): the islands' music in voice C, in B-flat and B** -- *7.4 says why those keys.* *DRAFT.*
+
 ### 9.6 The chart change, finally built — and cheaper than it was
 
 ***2 specifies exactly one change to the matchup table*** — **delete Gen 1's `GHOST, PSYCHIC, 00` bug, then add the mutual pair `CONTEXT ↔ LATENT` at 2×.** *"Two additions, one deletion. That is the whole chart change."*
@@ -9284,6 +9288,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **THE MARGINS' music (T-565 batch 9, v11.390.1)** — released, the user's pick: the islands, their roads, caves, TANOBY and ONE ISLAND's CHECKPOINT in voice C, in B-flat and B, keys none of the coloured towns uses, so the region off the spectrum sounds off it too (7.4). Sealed v11.389.x. DRAFT.
 - **The move sounds, a palette per type (T-565 batch 10, v11.389.1)** — released, the user's pick (C BOTH): 115 routine sounds, each type its own motif, register and texture, hits on the noise channel, a falling stat on the tritone; so a type is heard as it is seen. Three shared sounds wait on T-583. Sealed v11.388.x. DRAFT.
 - **The story's music and the field sounds (T-565 batches 8 and 6, v11.388.1)** — released, the user's picks: the story set-pieces in voice C over pret's in place, from CRYSTAL CLEAR's entrance to the credits' medley; THE WALLED GARDEN its own song (`MUS_WALLED_GARDEN`); the 41 field sounds in C BOTH. Left pret's: the move sounds, the cries, the retail samples. Sealed v11.387.x. DRAFT.
 - **THE SUBTLE LAYER's six scenes and the overworld music (T-575 to T-580, T-565 batch 5; v11.387.1)** — released: TOUCH, MOVE AND BURN, RIPPLES, KINDRED's two cups, a read fixed by the day and the place, and the follower turning after the last page, the user's picks (all A), confirmed "keep as built" (4.38). The everyday overworld music in voice C, and LURID and DOLDRUM given their own songs as 7.4 planned. Sealed v11.386.x. DRAFT.

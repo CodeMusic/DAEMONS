@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.391 — 2026-11-17
+
+- Recorded from release v11.390.1 (78eb5bcd, engine 7e6abcda8), which sealed v11.389.x:
+  - **THE MARGINS' music** (T-565 batch 9, the Musical Instruments lane): the islands in voice C, in B-flat and B. DRAFT. In 7.4, after the achromatic towns, and a line in 9.5.
+- Section 10: one Settled entry.
+
 ## v11.390 — 2026-11-17
 
 - Recorded from release v11.389.1 (4e8eede4, engine e97afa9cb), which sealed v11.388.x:
