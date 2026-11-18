@@ -40,7 +40,8 @@ union room; scripted scenes (`MUS_FOLLOW_ME` at QUICKSILVER, `MUS_JIGGLYPUFF` in
 `MUS_MYSTERY_GIFT`, `MUS_BERRY_PICK`, `MUS_POKE_JUMP`, `MUS_OBTAIN_BERRY`, `MUS_INTRO_FIGHT`, `MUS_HEAL_UNUSED`).
 *Sound effects, 43 still pret's:* mostly the wireless games, contests and berries the build never reaches
 (`SE_BALLOON_*`, `SE_CONTEST_*`, `SE_POKE_JUMP_*`, `SE_BERRY_BLENDER`, `SE_POKENAV_*`, the truck), the game corner's
-roulette, and eleven move sounds no routine of ours plays. **Whether any of these is drafted is the user's call.**
+roulette, and fourteen move sounds batch 10 left as they were (`SE_M_HEAL_BELL` and `SE_M_MORNING_SUN` among them, which
+battle keeps; the field has had its own since batch 3). **Whether any of these is drafted is the user's call.**
 
 ## Headline
 
