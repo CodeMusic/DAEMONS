@@ -179,7 +179,9 @@ def bury():
 
 def statchange():
     """9.24 on a stat change: UP deepens the daemon toward its own type, DOWN drains it toward grey, and a two-stage
-    change goes further and holds. AnimTask_DaemonsStatKind reads animationData->animArg and says which it is."""
+    change goes further and holds. AnimTask_DaemonsStatKind reads animationData->animArg and says which it is.
+    T-589: its sounds are played by role, as the type of the move that changed the stat (genuisounds' ROLES_10;
+    genanims.py --type-sounds writes the table); an ability or an item plays CONTENT's, the sounds it always had."""
     up = (["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, 1, 0, 9"] + W
           + ["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, 2, 9, 0"] + W + ["\tend"])
     up_sharp = (["\tcreatevisualtask AnimTask_DaemonsBlendToUserType, 10, 0, 0, 14"] + W + pause(10)
@@ -189,11 +191,11 @@ def statchange():
     return (["\tcreatevisualtask AnimTask_DaemonsStatKind, 5", "\tdelay 0",
              "\tjumpargeq 0, 1, DaemonsStatDown",
              "\tjumpargeq 1, 1, DaemonsStatUpSharply"]
-            + ["\tplaysewithpan SE_M_SWAGGER, SOUND_PAN_ATTACKER"] + up
-            + ["DaemonsStatUpSharply:", "\tplaysewithpan SE_M_SWAGGER2, SOUND_PAN_ATTACKER"] + up_sharp
+            + ["\tplaytypesewithpan TYPE_SE_RISE, SOUND_PAN_ATTACKER"] + up
+            + ["DaemonsStatUpSharply:", "\tplaytypesewithpan TYPE_SE_RISE2, SOUND_PAN_ATTACKER"] + up_sharp
             + ["DaemonsStatDown:", "\tjumpargeq 1, 1, DaemonsStatDownSharply",
-               "\tplaysewithpan SE_M_STAT_DECREASE, SOUND_PAN_ATTACKER"] + down
-            + ["DaemonsStatDownSharply:", "\tplaysewithpan SE_M_STAT_DECREASE, SOUND_PAN_ATTACKER"] + down_sharp)
+               "\tplaytypesewithpan TYPE_SE_FALL, SOUND_PAN_ATTACKER"] + down
+            + ["DaemonsStatDownSharply:", "\tplaytypesewithpan TYPE_SE_FALL, SOUND_PAN_ATTACKER"] + down_sharp)
 
 
 # ---- wave 4: what happens TO a daemon outside a move. Each is the palette again, in the vocabulary already set:

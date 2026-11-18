@@ -479,6 +479,20 @@ ROLES_10 = {
     "HEAL": dict(se="m_moonlight", most=120, shapes=["heal", "rise", "glint", "charge", "call", "status", "wave",
                                                      "weather", "beam", "swish", "spray", "pop", "burst", "bind",
                                                      "hits", "hit", "slash", "bite"]),
+    # T-589: THE STAT ARROW. General_StatsChange is no routine, so these three are played by the type of the MOVE that
+    # changed the stat (the battle engine sends it with the arrow; an ability or an item sends none, and CONTENT's
+    # plays). `only` keeps them to that script: SWAGGER and SWAGGER2 are also borrowed by routines, which still play
+    # them by name. Capped at 30 frames, STAT_DECREASE's own length, the longest of the arrow's three; a fall never
+    # borrows a rise or a heal, nor a rise a fall.
+    "RISE":  dict(se="m_swagger", most=30, only="General_StatsChange",
+                  shapes=["rise", "glint", "charge", "heal", "status", "pop", "call", "swish", "spray", "beam", "hits",
+                          "hit", "slash", "bite", "burst", "bind", "tick", "wave", "weather"]),
+    "RISE2": dict(se="m_swagger2", most=30, only="General_StatsChange",
+                  shapes=["status", "rise", "glint", "charge", "heal", "pop", "call", "swish", "spray", "beam", "hits",
+                          "hit", "slash", "bite", "burst", "bind", "tick", "wave", "weather"]),
+    "FALL":  dict(se="m_stat_decrease", most=30, only="General_StatsChange",
+                  shapes=["fall", "status", "bind", "pop", "glint", "tick", "swish", "hits", "hit", "bite", "slash",
+                          "spray", "burst", "call", "beam", "wave", "weather", "charge"]),
 }
 
 

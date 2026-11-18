@@ -73,8 +73,12 @@ def _uisounds():
 
 
 _UI = _uisounds()
-SHARED_ROLE = {"SE_" + r["se"].upper(): role for role, r in _UI.ROLES_10.items()}    # SE_M_COMET_PUNCH -> HIT ...
-ROLE_SE = {role: se for se, role in SHARED_ROLE.items()}
+SHARED_ROLE = {"SE_" + r["se"].upper(): role for role, r in _UI.ROLES_10.items()    # SE_M_COMET_PUNCH -> HIT ...
+               if "only" not in r}
+#  T-589: a role with `only` (the stat arrow's three) is played by role in that one script alone; the routines that
+#  borrow its sound still play it by name.
+SCOPED_ROLE = {role: ("SE_" + r["se"].upper(), r["only"]) for role, r in _UI.ROLES_10.items() if "only" in r}
+ROLE_SE = {role: "SE_" + r["se"].upper() for role, r in _UI.ROLES_10.items()}
 TYPE_SE_H = os.path.join(E, "src/data/battle_anim_type_se.h")
 PLAY_SHARED = re.compile(r"^(\t)playsewithpan (%s), (.+)$" % "|".join(SHARED_ROLE), re.M)
 
@@ -1579,6 +1583,12 @@ def type_sounds():
     rows += ["};", ""]
     scripts = PLAY_SHARED.sub(lambda m: "%splaytypesewithpan TYPE_SE_%s, %s" % (m.group(1), SHARED_ROLE[m.group(2)], m.group(3)),
                               open(SCRIPTS).read())
+    for role, (se, label) in SCOPED_ROLE.items():          # T-589: only inside its own script, up to its blank line
+        a = re.search(r"^%s:\n" % label, scripts, re.M).start()
+        b = scripts.index("\n\n", a)
+        scripts = scripts[:a] + re.sub(r"^(\t)playsewithpan %s, (.+)$" % se,
+                                       lambda m: "%splaytypesewithpan TYPE_SE_%s, %s" % (m.group(1), role, m.group(2)),
+                                       scripts[a:b], flags=re.M) + scripts[b:]
     return "\n".join(rows), scripts
 
 
