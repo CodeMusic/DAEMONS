@@ -1622,6 +1622,349 @@ def main_570():
     return 1 if bad or unacc else 0
 
 
+# ================================================================== T-438, the last part: the islands' leftovers
+#  T-438's tail left "the islands' unassigned leftovers" for the user. T-569 and T-570 (above) have since drawn all but
+#  the 40 LEFT_WHY names, so this pass first RECOUNTS the islands against pret as the engine stands TODAY (census(),
+#  with the engine's tiles instead of BASE's), then drafts the three pieces among them that are a drawing rather than
+#  a sliver, a flat black or a flat doorway -- each as a whole piece, so no seam is split:
+#
+#    python3 tools/gbaislands.py --t438k               # report: today's recount per island set (ours / pret's where
+#                                                      #   a player can stand / unused), each pret tile with why it is
+#                                                      #   left or which piece draws it; exits 1 if one is unaccounted
+#    python3 tools/gbaislands.py --t438k --draft [DIR] # the drafts into DIR (gfx/drafts/t438/islands/): per piece and
+#                                                      #   option a tiles.png per tileset, draft.json
+#    python3 tools/gbaislands.py --t438k --sheets [DIR]  # --draft, and DIR/sheets: each piece at 8x (today | A | B)
+#                                                      #   and the maps that show it at 3x (today | A | B)
+#    python3 tools/gbaislands.py --t438k --write --approved  # APPROVED_438K's picks over the engine's own tiles.png.
+#                                                      #   EMPTY until the user picks: refused, nothing written.
+#
+#  THE RULES are T-570's: one piece drawn whole, only in indices it already uses, index 0 stays 0 and a drawn pixel
+#  stays drawn; no block, layer, flip, palette row, behaviour, collision or map moves.
+DRAFT_438K = os.path.join(ROOT, "gfx", "drafts", "t438", "islands")
+APPROVED_438K = {}          # {piece: option} -- EMPTY: nothing is picked, --write --approved writes nothing
+ISLE_SETS_438K = ["sevii_islands_123", "sevii_islands_45", "sevii_islands_67", "island_harbor", "berry_forest"]
+
+
+def census_now(ts):
+    """census() of the engine as it stands today (BASE's tiles replaced by the engine's own)"""
+    global base_town
+    saved = base_town
+
+    def today(t):
+        town = T.Town(t)
+        town._leftovers()
+        return town
+    base_town = today
+    try:
+        return census(ts)
+    finally:
+        base_town = saved
+
+
+def _grid16(town, b):
+    """block B's layer 0 as a 16x16 canvas of indices, and {(Y, X): (tile, k)} to cut it back (unflipped quarters)"""
+    e = T.entries(town.mt, b - 640)[:4]
+    pix, own = [[0] * 16 for _ in range(16)], {}
+    for q, v in enumerate(e):
+        t = (v & 0x3FF) - 640
+        for k in range(64):
+            ty, tx = k // 8, k % 8
+            sx, sy = (7 - tx if v & 0x400 else tx), (7 - ty if v & 0x800 else ty)
+            Y, X = (q // 2) * 8 + ty, (q % 2) * 8 + tx
+            own[(Y, X)] = (t, sy * 8 + sx)
+    return pix, own
+
+
+def dotted_open(opt):
+    """THE DOTS' door, OPEN (SIX ISLAND, RUIN VALLEY: block 0x358, set at 24,24 by the map's script once the braille is
+    read; 0x357 is the same door shut, which T-569 drew). Wherever pret drew the open door exactly as the shut one --
+    its stone frame and its threshold -- it takes the shut door's pixels as they are now, so the two states read as
+    one door. Inside, the dark of the passage, the lintel's underside a step lighter (14) along its top; then
+      A SLAB SUNK: the slab has dropped into the threshold -- its top edge and first line of dots show along the foot
+         of the opening (the shut door's rows 2 and 3);
+      B BRAILLE IN THE DARK: the passage's back wall carries THE DOTS' own word, "hi" in braille (gbacaves.BRAILLE,
+         the cave's own inscription), as dim slate dots (8) in the dark."""
+    town = town570("sevii_islands_67")
+    shut, _ = _grid16(town, 0x357)
+    opn, own = _grid16(town, 0x358)
+    _, shut_own = _grid16(town, 0x357)
+    now = lambda o, Y, X: town.now[o[(Y, X)][0]][o[(Y, X)][1]]
+    van = lambda o, Y, X: town.van[o[(Y, X)][0]][o[(Y, X)][1]]
+    P = [[now(own, Y, X) for X in range(16)] for Y in range(16)]
+    inside = set()
+    for Y in range(16):
+        for X in range(16):
+            if van(own, Y, X) == van(shut_own, Y, X):
+                P[Y][X] = now(shut_own, Y, X)
+            elif van(own, Y, X) == 5:
+                inside.add((Y, X))
+    top = min(Y for Y, _ in inside)
+    for Y, X in inside:
+        P[Y][X] = 5
+        if Y == top:
+            P[Y][X] = 0xE
+    if opt == "A":
+        foot = max(Y for Y, _ in inside)
+        for Y, X in inside:
+            if Y in (foot - 1, foot):
+                P[Y][X] = now(shut_own, 2 + Y - (foot - 1), X)
+    else:
+        dots = set()
+        for cell, (cx, cy) in zip(C.BRAILLE, ((4, 5), (9, 5))):     # "h" then "i": dots 1-3 down the left, 4-6 right
+            for d in cell:
+                dots.add((cy + 2 * ((d - 1) % 3), cx + (2 if d > 3 else 0)))
+        for Y, X in dots:
+            if (Y, X) in inside:
+                P[Y][X] = 8
+    out = {}
+    for (Y, X), (t, k) in own.items():
+        out.setdefault(t, list(town.now[t]))[k] = P[Y][X]
+    return {"sevii_islands_67": out}
+
+
+def piling_top(opt):
+    """the islands' red piling (blocks 0x2E7 / 0x2A4 / 0x2CD / 0x2C7, in the sea beside the halls on ONE, FOUR, SIX
+    and BIRTH ISLAND): its cap is two tiles, 364 left (gbatowns batch H touched three pixels of its brace) and 365
+    right, still pret's, in all three island sets.
+      A IN STEP: 365 only -- wherever pret drew it as the mirror of 364, it takes 364's pixel as it is now, mirrored,
+         so the cross-brace is lit the same on both sides of the seam (two pixels; 364 stays gbatowns').
+    No second option: a new brace drawn across both tiles (draw_pylon, kept above) moves the brace's footprint, and one
+    drawn inside the footprint came out a blob at 1x (2026-11-18) -- the piece is 16x8 pixels of red girder."""
+    out = {}
+    for ts in ("sevii_islands_123", "sevii_islands_45", "sevii_islands_67"):
+        town = town570(ts)
+        L_, R_ = town.now[364], town.now[365]
+        Lv, Rv = town.van[364], town.van[365]
+        new = list(R_)
+        for y in range(8):
+            for x in range(8):
+                if Rv[y * 8 + x] and Rv[y * 8 + x] == Lv[y * 8 + 7 - x]:
+                    new[y * 8 + x] = L_[y * 8 + 7 - x]
+        out[ts] = {365: new}
+    return out
+
+
+def rail_post(opt):
+    """the harbours' railing corner (tile 9, every harbour: block 0x28E and its mirror 0x28C): the top rail turns down
+    into a post. T-569 drew the railing either side (tile 10): two rows of rail in 10 and a post in a three-row twist.
+    A IN STEP: the corner's rail continues tile 10's two rows of 10, and its post takes tile 10's twist, so the rail
+    runs round the corner unbroken; the corner's light (8) and the outline (1) kept."""
+    town = town570("island_harbor")
+    rail, new = town.now[10], list(town.now[9])
+    twist = [rail[y * 8 + 3:y * 8 + 5] for y in (4, 5, 6)]
+    for y in range(8):
+        for x in range(8):
+            c = town.van[9][y * 8 + x]
+            if y in (1, 2) and x >= 4 and c in (9, 0xA):
+                new[y * 8 + x] = 0xA
+            elif y >= 3 and x in (3, 4) and c in (9, 0xA):
+                new[y * 8 + x] = twist[(y - 3) % 3][x - 3]
+    return {"island_harbor": {9: new}}
+
+
+#  the pieces: (key, what, its options [(option, title, line)], the recommended one, the drawing, crops)
+#  a crop is (tileset, map, x0, y0, w, h, {(x, y): block} set on the map first -- the open door is a script's)
+PIECES_438K = [
+    ("dotted", "THE DOTS' door, open (RUIN VALLEY, by script once the braille is read)",
+     [("A", "SLAB SUNK (DRAFT)", "the slab dropped into the threshold, its top edge and first line of dots showing"),
+      ("B", "BRAILLE IN THE DARK (DRAFT)", "the passage dark, THE DOTS' word 'hi' in dim braille on its back wall")],
+     "A", dotted_open,
+     [("sevii_islands_67", "SixIsland_RuinValley", 19, 19, 11, 8, {(24, 24): 0x358})]),
+    ("piling", "the islands' red piling, its cap (ONE, FOUR, SIX, BIRTH ISLAND)",
+     [("A", "IN STEP (DRAFT)", "365 only: the brace lit as gbatowns lit 364, mirrored -- two pixels")],
+     "A", piling_top,
+     [("sevii_islands_123", "NavelRock_Exterior", 7, 14, 11, 8, {}),
+      ("sevii_islands_67", "BirthIsland_Exterior", 13, 22, 11, 8, {})]),
+    ("rail", "the harbours' railing corner (every SEAGALLOP harbour)",
+     [("A", "IN STEP (DRAFT)", "the rail runs round the corner in T-569's two rows, its post in the same twist")],
+     "A", rail_post,
+     [("island_harbor", "Island_Harbor", 1, 1, 11, 8, {})]),
+]
+
+#  what this pass leaves, by kind (T-570's LEFT_WHY, still true today), and the three pieces' tiles
+DRAWN_438K = {("sevii_islands_67", t): "dotted" for t in (216, 217, 232, 233)}
+DRAWN_438K.update({(ts, 365): "piling" for ts in ("sevii_islands_123", "sevii_islands_45", "sevii_islands_67")})
+DRAWN_438K[("island_harbor", 9)] = "rail"
+
+
+def run_438k(draft_dir=None, sheets=False):
+    left = left_570()
+    print("  T-438, the islands' leftovers: recounted on the engine as it stands (pret's upstream/master, byte for "
+          "byte; a tile is counted where a reachable map, its border or a script places it)")
+    tot = collections.Counter()
+    unacc, report = [], collections.OrderedDict()
+    for ts in ISLE_SETS_438K:
+        town, cls, why, per = census_now(ts)
+        c = collections.Counter(cls.values())
+        tg = sorted(town.targets)
+        draws = sum(town.draws[t] for t in tg)
+        print("\n  %-38s %-18s ours %3d  pret+reach %3d  unused %3d  excluded %3d  left %2d  (%d of %d draws)" % (
+            NAME[ts], ts, c["ours"], c["reach"], c["unused"], len(why), len(tg), draws,
+            sum(town.draws[t] for t in range(len(town.now)) if any(town.now[t]))))
+        for r, n in collections.Counter(why.values()).items():
+            print("        excluded: %-58s %d" % (r[:58], n))
+        rows = []
+        for t in tg:
+            if (ts, t) in DRAWN_438K:
+                rows.append("%d drawn here (%s)" % (t, DRAWN_438K[(ts, t)]))
+            elif (ts, t) in left:
+                rows.append("%d %s" % (t, left[(ts, t)]))
+            else:
+                rows.append("%d UNACCOUNTED" % t)
+                unacc.append((ts, t))
+        print("        " + "; ".join(rows))
+        report[ts] = dict(name=NAME[ts], ours=c["ours"], reach=c["reach"], unused=c["unused"],
+                          excluded={str(t): w for t, w in why.items()}, left=tg, draws=draws,
+                          maps=dict(collections.Counter(m for t in tg for m in town.where[t] & reachable())))
+        tot["ours"] += c["ours"]
+        tot["reach"] += c["reach"]
+        tot["left"] += len(tg)
+    print("\n  the islands today: ours %d, pret's where a player can stand %d, of which %d are not another tool's "
+          "(T-447's landmarks, doors and canopy hollows excluded); %d drawn by the pieces below, %d left as T-570 "
+          "named them, %d unaccounted" % (tot["ours"], tot["reach"], tot["left"], len(DRAWN_438K),
+                                          tot["left"] - len(DRAWN_438K) - len(unacc), len(unacc)))
+    results = {}
+    print("\n  the pieces:")
+    for key, what, opts, rec, fn, crops in PIECES_438K:
+        print("      %-7s %s" % (key, what))
+        for o, title, line in opts:
+            res = fn(o)
+            results[(key, o)] = res
+            n = sum(1 for ts, tt in res.items() for t, p in tt.items() if p != town570(ts).now[t])
+            moved = [(ts, t) for ts, tt in res.items() for t, p in tt.items()
+                     if any((a == 0) != (b == 0) for a, b in zip(p, town570(ts).now[t]))]
+            print("          %s %-26s %-90s %d tiles%s%s" % (o, title, line[:90], n, "  << recommended" if o == rec
+                                                             else "", "  !! FOOTPRINT %s" % moved if moved else ""))
+            if moved:
+                raise SystemExit("  !! %s %s: a footprint moved" % (key, o))
+    print("\n  left as T-570 named them (nothing pret drew to replace): %s" % "; ".join(
+        "%s %s" % (w, ", ".join("%s %d" % k for k, ww in sorted(left.items()) if ww == w and k[0] in ISLE_SETS_438K
+                                and k not in DRAWN_438K))
+        for w in ("sliver", "black", "door")))
+    if draft_dir:
+        for (key, o), res in results.items():
+            d = os.path.join(draft_dir, key)
+            os.makedirs(d, exist_ok=True)
+            for ts, tt in res.items():
+                base = [list(t) for t in town570(ts).now]
+                for t, p in tt.items():
+                    base[t] = list(p)
+                L.save_tiles(town570(ts), base, os.path.join(d, "%s_%s.png" % (ts, o)))
+        json.dump(dict(ticket="T-438 (the islands' leftovers)", status="DRAFT -- nothing approved (APPROVED_438K is "
+                       "empty)", sets=report,
+                       pieces=[dict(piece=k, what=w, recommended=r, options=[dict(option=o, title=t, line=l)
+                                                                             for o, t, l in op],
+                                    tiles={"%s %d" % (ts, t): k for (ts, t), kk in DRAWN_438K.items() if kk == k})
+                               for k, w, op, r, _, _ in PIECES_438K],
+                       left={"%s %d" % k: LEFT_WHY[w] for k, w in sorted(left.items())
+                             if k[0] in ISLE_SETS_438K and k not in DRAWN_438K},
+                       unaccounted=unacc),
+                  open(os.path.join(draft_dir, "draft.json"), "w"), indent=1)
+        print("  drafts in %s" % draft_dir)
+    if sheets:
+        sd = os.path.join(draft_dir, "sheets")
+        os.makedirs(sd, exist_ok=True)
+        print("  wrote %s" % sheet_438k(results, os.path.join(sd, "t438k_islands.png")))
+    return results, unacc
+
+
+def sheet_438k(results, path):
+    """each piece: its block(s) at 8x, today | A | B, then its map windows at 3x, today | A | B"""
+    f = T.font(12)
+    parts = []
+    for key, what, opts, rec, fn, crops in PIECES_438K:
+        ims = []
+        head = "%s -- %s   (today | %s; recommended %s)" % (key.upper(), what, " | ".join(
+            "%s %s" % (o, t) for o, t, _ in opts), rec)
+        for ts, m, x0, y0, w, h, sets in crops:
+            town = town570(ts)
+            saved = town.grid[m]
+            g = list(saved)
+            W = T.layouts()[m]["width"]
+            for (x, y), b in sets.items():
+                g[y * W + x] = b
+            town.grid[m] = g
+            try:
+                row = [T.render(town, m, box=(x0, y0, w, h))]
+                for o, _, _ in opts:
+                    tl = [list(t) for t in town.now]
+                    for t, p in results[(key, o)].get(ts, {}).items():
+                        tl[t] = list(p)
+                    row.append(T.render(town, m, tiles=tl, box=(x0, y0, w, h)))
+            finally:
+                town.grid[m] = saved
+            ims.append(("%s  cells %d,%d %dx%d" % (m, x0, y0, w, h), [im.resize((im.width * 3, im.height * 3),
+                                                                                 Image.NEAREST) for im in row]))
+        #  the piece's tiles at 8x, in their commonest row
+        tiles = sorted({(ts, t) for o, _, _ in opts for ts, tt in results[(key, o)].items() for t in tt})
+        cells = []
+        for ts, t in tiles:
+            town = town570(ts)
+            row = max((r for (tt, r) in rows_of(town) if tt == t), key=lambda r: rows_of(town)[(t, r)], default=8)
+            pal = town.palette(row)
+            cells.append(("%s %d" % (ts.replace("sevii_islands_", "isl"), t),
+                          [L.tile_img(town.now[t], pal, 8)] + [L.tile_img(results[(key, o)].get(ts, {}).get(
+                              t, town.now[t]), pal, 8) for o, _, _ in opts]))
+        parts.append((head, cells, ims))
+    W = 1500
+    H = 30 + sum(40 + ((len(c) + 2) // 3) * 90 + sum(im[1][0].height + 24 for im in ims) for _, c, ims in parts)
+    out = Image.new("RGB", (W, H), T.BG)
+    d = ImageDraw.Draw(out)
+    d.text((8, 6), "T-438, the islands' leftovers -- DRAFT (nothing in the engine). Recounted today: every other pret "
+                   "tile on the islands is a sliver, a flat black or a flat doorway (T-570's LEFT_WHY)",
+           font=T.font(13), fill=(20, 20, 20))
+    y = 30
+    for head, cells, ims in parts:
+        d.text((8, y), head, font=T.font(13), fill=(20, 20, 20))
+        y += 22
+        for n, (lab, row) in enumerate(cells):
+            x, yy = 8 + (n % 3) * 480, y + (n // 3) * 90
+            d.text((x, yy), lab, font=f, fill=(30, 30, 30))
+            for j, im in enumerate(row):
+                out.paste(im, (x + j * 72, yy + 16))
+        y += ((len(cells) + 2) // 3) * 90 + 10
+        for lab, row in ims:
+            d.text((8, y), lab, font=f, fill=(30, 30, 30))
+            for j, im in enumerate(row):
+                out.paste(im, (8 + j * (im.width + 10), y + 16))
+            y += row[0].height + 24
+        y += 8
+    out.crop((0, 0, W, y + 4)).save(path)
+    return path
+
+
+def main_438k():
+    if "--write" in ARGS:
+        if "--approved" not in ARGS or not APPROVED_438K:
+            print("  --t438k --write refused: --write needs --approved, and APPROVED_438K names nothing the user has "
+                  "picked. Nothing written.")
+            return 0
+        fn = {k: f for k, _, _, _, f, _ in PIECES_438K}
+        per = collections.defaultdict(dict)
+        for key, o in APPROVED_438K.items():
+            for ts, tt in fn[key](o).items():
+                per[ts].update(tt)
+        for ts, tt in per.items():
+            town = town570(ts)
+            out = [list(t) for t in town.disk]
+            for t, p in tt.items():
+                out[t] = list(p)
+            if out == town.disk:
+                print("  %s: already drawn, nothing to write" % ts)
+                continue
+            L.save_tiles(town, out, os.path.join(town.dir, "tiles.png"))
+            print("  wrote %s: %d tiles (T-438 islands %s)" % (ts, len(tt), APPROVED_438K))
+        return 0
+    for flag in ("--sheets", "--draft"):
+        if flag in ARGS:
+            i = ARGS.index(flag)
+            d = ARGS[i + 1] if i + 1 < len(ARGS) and not ARGS[i + 1].startswith("--") else DRAFT_438K
+            _, unacc = run_438k(d, sheets=flag == "--sheets")
+            return 1 if unacc else 0
+    _, unacc = run_438k(None)
+    return 1 if unacc else 0
+
+
 # ================================================================== main
 def run(draft_dir=None, sheets=False):
     report = collections.OrderedDict()
@@ -1748,6 +2091,8 @@ def check_keep_sets(owned):
 def main():
     if "--t570" in ARGS:
         return main_570()
+    if "--t438k" in ARGS:
+        return main_438k()
     if "--write" in ARGS:
         if "--approved" not in ARGS or not APPROVED:
             print("  --write refused: --write needs --approved, and APPROVED names nothing the user has picked. "

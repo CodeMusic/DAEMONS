@@ -2352,7 +2352,265 @@ def blackout_into_engine(d):
                                                  "" if d in BLACKOUT_APPROVED else " -- a DRAFT worktree"))
 
 
+# ================================================================== T-438, the last part: UMBRAL ASCENT's own tiles
+#  UMBRAL ASCENT (VictoryRoad_1F/2F/3F) is a PALETTE split over DEADSTACK (batch E2, approved 2026-10-23): its own
+#  cold violet dusk (cave/palettes_umbral, rows 7..12), but the stack's courses and gold edge connectors, drawn for a
+#  mountain of dead hardware. Batch E2 said "its own tiles in batch G"; T-438's tail left them for the user. This
+#  drafts them: a TILE split -- a tiles.png of its own for gTileset_CaveUmbral, drawn over the same vanilla cave tiles
+#  by this tool's own method (redraw(), the cave's index plan MATERIALS["cave"]), in a motif of its own. Its rows stay
+#  the dusk the user approved; DEADSTACK, THE WRONG WAY and THREE ISLE PATH keep the stack and do not change.
+#
+#    python3 tools/gbacaves.py --umbral [DIR]          # drafts A/B/C into DIR (gfx/drafts/t438/umbral/): tiles_X.png
+#                                                      #   per option, draft.json, and the sheets (--sheets DIR puts
+#                                                      #   them elsewhere): each floor's windows today | A | B | C at
+#                                                      #   2x, and a tile atlas
+#    python3 tools/gbacaves.py --umbral --write --approved
+#                                                      # UMBRAL_APPROVED's option into data/tilesets/secondary/cave/
+#                                                      #   umbral/tiles.png. EMPTY until picked: refused.
+#
+#  WHAT THE NAME ASKS (vision 3.2-3.3, 7.x): ROUTE 22 is THE DRAINING ("colour leaving"), ROUTE 23 PENUMBRA ("partial
+#  shadow"), then UMBRA, "full shadow; all colour absorbed", the value floor of the descent -- where the four humours
+#  arrive as colour "by contrast with darkness". The ascent is the climb out of partial shadow into full shadow: so
+#  every option is a play of light and shadow on the rock, never a new hue (the rows stay as approved). UMBRA PLATEAU's
+#  own look (gbatowns, batch G) is "dressed blocks each carrying its own long shadow cut on the diagonal"; A continues
+#  it into raw rock, so the climb and the plateau read as one approach.
+#
+#  THE RULES are batch E's: footprint and every join kept (redraw() does both), no block, row, flip, behaviour,
+#  collision or map moves. What the engine keeps on purpose stays as drawn there: T-569/T-570's stones, ladders and
+#  rims are re-cut in the option's own grain (gbaislands' T-569 pick, its "THE CAVE'S OWN GRAIN", with this motif as
+#  the grain), T-570's hand-drawn ladders, holes, trickle and press plate kept as drawn, T-574's ladder down a hole
+#  drawn over it as everywhere.
+#
+#  BUILDING IT (not done by --write; the header is code, as the palette splits' were): graphics.h gains
+#  gTilesetTiles_CaveUmbral = INCBIN_U32("data/tilesets/secondary/cave/umbral/tiles.4bpp.lz"), headers.h's
+#  gTileset_CaveUmbral points .tiles at it. ROM: +about 4.2 KB (the cave's tiles.4bpp.lz is 4,200 bytes).
+UMBRAL_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t438", "umbral")
+UMBRAL_APPROVED = None      # "A", "B" or "C" once the user picks -- None: --write --approved writes nothing
+UMBRAL_TILES = "data/tilesets/secondary/cave/umbral/tiles.png"
+
+
+def _diag(X, Y, edge=16, band=2):
+    """the long shadow: 0 lit, 1 in shadow, past the diagonal X + Y = EDGE of each block (lower right, the light low
+    from the upper left); along it a BAND of penumbra, every other pixel in shadow -- the soft edge of a shadow cast
+    from far off"""
+    d = X + Y
+    if d > edge + band:
+        return 1
+    if d > edge:
+        return (X + Y // 2) % 2
+    return 0
+
+
+UMBRA_STONE = _lumps(_voronoi([(3.5, 3.0, 1.6), (11.5, 2.5, 1.0), (7.5, 9.5, 1.8), (14.5, 11.0, 1.0),
+                               (2.0, 13.0, 0.8)]))
+
+
+def m_penumbra(X, Y, plane):
+    """A PENUMBRA: big rough stones (five a block, lumped, lit on top and left), and over them the long shadow cut on
+    the diagonal with a soft edge -- the rock half in last light, half in shadow, block after block up the climb"""
+    if plane == "top":
+        role = "hi" if Y == 0 else ("lo" if Y == 14 else ("crack" if Y == 15 else "body"))
+        return role, 1 if X + Y > 20 else 0
+    return UMBRA_STONE[Y][X], _diag(X, Y)
+
+
+def _step(X, Y):
+    k, r = Y // 4, Y % 4
+    joint = (4 * k + 3) % 16
+    if r == 3 or X == joint:
+        return "crack", 0
+    role = "hi" if r == 0 else ("lo" if r == 2 else "body")
+    return role, 1 if X > joint else 0
+
+
+TERRACE = _torus(_step)
+
+
+def m_terrace(X, Y, plane):
+    """B TERRACES: the climb in the rock itself -- every face cut into strata four pixels deep, each broken by a joint
+    one stratum further right than the one above, the rock past the joint a shade darker: a stair of light and shadow
+    going up the wall; across a top, the treads, one every eight"""
+    if plane == "top":
+        return ("hi" if Y % 8 == 0 else ("crack" if Y % 8 == 7 else "body")), 0
+    return TERRACE[Y][X]
+
+
+GLASS = _lumps(_voronoi([(4.0, 4.0, 0.0), (12.5, 6.5, 0.0), (6.5, 12.5, 0.0), (14.0, 14.5, 0.0)]))
+
+
+def m_glass(X, Y, plane):
+    """C DUSK GLASS: the rock as dark volcanic glass broken in big conchoidal facets -- each facet in shadow but for a
+    lit rim along its upper left, the facets' edges sharp; across a top the same facets, lit. Value only: the darkest
+    of the three"""
+    r = GLASS[Y][X]
+    if plane == "top":
+        return r, 0
+    if r in ("hi", "crack"):
+        return r, 0
+    return "body", 1
+
+
+#  the floors: a pebble with its long shadow (A), a stair's edge (B), a fracture (C)
+FLOOR_LONG = [[None] * 16 for _ in range(16)]
+for _px, _py, _tail in ((3, 3, 5), (11, 10, 4)):
+    for _dx, _dy, _r in ((0, 0, "hi"), (1, 0, "hi"), (0, 1, "body"), (1, 1, "lo")):
+        FLOOR_LONG[(_py + _dy) % 16][(_px + _dx) % 16] = _r
+    for _k in range(1, _tail + 1):
+        FLOOR_LONG[(_py + 1 + _k) % 16][(_px + 1 + _k) % 16] = "lo"
+FLOOR_STEP = _marks([(2, 4, 6, 2), (9, 11, 5, 2)])
+
+UMBRAL_OPTIONS = [
+    ("A", "PENUMBRA (DRAFT)", "big rough stones under a long diagonal shadow with a soft edge, block after block; "
+                              "last light (the dusk's warm accent) along the brink of every cut; pebbles on the "
+                              "floor each trailing a long shadow -- UMBRA PLATEAU's long shadow, in raw rock",
+     dict(rock=m_penumbra, rim=["accent0"], floor=FLOOR_LONG, field=2, off=MARK_OFF, patch_field=1)),
+    ("B", "TERRACES (DRAFT)", "every face cut in strata that step up the wall, light on one side of each joint and "
+                              "shadow on the other -- a stair of light climbing; the floor in shallow step edges",
+     dict(rock=m_terrace, rim=None, floor=FLOOR_STEP, field=2, off=MARK_OFF, patch_field=1)),
+    ("C", "DUSK GLASS (DRAFT)", "dark volcanic glass in big facets, each in shadow but for a lit upper-left rim; the "
+                                "floor fractured -- the darkest, value only, no accent",
+     dict(rock=m_glass, rim=None, floor=FLOOR_SLATE, field=2, off=CRACK_OFF, patch_field=1)),
+]
+for _o, _t, _l, _lk in UMBRAL_OPTIONS:
+    LOOKS["cave/umbral_tiles_" + _o.lower()] = dict(_lk, name="UMBRAL ASCENT (%s)" % _t, motif=_t,
+                                                     pal=LOOKS["cave/umbral"]["pal"])
+
+
+def umbral_pals(cave):
+    """the sixteen rows UMBRAL ASCENT is drawn in: the engine's cave rows, its own 7..12 (palettes_umbral) over them"""
+    return [read_pal(os.path.join(GBA, SEC + SPLIT_DIR["cave/umbral"], "%02d.pal" % r)) if 7 <= r <= 12
+            else cave.pals[r] for r in range(16)]
+
+
+def umbral_grain(rock):
+    """gbaislands' THE CAVE'S OWN GRAIN, with this option's motif as the cave's grain"""
+    I = _islands()
+
+    def m_grain(x, y, w, h, X, Y, b):
+        r = rock(X % 16, Y % 16, "top" if b < 0.35 else "face")
+        role, shift = (r if isinstance(r, tuple) else (r, 0))
+        if role == "crack":
+            return 1.0
+        return max(0.0, min(1.0, b + I.ROLE.get(role, 0.0) + 0.12 * shift))
+    I.L.KEEP_LIGHT.setdefault(m_grain, 0.25)
+    return m_grain
+
+
+def umbral_tiles(cave, option):
+    """(tiles, {tile: what}) -- UMBRAL ASCENT's own tiles in OPTION: this look over vanilla's, then the stones T-569
+    kept in this option's grain, T-570's hand-drawn pieces as the engine has them, and T-574's ladder down a hole"""
+    key = "cave/umbral_tiles_" + option.lower()
+    new, what = redraw(cave, key)
+    new = [list(p) for p in new]
+    I = _islands()
+    town, _, _, _ = I.census("cave")
+    st, _ = I.redraw(town, {"*": umbral_grain(LOOKS[key]["rock"])})
+    a570 = I.approved_570_tiles().get("cave", {})
+    for t in T569_ISLANDS["cave"]:
+        if t in a570:
+            new[t] = list(a570[t])
+            what[t] = "T-570, as drawn"
+        elif st[t] != town.now[t]:
+            new[t] = list(st[t])
+            what[t] = "T-569's stones, in this grain"
+        else:
+            new[t] = list(cave.now[t])
+    what.update(ladders_574(cave, new))
+    held = set(T569_ISLANDS["cave"]) | t574_tiles("cave")
+    moved = [t for t in range(cave.n) if t not in held and any((a == 0) != (b == 0)
+                                                                 for a, b in zip(new[t], cave.van[t]))]
+    if moved:
+        raise SystemExit("  !! UMBRAL ASCENT %s: footprints moved at %s" % (option, moved[:12]))
+    return new, what
+
+
+#  the windows: a GBA screen and a half of each floor (cells), and DEADSTACK's to show it does not change
+UMBRAL_CROPS = [("VictoryRoad_1F", 0, 0, 22, 14, "1F: the first ledges, the boulder, the ladder"),
+                ("VictoryRoad_2F", 0, 6, 22, 14, "2F: the switch, the long ridges"),
+                ("VictoryRoad_3F", 10, 4, 22, 14, "3F: the last climb")]
+
+
+def umbral_drafts(outdir, sheetdir):
+    cave = Cave("cave")
+    pals = umbral_pals(cave)
+    os.makedirs(outdir, exist_ok=True)
+    made, info = [], {}
+    vr_tiles = set()
+    for m in split_maps(cave, "cave/umbral"):
+        l = layouts()[m]
+        d = open(os.path.join(GBA, l["blockdata_filepath"]), "rb").read()
+        for k in range(len(d) // 2):
+            b = struct.unpack_from("<H", d, k * 2)[0] & 0x3FF
+            if b >= 640:
+                vr_tiles |= {(v & 0x3FF) - 640 for v in entries(cave.mt, b - 640) if v & 0x3FF >= 640}
+    for o, title, line, _ in UMBRAL_OPTIONS:
+        new, what = umbral_tiles(cave, o)
+        tiles_png(cave, new).save(os.path.join(outdir, "tiles_%s.png" % o), bits=4)
+        ch = sorted(t for t in range(cave.n) if new[t] != cave.now[t])
+        info[o] = dict(title=title, line=line, changed=len(ch), changed_on_victory_road=len(set(ch) & vr_tiles),
+                       kinds=dict(collections.Counter(what[t] if t in what else "rock/floor" for t in ch)))
+        made.append((o, title, new))
+        print("  %s %-20s %3d of %d tiles differ from DEADSTACK's (%d of the %d Victory Road draws)" % (
+            o, title, len(ch), cave.n, len(set(ch) & vr_tiles), len(vr_tiles)))
+    same = sorted(t for t in vr_tiles if all(n[t] == cave.now[t] for _, _, n in made) and any(cave.now[t]))
+    json.dump(dict(ticket="T-438 (UMBRAL ASCENT's own tiles)", status="DRAFT -- nothing approved (UMBRAL_APPROVED "
+                   "is None)", palettes="unchanged: cave/palettes_umbral rows 7..12 (approved 2026-10-23)",
+                   victory_road_tiles=len(vr_tiles), unchanged_in_every_option=same, options=info,
+                   build="graphics.h: gTilesetTiles_CaveUmbral INCBIN %s (.4bpp.lz); headers.h gTileset_CaveUmbral "
+                         ".tiles = gTilesetTiles_CaveUmbral; about +4.2 KB" % UMBRAL_TILES),
+              open(os.path.join(outdir, "draft.json"), "w"), indent=1)
+    os.makedirs(sheetdir, exist_ok=True)
+    out = []
+    f, F = font(13), font(18)
+    for m, x0, y0, w, h, cap in UMBRAL_CROPS:
+        box = (x0, y0, w, h)
+        ims = [_label(render(cave, m, tiles=cave.now, pals=pals, box=box).resize((w * 32, h * 32), Image.NEAREST),
+                      "today: DEADSTACK's stack in the dusk", f)]
+        for o, title, new in made:
+            ims.append(_label(render(cave, m, tiles=new, pals=pals, box=box).resize((w * 32, h * 32), Image.NEAREST),
+                              "%s %s" % (o, title), f))
+        rows = [_row(ims[:2], gap=16), _row(ims[2:], gap=16)]
+        sheet = _col([_title("T-438 DRAFT -- UMBRAL ASCENT's own tiles (not in the engine), %s %s, 2x\nits rows stay "
+                             "the approved dusk; DEADSTACK keeps the stack" % (m, cap), F,
+                             max(r.width for r in rows))] + rows, gap=14)
+        p = os.path.join(sheetdir, "t438k_umbral_%s.png" % m.split("_")[1].lower())
+        sheet.save(p)
+        out.append(p)
+    #  every Victory Road tile at 3x in its commonest row: today, then each option
+    atl = [_label(atlas(cave, [cave.now[t] if t in vr_tiles else [0] * 64 for t in range(cave.n)], pals), "today", f)]
+    for o, title, new in made:
+        atl.append(_label(atlas(cave, [new[t] if t in vr_tiles else [0] * 64 for t in range(cave.n)], pals),
+                          "%s %s" % (o, title), f))
+    p = os.path.join(sheetdir, "t438k_umbral_tiles.png")
+    _col([_title("T-438 DRAFT -- UMBRAL ASCENT: every tile Victory Road draws (3x, each in its commonest row)", F,
+                 sum(a.width for a in atl[:2]) + 12), _row(atl[:2]), _row(atl[2:])], gap=14).save(p)
+    out.append(p)
+    return out
+
+
+def main_umbral():
+    if WRITE:
+        if "--approved" not in ARGS or not UMBRAL_APPROVED:
+            print("  --umbral --write refused: --write needs --approved, and UMBRAL_APPROVED names no option the user "
+                  "has picked. Nothing written.")
+            return 0
+        cave = Cave("cave")
+        new, what = umbral_tiles(cave, UMBRAL_APPROVED)
+        p = os.path.join(GBA, UMBRAL_TILES)
+        os.makedirs(os.path.dirname(p), exist_ok=True)
+        tiles_png(cave, new).save(p, bits=4)
+        print("  wrote %s (option %s, %d tiles not DEADSTACK's); the header and INCBIN are wired by hand (above)" % (
+            UMBRAL_TILES, UMBRAL_APPROVED, sum(1 for t in range(cave.n) if new[t] != cave.now[t])))
+        return 0
+    outdir = argval("--umbral") or UMBRAL_DRAFT
+    for p in umbral_drafts(outdir, argval("--sheets") or os.path.join(outdir, "sheets")):
+        print("  wrote %s" % p)
+    return 0
+
+
 def main():
+    if "--umbral" in ARGS:
+        return main_umbral()
     if WRITE and "--approved" not in ARGS:
         print("  --write refused: T-438 batch E is written only with --approved (the user approved every cave here "
               "on 2026-10-23).")

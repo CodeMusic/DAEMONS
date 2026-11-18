@@ -1,0 +1,334 @@
+{
+ "ticket": "T-438 (the islands' leftovers)",
+ "status": "DRAFT -- nothing approved (APPROVED_438K is empty)",
+ "sets": {
+  "sevii_islands_123": {
+   "name": "ONE, TWO and THREE ISLAND, MT. SMOULDER's outside",
+   "ours": 311,
+   "reach": 20,
+   "unused": 3,
+   "excluded": {
+    "4": "door (gbadoors.py)",
+    "5": "door (gbadoors.py)",
+    "20": "door (gbadoors.py)",
+    "21": "door (gbadoors.py)",
+    "74": "door (gbadoors.py)",
+    "75": "door (gbadoors.py)",
+    "90": "door (gbadoors.py)",
+    "91": "door (gbadoors.py)",
+    "154": "door (gbadoors.py)",
+    "155": "door (gbadoors.py)",
+    "170": "door (gbadoors.py)",
+    "171": "door (gbadoors.py)",
+    "333": "kept (gbatowns KEEP_TILES: the canopy hollows)",
+    "336": "kept (gbatowns KEEP_TILES: the canopy hollows)",
+    "337": "kept (gbatowns KEEP_TILES: the canopy hollows)",
+    "338": "kept (gbatowns KEEP_TILES: the canopy hollows)"
+   },
+   "left": [
+    52,
+    53,
+    140,
+    365
+   ],
+   "draws": 44,
+   "maps": {
+    "TwoIsland_CapeBrink": 2,
+    "ThreeIsland": 2,
+    "TwoIsland": 3,
+    "OneIsland": 3,
+    "NavelRock_Exterior": 1,
+    "ThreeIsland_Port": 1,
+    "OneIsland_TreasureBeach": 1
+   }
+  },
+  "sevii_islands_45": {
+   "name": "FOUR and FIVE ISLAND",
+   "ours": 268,
+   "reach": 16,
+   "unused": 21,
+   "excluded": {
+    "4": "door (gbadoors.py)",
+    "5": "door (gbadoors.py)",
+    "10": "door (gbadoors.py)",
+    "11": "door (gbadoors.py)",
+    "20": "door (gbadoors.py)",
+    "21": "door (gbadoors.py)",
+    "26": "door (gbadoors.py)",
+    "27": "door (gbadoors.py)",
+    "90": "door (gbadoors.py)",
+    "91": "door (gbadoors.py)",
+    "106": "door (gbadoors.py)",
+    "107": "door (gbadoors.py)"
+   },
+   "left": [
+    52,
+    53,
+    115,
+    365
+   ],
+   "draws": 27,
+   "maps": {
+    "FourIsland": 3,
+    "FiveIsland_ResortGorgeous": 2,
+    "FiveIsland": 3,
+    "FiveIsland_Meadow": 2,
+    "FiveIsland_MemorialPillar": 1
+   }
+  },
+  "sevii_islands_67": {
+   "name": "SIX and SEVEN ISLAND",
+   "ours": 205,
+   "reach": 124,
+   "unused": 13,
+   "excluded": {
+    "4": "door (gbadoors.py)",
+    "5": "door (gbadoors.py)",
+    "6": "landmark (T-447)",
+    "7": "landmark (T-447)",
+    "8": "landmark (T-447)",
+    "9": "landmark (T-447)",
+    "10": "landmark (T-447)",
+    "11": "landmark (T-447)",
+    "12": "landmark (T-447)",
+    "13": "landmark (T-447)",
+    "15": "landmark (T-447)",
+    "20": "door (gbadoors.py)",
+    "21": "door (gbadoors.py)",
+    "22": "landmark (T-447)",
+    "23": "landmark (T-447)",
+    "24": "landmark (T-447)",
+    "25": "landmark (T-447)",
+    "26": "landmark (T-447)",
+    "27": "landmark (T-447)",
+    "29": "landmark (T-447)",
+    "31": "landmark (T-447)",
+    "38": "landmark (T-447)",
+    "39": "landmark (T-447)",
+    "40": "landmark (T-447)",
+    "41": "landmark (T-447)",
+    "42": "landmark (T-447)",
+    "43": "landmark (T-447)",
+    "45": "landmark (T-447)",
+    "55": "landmark (T-447)",
+    "56": "landmark (T-447)",
+    "57": "landmark (T-447)",
+    "58": "landmark (T-447)",
+    "60": "landmark (T-447)",
+    "61": "landmark (T-447)",
+    "62": "landmark (T-447)",
+    "71": "landmark (T-447)",
+    "72": "landmark (T-447)",
+    "73": "landmark (T-447)",
+    "74": "landmark (T-447)",
+    "76": "landmark (T-447)",
+    "77": "landmark (T-447)",
+    "78": "landmark (T-447)",
+    "86": "landmark (T-447)",
+    "87": "landmark (T-447)",
+    "88": "landmark (T-447)",
+    "89": "landmark (T-447)",
+    "90": "landmark (T-447)",
+    "91": "landmark (T-447)",
+    "92": "landmark (T-447)",
+    "97": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "98": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "102": "landmark (T-447)",
+    "104": "landmark (T-447)",
+    "105": "landmark (T-447)",
+    "108": "landmark (T-447)",
+    "109": "landmark (T-447)",
+    "113": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "114": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "115": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "116": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "117": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "118": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "119": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "120": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "121": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "122": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "123": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "124": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "134": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "135": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "136": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "137": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "138": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "139": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "140": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "144": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "145": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "146": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "149": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "150": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "151": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "152": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "156": "landmark (T-447)",
+    "157": "landmark (T-447)",
+    "158": "landmark (T-447)",
+    "159": "landmark (T-447)",
+    "160": "TANOBY's chamber fronts (T-447 pair 5: drawn only on SevenIsland_TanobyRuins)",
+    "166": "landmark (T-447)",
+    "170": "landmark (T-447)",
+    "172": "landmark (T-447)",
+    "173": "landmark (T-447)",
+    "174": "landmark (T-447)",
+    "175": "landmark (T-447)",
+    "176": "landmark (T-447)",
+    "177": "landmark (T-447)",
+    "178": "landmark (T-447)",
+    "179": "landmark (T-447)",
+    "182": "landmark (T-447)",
+    "183": "landmark (T-447)",
+    "186": "landmark (T-447)",
+    "188": "landmark (T-447)",
+    "189": "landmark (T-447)",
+    "191": "landmark (T-447)",
+    "192": "landmark (T-447)",
+    "193": "landmark (T-447)",
+    "194": "landmark (T-447)",
+    "195": "landmark (T-447)",
+    "208": "landmark (T-447)",
+    "209": "landmark (T-447)",
+    "210": "landmark (T-447)",
+    "211": "landmark (T-447)",
+    "224": "landmark (T-447)",
+    "225": "landmark (T-447)",
+    "226": "landmark (T-447)",
+    "333": "kept (gbatowns KEEP_TILES: the canopy hollows)",
+    "336": "kept (gbatowns KEEP_TILES: the canopy hollows)",
+    "338": "kept (gbatowns KEEP_TILES: the canopy hollows)"
+   },
+   "left": [
+    52,
+    53,
+    216,
+    217,
+    232,
+    233,
+    365
+   ],
+   "draws": 27,
+   "maps": {
+    "SevenIsland_SevaultCanyon": 6,
+    "SixIsland": 7,
+    "SevenIsland": 7,
+    "SixIsland_WaterPath": 6,
+    "SixIsland_OutcastIsland": 4,
+    "SixIsland_RuinValley": 4,
+    "BirthIsland_Exterior": 5,
+    "SevenIsland_TrainerTower": 4,
+    "SixIsland_GreenPath": 4,
+    "SevenIsland_TanobyRuins": 4,
+    "SixIsland_WaterPath_Grove": 4,
+    "SevenIsland_SevaultCanyon_Entrance": 4,
+    "SevenIsland_Grove": 4
+   }
+  },
+  "island_harbor": {
+   "name": "the harbours",
+   "ours": 49,
+   "reach": 3,
+   "unused": 69,
+   "excluded": {},
+   "left": [
+    9,
+    16,
+    148
+   ],
+   "draws": 38,
+   "maps": {
+    "BirthIsland_Harbor": 3,
+    "OneIsland_Harbor": 3,
+    "ThreeIsland_Harbor": 3,
+    "NavelRock_Harbor": 3,
+    "FiveIsland_Harbor": 3,
+    "TwoIsland_Harbor": 3,
+    "SevenIsland_Harbor": 3,
+    "SixIsland_Harbor": 3,
+    "FourIsland_Harbor": 3
+   }
+  },
+  "berry_forest": {
+   "name": "DENSE WOOD",
+   "ours": 30,
+   "reach": 0,
+   "unused": 16,
+   "excluded": {},
+   "left": [],
+   "draws": 0,
+   "maps": {}
+  }
+ },
+ "pieces": [
+  {
+   "piece": "dotted",
+   "what": "THE DOTS' door, open (RUIN VALLEY, by script once the braille is read)",
+   "recommended": "A",
+   "options": [
+    {
+     "option": "A",
+     "title": "SLAB SUNK (DRAFT)",
+     "line": "the slab dropped into the threshold, its top edge and first line of dots showing"
+    },
+    {
+     "option": "B",
+     "title": "BRAILLE IN THE DARK (DRAFT)",
+     "line": "the passage dark, THE DOTS' word 'hi' in dim braille on its back wall"
+    }
+   ],
+   "tiles": {
+    "sevii_islands_67 216": "dotted",
+    "sevii_islands_67 217": "dotted",
+    "sevii_islands_67 232": "dotted",
+    "sevii_islands_67 233": "dotted"
+   }
+  },
+  {
+   "piece": "piling",
+   "what": "the islands' red piling, its cap (ONE, FOUR, SIX, BIRTH ISLAND)",
+   "recommended": "A",
+   "options": [
+    {
+     "option": "A",
+     "title": "IN STEP (DRAFT)",
+     "line": "365 only: the brace lit as gbatowns lit 364, mirrored -- two pixels"
+    }
+   ],
+   "tiles": {
+    "sevii_islands_123 365": "piling",
+    "sevii_islands_45 365": "piling",
+    "sevii_islands_67 365": "piling"
+   }
+  },
+  {
+   "piece": "rail",
+   "what": "the harbours' railing corner (every SEAGALLOP harbour)",
+   "recommended": "A",
+   "options": [
+    {
+     "option": "A",
+     "title": "IN STEP (DRAFT)",
+     "line": "the rail runs round the corner in T-569's two rows, its post in the same twist"
+    }
+   ],
+   "tiles": {
+    "island_harbor 9": "rail"
+   }
+  }
+ ],
+ "left": {
+  "island_harbor 16": "flat black (the void beyond a cave or over the harbour): nothing pret drew",
+  "island_harbor 148": "a doorway or cave mouth (a door, gbadoors/gbaprimary's; THE DOTS' opened door is placed by its braille script)",
+  "sevii_islands_123 52": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_123 53": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_123 140": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_45 52": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_45 53": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_45 115": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_67 52": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam",
+  "sevii_islands_67 53": "a seam sliver: one to three pixels (a slope's or a sill's last pixel, a rail's end) that only finish a neighbour's outline -- nothing to draw, and moving one moves the seam"
+ },
+ "unaccounted": []
+}
