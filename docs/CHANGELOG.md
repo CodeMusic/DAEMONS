@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.396 — 2026-11-18
+
+- Recorded from release v11.395.1 (84fbdbdf, engine 521ac9c67 and 3dd7db7fc), which sealed v11.392.x:
+  - **DAVID's compass and the NEXUS arrival** (T-586), the user's design: KEEP READING or LOOK OUT THE PORTHOLE; the rose in the mirror alphabet; a read compass lands a grove's fir at that grove's own NEXUS door. DRAFT.
+  - **Where it points once read** (T-587), the user's rule: only where something already means something, WHERE never WHEN. DRAFT. Both in 3.4, after the three at the fir.
+- Section 10: one Settled entry.
+
 ## v11.395 — 2026-11-17
 
 - **The magpie found its stone** (T-585; the user, 2026-11-17): its first line is now "It was warm, the day I found it." (DRAFT), not "took" -- the magpie was given the light as the hare was, and its mistake is the keeping, not the taking; "took" would have judged it before the player could. In 3.4, and in `docs/garden-of-echoes-draft.md`.

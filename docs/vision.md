@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.395**
+**A total conversion — the living design bible, v11.396**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2224,6 +2224,10 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 *The design in full, its cast and every word: `docs/nexus.md`. Built by `tools/gbanexus.py` (the residents), `tools/gbagrove.py` (the fir in every grove) and `tools/gbanexusmap.py` (the place).*
 
 ***And one grove keeps three animals at its fir (T-585; the user, 2026-11-17, by multiple choice: "A, the three at the fir")*** -- *lineage: THE GARDEN OF ECHOES (Seeing Sharp, 2025; lineage.md 4.7), a parable of three ways of holding one experience.* **A hare comes once, touches the fir, says thank you and goes; after, only its tracks lead out. A magpie keeps a pale stone on a cairn at the fir's foot -- "It was warm, the day I found it" -- and the stone is cold to the touch; with THE SUBTLE LAYER held, a read: "this was held too long." A mole half out of its hole fills pages about the grove, more each visit, and stops writing for one line only when the player PLAYs the fir's song in its key: "Where was that? I had it written."** *The magpie **found** its stone (the user, 2026-11-17): it was given the light as the hare was, and its mistake is the keeping, not the taking -- "took" would have judged it in its first line. The post ends on its moral; the game is a fable with its last line removed (0.1), so that line is never said, nobody explains the three, and nobody says which is right. The one thing that moves the mole is the player listening, the fir's own mechanic (craft rule 5). The game lane picks the grove. Optional; gates nothing. Every word DRAFT (`docs/garden-of-echoes-draft.md`, A).*
+
+***And a compass, so a grove's fir lands you at that grove's own door (T-586, T-587; the user, 2026-11-17; released in v11.395.1).*** **On the S.S. ANNE, DAVID is seasick over a book that "has every step in it" and "never says where to look"; the player advises him. KEEP READING, and he stays sick and the ship waits; LOOK OUT THE PORTHOLE, and he steadies, gives PRUNE, the band's sheet and his COMPASS -- "I can see where I'm going now. / You'll need this more than I do." -- and only then does she sail.** *The compass's rose is lettered in the ship painting's mirror alphabet (N E S W read M V H D); the player turns each letter, with no hint, and only when all four are right does the rose hold and the needle swing to north. Read, it changes THE NEXUS: a grove's fir lands the player beside that grove's own tree there, not at the Christmas tree.*
+
+**Its rule (the user): it points only to a place that already means something to the player, never to anything unfound, and it answers WHERE, never WHEN.** *In a dark cave or THE BLACKOUT the needle is the one faint glow, pointing back to the way in; in DOLDRUM CAVE it spins until the cave is understood, then settles; on open water it finds the nearest shore; inside a BENCHMARK gym it will not settle; far from home it leans toward MOM's house; and in one town a torn book's two halves give it somewhere to lean (4.40). Never the clock, the GUIDE, a layer or an unfound grove. Nothing says what it is doing. Every word and the drawing DRAFT.*
 
 ### 3.5 PLAY — an instrument, and a SONGBOOK (T-417, the user, 2026-10-17)
 
@@ -9294,6 +9298,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **DAVID's compass (T-586, T-587, v11.395.1)** — released, the user's design: advise DAVID to look out the porthole and he steadies and gives the COMPASS, its rose lettered in the ship painting's mirror alphabet; read, a grove's fir lands you at that grove's own NEXUS door, and the needle points only where something already means something to you -- WHERE, never WHEN. In 3.4. Sealed v11.392.x. DRAFT.
 - **The three at the fir (T-585, 2026-11-17)** — the user's pick, A of three: THE GARDEN OF ECHOES (lineage 4.7) enters as a grove with a hare that comes once, a magpie whose kept stone is cold, and a mole filling pages that stops only when the player plays the fir's song; the post's moral never said (0.1). In 3.4. To be built by the game lane. DRAFT.
 - **Our own instruments (T-565 batch 12, v11.392.1)** — released, the user's pick: sixteen synthesized samples and PLAY's harp and flute in `voicegroup191`'s nineteen played slots, the dawn chorus's choir ours too; no note, bank or envelope moved. The last of the sound census's twelve batches; T-583 and T-584 remain. Sealed v11.391.x. DRAFT.
 - **The cries (T-565 batch 11, v11.391.1)** — released, the user's pick after a design question of four: A, THE TYPE'S VOICE, shaped by B, THE NAME PLAYED -- every one of the 388 its type's motif, ordered and timed by its name, a line sharing one contour, lower and slower as it evolves. Eleven borrowed cries and one identical pair wait on T-584. Sealed v11.390.x. DRAFT.
