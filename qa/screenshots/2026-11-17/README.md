@@ -139,3 +139,9 @@ T-578 (DRAFT): no badger before the book; with it, the badger in CELADON's condo
 T-578 (DRAFT): no badger before the book; with it, the badger in CELADON's condominiums pours two cups, hands one over and goes with the other, and you drink yours; in LAVENDER TOWN it already knows: 'You had the TEA. / I tasted water.'
 
 ![17Nov2026 - T578 - the two cups - 26](17Nov2026%20-%20T578%20-%20the%20two%20cups%20-%2026.png)
+
+### 17Nov2026 - T565 - story music as built - 27
+
+T-565 batch 8, the story set-pieces as built in v11.388.1 (engine 586ed7e8b): the sixteen MIDIs the ROM is compiled from, read back -- voice C; THE WALLED GARDEN's own song and the credits medley (DRAFT)
+
+![17Nov2026 - T565 - story music as built - 27](17Nov2026%20-%20T565%20-%20story%20music%20as%20built%20-%2027.png)
