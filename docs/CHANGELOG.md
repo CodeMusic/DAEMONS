@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.398 — 2026-11-18
+
+- Recorded from release v11.397.1 (1ec722ba, engine ecb28b38f), which sealed v11.396.x:
+  - **Cries of their own** (T-584): the eleven that borrowed get their own, and MIME no longer repeats HUNCH -- no twins. DRAFT. In 9.5, where the cries paragraph said they waited.
+- Section 10: one Settled entry.
+
 ## v11.397 — 2026-11-18
 
 - Recorded from release v11.396.1 (525243bd, engine c20d4b757), which sealed v11.395.x:

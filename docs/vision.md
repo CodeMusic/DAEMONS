@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.397**
+**A total conversion — the living design bible, v11.398**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8236,9 +8236,9 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 **Then THE MARGINS (batch 9, released in v11.390.1): the islands' music in voice C, in B-flat and B** -- *7.4 says why those keys.* *DRAFT.*
 
-**Then the cries (batch 11, released in v11.391.1): all 388, the last of pret's voices in the game.** ***A design question first*** *(`docs/cries-design-2026-11-17.md`: four approaches, each played for the same six daemons -- A THE TYPE'S VOICE, B THE NAME PLAYED, C THE PROCESS HUMMING, D ONE VOICE MANY MOODS)*, ***and the user's pick: A, shaped by B.*** **Each cry is its type's motif in C BOTH, put in order and timed by the daemon's name; a line shares one contour, lower and slower as it evolves** (`tools/gencries.py`). *So a cry says what a daemon is, then who, then how far along -- and the 388 together are 310 KB smaller than pret's. Eleven daemons still borrow another's cry, and HUNCH and MIME sound the same, until each has its own (T-584, later). Left pret's: only the retail samples (batch 12). DRAFT.*
+**Then the cries (batch 11, released in v11.391.1): all 388, the last of pret's voices in the game.** ***A design question first*** *(`docs/cries-design-2026-11-17.md`: four approaches, each played for the same six daemons -- A THE TYPE'S VOICE, B THE NAME PLAYED, C THE PROCESS HUMMING, D ONE VOICE MANY MOODS)*, ***and the user's pick: A, shaped by B.*** **Each cry is its type's motif in C BOTH, put in order and timed by the daemon's name; a line shares one contour, lower and slower as it evolves** (`tools/gencries.py`). *So a cry says what a daemon is, then who, then how far along -- and the 388 together are 310 KB smaller than pret's. Eleven daemons borrowed another's cry, and HUNCH and MIME sounded the same; ***since v11.397.1 each has its own (T-584)*** -- *the NEXUS's residents and the carried line got cries 388-398 by the same A shaped by B, and MIME moved off HUNCH's score under a rule that no two daemons share a score or a sample.* Left pret's: only the retail samples (batch 12). DRAFT.*
 
-**And last the instruments themselves (batch 12, released in v11.392.1).** ***Our older songs had been played on the cartridge's own recorded samples*** *(`voicegroup191`, 7.14c)*; **now its nineteen played slots hold sixteen synthesized samples -- piano, glockenspiel, xylophone, tubular bell, nylon guitar, two basses, pizzicato, timpani, strings, choir, trumpet, tuba, french horn, oboe, whistle -- and PLAY's own harp and flute; the dawn chorus's choir (4.40) is ours too** (`tools/genbank.py`, with `gbavoices.py` and `genchorus.py`; the user's pick, DRAFT). *No note and no bank moved, and every envelope is as it was: the songs are the same songs on our own instruments.* ***With it the census's twelve batches are done*** *-- what the game plays is ours, but for the shared move sounds (T-583) and the borrowed cries (T-584).*
+**And last the instruments themselves (batch 12, released in v11.392.1).** ***Our older songs had been played on the cartridge's own recorded samples*** *(`voicegroup191`, 7.14c)*; **now its nineteen played slots hold sixteen synthesized samples -- piano, glockenspiel, xylophone, tubular bell, nylon guitar, two basses, pizzicato, timpani, strings, choir, trumpet, tuba, french horn, oboe, whistle -- and PLAY's own harp and flute; the dawn chorus's choir (4.40) is ours too** (`tools/genbank.py`, with `gbavoices.py` and `genchorus.py`; the user's pick, DRAFT). *No note and no bank moved, and every envelope is as it was: the songs are the same songs on our own instruments.* ***With it the census's twelve batches are done*** *-- what the game plays is ours, but for the shared move sounds (T-583); the borrowed cries followed in v11.397.1 (T-584).*
 
 ### 9.6 The chart change, finally built — and cheaper than it was
 
@@ -9298,6 +9298,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **Cries of their own (T-584, v11.397.1)** — released: the eleven daemons that borrowed a cry (THE NEXUS's residents and the carried line) have their own, made as every other (A shaped by B), and MIME no longer repeats HUNCH -- no two daemons share a cry. Sealed v11.396.x. DRAFT.
 - **THE GARDEN OF ECHOES built (T-585, v11.396.1)** — released in ROUTE 24's grove as the user picked it: the hare that comes once, the magpie and its cold stone ("the day I found it"), the mole filling pages until the fir's song is played. In 3.4. Sealed v11.395.x. DRAFT.
 - **DAVID's compass (T-586, T-587, v11.395.1)** — released, the user's design: advise DAVID to look out the porthole and he steadies and gives the COMPASS, its rose lettered in the ship painting's mirror alphabet; read, a grove's fir lands you at that grove's own NEXUS door, and the needle points only where something already means something to you -- WHERE, never WHEN. In 3.4. Sealed v11.392.x. DRAFT.
 - **The three at the fir (T-585, 2026-11-17)** — the user's pick, A of three: THE GARDEN OF ECHOES (lineage 4.7) enters as a grove with a hare that comes once, a magpie whose kept stone is cold, and a mole filling pages that stops only when the player plays the fir's song; the post's moral never said (0.1). In 3.4. To be built by the game lane. DRAFT.
