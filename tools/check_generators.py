@@ -44,7 +44,8 @@ _DOCS_TEXT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file
 ARGS = {
     "gbadocs":   [["--text", _DOCS_TEXT]] if os.path.exists(_DOCS_TEXT) else [],
     "genanims":  [[f] for f in ("CONTENT LOWER AFFLICT RAISE FIELD LOGIC VECTOR GROWTH FLOW ENTROPY STRATUM SIGNAL "
-                                "CORRUPT CONTEXT SWARM FROZEN PROTECT OPAQUE LATENT").split()],
+                                "CORRUPT CONTEXT SWARM FROZEN PROTECT OPAQUE LATENT").split()]
+                 + [["--type-sounds"]],                    # T-583: the shared sounds' table, by each routine's type
     "genstates": [["--wave", "1"]],
     #  T-446: gbadoors refuses a plain --write, so --writes saw nothing of it; with --approved its sandboxed write is
     #  real. (Its report needs no flag: it compares the engine with the approved write itself and exits 1 on a difference.)

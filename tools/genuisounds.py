@@ -463,6 +463,54 @@ SIGNATURE_10 = {"CONTENT": "m_take_down", "LOGIC": "m_vital_throw2", "VECTOR": "
                 "CONTEXT": "m_supersonic", "FROZEN": "m_icy_wind", "EMERGENT": "m_twister",
                 "HARDENED": "m_harden", "OPAQUE": "m_bite"}
 LOOP_10 = {"m_gust": (24, 72), "m_blizzard": (24, 72)}      # pret's own loops ("[" at 24 frames, "]" at 72)
+
+# T-583: THE SHARED ROLES. Three sounds are played by routines of every type, so each spoke CONTENT for all of them:
+# SE_M_COMET_PUNCH (a hit: genanims' default cue, and a borrowed vanilla hit), SE_M_MINIMIZE (the tick of every stat
+# step a routine draws) and SE_M_MOONLIGHT (the witching hour's light, one script for seventeen routines). The engine
+# now plays each by the ROUTINE's type (`playtypesewithpan ROLE`, battle_anim.c), from a table genanims.py writes out
+# of role_sounds_10(): CONTENT keeps the sound it had, and every other type gets its own batch-10 sound in the first
+# shape of the role's list that it has, the one nearest the shared sound's own length (a tick is short, a light long),
+# and no longer than the role's limit, nor one of pret's loops. A type with nothing in the list keeps CONTENT's, and the report says so.
+ROLES_10 = {
+    "HIT":  dict(se="m_comet_punch", most=60, shapes=["hit", "hits", "bite", "slash", "burst", "bind", "pop", "spray",
+                                                      "status", "glint", "swish", "beam"]),
+    "TICK": dict(se="m_minimize", most=60, shapes=["tick", "pop", "hits", "hit", "slash", "bite", "spray", "glint",
+                                                   "status", "burst", "bind", "rise"]),
+    "HEAL": dict(se="m_moonlight", most=120, shapes=["heal", "rise", "glint", "charge", "call", "status", "wave",
+                                                     "weather", "beam", "swish", "spray", "pop", "burst", "bind",
+                                                     "hits", "hit", "slash", "bite"]),
+}
+
+
+def sound_length_10(d):
+    """A batch-10 sound's own length in frames: where its last event ends."""
+    return max(a + n for a, n, _, _ in tokens(d["notes"]))
+
+
+def role_sounds_10():
+    """{role: {type: (sound id, how)}} -- how is "own" (CONTENT's, the shared sound), "exact" (the type has the role's
+    own shape), "nearest" (a later shape in the role's list) or "none" (nothing fits: CONTENT's is kept)."""
+    built = build_10()
+    length = {d["id"]: sound_length_10(d) for d in built}
+    out = {}
+    for role, r in ROLES_10.items():
+        want = length[r["se"]]
+        own = next(d["shape"] for d in built if d["id"] == r["se"])
+        row = {}
+        for ty in CHART:
+            if ty == "CONTENT":
+                row[ty] = (r["se"], "own")
+                continue
+            pick = None
+            for shape in r["shapes"]:
+                fits = [d["id"] for d in built if d["type"] == ty and d["shape"] == shape and length[d["id"]] <= r["most"]
+                        and d["id"] not in LOOP_10]
+                if fits:
+                    pick = (min(fits, key=lambda s: abs(length[s] - want)), "exact" if shape == own else "nearest")
+                    break
+            row[ty] = pick or (r["se"], "none")
+        out[role] = row
+    return out
 LEFT_OUT_10 = ["SE_M_HEAL_BELL and SE_M_MORNING_SUN (their field uses -- GOTO's ribbon, the unity and spirits scenes, "
                "the NOTEBOOK -- are the instruments lane's notes, and one .mid serves battle and field alike)",
                "SE_M_DIVE (field only; batch 6's, approved)",
@@ -675,6 +723,7 @@ def census10():
         for l in labels[lab]:
             l = l.split("@")[0]
             out |= set(re.findall(r"\bSE_M_\w+", l))
+            out |= {"ROLE_" + r for r in re.findall(r"\bplaytypesewithpan\s+TYPE_SE_(\w+)", l)}   # T-583
             for w in set(re.findall(r"\b\w+\b", l)):
                 if w in labels and w != lab:
                     out |= refs(w, seen)
@@ -690,16 +739,25 @@ def census10():
             ids[k] = m.group(1)
     table = re.findall(r"\.4byte (\w+)", re.search(r"gBattleAnims_Moves::\n(.*?)\n\n", s, re.S).group(1))
     by, other = {}, {}
+    roles = role_sounds_10() if "playtypesewithpan" in s else {}
+
+    def sid(x, ty):
+        """SE_M_X -> m_x; a role (T-583) -> the sound the routine's type plays for it (CONTENT's outside a routine)."""
+        if x.startswith("ROLE_"):
+            row = roles[x[5:]]
+            return row.get(ty, row["CONTENT"])[0]
+        return x[3:].lower()
     for i, lab in enumerate(table):
         mv = ids.get(i)
         if not mv or mv == "NONE" or mv not in mtype:
             continue
+        ty = TYPE_OF_VANILLA.get(mtype[mv], mtype[mv])
         for x in refs(lab, set()):
-            by.setdefault(x[3:].lower(), []).append((mv, TYPE_OF_VANILLA.get(mtype[mv], mtype[mv])))
+            by.setdefault(sid(x, ty), []).append((mv, ty))
     for sec in ("gBattleAnims_StatusConditions", "gBattleAnims_General", "gBattleAnims_Special"):
         for lab in re.findall(r"\.4byte (\w+)", re.search(sec + r"::\n(.*?)\n\n", s, re.S).group(1)):
             for x in refs(lab, set()):
-                other.setdefault(x[3:].lower(), []).append(lab)
+                other.setdefault(sid(x, None), []).append(lab)
     return by, other
 
 
