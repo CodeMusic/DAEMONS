@@ -151,3 +151,9 @@ C-412 (DRAFT): the dream's stage is its centre -- a spine of seven dots through 
 T-591 (DRAFT): the seven day symbols at 32x32 for the game, each with each of the seven centres lit (root to crown, left to right); the day's own centre, the one every dream shows until it names one, on the diagonal
 
 ![18Nov2026 - T591 - the 49 day symbols - 26](18Nov2026%20-%20T591%20-%20the%2049%20day%20symbols%20-%2026.png)
+
+### 18Nov2026 - T565 - all 48 songs heard - 29
+
+All 48 songs of T-565 batches 2, 5, 8, 9 and 12 heard on debug ROM 33353408: each capture nearest its own draft (DTW over chroma), and each slot's song header in RAM this build's own.
+
+![18Nov2026 - T565 - all 48 songs heard - 29](18Nov2026%20-%20T565%20-%20all%2048%20songs%20heard%20-%2029.png)

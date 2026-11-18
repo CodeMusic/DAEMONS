@@ -108,7 +108,7 @@ MAP_MUSIC = {
     "MUS_ROCKET_HIDEOUT": ["PowerPlant"],
     # T-565 batch 5 (the user, 2026-11-17, "Split them"; the game lane's go-ahead): DOLDRUM and LURID shared
     # MUS_FUCHSIA; vision 7.4 gives each its own song in its own key, written by tools/genoverworldmusic.py into two
-    # appended slots. MUS_FUCHSIA keeps pret's tune for its other six maps.
+    # appended slots. MUS_FUCHSIA kept pret's tune for its other six maps until T-592, below.
     "MUS_DOLDRUM": ["CeruleanCity", "CeruleanCity_BikeShop", "CeruleanCity_House1", "CeruleanCity_House2",
                     "CeruleanCity_House3", "CeruleanCity_House4", "CeruleanCity_House5"],
     "MUS_LURID": ["FuchsiaCity", "FuchsiaCity_House1", "FuchsiaCity_House2", "FuchsiaCity_House3",
@@ -118,6 +118,13 @@ MAP_MUSIC = {
     "MUS_WALLED_GARDEN": ["SafariZone_Center", "SafariZone_Center_RestHouse", "SafariZone_East",
                           "SafariZone_East_RestHouse", "SafariZone_North", "SafariZone_North_RestHouse",
                           "SafariZone_SecretHouse", "SafariZone_West", "SafariZone_West_RestHouse"],
+    # T-592 (the user, 2026-11-18, "Their town's music"): the six maps batch 5 left on pret's MUS_FUCHSIA play the
+    # music of the map their one door opens onto, as every other house does.
+    "MUS_LAVENDER": ["LavenderTown_House2"],
+    "MUS_VERMILLION": ["VermilionCity_House1"],
+    "MUS_ROUTE24": ["Route25_SeaCottage"],
+    "MUS_ROUTE3": ["OneIsland_KindleRoad_EmberSpa"],
+    "MUS_SEVII_ROUTE": ["SixIsland_WaterPath_House1", "SixIsland_WaterPath_House2"],
 }
 
 SEMI = {"C_": 0, "C#": 1, "D_": 2, "D#": 3, "E_": 4, "F_": 5,

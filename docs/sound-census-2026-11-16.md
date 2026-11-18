@@ -31,9 +31,9 @@ events). No play-time data was recorded.
 | 11 | cries, all 388 | game | v11.391.1 | (the game lane's) |
 | 12 | our own instruments under voicegroup191 and the dawn chorus | instruments | v11.392.1 | `genbank.py` |
 
-**Every song and sound effect in the game is ours now, except these.** *Music, 23 slots still pret's:* the six maps left on
-`MUS_FUCHSIA` (the Ember Spa, the Sea Cottage, a house each in HALFTONE and ARDOR, two on SIX ISLAND's water path) and
-the two game corners' `MUS_GAME_CORNER` with its jingles (`MUS_SLOTS_WIN`, `MUS_SLOTS_JACKPOT`, `MUS_TOO_BAD`); the
+**Every song and sound effect in the game is ours now, except these.** *Music, 22 slots still pret's* (`MUS_FUCHSIA` plays nowhere since T-592, 2026-11-18: its last six
+maps -- the Ember Spa, the Sea Cottage, a house each in HALFTONE and ARDOR, two on SIX ISLAND's water path -- play the
+music of the map their door opens onto; the rest are T-593, batch 13, to be drafted): the two game corners' `MUS_GAME_CORNER` with its jingles (`MUS_SLOTS_WIN`, `MUS_SLOTS_JACKPOT`, `MUS_TOO_BAD`); the
 union room; scripted scenes (`MUS_FOLLOW_ME` at QUICKSILVER, `MUS_JIGGLYPUFF` in SLATE's CHECKPOINT, `MUS_SCHOOL`,
 `MUS_PHOTO`, `MUS_TEACHY_TV_MENU`/`_SHOW`, `MUS_OBTAIN_ITEM`); the legendary and link battle `MUS_RS_VS_TRAINER` and
 `MUS_RS_VS_GYM_LEADER`; and what an event ticket or nothing reaches (`MUS_ENCOUNTER_DEOXYS`, `MUS_VS_DEOXYS`,
