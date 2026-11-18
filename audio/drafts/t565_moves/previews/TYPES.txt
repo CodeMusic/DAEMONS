@@ -1,0 +1,18 @@
+# the_palette -- each type's signature sound, one a second, in the chart's order (C BOTH, and pret's)
+ 0.00s  CONTENT   se_m_take_down      bone: the plain fifth C-G in the middle, a square key and one tick -- the undifferentiated
+ 1.00s  LOGIC     se_m_vital_throw2   a proof: steps up C-D-E-G, low-middle, even and firm, each step on a clockwork tick
+ 2.00s  VECTOR    se_m_wing_attack    an arrow: leaps of a fifth and an octave, high and thin, over a shimmer of air
+ 3.00s  CORRUPT   se_m_toxic          the pentatonic with a note bent off it (E-F, C-F#), buzzed, low-middle, over an irregular low bubbling
+ 4.00s  STRATUM   se_m_earthquake     the floor: C-G at the bottom of the range, slow, a decaying square over the deep rumble
+ 5.00s  LEGACY    se_m_rock_throw     an old chime falling G-E-C-A, middle-low, a dull clack under it
+ 6.00s  SWARM     se_m_string_shot    many small things: a fast thin A-G trill, high, in a cloud of quick ticks
+ 7.00s  LATENT    se_m_lick           something waking: A-C-E rising slowly from low, thin, held at the top; no noise at all
+ 8.00s  ENTROPY   se_m_ember          a flicker E-G-A-G, middle-high and quick, over a shimmer and crackling ticks
+ 9.00s  FLOW      se_m_bubble         a descent: the pentatonic run down A-G-E-D-C, the harp leading, a soft splash, held at the bottom
+10.00s  GROWTH    se_m_absorb         fitting: the pentatonic climbing C-D-E-G-A at a steady pace, soft ticks, held at the top
+11.00s  SIGNAL    se_m_thunder_wave   current: one high C repeated fast and buzzed, a fifth flicked in, sharp high ticks
+12.00s  CONTEXT   se_m_supersonic     a frame: a tremolo between E and A, middle-high, no noise at all, the flute holding it
+13.00s  FROZEN    se_m_icy_wind       brittle: the top of the range, sparse thin E-G-C, a glassy high tick
+14.00s  EMERGENT  se_m_twister        the whole range at once: C-G-E-C stacked low to high into one chord, a deep thud
+15.00s  HARDENED  se_m_harden         metal: an octave clang C-C, middle, a short metallic shimmer under each strike
+16.00s  OPAQUE    se_m_bite           the dark: a low falling fourth A-E, muffled and buzzed, short, no shimmer

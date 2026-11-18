@@ -1,0 +1,152 @@
+# T-565 batch 10: each sound, the type it is drawn from, its shape, and what plays it in battle (census10())
+
+CONTENT (39) -- bone: the plain fifth C-G in the middle, a square key and one tick -- the undifferentiated
+  se_m_attract         pop      SUBSTITUTE/CONTENT
+  se_m_baton_pass      swish    BATON_PASS/CONTENT
+  se_m_belly_drum      hits     BELLY_DRUM/CONTENT
+  se_m_bubble2         pop      SUBSTITUTE/CONTENT; General_SubstituteAppear
+  se_m_charm           status   ATTRACT/CONTENT, CHARM/CONTENT, COVET/CONTENT; Status_Infatuation
+  se_m_comet_punch     hit      BLANK_PAGE/CONTENT, BULLET_SEED/GROWTH, COMET_PUNCH/CONTENT, CRYPTOPHASIA/LOGIC, DIZZY_PUNCH/CONTENT, GROWL/CONTENT, HOWL/CONTENT, HYPER_VOICE/CONTENT, LOCK_ON/CONTENT, NATURE_POWER/CONTENT, PURSUIT/OPAQUE, ROAR/CONTENT, SECRET_POWER/CONTENT, SHARPEN/CONTENT, SLAM/CONTENT, TACKLE/CONTENT, THRASH/CONTENT, THUNDER_PUNCH/SIGNAL, WRAP/CONTENT
+  se_m_confuse_ray     beam     MIND_READER/CONTENT; Status_Curse
+  se_m_double_slap     hit      DOUBLE_SLAP/CONTENT, POUND/CONTENT, SMELLING_SALT/CONTENT; General_DoomDesireHit, General_FutureSightHit, General_MonHit, General_SafariRockThrow, Special_BallThrow
+  se_m_double_team     swish    AGILITY/CONTEXT, DOUBLE_TEAM/CONTENT, KARATE_CHOP/LOGIC, ROLLING_KICK/LOGIC, SMOKESCREEN/CONTENT, STOMP/CONTENT, SUBMISSION/LOGIC, WHIRLWIND/CONTENT; General_SnatchMove
+  se_m_dragon_rage     charge   ANCIENT_POWER/LEGACY, DRAGON_RAGE/EMERGENT, ENDURE/CONTENT, FOCUS_ENERGY/CONTENT, FRUSTRATION/CONTENT, MEGAHORN/SWARM, OLD_GHOSTS/LEGACY, OUTRAGE/EMERGENT, OVERHEAT/ENTROPY, SUPER_FANG/CONTENT; General_FocusBand, General_FocusPunchSetUp
+  se_m_flatter         pop      FAKE_OUT/CONTENT
+  se_m_headbutt        hit      DIVE/FLOW, DRILL_PECK/VECTOR, FLAIL/CONTENT, HEADBUTT/CONTENT, HORN_ATTACK/CONTENT, HORN_DRILL/CONTENT, MEDITATE/CONTEXT, STRUGGLE/CONTENT, WATER_SPOUT/FLOW, WITHDRAW/FLOW
+  se_m_hyper_beam      beam     HYPER_BEAM/CONTENT
+  se_m_leer            glint    FLASH/CONTENT, LEER/CONTENT
+  se_m_milk_drink      heal     MILK_DRINK/CONTENT, SAFEGUARD/CONTENT
+  se_m_minimize        tick     ABSORB/GROWTH, ACID_ARMOR/CORRUPT, AGILITY/CONTEXT, ALIGN/CONTEXT, AMNESIA/CONTEXT, ANCIENT_POWER/LEGACY, ARM_THRUST/LOGIC, AROMATHERAPY/GROWTH, BARRIER/CONTEXT, BELLY_DRUM/CONTENT, BLOCK/CONTENT, BRICK_BREAK/LOGIC, BULK_UP/LOGIC, CALM_MIND/CONTEXT, CHARGE/SIGNAL, CHARM/CONTENT, CONVERSION/CONTENT, CONVERSION_2/CONTENT, COSMIC_POWER/CONTEXT, COTTON_SPORE/GROWTH, COUNTER/LOGIC, CROSS_CHOP/LOGIC, CURSE/MYSTERY, DEFENSE_CURL/CONTENT, DETECT/LOGIC, DISABLE/CONTENT, DIVE/FLOW, DOUBLE_KICK/LOGIC, DRAGON_DANCE/EMERGENT, DREAM_EATER/CONTEXT, DYNAMIC_PUNCH/LOGIC, ENCORE/CONTENT, ENDURE/CONTENT, FAKE_TEARS/OPAQUE, FEATHER_DANCE/VECTOR, FLASH/CONTENT, FOCUS_ENERGY/CONTENT, FOCUS_PUNCH/LOGIC, GIGA_DRAIN/GROWTH, GROWL/CONTENT, GROWTH/CONTENT, HARDEN/CONTENT, HAZE/FROZEN, HI_JUMP_KICK/LOGIC, HOWL/CONTENT, IMPRISON/CONTEXT, IRON_DEFENSE/HARDENED, JUMP_KICK/LOGIC, KARATE_CHOP/LOGIC, KINESIS/CONTEXT, LAST_PROOF/LOGIC, LEECH_LIFE/SWARM, LEER/CONTENT, LOW_KICK/LOGIC, MACH_PUNCH/LOGIC, MEAN_LOOK/CONTENT, MEDITATE/CONTEXT, MEGA_DRAIN/GROWTH, METAL_CLAW/HARDENED, METAL_SOUND/HARDENED, METEOR_MASH/HARDENED, MIMIC/CONTENT, MINIMIZE/CONTENT, MOONLIGHT/CONTENT, NATURE_POWER/CONTENT, OLD_GHOSTS/LEGACY, PERISH_SONG/CONTENT, POISON_GAS/CORRUPT, POISON_POWDER/CORRUPT, PSYCH_UP/CONTENT, RECOVER/CONTENT, RECYCLE/CONTENT, REFRESH/CONTENT, REST/CONTEXT, REVENGE/LOGIC, REVERSAL/LOGIC, ROCK_SMASH/LOGIC, ROLE_PLAY/CONTEXT, ROLLING_KICK/LOGIC, SAND_ATTACK/STRATUM, SCARY_FACE/CONTENT, SCREECH/CONTENT, SEISMIC_TOSS/LOGIC, SHARPEN/CONTENT, SILVER_WIND/SWARM, SKETCH/CONTENT, SKY_UPPERCUT/LOGIC, SMOKESCREEN/CONTENT, SOLAR_BEAM/GROWTH, SPIDER_WEB/SWARM, SPITE/LATENT, STEEL_WING/HARDENED, STOCKPILE/CONTENT, STRING_SHOT/SWARM, SUBMISSION/LOGIC, SUPERPOWER/LOGIC, SWALLOW/CONTENT, SWEET_SCENT/CONTENT, SWORDS_DANCE/CONTENT, TAIL_GLOW/SWARM, TAIL_WHIP/CONTENT, TAUNT/OPAQUE, TICKLE/CONTENT, TORMENT/OPAQUE, TOXIC/CORRUPT, TRANSFORM/CONTENT, TRIPLE_KICK/LOGIC, VITAL_THROW/LOGIC, WATERFALL/FLOW, WISH/CONTENT, WITHDRAW/FLOW; General_CastformChange, General_LeechSeedDrain
+  se_m_moonlight       heal     BEFORE_DAWN/EMERGENT, BITROT_MOON/CORRUPT, BLACK_ICE/FROZEN, BLANK_PAGE/CONTENT, DARK_ROOTS/GROWTH, DEAD_AIR/SIGNAL, EMBER_HOUR/ENTROPY, LAST_PROOF/LOGIC, MOONLIGHT/CONTENT, NIGHT_COURSE/VECTOR, NIGHT_WATCH/HARDENED, OLD_GHOSTS/LEGACY, QUIET_HIVE/SWARM, SECOND_SIGHT/MYSTERY, THIN_SEAM/CONTEXT, UNDERCURRENT/FLOW, UNDERLAYER/STRATUM, VEIL/OPAQUE, WHAT_SLEEPS/LATENT
+  se_m_perish_song     call     PERISH_SONG/CONTENT
+  se_m_psybeam2        beam     GLARE/CONTENT, LOVELY_KISS/CONTENT, PSYCHO_BOOST/CONTEXT, PSYCH_UP/CONTENT, RECURSION/EMERGENT
+  se_m_razor_wind      slash    AEROBLAST/VECTOR, CRUSH_CLAW/CONTENT, FURY_CUTTER/SWARM, SLASH/CONTENT
+  se_m_razor_wind2     slash    AERIAL_ACE/VECTOR, EXTREME_SPEED/CONTENT, NIGHT_COURSE/VECTOR, PAY_DAY/CONTENT, POISON_STING/CORRUPT, RAPID_SPIN/CONTENT, SONIC_BOOM/CONTENT, SPIKE_CANNON/CONTENT, TWINEEDLE/SWARM
+  se_m_scratch         slash    ASSIST/CONTENT, CONSTRICT/CONTENT, DARK_ROOTS/GROWTH, FRENZY_PLANT/GROWTH, FURY_SWIPES/CONTENT, INGRAIN/GROWTH, SCRATCH/CONTENT
+  se_m_self_destruct   burst    SELF_DESTRUCT/CONTENT
+  se_m_snore           call     SLEEP_TALK/CONTENT, SNORE/CONTENT
+  se_m_swagger         rise     ARM_THRUST/LOGIC, BARRAGE/CONTENT, BLOCK/CONTENT, BULK_UP/LOGIC, FACADE/CONTENT, FOCUS_PUNCH/LOGIC, ODOR_SLEUTH/CONTENT, ROCK_BLAST/LEGACY, SWAGGER/CONTENT, WEATHER_BALL/CONTENT; General_StatsChange
+  se_m_swagger2        status   PAIN_SPLIT/CONTENT, RAGE/CONTENT, TORMENT/OPAQUE; General_SafariReaction, General_StatsChange
+  se_m_sweet_scent     spray    SWEET_SCENT/CONTENT
+  se_m_swift           spray    CONVERSION/CONTENT, DOUBLE_EDGE/CONTENT, FLUENCY/LEGACY, PRAXIS/GROWTH, RECONNECT/SIGNAL, SWIFT/CONTENT
+  se_m_swords_dance    rise     SWORDS_DANCE/CONTENT
+  se_m_tail_whip       pop      EGG_BOMB/CONTENT, ENDEAVOR/CONTENT, FAKE_TEARS/OPAQUE, FOLLOW_ME/CONTENT, PRESENT/CONTENT, RETURN/CONTENT, SKETCH/CONTENT, SOFT_BOILED/CONTENT, SPLASH/CONTENT, TAIL_WHIP/CONTENT; General_BaitThrow, General_ItemKnockoff, General_ItemSteal
+  se_m_take_down       hit      BIDE/CONTENT, BODY_SLAM/CONTENT, GROWTH/CONTENT, HIDDEN_POWER/CONTENT, RECYCLE/CONTENT, REVENGE/LOGIC, SKULL_BASH/CONTENT, SNATCH/OPAQUE, SPIT_UP/CONTENT, STRENGTH/CONTENT, TAKE_DOWN/CONTENT; General_HeldItemEffect, General_SafariReaction, Special_BallThrow
+  se_m_teeter_dance    status   TEETER_DANCE/CONTENT
+  se_m_teleport        heal     BOUNCE/VECTOR, DRAGON_DANCE/EMERGENT, MILK_DRINK/CONTENT, MORNING_SUN/CONTENT, RECOVER/CONTENT, REFRESH/CONTENT, REST/CONTEXT, SOFT_BOILED/CONTENT, SWALLOW/CONTENT, SYNTHESIS/GROWTH, TELEPORT/CONTEXT, TRANSFORM/CONTENT; General_CastformChange, General_SilphScoped
+  se_m_tri_attack      beam     DEFENSE_CURL/CONTENT, ROLE_PLAY/CONTEXT, TRI_ATTACK/CONTENT
+  se_m_uproar          call     UPROAR/CONTENT
+  se_m_vicegrip        bind     CLAMP/FLOW, GUILLOTINE/CONTENT, VICE_GRIP/CONTENT; General_TurnTrap
+  se_m_yawn            call     SLACK_OFF/CONTENT, YAWN/CONTENT
+  se_m_stat_increase   rise     SKY_ATTACK/VECTOR  [every stat that rises (General_StatsChange); only SKY_ATTACK borrows it]
+  se_m_stat_decrease   fall     General_StatsChange  [every stat that falls (General_StatsChange); no routine borrows it]
+
+LOGIC (6) -- a proof: steps up C-D-E-G, low-middle, even and firm, each step on a clockwork tick
+  se_m_detect          glint    DETECT/LOGIC, DISABLE/CONTENT, HINDSIGHT/ENTROPY, REVERSAL/LOGIC, TICKLE/CONTENT
+  se_m_jump_kick       hit      CONSENSUS/SWARM, HI_JUMP_KICK/LOGIC, JUMP_KICK/LOGIC, MACH_PUNCH/LOGIC, PIN_MISSILE/SWARM, QUICK_ATTACK/CONTENT, SHADOW_PUNCH/LATENT, SPIKES/STRATUM, VINE_WHIP/GROWTH; General_BaitThrow, General_SafariRockThrow
+  se_m_mega_kick       hit      CROSS_CHOP/LOGIC, LAST_PROOF/LOGIC, MEGA_KICK/CONTENT, MEGA_PUNCH/CONTENT, SOLAR_BEAM/GROWTH, SUPERPOWER/LOGIC, SYNTHESIS/GROWTH
+  se_m_sky_uppercut    rise     SEISMIC_TOSS/LOGIC, SKY_UPPERCUT/LOGIC
+  se_m_vital_throw     hits     BRICK_BREAK/LOGIC, COUNTER/LOGIC, FALSE_SWIPE/CONTENT, KNOCK_OFF/OPAQUE, THIEF/OPAQUE, VITAL_THROW/LOGIC
+  se_m_vital_throw2    hits     BEAT_UP/OPAQUE, CRABHAMMER/FLOW, DOUBLE_KICK/LOGIC, DYNAMIC_PUNCH/LOGIC, LOW_KICK/LOGIC, ROCK_SMASH/LOGIC, TRIPLE_KICK/LOGIC
+
+VECTOR (4) -- an arrow: leaps of a fifth and an octave, high and thin, over a shimmer of air
+  se_m_cut             slash    AIR_CUTTER/VECTOR, CUT/CONTENT, LEAF_BLADE/GROWTH
+  se_m_fly             swish    FLY/VECTOR
+  se_m_gust            weather  GUST/VECTOR, POWDER_SNOW/FROZEN, RAZOR_WIND/CONTENT, SILVER_WIND/SWARM
+  se_m_wing_attack     hits     WING_ATTACK/VECTOR
+
+CORRUPT (5) -- the pentatonic with a note bent off it (E-F, C-F#), buzzed, low-middle, over an irregular low bubbling
+  se_m_acid_armor      status   ACID_ARMOR/CORRUPT
+  se_m_bubble3         spray    ACID/CORRUPT, SLUDGE/CORRUPT, WATER_PULSE/FLOW
+  se_m_dig             burst    BITROT_MOON/CORRUPT, MUD_SPORT/STRATUM, SLUDGE_BOMB/CORRUPT
+  se_m_mist            weather  MIST/FROZEN, POISON_GAS/CORRUPT, SHADOW_BALL/LATENT, SMOG/CORRUPT, WHAT_SLEEPS/LATENT
+  se_m_toxic           status   MEDIAN/CORRUPT, TOXIC/CORRUPT; Status_Poison
+
+STRATUM (6) -- the floor: C-G at the bottom of the range, slow, a decaying square over the deep rumble
+  se_m_bonemerang      hits     BONEMERANG/STRATUM, BONE_CLUB/STRATUM, BONE_RUSH/STRATUM
+  se_m_earthquake      wave     EARTHQUAKE/STRATUM, FISSURE/STRATUM, UNDERLAYER/STRATUM
+  se_m_mega_kick2      hit      DIG/STRATUM, OCTAZOOKA/FLOW, ROLLOUT/LEGACY
+  se_m_sand_attack     spray    MUD_SLAP/STRATUM, SAND_ATTACK/STRATUM
+  se_m_sand_tomb       bind     SAND_TOMB/STRATUM; General_TurnTrap
+  se_m_strength        hit      MAGNITUDE/STRATUM, ROCK_TOMB/LEGACY
+
+LEGACY (2) -- an old chime falling G-E-C-A, middle-low, a dull clack under it
+  se_m_rock_throw      hits     FLUENCY/LEGACY, ROCK_SLIDE/LEGACY, ROCK_THROW/LEGACY
+  se_m_sandstorm       weather  SANDSTORM/LEGACY; General_Sandstorm
+
+SWARM (2) -- many small things: a fast thin A-G trill, high, in a cloud of quick ticks
+  se_m_bubble_beam     beam     AURORA_BEAM/FROZEN, QUIET_HIVE/SWARM, SIGNAL_BEAM/SWARM
+  se_m_string_shot     spray    ICE_PUNCH/FROZEN, MIST_BALL/CONTEXT, SPIDER_WEB/SWARM, STRING_SHOT/SWARM
+
+LATENT (4) -- something waking: A-C-E rising slowly from low, thin, held at the top; no noise at all
+  se_m_encore          pop      ASTONISH/LATENT, HELPING_HAND/CONTENT
+  se_m_lick            status   LICK/LATENT
+  se_m_nightmare       call     CURSE/MYSTERY, NIGHTMARE/LATENT; Status_Nightmare
+  se_m_string_shot2    beam     CONFUSE_RAY/LATENT
+
+ENTROPY (6) -- a flicker E-G-A-G, middle-high and quick, over a shimmer and crackling ticks
+  se_m_ember           spray    EMBER/ENTROPY, HINDSIGHT/ENTROPY, WILL_O_WISP/ENTROPY
+  se_m_explosion       burst    ERUPTION/ENTROPY, EXPLOSION/CONTENT
+  se_m_flamethrower    beam     EMBER_HOUR/ENTROPY, FLAMETHROWER/ENTROPY, HINDSIGHT/ENTROPY
+  se_m_flame_wheel     swish    BLAZE_KICK/ENTROPY, DRAGON_BREATH/EMERGENT, FIRE_BLAST/ENTROPY, FIRE_PUNCH/ENTROPY, FLAME_WHEEL/ENTROPY; General_TurnTrap, Status_Burn
+  se_m_heat_wave       wave     HEAT_WAVE/ENTROPY
+  se_m_sacred_fire     burst    BLAST_BURN/ENTROPY, SACRED_FIRE/ENTROPY
+
+FLOW (7) -- a descent: the pentatonic run down A-G-E-D-C, the harp leading, a soft splash, held at the bottom
+  se_m_bubble          spray    BUBBLE/FLOW, BUBBLE_BEAM/FLOW, STILLPOINT/FLOW, WATER_GUN/FLOW
+  se_m_crabhammer      hit      WATERFALL/FLOW
+  se_m_hydro_pump      beam     HYDRO_PUMP/FLOW
+  se_m_rain_dance      weather  RAIN_DANCE/FLOW; General_Rain
+  se_m_surf            wave     HYDRO_CANNON/FLOW, SURF/FLOW, UNDERCURRENT/FLOW, WATER_SPORT/FLOW
+  se_m_waterfall       burst    STILLPOINT/FLOW
+  se_m_whirlpool       bind     MUDDY_WATER/FLOW, MUD_SHOT/STRATUM, WHIRLPOOL/FLOW; General_TurnTrap
+
+GROWTH (6) -- fitting: the pentatonic climbing C-D-E-G-A at a steady pace, soft ticks, held at the top
+  se_m_absorb          heal     ABSORB/GROWTH, GIGA_DRAIN/GROWTH, LEECH_LIFE/SWARM, MEGA_DRAIN/GROWTH, PRAXIS/GROWTH; General_LeechSeedDrain
+  se_m_absorb_2        heal     General_IngrainHeal, General_WishHeal  [INGRAIN's and WISH's heal at a turn's end; no routine borrows it]
+  se_m_grasswhistle    call     GRASS_WHISTLE/GROWTH
+  se_m_petal_dance     spray    AROMATHERAPY/GROWTH, FEATHER_DANCE/VECTOR, PETAL_DANCE/GROWTH, SUNNY_DAY/ENTROPY; General_Sun
+  se_m_poison_powder   spray    COTTON_SPORE/GROWTH, LEECH_SEED/GROWTH, MAGICAL_LEAF/GROWTH, MEDIAN/CORRUPT, POISON_POWDER/CORRUPT, RAZOR_LEAF/GROWTH, SLEEP_POWDER/GROWTH, SPORE/GROWTH, STUN_SPORE/GROWTH
+  se_m_sing            call     PRAXIS/GROWTH, SING/CONTENT
+
+SIGNAL (4) -- current: one high C repeated fast and buzzed, a fifth flicked in, sharp high ticks
+  se_m_charge          charge   CHARGE/SIGNAL, SHOCK_WAVE/SIGNAL, VOLT_TACKLE/SIGNAL
+  se_m_thunderbolt     beam     DEAD_AIR/SIGNAL, RECONNECT/SIGNAL, THUNDERBOLT/SIGNAL, THUNDER_SHOCK/SIGNAL
+  se_m_thunderbolt2    status   SPARK/SIGNAL; Status_Paralysis
+  se_m_thunder_wave    wave     RECONNECT/SIGNAL, THUNDER/SIGNAL, THUNDER_WAVE/SIGNAL, ZAP_CANNON/SIGNAL
+
+CONTEXT (12) -- a frame: a tremolo between E and A, middle-high, no noise at all, the flute holding it
+  se_m_barrier         glint    BARRIER/CONTEXT, CONVERSION_2/CONTENT, MAGIC_COAT/CONTEXT, METEOR_MASH/HARDENED
+  se_m_bind            bind     BIND/CONTENT, EXTRASENSORY/CONTEXT, SECOND_SIGHT/MYSTERY; General_TurnTrap
+  se_m_cosmic_power    rise     COSMIC_POWER/CONTEXT
+  se_m_horn_attack     hit      ALIGN/CONTEXT, FURY_ATTACK/CONTENT, IMPRISON/CONTEXT, NEEDLE_ARM/GROWTH, PECK/VECTOR, SOFT_BOILED/CONTENT
+  se_m_metronome       call     AMNESIA/CONTEXT, METRONOME/CONTENT, TAUNT/OPAQUE
+  se_m_psybeam         beam     DESTINY_BOND/LATENT, DOOM_DESIRE/HARDENED, DREAM_EATER/CONTEXT, FUTURE_SIGHT/CONTEXT, GRUDGE/LATENT, KINESIS/CONTEXT, MEAN_LOOK/CONTENT, MEMENTO/OPAQUE, NIGHT_SHADE/LATENT, PANORAMA/CONTEXT, PSYBEAM/CONTEXT, PSYWAVE/CONTEXT, SCARY_FACE/CONTENT, SPITE/LATENT; General_GhostGetOut
+  se_m_reflect         glint    LIGHT_SCREEN/CONTEXT, MIRROR_COAT/CONTEXT, PROTECT/CONTENT, REFLECT/CONTEXT, WISH/CONTENT
+  se_m_reversal        swish    SKILL_SWAP/CONTEXT
+  se_m_sketch          pop      FORESIGHT/CONTENT, TRICK/CONTEXT
+  se_m_solar_beam      beam     LUSTER_PURGE/CONTEXT
+  se_m_supersonic      wave     CALM_MIND/CONTEXT, CONFUSION/CONTEXT, HYPNOSIS/CONTEXT, PANORAMA/CONTEXT, PSYCHIC/CONTEXT, SUPERSONIC/CONTENT, THIN_SEAM/CONTEXT
+  se_m_dizzy_punch     status   Status_Confusion  [the confusion status (Status_Confusion); no routine borrows it]
+
+FROZEN (5) -- brittle: the top of the range, sparse thin E-G-C, a glassy high tick
+  se_m_blizzard        weather  BLIZZARD/FROZEN
+  se_m_bubble_beam2    beam     BLACK_ICE/FROZEN, ICE_BEAM/FROZEN
+  se_m_hail            spray    HAIL/FROZEN; General_Hail
+  se_m_haze            weather  HAZE/FROZEN
+  se_m_icy_wind        slash    ICE_BALL/FROZEN, ICICLE_SPEAR/FROZEN, ICY_WIND/FROZEN, SHEER_COLD/FROZEN; Status_Freeze
+
+EMERGENT (2) -- the whole range at once: C-G-E-C stacked low to high into one chord, a deep thud
+  se_m_sacred_fire2    burst    BEFORE_DAWN/EMERGENT, DRAGON_CLAW/EMERGENT, FIRE_SPIN/ENTROPY
+  se_m_twister         wave     TWISTER/EMERGENT
+
+HARDENED (2) -- metal: an octave clang C-C, middle, a short metallic shimmer under each strike
+  se_m_harden          glint    HARDEN/CONTENT, IRON_TAIL/HARDENED, METAL_CLAW/HARDENED, NIGHT_WATCH/HARDENED, POISON_TAIL/CORRUPT, STEEL_WING/HARDENED
+  se_m_screech         call     METAL_SOUND/HARDENED, SCREECH/CONTENT
+
+OPAQUE (3) -- the dark: a low falling fourth A-E, muffled and buzzed, short, no shimmer
+  se_m_bite            bite     BITE/OPAQUE, CRUNCH/OPAQUE, HYPER_FANG/CONTENT, POISON_FANG/CORRUPT
+  se_m_encore2         call     ENCORE/CONTENT, FLATTER/OPAQUE
+  se_m_faint_attack    swish    CAMOUFLAGE/CONTENT, FAINT_ATTACK/OPAQUE, VEIL/OPAQUE
+
+LEFT OUT: SE_M_HEAL_BELL and SE_M_MORNING_SUN (their field uses -- GOTO's ribbon, the unity and spirits scenes, the NOTEBOOK -- are the instruments lane's notes, and one .mid serves battle and field alike); SE_M_DIVE (field only; batch 6's, approved); SE_M_SPIT_UP, SE_M_HYPER_BEAM2, SE_M_LOCK_ON (outside battle only: the region map, the Fame Checker, the item-use scene); SE_M_BLIZZARD2 (only AIR_CUTTER's vanilla task played it, and DAEMONS redrew AIR_CUTTER); the eight nothing plays: GUST2, FLAME_WHEEL2, FIRE_PUNCH, PAY_DAY, BRICK_BREAK, GIGA_DRAIN, TRI_ATTACK2, ATTRACT2

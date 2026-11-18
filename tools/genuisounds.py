@@ -12,6 +12,9 @@
                                                        # drafts in audio/drafts/t565_battle and a "battle moment" clip)
     python3 tools/genuisounds.py --batch 6 [MODE]      # the same for batch 6, the field sounds (APPROVED_6, its own
                                                        # drafts in audio/drafts/t565_field and an "a walk" clip)
+    python3 tools/genuisounds.py --batch 10 [MODE]     # the same for batch 10, the moves' SE_M_* sounds (APPROVED_10,
+                                                       # audio/drafts/t565_moves, "a battle's moves" in each style,
+                                                       # "the palette" in C, MOVES.txt; the report checks the census)
 
 THE SPLIT (docs/TODO.md T-565, agreed with the Musical Instruments lane 2026-11-16): the menu and UI sounds are the
 game lane's; SE_SUCCESS, SE_FAILURE, SE_DING_DONG, SE_PC_LOGIN and SE_SHOP are pitched sounds whose notes are the
@@ -68,6 +71,12 @@ downpour and thunderstorm keep pret's loops ("[" at 16 frames, "]" at its end). 
 these (SE_FALL, SE_THUNDER, SE_ESCALATOR, SE_DOOR...); ours use none: a fall is stepped down the pentatonic.
 The field uses of SE_M_CUT and SE_M_STRENGTH share their .mid with the battle animations, so they are batch 10's:
 here they are SKETCHES only, heard in the "a walk" clip and drafted under batch10_sketch/, never written.
+
+BATCH 10 (--batch 10), the move-animation sounds: 115 SE_M_* sounds in the same three styles on voicegroup196, each
+given the type whose routines borrow it most (census10() reads the battle animation scripts and the C tasks they
+start; the report fails loudly if the engine's animations have moved a sound to another type) and drawn from that
+type's PALETTE in a SHAPE. Batch 6's two sketches are superseded here: Cut is VECTOR's edge, Strength STRATUM's hit.
+The notes are not typed per sound but composed by shape_events(), so a palette changed redraws its whole type.
 """
 import math, os, re, struct, subprocess, sys, wave
 
@@ -312,6 +321,438 @@ PLAYER_6 = {"wall_hit": 2, "unlock": 2, "puddle": 2, "contest_place": 2, "rain":
             "downpour_stop": 3, "thunderstorm": 3, "thunderstorm_stop": 3}   # song_table.inc: the rest play on SE1
 
 
+# ---------------------------------------------------------------------------------------------------------------------
+# BATCH 10: the move-animation sounds (docs/sound-census-2026-11-16.md, batch 10). 115 SE_M_* sounds, each REPLACED in
+# place like every batch before it -- so one .mid serves every routine that borrows it, and each is given the type
+# whose routines borrow it most (census10(): a tie goes to the type that is not CONTENT, then to the chart's order;
+# OVERRIDE_10 for the four a count cannot settle). Each TYPE has a PALETTE -- a motif, a register and a texture -- so
+# a player can learn a type by ear, and each sound is its type's palette played in a SHAPE that matches what the sound
+# does (a hit, a beam, a spray, a wave...). The motif family holds: every motif is Blanche's C pentatonic except
+# CORRUPT's, the pentatonic with a note bent off it, and a stat falling ends on the falling tritone. The physical
+# shapes (a hit, strikes, a bite, a burst, a bind) lean on the noise channel. A sound is written as EVENTS
+# ((frame, frames, token)), serialised into the token language above and clamped to pret's own last frame, so it is
+# never longer than pret's; the loudness check is the one every batch uses.
+# ---------------------------------------------------------------------------------------------------------------------
+CHART = ["CONTENT", "LOGIC", "VECTOR", "CORRUPT", "STRATUM", "LEGACY", "SWARM", "LATENT", "ENTROPY", "FLOW", "GROWTH",
+         "SIGNAL", "CONTEXT", "FROZEN", "EMERGENT", "HARDENED", "OPAQUE"]
+TYPE_OF_VANILLA = {"NORMAL": "CONTENT", "FIGHTING": "LOGIC", "FLYING": "VECTOR", "POISON": "CORRUPT",
+                   "GROUND": "STRATUM", "ROCK": "LEGACY", "BUG": "SWARM", "GHOST": "LATENT", "STEEL": "HARDENED",
+                   "MYSTERY": "MYSTERY", "FIRE": "ENTROPY", "WATER": "FLOW", "GRASS": "GROWTH", "ELECTRIC": "SIGNAL",
+                   "PSYCHIC": "CONTEXT", "ICE": "FROZEN", "DRAGON": "EMERGENT", "DARK": "OPAQUE"}
+
+# m: the motif (harp register; A plays it an octave up), art: how a motif note is played ("" a key, "^" thin, "!" a
+# buzz), hold: the last note held (the FLUTE in C), thud: the noise key under a hit (None: no noise under it), tex: the
+# texture's noise ("x" ticks, "s" shimmer, "X" rumble; None: none) and its keys, step: the pace in frames.
+PALETTE = {
+    "CONTENT":  dict(m=["C5", "G5", "C6", "G5"], art="", hold=False, thud=54, tex="x", keys=(80,), step=3,
+                     line="bone: the plain fifth C-G in the middle, a square key and one tick -- the undifferentiated"),
+    "LOGIC":    dict(m=["C4", "D4", "E4", "G4"], art="", hold=False, thud=50, tex="x", keys=(86,), step=3,
+                     line="a proof: steps up C-D-E-G, low-middle, even and firm, each step on a clockwork tick"),
+    "VECTOR":   dict(m=["G5", "C6", "G6", "C7"], art="^", hold=False, thud=64, tex="s", keys=(70,), step=2,
+                     line="an arrow: leaps of a fifth and an octave, high and thin, over a shimmer of air"),
+    "CORRUPT":  dict(m=["E4", "F4", "C4", "F#4"], art="!", hold=False, thud=52, tex="x", keys=(60, 66, 58, 70), step=4,
+                     line="the pentatonic with a note bent off it (E-F, C-F#), buzzed, low-middle, over an "
+                     "irregular low bubbling"),
+    "STRATUM":  dict(m=["C3", "G2", "C3", "E3"], art="^", hold=False, thud=44, tex="X", keys=(46, 42, 48), step=6,
+                     line="the floor: C-G at the bottom of the range, slow, a decaying square over the deep rumble"),
+    "LEGACY":   dict(m=["G4", "E4", "C4", "A3"], art="", hold=False, thud=50, tex="x", keys=(58, 64, 54), step=4,
+                     line="an old chime falling G-E-C-A, middle-low, a dull clack under it"),
+    "SWARM":    dict(m=["A5", "G5", "A5", "E5"], art="^", hold=False, thud=70, tex="x", keys=(86, 82, 88, 84), step=1,
+                     line="many small things: a fast thin A-G trill, high, in a cloud of quick ticks"),
+    "LATENT":   dict(m=["A3", "C4", "E4", "A4"], art="^", hold=True, thud=None, tex=None, keys=(), step=6,
+                     line="something waking: A-C-E rising slowly from low, thin, held at the top; no noise at all"),
+    "ENTROPY":  dict(m=["E5", "G5", "A5", "G5"], art="", hold=False, thud=60, tex="s", keys=(72, 84, 66, 78, 90),
+                     step=2, line="a flicker E-G-A-G, middle-high and quick, over a shimmer and crackling ticks"),
+    "FLOW":     dict(m=["A5", "G5", "E5", "D5", "C5"], art="", hold=True, thud=66, tex="s", keys=(64,), step=3,
+                     line="a descent: the pentatonic run down A-G-E-D-C, the harp leading, a soft splash, held at the "
+                     "bottom"),
+    "GROWTH":   dict(m=["C5", "D5", "E5", "G5", "A5"], art="", hold=True, thud=62, tex="x", keys=(82,), step=4,
+                     line="fitting: the pentatonic climbing C-D-E-G-A at a steady pace, soft ticks, held at the top"),
+    "SIGNAL":   dict(m=["C6", "C6", "G6", "C6"], art="!", hold=False, thud=72, tex="x", keys=(88, 90), step=2,
+                     line="current: one high C repeated fast and buzzed, a fifth flicked in, sharp high ticks"),
+    "CONTEXT":  dict(m=["E5", "A5", "E5", "A5"], art="", hold=True, thud=None, tex=None, keys=(), step=3,
+                     line="a frame: a tremolo between E and A, middle-high, no noise at all, the flute holding it"),
+    "FROZEN":   dict(m=["E6", "G6", "C7", "G6"], art="^", hold=False, thud=76, tex="x", keys=(90, 88), step=2,
+                     line="brittle: the top of the range, sparse thin E-G-C, a glassy high tick"),
+    "EMERGENT": dict(m=["C4", "G4", "E5", "C6"], art="", hold=True, thud=48, tex="s", keys=(70,), step=4,
+                     line="the whole range at once: C-G-E-C stacked low to high into one chord, a deep thud"),
+    "HARDENED": dict(m=["C5", "C6", "G5", "C6"], art="", hold=False, thud=58, tex="s", keys=(74,), step=3,
+                     line="metal: an octave clang C-C, middle, a short metallic shimmer under each strike"),
+    "OPAQUE":   dict(m=["A3", "E3", "D3", "A2"], art="!", hold=False, thud=52, tex=None, keys=(), step=4,
+                     line="the dark: a low falling fourth A-E, muffled and buzzed, short, no shimmer"),
+}
+
+SHAPE_WHAT = {"hit": "a hit", "hits": "strikes", "slash": "an edge", "bite": "jaws closing", "beam": "a beam",
+              "burst": "a burst", "spray": "a spray of small things", "wave": "a wave over the field",
+              "weather": "weather", "rise": "a stat rising", "fall": "a stat falling (the tritone)", "heal": "a heal",
+              "status": "a status taking hold", "call": "a voice or a song", "charge": "a charge building",
+              "bind": "a bind squeezing", "tick": "a tick", "swish": "a rush of air", "pop": "a pop",
+              "glint": "a glint"}
+
+# (sound, type, shape). The type is census10()'s dominant one, or OVERRIDE_10's; the report says if they drift apart.
+TABLE_10 = [
+    # CONTENT (39)
+    ("m_attract", "CONTENT", "pop"), ("m_baton_pass", "CONTENT", "swish"), ("m_belly_drum", "CONTENT", "hits"),
+    ("m_bubble2", "CONTENT", "pop"), ("m_charm", "CONTENT", "status"), ("m_comet_punch", "CONTENT", "hit"),
+    ("m_confuse_ray", "CONTENT", "beam"), ("m_double_slap", "CONTENT", "hit"), ("m_double_team", "CONTENT", "swish"),
+    ("m_dragon_rage", "CONTENT", "charge"), ("m_flatter", "CONTENT", "pop"), ("m_headbutt", "CONTENT", "hit"),
+    ("m_hyper_beam", "CONTENT", "beam"), ("m_leer", "CONTENT", "glint"), ("m_milk_drink", "CONTENT", "heal"),
+    ("m_minimize", "CONTENT", "tick"), ("m_moonlight", "CONTENT", "heal"), ("m_perish_song", "CONTENT", "call"),
+    ("m_psybeam2", "CONTENT", "beam"), ("m_razor_wind", "CONTENT", "slash"), ("m_razor_wind2", "CONTENT", "slash"),
+    ("m_scratch", "CONTENT", "slash"), ("m_self_destruct", "CONTENT", "burst"), ("m_snore", "CONTENT", "call"),
+    ("m_swagger", "CONTENT", "rise"), ("m_swagger2", "CONTENT", "status"), ("m_sweet_scent", "CONTENT", "spray"),
+    ("m_swift", "CONTENT", "spray"), ("m_swords_dance", "CONTENT", "rise"), ("m_tail_whip", "CONTENT", "pop"),
+    ("m_take_down", "CONTENT", "hit"), ("m_teeter_dance", "CONTENT", "status"), ("m_teleport", "CONTENT", "heal"),
+    ("m_tri_attack", "CONTENT", "beam"), ("m_uproar", "CONTENT", "call"), ("m_vicegrip", "CONTENT", "bind"),
+    ("m_yawn", "CONTENT", "call"), ("m_stat_increase", "CONTENT", "rise"), ("m_stat_decrease", "CONTENT", "fall"),
+    # LOGIC (6)
+    ("m_detect", "LOGIC", "glint"), ("m_jump_kick", "LOGIC", "hit"), ("m_mega_kick", "LOGIC", "hit"),
+    ("m_sky_uppercut", "LOGIC", "rise"), ("m_vital_throw", "LOGIC", "hits"), ("m_vital_throw2", "LOGIC", "hits"),
+    # VECTOR (4)
+    ("m_cut", "VECTOR", "slash"), ("m_fly", "VECTOR", "swish"), ("m_gust", "VECTOR", "weather"),
+    ("m_wing_attack", "VECTOR", "hits"),
+    # CORRUPT (5)
+    ("m_acid_armor", "CORRUPT", "status"), ("m_bubble3", "CORRUPT", "spray"), ("m_dig", "CORRUPT", "burst"),
+    ("m_mist", "CORRUPT", "weather"), ("m_toxic", "CORRUPT", "status"),
+    # STRATUM (6)
+    ("m_bonemerang", "STRATUM", "hits"), ("m_earthquake", "STRATUM", "wave"), ("m_mega_kick2", "STRATUM", "hit"),
+    ("m_sand_attack", "STRATUM", "spray"), ("m_sand_tomb", "STRATUM", "bind"), ("m_strength", "STRATUM", "hit"),
+    # LEGACY (2)
+    ("m_rock_throw", "LEGACY", "hits"), ("m_sandstorm", "LEGACY", "weather"),
+    # SWARM (2)
+    ("m_bubble_beam", "SWARM", "beam"), ("m_string_shot", "SWARM", "spray"),
+    # LATENT (4)
+    ("m_encore", "LATENT", "pop"), ("m_lick", "LATENT", "status"), ("m_nightmare", "LATENT", "call"),
+    ("m_string_shot2", "LATENT", "beam"),
+    # ENTROPY (6)
+    ("m_ember", "ENTROPY", "spray"), ("m_explosion", "ENTROPY", "burst"), ("m_flamethrower", "ENTROPY", "beam"),
+    ("m_flame_wheel", "ENTROPY", "swish"), ("m_heat_wave", "ENTROPY", "wave"), ("m_sacred_fire", "ENTROPY", "burst"),
+    # FLOW (7)
+    ("m_bubble", "FLOW", "spray"), ("m_crabhammer", "FLOW", "hit"), ("m_hydro_pump", "FLOW", "beam"),
+    ("m_rain_dance", "FLOW", "weather"), ("m_surf", "FLOW", "wave"), ("m_waterfall", "FLOW", "burst"),
+    ("m_whirlpool", "FLOW", "bind"),
+    # GROWTH (6)
+    ("m_absorb", "GROWTH", "heal"), ("m_absorb_2", "GROWTH", "heal"), ("m_grasswhistle", "GROWTH", "call"),
+    ("m_petal_dance", "GROWTH", "spray"), ("m_poison_powder", "GROWTH", "spray"), ("m_sing", "GROWTH", "call"),
+    # SIGNAL (4)
+    ("m_charge", "SIGNAL", "charge"), ("m_thunderbolt", "SIGNAL", "beam"), ("m_thunderbolt2", "SIGNAL", "status"),
+    ("m_thunder_wave", "SIGNAL", "wave"),
+    # CONTEXT (12)
+    ("m_barrier", "CONTEXT", "glint"), ("m_bind", "CONTEXT", "bind"), ("m_cosmic_power", "CONTEXT", "rise"),
+    ("m_horn_attack", "CONTEXT", "hit"), ("m_metronome", "CONTEXT", "call"), ("m_psybeam", "CONTEXT", "beam"),
+    ("m_reflect", "CONTEXT", "glint"), ("m_reversal", "CONTEXT", "swish"), ("m_sketch", "CONTEXT", "pop"),
+    ("m_solar_beam", "CONTEXT", "beam"), ("m_supersonic", "CONTEXT", "wave"), ("m_dizzy_punch", "CONTEXT", "status"),
+    # FROZEN (5)
+    ("m_blizzard", "FROZEN", "weather"), ("m_bubble_beam2", "FROZEN", "beam"), ("m_hail", "FROZEN", "spray"),
+    ("m_haze", "FROZEN", "weather"), ("m_icy_wind", "FROZEN", "slash"),
+    # EMERGENT (2)
+    ("m_sacred_fire2", "EMERGENT", "burst"), ("m_twister", "EMERGENT", "wave"),
+    # HARDENED (2)
+    ("m_harden", "HARDENED", "glint"), ("m_screech", "HARDENED", "call"),
+    # OPAQUE (3)
+    ("m_bite", "OPAQUE", "bite"), ("m_encore2", "OPAQUE", "call"), ("m_faint_attack", "OPAQUE", "swish"),
+]
+# Where a count does not decide: no routine borrows it, or a general animation is what a player mostly hears it in.
+OVERRIDE_10 = {"m_stat_increase": ("CONTENT", "every stat that rises (General_StatsChange); only SKY_ATTACK borrows it"),
+               "m_stat_decrease": ("CONTENT", "every stat that falls (General_StatsChange); no routine borrows it"),
+               "m_absorb_2": ("GROWTH", "INGRAIN's and WISH's heal at a turn's end; no routine borrows it"),
+               "m_dizzy_punch": ("CONTEXT", "the confusion status (Status_Confusion); no routine borrows it")}
+SIGNATURE_10 = {"CONTENT": "m_take_down", "LOGIC": "m_vital_throw2", "VECTOR": "m_wing_attack", "CORRUPT": "m_toxic",
+                "STRATUM": "m_earthquake", "LEGACY": "m_rock_throw", "SWARM": "m_string_shot", "LATENT": "m_lick",
+                "ENTROPY": "m_ember", "FLOW": "m_bubble", "GROWTH": "m_absorb", "SIGNAL": "m_thunder_wave",
+                "CONTEXT": "m_supersonic", "FROZEN": "m_icy_wind", "EMERGENT": "m_twister",
+                "HARDENED": "m_harden", "OPAQUE": "m_bite"}
+LOOP_10 = {"m_gust": (24, 72), "m_blizzard": (24, 72)}      # pret's own loops ("[" at 24 frames, "]" at 72)
+LEFT_OUT_10 = ["SE_M_HEAL_BELL and SE_M_MORNING_SUN (their field uses -- GOTO's ribbon, the unity and spirits scenes, "
+               "the NOTEBOOK -- are the instruments lane's notes, and one .mid serves battle and field alike)",
+               "SE_M_DIVE (field only; batch 6's, approved)",
+               "SE_M_SPIT_UP, SE_M_HYPER_BEAM2, SE_M_LOCK_ON (outside battle only: the region map, the Fame "
+               "Checker, the item-use scene)",
+               "SE_M_BLIZZARD2 (only AIR_CUTTER's vanilla task played it, and DAEMONS redrew AIR_CUTTER)",
+               "the eight nothing plays: GUST2, FLAME_WHEEL2, FIRE_PUNCH, PAY_DAY, BRICK_BREAK, GIGA_DRAIN, "
+               "TRI_ATTACK2, ATTRACT2"]
+
+
+def note_key(note):
+    m = NOTE_RE.match(note)
+    return 12 * (int(m.group(3)) + 1) + SEMI[m.group(2)]
+
+
+def shape_events(pal, shape, F, sid=""):
+    """[(frame, frames, token)] -- the palette in this shape, before clamping to F (pret's last frame)."""
+    m, art, st, th = pal["m"], pal["art"], pal["step"], pal["thud"]
+    top = "~" if pal["hold"] else art                     # how a shape's last, longest note is played
+    up = sorted(set(m), key=note_key)
+    note = lambda k: art + m[k % len(m)]
+    thud = lambda at, n: [(at, n, "X=%d" % th)] if th else []
+    keys = pal["keys"] or (80,)
+    tex = lambda at, n, i=0: [(at, n, "%s=%d" % (pal["tex"], keys[i % len(keys)]))] if pal["tex"] else []
+    v = sum(map(ord, sid)) % len(m)                       # a sound's own turn of the motif, so two hits differ
+    ev = []
+    if shape == "hit":
+        ev += thud(0, 4) + [(0, 3, note(v)), (3, max(4, min(F - 3, 10)), top + m[(v + 1) % len(m)])]
+    elif shape == "hits":
+        gap = max(3, min(F // 3, 6))
+        ev += thud(0, 2) + [(0, 2, note(v))] + thud(gap, 3) + [(gap, max(3, min(F - gap, 8)), note(v + 2))]
+        if F >= 3 * gap:
+            ev += thud(2 * gap, 3) + [(2 * gap, min(F - 2 * gap, 10), top + m[(v + 1) % len(m)])]
+    elif shape == "slash":
+        hi = up[::-1]
+        ev += tex(0, min(8, F)) + [(0, 2, art + hi[0]), (2, 2, art + hi[1 % len(hi)]), (4, 2, art + hi[2 % len(hi)])]
+        ev += [(6, 1, "x=86"), (7, max(3, min(F - 7, 8)), art + hi[-1])]
+    elif shape == "bite":
+        ev += thud(0, 3) + [(0, 3, note(0)), (0, 3, m[2]), (5, 2, "x=82"), (5, max(4, min(F - 5, 9)), note(1))]
+    elif shape == "beam":
+        L = min(F, 60)
+        t, k = 0, v
+        while t + st < L - 2 * st:
+            ev.append((t, st, note(k)))
+            ev += tex(t, 1, k) if pal["tex"] == "x" and k % 2 == 0 else []
+            t, k = t + st, k + 1
+        ev += (tex(0, L) if pal["tex"] in ("s", "X") else []) + [(t, max(2, L - t), top + m[k % len(m)])]
+    elif shape == "burst":
+        L = min(F, 40)
+        h = min(L, 12)
+        ev += thud(0, h) + [(0, h, x) for x in up] + tex(max(0, h - 2), max(2, L - h), 1)
+        ev += [(h, max(2, L - h), top + up[0])]
+    elif shape == "spray":
+        L, gap = min(F, 36), max(2, 2 * st)
+        t, k = 0, v
+        while t < L:
+            ev += tex(t, 1, k) + [(t + 1, max(1, gap - 1), "^" + m[k % len(m)])]
+            t, k = t + gap, k + 1
+    elif shape in ("wave", "weather"):
+        L = min(F, 120) if shape == "wave" else F
+        lp = LOOP_10.get(sid)
+        if pal["tex"] in ("x", "X"):
+            g = max(2, st)
+            t, k = 0, 0
+            while t < L:
+                ev += tex(t, min(g, L - t), k)
+                t, k = t + g, k + 1
+        elif pal["tex"] == "s":                          # a loop restarts inside it, so a loop gets its own
+            ev += tex(0, lp[0]) + tex(lp[0], L - lp[0]) if lp else tex(0, L)
+        seq = m + m[-2::-1] if shape == "wave" else m
+        t0 = lp[0] if lp else 0
+        gap = max(st * 2, ((lp[1] - lp[0]) if lp else L) // (len(seq) + 1))
+        for i, x in enumerate(seq):
+            if t0 + i * gap < L:
+                ev.append((t0 + i * gap, min(gap, L - t0 - i * gap), ("^" if shape == "weather" else art) + x))
+        if lp:
+            ev += [(0, st, "^" + m[0]), (st * 2, st, "^" + m[1])]
+    elif shape == "rise":
+        for i, x in enumerate(up):
+            lastone = i == len(up) - 1
+            ev.append((i * st, max(4, min(F - i * st, 14)) if lastone else st, (top if lastone else art) + x))
+        ev += tex(0, 1)
+    elif shape == "fall":
+        for i, x in enumerate(up[::-1]):
+            ev.append((i * st, st, art + x))
+        t, octave = len(up) * st + 2, up[0][-1]
+        ev += [(t, 4, "!F#" + octave), (t + 5, max(4, min(F - t - 5, 14)), "^C" + octave)]
+    elif shape == "heal":
+        L = min(F, 80)
+        gap = max(st * 2, L // (len(up) + 2))
+        for i, x in enumerate(up):
+            ev.append((i * gap, gap, x))
+        t = len(up) * gap
+        ev += [(t, max(4, L - t), "~" + up[-1])] + ([(0, 1, "x=84")] if pal["tex"] else [])
+    elif shape == "status":
+        L = min(F, 30)
+        t, k = 0, 0
+        while t < L - st:
+            ev.append((t, st, art + m[k % 2]))
+            t, k = t + st, k + 1
+        ev += tex(0, L) if pal["tex"] == "s" else tex(0, 2)
+    elif shape == "call":
+        L = min(F, 150)
+        seq = [m[0], m[2], m[1], m[3 % len(m)], m[0]]
+        gap = max(st * 2, L // len(seq))
+        for i, x in enumerate(seq):
+            lastone = i == len(seq) - 1
+            ev.append((i * gap, max(4, L - i * gap) if lastone else gap, (top if lastone else art) + x))
+    elif shape == "charge":
+        L = min(F, 60)
+        t, gap = 0, max(4, st * 3)
+        while t < L - 12:
+            ev += [(t, max(1, min(gap - 1, 3)), "^" + m[0])] + tex(t, 1)
+            t, gap = t + gap, max(2, gap - 1)
+        ev += [(t, max(4, L - t), top + up[-1])]
+    elif shape == "bind":
+        L = min(F, 40)
+        gap = max(5, L // 3)
+        for i in range(3):
+            if i * gap < L:
+                ev += thud(i * gap, 3) + [(i * gap, 3, note(i % 2))]
+    elif shape == "tick":
+        ev += [(0, 1, "x=84"), (0, 2, "^" + m[2]), (3, 3, "^" + m[1])]
+    elif shape == "swish":
+        L = min(F, 30)
+        ev += [(0, L, "s=72")]
+        for i, x in enumerate(up + up[-2::-1]):
+            ev.append((i * 2, 2, "^" + x))
+    elif shape == "pop":
+        ev += [(0, 1, "x=82"), (0, 2, note(1)), (3, max(3, min(F - 3, 8)), note(2))]
+    elif shape == "glint":
+        hi = up[::-1]
+        ev += [(0, 2, "^" + hi[0]), (3, 2, "^" + hi[1 % len(hi)]), (6, max(3, min(F - 6, 12)), top.replace("!", "^") + hi[0])]
+        ev += tex(0, 2) if pal["tex"] == "s" else []
+    else:
+        raise ValueError(shape)
+    return ev
+
+
+def serialise(events, F):
+    """Events -> the token language: each clamped to end by frame F, "&" for a shared start, "&r:n" to step back."""
+    evs = sorted(((at, min(n, F - at), tok) for at, n, tok in events if at < F and n >= 1),
+                 key=lambda e: (e[0], 0 if e[2][0] in "xsX" else 1))
+    out, at, last, first = [], 0, 0, True
+    for t, n, tok in evs:
+        if not first and t == last:
+            out.append("&%s:%d" % (tok, n))
+        elif t >= at:
+            if t > at:
+                out.append("r:%d" % (t - at))
+            out.append("%s:%d" % (tok, n))
+        else:
+            out.append("&r:%d" % (t - last))
+            out.append("%s:%d" % (tok, n))
+        last, at, first = t, t + n, False
+    return " ".join(out)
+
+
+def build_10():
+    """SOUNDS_10 from TABLE_10, each fitted to pret's own length (read from its MIDI)."""
+    out = []
+    for sid, ty, shape in TABLE_10:
+        lp = LOOP_10.get(sid)
+        F = lp[1] if lp else frames_of(pret_midi(sid))
+        d = dict(id=sid, type=ty, shape=shape, notes=serialise(shape_events(PALETTE[ty], shape, F, sid), F),
+                 what="%s, %s" % (ty, SHAPE_WHAT[shape]))
+        if lp:
+            d["loop"] = lp
+        out.append(d)
+    return out
+
+
+def census10():
+    """({sound: [(routine, type)]}, {sound: [status or general animation]}) -- which routines' animations play each
+    SE_M_*, followed through calls, gotos and the C tasks and sprite templates they start. Read from the engine."""
+    s = open(os.path.join(GBA, "data", "battle_anim_scripts.s")).read()
+    labels, cur = {}, None
+    for l in s.split("\n"):
+        m = re.match(r"^(\w+):{1,2}\s*$", l)
+        if m:
+            if cur is not None and not labels[cur]:
+                labels[cur] = ["\tgoto " + m.group(1)]       # two labels on one body
+            cur = m.group(1)
+            labels[cur] = []
+        elif cur:
+            labels[cur].append(l)
+    src = ""
+    for f in sorted(os.listdir(os.path.join(GBA, "src"))):
+        if f.startswith("battle_anim") or f == "battle_bg.c":
+            src += open(os.path.join(GBA, "src", f)).read() + "\n"
+    funcs = {m.group(1): m.group(2) for m in re.finditer(
+        r"^(?:static )?(?:void|u8|bool8|s16|u16|bool32|s32) (\w+)\([^;]*?\)\n\{(.*?)^\}", src, re.M | re.S)}
+    fsnd = {k: set(re.findall(r"\bSE_M_\w+", v)) for k, v in funcs.items()}
+    for _ in range(3):
+        for k, v in funcs.items():
+            for w in set(re.findall(r"\b(\w+)\b", v)):
+                if w in fsnd and w != k:
+                    fsnd[k] |= fsnd[w]
+    csnd = {k: v for k, v in fsnd.items() if v}
+    for m in re.finditer(r"(g\w+)\s*=\s*\{(.*?)\};", src, re.S):
+        cb = re.search(r"\.callback\s*=\s*(\w+)", m.group(2))
+        if cb and fsnd.get(cb.group(1)):
+            csnd[m.group(1)] = fsnd[cb.group(1)]
+
+    def refs(lab, seen):
+        if lab in seen or lab not in labels:
+            return set()
+        seen.add(lab)
+        out = set()
+        for l in labels[lab]:
+            l = l.split("@")[0]
+            out |= set(re.findall(r"\bSE_M_\w+", l))
+            for w in set(re.findall(r"\b\w+\b", l)):
+                if w in labels and w != lab:
+                    out |= refs(w, seen)
+                out |= csnd.get(w, set())
+        return out
+    body = open(os.path.join(GBA, "src/data/battle_moves.h")).read()
+    mtype = {mv: re.search(r"\.type = TYPE_(\w+)", b).group(1)
+             for mv, b in re.findall(r"\[MOVE_(\w+)\]\s*=\s*\{(.*?)\n    \}", body, re.S)}
+    ids = {}                                       # an alias (MOVE_WITCHING_FIRST) gives way to the routine's own name
+    for m in re.finditer(r"#define MOVE_(\w+)\s+(\d+)\b", open(os.path.join(GBA, "include/constants/moves.h")).read()):
+        k = int(m.group(2))
+        if k not in ids or (ids[k] not in mtype and m.group(1) in mtype):
+            ids[k] = m.group(1)
+    table = re.findall(r"\.4byte (\w+)", re.search(r"gBattleAnims_Moves::\n(.*?)\n\n", s, re.S).group(1))
+    by, other = {}, {}
+    for i, lab in enumerate(table):
+        mv = ids.get(i)
+        if not mv or mv == "NONE" or mv not in mtype:
+            continue
+        for x in refs(lab, set()):
+            by.setdefault(x[3:].lower(), []).append((mv, TYPE_OF_VANILLA.get(mtype[mv], mtype[mv])))
+    for sec in ("gBattleAnims_StatusConditions", "gBattleAnims_General", "gBattleAnims_Special"):
+        for lab in re.findall(r"\.4byte (\w+)", re.search(sec + r"::\n(.*?)\n\n", s, re.S).group(1)):
+            for x in refs(lab, set()):
+                other.setdefault(x[3:].lower(), []).append(lab)
+    return by, other
+
+
+def dominant(rows):
+    """The type whose routines borrow a sound most; a tie to the one that is not CONTENT, then to the chart's order."""
+    count = {}
+    for _, t in rows:
+        if t in CHART:
+            count[t] = count.get(t, 0) + 1
+    if not count:
+        return None
+    best = [t for t in CHART if count.get(t) == max(count.values())]
+    return ([t for t in best if t != "CONTENT"] or best)[0]
+
+
+def census10_drift():
+    """Lines where TABLE_10's type is not what the engine's animations make it now, or a battle sound is missing."""
+    by, other = census10()
+    bad = []
+    for sid, ty, _ in TABLE_10:
+        want = OVERRIDE_10[sid][0] if sid in OVERRIDE_10 else dominant(by.get(sid, []))
+        if want != ty:
+            bad.append("%s is %s in TABLE_10, %s by the census" % (sid, ty, want))
+    left = {"m_heal_bell", "m_morning_sun"}
+    for sid in sorted(set(by) | set(other)):
+        if sid not in {t[0] for t in TABLE_10} and sid not in left:
+            bad.append("%s plays in battle and is in no batch" % sid)
+    return bad
+
+
+def players_10():
+    t = open(os.path.join(GBA, "sound", "song_table.inc")).read()
+    return {sid: int(m.group(1)) for sid, _, _ in TABLE_10
+            for m in [re.search(r"^\s*song se_%s,\s*(\d+)," % re.escape(sid), t, re.M)] if m and m.group(1) != "1"}
+
+
+APPROVED_10 = {}                                   # the user's picks for batch 10; --write refuses while it is empty
+APPROVED_10.update({sid: "C" for sid, _, _ in TABLE_10})   # the user, 2026-11-17, by multiple choice: C BOTH (DRAFT)
+# The "a battle's moves" clip: twelve routines of twelve types, one after another, as a battle plays them.
+SESSION_10 = [(0.00, "m_comet_punch"), (0.85, "m_vital_throw2"), (1.75, "m_wing_attack"), (2.65, "m_toxic"),
+              (3.45, "m_earthquake", 4.90), (4.95, "m_rock_throw"), (5.90, "m_flamethrower", 7.20),
+              (7.30, "m_surf", 8.60), (8.70, "m_thunderbolt"), (9.60, "m_psybeam"), (10.60, "m_icy_wind"),
+              (11.30, "m_bite")]
+LABELS_10 = {"m_comet_punch": "CONTENT  a hit (TACKLE, POUND, SLAM...)", "m_vital_throw2": "LOGIC    strikes "
+             "(DOUBLE KICK, LOW KICK...)", "m_wing_attack": "VECTOR   strikes (WING ATTACK)",
+             "m_toxic": "CORRUPT  a status (TOXIC)", "m_earthquake": "STRATUM  a wave (EARTHQUAKE, FISSURE)",
+             "m_rock_throw": "LEGACY   strikes (ROCK THROW, ROCK SLIDE)", "m_flamethrower": "ENTROPY  a beam "
+             "(FLAMETHROWER)", "m_surf": "FLOW     a wave (SURF)", "m_thunderbolt": "SIGNAL   a beam (THUNDERBOLT)",
+             "m_psybeam": "CONTEXT  a beam (PSYBEAM, FUTURE SIGHT...)", "m_icy_wind": "FROZEN   an edge (ICY WIND, "
+             "SHEER COLD)", "m_bite": "OPAQUE   jaws (BITE, CRUNCH)"}
+PALETTE_CLIP = [(i * 1.0, SIGNATURE_10[t], i * 1.0 + 0.95) for i, t in enumerate(CHART)]
+
+
 def use_batch(n):
     """Point the module at batch n's sounds, picks, drafts folder and clip."""
     global SOUNDS, APPROVED, LEFT_OUT, SESSION, PLAYER, DRAFTS, BATCH, LABEL, CLIP
@@ -326,8 +767,12 @@ def use_batch(n):
         bad = [s["id"] for s in SOUNDS if s.get("sketch") and s["id"] in APPROVED]
         if bad:
             sys.exit("genuisounds: %s are batch 10's sketches (shared with battle), never written here" % bad)
+    elif n == 10:
+        SOUNDS, APPROVED, LEFT_OUT, SESSION, PLAYER = build_10(), APPROVED_10, LEFT_OUT_10, SESSION_10, players_10()
+        DRAFTS = os.path.join(ROOT, "audio", "drafts", "t565_moves")
+        BATCH, LABEL, CLIP = 10, "T-565 batch 10", "a_battles_moves"
     elif n != 1:
-        sys.exit("genuisounds: --batch is 1 (menus), 4 (battle) or 6 (field)")
+        sys.exit("genuisounds: --batch is 1 (menus), 4 (battle), 6 (field) or 10 (the moves)")
 
 # velocity by kind and style; C's square layer is quieter than A's
 VEL = {"n": 100, "h": 92, "b": 110, "t": 72, "x": 90, "s": 64, "X": 110}
@@ -884,12 +1329,13 @@ def heard(name, y):
     return np.concatenate([y, np.zeros(SR // 8)])
 
 
-def session_mix(get):
+def session_mix(get, rows=None):
     """The clip: each sound placed at its time; a sound cuts the one before it on the same player, a third field
     stops it there (SE_EXP when the bar is full), and a sound with a loop repeats its loop until then."""
     import numpy as np
+    rows = SESSION if rows is None else rows
     clips = []
-    for row in SESSION:
+    for row in rows:
         t, name = row[0], row[1]
         stop = row[2] if len(row) > 2 else None
         y = get(name)
@@ -907,7 +1353,7 @@ def session_mix(get):
     for k, (i, player, y) in enumerate(clips):
         nxt = next((j for j, p, _ in clips[k + 1:] if p == player), None)
         y = y.copy()
-        cut = len(SESSION[k]) > 2
+        cut = len(rows[k]) > 2
         if nxt is not None and i + len(y) > nxt:
             y, cut = y[:nxt - i], True
         fade = min(len(y), int(0.004 * SR))
@@ -932,6 +1378,11 @@ def previews(outdir):
             written.append(write_wav_or_mp3(os.path.join(d, sketch_name(snd)), heard(snd["id"], y)))
         written.insert(0, write_wav_or_mp3(os.path.join(outdir, "%s_%s_%s" % (CLIP, st, STYLE_NAMES[st].replace(" ", "_"))),
                                            session_mix(lambda n: cache[n])))
+        if BATCH == 10 and st == "C":
+            written.insert(1, write_wav_or_mp3(os.path.join(outdir, "the_palette_C_BOTH"),
+                                               session_mix(lambda n: cache[n], PALETTE_CLIP)))
+    if BATCH == 10:
+        write_sidecars(outdir)
     print("  previews: %d files in %s" % (len(written), outdir))
     return written
 
@@ -948,7 +1399,20 @@ def pret_ref(outdir):
     for name, y in cache.items():
         write_wav_or_mp3(os.path.join(outdir, "se_%s" % name), heard(name, y))
     write_wav_or_mp3(os.path.join(outdir, "%s_pret" % CLIP), session_mix(lambda n: cache[n]))
+    if BATCH == 10:
+        write_wav_or_mp3(os.path.join(outdir, "the_palette_pret"), session_mix(lambda n: cache[n], PALETTE_CLIP))
+        write_sidecars(outdir)
     print("  pret's reference: %d sounds and the clip in %s (retail audio: keep it out of git)" % (len(cache), outdir))
+
+
+def write_sidecars(outdir):
+    """Batch 10: what is heard when in the two clips -- the battle's moves (CLIP.txt) and the palette (TYPES.txt)."""
+    rows = ["# %s -- the same moves in every style, and in pret's (tools/genuisounds.py --batch 10)" % CLIP]
+    rows += ["%5.2fs  se_%-16s %s" % (r[0], r[1], LABELS_10[r[1]]) for r in SESSION_10]
+    open(os.path.join(outdir, CLIP + ".txt"), "w").write("\n".join(rows) + "\n")
+    rows = ["# the_palette -- each type's signature sound, one a second, in the chart's order (C BOTH, and pret's)"]
+    rows += ["%5.2fs  %-9s se_%-16s %s" % (r[0], t, r[1], PALETTE[t]["line"]) for t, r in zip(CHART, PALETTE_CLIP)]
+    open(os.path.join(outdir, "TYPES.txt"), "w").write("\n".join(rows) + "\n")
 
 
 def sketch_name(snd):
@@ -973,6 +1437,21 @@ def draft(outdir):
         rows.append("%-14s pret %2d  " % (snd["id"] + (" (SKETCH, batch 10)" if snd.get("sketch") else ""), pret) + "  ".join(
             "%s %2d x%.2f" % (st, frames_of(drafts[(snd["id"], st)][0]), drafts[(snd["id"], st)][1]) for st in STYLES))
     open(os.path.join(outdir, "LENGTHS.txt"), "w").write("\n".join(rows) + "\n")
+    if BATCH == 10:
+        by, other = census10()
+        rows = ["# %s: each sound, the type it is drawn from, its shape, and what plays it in battle (census10())"
+                % LABEL]
+        for ty in CHART:
+            mine = [s for s in SOUNDS if s["type"] == ty]
+            rows += ["", "%s (%d) -- %s" % (ty, len(mine), PALETTE[ty]["line"])]
+            for snd in mine:
+                plays = sorted("%s/%s" % (mv, t) for mv, t in by.get(snd["id"], []))
+                gen = sorted(set(other.get(snd["id"], [])))
+                why = OVERRIDE_10.get(snd["id"], ("", ""))[1]
+                rows.append("  se_%-17s %-8s %s%s%s" % (snd["id"], snd["shape"], ", ".join(plays),
+                            ("; " if plays and gen else "") + ", ".join(gen), ("  [%s]" % why) if why else ""))
+        rows += ["", "LEFT OUT: " + "; ".join(LEFT_OUT)]
+        open(os.path.join(outdir, "MOVES.txt"), "w").write("\n".join(rows) + "\n")
     print("  drafts: %d sounds x %d styles in %s" % (len(SOUNDS), len(STYLES), outdir))
 
 
@@ -1038,6 +1517,9 @@ def main():
         ours = [frames_of(to_midi(voiced(snd, st))) for st in STYLES]
         print("    se_%-14s pret %2d frames (%.3fs)   A %2d  B %2d  C %2d   %s"
               % (snd["id"], pret, pret / 60, ours[0], ours[1], ours[2], APPROVED.get(snd["id"], "")))
+    if BATCH == 10:
+        drift = census10_drift()
+        print("  census: %s" % ("; ".join(drift) if drift else "every type is the one the battle animations give it"))
     print("  APPROVED: %s" % (APPROVED or "none -- nothing is written"))
     if not APPROVED:
         return 0
