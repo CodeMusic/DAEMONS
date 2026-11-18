@@ -186,55 +186,64 @@ board that listens.
 # The Cardputer Zero {#zero .t-GROWTH}
 
 The Zero is a **Raspberry Pi** in a Cardputer's body, running Linux, with its own home screen of apps. DAEMONS is one
-of them. It is **the first device the game is played on**: made on the device from your own *FireRed* or *LeafGreen*,
+of them. It is **the first device the game is played on**: made on the device from your own *FireRed* and *LeafGreen*,
 played on its screen at its own size, in a save that is **the real one**, kept in step with the hub as the phone app
 keeps it. Around the game is the companion: your daemon, its care, the day's step, and a word to every daemon.
 
 {{pictures z_title z_crystal | The game on the Zero, at one to one: the title, and the first words of a new game. The companion's strips stand either side. Taken from the Zero's program on a computer, before the device came; every word DRAFT.}}
 
 ::: note
-**The Zero is new.** It came on the day this book was first printed. Its program was written, built and played on a
-computer first, in a window the size of its screen; the device itself is being brought up now. What is marked
-*(not yet seen on the device)* is what its first days will settle: the keys in the hand, the screen, the speed, the
-sound, the installing.
+**The Zero is new.** It came on the day this book was first printed, and in its first days DAEMONS was installed on
+it, built there and played there, faster than it needs. Its program had been written and played on a computer first, in
+a window the size of its screen. What is still marked *(not yet seen on the device)* is what is left to settle: the
+keys in the hand, the sound, and a daemon arriving.
 :::
 
 ## What you need {#zero-need}
 
-- **The Zero, with M5Stack's own system on it**, set up with your Wi-Fi. M5Stack's imager writes it to the Zero's card.
+- **The Zero, with M5Stack's own system on it**, set up with your Wi-Fi -- a **2.4 GHz** network: the Zero cannot join
+  a 5 GHz one. M5Stack's imager writes the system to the Zero's card.
   There are two models, and DAEMONS plays the same on both: the full one comes with a camera, a motion sensor and a
   32 GB card already in, its system on it; the **Lite** has none of the three, and wants a card bought and written with
   M5Stack's imager.
 - **For now, a computer on the same network**, to install DAEMONS from. Not from M5Stack's store, for now.
-- **Your own game**, as a `.gba` file: *FireRed* or *LeafGreen*, the USA release, 1.0 or Rev 1, unchanged.
+- **Your own games**, as `.gba` files: *FireRed* for CONTENT, *LeafGreen* for CONTEXT, either or both -- the USA
+  release, 1.0 or Rev 1, unchanged.
 - **The internet, once**, to fetch DAEMONS' patch for your game. After that the game plays anywhere.
 - **The hub**, for the companion and the one save. Without it, the game still plays, and keeps its save on the Zero.
 
 ## Installing it {#install}
 
 From the companion's folder on your computer, its **install script** reaches the Zero over the network, builds DAEMONS
-**on the Zero itself** -- several minutes the first time -- and installs it as M5Stack's own apps are installed.
+**on the Zero itself** -- about seventeen minutes the first time, about five after a change -- and installs it as
+M5Stack's own apps are installed. The first time, two of the tools it builds with are added to the Zero, and it asks
+for the Zero's password to add them.
 **DAEMONS then stands on the Zero's home screen.** Nothing of M5Stack's is replaced, and nothing is flashed. The same
 script, asked to **probe** first, only reads what the device is and writes it down.
 
-The companion's own notes for the Zero, `firmware/pizero/README.md`, have every command. *(Not yet seen on the
-device.)*
+The companion's own notes for the Zero, `firmware/pizero/README.md`, have every command.
 
-## Making the game {#make}
+## GAMES: making the game {#make}
 
-The first time, DAEMONS' HOME offers **MAKE THE GAME**.
+**GAMES**, on DAEMONS' HOME -- **MAKE THE GAME** until there is one -- keeps both editions: **CONTENT**, made from
+*FireRed*, and **CONTEXT**, made from *LeafGreen*, each with the release it was made from.
 
-1. **Put your game where the Zero can see it**: in a folder called **DAEMONS** in your home folder (copied across the
-   network, or in Downloads), or on a **USB stick** in the Zero's USB-A port. **TAB** looks again.
-2. **WHICH IS YOURS?** -- choose it, and **ENTER**.
-3. The Zero reads it, **checks it** is a game DAEMONS knows, **fetches** our patch from the newest release, checks
-   that, puts it on, and checks the result. Each step is said as it goes.
-4. ***CONTENT IS READY*** (or CONTEXT, from *LeafGreen*), with its release. **ENTER plays it.**
+1. **Put your games where the Zero can see them**: in a folder called **DAEMONS** in your home folder (copied across
+   the network, or in Downloads), or on a **USB stick** in the Zero's USB-A port. **TAB** looks again. The page names
+   the ones it found, under **YOUR ROMS**.
+2. **Choose CONTENT or CONTEXT, and ENTER.** The Zero reads your game, **checks it** is one DAEMONS knows, **fetches**
+   our patch from the newest release, checks that, puts it on, and checks the result. Each step is said as it goes.
+   Your own game is never sent anywhere.
+3. ***CONTENT IS READY***, with its release. **ENTER plays it.**
 
-{{pictures z_make | MAKE THE GAME, with no game found yet: where to put yours. DRAFT.}}
+{{pictures z_games | GAMES on the Zero itself: both editions made from the player's own games, each with a TESTING build under it. DRAFT.}}
 
-**Your own file is kept untouched beside the game.** When a new release of DAEMONS comes, HOME's **NEW RELEASE** makes
-it again from your file, with one key. Your save carries over.
+**ENTER plays the game chosen, makes it first, or makes it again** when a newer release is out: the row says so, the
+release it has beside the newest. **Your own file is kept untouched**, so a new release is one key, and **every game
+here plays the one save** ([Your save](#save)).
+
+Under each edition is a **TESTING** row: the build DAEMONS is tested with, its DEBUG menu included, made from what the
+hub holds for testing. It is made at home only, with the Zero linked to the hub (it says **LINK FIRST** until then).
 
 | it says | it means |
 |---|---|
@@ -253,13 +262,15 @@ companion's:
 
 **ESC** leaves the game for DAEMONS' HOME. The game **waits, paused**, exactly where it was; **PLAY** goes back to it.
 
-*How fast the game runs on the Zero, and how it sounds through its speaker, are not yet seen on the device.*
+**It runs fast enough to spare**: the Zero plays the game at more than twice the speed it needs, so nothing is
+skipped. *How it sounds through the Zero's speaker is not yet heard on the device.*
 
 ## Your save {#save}
 
 **The save on the Zero is the real one**, as it is on the phone. Save in the game as always -- START, SAVE, YES -- and
 DAEMONS keeps it once it has held still for a second. It is kept too when you leave the game with ESC, and when the
-Zero closes DAEMONS itself.
+Zero closes DAEMONS itself. **There is one save** for every game on the Zero -- CONTENT or CONTEXT, a release or
+TESTING -- as there is one on your phone.
 
 {{pictures z_sent | Saved in the game, START, SAVE, YES: a second later the strip says SENT, and the hub has it. A test game, on a computer.}}
 
@@ -305,6 +316,18 @@ words, whether to keep it on the companion **as a save of its own**:
 - **ENTER: KEEP IT THERE** -- the hub keeps it, and keeps it again at each save after;
 - **ESC: NOT NOW** -- *Kept on this device only*, until the next time it asks.
 
+## A daemon sent from the game {#received}
+
+**SEND** a daemon from the game's party menu, as on any device, and save. Back on DAEMONS' HOME, the Zero SYNCs by itself
+and shows **RECEIVED** for each daemon that moved: who, where it is now -- **IN THIS DEVICE NOW**, **WITH YOUR
+COMPANION NOW**, **IN YOUR PARTY**, **IN YOUR PC** -- and from whom. **ENTER** puts each away. A daemon sent goes
+**into the Zero** when the Zero carries none. If the hub refuses -- one daemon always stays in the party -- HOME says
+why, in the hub's words. The game then goes on from its **CONTINUE**.
+
+{{pictures z_received | RECEIVED: a daemon sent from the game, now carried by the Zero. Seen on a computer, not yet on the device; every word DRAFT.}}
+
+*(Not yet seen on the device.)*
+
 ## Away from home {#away}
 
 Away, the Zero reaches the hub **through the companion's relay**, as your phone does. It tries home first, then the
@@ -324,7 +347,7 @@ DAEMONS' HOME is your daemon and the day; along its foot runs a row of everythin
 - **PARTY**: each daemon of your party, and its four routines in their streak colours. **Z** and **C** go through them.
 - **SAY**: a word **to every daemon nearby**, as the one you carry -- typed, then **ENTER**. What others said is under
   **HEARD**.
-- **NEW RELEASE**, or **MAKE THE GAME**; **SYNC**, or **LINK**; and **LEAVE**, which closes DAEMONS.
+- **GAMES** ([GAMES: making the game](#make)); **SYNC**, or **LINK**; and **LEAVE**, which closes DAEMONS.
 
 {{pictures z_care z_step z_say | CARE after a meal, the step ticked, and a word said. DRAFT.}}
 
@@ -333,7 +356,8 @@ ANSWERING***. With no daemon sent yet: ***NO DAEMON CARRIED HERE*** -- send one 
 
 ## Not on the Zero yet {#zero-later}
 
-- **SEND** and **RETURN** asked from the Zero. For now, use the game's own PORT, then SYNC.
+- **RETURN** asked from the Zero's own HOME. For now, the game's own PORT does it, then SYNC.
+- Play going on from the very moment of a SYNC, rather than from CONTINUE.
 - The **CASINO**, and the routines run as the boards run them.
 - The **LIBRARY**: the NOTEBOOK, THE GUIDE, the INDEX cards and the books.
 - Your daemon's picture in the game's strip.
@@ -343,7 +367,8 @@ ANSWERING***. With no daemon sent yet: ***NO DAEMON CARRIED HERE*** -- send one 
 # The caps {#caps .t-VECTOR}
 
 A **cap** is a small board that sits along the top of the **ADV** or the **Zero**, on the header there, and gives it
-a radio of its own. The plain Cardputer has no header for one.
+a radio of its own. The plain Cardputer has no header for one. M5Stack's own apps for both caps come installed on the
+Zero; DAEMONS does not use them, and they do not use your daemon.
 
 - **Switch the Cardputer off before fitting a cap or taking it off.** On the Zero this is not a choice: its caps are
   not made to be changed while it runs.
@@ -398,14 +423,16 @@ they say so; at **5%** they go into a deep sleep to save the battery. Charge the
 other boards: M5Stack gives two and a half watts at rest, which would make **about two and a half hours of play** a charge.
 *(Not yet seen on the device.)* Its battery shows at the top right of every page, and in the strip beside the game.
 
-**To switch the Zero off**, **LEAVE** DAEMONS first, so your save is kept, then use its **slide switch**. If the Zero
-closes DAEMONS itself -- its Home key held five seconds -- the save is kept as well.
+**To switch the Zero off**, **LEAVE** DAEMONS first, so your save is kept, then **shut the Zero down from its own
+menu**, and only then move its **slide switch**. Whether the switch alone shuts it down cleanly is not yet known, so do
+not trust it with your save. If the Zero closes DAEMONS itself -- its Home key held five seconds -- the save is kept.
 
 ## Bringing them up to date {#updating}
 
 - **The Cardputer and the ADV**: the companion's **update script** again, by the cable, as when the software was first
   put on.
-- **The Zero's game**: **NEW RELEASE** on HOME, made from your own file, kept since the first time.
+- **The Zero's game**: **GAMES** on HOME shows when a newer release is out; **ENTER** makes it, from your own file,
+  kept since the first time.
 - **The Zero's program**: the **install script** again, from the computer.
 
 ## When something is wrong {#trouble}
@@ -416,7 +443,9 @@ closes DAEMONS itself -- its Home key held five seconds -- the save is kept as w
 | **No link in the corner** | link it by its cable once, pair your phone, or teach it your Wi-Fi ([Linking it](#linking)) |
 | **A word typed at HOME is not heard by a 433 board** | the ADV's cap is 868: the 433 boards hear it through Bluetooth and the companion instead |
 | **DAEMONS is not on the Zero's home screen** | the install script did not finish: run it again, and read what it last said |
-| ***WHICH IS YOURS?* lists nothing** | the game is not where the Zero looks: the DAEMONS folder in your home folder, or a USB stick. **TAB** looks again |
+| ***NEEDS YOUR FIRERED*** (or LEAFGREEN), **in GAMES** | the game is not where the Zero looks: the DAEMONS folder in your home folder, or a USB stick. **TAB** looks again |
+| **The Zero does not see your Wi-Fi** | it joins 2.4 GHz networks only; give it your router's 2.4 GHz one |
+| **TESTING says LINK FIRST** | a testing build is made from what the hub holds: link the Zero to the hub, at home |
 | ***That file is not a ROM DAEMONS knows*** | it must be the USA *FireRed* or *LeafGreen*, 1.0 or Rev 1, unchanged |
 | ***THE HUB IS NOT ANSWERING*** | is the hub on, and is the Zero on your Wi-Fi? Away, is the relay set? The game plays on regardless |
 | **The strip says HERE, not SENT** | the hub was not reached: the save goes when it is |
@@ -427,7 +456,7 @@ The companion's wiki has a page called *Troubleshooting*, with more.
 
 ## Still to come {#coming}
 
-- On the **Zero**: SEND and RETURN, the CASINO and the routines, the LIBRARY, the radios and the caps, the camera, and
+- On the **Zero**: RETURN, the CASINO and the routines, the LIBRARY, the radios and the caps, the camera, and
   the game on a television.
 - On the **Cardputer and the ADV**: their microphones, so they can be talked to; the ADV's cap's GPS.
 - The **CC1101 + NFC cap**, on the ADV and the Zero.
@@ -439,6 +468,6 @@ This book is printed again as the Cardputers change. This printing is {{release}
 ::: note
 Every word this book quotes from a Cardputer is a **DRAFT**, as the game's own are, until it is approved. Some of what
 it describes is **new**: the **ADV** runs, though not every key of it has yet been tried by hand; the plain
-**Cardputer** is built and has not yet run; the **Zero** came on the day this book was first printed, and its program,
-played on a computer before, is being brought up on the device now.
+**Cardputer** is built and has not yet run; the **Zero** plays the game, and what of it is not yet seen on the device
+is marked so.
 :::
