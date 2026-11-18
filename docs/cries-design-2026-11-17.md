@@ -25,10 +25,14 @@ to the held note from its last letter.** Each within pret's length for the same 
   were set to meet them -- so they guard a later change more than they judge this one.
 - **Said, not failed: in 127 of the 172 two-type cries, the second type's held note comes after the 20-frame cut**, so
   in a double battle those daemons are heard by their first type only.
-- **One pair is still identical: HUNCH and MIME** (both CONTEXT, stage 1, which has no noise texture to tell them
-  apart). The pickup from the initial separated the other four pairs a first pass made.
-- **Eleven daemons borrow another's cry** (`SpeciesToCryId`: the NEXUS residents and the carried line), so each is
+- **One pair was still identical: HUNCH and MIME** (both CONTEXT, stage 1, which has no noise texture to tell them
+  apart). The pickup from the initial separated the other four pairs a first pass made. *T-584 (2026-11-18): THE
+  NO-TWINS RULE -- no two cries may play the same notes at the same times; the later in the cry table (MIME) steps the
+  notes its name's initial and last letter choose to the next choice. `gencries.py` asserts it on every run.*
+- **Eleven daemons borrowed another's cry** (`SpeciesToCryId`: the NEXUS residents and the carried line), so each was
   heard in a cry shaped by the lender's name and type: REFLECTION in MIGHTYENA's, HANDSHAKE in PICHU's, and so on.
+  *T-584 (2026-11-18): each has its own now, A shaped by B from its own type and name, appended after CHIMECHO's (cry
+  ids 388-398), capped at the length of the cry it used to borrow; `gencries.py --rom` proves it from a built ROM.*
 
 The clips, in `audio/drafts/t565_cries/all/`: **`sampler.mp3`** (30 cries, 35 s: three whole lines, a daemon of every
 type and several grown up, the shortest and the longest; `SAMPLER.txt` lists them), `six_doubles_cut.mp3`,
@@ -43,9 +47,10 @@ type and several grown up, the shortest and the longest; `SAMPLER.txt` lists the
   ±9 ... ±49, -64), so **33 bytes for 64 samples, about 0.52 bytes a sample, about 5.4 KB a second**. The steps are
   coarse, so every cry carries a hiss of its own; pret's noisy cries hide it, a pure tone shows it.
 - **The tables.** `sound/direct_sound_data.inc` includes each `.bin` as `Cry_<Species>`; `sound/cry_tables.inc` holds
-  `gCryTable` and `gCryTable_Reverse`, 388 entries each, the `cry` macro making a voice of type 0x20 (compressed
+  `gCryTable` and `gCryTable_Reverse`, 388 entries each (399 since T-584), the `cry` macro making a voice of type 0x20 (compressed
   DirectSound) at key 60, attack and sustain full. `SpeciesToCryId()` (`src/pokemon.c`) maps a species to its cry; the
-  NEXUS residents and the carried line already borrow other species' cries through it (`sNexusCries`, `sCarriedCries`).
+  NEXUS residents and the carried line borrowed other species' cries through it (`sNexusCries`, `sCarriedCries`) until
+  T-584 made those tables hold each one's own cry id.
 - **The player.** `PlayCryInternal()` (`src/sound.c`) builds a one-note song at run time from
   `gPokemonCrySongTemplate` (`src/m4a_tables.c`: tune, voice, volume, pan, a tie on key 60, a wait, the end) and plays it
   on one of two cry players (two, for double battles). **Pitch, length, release, chorus and reversal are set by the

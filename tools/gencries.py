@@ -12,12 +12,24 @@
                                                    # of the sampler (default audio/drafts/t565_cries/all)
     python3 tools/gencries.py --pret-ref DIR       # pret's sampler, cut and backwards clips through the same model --
                                                    # RETAIL AUDIO: never into a tracked folder
-    python3 tools/gencries.py --write --approved   # write APPROVED's cries over pret's .wav (refuses while it is empty)
+    python3 tools/gencries.py --write --approved   # write APPROVED's cries over pret's .wav (refuses while it is empty),
+                                                   # and the eleven's own (T-584) with their rows and labels
+    python3 tools/gencries.py --rom [ROM]          # T-584: prove from a built ROM (and its .elf) that every cry is its
+                                                   # own sample, the eleven slots included (default daemonsContent.gba)
 
 THE ENGINE (docs/cries-design-2026-11-17.md has the whole of it): a cry is one sample, mono, 8-bit, 10512 Hz, in
 sound/direct_sound_samples/cries/<species>.wav; audio_rules.mk compresses it (wav2agb -b -c -l 1 --no-pad: DPCM, 33
 bytes a 64 samples). PlayCryInternal (src/sound.c) plays it as one note at key 60; pitch, length and reversal come
 from the cry's MODE, never the species. So a cry REPLACES pret's .wav in place: no table, no constant, no engine code.
+
+T-584, CRIES OF THEIR OWN: the eleven daemons in pret's empty slots (THE NEXUS's eight, tools/gbanexus.py, and the
+carried line, tools/gbacarried.py) borrowed another species' cry. Each now has a cry of its own, made the same way and
+appended after CHIMECHO's: --write adds the .wav, its sound/direct_sound_data.inc label and a row in both cry tables,
+and the two tools point SpeciesToCryId at them. A slot's cap is pret's length for the cry it used to borrow.
+THE NO-TWINS RULE (T-584): no two cries may play the same notes at the same times. HUNCH and MIME did (the same type,
+lines that turn the motif alike, names of the same consonant-vowel shape and initials that land on one pickup): the
+later in the cry table takes a tie: the notes its name's initial and last letter choose (the pickup and the note
+before the held one) each step to the next choice, until it is heard as its own.
 
 THE SHAPE, per cry (events()):
     the TYPE      its first type's batch-10 PALETTE (genuisounds.py): the motif, the harp or a thin pluck, a square
@@ -105,12 +117,26 @@ def pret_caps(files):
     return caps
 
 
+def own():
+    """T-584: the eleven that borrowed a cry, in the order their own follow CHIMECHO's: (label, file, the daemon's
+    name, the cry each borrowed -- whose pret length caps its own). Read from the two tools that made them."""
+    import gbanexus, gbacarried
+    return [("Cry_" + ident, ident.lower(), name, cry) for _, name, ident, _, cry in gbanexus.RESIDENTS] + \
+           [("Cry_" + ident, ident.lower(), name, cry) for _, name, ident, cry in gbacarried.LINE]
+
+
 def census():
     labels = re.findall(r"^\s*cry (Cry_\w+)", read("sound/cry_tables.inc"), re.M)
     files = dict(re.findall(r'^(Cry_\w+)::\s*\n\s*\.incbin "sound/direct_sound_samples/cries/(\w+)\.bin"',
                             read("sound/direct_sound_data.inc"), re.M))
+    mine = own()
+    labels = [l for l in labels if l not in {o[0] for o in mine}] + [o[0] for o in mine]   # theirs follow pret's
+    files.update({o[0]: o[1] for o in mine})
     names = dict(re.findall(r'\[SPECIES_(\w+)\] = _\("([^"]*)"\)', read("src/data/text/species_names.h")))
     by_norm = {k.replace("_", "").lower(): k for k in names}
+    for alias, slot in re.findall(r"#define SPECIES_(\w+) SPECIES_(OLD_UNOWN_\w)\b", read("include/constants/species.h")):
+        by_norm[alias.replace("_", "").lower()] = slot       # SPECIES_REFLECTION is SPECIES_OLD_UNOWN_C
+    label_of = {l[4:].lower(): l for l in labels}
     info = read("src/data/pokemon/species_info.h")
     types = {sp: (a, b) for sp, a, b in
              re.findall(r"\[SPECIES_(\w+)\] =\s*\{[^}]*?\.types = \{TYPE_(\w+), TYPE_(\w+)\}", info, re.S)}
@@ -118,7 +144,9 @@ def census():
     for frm, body in re.findall(r"\[SPECIES_(\w+)\]\s*=\s*\{(.*?)\}\}", read("src/data/pokemon/evolution.h"), re.S):
         for to in re.findall(r"SPECIES_(\w+)\}", body + "}"):
             parent.setdefault(to, frm)
-    caps = pret_caps([files[l] for l in labels])
+    caps = pret_caps([files[l] for l in labels if l not in {o[0] for o in mine}])
+    for label, f, _, was in mine:                           # the cap: the cry it borrowed until T-584
+        caps[f] = caps[files[label_of[was.replace("_", "").lower()]]]
     cries = []
     for i, label in enumerate(labels):
         sp = by_norm.get(label[4:].lower())
@@ -222,14 +250,15 @@ def events(c):
     accents[0] = 1.0
     beats[-1] = 2.5
     first, final = letters[0], letters[-1]                  # the NAME: its initial as a pickup, its last letter
-    pk = keys[0] - keys[0] % 12 + PENTA[(ord(first) - 65) % 10]   # leading into the held note
+    tie = c.get("tie", 0)                                   # THE NO-TWINS RULE: a tie steps the name's two ends on
+    pk = keys[0] - keys[0] % 12 + PENTA[(ord(first) - 65 + tie) % 10]   # leading into the held note
     while pk - keys[0] > 7:
         pk -= 12
     while keys[0] - pk > 7:
         pk += 12
     if pk == keys[0]:
         pk -= 3
-    ap = keys[-1] + (2, -3, -5)[ord(final) % 3]
+    ap = keys[-1] + (2, -3, -5)[(ord(final) + tie) % 3]
     pk, ap = [k + 12 if k < FLOOR else k - 12 if k > CEIL else k for k in (pk, ap)]
     keys = [pk] + keys[:-1] + [ap, keys[-1]]
     beats = [0.5] + beats[:-1] + [0.5, beats[-1]]
@@ -253,6 +282,29 @@ def events(c):
             out.append((t, unit * b, "daemons_harp", k, (0.6 if pal["art"] == "^" else 0.9) * a))
         t += unit * b
     return out, pal, unit
+
+
+def score(notes):
+    """What a cry plays: each note's start, length, voice and key. Two cries with one score are heard as one."""
+    return tuple((round(t, 4), round(d, 4), v, k) for t, d, v, k, _ in notes)
+
+
+def rendered(cries):
+    """Every cry made, in cry-table order, under THE NO-TWINS RULE: a cry whose score an earlier cry already plays
+    takes a tie (its name's first and last notes move to the next choice) until it is its own. Returns [(c, y, notes)]."""
+    seen, out = {}, []
+    for c in cries:
+        c["tie"] = 0
+        while True:
+            notes = events(c)[0]
+            if score(notes) not in seen:
+                break
+            c["tie"] += 1
+            assert c["tie"] < 3, "gencries: %s has no last note left that is its own" % c["name"]
+        seen[score(notes)] = c["name"]
+        y, notes = make(c)
+        out.append((c, y, notes))
+    return out
 
 
 def make(c):
@@ -317,11 +369,15 @@ def checks(c, y, notes):
 DPCM = [0, 1, 4, 9, 16, 25, 36, 49, -64, -49, -36, -25, -16, -9, -4, -1]
 
 
-def wav8(path, y):
+def pcm8(y):
     import numpy as np
+    return (np.clip(np.round(y * 127), -128, 127).astype(int) + 128).astype(np.uint8).tobytes()
+
+
+def wav8(path, y):
     w = wave.open(path, "wb")
     w.setnchannels(1); w.setsampwidth(1); w.setframerate(SR)
-    w.writeframes((np.clip(np.round(y * 127), -128, 127).astype(int) + 128).astype(np.uint8).tobytes())
+    w.writeframes(pcm8(y))
     w.close()
 
 
@@ -430,10 +486,102 @@ def sampler(cries):
 
 
 # ---------------------------------------------------------------------------------------------------------------------
+# T-584: the eleven's slots in the engine -- both cry tables and the sample's label -- and proof each is heard as its own
+# ---------------------------------------------------------------------------------------------------------------------
+def own_tables():
+    """{path: new text} for what the eleven need in the cry tables and direct_sound_data.inc (empty when current)."""
+    mine = own()
+    names = {o[0] for o in mine}
+    out = {}
+    t = read("sound/cry_tables.inc")
+    new = t
+    for macro in ("cry", "cry_reverse"):
+        rows = re.findall(r"^\t%s (Cry_\w+)\n" % macro, new, re.M)
+        want = [l for l in rows if l not in names] + [o[0] for o in mine]
+        m = re.search(r"(^\t%s Cry_\w+\n)+" % macro, new, re.M)
+        new = new[:m.start()] + "".join("\t%s %s\n" % (macro, l) for l in want) + new[m.end():]
+    if new != t:
+        out["sound/cry_tables.inc"] = new
+    t = read("sound/direct_sound_data.inc")
+    new = t
+    for label, f, _, _ in mine:
+        new = new.replace('\n\t.align 2\n%s::\n\t.incbin "sound/direct_sound_samples/cries/%s.bin"\n' % (label, f), "")
+    anchor = 'Cry_Chimecho::\n\t.incbin "sound/direct_sound_samples/cries/chimecho.bin"\n'
+    assert new.count(anchor) == 1, "gencries: CHIMECHO's sample is not where the eleven follow it"
+    new = new.replace(anchor, anchor + "".join('\n\t.align 2\n%s::\n\t.incbin "sound/direct_sound_samples/cries/%s.bin"\n'
+                                               % (label, f) for label, f, _, _ in mine))
+    if new != t:
+        out["sound/direct_sound_data.inc"] = new
+    return out
+
+
+def borrowers():
+    """Every slot SpeciesToCryId sends somewhere other than its own cry: [(daemon, what it plays)]. Reads the two
+    tools' tables in src/pokemon.c; a value that is a SPECIES_ is a borrowed cry, a number must be its own row."""
+    labels = re.findall(r"^\s*cry (Cry_\w+)", read("sound/cry_tables.inc"), re.M)
+    label = {o[2]: o[0] for o in own()}
+    bad = []
+    for sp, val in re.findall(r"\[SPECIES_(\w+) - SPECIES_OLD_UNOWN_\w\] = (\w+),", read("src/pokemon.c")):
+        if not val.isdigit():
+            bad.append((sp, val.replace("SPECIES_", "")))
+        elif sp not in label or label[sp] not in labels or labels.index(label[sp]) != int(val):
+            bad.append((sp, "cry %s" % val))
+    for o in own():
+        if o[2] not in {sp for sp, _ in re.findall(r"\[SPECIES_(\w+) - SPECIES_OLD_UNOWN_\w\] = (\w+),",
+                                                     read("src/pokemon.c"))}:
+            bad.append((o[2], "no row in SpeciesToCryId's tables"))
+    return bad
+
+
+def rom_check(rom):
+    """Read the BUILT ROM: every daemon's cry, as SpeciesToCryId and gCryTable resolve it, is its own sample, and no
+    two samples are the same bytes. Returns a list of failures."""
+    sym = {}                                                # the .elf beside the ROM, statics included
+    for line in subprocess.run(["arm-none-eabi-nm", os.path.splitext(rom)[0] + ".elf"], capture_output=True,
+                               text=True, check=True).stdout.splitlines():
+        f = line.split()
+        if len(f) == 3:
+            sym[f[2]] = int(f[0], 16)
+    data = open(rom, "rb").read()
+    at = lambda a: a - 0x08000000
+    u16 = lambda a: struct.unpack("<H", data[at(a):at(a) + 2])[0]
+    u32 = lambda a: struct.unpack("<I", data[at(a):at(a) + 4])[0]
+    cries = census()
+    n = len(cries)
+    bad = []
+    fwd = [u32(sym["gCryTable"] + 12 * i + 4) for i in range(n)]
+    rev = [u32(sym["gCryTable_Reverse"] + 12 * i + 4) for i in range(n)]
+    for c, f, r in zip(cries, fwd, rev):
+        if f != sym.get(c["label"]) or r != f:
+            bad.append("row %d is not %s" % (c["i"], c["label"]))
+    if len(set(fwd)) != n:
+        bad.append("%d rows share a sample" % (n - len(set(fwd))))
+    ends = sorted(set(fwd) | {sym["DirectSoundWaveData_register_noise"]})
+    blobs = {}
+    for a, b in zip(ends, ends[1:]):
+        blobs.setdefault(data[at(a):at(b)].rstrip(b"\0"), []).append(a)
+    twins = [v for v in blobs.values() if len(v) > 1]
+    if twins:
+        bad.append("%d samples are byte-identical to another" % len(twins))
+    species = {}
+    for name, val in re.findall(r"#define SPECIES_(OLD_UNOWN_\w)\s+(\d+)", read("include/constants/species.h")):
+        species[name] = int(val)
+    for tab, first, last in (("sNexusCries", "C", "J"), ("sCarriedCries", "K", "M")):
+        if tab not in sym:
+            bad.append("%s is not in the .elf" % tab)
+            continue
+        for k in range(species["OLD_UNOWN_" + last] - species["OLD_UNOWN_" + first] + 1):
+            want = [c for c in cries if c["species"] == "OLD_UNOWN_" + chr(ord(first) + k)]
+            got = u16(sym[tab] + 2 * k)
+            if not want or got != want[0]["i"]:
+                bad.append("%s[%d] plays cry %d" % (tab, k, got))
+    return bad, n
+
+
+# ---------------------------------------------------------------------------------------------------------------------
 def run_all(cries, measure=False, wav_dir=None):
     rows = []
-    for c in cries:
-        y, notes = make(c)
+    for c, y, notes in rendered(cries):
         bad, early, note = checks(c, y, notes)
         nbytes, q = None, None
         if measure:
@@ -462,9 +610,17 @@ def summary(rows):
         if said:
             what = [n for r in rows for n in r["note"].split("; ") if n.startswith(kind)][0]
             print("  said, not failed (%d) -- %s: %s" % (len(said), what, ", ".join(said)))
-    borrowed = re.findall(r"\[SPECIES_(\w+) - SPECIES_OLD_UNOWN_\w\] = SPECIES_(\w+)", read("src/pokemon.c"))
-    if borrowed:
-        print("  heard by a borrower too (SpeciesToCryId): " + ", ".join("%s<-%s" % (b, a) for a, b in borrowed))
+    borrowed = borrowers()
+    print("  borrowers (SpeciesToCryId): " + (", ".join("%s plays %s" % b for b in borrowed) if borrowed else "none"))
+    twins = {}
+    for r in rows:
+        twins.setdefault(score(r["notes"]), []).append(r["c"]["name"])
+        twins.setdefault(pcm8(r["y"]), []).append(r["c"]["name"])
+    twins = [v for v in twins.values() if len(v) > 1]
+    tied = ["%s (tie %d)" % (r["c"]["name"], r["c"]["tie"]) for r in rows if r["c"].get("tie")]
+    print("  twins (one score or one sample): " + ("; ".join(" = ".join(v) for v in twins) if twins else "none") +
+          (" -- the no-twins rule moved %s" % ", ".join(tied) if tied else ""))
+    assert not twins, "gencries: THE NO-TWINS RULE failed"
     return fails
 
 
@@ -489,6 +645,14 @@ def main():
         return args[i + 1] if i + 1 < len(args) and not args[i + 1].startswith("--") else default
 
     cries = census()
+    if "--rom" in args:
+        rom = os.path.abspath(arg_after("--rom", os.path.join(GBA, "daemonsContent.gba")))
+        bad, n = rom_check(rom)
+        print("gencries --rom %s: %d cries, %s" % (os.path.relpath(rom, ROOT), n,
+              "every row its own sample, no two alike, the eleven slots each on their own" if not bad else "FAILED"))
+        for b in bad:
+            print("  !! " + b)
+        return 1 if bad else 0
     if "--pret-ref" in args:
         d = os.path.abspath(arg_after("--pret-ref", ""))
         if not d or os.path.commonpath([d, ROOT]) == ROOT:
@@ -559,16 +723,18 @@ def main():
         if not APPROVED:
             print("gencries: APPROVED is empty -- nothing is written until the user picks")
             return 0
-        for c in cries:
+        for c, y, _ in rendered(cries):
             if APPROVED.get("*") or APPROVED.get(c["label"]):
-                y, _ = make(c)
                 path = os.path.join(CRY_DIR, c["file"] + ".wav")
                 with tempfile.TemporaryDirectory() as td:
                     wav8(os.path.join(td, "c.wav"), y)
                     want = open(os.path.join(td, "c.wav"), "rb").read()
-                if open(path, "rb").read() != want:
+                if not os.path.exists(path) or open(path, "rb").read() != want:
                     open(path, "wb").write(want)
                     print("  wrote %s" % os.path.relpath(path, ROOT))
+        for rel, text in own_tables().items():              # T-584: the eleven's rows and labels
+            open(os.path.join(GBA, rel), "w").write(text)
+            print("  wrote %s" % os.path.relpath(os.path.join(GBA, rel), ROOT))
         return 0
     # report
     rows = run_all(cries)
@@ -582,10 +748,15 @@ def main():
         if APPROVED.get("*") or APPROVED.get(c["label"]):
             with tempfile.TemporaryDirectory() as td:
                 wav8(os.path.join(td, "c.wav"), r["y"])
-                if open(os.path.join(td, "c.wav"), "rb").read() != open(os.path.join(CRY_DIR, c["file"] + ".wav"), "rb").read():
+                path = os.path.join(CRY_DIR, c["file"] + ".wav")
+                if not os.path.exists(path) or open(os.path.join(td, "c.wav"), "rb").read() != open(path, "rb").read():
                     drift.append(c["file"])
+    drift += own_tables()
     if drift:
-        print("  !! the engine is not what the approved write makes: %d cries (%s...)" % (len(drift), drift[0]))
+        print("  !! the engine is not what the approved write makes: %d (%s)" % (len(drift), ", ".join(drift[:16])))
+        return 1
+    if borrowers():
+        print("  !! a daemon still plays another's cry: run tools/gbanexus.py and tools/gbacarried.py with --write")
         return 1
     print("  the engine is current")
     return 0

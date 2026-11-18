@@ -32,7 +32,8 @@ ART = os.path.join(ROOT, "gfx/nexus")
 WRITE = "--write" in sys.argv
 BEGIN, END = "BEGIN gbanexus", "END gbanexus"
 
-#  slot letter, name, ident, the daemon it is modelled on (stats, types, routines, height, weight), its cry
+#  slot letter, name, ident, the daemon it is modelled on (stats, types, routines, height, weight), the cry it
+#  borrowed until T-584 gave it its own (tools/gencries.py: that cry's length caps its own)
 RESIDENTS = [
     ("C", "REFLECTION", "Reflection", "ABSOL",    "MIGHTYENA"),
     ("D", "LODESTAR",   "Lodestar",   "JIRACHI",  "STANTLER"),
@@ -268,6 +269,13 @@ def block(lines):
     return ["// %s -- T-395, the NEXUS residents (tools/gbanexus.py writes this)" % BEGIN] + lines + ["// %s" % END]
 
 
+def cry_id(ident):
+    """T-584: the daemon's own cry's index in gCryTable (sound/cry_tables.inc, which tools/gencries.py writes)."""
+    labels = re.findall(r"^\s*cry (Cry_\w+)", open(os.path.join(GBA, "sound/cry_tables.inc")).read(), re.M)
+    assert "Cry_" + ident in labels, "Cry_%s is not in sound/cry_tables.inc: run tools/gencries.py --write --approved first (T-584)" % ident
+    return labels.index("Cry_" + ident)
+
+
 def put_block(text, anchor, lines, after=True):
     """Replace this tool's block if present, else insert it after (or before) the anchor line."""
     blk = "\n".join(block(lines)) + "\n"
@@ -324,18 +332,21 @@ def engine(made):
         return t
     edit("src/pokemon.c", to_nat)
 
-    # the cries: the slots borrow Unown's; these eight borrow a creature's that suits them
+    # the cries: the slots borrowed Unown's, then (T-395) a creature's that suited them; since T-584 each has its own,
+    # after CHIMECHO's in the cry tables (tools/gencries.py makes them), and the table holds its cry id
     def cries(t):
-        lines = ["static const u16 sNexusCries[] = {"] + \
-                ["    [SPECIES_%s - SPECIES_OLD_UNOWN_C] = SPECIES_%s," % (name, cry) for _, name, _, _, cry in RESIDENTS] + \
+        lines = ["static const u16 sNexusCries[] = {   // T-584: cry ids, each its own (tools/gencries.py)"] + \
+                ["    [SPECIES_%s - SPECIES_OLD_UNOWN_C] = %d,   // Cry_%s" % (name, cry_id(ident), ident)
+                 for _, name, ident, _, cry in RESIDENTS] + \
                 ["};"]
         t = put_block(t, "u16 SpeciesToCryId(u16 species)", lines, after=False)
         if "sNexusCries[species" not in t:
             t = t.replace("    if (species <= SPECIES_OLD_UNOWN_Z - 1)\n        return SPECIES_UNOWN - 1;",
                           "    if (species >= SPECIES_OLD_UNOWN_C - 1 && species <= SPECIES_OLD_UNOWN_J - 1)   // T-395\n"
-                          "        return SpeciesToCryId(sNexusCries[species - (SPECIES_OLD_UNOWN_C - 1)] - 1);\n"
+                          "        return sNexusCries[species - (SPECIES_OLD_UNOWN_C - 1)];\n"
                           "    if (species <= SPECIES_OLD_UNOWN_Z - 1)\n        return SPECIES_UNOWN - 1;", 1)
-        return t
+        return t.replace("return SpeciesToCryId(sNexusCries[species - (SPECIES_OLD_UNOWN_C - 1)] - 1);",
+                         "return sNexusCries[species - (SPECIES_OLD_UNOWN_C - 1)];")   # T-584: a cry id, not a species
     edit("src/pokemon.c", lambda t: cries(changed.get(gpath("src/pokemon.c"), t)))
 
     # the item and TM animation's placing (menu2.c): the slots' rows belong to SYMBOL's letters C..J, which still

@@ -35,7 +35,8 @@ WRITE = "--write" in sys.argv
 BEGIN, END = "BEGIN gbacarried", "END gbacarried"
 PY = sys.executable
 
-#  slot, name, ident, the daemon its INDEX scale, footprint, cry and menu placing are borrowed from
+#  slot, name, ident, the daemon its INDEX scale, footprint and menu placing are borrowed from (and its cry, until
+#  T-584 gave it its own: tools/gencries.py caps it at that cry's length)
 LINE = [
     ("K", "HANDSHAKE", "Handshake", "PICHU"),
     ("L", "TETHERING", "Tethering", "PIKACHU"),
@@ -112,6 +113,13 @@ def sub1(pat, repl, s, what, count=0):
 
 def block(lines):
     return ["// %s -- T-450, the carried line (tools/gbacarried.py writes this)" % BEGIN] + lines + ["// %s" % END]
+
+
+def cry_id(ident):
+    """T-584: the daemon's own cry's index in gCryTable (sound/cry_tables.inc, which tools/gencries.py writes)."""
+    labels = re.findall(r"^\s*cry (Cry_\w+)", open(os.path.join(GBA, "sound/cry_tables.inc")).read(), re.M)
+    assert "Cry_" + ident in labels, "Cry_%s is not in sound/cry_tables.inc: run tools/gencries.py --write --approved first (T-584)" % ident
+    return labels.index("Cry_" + ident)
 
 
 def put_block(text, anchor, lines, after=True):
@@ -222,15 +230,17 @@ def engine():
         return t
     edit("src/pokemon.c", to_nat)
 
-    def cries(t):
-        lines = ["static const u16 sCarriedCries[] = {"] + \
-                ["    [SPECIES_%s - SPECIES_OLD_UNOWN_K] = SPECIES_%s," % (name, model) for _, name, _, model in LINE] + ["};"]
+    def cries(t):     # T-584: each its own cry, after CHIMECHO's and THE NEXUS's (tools/gencries.py); the table holds its id
+        lines = ["static const u16 sCarriedCries[] = {   // T-584: cry ids, each its own (tools/gencries.py)"] + \
+                ["    [SPECIES_%s - SPECIES_OLD_UNOWN_K] = %d,   // Cry_%s" % (name, cry_id(ident), ident)
+                 for _, name, ident, model in LINE] + ["};"]
         t = put_block(t, "u16 SpeciesToCryId(u16 species)", lines, after=False)
         if "sCarriedCries[species" not in t:
             t = sub1(r"(    if \(species <= SPECIES_OLD_UNOWN_Z - 1\)\n        return SPECIES_UNOWN - 1;)",
                      "    if (species >= SPECIES_OLD_UNOWN_K - 1 && species <= SPECIES_OLD_UNOWN_M - 1)   // T-450\n"
-                     "        return SpeciesToCryId(sCarriedCries[species - (SPECIES_OLD_UNOWN_K - 1)] - 1);\n\\1", t, "cries")
-        return t
+                     "        return sCarriedCries[species - (SPECIES_OLD_UNOWN_K - 1)];\n\\1", t, "cries")
+        return t.replace("return SpeciesToCryId(sCarriedCries[species - (SPECIES_OLD_UNOWN_K - 1)] - 1);",
+                         "return sCarriedCries[species - (SPECIES_OLD_UNOWN_K - 1)];")   # T-584: a cry id, not a species
     edit("src/pokemon.c", cries)
 
     #  GetEvolutionTargetSpecies has no case for it, on purpose: say so where someone would "fix" it
