@@ -7,8 +7,8 @@
  },
  "speed": 0.97,
  "draft": "DRAFT \u00b7 every word, until it is approved",
- "sources": "1ccf8c2bf9123bc4",
- "duration": 693.76,
+ "sources": "64299e09f585e8b6",
+ "duration": 701.8,
  "chapters": [
   {
    "kind": "section",
@@ -104,67 +104,67 @@
    "kind": "section",
    "title": "The button",
    "start": 396.78,
-   "end": 430.88
+   "end": 438.93
   },
   {
    "kind": "section",
    "title": "GLASSES, in the app",
-   "start": 430.88,
-   "end": 442.78
+   "start": 438.93,
+   "end": 450.82
   },
   {
    "kind": "entry",
    "title": "What the glasses should show",
-   "start": 442.78,
-   "end": 459.53
+   "start": 450.82,
+   "end": 467.58
   },
   {
    "kind": "entry",
    "title": "SHOW",
-   "start": 459.53,
-   "end": 466.9
+   "start": 467.58,
+   "end": 474.95
   },
   {
    "kind": "entry",
    "title": "CARE",
-   "start": 466.9,
-   "end": 484.38
+   "start": 474.95,
+   "end": 492.43
   },
   {
    "kind": "entry",
    "title": "NOTES",
-   "start": 484.38,
-   "end": 545.17
+   "start": 492.43,
+   "end": 553.22
   },
   {
    "kind": "section",
    "title": "Looking after the glasses",
-   "start": 545.17,
-   "end": 548.72
+   "start": 553.22,
+   "end": 556.77
   },
   {
    "kind": "entry",
    "title": "The battery",
-   "start": 548.72,
-   "end": 575.3
+   "start": 556.77,
+   "end": 583.34
   },
   {
    "kind": "entry",
    "title": "Putting the software on",
-   "start": 575.3,
-   "end": 601.74
+   "start": 583.34,
+   "end": 609.78
   },
   {
    "kind": "entry",
    "title": "When something is wrong",
-   "start": 601.74,
-   "end": 655.45
+   "start": 609.78,
+   "end": 663.5
   },
   {
    "kind": "entry",
    "title": "Still to come",
-   "start": 655.45,
-   "end": 693.76
+   "start": 663.5,
+   "end": 701.8
   }
  ]
 }

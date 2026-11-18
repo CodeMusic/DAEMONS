@@ -8,8 +8,8 @@
  "speed": 1.03,
  "sentence": 0.3,
  "draft": "DRAFT \u00b7 every word, until it is approved",
- "sources": "7824d358dee97658",
- "duration": 1469.03,
+ "sources": "f084e527d2629b62",
+ "duration": 1595.73,
  "chapters": [
   {
    "kind": "section",
@@ -105,115 +105,121 @@
    "kind": "section",
    "title": "The Cardputer Zero",
    "start": 596.57,
-   "end": 651.03
+   "end": 655.51
   },
   {
    "kind": "entry",
    "title": "What you need",
-   "start": 651.03,
-   "end": 697.83
+   "start": 655.51,
+   "end": 713.39
   },
   {
    "kind": "entry",
    "title": "Installing it",
-   "start": 697.83,
-   "end": 731.76
+   "start": 713.39,
+   "end": 752.27
   },
   {
    "kind": "entry",
-   "title": "Making the game",
-   "start": 731.76,
-   "end": 799.18
+   "title": "GAMES: making the game",
+   "start": 752.27,
+   "end": 849.66
   },
   {
    "kind": "entry",
    "title": "Playing",
-   "start": 799.18,
-   "end": 835.38
+   "start": 849.66,
+   "end": 890.34
   },
   {
    "kind": "entry",
    "title": "Your save",
-   "start": 835.38,
-   "end": 871.8
+   "start": 890.34,
+   "end": 930.96
   },
   {
    "kind": "entry",
    "title": "Linking to the hub",
-   "start": 871.8,
-   "end": 931.02
+   "start": 930.96,
+   "end": 990.18
   },
   {
    "kind": "entry",
    "title": "SYNC",
-   "start": 931.02,
-   "end": 974.07
+   "start": 990.18,
+   "end": 1033.23
+  },
+  {
+   "kind": "entry",
+   "title": "A daemon sent from the game",
+   "start": 1033.23,
+   "end": 1072.35
   },
   {
    "kind": "entry",
    "title": "Away from home",
-   "start": 974.07,
-   "end": 991.91
+   "start": 1072.35,
+   "end": 1090.19
   },
   {
    "kind": "entry",
    "title": "The companion on it",
-   "start": 991.91,
-   "end": 1058.22
+   "start": 1090.19,
+   "end": 1156.54
   },
   {
    "kind": "entry",
    "title": "Not on the Zero yet",
-   "start": 1058.22,
-   "end": 1088.62
+   "start": 1156.54,
+   "end": 1191.59
   },
   {
    "kind": "section",
    "title": "The caps",
-   "start": 1088.62,
-   "end": 1134.63
+   "start": 1191.59,
+   "end": 1243.23
   },
   {
    "kind": "entry",
    "title": "The Cap LoRa twelve sixty-two",
-   "start": 1134.63,
-   "end": 1194.7
+   "start": 1243.23,
+   "end": 1303.3
   },
   {
    "kind": "entry",
    "title": "The Cap C C eleven oh one + NFC",
-   "start": 1194.7,
-   "end": 1272.79
+   "start": 1303.3,
+   "end": 1381.4
   },
   {
    "kind": "section",
    "title": "Looking after them",
-   "start": 1272.79,
-   "end": 1275.7
+   "start": 1381.4,
+   "end": 1384.31
   },
   {
    "kind": "entry",
    "title": "The batteries",
-   "start": 1275.7,
-   "end": 1321.26
+   "start": 1384.31,
+   "end": 1435.48
   },
   {
    "kind": "entry",
    "title": "Bringing them up to date",
-   "start": 1321.26,
-   "end": 1340.73
+   "start": 1435.48,
+   "end": 1457.08
   },
   {
    "kind": "entry",
    "title": "When something is wrong",
-   "start": 1340.73,
-   "end": 1422.47
+   "start": 1457.08,
+   "end": 1554.03
   },
   {
    "kind": "entry",
    "title": "Still to come",
-   "start": 1422.47,
-   "end": 1469.03
+   "start": 1554.03,
+   "end": 1595.73
   }
  ]
 }
