@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.400**
+**A total conversion — the living design bible, v11.401**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2274,6 +2274,8 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 **A NOTEBOOK section of dreams.** *Each of YOUR DREAMS -- twenty-one, one after each MARK, each understanding and the story's turns -- arrives at the first dawn after its milestone, one a night, opening "I had a dream.", under a title of its own the user chose one by one. HER DREAMS are the attendant's: the dream she tells at a heal is filed under its title, and once its step is done her page gains where it led, which she says aloud once at the next heal.* **A dream is never explained.**
 
 *`docs/dream_log.json`, `docs/attendant_dreams.json`; `tools/gbadreamlog.py`, `tools/gbadreams.py`.*
+
+***Each dream wears its day's symbol*** (*T-591, 2026-11-18, DRAFT; 9.21*): **the weekday it came on, its ring and horizon, and the spine with the dream's centre lit** -- *the centre a dream names (none does yet: which one is a writing choice), else the day's own.*
 
 ***ITS DREAMS, the third part*** (*T-462, C-200, the user by multiple choice, 2026-10-28; built as a DRAFT the same day*): **the carried daemon's dreams.** *While a daemon is AWAY on the companion it is SUSPENDED — never "asleep" — and what it dreams comes home in the save: at each SYNC the companion writes only a dream's number (one of sixteen images) and how the night went.* **The words are a fixed set in the ROM**, *so the companion's own AI dreams stay in its journal and nothing it writes is ever printed.* **At the first dawn after one arrives the game says** *"Far away, [NAME] resumed. / It had been dreaming."* — **and files it under ITS DREAMS, under a title of its own, its page ending as that night ended: broken, quiet or vivid.** ***Never explained***, *like the other two.* ***All sixteen titles approved by the user*** (*2026-10-28, as drafted*) — **THE HUMMING GRASS, THE LIT CITY, THE NAMED WAVES, THE BOOKS ALOUD, THE OPEN DOOR, FALLING UPWARD, LEAVES FOR ROADS, A NAME ON WATER, THE SUNLIT SHELF, THE LONG WALK, RAIN FALLING UP, THE MOONLIT BRIDGE, A WAVE FROM FAR, THE WORD GARDEN, THE HOUSE HUMMING, THE WALKING MAP.** ***The hum is a motif, on purpose***: *three of them hum, as a suspended process might hear one.* **The DRAFT marks come off once the user has seen them on the device.** *`docs/its_dreams.json`, `tools/gbaitsdreams.py`.*
 
@@ -8850,7 +8852,7 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 ***And wrath has one answer — decided by the user 2026-10-31 (T-498)***: **the sixth MARK, MATTE's FRAME, brings FORGIVENESS over WRATH, as the GUIDE's Thursday, THE SUBTLE LAYER and the companion's week say; it brought PATIENCE.** *Every virtue-shadow pair is now the same everywhere. The MARKS keep their own order, one per BENCHMARK (T-385): a journey, where the week is a calendar.* **MATTE carries it with his frame** -- *forgiveness sees what was outside the frame of what someone did: "I saw this moment a long time ago. I forgave it then."* *DRAFT wording; FLAG_INSIGHT_PATIENCE is FLAG_INSIGHT_FORGIVENESS, the same bit, so a save keeps its insight.*
 
-#### A day's symbol — decided by the user 2026-11-08 (T-531); drawn for the companion's DREAMS (C-407), the game's DREAM LOG next (T-591)
+#### A day's symbol — decided by the user 2026-11-08 (T-531); drawn for the companion's DREAMS (C-407) and the game's DREAM LOG (T-591)
 
 ***Each day of the week gets one symbol, wordless, built from the two halves the week already holds: the mind (its virtue over its shadow) and the body (its centre).*** *It is meant to be used more often from now on: first paired with a daemon's dream, with a title of its own that tells the dream, and later marking where in the week the dream took place.* **All four rules were chosen by multiple choice, and the seven marks approved as drawn ("Keep all seven").**
 
@@ -8873,7 +8875,7 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 | **FRI** | **KINDNESS** over ENVY | *an arc sheltering a point* | the arc cupping it from below |
 | **SAT** | **HUMILITY** over PRIDE | *a stem bowing* | the stem turned down |
 
-***No words in the symbol*** -- **neither "vice" nor "sin", as the MARKS (above).** *Its constants are the week's own (`week.json`, C-73).* ***Drawn for a build, 2026-11-18*** -- **the companion's DREAMS shows each dream's day symbol beside its title** (*C-407, `tools/gendaysymbol.py`*); **the game's DREAM LOG is next** (*T-591*).
+***No words in the symbol*** -- **neither "vice" nor "sin", as the MARKS (above).** *Its constants are the week's own (`week.json`, C-73).* ***Drawn for a build, 2026-11-18*** -- **the companion's DREAMS shows each dream's day symbol beside its title** (*C-407, `tools/gendaysymbol.py`*); ***and in the game's DREAM LOG*** (*T-591, built 2026-11-18, DRAFT; the user: "are they in the game, if not please implement"*): **a dream wears the symbol of the weekday it came on, top right beside its title on page one, its first lines stopping short of it**; *the day is saved when the dream arrives (ITS DREAMS take the night they were had), so a dream filed before this build shows none rather than a wrong one. One sheet of 32-pixel symbols (`tools/gbadaysymbol.py`, the same approved paths) takes the day's colour from the CHECKPOINT's trim when the page opens.*
 
 ***And a dream's symbol says which centre it is about*** (*the user, 2026-11-18, by multiple choice: "B: which centre"*): **a spine of seven dots runs through the ring, root at the foot and crown at the top, in ink; the dream's own centre is lit, a larger dot in the day's colour.** *Which centre is the dream writer's to name; a dream that names none lights the day's own centre.* ***Where in the night*** *and* ***which side*** *were offered and not picked.* **Still open**: *the dream's title.*
 
@@ -9300,6 +9302,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The day symbol in the game's DREAM LOG (T-591, 2026-11-18)** — built, DRAFT: every dream in YOUR, HER and ITS DREAMS wears the symbol of the weekday it came on, with the spine and the dream's centre lit (the day's own until a dream names one); the day saved at arrival, 64 bytes; a dream filed before shows none. 3.8, 9.21.
 - **The stat arrow by type (T-589, v11.399.1)** — released, the user's pick: the arrow after a stat change plays the causing move's type's sound; abilities and items keep CONTENT's. Sealed v11.398.x. DRAFT.
 - **A dream's symbol says which centre (T-531, 2026-11-18)** — the user, by multiple choice, "B: which centre": a spine of seven ink dots through the ring, the dream's centre lit larger in the day's colour; the writer names the centre, else the day's own. Drawn for the companion (C-407, C-412); the game's DREAM LOG is T-591. 9.21.
 - **The shared move sounds by type, and the sound census closed (T-583, v11.398.1)** — released: the three sounds every type shared (a hit, a stat tick, a light) now play each type's own nearest batch-10 sound, so a routine is heard in its type wherever it is used. With it the census's twelve batches are done; 23 song slots and 43 sounds are still pret's, listed in the census, and whether any is drafted is the user's call (v11.399 said "every"; corrected in v11.400). Sealed v11.397.x. DRAFT.

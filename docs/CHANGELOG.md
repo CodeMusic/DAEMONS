@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.401 — 2026-11-18
+
+- **The day symbol in the game's DREAM LOG** (T-591, built 2026-11-18, engine 521a06af6, DRAFT): each dream wears the symbol of the weekday it came on, with the spine and its centre lit; the day saved when the dream arrives. In 9.21 and 3.8. Not yet in a release.
+- Section 10: one Settled entry.
+
 ## v11.400 — 2026-11-18
 
 - Recorded from release v11.399.1 (44d79e91, engine 08fcde731), which sealed v11.398.x:

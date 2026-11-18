@@ -1,0 +1,60 @@
+{
+  "rom": "debug",
+  "about": "T-591 (T-531, bible 9.21): a dream in the NOTEBOOK's DREAM LOG wears the symbol of the weekday it came on -- the ring and horizon, the virtue over its shadow, and the spine of seven with the dream's centre lit (the day's own, as no dream names one yet). YOUR DREAMS' first, dreamt on a WEDNESDAY; HER DREAMS' first, told on a FRIDAY; and a dream filed with no day recorded (as a save from before this build holds them), which shows none.",
+  "stops": [
+    {
+      "stop": "a dream dreamt on a WEDNESDAY, and its page",
+      "steps": [
+        "load debug",
+        "continue",
+        "poke gDaemonsWeekdayOverride 8 4",
+        "keyitem ITEM_NOTEBOOK",
+        "register ITEM_NOTEBOOK",
+        "flag FLAG_BADGE01_GET 1",
+        "flag FLAG_DREAM_LOG_CAIRN 0",
+        "var VAR_DREAM_LOG_STAMP 65535",
+        "goto ViridianCity 27 22",
+        "repel 999",
+        "hold RIGHT 12",
+        "wait 30",
+        "finish",
+        "hold LEFT 12",
+        "wait 30",
+        "finish",
+        "hold RIGHT 12",
+        "wait 30",
+        "finish",
+        "says \"I had a dream.\"",
+        "flagis FLAG_DREAM_LOG_CAIRN 1",
+        "press SELECT",
+        "wait 90",
+        "shot the NOTEBOOK",
+        "choose \"DREAM LOG\"",
+        "wait 60",
+        "shot the DREAM LOG",
+        "choose \"THE CARVED NAME\"",
+        "wait 90",
+        "shot the page: WEDNESDAY's symbol, the heart lit",
+        "press B 3",
+        "wait 60"
+      ]
+    },
+    {
+      "stop": "a dream filed with no day recorded shows none",
+      "steps": [
+        "flag FLAG_DREAM_LOG_BASIN 1",
+        "press SELECT",
+        "wait 90",
+        "choose \"DREAM LOG\"",
+        "wait 60",
+        "shot the DREAM LOG, two dreams",
+        "press DOWN",
+        "press A",
+        "wait 90",
+        "shot the page: no symbol, the lines full width",
+        "press B 3",
+        "wait 60"
+      ]
+    }
+  ]
+}

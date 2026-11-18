@@ -145,3 +145,9 @@ v11.399.1, T-589 (DRAFT): the arrow after a stat change plays the causing move's
 C-412 (DRAFT): the dream's stage is its centre -- a spine of seven dots through its day symbol, root at the foot and crown at the top, the dream's own lit in the day's colour (named by the dream's writer, else the day's own); six made-up dreams drawn large, then DREAMS on a scratch site
 
 ![18Nov2026 - C412 - the dreams centre on its symbol - 25](18Nov2026%20-%20C412%20-%20the%20dreams%20centre%20on%20its%20symbol%20-%2025.png)
+
+### 18Nov2026 - T591 - the 49 day symbols - 26
+
+T-591 (DRAFT): the seven day symbols at 32x32 for the game, each with each of the seven centres lit (root to crown, left to right); the day's own centre, the one every dream shows until it names one, on the diagonal
+
+![18Nov2026 - T591 - the 49 day symbols - 26](18Nov2026%20-%20T591%20-%20the%2049%20day%20symbols%20-%2026.png)
