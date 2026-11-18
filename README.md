@@ -29,9 +29,10 @@ and Zero, the last of which plays the game itself.
 **From your own cartridge:** download a patch from [Releases](https://github.com/CodeMusic/DAEMONS/releases) and
 apply it to a *FireRed* or *LeafGreen* ROM you backed up yourself. [`ROM RELEASE/HOW_TO_PATCH.md`](ROM%20RELEASE/HOW_TO_PATCH.md)
 walks through it and lists the checksum each patch expects. **From source:** `./setup.sh`, then `./bindDaemons.sh`.
-No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.389.1**
-(2026-11-17), and the newest thing in it that can be told about: the story has music of its own, from CRYSTAL
-CLEAR's first entrance to credits made of the game's own songs. Before it, every battle had its music, our harp
+No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.390.1**
+(2026-11-17), and the newest thing in it that can be told about: THE MARGINS have music of their own, in
+the two keys the spectrum leaves without a colour. Before it, the story had its music, from CRYSTAL CLEAR's first
+entrance to credits made of the game's own songs; before that, every battle had its music, our harp
 and flute over the cartridge. Before that, THE WALLED
 GARDEN's rooms became a glasshouse -- light comes in, and nothing is seen out. Before that, the SAFARI ZONE became THE
 WALLED GARDEN, and its WARDEN its GATEKEEPER. Next, the SAFARI ZONE becomes THE WALLED GARDEN. Each release on GitHub carries four BPS patches — CONTENT for *FireRed* 1.0 and Rev 1, CONTEXT for
