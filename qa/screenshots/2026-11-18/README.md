@@ -133,3 +133,9 @@ C-328 between two players: KIT's companion asks ROVER's (the site, phone width),
 T-531 (DRAFT): a dream's symbol is its day's -- ring and horizon, the virtue over its shadow faint and dashed below, the centre's petals in ink, in the day's colour; the seven on a light and a dark page, then DREAMS on a scratch site with made-up dreams
 
 ![18Nov2026 - T531 - the dreams day symbol - 23](18Nov2026%20-%20T531%20-%20the%20dreams%20day%20symbol%20-%2023.png)
+
+### 18Nov2026 - T589 - the stat arrow by type - 24
+
+v11.399.1, T-589 (DRAFT): the arrow after a stat change plays the causing move's type's sound (RISE, RISE2, FALL); abilities and items keep CONTENT's
+
+![18Nov2026 - T589 - the stat arrow by type - 24](18Nov2026%20-%20T589%20-%20the%20stat%20arrow%20by%20type%20-%2024.png)
