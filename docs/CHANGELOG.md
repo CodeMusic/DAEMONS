@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.389 — 2026-11-17
+
+- Recorded from release v11.388.1 (1f4495e2, engine 586ed7e8b and 8fc425637), which sealed v11.387.x:
+  - **The story set-pieces** (T-565 batch 8, the Musical Instruments lane): CRYSTAL CLEAR's entrance and lab, AL CLEAR's two, DAEMON TOWER, the credits' medley and the rest, in voice C; **THE WALLED GARDEN's own song**, `MUS_WALLED_GARDEN`. DRAFT. In 9.5, and a line in 3.11.
+  - **The field sounds** (T-565 batch 6, the game lane): 41 in C BOTH. DRAFT. In 9.5.
+  - Also in the release, outside the bible: the tickets moved to Redmine (T-581, the user's "Apply and switch"); the TODO files are now its nightly mirror.
+- Section 10: one Settled entry.
+
 ## v11.388 — 2026-11-17
 
 - Recorded from release v11.387.1 (04363c24, engine ed754fb57 and 410682153), which sealed v11.386.x:

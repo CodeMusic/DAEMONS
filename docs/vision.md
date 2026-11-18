@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.388**
+**A total conversion — the living design bible, v11.389**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2302,6 +2302,8 @@ name, remembered.**
 ***Built 2026-11-12 (DRAFT)***: **every one of its 85 lines picked by the user, line by line** (`docs/walled-garden-picks.json`); the mapsec renamed THE WALLED GARDEN everywhere a player reads it; **the RINGS count down**, RING 3 at the gate to RING 0 at the SECRET HOUSE; the START menu's first row reads SIGN OUT; FIRST MET drops the leading THE only where the place will not fit. SAFARI ZONE is kept twice, as THE OLD NAME: on the GATEKEEPER's merchandise shelf and by HOLT's grandfather. **Released in v11.360.1** (*76 lines changed, 9 kept; his own lines open UNSIGNED:; the rest houses are WAITING ROOMs, the review queue*). ***Its art, the user's picks 2026-11-14, released in v11.362.1 (DRAFT): inside, THE GLASSHOUSE.*** **Everything under glass, beautiful and kept**: *whitewashed panes in white iron, so the light comes in and nothing is seen through them; a terracotta dwarf wall, red quarry tiles and encaustic flags; an iron door held open on the garden; a coir runner with four green rings; crates of seedlings with blank tags; citrus in tubs.* **The GATEKEEPER's shelf matches, and the old sign stands on it with its face to the wall.** *Its name card is the garden seen over the wall from the top of the gate: a lawn, clipped trees, a still pond and paths, all held in one curve of pale wall.* **With it, T-540 is complete.**
 
 ***Built 2026-11-14 and released in v11.361.1 (DRAFT): the WARDEN is the GATEKEEPER (T-551, engine dc780f8c5).*** **A warden keeps a prison; a walled garden has a gatekeeper**, *the one who decides what comes in* (*the user: "we called him the warden still, that doesnt fit as much in a walled garden I think"; GATEKEEPER picked over THE GARDENER, MODERATOR and STEWARD, and CURATOR left out because SLATE's museum has one*). **His staff still call him LATENCY** (*GATEKEEPER LATENCY*). Every line a player reads says GATEKEEPER -- the OFFICE, his house and its sign, the REQUEST NOTICE, HOLT's grandfather, the TOKEN's description, the quest log and the DEBUG JUMP row -- each kept to the user's 2026-11-12 pick with only the title changed, one line re-wrapped to stay within 208px. *With it, the attendant's dream of the garden, BEHIND THE WALL: a garden behind a wall, a little house deep in it, where someone kept a way across the water.* *Every word DRAFT.*
+
+***Its own song, released in v11.388.1 (T-565 batch 8, DRAFT)***: **`MUS_WALLED_GARDEN`**, *in the voice of the rest of the score; its nine maps had borrowed `MUS_EVOLUTION` (9.5).*
 
 
 ## 4. CAST
@@ -8220,6 +8222,8 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 **Then the battles (batches 2 and 4, released in v11.386.1): all nine battle tracks in the same voice -- VS_WILD, VS_TRAINER, VS_GYM_LEADER, VS_CHAMPION, VS_LEGEND, the S.T.A.R.R. fight and the three victories -- over pret's in place, `voicegroup195` gaining a plucked square for the arpeggios** (`tools/genbattlemusic.py`, the Musical Instruments lane); ***and the 24 battle sounds apart from moves*** *-- the hit a noise thud, super-effective a chord, the faint falling to the tritone, the experience bar climbing* (`genuisounds.py --batch 4`, the game lane). *Both the user's pick, C BOTH, by ear. Each kind of moment now has one voice from menu to fanfare to fight. DRAFT.*
 
+**Then the story and the field (batches 8 and 6, released in v11.388.1).** ***The story's set-pieces in voice C, over pret's in place*** *-- CRYSTAL CLEAR's entrance (her Lament over the lament bass) and her lab (her Reply), the new game's two, AL CLEAR's two on his champion figure, a leader's summons, the S.S. ANNE's waltz, the hideout, DAEMON TOWER, THE UMBRAL ASCENT, TRAINER TOWER, THE RECORD, BLANCHE slowed, and the credits as a medley from her Lament to her Reply* (`tools/genstorymusic.py`, the Musical Instruments lane). **THE WALLED GARDEN has its own song (`MUS_WALLED_GARDEN`, 388, appended), its nine maps no longer borrowing `MUS_EVOLUTION`** (3.11). ***And the 41 field sounds*** *-- doors a noise thud under a short square, rain small ticks with harp drips, thunder rolling down the noise keys, warps and the PIN in the pentatonic* (`genuisounds.py --batch 6`, the game lane). *Both the user's pick, C and C BOTH. What is still pret's: the move sounds (batch 10), the cries (batch 11) and the retail samples (batch 12). DRAFT.*
+
 ### 9.6 The chart change, finally built — and cheaper than it was
 
 ***2 specifies exactly one change to the matchup table*** — **delete Gen 1's `GHOST, PSYCHIC, 00` bug, then add the mutual pair `CONTEXT ↔ LATENT` at 2×.** *"Two additions, one deletion. That is the whole chart change."*
@@ -9278,6 +9282,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The story's music and the field sounds (T-565 batches 8 and 6, v11.388.1)** — released, the user's picks: the story set-pieces in voice C over pret's in place, from CRYSTAL CLEAR's entrance to the credits' medley; THE WALLED GARDEN its own song (`MUS_WALLED_GARDEN`); the 41 field sounds in C BOTH. Left pret's: the move sounds, the cries, the retail samples. Sealed v11.387.x. DRAFT.
 - **THE SUBTLE LAYER's six scenes and the overworld music (T-575 to T-580, T-565 batch 5; v11.387.1)** — released: TOUCH, MOVE AND BURN, RIPPLES, KINDRED's two cups, a read fixed by the day and the place, and the follower turning after the last page, the user's picks (all A), confirmed "keep as built" (4.38). The everyday overworld music in voice C, and LURID and DOLDRUM given their own songs as 7.4 planned. Sealed v11.386.x. DRAFT.
 - **The battle music and the battle sounds (T-565 batches 2 and 4, v11.386.1)** — released, the user's pick (C BOTH, by ear): the nine battle tracks and the three victories over pret's in place, and the 24 battle sounds apart from moves (the hit's thud, super-effective's chord, the faint's tritone, the exp climb). The move sounds (batch 10) and the cries (batch 11, a design question first) are still pret's. Sealed v11.385.x. DRAFT.
 - **The menu and UI sounds (T-565 batch 1, v11.385.1)** — released, the user's pick ("C Both" again): the 20 menu and UI sounds as a square click under the harp, the flute for held notes, so the menus speak in the fanfares' voice. Sealed v11.384.x. DRAFT.
