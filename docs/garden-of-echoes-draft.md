@@ -31,7 +31,7 @@
 
 **The magpie** sits beside a small cairn at the fir's foot, a pale stone on top. Every visit it is there.
 
-> Magpie: It was warm, the day I took it.
+> Magpie: It was warm, the day I found it.
 > Magpie: I keep it here so it stays.
 
 *Talk to it again:*
@@ -117,7 +117,7 @@ a choice in itself.
 
 ## Picked
 
-**A, the three at the fir** (*the user, 2026-11-17, by multiple choice*). Filed as **T-585** for the game lane; in vision 3.4.
+**A, the three at the fir** (*the user, 2026-11-17, by multiple choice*). Filed as **T-585** for the game lane; in vision 3.4. ***The magpie found the stone, not took it*** (*the user, 2026-11-17*): *it was given the light as the hare was; its mistake is the keeping, not the taking.*
 
 ## Recommendation
 

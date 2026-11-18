@@ -5,6 +5,10 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.395 — 2026-11-17
+
+- **The magpie found its stone** (T-585; the user, 2026-11-17): its first line is now "It was warm, the day I found it." (DRAFT), not "took" -- the magpie was given the light as the hare was, and its mistake is the keeping, not the taking; "took" would have judged it before the player could. In 3.4, and in `docs/garden-of-echoes-draft.md`.
+
 ## v11.394 — 2026-11-17
 
 - **THE GARDEN OF ECHOES enters the design** (T-585; the user, by multiple choice: "A, the three at the fir"): a grove where a hare comes once, a magpie keeps a cold stone, and a mole fills pages until the player plays the fir's song; the source post's moral is never said. In 3.4, after THE NEXUS's design note. Its lineage is `docs/lineage.md` 4.7; the three drafted ways in, `docs/garden-of-echoes-draft.md`. DRAFT; nothing in the engine.

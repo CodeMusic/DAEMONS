@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.394**
+**A total conversion — the living design bible, v11.395**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -2223,7 +2223,7 @@ Three names grew, and only VERDIGRIS actually broke a line. That is the opposite
 
 *The design in full, its cast and every word: `docs/nexus.md`. Built by `tools/gbanexus.py` (the residents), `tools/gbagrove.py` (the fir in every grove) and `tools/gbanexusmap.py` (the place).*
 
-***And one grove keeps three animals at its fir (T-585; the user, 2026-11-17, by multiple choice: "A, the three at the fir")*** -- *lineage: THE GARDEN OF ECHOES (Seeing Sharp, 2025; lineage.md 4.7), a parable of three ways of holding one experience.* **A hare comes once, touches the fir, says thank you and goes; after, only its tracks lead out. A magpie keeps a pale stone on a cairn at the fir's foot -- "It was warm, the day I took it" -- and the stone is cold to the touch; with THE SUBTLE LAYER held, a read: "this was held too long." A mole half out of its hole fills pages about the grove, more each visit, and stops writing for one line only when the player PLAYs the fir's song in its key: "Where was that? I had it written."** *The post ends on its moral; the game is a fable with its last line removed (0.1), so that line is never said, nobody explains the three, and nobody says which is right. The one thing that moves the mole is the player listening, the fir's own mechanic (craft rule 5). The game lane picks the grove. Optional; gates nothing. Every word DRAFT (`docs/garden-of-echoes-draft.md`, A).*
+***And one grove keeps three animals at its fir (T-585; the user, 2026-11-17, by multiple choice: "A, the three at the fir")*** -- *lineage: THE GARDEN OF ECHOES (Seeing Sharp, 2025; lineage.md 4.7), a parable of three ways of holding one experience.* **A hare comes once, touches the fir, says thank you and goes; after, only its tracks lead out. A magpie keeps a pale stone on a cairn at the fir's foot -- "It was warm, the day I found it" -- and the stone is cold to the touch; with THE SUBTLE LAYER held, a read: "this was held too long." A mole half out of its hole fills pages about the grove, more each visit, and stops writing for one line only when the player PLAYs the fir's song in its key: "Where was that? I had it written."** *The magpie **found** its stone (the user, 2026-11-17): it was given the light as the hare was, and its mistake is the keeping, not the taking -- "took" would have judged it in its first line. The post ends on its moral; the game is a fable with its last line removed (0.1), so that line is never said, nobody explains the three, and nobody says which is right. The one thing that moves the mole is the player listening, the fir's own mechanic (craft rule 5). The game lane picks the grove. Optional; gates nothing. Every word DRAFT (`docs/garden-of-echoes-draft.md`, A).*
 
 ### 3.5 PLAY — an instrument, and a SONGBOOK (T-417, the user, 2026-10-17)
 
