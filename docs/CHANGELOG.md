@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.390 — 2026-11-17
+
+- Recorded from release v11.389.1 (4e8eede4, engine e97afa9cb), which sealed v11.388.x:
+  - **The move sounds, a palette per type** (T-565 batch 10, the game lane): 115 in C BOTH. DRAFT. In 9.5, after the story and the field; three shared sounds left for T-583.
+- Section 10: one Settled entry.
+
 ## v11.389 — 2026-11-17
 
 - Recorded from release v11.388.1 (1f4495e2, engine 586ed7e8b and 8fc425637), which sealed v11.387.x:
