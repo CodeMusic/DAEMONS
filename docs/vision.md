@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.391**
+**A total conversion — the living design bible, v11.392**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -8230,6 +8230,8 @@ pass***, so type badges take the dark step as their ground. `ramp5` already prod
 
 **Then THE MARGINS (batch 9, released in v11.390.1): the islands' music in voice C, in B-flat and B** -- *7.4 says why those keys.* *DRAFT.*
 
+**Then the cries (batch 11, released in v11.391.1): all 388, the last of pret's voices in the game.** ***A design question first*** *(`docs/cries-design-2026-11-17.md`: four approaches, each played for the same six daemons -- A THE TYPE'S VOICE, B THE NAME PLAYED, C THE PROCESS HUMMING, D ONE VOICE MANY MOODS)*, ***and the user's pick: A, shaped by B.*** **Each cry is its type's motif in C BOTH, put in order and timed by the daemon's name; a line shares one contour, lower and slower as it evolves** (`tools/gencries.py`). *So a cry says what a daemon is, then who, then how far along -- and the 388 together are 310 KB smaller than pret's. Eleven daemons still borrow another's cry, and HUNCH and MIME sound the same, until each has its own (T-584, later). Left pret's: only the retail samples (batch 12). DRAFT.*
+
 ### 9.6 The chart change, finally built — and cheaper than it was
 
 ***2 specifies exactly one change to the matchup table*** — **delete Gen 1's `GHOST, PSYCHIC, 00` bug, then add the mutual pair `CONTEXT ↔ LATENT` at 2×.** *"Two additions, one deletion. That is the whole chart change."*
@@ -9288,6 +9290,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The cries (T-565 batch 11, v11.391.1)** — released, the user's pick after a design question of four: A, THE TYPE'S VOICE, shaped by B, THE NAME PLAYED -- every one of the 388 its type's motif, ordered and timed by its name, a line sharing one contour, lower and slower as it evolves. Eleven borrowed cries and one identical pair wait on T-584. Sealed v11.390.x. DRAFT.
 - **THE MARGINS' music (T-565 batch 9, v11.390.1)** — released, the user's pick: the islands, their roads, caves, TANOBY and ONE ISLAND's CHECKPOINT in voice C, in B-flat and B, keys none of the coloured towns uses, so the region off the spectrum sounds off it too (7.4). Sealed v11.389.x. DRAFT.
 - **The move sounds, a palette per type (T-565 batch 10, v11.389.1)** — released, the user's pick (C BOTH): 115 routine sounds, each type its own motif, register and texture, hits on the noise channel, a falling stat on the tritone; so a type is heard as it is seen. Three shared sounds wait on T-583. Sealed v11.388.x. DRAFT.
 - **The story's music and the field sounds (T-565 batches 8 and 6, v11.388.1)** — released, the user's picks: the story set-pieces in voice C over pret's in place, from CRYSTAL CLEAR's entrance to the credits' medley; THE WALLED GARDEN its own song (`MUS_WALLED_GARDEN`); the 41 field sounds in C BOTH. Left pret's: the move sounds, the cries, the retail samples. Sealed v11.387.x. DRAFT.

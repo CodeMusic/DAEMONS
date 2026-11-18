@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.392 — 2026-11-17
+
+- Recorded from release v11.391.1 (ea54b57b, engine ba5c05d43), which sealed v11.390.x:
+  - **The cries** (T-565 batch 11, the game lane): all 388, A shaped by B, the user's pick from four approaches. DRAFT. In 9.5, after THE MARGINS; the borrowed cries left for T-584.
+- Section 10: one Settled entry.
+
 ## v11.391 — 2026-11-17
 
 - Recorded from release v11.390.1 (78eb5bcd, engine 7e6abcda8), which sealed v11.389.x:
