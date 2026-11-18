@@ -62,25 +62,27 @@ GB_FILL = ("voice_square_1_alt 60, 0, 0, 1, 1, 2, 3, 1", "pulse 1")
 
 #  GM program (0-indexed) -> sample, attack, decay, sustain, release.
 #  Envelopes are lifted from vanilla's own use of each sample, not invented.
+#  T-565 batch 12 (the user, 2026-11-17, "Yes, use ours"): every played slot is our own sample now -- sixteen
+#  made by tools/genbank.py, and PLAY's HARP and FLUTE (geninstruments.py) at 46 and 73 -- on the same envelopes.
 BANK = {
-     0: ("steinway_b_piano",                128, 204,  51, 242, "piano"),
-     9: ("sc88pro_glockenspiel",            255, 165,  51, 235, "glockenspiel"),
-    13: ("sc88pro_xylophone",               255, 235,   0, 204, "xylophone"),
-    14: ("sc88pro_tubular_bell",            255, 165,  90, 216, "tubular bell"),
-    24: ("sc88pro_nylon_str_guitar",        255, 165, 128, 204, "nylon guitar"),
-    33: ("sc88pro_fingered_bass",           255, 253,   0, 149, "fingered bass"),
-    38: ("sc88pro_synth_bass",              255, 252,   0, 115, "synth bass"),
-    45: ("sc88pro_pizzicato_strings",       255, 216,   0, 165, "pizzicato strings"),
-    46: ("sc88pro_harp",                    255, 242,   0, 204, "harp"),
-    47: ("sc88pro_timpani",                 255, 204, 193, 239, "timpani"),
-    48: ("sc88pro_string_ensemble_72",      255,   0, 255, 196, "string ensemble"),
-    52: ("classical_choir_voice_ahhs",      255,   0, 255,   0, "choir aahs"),
-    56: ("sc88pro_trumpet_72",              255,   0, 193, 127, "trumpet"),
-    58: ("sc88pro_tuba_51",                 255,   0, 255, 165, "tuba"),
-    60: ("sc88pro_french_horn_60",          255,   0, 224, 165, "french horn"),
-    68: ("sd90_classical_oboe",             255, 165, 154, 127, "oboe"),
-    73: ("sc88pro_flute",                   255, 127, 231, 127, "flute"),
-    78: ("sd90_classical_whistle",          255,   0, 255, 127, "whistle"),
+     0: ("daemons_piano",                   128, 204,  51, 242, "piano"),
+     9: ("daemons_glockenspiel",            255, 165,  51, 235, "glockenspiel"),
+    13: ("daemons_xylophone",               255, 235,   0, 204, "xylophone"),
+    14: ("daemons_tubular_bell",            255, 165,  90, 216, "tubular bell"),
+    24: ("daemons_nylon_guitar",            255, 165, 128, 204, "nylon guitar"),
+    33: ("daemons_fingered_bass",           255, 253,   0, 149, "fingered bass"),
+    38: ("daemons_synth_bass",              255, 252,   0, 115, "synth bass"),
+    45: ("daemons_pizzicato",               255, 216,   0, 165, "pizzicato strings"),
+    46: ("daemons_harp",                    255, 242,   0, 204, "harp"),
+    47: ("daemons_timpani",                 255, 204, 193, 239, "timpani"),
+    48: ("daemons_strings",                 255,   0, 255, 196, "string ensemble"),
+    52: ("daemons_choir",                   255,   0, 255,   0, "choir aahs"),
+    56: ("daemons_trumpet",                 255,   0, 193, 127, "trumpet"),
+    58: ("daemons_tuba",                    255,   0, 255, 165, "tuba"),
+    60: ("daemons_french_horn",             255,   0, 224, 165, "french horn"),
+    68: ("daemons_oboe",                    255, 165, 154, 127, "oboe"),
+    73: ("daemons_flute",                   255, 127, 231, 127, "flute"),
+    78: ("daemons_whistle",                 255,   0, 255, 127, "whistle"),
 }
 FILL = BANK[0]
 SIZE = max(BANK) + 1
@@ -108,6 +110,8 @@ def replace(body, group, block):
 def main():
     body = open(INC).read()
     have = {m for m in re.findall(r"DirectSoundWaveData_(\w+)", body)}
+    #  T-565 batch 12: a sample of ours is in the ROM once direct_sound_data.inc carries it, before any bank names it
+    have |= set(re.findall(r"^DirectSoundWaveData_(\w+)::", open(os.path.join(ROOT, "engineGba/sound/direct_sound_data.inc")).read(), re.M))
     missing = [s[0] for s in BANK.values() if s[0] not in have]
     if missing:
         sys.exit("  !! sample not in this ROM: %s" % ", ".join(missing))

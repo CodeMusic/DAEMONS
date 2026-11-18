@@ -49,7 +49,7 @@ VG = os.path.join(GBA, "sound", "voice_groups.inc")
 MID = os.path.join(GBA, "sound", "songs", "midi", "se_dawn_chorus.mid")
 VOICEGROUP = 194
 CHOIR_RMS = 0.388               # classical_choir_voice_ahhs.wav, measured: the loudness the chirp is matched to
-CHOIR = "\tvoice_directsound 60, 0, DirectSoundWaveData_classical_choir_voice_ahhs, 255, 0, 255, 0"
+CHOIR = "\tvoice_directsound 60, 0, DirectSoundWaveData_daemons_choir, 255, 0, 255, 0"   # T-565 batch 12: ours (tools/genbank.py)
 CHIRP = "\tvoice_directsound 60, 0, DirectSoundWaveData_daemons_chorus, 255, 0, 255, 0"
 MARK_DSD = "@ T-528: the dawn chorus's chirp (DAEMONS tools/genchorus.py)"
 MARK_VG = "voicegroup%03d::  @ T-528: the dawn chorus -- the choir (0, voicegroup191's 52) and the chirp (1) (DAEMONS tools/genchorus.py)" % VOICEGROUP
@@ -147,7 +147,10 @@ def engine():
                      "\t.incbin \"sound/direct_sound_samples/daemons_chorus.bin\"\n\n" % MARK_DSD) + t[k:]
     out[DSD] = t
     t = open(VG, encoding="utf-8").read()
-    if MARK_VG not in t:
+    if MARK_VG in t:                                   # T-565 batch 12: rewrite its two voices in place (the choir is ours now)
+        k = t.index(MARK_VG); e = t.index("\n\n", k)
+        t = t[:k] + "%s\n%s\n%s" % (MARK_VG, CHOIR, CHIRP) + t[e:]
+    else:
         k = t.find("\t.align 2\nvoicegroup193::")
         assert k >= 0, "voice_groups.inc has no voicegroup193 to sit before"
         t = t[:k] + "\t.align 2\n%s\n%s\n%s\n\n" % (MARK_VG, CHOIR, CHIRP) + t[k:]
