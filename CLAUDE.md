@@ -47,7 +47,7 @@ are daemons and the type chart is an argument about consciousness. **Design is w
   Read it before writing anything about the theory.
 - **`docs/engine.md`** is the hardware, not the design: the three memory
   budgets, where a variable actually lands, every fixed width, and the traps
-  that have already cost this project time (forty-three of them now). **Read it before adding a
+  that have already cost this project time (forty-five of them now). **Read it before adding a
   static, a name, or a line of text to a pane.** Its numbers are written by
   `tools/gbabudget.py --write` rather than typed.
 

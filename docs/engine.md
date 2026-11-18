@@ -486,6 +486,15 @@ C2; DirectSound voices have no such floor.** *`tools/genfanfares.py` now refuses
 up an octave.* ***A preview proves the notes, not the hardware***: *the drafts were rendered off the ROM, so anything
 the mixer clamps, rounds or drops has to be checked against `src/m4a.c` or heard from the build.*
 
+### 45. A fresh clone compared with a build that was not this commit's
+
+***Symptom (2026-11-17, T-565 batch 8's release):*** **`tools/check_fresh_clone.py` reported `daemonsContext.gba
+DIFFERS`** *-- the pushed engine apparently building something this machine had not.* **It was the other way round**:
+*the check compares the fresh clone's ROMs with the ones already sitting in `engineGba/`, and those had been built
+before a peer pushed its own engine commit on top (the game lane's batch 6, which built only its debug ROM). The clone
+was right and the local ROM stale.* **Build both editions at HEAD first, then run the check**; *rebuilt, the same check
+said identical.* ***A DIFFERS after another lane's push is a stale local build until a rebuild says otherwise.***
+
 ## 5. Seeing the game: the theatre and its remote (T-136)
 
 **Nothing on this Mac can drive mGBA headless** (*0.10.5 has no `--script`, and a key tapped into the window from outside reaches the game on about half its polls, which cannot drive a menu*). **So the game is driven from inside the emulator:**
