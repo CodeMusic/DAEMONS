@@ -30,14 +30,14 @@ events). No play-time data was recorded.
 | 10 | move sounds | game | v11.389.1 | `genuisounds.py` |
 | 11 | cries, all 388 | game | v11.391.1 | (the game lane's) |
 | 12 | our own instruments under voicegroup191 and the dawn chorus | instruments | v11.392.1 | `genbank.py` |
+| 13 | pret's last music: the GAME CORNERs and their jingles, the scripted scenes, the STREAM, the UNION ROOM, the link battles (T-593) | instruments | v11.402.1 | `genrestmusic.py` |
 
-**Every song and sound effect in the game is ours now, except these.** *Music, 22 slots still pret's* (`MUS_FUCHSIA` plays nowhere since T-592, 2026-11-18: its last six
-maps -- the Ember Spa, the Sea Cottage, a house each in HALFTONE and ARDOR, two on SIX ISLAND's water path -- play the
-music of the map their door opens onto; the rest are T-593, batch 13, to be drafted): the two game corners' `MUS_GAME_CORNER` with its jingles (`MUS_SLOTS_WIN`, `MUS_SLOTS_JACKPOT`, `MUS_TOO_BAD`); the
-union room; scripted scenes (`MUS_FOLLOW_ME` at QUICKSILVER, `MUS_JIGGLYPUFF` in SLATE's CHECKPOINT, `MUS_SCHOOL`,
-`MUS_PHOTO`, `MUS_TEACHY_TV_MENU`/`_SHOW`, `MUS_OBTAIN_ITEM`); the legendary and link battle `MUS_RS_VS_TRAINER` and
-`MUS_RS_VS_GYM_LEADER`; and what an event ticket or nothing reaches (`MUS_ENCOUNTER_DEOXYS`, `MUS_VS_DEOXYS`,
-`MUS_MYSTERY_GIFT`, `MUS_BERRY_PICK`, `MUS_POKE_JUMP`, `MUS_OBTAIN_BERRY`, `MUS_INTRO_FIGHT`, `MUS_HEAL_UNUSED`).
+**Every song and sound effect in the game is ours now, except these.** *Music, 9 slots still pret's, none of which a player of this build hears:* `MUS_FUCHSIA`, which plays nowhere since
+T-592 (2026-11-18: its last six maps play the music of the map their door opens onto); and what an event ticket or
+nothing reaches. *Batch 13 (T-593, the user 2026-11-18: "All fourteen") wrote the other fourteen: the GAME CORNERs'
+`MUS_GAME_CORNER` and its jingles, the UNION ROOM, the scripted scenes (`MUS_FOLLOW_ME` at QUICKSILVER, `MUS_JIGGLYPUFF`
+in SLATE's CHECKPOINT, `MUS_SCHOOL`, `MUS_PHOTO`, the STREAM's two, `MUS_OBTAIN_ITEM`) and the link battles.* The eight an event ticket or nothing reaches: `MUS_ENCOUNTER_DEOXYS`, `MUS_VS_DEOXYS`,
+`MUS_MYSTERY_GIFT`, `MUS_BERRY_PICK`, `MUS_POKE_JUMP`, `MUS_OBTAIN_BERRY`, `MUS_INTRO_FIGHT`, `MUS_HEAL_UNUSED`.
 *Sound effects, 43 still pret's:* mostly the wireless games, contests and berries the build never reaches
 (`SE_BALLOON_*`, `SE_CONTEST_*`, `SE_POKE_JUMP_*`, `SE_BERRY_BLENDER`, `SE_POKENAV_*`, the truck), the game corner's
 roulette, and fourteen move sounds batch 10 left as they were (`SE_M_HEAL_BELL` and `SE_M_MORNING_SUN` among them, which

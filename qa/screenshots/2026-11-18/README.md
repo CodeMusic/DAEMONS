@@ -163,3 +163,9 @@ All 48 songs of T-565 batches 2, 5, 8, 9 and 12 heard on debug ROM 33353408: eac
 v11.401.1, T-490 step 3: the user's ruling applied -- 67 routines change side, 10 kept; the blast and Thick Fat follow the hit's side; PAGE FAULT's words (DRAFT); every leader matchup as recommended
 
 ![18Nov2026 - T490 - contact is physical, applied - 30](18Nov2026%20-%20T490%20-%20contact%20is%20physical%2C%20applied%20-%2030.png)
+
+### 18Nov2026 - T593 - batch 13 heard - 31
+
+T-565 batch 13 (T-593) heard on debug ROM 0f950ca9: all fourteen nearest their own draft (DTW over chroma), each one's own song header playing on its own music player.
+
+![18Nov2026 - T593 - batch 13 heard - 31](18Nov2026%20-%20T593%20-%20batch%2013%20heard%20-%2031.png)
