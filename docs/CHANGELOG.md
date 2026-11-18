@@ -5,6 +5,14 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.402 — 2026-11-18
+
+- Recorded from release v11.401.1 (9d979bd3, engine de196c85c / b4f09c0ad / 521a06af6), which sealed v11.399.x:
+  - **The split's step 3** (T-490): contact is physical, applied -- 67 routines change side (18 PHYSICAL, 49 SPECIAL), ten kept by ruling; the blast halves the defence it strikes and Thick Fat the stat the hit uses; PAGE FAULT's words (DRAFT). In 2.12, whose heading now says three built.
+  - **The day symbol in the DREAM LOG** (T-591): released. 3.8.
+  - **The six MUS_FUCHSIA maps** (T-592): each plays the music of the map its door opens onto; MUS_FUCHSIA plays nowhere, so 22 song slots are still pret's. 7.4 and 9.5.
+- Section 10: one Settled entry.
+
 ## v11.401 — 2026-11-18
 
 - **The day symbol in the game's DREAM LOG** (T-591, built 2026-11-18, engine 521a06af6, DRAFT): each dream wears the symbol of the weekday it came on, with the spine and its centre lit; the day saved when the dream arrives. In 9.21 and 3.8. Not yet in a release.
