@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.403 — 2026-11-18
+
+- Recorded from release v11.402.1 (c76a67fa, engine ce02dbf00), which sealed v11.401.x:
+  - **Pret's last reachable music** (T-593, T-565 batch 13): fourteen songs in voice C over pret's slots (the user: "All fourteen"), so every song a player of this build hears is ours; nine slots stay pret's, none heard, and 43 sound effects. DRAFT. In 9.5.
+- Section 10: one Settled entry.
+
 ## v11.402 — 2026-11-18
 
 - Recorded from release v11.401.1 (9d979bd3, engine de196c85c / b4f09c0ad / 521a06af6), which sealed v11.399.x:
