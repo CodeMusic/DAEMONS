@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""T-597: COLOUR BY SONG -- a daemon's colours come in with the notes of its song it learns. A PROTOTYPE, DRAFT: it
-changes nothing in the engine and writes nothing but the pictures it is asked for.
+"""T-597: COLOUR BY SONG -- a daemon's colours come in with the notes of its song it learns. DRAFT. The user chose
+A on 2026-11-19 (by multiple choice), and --write writes the engine's table for it; B and C stay on the sheets.
 
     python3 tools/gencolourbysong.py                          # report: the rule, the census, what would need drawing
     python3 tools/gencolourbysong.py NAME... [--share N]      # each form's slots, their notes, and its palette at a
                                                               # share of its own part (0..255, default every quarter)
     python3 tools/gencolourbysong.py --sheet DIR NAME...      # a contact sheet per line: every form, every approach,
                                                               # at 0, 25, 50, 75 and 100% of its own part, beside today
+    python3 tools/gencolourbysong.py --write                  # T-597 BUILT: the engine's table (approach A),
+                                                              # engineGba src/data/daemon_song_colours.h
+    python3 tools/gencolourbysong.py --verify-rom ROM...      # read that table back out of a built ROM and compare
 
 THE USER'S WORDS (2026-11-18): "those colour levels of the daemon were most representative of how the daemons' own song
 part completion"; "the colours in the first form would carry through and already be coloured in the next form, but as
@@ -24,7 +27,8 @@ THE TIE (every approach): a slot is tied to the notes of the song it comes in wi
     an accent     the note of its own part nearest its hue on SYNESTHESIA's wheel (C red ... B violet, a black key
                   between its neighbours); an accent too grey to have a hue is the key's, as the body is
     the ink       never: an outline is not a colour (T-184)
-    the streaks   the part as a whole (they are the moves', T-132; the file holds only their grey)
+    the streaks   the part as a whole (they are the moves', T-132; the file holds only their grey), carried when an
+                  earlier form of the line had streaks
 A slot's FILL is the share of its notes learned (at the engine's own learn points, gensongs.engine_rows), each note's
 colour closing on it over the WINDOW its static closes over (SONG_WINDOW), so it comes in a note at a time and is whole
 at 100%.
@@ -218,10 +222,12 @@ def ties(w, k, approach):
     tonic = row["tonic"] if row else 0
     sung = sorted({n[0] % 12 for n in notes}) or [tonic]
     earlier = []
+    streaked = False                                        # an earlier form had streaks: they are carried too
     for e in w.paths[k][:-1]:
         if w.has_art(e):
             ep, eu = form_palette(w, e, approach), w.used(e)
             earlier += [ep[i] for i in range(1, 11) if slot_kind(i, ep, eu) in ("body", "accent")]
+            streaked = streaked or any(slot_kind(i, ep, eu) == "streak" for i in STREAKS)
     kinds = {i: slot_kind(i, pal, used) for i in range(16)}
     colours = [i for i in range(16) if kinds[i] in ("body", "accent")]
     carried = {i for i in colours if earlier and min(dist(pal[i], e) for e in earlier) <= CARRY_NEAR}
@@ -240,7 +246,7 @@ def ties(w, k, approach):
             pts = [n[2] for n in notes if pc is None or n[0] % 12 == pc]
             out[i] = (kind, pc, i in carried, pts)
         elif kind == "streak":
-            out[i] = (kind, None, False, [n[2] for n in notes])
+            out[i] = (kind, None, streaked, [n[2] for n in notes])
         else:
             out[i] = (kind, None, False, [])
     return pal, out
@@ -250,17 +256,27 @@ WINDOW = round(gsg.WINDOW * 255)   # a note's colour closes on it over the same 
 
 
 def note_in(p, share):
-    """How much of one note's colour is in: none until WINDOW before its point, all of it at its point."""
+    """How much of one note's colour is in, in 256ths: none until WINDOW before its point, all of it at its point.
+    Integer maths, exactly as src/daemon_song.c's NoteIn does it."""
     if share >= p:
-        return 1.0
-    return max(0.0, 1 - (p - share) / WINDOW)
+        return 256
+    return max(0, 256 - (p - share) * 256 // WINDOW)
 
 
 def fill(tie, share):
     kind, pc, carried, pts = tie
     if kind not in ("body", "accent", "streak") or carried or not pts:
         return 1.0
-    return sum(note_in(p, share) for p in pts) / len(pts)
+    return sum(note_in(p, share) for p in pts) / (256 * len(pts))
+
+
+def slot_keep(tie, share):
+    """How much of a slot's colour shows (approach A, what the engine builds), in 256ths: KEEP_LOW at nothing learned,
+    256 at all of it -- DaemonSong_ColourKeeps."""
+    kind, pc, carried, pts = tie
+    if kind not in ("body", "accent", "streak") or carried or not pts:
+        return 256
+    return KEEP_LOW + (256 - KEEP_LOW) * sum(note_in(p, share) for p in pts) // (256 * len(pts))
 
 
 def shown(w, k, approach, share):
@@ -270,13 +286,14 @@ def shown(w, k, approach, share):
     tonic_rgb = pc_rgb(row["tonic"]) if row else (128, 128, 128)
     out = list(pal)
     for i in range(1, 16):
-        f = fill(t[i], share)
-        if f >= 1.0:
-            continue
         if approach == "B":
-            out[i] = mix(key_wash(pal[i], tonic_rgb, TINT), pal[i], f)
-        else:
-            out[i] = desaturate(pal[i], KEEP_LOW + int((256 - KEEP_LOW) * f))
+            f = fill(t[i], share)
+            if f < 1.0:
+                out[i] = mix(key_wash(pal[i], tonic_rgb, TINT), pal[i], f)
+            continue
+        keep = slot_keep(t[i], share)
+        if keep < 256:
+            out[i] = desaturate(pal[i], keep)
     return out
 
 
@@ -316,7 +333,7 @@ def describe(w, k, approach="A"):
             lines.append("   %2d %-6s %-15s -> %-3s %s" % (i, kind, "%d,%d,%d" % pal[i], name(pc),
                          "CARRIED" if carried else "at " + " ".join("%d%%" % round(p * 100 / 255) for p in pts)))
         elif kind == "streak":
-            lines.append("   %2d streak  (the moves')      -> the part as a whole" % i)
+            lines.append("   %2d streak  (the moves')      -> %s" % (i, "CARRIED" if t[i][2] else "the part as a whole"))
     return "\n".join(lines)
 
 
@@ -468,9 +485,118 @@ def sheet(outdir, names):
     return 0
 
 
+# ------------------------------------------------------------------------------------------------- the engine's table
+#  T-597 BUILT (the user, 2026-11-19, by multiple choice: A, grey until sung; the later forms' redraw is its own ticket;
+#  friendship still scales over the song for AL's party and the Corpus). The engine reads one nibble a palette slot:
+#      0      always whole: the transparent, the ink, an unused slot, a colour carried from the earlier form, no song
+#      1..12  the pitch class + 1 whose notes in the form's own part bring it in
+#      13     the KEY: every note of the part (the body ramp, a grey accent, the streaks)
+APPROVED = True
+ENGINE_H = os.path.join(GBA, "src", "data", "daemon_song_colours.h")
+TIE_KEY = 13
+
+
+def tie_nibble(tie):
+    kind, pc, carried, pts = tie
+    if kind not in ("body", "accent", "streak") or carried or not pts:
+        return 0
+    return TIE_KEY if pc is None else pc + 1
+
+
+def engine_ties(w=None):
+    """{species id: 16 nibbles} for every form with art and a song."""
+    w = w or World()
+    out = {}
+    for k in w.sp:
+        if not (w.has_art(k) and k in w.rows):
+            continue
+        _, t = ties(w, k, "A")
+        nib = [tie_nibble(t[i]) if i else 0 for i in range(16)]
+        if any(nib):
+            out[int(k)] = nib
+    return out
+
+
+def packed(nib):
+    return [nib[2 * j] | (nib[2 * j + 1] << 4) for j in range(8)]
+
+
+def engine_header(w=None):
+    w = w or World()
+    rows = engine_ties(w)
+    out = ["// T-597: COLOUR BY SONG -- which notes of its own part bring each palette slot's colour in (DAEMONS vision 8.6).",
+           "// GENERATED by DAEMONS tools/gencolourbysong.py --write from the sprites' palettes and T-594's songs -- never",
+           "// edit by hand. DRAFT. src/daemon_song.c reads it (DaemonSong_ColourKeeps); daemon_saturation.c applies it.",
+           "//",
+           "// One nibble a slot, slot 2j in byte j's low nibble and 2j+1 in its high: 0 always whole (transparent, ink, an",
+           "// unused slot, a colour carried from the form before); 1..12 the pitch class + 1 whose notes bring it in; %d the" % TIE_KEY,
+           "// key -- every note of the part (the body ramp, a grey accent, the streaks). A species not listed is whole.",
+           "#define SONG_COLOUR_KEY %d" % TIE_KEY,
+           "#define SONG_COLOUR_WINDOW %d   // a note's colour closes on it over this share (SONG_WINDOW)" % WINDOW,
+           "#define SONG_COLOUR_KEEP_LOW %d // nothing learned keeps this much of a colour, of 256 (T-424's floor)" % KEEP_LOW,
+           "",
+           "static const u8 sSongColourTies[][8] = {"]
+    for sid in sorted(rows):
+        out.append("    [%d] = {%s},   // %s" % (sid, ", ".join("0x%02X" % b for b in packed(rows[sid])),
+                                                 w.sp[str(sid)]["name"]))
+    out += ["};", ""]
+    return "\n".join(out), rows
+
+
+def engine_write(write, w=None):
+    want, rows = engine_header(w)
+    have = open(ENGINE_H).read() if os.path.exists(ENGINE_H) else None
+    rel = os.path.relpath(ENGINE_H, ROOT)
+    size = (max(rows) + 1) * 8
+    if not write:
+        state = "current" if have == want else ("missing" if have is None else "DRIFTS from a write")
+        print("gencolourbysong: the engine's table (%s, %d species, %d bytes of ROM) is %s" % (rel, len(rows), size, state))
+        return 0 if (have == want or not APPROVED) else 1
+    if not APPROVED:
+        print("gencolourbysong: APPROVED is off -- nothing is written")
+        return 0
+    if have == want:
+        print("gencolourbysong: %s already current" % rel)
+        return 0
+    tmp = ENGINE_H + ".tmp"
+    with open(tmp, "w") as f:
+        f.write(want)
+    os.replace(tmp, ENGINE_H)
+    print("gencolourbysong: wrote %s (%d species, %d bytes of ROM)" % (rel, len(rows), size))
+    return 0
+
+
+def verify_rom(rom):
+    """Read sSongColourTies out of a built ROM (its address from the .elf beside it) and compare it, byte for byte,
+    with what this tool would write."""
+    import subprocess
+    elf = os.path.splitext(rom)[0] + ".elf"
+    nm = subprocess.run(["arm-none-eabi-nm", "-S", elf], capture_output=True, text=True, check=True).stdout
+    hit = [l.split() for l in nm.splitlines() if l.endswith(" sSongColourTies")]
+    if not hit:
+        print("gencolourbysong: no sSongColourTies in %s" % elf)
+        return 1
+    addr, size = int(hit[0][0], 16), int(hit[0][1], 16)
+    data = open(rom, "rb").read()[addr - 0x08000000:addr - 0x08000000 + size]
+    rows = engine_ties()
+    want = bytearray(size)
+    for sid, nib in rows.items():
+        want[sid * 8:sid * 8 + 8] = bytes(packed(nib))
+    bad = [i // 8 for i in range(size) if data[i] != want[i]]
+    print("gencolourbysong: %s: sSongColourTies at 0x%08X, %d bytes, %d species tied -- %s"
+          % (os.path.basename(rom), addr, size, len(rows),
+             "IDENTICAL to the tool" if not bad and len(want) == size else "DIFFERS at species %s" % sorted(set(bad))[:10]))
+    return 0 if not bad else 1
+
+
 def main():
     a = sys.argv[1:]
     share = None
+    if "--write" in a:
+        return engine_write(True)
+    if "--verify-rom" in a:
+        i = a.index("--verify-rom")
+        return max(verify_rom(r) for r in a[i + 1:])
     if "--share" in a:
         i = a.index("--share")
         share = max(0, min(255, int(a[i + 1])))
@@ -478,7 +604,10 @@ def main():
     if "--sheet" in a:
         i = a.index("--sheet")
         return sheet(a[i + 1], a[i + 2:] or ["ROVERCUB"])
-    return report(a, share)
+    rc = report(a, share)
+    if not a:
+        rc = rc or engine_write(False)
+    return rc
 
 
 if __name__ == "__main__":
