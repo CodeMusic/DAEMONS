@@ -5,6 +5,13 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.405 — 2026-11-19
+
+- Recorded from release v11.404.1 (5aa44be7, engine 18c32d360), which sealed v11.403.x:
+  - **T-438, TRAINER TOWER's interior** (DRAFT art): A PROGRESS, the user's AF -- floors and walls as progress bars, furniture as meters, the roof deck plain; its face kept vanilla for T-601. In 9.29.
+  - **T-594, THE SONG** (DRAFT, not in the engine): every daemon's song from its name, type, INDEX entry and cry; SONG replaces CRY. New section 9.36.
+- Section 10: one Settled entry.
+
 ## v11.404 — 2026-11-18
 
 - Recorded from release v11.403.1 (73d569de, engine ee68884b5), which sealed v11.402.x:
