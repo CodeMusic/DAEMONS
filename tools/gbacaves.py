@@ -339,6 +339,35 @@ MATERIALS["rock_tunnel"][11] = _plan([2, 3], [], {13: ("patch", 0), 14: ("patch"
 #  A tile drawn in more than one row takes an accent only if every one of its rows has it free.
 ACCENT = {"cave": {8: [6, 7, 8]}, "digletts_cave": {8: [6, 7, 8]}, "rock_tunnel": {}}     # THE BLACKOUT has none
 
+#  T-438, the last part (the user, 2026-11-18: retint the slivers "so the census reads zero"): the cave set's last five
+#  pret tiles. Three are flat dark -- the void (16) and the passage mouth (166, 182) -- where no pixel can change colour
+#  without showing, so their dark moves to a slot of OUR OWN that holds the same colour (an alias: row 10's 3 and row
+#  12's 14, both free magenta in pret and in every look here): the tile becomes ours and looks exactly as it did. The
+#  two slivers take the colour the rock beside them was redrawn in (SLIVERS below). Only the cave's own plan: the
+#  copies made of it above (TAPPOINT'S, THE BLACKOUT, whose row 10's 1..3 are T-546's threads) are not touched.
+MATERIALS["cave"][10][3] = ("hole", 0)
+MATERIALS["cave"][12][14] = ("hole", 0)
+#  {ts: {tile: ({old index: alias}, {(x, y): index})}}
+SLIVERS = {"cave": {16: ({15: 14}, {}),           # the void beyond the cave, row 12
+                    166: ({4: 3}, {}),            # the passage mouth's dark, row 10
+                    182: ({4: 3}, {}),            # its dither's dark, row 10 (the dither's pattern kept)
+                    32: ({}, {(7, 6): 14}),       # a slope's last pixel: the rock beside it (tile 33) is 14 now
+                    37: ({}, {(0, 7): 13})}}      # a slope's foot: between its neighbours' 11 and 14 now
+
+
+def retint_slivers(ts, new, van):
+    """SLIVERS laid over NEW, each from pret's own tile (VAN); a tile not still pret's in NEW is left alone"""
+    out = {}
+    for t, (alias, px) in SLIVERS.get(ts, {}).items():
+        if new[t] != van[t]:
+            continue
+        p = [alias.get(v, v) for v in van[t]]
+        for (x, y), v in px.items():
+            p[y * 8 + x] = v
+        new[t] = p
+        out[t] = "T-438 sliver retinted"
+    return out
+
 #  OBJECTS: the tiles that are things standing on the floor rather than the cave itself -- boulders, the breakable
 #  rocks, the pebble clusters. Vanilla's drawing of each is kept and only recoloured: a STRENGTH boulder has to read
 #  as one, and its shape is what a player knows it by. (The same tile numbers in all three drafted tilesets.)
@@ -1720,6 +1749,7 @@ def write_engine():
             new[t] = list(cave.now[t])               # gbaislands' (T-569, T-570), as the engine has them
         new = [list(p) for p in new]
         what.update(ladders_574(cave, new))          # T-574: T-570's ladder down a hole, over this look
+        what.update(retint_slivers(ts, new, cave.van))   # T-438's last slivers (2026-11-18)
         #  the footprint rule is this look's; T-570's hand-drawn ladders and holes are not held to it, and are kept
         held = T569_ISLANDS.get(ts, set())
         if any((a == 0) != (b == 0) for t in range(cave.n) if t not in held for a, b in zip(new[t], cave.van[t])):
@@ -2381,11 +2411,12 @@ def blackout_into_engine(d):
 #  the grain), T-570's hand-drawn ladders, holes, trickle and press plate kept as drawn, T-574's ladder down a hole
 #  drawn over it as everywhere.
 #
-#  BUILDING IT (not done by --write; the header is code, as the palette splits' were): graphics.h gains
+#  BUILT 2026-11-18, option A (the user's pick). The wiring is by hand, not by --write (the header is code, as the
+#  palette splits' were): graphics.h gains
 #  gTilesetTiles_CaveUmbral = INCBIN_U32("data/tilesets/secondary/cave/umbral/tiles.4bpp.lz"), headers.h's
 #  gTileset_CaveUmbral points .tiles at it. ROM: +about 4.2 KB (the cave's tiles.4bpp.lz is 4,200 bytes).
 UMBRAL_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t438", "umbral")
-UMBRAL_APPROVED = None      # "A", "B" or "C" once the user picks -- None: --write --approved writes nothing
+UMBRAL_APPROVED = "A"       # the user, 2026-11-18 (by multiple choice): A PENUMBRA
 UMBRAL_TILES = "data/tilesets/secondary/cave/umbral/tiles.png"
 
 
@@ -2516,6 +2547,7 @@ def umbral_tiles(cave, option):
         else:
             new[t] = list(cave.now[t])
     what.update(ladders_574(cave, new))
+    what.update(retint_slivers("cave", new, cave.van))
     held = set(T569_ISLANDS["cave"]) | t574_tiles("cave")
     moved = [t for t in range(cave.n) if t not in held and any((a == 0) != (b == 0)
                                                                  for a, b in zip(new[t], cave.van[t]))]

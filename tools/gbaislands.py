@@ -1641,7 +1641,7 @@ def main_570():
 #  THE RULES are T-570's: one piece drawn whole, only in indices it already uses, index 0 stays 0 and a drawn pixel
 #  stays drawn; no block, layer, flip, palette row, behaviour, collision or map moves.
 DRAFT_438K = os.path.join(ROOT, "gfx", "drafts", "t438", "islands")
-APPROVED_438K = {}          # {piece: option} -- EMPTY: nothing is picked, --write --approved writes nothing
+APPROVED_438K = {"dotted": "A", "piling": "A", "rail": "A", "slivers": "A"}   # the user, 2026-11-18 (by multiple choice)
 ISLE_SETS_438K = ["sevii_islands_123", "sevii_islands_45", "sevii_islands_67", "island_harbor", "berry_forest"]
 
 
@@ -1762,6 +1762,38 @@ def rail_post(opt):
     return {"island_harbor": {9: new}}
 
 
+#  the slivers (the user, 2026-11-18: "RETINT them all", every seam kept). Each pixel takes the colour the tile beside it
+#  was redrawn in where the line runs on across the seam, or a step that finishes a corner; a tile whose every pixel
+#  runs on unchanged into another tool's tile, or that is flat black with no slot free for the same colour, is LEFT
+#  (SLIVERS_LEFT) -- any change would show.
+SLIVERS_438K = {"sevii_islands_123": {140: {(7, 0): 2}},     # the path edge's last pixel: tile 141 beside it is 2 now
+                "sevii_islands_45": {115: {(1, 7): 6}},      # an outline's corner, a step lighter: rounds it
+                "island_harbor": {148: {(x, 0): 7 for x in range(8)}}}   # the doorway: its lintel's underside lit a
+#                                                              step, as THE DOTS' open door's is
+SLIVERS_LEFT = {
+    ("sevii_islands_123", 52): "window head", ("sevii_islands_123", 53): "window head",
+    ("sevii_islands_45", 52): "window head", ("sevii_islands_45", 53): "window head",
+    ("sevii_islands_67", 52): "window head", ("sevii_islands_67", 53): "window head",
+    ("island_harbor", 16): "flat black",
+}
+SLIVERS_WHY = {"window head": "the window's head: its light and dark lines run on unbroken into T-569's window tiles "
+                              "either side, in general's row 3 (no slot of ours) -- a change breaks the line",
+               "flat black": "the black over the harbour: row 11 has no free slot for an alias of its black, and any "
+                             "pixel changed shows as a mark in the void"}
+
+
+def slivers(opt):
+    out = {}
+    for ts, tt in SLIVERS_438K.items():
+        town = town570(ts)
+        for t, px in tt.items():
+            p = list(town.van[t])
+            for (x, y), v in px.items():
+                p[y * 8 + x] = v
+            out.setdefault(ts, {})[t] = p
+    return out
+
+
 #  the pieces: (key, what, its options [(option, title, line)], the recommended one, the drawing, crops)
 #  a crop is (tileset, map, x0, y0, w, h, {(x, y): block} set on the map first -- the open door is a script's)
 PIECES_438K = [
@@ -1775,6 +1807,11 @@ PIECES_438K = [
      "A", piling_top,
      [("sevii_islands_123", "NavelRock_Exterior", 7, 14, 11, 8, {}),
       ("sevii_islands_67", "BirthIsland_Exterior", 13, 22, 11, 8, {})]),
+    ("slivers", "the slivers and the harbour's doorway, retinted (seams kept)",
+     [("A", "RETINT (DRAFT)", "each pixel the colour its neighbour was redrawn in, or a step that finishes a corner")],
+     "A", slivers,
+     [("sevii_islands_123", "OneIsland", 9, 2, 11, 8, {}),
+      ("island_harbor", "Island_Harbor", 3, 0, 11, 6, {})]),
     ("rail", "the harbours' railing corner (every SEAGALLOP harbour)",
      [("A", "IN STEP (DRAFT)", "the rail runs round the corner in T-569's two rows, its post in the same twist")],
      "A", rail_post,
@@ -1785,6 +1822,7 @@ PIECES_438K = [
 DRAWN_438K = {("sevii_islands_67", t): "dotted" for t in (216, 217, 232, 233)}
 DRAWN_438K.update({(ts, 365): "piling" for ts in ("sevii_islands_123", "sevii_islands_45", "sevii_islands_67")})
 DRAWN_438K[("island_harbor", 9)] = "rail"
+DRAWN_438K.update({(ts, t): "slivers" for ts, tt in SLIVERS_438K.items() for t in tt})
 
 
 def run_438k(draft_dir=None, sheets=False):
@@ -1807,6 +1845,8 @@ def run_438k(draft_dir=None, sheets=False):
         for t in tg:
             if (ts, t) in DRAWN_438K:
                 rows.append("%d drawn here (%s)" % (t, DRAWN_438K[(ts, t)]))
+            elif (ts, t) in SLIVERS_LEFT:
+                rows.append("%d left (%s)" % (t, SLIVERS_LEFT[(ts, t)]))
             elif (ts, t) in left:
                 rows.append("%d %s" % (t, left[(ts, t)]))
             else:
@@ -1820,8 +1860,8 @@ def run_438k(draft_dir=None, sheets=False):
         tot["reach"] += c["reach"]
         tot["left"] += len(tg)
     print("\n  the islands today: ours %d, pret's where a player can stand %d, of which %d are not another tool's "
-          "(T-447's landmarks, doors and canopy hollows excluded); %d drawn by the pieces below, %d left as T-570 "
-          "named them, %d unaccounted" % (tot["ours"], tot["reach"], tot["left"], len(DRAWN_438K),
+          "(T-447's landmarks, doors and canopy hollows excluded); %d drawn by the pieces below, %d left (below), "
+          "%d unaccounted" % (tot["ours"], tot["reach"], tot["left"], len(DRAWN_438K),
                                           tot["left"] - len(DRAWN_438K) - len(unacc), len(unacc)))
     results = {}
     print("\n  the pieces:")
@@ -1837,10 +1877,10 @@ def run_438k(draft_dir=None, sheets=False):
                                                              else "", "  !! FOOTPRINT %s" % moved if moved else ""))
             if moved:
                 raise SystemExit("  !! %s %s: a footprint moved" % (key, o))
-    print("\n  left as T-570 named them (nothing pret drew to replace): %s" % "; ".join(
-        "%s %s" % (w, ", ".join("%s %d" % k for k, ww in sorted(left.items()) if ww == w and k[0] in ISLE_SETS_438K
-                                and k not in DRAWN_438K))
-        for w in ("sliver", "black", "door")))
+    print("\n  left, every other change would show (%d):" % len(SLIVERS_LEFT))
+    for k, w in SLIVERS_WHY.items():
+        print("      %-12s %s\n                   %s" % (w[:0] + k, w, ", ".join("%s %d" % kk for kk, ww in sorted(
+            SLIVERS_LEFT.items()) if ww == k)))
     if draft_dir:
         for (key, o), res in results.items():
             d = os.path.join(draft_dir, key)
@@ -1856,8 +1896,7 @@ def run_438k(draft_dir=None, sheets=False):
                                                                              for o, t, l in op],
                                     tiles={"%s %d" % (ts, t): k for (ts, t), kk in DRAWN_438K.items() if kk == k})
                                for k, w, op, r, _, _ in PIECES_438K],
-                       left={"%s %d" % k: LEFT_WHY[w] for k, w in sorted(left.items())
-                             if k[0] in ISLE_SETS_438K and k not in DRAWN_438K},
+                       left={"%s %d" % k: SLIVERS_WHY[w] for k, w in sorted(SLIVERS_LEFT.items())},
                        unaccounted=unacc),
                   open(os.path.join(draft_dir, "draft.json"), "w"), indent=1)
         print("  drafts in %s" % draft_dir)

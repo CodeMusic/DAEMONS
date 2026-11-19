@@ -147,14 +147,16 @@ def gdir(symbol, kind):
     """Where a tileset's TILES and PALETTES are, which is not always its own folder: SilphCo draws with
     Condominiums' graphics (headers.h names them), so its folder holds metatiles and nothing to draw them with."""
     own = C.tdir(symbol, kind)
-    if os.path.exists(os.path.join(own, "tiles.png")):
-        return own
     headers = open(os.path.join(GBA, "src/data/tilesets/headers.h")).read()
     body = re.search(r"const struct Tileset %s =\s*\{(.*?)\};" % re.escape(symbol), headers, re.S)
     tiles = body and re.search(r"\.tiles = (\w+)", body.group(1))
     graphics = open(os.path.join(GBA, "src/data/tilesets/graphics.h")).read()
     path = tiles and re.search(r"%s\[\] = INCBIN_U32\(\"(data/tilesets/[^\"]+)/tiles\." % re.escape(tiles.group(1)), graphics)
-    return os.path.join(GBA, path.group(1)) if path else own
+    #  the header's own INCBIN first: a split with tiles of its own (T-438: UMBRAL ASCENT, cave/umbral) sits in a
+    #  folder beside its base's, which tdir() answers -- reading that folder drew DEADSTACK's tiles on Victory Road
+    if path and os.path.exists(os.path.join(GBA, path.group(1), "tiles.png")):
+        return os.path.join(GBA, path.group(1))
+    return own
 
 
 def render(l, bd=None):
