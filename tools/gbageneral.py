@@ -184,7 +184,13 @@ def secondary(symbol):
             _SEC[symbol] = None
         else:
             gd = os.path.join(GBA, td or md)
-            pals = [read_pal(os.path.join(gd, "palettes/%02d.pal" % n)) for n in range(16)]
+            #  T-438: a tile split (UMBRAL ASCENT's cave/umbral/) has tiles and no palettes folder; read the palettes the
+            #  header itself loads, and fall back to the tiles' folder, then the metatiles' folder
+            pfiles = daemonslib.tileset_palettes(GBA, symbol)
+            if not pfiles or not all(os.path.exists(f) for f in pfiles):
+                pd = gd if os.path.isdir(os.path.join(gd, "palettes")) else os.path.join(GBA, md)
+                pfiles = [os.path.join(pd, "palettes/%02d.pal" % n) for n in range(16)]
+            pals = [read_pal(f) for f in pfiles]
             _SEC[symbol] = {"name": os.path.basename(md), "mt": open(os.path.join(GBA, md, "metatiles.bin"), "rb").read(),
                             "tiles": Image.open(os.path.join(gd, "tiles.png")), "pals": pals}
     return _SEC[symbol]
