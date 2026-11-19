@@ -644,7 +644,7 @@ def check_engine():
 #  over them; the gates' floor-count dots (one to eight, a different block per floor) are kept: they already count.
 TOWER_TS = "trainer_tower"
 TOWER_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t438", "trainer_tower")
-APPROVED_TOWER = None       # "A", "B" or "C" once the user picks -- None: --tower --write --approved writes nothing
+APPROVED_TOWER = "AF"       # the user, 2026-11-19: A PROGRESS, the shadow back, the furniture, the face kept, the roof deck plain
 #  the ball emblem's tiles -> the plain floor tile at the same place in the 16x16 floor (block 0x281: 1 2 / 17 18)
 TOWER_EMBLEM = {148: 2, 149: 1, 150: 2, 151: 1, 164: 18, 165: 17, 166: 18, 167: 17}
 
@@ -742,7 +742,7 @@ TOWER_OPTIONS = [
     ("AF", "PROGRESS, FURNISHED (DRAFT)", "A, and the furniture in the same language: every grey thing (pillars, "
                                           "stairs, machines) a vertical meter of four-pixel segments; the plants in "
                                           "bold leaves; the roof's view of the tower's own face kept as pret drew it "
-                                          "(the outside is a landmark, the user's)",
+                                          "(the outside is a landmark, the user's); the open roof deck plain, a quiet sheen",
      dict(_TOWER_A, grey=m_ticks, green=T.m_leaf)),
     ("AFB", "FURNISHED, THE FACE BANDED (DRAFT)", "AF, and the roof's view of the tower's face given one band a "
                                                   "storey, a lit bar over a dark line, pret's texture kept between",
@@ -794,11 +794,30 @@ def tower_town():
     return town, left, why
 
 
+#  THE ROOF DECK (the user, 2026-11-19: "it can be plain as long as it isn't Nintendo's vanilla"): pret's deck is tile
+#  213, one flat colour (row 11's 8) laid everywhere; m_ticks striped it. Drawn plain instead, in our own drawing: the
+#  same flat colour with two faint two-pixel dashes of light a tile (row 11's 15) -- a quiet sheen that, laid every
+#  eight pixels, reads as an even surface, never a stripe
+TOWER_DECK = {213: {(1, 2): 15, (2, 2): 15, (5, 6): 15, (6, 6): 15}}
+
+
+def tower_deck(town, new):
+    for t, px in TOWER_DECK.items():
+        rows = {v >> 12 for b in range(town.nblocks) for v in T.entries(town.mt, b) if (v & 0x3FF) - 640 == t}
+        assert rows == {11}, "the deck tile is drawn in rows %s, not row 11 only" % rows
+        p = list(town.van[t])
+        for (x, y), v in px.items():
+            p[y * 8 + x] = v
+        new[t] = p
+
+
 def tower_draw(option):
     town, left, why = tower_town()
     st = [o[3] for o in TOWER_OPTIONS if o[0] == option][0]
     new, what = redraw(town, st)
     tower_shadow(town, new)
+    if option in ("AF", "AFB"):
+        tower_deck(town, new)
     disk = [list(p) for p in town.disk]
     return town, left, why, {t: new[t] for t in range(len(new)) if new[t] != disk[t]}
 
