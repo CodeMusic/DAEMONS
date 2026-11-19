@@ -621,7 +621,172 @@ def check_engine():
     return bad
 
 
+# ================================================================== T-438: TRAINER TOWER's interior (DRAFT)
+#  TRAINER TOWER on SEVEN ISLAND (trainer_tower: the lobby, eight floors, the roof) is the USER TOWER of vision 6.x --
+#  "the post-game's tests are the USER TOWER and the Review Board rematch". Its OUTSIDE is a T-447 landmark that is the
+#  user's (the user's one direction so far, 2026-10-24: "progress bars, each floor a band with a teal bar"), and
+#  stays out of every batch. Its INSIDE was never redrawn: 298 of 306 tiles still pret's. This drafts it as its own
+#  T-438 batch with this tool's method (families by hue, each drawn in a motif; outlines, whites, joins, footprints
+#  kept; no block, row, flip, behaviour, collision or map moves), three looks from what the place is:
+#
+#    python3 tools/gbatownslast.py --tower [DIR]       # report + drafts into DIR (gfx/drafts/t438/trainer_tower/):
+#                                                      #   tiles_A/B/C.png, draft.json, a 4x sheet of every changed tile
+#    python3 tools/gbatownslast.py --tower --write --approved   # APPROVED_TOWER's option into the engine. None until
+#                                                      #   the user picks: refused, nothing written.
+#
+#  A USER climbs it against the clock, floor after floor, and the time is posted -- a run, measured. So:
+#    A PROGRESS: the floors laid as rows of progress bars, each bar outlined and filled two thirds -- the climb as a
+#      job running; the walls one band with a lit bar along it (the user's own words for the outside, carried in)
+#    B THE LEADERBOARD: the floors ruled as a table of times, a rule every eight rows and a column every thirty-two;
+#      the walls raised panels like a scoreboard's slats
+#    C THE RUN: the floors as running lanes, a dashed line down every lane; the walls smeared lengthwise (THE STREAK)
+#  In every look the lobby floor's three ball emblems (pret's, tiles 148-151 / 164-167) are taken up and the floor laid
+#  over them; the gates' floor-count dots (one to eight, a different block per floor) are kept: they already count.
+TOWER_TS = "trainer_tower"
+TOWER_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t438", "trainer_tower")
+APPROVED_TOWER = None       # "A", "B" or "C" once the user picks -- None: --tower --write --approved writes nothing
+#  the ball emblem's tiles -> the plain floor tile at the same place in the 16x16 floor (block 0x281: 1 2 / 17 18)
+TOWER_EMBLEM = {148: 2, 149: 1, 150: 2, 151: 1, 164: 18, 165: 17, 166: 18, 167: 17}
+
+
+#  THE FLOORS' PERIOD: the yellow floor is one 8x8 tile laid everywhere, and the lobby's blue floor four tiles that its
+#  emblem blocks also lay mirrored (0x2d3 = 149 | 149 flipped), so a floor motif must repeat every eight and read the
+#  same mirrored, or the emblems' places would show as seams (draft 1 did, 2026-11-18).
+def m_segments(x, y, w, h, X, Y, b):
+    """A: the floor as the lit segments of a progress bar -- six-pixel cells, two-pixel gaps between, a dark rule
+    under each row of them"""
+    xo, yo = X % 8, Y % 8
+    if yo == 7:
+        return 0.85
+    if xo in (0, 7):
+        return 0.55
+    return 0.0 if 1 <= yo <= 5 else 0.3
+
+
+def m_wallbar(x, y, w, h, X, Y, b):
+    """A: the walls one band, a lit bar along its middle two rows (the user's words for the outside)"""
+    mid = h // 2
+    if y in (mid - 1, mid):
+        return 0.0
+    if y == mid + 1:
+        return 1.0
+    return 0.5
+
+
+def m_table(x, y, w, h, X, Y, b):
+    """B: a table of times: a rule every eight rows, the rows between plain"""
+    if Y % 8 == 7:
+        return 0.8
+    return 0.35 if Y % 8 == 0 else 0.1
+
+
+def m_lanes(x, y, w, h, X, Y, b):
+    """C: running lanes eight wide, a dashed line down the middle of every lane"""
+    if Y % 8 == 7:
+        return 0.8
+    if Y % 8 == 3 and 2 <= X % 8 <= 5:
+        return 0.0
+    return 0.4
+
+
+for _f in (m_segments, m_wallbar, m_table, m_lanes):
+    KEEP_LIGHT[_f] = 0.0
+#  the families are named by role, not hue: the floors (yellow rows 8 and 12, the lobby's blue row 10) and the walls
+#  (the lobby's purple, the floors' grey-blue) would otherwise share "blue". Everything else -- the pillars, stairs,
+#  machines, plants -- keeps pret's drawing (m_keep); the counters (orange, red) take steel panels in every look.
+FAMILY["trainer_tower"] = {}
+for _r in (8, 12):
+    for _i in range(9, 14):
+        FAMILY["trainer_tower"][(_r, _i)] = "floor"
+for _i in range(1, 6):
+    FAMILY["trainer_tower"][(10, _i)] = "floor"
+for _i in range(11, 16):
+    FAMILY["trainer_tower"][(9, _i)] = "wall"
+for _i in range(5, 9):
+    FAMILY["trainer_tower"][(8, _i)] = "wall"
+_TOWER_REST = {"orange": T.m_panel, "red": T.m_panel, "*": m_keep}
+TOWER_OPTIONS = [
+    ("A", "PROGRESS (DRAFT)", "the floors as the lit segments of a progress bar; the walls a band with a lit bar along "
+                              "it -- the user's words for the outside, carried in",
+     dict(_TOWER_REST, floor=m_segments, wall=m_wallbar)),
+    ("B", "THE LEADERBOARD (DRAFT)", "the floors ruled as a table of times; the walls raised panels like a "
+                                     "scoreboard's slats",
+     dict(_TOWER_REST, floor=m_table, wall=T.m_wainscot)),
+    ("C", "THE RUN (DRAFT)", "the floors as running lanes with a dashed line down each; the walls smeared lengthwise "
+                             "(THE STREAK)",
+     dict(_TOWER_REST, floor=m_lanes, wall=T.m_streak)),
+]
+
+
+def tower_town():
+    """recount(TOWER_TS), the emblems' tiles first laid as plain floor (now and vanilla), so the floor runs over them"""
+    town, left, why = recount(TOWER_TS)
+    town.van = [list(p) for p in town.van]
+    for t, f in TOWER_EMBLEM.items():
+        town.now[t] = list(town.now[f])
+        town.van[t] = list(town.van[f])
+    return town, left, why
+
+
+def tower_draw(option):
+    town, left, why = tower_town()
+    st = [o[3] for o in TOWER_OPTIONS if o[0] == option][0]
+    new, what = redraw(town, st)
+    disk = [list(p) for p in town.disk]
+    return town, left, why, {t: new[t] for t in range(len(new)) if new[t] != disk[t]}
+
+
+def main_tower():
+    if "--write" in ARGS:
+        if "--approved" not in ARGS or not APPROVED_TOWER:
+            print("  --tower --write refused: --write needs --approved, and APPROVED_TOWER names no option the user "
+                  "has picked. Nothing written.")
+            return 0
+        town, _, _, mine = tower_draw(APPROVED_TOWER)
+        out = engine_tiles(town, mine)
+        if out == town.disk:
+            print("  %s: already drawn, nothing to write" % TOWER_TS)
+        else:
+            save_tiles(town, out, os.path.join(town.dir, "tiles.png"))
+            print("  wrote %s (option %s): %d tiles" % (TOWER_TS, APPROVED_TOWER, len(mine)))
+        return 0
+    i = ARGS.index("--tower")
+    d = ARGS[i + 1] if i + 1 < len(ARGS) and not ARGS[i + 1].startswith("--") else None
+    news, rep = [], {}
+    for o, title, line, _ in TOWER_OPTIONS:
+        town, left, why, mine = tower_draw(o)
+        tl = [list(p) for p in town.disk]
+        for t, p in mine.items():
+            tl[t] = list(p)
+        news.append((o, tl))
+        rep[o] = dict(title=title, line=line, tiles=len(mine))
+    pret = sorted(t for t in left if t not in why)
+    print("  TRAINER TOWER (%s): %d tiles a reachable map draws are still pret's; excluded %d (%s); targets %d" % (
+        TOWER_TS, len(left), len(why), ", ".join("%s %d" % kv for kv in collections.Counter(why.values()).items()),
+        len(pret)))
+    for o, title, line, _ in TOWER_OPTIONS:
+        print("      %s %-26s %3d tiles redrawn  %s" % (o, title, rep[o]["tiles"], line[:90]))
+    if d:
+        os.makedirs(os.path.join(d, "sheets"), exist_ok=True)
+        town = T.Town(TOWER_TS)
+        for o, tl in news:
+            moved = [t for t in range(len(tl)) if any((a == 0) != (b == 0) for a, b in zip(tl[t], town.disk[t]))]
+            if moved:
+                raise SystemExit("  !! option %s: footprints moved at %s" % (o, moved[:12]))
+            save_tiles(town, tl, os.path.join(d, "tiles_%s.png" % o))
+        p, n = tile_sheet(town, news, os.path.join(d, "sheets", "t438_tower_tiles.png"),
+                          "T-438 TRAINER TOWER's interior: every changed tile at 4x -- DRAFT")
+        print("        wrote %s" % p)
+        json.dump(dict(ticket="T-438 (TRAINER TOWER's interior)", status="DRAFT -- nothing approved "
+                       "(APPROVED_TOWER is None)", left=len(left), excluded={str(t): w for t, w in why.items()},
+                       targets=len(pret), options=rep, emblem_floor=TOWER_EMBLEM),
+                  open(os.path.join(d, "draft.json"), "w"), indent=1)
+    return 0
+
+
 def main():
+    if "--tower" in ARGS:
+        return main_tower()
     if "--write" in ARGS:
         if "--approved" not in ARGS or not APPROVED:
             print("  --write refused: --write needs --approved, and APPROVED names no town the user has picked. "

@@ -1,0 +1,43 @@
+{
+ "ticket": "T-438 (TRAINER TOWER's interior)",
+ "status": "DRAFT -- nothing approved (APPROVED_TOWER is None)",
+ "left": 306,
+ "excluded": {
+  "7": "door (gbadoors.py)",
+  "8": "door (gbadoors.py)",
+  "23": "door (gbadoors.py)",
+  "24": "door (gbadoors.py)",
+  "58": "door (gbadoors.py)",
+  "59": "door (gbadoors.py)",
+  "74": "door (gbadoors.py)",
+  "75": "door (gbadoors.py)"
+ },
+ "targets": 298,
+ "options": {
+  "A": {
+   "title": "PROGRESS (DRAFT)",
+   "line": "the floors as the lit segments of a progress bar; the walls a band with a lit bar along it -- the user's words for the outside, carried in",
+   "tiles": 106
+  },
+  "B": {
+   "title": "THE LEADERBOARD (DRAFT)",
+   "line": "the floors ruled as a table of times; the walls raised panels like a scoreboard's slats",
+   "tiles": 104
+  },
+  "C": {
+   "title": "THE RUN (DRAFT)",
+   "line": "the floors as running lanes with a dashed line down each; the walls smeared lengthwise (THE STREAK)",
+   "tiles": 106
+  }
+ },
+ "emblem_floor": {
+  "148": 2,
+  "149": 1,
+  "150": 2,
+  "151": 1,
+  "164": 18,
+  "165": 17,
+  "166": 18,
+  "167": 17
+ }
+}
