@@ -91,3 +91,15 @@ C-422 (DRAFT), on a scratch commons with two scratch homes and synthetic saves: 
 C-419 DRAFT: SONG for CRY in the companion -- the INDEX's SONG beside LISTEN and ITS SONG on the daemon's page, every part on its staff in its type's key, notes in their colours, unlearned notes static (a scratch companion on a synthetic save)
 
 ![19Nov2026 - C419 - the INDEX sings and ITS SONG on staves - 15](19Nov2026%20-%20C419%20-%20the%20INDEX%20sings%20and%20ITS%20SONG%20on%20staves%20-%2015.png)
+
+### 19Nov2026 - T597 - colour by song - 16
+
+v11.408.1, T-597 colour by song (DRAFT): ROVERCUB on the SUMMARY with its song barely begun (grey), half, and whole (green); and the draft sheet of the three approaches, A built
+
+![19Nov2026 - T597 - colour by song - 16](19Nov2026%20-%20T597%20-%20colour%20by%20song%20-%2016.png)
+
+### 19Nov2026 - T597 - colour by song - 17
+
+v11.408.1, T-597 colour by song (DRAFT): ROVERCUB on the SUMMARY with its song barely begun (grey), half, and whole (green); and the draft sheet of the three approaches, A built
+
+![19Nov2026 - T597 - colour by song - 17](19Nov2026%20-%20T597%20-%20colour%20by%20song%20-%2017.png)
