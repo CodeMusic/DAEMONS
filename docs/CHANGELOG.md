@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.408 — 2026-11-19
+
+- Recorded from release v11.407.1 (46088e05, engine b469aa716), which sealed v11.405.x:
+  - **T-596, the wish to sing** (DRAFT): the follower hums with coloured notes from its mouth, and asks to sing after a won battle. In 9.36.
+- Section 10: one Settled entry.
+
 ## v11.407 — 2026-11-19
 
 - **9.36 THE SONG, the rest of the design** (T-594, C-417, C-418; the user, 2026-11-18, in their words and by multiple choice):

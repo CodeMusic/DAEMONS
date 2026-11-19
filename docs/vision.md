@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.407**
+**A total conversion — the living design bible, v11.408**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9351,7 +9351,7 @@ about itself* (rule 6).
 
 ***Decided 2026-11-18, to build*** (*the user, in their words and by multiple choice; each its own ticket*):
 
-- ***The wish to sing*** (*T-596*): **as it nears evolution the follower hums a bar of its song as you walk, coloured notes rising from its mouth, and asks after a battle -- "NAME wants to sing." -- more often the nearer it is.** *The user: seeing the notes as it says it wants to sing makes "an intuitive memory pointer".*
+- ***The wish to sing*** (*T-596*): **as it nears evolution the follower hums a bar of its song as you walk, coloured notes rising from its mouth, and asks after a battle -- "NAME wants to sing." -- more often the nearer it is.** *The user: seeing the notes as it says it wants to sing makes "an intuitive memory pointer".* ***Built, released in v11.407.1*** (*engine b469aa716, DRAFT*): **the follower hums a bar of its song as it knows it, under the music, each note an 8x8 sprite rising from its mouth in its pitch's colour; notes not yet learned flicker as the sound does; after a won battle it may say it wants to sing and sings on YES.** *HALFTONE's grey skips the notes' colour. The word SING stays the song's: the move vanilla called Sing keeps its rename, LULLABY.*
 - ***Colour is the song*** (*T-597*): **a sprite's colours come in with the notes it learns** -- *each colour tied to the note whose colour is nearest it; the colours an earlier form had begin the next form already in colour, and the new ones wait for the new part.* **This reverses 8.6a's "saturation is friendship"** (*logged below*); *Al's fading party (T-559) and the Corpus at 0 want the user's word before it is built.* **And a type's key colours lean into its daemons' sprites** -- *"the colours of its representative musical key should be leaned into as the predominant colours ... but not limited to"* -- *redraws allowed.*
 - ***Play a daemon's song and it comes*** (*T-598*): **in PLAY's freestyle, played in its type's key, a daemon's song is recognised; it appears, says its QUOTATION and goes on its way** -- *never caught, never a battle* -- *and the INDEX keeps the quotation.*
 - ***THE QUOTATIONS*** (*T-599*): **a hidden quotation for every daemon, its style its type's** -- *SIGNAL's motivating, LATENT's deep and philosophical (the user's two examples)* -- *each written from its type, name, INDEX entry and where it is native (mainland or islands, a grove, THE NEXUS).*
@@ -9362,6 +9362,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **Released in v11.407.1 (46088e05, 2026-11-19, sealing v11.405.x)** — the wish to sing (T-596, DRAFT): near its evolution the follower hums its song as known, coloured notes rising from its mouth, and after a won battle asks to sing. 9.36.
 - **Released in v11.405.1 (54c4e9fc, 2026-11-19, sealing v11.404.x)** — songs in the engine (T-595, DRAFT): SONG on the INDEX, SING in the party menu, and evolution sung whole before the change; unlearned notes flicker toward their pitch over a hiss; the battle cry is unchanged. 9.36.
 - **Released in v11.404.1 (5aa44be7, 2026-11-19, sealing v11.403.x)** — TRAINER TOWER's interior in A PROGRESS (T-438, the user's pick AF, DRAFT art), its face from the roof kept vanilla for T-601; and THE SONG drafted (T-594): one part a form, each in its type's key, a note not learned is static closing on it, SONG for CRY; the engine's half is T-595. 9.29, 9.36.
 - **Released in v11.403.1 (73d569de, 2026-11-18, sealing v11.402.x)** — T-438's last part, DRAFT art, the user's picks: UMBRAL ASCENT's own tiles as A PENUMBRA, THE DOTS' open door as A SLAB SUNK, the islands' piling cap and the harbours' railing corner, eight slivers retinted and seven left on purpose (six window heads, the harbour's flat black). 9.29.
