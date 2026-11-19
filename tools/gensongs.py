@@ -6,7 +6,8 @@
                                                   # three daemons of one type (default audio/drafts/t594_songs)
     python3 tools/gensongs.py --sheets [DIR]      # SONGS.txt and a picture of each line's song in its colours
     python3 tools/gensongs.py --json              # the companion's songs.json on stdout (companion_export.py writes it)
-    python3 tools/gensongs.py --write             # T-595: the engine's table, engineGba src/data/daemon_songs.h
+    python3 tools/gensongs.py --write             # T-595: the engine's table, engineGba src/data/daemon_songs.h,
+                                                  # and T-598's openings PLAY listens for, src/data/daemon_summons.h
     python3 tools/gensongs.py --engine-preview DIR NAME...   # T-595: a line's song as src/daemon_song.c plays it,
                                                   # each form at 0%, 50% and 100% of its own part, as .wav
 
@@ -671,16 +672,126 @@ def engine_header(sp=None):
     return "\n".join(out)
 
 
-def engine_write(write):
-    """Report (or write) the engine's table; a report exits 1 when the engine's copy is not what a write would make."""
-    want = engine_header()
-    have = open(ENGINE_H).read() if os.path.exists(ENGINE_H) else None
-    rows = engine_rows()
-    size = sum(len(r["notes"]) * 3 + len(r["bass"]) * 2 for r in rows) + (max(r["id"] for r in rows) + 1) * 16
-    rel = os.path.relpath(ENGINE_H, ROOT)
+# ---------------------------------------------------------------------------------------------------------------------
+# T-598: PLAY a daemon's song and it comes -- the openings PLAY's freestyle listens for
+# ---------------------------------------------------------------------------------------------------------------------
+# The user (2026-11-18): "if you select to play your musical instrument in freestyle mode, if u select the right key and
+# play a daemons song it should be recognized ... it would summon that daemon -- but it shouldnt be a way to catch it".
+# A daemon is recognised by its OPENING: the first notes of its own part (its cry: the notes learned first), as pitch
+# classes, octave-blind, on the KEY WHEEL of its key -- a minor song on its relative major's wheel, the same notes (the
+# user, 2026-11-19, by multiple choice). Freestyle's seven buttons play only the wheel's major scale, so a note outside
+# the key (CORRUPT's motif bends one note out of F minor) cannot be played: it is a WILDCARD, any button standing for it.
+# Where one opening could be heard inside another's (the same notes, or a shorter one inside a longer), the opening
+# contained is lengthened with its own next notes until it is heard nowhere else; an opening that cannot be made unique
+# within PLAY's ring of sixteen notes is left out (none today). DRAFT, every note.
+SUMMON_H = os.path.join(ROOT, "engineGba", "src", "data", "daemon_summons.h")
+SUMMON_MAX = 16                                            # play.c's RING_MAX: the notes PLAY listens back over
+SUMMON_ANY = 0xFF                                          # a note the wheel cannot play: any button stands for it
+
+
+def wheel_of(tonic, minor):
+    """The KEY WHEEL a song is played on: its own tonic, or a minor song's relative major's."""
+    return (tonic + 3) % 12 if minor else tonic
+
+
+def _heard_in(a, b):
+    """Opening `a` could be heard while `b` is played: at some offset every note agrees, a wildcard agreeing with all."""
+    for off in range(len(b) - len(a) + 1):
+        if all(x == SUMMON_ANY or y == SUMMON_ANY or x == y for x, y in zip(a, b[off:off + len(a)])):
+            return True
+    return False
+
+
+def summon_rows(rows=None):
+    """Each daemon's opening as PLAY hears it: pitch classes from its own tonic (SUMMON_ANY off the wheel), its length
+    after any lengthening, and what had to be lengthened (collisions) or could not be played (accidentals)."""
+    rows = rows or engine_rows()
+    out, accidentals = {}, []
+    for r in rows:
+        scale = MINOR if r["minor"] else MAJOR
+        rel = [(m - r["tonic"]) % 12 for m, _, _ in r["notes"][:SUMMON_MAX]]
+        rel = [x if x in scale else SUMMON_ANY for x in rel]
+        if SUMMON_ANY in rel[:r["open"]]:
+            accidentals.append(r["name"])
+        out[r["id"]] = {"id": r["id"], "name": r["name"], "wheel": wheel_of(r["tonic"], r["minor"]),
+                        "tonic": r["tonic"], "full": rel, "len": min(r["open"], len(rel))}
+
+    def absolute(s):
+        return [x if x == SUMMON_ANY else (x + s["tonic"]) % 12 for x in s["full"][:s["len"]]]
+
+    dropped, opening = [], {k: s["len"] for k, s in out.items()}
+    while True:                                            # a daemon left out, and the rest are lengthened again
+        collisions, drop = [], None
+        for k, s in out.items():
+            s["len"] = opening[k]
+        by_wheel = {}
+        for s in out.values():
+            if s["id"] not in dropped:
+                by_wheel.setdefault(s["wheel"], []).append(s)
+        changed = True
+        while changed and drop is None:
+            changed = False
+            for group in by_wheel.values():
+                for a in group:
+                    for b in group:
+                        if a is b or drop is not None or not _heard_in(absolute(a), absolute(b)):
+                            continue
+                        collisions.append((a["name"], b["name"]))
+                        if a["len"] < len(a["full"]):
+                            a["len"] += 1
+                        else:
+                            drop = a["id"]
+                        changed = True
+        if drop is None:
+            break
+        dropped.append(drop)
+    rows_out = [s for k, s in sorted(out.items()) if k not in dropped]
+    return rows_out, accidentals, sorted(set(collisions)), [out[k]["name"] for k in dropped]
+
+
+def summon_header(rows=None):
+    srows, accidentals, collisions, dropped = summon_rows(rows)
+    out = ["// T-598: the openings PLAY's freestyle listens for -- play a daemon's opening on its key's wheel and it comes.",
+           "// GENERATED by DAEMONS tools/gensongs.py --write from T-594's songs -- never edit by hand. DRAFT, every note.",
+           "// src/daemon_song.c (DaemonSong_Listen) matches the end of what was played against these, octave-blind.",
+           "// %d openings; %d with a note the wheel cannot play (SUMMON_ANY: any button stands for it); %d lengthened"
+           % (len(srows), len(accidentals), len({a for a, _ in collisions})),
+           "// past another's; %d left out." % len(dropped),
+           "",
+           "#define SUMMON_ANY %d" % SUMMON_ANY,
+           "",
+           "// an opening's notes: pitch classes from its own part's tonic (sSongParts), SUMMON_ANY off the wheel",
+           "static const u8 sSummonNotes[] = {"]
+    pos = 0
+    for s in srows:
+        s["at"] = pos
+        out.append("    %s  // %s" % (" ".join("%d," % x for x in s["full"][:s["len"]]), s["name"]))
+        pos += s["len"]
+    out += ["};", "",
+            "// a daemon that comes to its opening: its species, where its notes start, how many, and its key's wheel",
+            "static const struct DaemonSummon sSummons[] = {"]
+    for s in srows:
+        out.append("    {%d, %d, %d, %d},   // %s" % (s["id"], s["at"], s["len"], s["wheel"], s["name"]))
+    out += ["};", ""]
+    return "\n".join(out)
+
+
+def summon_report():
+    srows, accidentals, collisions, dropped = summon_rows()
+    lengths = sorted({s["len"] for s in srows})
+    print("gensongs: T-598 summons: %d openings, %d to %d notes; %d with a wildcard (%s); %d lengthened past another's;"
+          " %d left out%s" % (len(srows), lengths[0], lengths[-1], len(accidentals), ", ".join(accidentals[:3]) + ", ...",
+                              len({a for a, _ in collisions}), len(dropped),
+                              (" (" + ", ".join(dropped) + ")") if dropped else ""))
+
+
+def _write_one(path, want, what, write):
+    """Report (or write) one generated header; a report exits 1 when the engine's copy is not what a write would make."""
+    have = open(path).read() if os.path.exists(path) else None
+    rel = os.path.relpath(path, ROOT)
     if not write:
         state = "current" if have == want else ("missing" if have is None else "DRIFTS from a write")
-        print("gensongs: the engine's table (%s, %d parts, about %.1f KB of ROM) is %s" % (rel, len(rows), size / 1024, state))
+        print("gensongs: %s (%s) is %s" % (what, rel, state))
         return 0 if (have == want or not APPROVED) else 1
     if not APPROVED:
         print("gensongs: APPROVED is off -- nothing is written")
@@ -688,12 +799,22 @@ def engine_write(write):
     if have == want:
         print("gensongs: %s already current" % rel)
         return 0
-    tmp = ENGINE_H + ".tmp"
+    tmp = path + ".tmp"
     with open(tmp, "w") as f:
         f.write(want)
-    os.replace(tmp, ENGINE_H)
-    print("gensongs: wrote %s (%d parts, about %.1f KB of ROM)" % (rel, len(rows), size / 1024))
+    os.replace(tmp, path)
+    print("gensongs: wrote %s (%s)" % (rel, what))
     return 0
+
+
+def engine_write(write):
+    """Report (or write) the engine's tables; a report exits 1 when an engine copy is not what a write would make."""
+    rows = engine_rows()
+    size = sum(len(r["notes"]) * 3 + len(r["bass"]) * 2 for r in rows) + (max(r["id"] for r in rows) + 1) * 16
+    status = _write_one(ENGINE_H, engine_header(), "the engine's table, %d parts, about %.1f KB of ROM"
+                        % (len(rows), size / 1024), write)
+    status |= _write_one(SUMMON_H, summon_header(rows), "T-598's openings", write)
+    return status
 
 
 # The engine's player (src/daemon_song.c), modelled: the same frames, the same static, the same numbers.
@@ -836,6 +957,7 @@ def main():
         sheets(after("--sheets", OUT_DIR))
     else:
         report()
+        summon_report()
         sys.exit(engine_write(False))
 
 
