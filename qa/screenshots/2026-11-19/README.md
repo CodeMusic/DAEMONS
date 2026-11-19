@@ -49,3 +49,21 @@ T-594 DRAFT: ROVERBYTE's whole song -- ROVERCUB, ROVERSEER and ROVERBYTE's parts
 T-594 DRAFT: ROVERBYTE's whole song -- ROVERCUB, ROVERSEER and ROVERBYTE's parts in F major, each note in its pitch's colour; and ROVERCUB's part half learned.
 
 ![19Nov2026 - T594 - a lines song in its colours - 8](19Nov2026%20-%20T594%20-%20a%20lines%20song%20in%20its%20colours%20-%208.png)
+
+### 19Nov2026 - T596 - the follower hums - 9
+
+v11.407.1, T-596 (DRAFT): the follower hums a bar of its song with coloured notes rising from its mouth, and asks to sing after a won battle
+
+![19Nov2026 - T596 - the follower hums - 9](19Nov2026%20-%20T596%20-%20the%20follower%20hums%20-%209.png)
+
+### 19Nov2026 - T596 - the follower hums - 10
+
+v11.407.1, T-596 (DRAFT): the follower hums a bar of its song with coloured notes rising from its mouth, and asks to sing after a won battle
+
+![19Nov2026 - T596 - the follower hums - 10](19Nov2026%20-%20T596%20-%20the%20follower%20hums%20-%2010.png)
+
+### 19Nov2026 - T596 - the follower hums - 11
+
+v11.407.1, T-596 (DRAFT): the follower hums a bar of its song with coloured notes rising from its mouth, and asks to sing after a won battle
+
+![19Nov2026 - T596 - the follower hums - 11](19Nov2026%20-%20T596%20-%20the%20follower%20hums%20-%2011.png)
