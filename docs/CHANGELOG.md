@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.404 — 2026-11-18
+
+- Recorded from release v11.403.1 (73d569de, engine ee68884b5), which sealed v11.402.x:
+  - **T-438's last part** (DRAFT art): UMBRAL ASCENT's own tiles (A PENUMBRA), THE DOTS' open door (A SLAB SUNK), the islands' piling cap and the harbours' railing corner, eight of fifteen slivers retinted, seven left on purpose. In 9.29.
+- Section 10: one Settled entry.
+
 ## v11.403 — 2026-11-18
 
 - Recorded from release v11.402.1 (c76a67fa, engine ce02dbf00), which sealed v11.401.x:
