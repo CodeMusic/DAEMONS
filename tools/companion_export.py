@@ -33,6 +33,10 @@ Writes three files into the companion repo (symlinked here as companion/, setup.
                 the PLANNER (T-453): the story's steps and where each happens, how the maps join, what is wild and
                 who fights on each, and the level curve -- every record with the step it is reachable after
 
+  songs.json    T-594 / C-418: every daemon's SONG, from tools/gensongs.py -- each form's part (its key, notes with
+                the share of the part each is learned at, bass, tempo, the levels it is learned between) and each
+                species' song as its line's forms (DRAFT)
+
 (and marks, regions, groves, guide, subtle, holidays, play, notebook, routines, streaks, moves, art/ -- see main())
 
 Everything is read from the engine's sources and the art folder; nothing of Nintendo's is copied -- our names, our
@@ -2396,6 +2400,8 @@ def main():
     for u in files["marks.json"]["understandings"]:
         u.pop("_flag_name")     # used above to join the tables; its name says where, and the companion is public
     files["patches.json"] = patches_table()                                     # T-453
+    import gensongs                                                             # T-594: the songs, one part a line
+    files["songs.json"] = gensongs.songs_json(files["species.json"])
     files.update(planner_tables(files["species.json"]))                         # T-453: the planner
     layout = save_layout()
     if layout:

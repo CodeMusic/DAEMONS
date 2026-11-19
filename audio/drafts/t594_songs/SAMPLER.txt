@@ -1,0 +1,13 @@
+T-594 THE SONG, DRAFT: the sampler, in order
+
+ROVERBYTE's whole song (ROVERCUB -> ROVERSEER -> ROVERBYTE)   36.8 s
+MONOLITH's whole song (HEAP -> STACK -> MONOLITH)             39.4 s
+ROVERCUB, 0% of its part learned                              10.6 s
+ROVERCUB, 25% of its part learned                             10.6 s
+ROVERCUB, 50% of its part learned                             10.6 s
+ROVERCUB, 75% of its part learned                             10.6 s
+ROVERCUB, 90% of its part learned                             10.6 s
+ROVERCUB, 100% of its part learned                            10.6 s
+FAULT (FLOW, first form)                                       9.5 s
+LOOP (FLOW, first form)                                       11.7 s
+DRIFTNET (FLOW, first form)                                   11.7 s

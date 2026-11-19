@@ -1,0 +1,422 @@
+T-594 THE SONG, DRAFT -- every form's part (tools/gensongs.py)
+
+THE KEYS
+  CONTENT   C major           67 daemons  every white key and nothing added: the undifferentiated
+  CONTEXT   A minor           25 daemons  CONTENT's seven notes heard from another centre: its relative minor
+  VECTOR    D-flat major       5 daemons  red into orange: sanguine, the arrow
+  ENTROPY   E-flat minor      23 daemons  orange into yellow: choleric, the flicker
+  LATENT    B-flat minor       8 daemons  indigo into violet: melancholic, something waking
+  FROZEN    G major           11 daemons  blue: phlegmatic, still and clear
+  FLOW      A-flat major      67 daemons  blue into indigo: deep, moving, running down
+  LOGIC     G minor           14 daemons  steel blue: a proof, the key of the fugue
+  SWARM     E major           34 daemons  yellow, olive: many small bright things
+  CORRUPT   F minor           19 daemons  green gone off: mould
+  STRATUM   D major           17 daemons  orange-brown, the ground: the key of the open strings
+  LEGACY    D minor           21 daemons  the old modes: slate, the cairn
+  GROWTH    F major           33 daemons  green: pastoral
+  SIGNAL    F-sharp major     22 daemons  green into blue, a carrier: every sharp lit
+  EMERGENT  F-sharp minor     10 daemons  jade, deeper than SIGNAL's current
+  HARDENED  E-flat major      12 daemons  tempered straw: the brass key
+  OPAQUE    B minor           10 daemons  violet, the last colour before the light goes off
+  ORACLE    B major            0 daemons  violet into the carry: the one with no record
+  spare: A major, B-flat major, C minor, C-sharp minor, E minor, G-sharp minor
+
+THE PARTS (form, its key, levels, notes, seconds)
+  #001 ROVERCUB     F major          Lv   1-16  16 notes 10.0 s  song: ROVERCUB
+  #002 ROVERSEER    F major          Lv  16-32  16 notes 10.7 s  song: ROVERCUB + ROVERSEER
+  #003 ROVERBYTE    F major          Lv  32-48  23 notes 14.3 s  song: ROVERCUB + ROVERSEER + ROVERBYTE
+  #004 LABEL        C major          Lv   1-16  21 notes 11.1 s  song: LABEL
+  #005 RUBRIC       C major          Lv  16-36  16 notes  9.4 s  song: LABEL + RUBRIC
+  #006 CANON        C major          Lv  36-56  22 notes 12.6 s  song: LABEL + RUBRIC + CANON
+  #007 CLUSTER      D-flat major     Lv   1-16  15 notes  8.0 s  song: CLUSTER
+  #008 LOCUS        D-flat major     Lv  16-36  17 notes  8.5 s  song: CLUSTER + LOCUS
+  #009 MANIFOLD     D-flat major     Lv  36-56  23 notes 11.3 s  song: CLUSTER + LOCUS + MANIFOLD
+  #010 CRAWLER      E major          Lv   1-7   23 notes  9.1 s  song: CRAWLER
+  #011 PENDING      E major          Lv   7-10  16 notes  7.7 s  song: CRAWLER + PENDING
+  #012 INDEXER      E major          Lv  10-13  23 notes 10.3 s  song: CRAWLER + PENDING + INDEXER
+  #013 SCRAPER      E major          Lv   1-7   22 notes  9.1 s  song: SCRAPER
+  #014 BUFFER       E major          Lv   7-10  23 notes  9.7 s  song: SCRAPER + BUFFER
+  #015 INJECTOR     E major          Lv  10-13  23 notes 10.3 s  song: SCRAPER + BUFFER + INJECTOR
+  #016 PACKET       C major          Lv   1-18  23 notes 11.1 s  song: PACKET
+  #017 RELAY        C major          Lv  18-36  19 notes  9.4 s  song: PACKET + RELAY
+  #018 BROADCAST    C major          Lv  36-54  24 notes 12.6 s  song: PACKET + RELAY + BROADCAST
+  #019 NIBBLE       C major          Lv   1-20  23 notes 11.1 s  song: NIBBLE
+  #020 OVERFLOW     C major          Lv  20-39  21 notes 11.8 s  song: NIBBLE + OVERFLOW
+  #021 PING         C major          Lv   1-20  19 notes  8.9 s  song: PING
+  #022 FLOOD        C major          Lv  20-39  22 notes 11.8 s  song: PING + FLOOD
+  #023 WORM         F minor          Lv   1-22  22 notes 12.5 s  song: WORM
+  #024 OUTBREAK     F minor          Lv  22-43  24 notes 13.3 s  song: WORM + OUTBREAK
+  #025 SPIKE        F-sharp major    Lv  21-41  15 notes  8.5 s  song: STATIC + SPIKE
+  #026 SURGE        F-sharp major    Lv  41-61  16 notes  9.1 s  song: STATIC + SPIKE + SURGE
+  #027 SECTOR       D major          Lv   1-22  22 notes 14.3 s  song: SECTOR
+  #028 PARTITION    D major          Lv  22-43  24 notes 15.2 s  song: SECTOR + PARTITION
+  #029 FORK         F minor          Lv   1-16  19 notes 12.5 s  song: FORK
+  #030 THREAD       F minor          Lv  16-36  23 notes 13.3 s  song: FORK + THREAD
+  #031 SCHEDULER    F minor          Lv  36-56  20 notes 11.4 s  song: FORK + THREAD + SCHEDULER
+  #032 BRANCH       F minor          Lv   1-16  22 notes 12.5 s  song: BRANCH
+  #033 PREDICTOR    F minor          Lv  16-36  24 notes 13.3 s  song: BRANCH + PREDICTOR
+  #034 PIPELINE     F minor          Lv  36-56  23 notes 14.3 s  song: BRANCH + PREDICTOR + PIPELINE
+  #035 ANOMALY      C major          Lv  21-41  21 notes 11.8 s  song: RESIDUAL + ANOMALY
+  #036 OUTLIER      C major          Lv  41-61  21 notes 12.6 s  song: RESIDUAL + ANOMALY + OUTLIER
+  #037 FLICKER      E-flat minor     Lv   1-21  21 notes 10.0 s  song: FLICKER
+  #038 OVERRUN      E-flat minor     Lv  21-41  23 notes 10.6 s  song: FLICKER + OVERRUN
+  #039 SUSPEND      C major          Lv  21-41  22 notes 11.8 s  song: STANDBY + SUSPEND
+  #040 HIBERNATE    C major          Lv  41-61  23 notes 12.6 s  song: STANDBY + SUSPEND + HIBERNATE
+  #041 ECHO         F minor          Lv   1-22  22 notes 12.5 s  song: ECHO
+  #042 TRACER       F minor          Lv  22-42  20 notes 13.3 s  song: ECHO + TRACER
+  #043 SPRAWL       F major          Lv   1-21  15 notes 10.0 s  song: SPRAWL
+  #044 SKEW         F major          Lv  21-41  19 notes 10.7 s  song: SPRAWL + SKEW
+  #045 BADSEED      F major          Lv  41-61  22 notes 14.3 s  song: SPRAWL + SKEW + BADSEED
+  #046 PAYLOAD      E major          Lv   1-24  18 notes  7.3 s  song: PAYLOAD
+  #047 ROOTKIT      E major          Lv  24-47  19 notes  7.7 s  song: PAYLOAD + ROOTKIT
+  #048 RESIDENT     E major          Lv   1-31  24 notes 10.9 s  song: RESIDENT
+  #049 SPYWARE      E major          Lv  31-61  18 notes  7.7 s  song: RESIDENT + SPYWARE
+  #050 TAPPOINT     D major          Lv   1-26  24 notes 14.3 s  song: TAPPOINT
+  #051 WIRETAP      D major          Lv  26-51  23 notes 18.2 s  song: TAPPOINT + WIRETAP
+  #052 COOKIE       C major          Lv   1-28  22 notes 11.1 s  song: COOKIE
+  #053 TRACKER      C major          Lv  28-55  23 notes 11.8 s  song: COOKIE + TRACKER
+  #054 FAULT        A-flat major     Lv   1-33  15 notes  8.9 s  song: FAULT
+  #055 HANDLER      A-flat major     Lv  33-65  23 notes 11.8 s  song: FAULT + HANDLER
+  #056 PREEMPT      G minor          Lv   1-28  23 notes 11.1 s  song: PREEMPT
+  #057 LIVELOCK     G minor          Lv  28-55  24 notes 11.8 s  song: PREEMPT + LIVELOCK
+  #058 SENTRY       E-flat minor     Lv   1-21  22 notes 10.0 s  song: SENTRY
+  #059 GUARDIAN     E-flat minor     Lv  21-41  19 notes  8.5 s  song: SENTRY + GUARDIAN
+  #060 LOOP         A-flat major     Lv   1-25  22 notes 11.1 s  song: LOOP
+  #061 SPINLOCK     A-flat major     Lv  25-45  24 notes 11.8 s  song: LOOP + SPINLOCK
+  #062 MUTEX        A-flat major     Lv  45-65  22 notes 12.6 s  song: LOOP + SPINLOCK + MUTEX
+  #063 HUNCH        A minor          Lv   1-16  21 notes 11.1 s  song: HUNCH
+  #064 INFERENCE    A minor          Lv  16-36  20 notes 11.8 s  song: HUNCH + INFERENCE
+  #065 CONJECTURE   A minor          Lv  36-56  24 notes 12.6 s  song: HUNCH + INFERENCE + CONJECTURE
+  #066 PROOF        G minor          Lv   1-28  22 notes 11.1 s  song: PROOF
+  #067 THEOREM      G minor          Lv  28-48  23 notes 11.8 s  song: PROOF + THEOREM
+  #068 LEMMA MIND   G minor          Lv  48-68  20 notes 12.6 s  song: PROOF + THEOREM + LEMMA MIND
+  #069 SNARE        F major          Lv   1-21  22 notes 12.5 s  song: SNARE
+  #070 HONEYPOT     F major          Lv  21-41  20 notes 13.3 s  song: SNARE + HONEYPOT
+  #071 TARPIT       F major          Lv  41-61  23 notes 14.3 s  song: SNARE + HONEYPOT + TARPIT
+  #072 DRIFTNET     A-flat major     Lv   1-30  24 notes 11.1 s  song: DRIFTNET
+  #073 DRAGNET      A-flat major     Lv  30-59  23 notes 11.8 s  song: DRIFTNET + DRAGNET
+  #074 HEAP         D minor          Lv   1-25  16 notes 10.0 s  song: HEAP
+  #075 STACK        D minor          Lv  25-45  21 notes 13.3 s  song: HEAP + STACK
+  #076 MONOLITH     D minor          Lv  45-65  23 notes 14.3 s  song: HEAP + STACK + MONOLITH
+  #077 HOTPATH      E-flat minor     Lv   1-40  21 notes 10.0 s  song: HOTPATH
+  #078 OVERDRIVE    E-flat minor     Lv  40-79  22 notes 10.6 s  song: HOTPATH + OVERDRIVE
+  #079 LATENCY      A-flat major     Lv   1-37  23 notes 11.1 s  song: LATENCY
+  #080 SHELL        A-flat major     Lv  37-73  18 notes  9.4 s  song: LATENCY + SHELL
+  #081 SENTINEL     F-sharp major    Lv   1-30  20 notes  8.0 s  song: SENTINEL
+  #082 QUORUM       F-sharp major    Lv  30-59  23 notes 10.6 s  song: SENTINEL + QUORUM
+  #083 EDGECASE     C major          Lv   1-40  21 notes 11.1 s  song: EDGECASE
+  #084 DUALCORE     C major          Lv   1-31  19 notes 11.1 s  song: DUALCORE
+  #085 TRIPLECORE   C major          Lv  31-61  24 notes 11.8 s  song: DUALCORE + TRIPLECORE
+  #086 HEATSINK     A-flat major     Lv   1-34  23 notes 11.1 s  song: HEATSINK
+  #087 ARCHIVER     A-flat major     Lv  34-67  24 notes 11.8 s  song: HEATSINK + ARCHIVER
+  #088 DEADLETTER   F minor          Lv   1-38  24 notes 12.5 s  song: DEADLETTER
+  #089 LANDFILL     F minor          Lv  38-75  23 notes 13.3 s  song: DEADLETTER + LANDFILL
+  #090 CAPSULE      A-flat major     Lv   1-21  22 notes 11.1 s  song: CAPSULE
+  #091 COLDVAULT    A-flat major     Lv  21-41  20 notes  9.4 s  song: CAPSULE + COLDVAULT
+  #092 DANGLING     B-flat minor     Lv   1-25  24 notes 14.3 s  song: DANGLING
+  #093 RESPAWN      B-flat minor     Lv  25-45  23 notes 15.2 s  song: DANGLING + RESPAWN
+  #094 HAUNTPROC    B-flat minor     Lv  45-65  24 notes 16.2 s  song: DANGLING + RESPAWN + HAUNTPROC
+  #095 BACKBONE     D minor          Lv   1-21  24 notes 12.5 s  song: BACKBONE
+  #096 LULL         A minor          Lv   1-26  19 notes  8.9 s  song: LULL
+  #097 BUSYWAIT     A minor          Lv  26-51  23 notes 11.8 s  song: LULL + BUSYWAIT
+  #098 ACQUIRE      A-flat major     Lv   1-28  23 notes 11.1 s  song: ACQUIRE
+  #099 LOCKUP       A-flat major     Lv  28-55  22 notes 11.8 s  song: ACQUIRE + LOCKUP
+  #100 FUSE         F-sharp major    Lv   1-30  21 notes 10.0 s  song: FUSE
+  #101 BREAKER      F-sharp major    Lv  30-59  23 notes 10.6 s  song: FUSE + BREAKER
+  #102 BOOTSTRAP    F major          Lv   1-21  24 notes 15.0 s  song: BOOTSTRAP
+  #103 ENSEMBLE     F major          Lv  21-41  23 notes 13.3 s  song: BOOTSTRAP + ENSEMBLE
+  #104 ARTEFACT     D major          Lv   1-28  24 notes 17.1 s  song: ARTEFACT
+  #105 COREFILE     D major          Lv  28-55  21 notes 15.2 s  song: ARTEFACT + COREFILE
+  #106 AXIOMKICK    G minor          Lv  20-39  22 notes 11.8 s  song: PREMISE + AXIOMKICK
+  #107 REBUTTAL     G minor          Lv  20-39  24 notes 11.8 s  song: PREMISE + REBUTTAL
+  #108 SLURP        C major          Lv   1-40  22 notes 11.1 s  song: SLURP
+  #109 EXHAUST      F minor          Lv   1-35  22 notes 12.5 s  song: EXHAUST
+  #110 SMOGSTACK    F minor          Lv  35-69  23 notes 13.3 s  song: EXHAUST + SMOGSTACK
+  #111 HARDCODE     D major          Lv   1-42  21 notes 14.3 s  song: HARDCODE
+  #112 MIGRATE      D major          Lv  42-83  22 notes 15.2 s  song: HARDCODE + MIGRATE
+  #113 UPTIME       C major          Lv   1-21  21 notes 11.1 s  song: UPTIME
+  #114 SPAGHETTI    F major          Lv   1-40  24 notes 12.5 s  song: SPAGHETTI
+  #115 KEEPER       C major          Lv   1-40  23 notes 11.1 s  song: KEEPER
+  #116 BOTTLENECK   A-flat major     Lv   1-32  25 notes 11.1 s  song: BOTTLENECK
+  #117 BACKPRESS    A-flat major     Lv  32-52  23 notes 11.8 s  song: BOTTLENECK + BACKPRESS
+  #118 SPAWN        A-flat major     Lv   1-33  21 notes 11.1 s  song: SPAWN
+  #119 UPSTREAM     A-flat major     Lv  33-65  24 notes 11.8 s  song: SPAWN + UPSTREAM
+  #120 BEACON       A-flat major     Lv   1-21  23 notes 11.1 s  song: BEACON
+  #121 CRON         A-flat major     Lv  21-41  16 notes  9.4 s  song: BEACON + CRON
+  #122 MIME         A minor          Lv   1-40  22 notes 11.1 s  song: MIME
+  #123 REAPER       E major          Lv   1-21  23 notes 10.9 s  song: REAPER
+  #124 COLDREAD     G major          Lv  30-59  24 notes 10.6 s  song: TELL + COLDREAD
+  #125 DYNAMO       F-sharp major    Lv  30-59  23 notes 10.6 s  song: CRANK + DYNAMO
+  #126 FORGE        E-flat minor     Lv  30-59  22 notes 10.6 s  song: CINDER + FORGE
+  #127 BLOCKING     E major          Lv   1-40  24 notes  9.1 s  song: BLOCKING
+  #128 STAMPEDE     C major          Lv   1-40  22 notes 11.1 s  song: STAMPEDE
+  #129 STUB         A-flat major     Lv   1-20  14 notes  6.7 s  song: STUB
+  #130 ESCALATE     A-flat major     Lv  20-39  24 notes 14.1 s  song: STUB + ESCALATE
+  #131 FERRY        A-flat major     Lv   1-40  21 notes 11.1 s  song: FERRY
+  #132 MOCK         C major          Lv   1-40  20 notes  8.9 s  song: MOCK
+  #133 MUSAI        C major          Lv   1-21  18 notes  8.9 s  song: MUSAI
+  #134 CAREMUSAI    A minor          Lv  21-41  20 notes 11.8 s  song: MUSAI + CAREMUSAI
+  #135 SEEKMUSAI    D-flat major     Lv  21-41  22 notes 10.6 s  song: MUSAI + SEEKMUSAI
+  #136 CODEMUSAI    G minor          Lv  21-41  24 notes 11.8 s  song: MUSAI + CODEMUSAI
+  #137 SUBSTRATE    C major          Lv   1-21  21 notes 11.1 s  song: SUBSTRATE
+  #138 MAGTAPE      D minor          Lv   1-40  21 notes 12.5 s  song: MAGTAPE
+  #139 MAINFRAME    D minor          Lv  40-79  21 notes 13.3 s  song: MAGTAPE + MAINFRAME
+  #140 DRUM         D minor          Lv   1-40  17 notes 10.0 s  song: DRUM
+  #141 PUNCHCARD    D minor          Lv  40-79  16 notes 10.7 s  song: DRUM + PUNCHCARD
+  #142 FOSSILNET    D minor          Lv   1-40  24 notes 12.5 s  song: FOSSILNET
+  #143 DEADLOCK     C major          Lv   1-40  24 notes 11.1 s  song: DEADLOCK
+  #144 ORPHEUS      G major          Lv   1-40  20 notes 10.0 s  song: ORPHEUS
+  #145 ASCLEPIUS    F-sharp major    Lv   1-40  17 notes  8.0 s  song: ASCLEPIUS
+  #146 PROMETHEUS   E-flat minor     Lv   1-40  24 notes 12.0 s  song: PROMETHEUS
+  #147 CANARY       F-sharp minor    Lv   1-30  19 notes 12.5 s  song: CANARY
+  #148 EMERGENCE    F-sharp minor    Lv  30-55  24 notes 13.3 s  song: CANARY + EMERGENCE
+  #149 SINGULAR     F-sharp minor    Lv  55-80  24 notes 17.1 s  song: CANARY + EMERGENCE + SINGULAR
+  #150 STARR        A minor          Lv   1-40  17 notes  8.9 s  song: STARR
+  #151 ARTSAI       A minor          Lv   1-40  22 notes 11.1 s  song: ARTSAI
+  #152 PRIMER       F major          Lv   1-16  22 notes 12.5 s  song: PRIMER
+  #153 SYLLABUS     F major          Lv  16-32  23 notes 13.3 s  song: PRIMER + SYLLABUS
+  #154 CURRICULUM   F major          Lv  32-48  25 notes 14.3 s  song: PRIMER + SYLLABUS + CURRICULUM
+  #155 TEPID        E-flat minor     Lv   1-14  14 notes  8.0 s  song: TEPID
+  #156 SEETHE       E-flat minor     Lv  14-36  20 notes 10.6 s  song: TEPID + SEETHE
+  #157 HEATDEATH    E-flat minor     Lv  36-58  24 notes 11.3 s  song: TEPID + SEETHE + HEATDEATH
+  #158 LEARNRATE    A-flat major     Lv   1-18  24 notes 11.1 s  song: LEARNRATE
+  #159 MOMENTUM     A-flat major     Lv  18-30  24 notes 14.1 s  song: LEARNRATE + MOMENTUM
+  #160 STEEPEST     A-flat major     Lv  30-42  22 notes 12.6 s  song: LEARNRATE + MOMENTUM + STEEPEST
+  #161 ALARM        C major          Lv   1-15  17 notes  8.9 s  song: ALARM
+  #162 LOOKOUT      C major          Lv  15-29  20 notes 11.8 s  song: ALARM + LOOKOUT
+  #163 POLL         C major          Lv   1-20  22 notes 11.1 s  song: POLL
+  #164 SUPERVISOR   C major          Lv  20-39  20 notes 11.8 s  song: POLL + SUPERVISOR
+  #165 HUDDLE       E major          Lv   1-18  17 notes  7.3 s  song: HUDDLE
+  #166 GATHERING    E major          Lv  18-35  21 notes  9.7 s  song: HUDDLE + GATHERING
+  #167 AMBUSH       E major          Lv   1-22  18 notes  7.3 s  song: AMBUSH
+  #168 ENTRAPMENT   E major          Lv  22-43  24 notes  9.7 s  song: AMBUSH + ENTRAPMENT
+  #169 MULTICAST    F minor          Lv  42-62  24 notes 14.3 s  song: ECHO + TRACER + MULTICAST
+  #170 PILOT        A-flat major     Lv   1-27  22 notes 11.1 s  song: PILOT
+  #171 SOUNDING     A-flat major     Lv  27-53  22 notes 11.8 s  song: PILOT + SOUNDING
+  #172 STATIC       F-sharp major    Lv   1-21  20 notes 10.0 s  song: STATIC
+  #173 RESIDUAL     C major          Lv   1-21  24 notes 11.1 s  song: RESIDUAL
+  #174 STANDBY      C major          Lv   1-21  18 notes  8.9 s  song: STANDBY
+  #175 TRUST        C major          Lv   1-21  19 notes  8.9 s  song: TRUST
+  #176 HOPE         C major          Lv  21-41  22 notes 11.8 s  song: TRUST + HOPE
+  #177 VIGILANCE    A minor          Lv   1-25  16 notes  8.9 s  song: VIGILANCE
+  #178 PRESCIENCE   A minor          Lv  25-49  20 notes 11.8 s  song: VIGILANCE + PRESCIENCE
+  #179 TENSION      F-sharp major    Lv   1-15  18 notes  8.0 s  song: TENSION
+  #180 BUILDUP      F-sharp major    Lv  15-30  18 notes  8.5 s  song: TENSION + BUILDUP
+  #181 RELEASE      F-sharp major    Lv  30-45  17 notes  9.1 s  song: TENSION + BUILDUP + RELEASE
+  #182 GOLDSET      F major          Lv  41-61  23 notes 14.3 s  song: SPRAWL + SKEW + GOLDSET
+  #183 MOOD         A-flat major     Lv  21-41  20 notes 11.8 s  song: VALENCE + MOOD
+  #184 ELATION      A-flat major     Lv  41-61  17 notes 10.1 s  song: VALENCE + MOOD + ELATION
+  #185 FAKEROOT     D minor          Lv   1-40  24 notes 12.5 s  song: FAKEROOT
+  #186 SEMAPHORE    A-flat major     Lv  45-65  23 notes 12.6 s  song: LOOP + SPINLOCK + SEMAPHORE
+  #187 WHIM         F major          Lv   1-18  14 notes 10.0 s  song: WHIM
+  #188 CAPRICE      F major          Lv  18-27  22 notes 13.3 s  song: WHIM + CAPRICE
+  #189 ABANDON      F major          Lv  27-36  19 notes 11.4 s  song: WHIM + CAPRICE + ABANDON
+  #190 GRASP        C major          Lv   1-40  17 notes  8.9 s  song: GRASP
+  #191 STARVED      F major          Lv   1-21  20 notes 10.0 s  song: STARVED
+  #192 QUOTA        F major          Lv  21-41  22 notes 13.3 s  song: STARVED + QUOTA
+  #193 PERIPHERY    E major          Lv   1-40  22 notes  9.1 s  song: PERIPHERY
+  #194 APATHY       A-flat major     Lv   1-20  22 notes 11.1 s  song: APATHY
+  #195 TORPOR       A-flat major     Lv  20-39  17 notes  9.4 s  song: APATHY + TORPOR
+  #196 LENSMUSAI    A minor          Lv  21-41  22 notes 11.8 s  song: MUSAI + LENSMUSAI
+  #197 MASKMUSAI    B minor          Lv  21-41  22 notes 13.3 s  song: MUSAI + MASKMUSAI
+  #198 OMEN         B minor          Lv   1-40  17 notes 10.0 s  song: OMEN
+  #199 KERNEL       A-flat major     Lv  37-73  18 notes  9.4 s  song: LATENCY + KERNEL
+  #200 DREAD        B-flat minor     Lv   1-40  15 notes 11.4 s  song: DREAD
+  #201 SYMBOL       A minor          Lv   1-40  21 notes 11.1 s  song: SYMBOL
+  #202 RESENTMENT   A minor          Lv  15-29  16 notes  9.4 s  song: RANKLE + RESENTMENT
+  #203 DUPLEX       C major          Lv   1-40  22 notes 11.1 s  song: DUPLEX
+  #204 STARTLE      E major          Lv   1-31  23 notes  9.1 s  song: STARTLE
+  #205 WITHDRAWAL   E major          Lv  31-61  16 notes  7.7 s  song: STARTLE + WITHDRAWAL
+  #206 BLINDSPOT    C major          Lv   1-40  19 notes  8.9 s  song: BLINDSPOT
+  #207 GLIDEPATH    D major          Lv   1-40  23 notes 14.3 s  song: GLIDEPATH
+  #208 HARDLINE     E-flat major     Lv  21-41  22 notes 11.8 s  song: BACKBONE + HARDLINE
+  #209 WARNING      C major          Lv   1-23  22 notes 11.1 s  song: WARNING
+  #210 CRYWOLF      C major          Lv  23-45  22 notes 11.8 s  song: WARNING + CRYWOLF
+  #211 BRISTLE      A-flat major     Lv   1-40  21 notes 11.1 s  song: BRISTLE
+  #212 SIGKILL      E major          Lv  21-41  20 notes  9.7 s  song: REAPER + SIGKILL
+  #213 HOARDING     E major          Lv   1-40  22 notes  9.1 s  song: HOARDING
+  #214 DRIVE        E major          Lv   1-40  17 notes  7.3 s  song: DRIVE
+  #215 CUNNING      B minor          Lv   1-40  17 notes 10.0 s  song: CUNNING
+  #216 COMFORT      C major          Lv   1-30  18 notes  8.9 s  song: COMFORT
+  #217 CRAVING      C major          Lv  30-59  23 notes 11.8 s  song: COMFORT + CRAVING
+  #218 SIMMER       E-flat minor     Lv   1-38  23 notes 10.0 s  song: SIMMER
+  #219 CALLOUS      E-flat minor     Lv  38-75  16 notes  8.5 s  song: SIMMER + CALLOUS
+  #220 INSTINCT     G major          Lv   1-33  20 notes 10.0 s  song: INSTINCT
+  #221 IMPULSE      G major          Lv  33-65  17 notes  8.5 s  song: INSTINCT + IMPULSE
+  #222 OLDBRANCH    A-flat major     Lv   1-40  23 notes 11.1 s  song: OLDBRANCH
+  #223 ATTACHMENT   A-flat major     Lv   1-25  23 notes 11.1 s  song: ATTACHMENT
+  #224 CLINGING     A-flat major     Lv  25-49  20 notes  9.4 s  song: ATTACHMENT + CLINGING
+  #225 REPAY        G major          Lv   1-40  18 notes  8.0 s  song: REPAY
+  #226 BUOYANCY     A-flat major     Lv   1-40  23 notes 11.1 s  song: BUOYANCY
+  #227 ARMOURING    E-flat major     Lv   1-40  20 notes 11.1 s  song: ARMOURING
+  #228 FIXATION     B minor          Lv   1-24  20 notes 12.5 s  song: FIXATION
+  #229 OBSESSION    B minor          Lv  24-47  22 notes 13.3 s  song: FIXATION + OBSESSION
+  #230 TURBULENCE   A-flat major     Lv  52-72  23 notes 12.6 s  song: BOTTLENECK + BACKPRESS + TURBULENCE
+  #231 RECALL       D major          Lv   1-25  17 notes 11.4 s  song: RECALL
+  #232 ENGRAM       D major          Lv  25-49  21 notes 15.2 s  song: RECALL + ENGRAM
+  #233 OVERLAY      C major          Lv  21-41  22 notes 11.8 s  song: SUBSTRATE + OVERLAY
+  #234 ILLUSION     C major          Lv   1-40  19 notes  8.9 s  song: ILLUSION
+  #235 IMITATION    C major          Lv   1-40  19 notes 11.1 s  song: IMITATION
+  #236 PREMISE      G minor          Lv   1-20  19 notes  8.9 s  song: PREMISE
+  #237 CIRCULAR     G minor          Lv  20-39  23 notes 11.8 s  song: PREMISE + CIRCULAR
+  #238 TELL         G major          Lv   1-30  20 notes  8.0 s  song: TELL
+  #239 CRANK        F-sharp major    Lv   1-30  21 notes 10.0 s  song: CRANK
+  #240 CINDER       E-flat minor     Lv   1-30  19 notes  8.0 s  song: CINDER
+  #241 CACHE        C major          Lv   1-40  21 notes 11.1 s  song: CACHE
+  #242 HEARTBEAT    C major          Lv  21-41  22 notes 11.8 s  song: UPTIME + HEARTBEAT
+  #243 BRONTES      F-sharp major    Lv   1-40  22 notes 10.0 s  song: BRONTES
+  #244 TYPHON       E-flat minor     Lv   1-40  20 notes 10.0 s  song: TYPHON
+  #245 BOREAS       A-flat major     Lv   1-40  23 notes 11.1 s  song: BOREAS
+  #246 RUMINATE     D minor          Lv   1-30  22 notes 12.5 s  song: RUMINATE
+  #247 BROODING     D minor          Lv  30-55  23 notes 13.3 s  song: RUMINATE + BROODING
+  #248 GRIEVANCE    D minor          Lv  55-80  20 notes 14.3 s  song: RUMINATE + BROODING + GRIEVANCE
+  #249 TRITON       A minor          Lv   1-40  21 notes 11.1 s  song: TRITON
+  #250 PHOENIX      E-flat minor     Lv   1-40  20 notes 10.0 s  song: PHOENIX
+  #251 KAIROS       A minor          Lv   1-40  20 notes 11.1 s  song: KAIROS
+  #252 STUMP        F major          Lv   1-16  21 notes 12.5 s  song: STUMP
+  #253 BOOSTING     F major          Lv  16-36  24 notes 13.3 s  song: STUMP + BOOSTING
+  #254 CANOPY       F major          Lv  36-56  23 notes 17.1 s  song: STUMP + BOOSTING + CANOPY
+  #255 COINFLIP     E-flat minor     Lv   1-16  19 notes  8.0 s  song: COINFLIP
+  #256 MONTECARLO   E-flat minor     Lv  16-36  23 notes 10.6 s  song: COINFLIP + MONTECARLO
+  #257 LASVEGAS     E-flat minor     Lv  36-56  24 notes 13.6 s  song: COINFLIP + MONTECARLO + LASVEGAS
+  #258 RUNOFF       A-flat major     Lv   1-16  23 notes 11.1 s  song: RUNOFF
+  #259 ALLUVIUM     A-flat major     Lv  16-36  21 notes 11.8 s  song: RUNOFF + ALLUVIUM
+  #260 DELTA        A-flat major     Lv  36-56  21 notes 12.6 s  song: RUNOFF + ALLUVIUM + DELTA
+  #261 SMUDGE       B minor          Lv   1-18  23 notes 12.5 s  song: SMUDGE
+  #262 ECLIPSE      B minor          Lv  18-35  23 notes 13.3 s  song: SMUDGE + ECLIPSE
+  #263 DETOUR       C major          Lv   1-20  17 notes  8.9 s  song: DETOUR
+  #264 UNBRANCHED   C major          Lv  20-39  23 notes 11.8 s  song: DETOUR + UNBRANCHED
+  #265 HASHSEED     E major          Lv   1-7   24 notes  9.1 s  song: HASHSEED
+  #266 IFTRUE       E major          Lv   7-10  15 notes  7.7 s  song: HASHSEED + IFTRUE
+  #267 THENCASE     E major          Lv  10-13  19 notes  8.3 s  song: HASHSEED + IFTRUE + THENCASE
+  #268 IFFALSE      E major          Lv   7-10  22 notes  9.7 s  song: HASHSEED + IFFALSE
+  #269 OTHERWISE    E major          Lv  10-13  20 notes 10.3 s  song: HASHSEED + IFFALSE + OTHERWISE
+  #270 TEMPO        A-flat major     Lv   1-14  22 notes 11.1 s  song: TEMPO
+  #271 CADENCE      A-flat major     Lv  14-34  23 notes 14.1 s  song: TEMPO + CADENCE
+  #272 CYCLICAL     A-flat major     Lv  34-54  22 notes 12.6 s  song: TEMPO + CADENCE + CYCLICAL
+  #273 WARMUP       F major          Lv   1-14  22 notes 12.5 s  song: WARMUP
+  #274 SHAPING      F major          Lv  14-34  23 notes 13.3 s  song: WARMUP + SHAPING
+  #275 POLICY       F major          Lv  34-54  23 notes 14.3 s  song: WARMUP + SHAPING + POLICY
+  #276 SHORTJUMP    C major          Lv   1-22  23 notes 11.1 s  song: SHORTJUMP
+  #277 LONGJUMP     C major          Lv  22-43  24 notes 11.8 s  song: SHORTJUMP + LONGJUMP
+  #278 TANGENT      A-flat major     Lv   1-25  23 notes 11.1 s  song: TANGENT
+  #279 JACOBIAN     A-flat major     Lv  25-49  24 notes 11.8 s  song: TANGENT + JACOBIAN
+  #280 GUESSWORK    A minor          Lv   1-20  18 notes  8.9 s  song: GUESSWORK
+  #281 ATTUNE       A minor          Lv  20-30  16 notes  9.4 s  song: GUESSWORK + ATTUNE
+  #282 MENTALIZE    A minor          Lv  30-40  24 notes 12.6 s  song: GUESSWORK + ATTUNE + MENTALIZE
+  #283 PARTICLE     E major          Lv   1-22  24 notes 10.9 s  song: PARTICLE
+  #284 FLOCKING     E major          Lv  22-43  24 notes 11.6 s  song: PARTICLE + FLOCKING
+  #285 SPARRING     F major          Lv   1-23  24 notes 15.0 s  song: SPARRING
+  #286 CHECKMATE    F major          Lv  23-45  23 notes 13.3 s  song: SPARRING + CHECKMATE
+  #287 DAYDREAM     C major          Lv   1-18  24 notes 11.1 s  song: DAYDREAM
+  #288 RESTLESS     C major          Lv  18-36  24 notes 11.8 s  song: DAYDREAM + RESTLESS
+  #289 MINDWANDER   C major          Lv  36-54  21 notes 12.6 s  song: DAYDREAM + RESTLESS + MINDWANDER
+  #290 PREFORK      E major          Lv   1-20  23 notes  9.1 s  song: PREFORK
+  #291 BURSTMODE    E major          Lv  20-39  24 notes  9.7 s  song: PREFORK + BURSTMODE
+  #292 DEFUNCT      E major          Lv  20-39  21 notes  9.7 s  song: PREFORK + DEFUNCT
+  #293 LOWBIT       C major          Lv   1-20  21 notes 11.1 s  song: LOWBIT
+  #294 SHIFTLEFT    C major          Lv  20-40  24 notes 11.8 s  song: LOWBIT + SHIFTLEFT
+  #295 WRAPAROUND   C major          Lv  40-60  22 notes 12.6 s  song: LOWBIT + SHIFTLEFT + WRAPAROUND
+  #296 POSTULATE    G minor          Lv   1-24  20 notes 11.1 s  song: POSTULATE
+  #297 DEDUCTION    G minor          Lv  24-47  22 notes 11.8 s  song: POSTULATE + DEDUCTION
+  #298 VALENCE      C major          Lv   1-21  23 notes 11.1 s  song: VALENCE
+  #299 GRADIENT     D minor          Lv   1-40  18 notes 10.0 s  song: GRADIENT
+  #300 LOOPBACK     C major          Lv   1-21  18 notes  8.9 s  song: LOOPBACK
+  #301 QUINE        C major          Lv  21-41  22 notes 11.8 s  song: LOOPBACK + QUINE
+  #302 BACKDOOR     B minor          Lv   1-40  24 notes 12.5 s  song: BACKDOOR
+  #303 HONEYTRAP    E-flat major     Lv   1-40  23 notes 11.1 s  song: HONEYTRAP
+  #304 BOOTROM      E-flat major     Lv   1-32  18 notes  8.9 s  song: BOOTROM
+  #305 FIRMWARE     E-flat major     Lv  32-42  20 notes  9.4 s  song: BOOTROM + FIRMWARE
+  #306 BIGIRON      E-flat major     Lv  42-52  23 notes 12.6 s  song: BOOTROM + FIRMWARE + BIGIRON
+  #307 WITNESS      G minor          Lv   1-37  22 notes 11.1 s  song: WITNESS
+  #308 MINDSIGHT    G minor          Lv  37-73  24 notes 11.8 s  song: WITNESS + MINDSIGHT
+  #309 CRACKLE      F-sharp major    Lv   1-26  20 notes  8.0 s  song: CRACKLE
+  #310 ARCFLASH     F-sharp major    Lv  26-51  24 notes 10.6 s  song: CRACKLE + ARCFLASH
+  #311 ANODE        F-sharp major    Lv   1-40  22 notes 10.0 s  song: ANODE
+  #312 CATHODE      F-sharp major    Lv   1-40  23 notes 10.0 s  song: CATHODE
+  #313 SYN          E major          Lv   1-40  17 notes  7.3 s  song: SYN
+  #314 ACK          E major          Lv   1-40  21 notes  9.1 s  song: ACK
+  #315 LACED        F major          Lv   1-40  18 notes 10.0 s  song: LACED
+  #316 GREEDY       F minor          Lv   1-26  23 notes 15.0 s  song: GREEDY
+  #317 BLOATWARE    F minor          Lv  26-51  23 notes 13.3 s  song: GREEDY + BLOATWARE
+  #318 UNDERTOW     A-flat major     Lv   1-30  24 notes 11.1 s  song: UNDERTOW
+  #319 RIPTIDE      A-flat major     Lv  30-59  21 notes 11.8 s  song: UNDERTOW + RIPTIDE
+  #320 DOLPHIN      D-flat major     Lv   1-21  23 notes 10.0 s  song: DOLPHIN
+  #321 PENPHIN      A minor          Lv  21-41  22 notes 11.8 s  song: DOLPHIN + PENPHIN
+  #322 PIXELBYTE    E-flat minor     Lv   1-33  24 notes 10.0 s  song: PIXELBYTE
+  #323 REFORGE      E-flat minor     Lv  33-65  23 notes 10.6 s  song: PIXELBYTE + REFORGE
+  #324 SLOWBURN     E-flat minor     Lv   1-40  23 notes 10.0 s  song: SLOWBURN
+  #325 BREATHING    A minor          Lv   1-32  19 notes  8.9 s  song: BREATHING
+  #326 GUTFEEL      A minor          Lv  32-63  22 notes 11.8 s  song: BREATHING + GUTFEEL
+  #327 HASHCODE     C major          Lv   1-40  23 notes 11.1 s  song: HASHCODE
+  #328 SINKHOLE     D major          Lv   1-35  22 notes 14.3 s  song: SINKHOLE
+  #329 SHIMMER      D major          Lv  35-45  23 notes 15.2 s  song: SINKHOLE + SHIMMER
+  #330 DUSTDEVIL    D major          Lv  45-55  24 notes 16.2 s  song: SINKHOLE + SHIMMER + DUSTDEVIL
+  #331 FEWSHOT      F major          Lv   1-32  23 notes 12.5 s  song: FEWSHOT
+  #332 ZEROSHOT     F major          Lv  32-63  24 notes 16.0 s  song: FEWSHOT + ZEROSHOT
+  #333 DATAGRAM     C major          Lv   1-35  24 notes 11.1 s  song: DATAGRAM
+  #334 TRADEWIND    F-sharp minor    Lv  35-69  24 notes 13.3 s  song: DATAGRAM + TRADEWIND
+  #335 PRISTINE     C major          Lv   1-40  24 notes 11.1 s  song: PRISTINE
+  #336 FORGERY      F minor          Lv   1-40  23 notes 12.5 s  song: FORGERY
+  #337 LILENDIAN    D minor          Lv   1-40  21 notes 12.5 s  song: LILENDIAN
+  #338 BIGENDIAN    D minor          Lv   1-40  21 notes 12.5 s  song: BIGENDIAN
+  #339 SEEPAGE      A-flat major     Lv   1-30  23 notes 11.1 s  song: SEEPAGE
+  #340 AQUIFER      A-flat major     Lv  30-59  20 notes 11.8 s  song: SEEPAGE + AQUIFER
+  #341 BACKFLOW     A-flat major     Lv   1-30  24 notes 11.1 s  song: BACKFLOW
+  #342 BLACKWATER   A-flat major     Lv  30-59  25 notes 11.8 s  song: BACKFLOW + BLACKWATER
+  #343 LIKELIHOOD   D major          Lv   1-36  24 notes 14.3 s  song: LIKELIHOOD
+  #344 POSTERIOR    D major          Lv  36-71  24 notes 18.2 s  song: LIKELIHOOD + POSTERIOR
+  #345 SAVESTATE    D minor          Lv   1-40  24 notes 12.5 s  song: SAVESTATE
+  #346 WARMSTART    D minor          Lv  40-79  23 notes 13.3 s  song: SAVESTATE + WARMSTART
+  #347 TOKENRING    D minor          Lv   1-40  23 notes 12.5 s  song: TOKENRING
+  #348 TRUNKLINE    D minor          Lv  40-79  24 notes 13.3 s  song: TOKENRING + TRUNKLINE
+  #349 SADDLE       A-flat major     Lv   1-21  23 notes 11.1 s  song: SADDLE
+  #350 OPTIMUM      A-flat major     Lv  21-41  23 notes 11.8 s  song: SADDLE + OPTIMUM
+  #351 OVERLOADED   C major          Lv   1-40  16 notes  8.9 s  song: OVERLOADED
+  #352 UNNOTICED    C major          Lv   1-40  23 notes 11.1 s  song: UNNOTICED
+  #353 UNSPOKEN     B-flat minor     Lv   1-37  19 notes 11.4 s  song: UNSPOKEN
+  #354 SUBTEXT      B-flat minor     Lv  37-73  21 notes 15.2 s  song: UNSPOKEN + SUBTEXT
+  #355 FADING       B-flat minor     Lv   1-37  18 notes 11.4 s  song: FADING
+  #356 FORGETTING   B-flat minor     Lv  37-73  23 notes 15.2 s  song: FADING + FORGETTING
+  #357 TRANSFER     F major          Lv   1-40  24 notes 12.5 s  song: TRANSFER
+  #358 OVERTONE     A minor          Lv   1-40  23 notes 11.1 s  song: OVERTONE
+  #359 REDACTED     B minor          Lv   1-40  19 notes 10.0 s  song: REDACTED
+  #360 RANKLE       A minor          Lv   1-15  21 notes 11.1 s  song: RANKLE
+  #361 LOCKFILE     G major          Lv   1-42  24 notes 10.0 s  song: LOCKFILE
+  #362 STALEMATE    G major          Lv  42-83  22 notes 10.6 s  song: LOCKFILE + STALEMATE
+  #363 PENGUIN      A-flat major     Lv   1-21  20 notes  8.9 s  song: PENGUIN
+  #364 STOPGRAD     G major          Lv   1-44  19 notes  8.0 s  song: STOPGRAD
+  #365 PERMAFROST   G major          Lv  44-87  22 notes 10.6 s  song: STOPGRAD + PERMAFROST
+  #366 BIFURCATE    A-flat major     Lv   1-21  19 notes 11.1 s  song: BIFURCATE
+  #367 DEEPWELL     A-flat major     Lv  21-41  24 notes 11.8 s  song: BIFURCATE + DEEPWELL
+  #368 SHALLOWS     A-flat major     Lv  21-41  19 notes  9.4 s  song: BIFURCATE + SHALLOWS
+  #369 STILLRUN     A-flat major     Lv   1-40  24 notes 11.1 s  song: STILLRUN
+  #370 CONFLUENCE   A-flat major     Lv   1-40  20 notes 11.1 s  song: CONFLUENCE
+  #371 INKLING      F-sharp minor    Lv   1-30  22 notes 12.5 s  song: INKLING
+  #372 GESTALT      F-sharp minor    Lv  30-50  21 notes 13.3 s  song: INKLING + GESTALT
+  #373 EPIPHANY     F-sharp minor    Lv  50-70  24 notes 14.3 s  song: INKLING + GESTALT + EPIPHANY
+  #374 SINGLETON    E-flat major     Lv   1-20  20 notes  8.9 s  song: SINGLETON
+  #375 PAIRWISE     E-flat major     Lv  20-45  24 notes 11.8 s  song: SINGLETON + PAIRWISE
+  #376 FEDERATED    E-flat major     Lv  45-70  20 notes 12.6 s  song: SINGLETON + PAIRWISE + FEDERATED
+  #377 DEUCALION    D minor          Lv   1-40  20 notes 12.5 s  song: DEUCALION
+  #378 KHIONE       G major          Lv   1-40  23 notes 10.0 s  song: KHIONE
+  #379 TALOS        E-flat major     Lv   1-40  22 notes 11.1 s  song: TALOS
+  #380 POLYDEUCES   F-sharp minor    Lv   1-40  23 notes 12.5 s  song: POLYDEUCES
+  #381 CASTOR       F-sharp minor    Lv   1-40  23 notes 12.5 s  song: CASTOR
+  #382 PONTUS       A-flat major     Lv   1-40  19 notes  8.9 s  song: PONTUS
+  #383 GAIA         D major          Lv   1-40  17 notes 11.4 s  song: GAIA
+  #384 OURANOS      F-sharp minor    Lv   1-40  23 notes 12.5 s  song: OURANOS
+  #385 ELPIS        E-flat major     Lv   1-40  22 notes 11.1 s  song: ELPIS
+  #386 PROTEUS      A minor          Lv   1-40  21 notes 11.1 s  song: PROTEUS
+  #387 REFLECTION   B minor          Lv   1-40  24 notes 12.5 s  song: REFLECTION
+  #388 LODESTAR     E-flat major     Lv   1-40  18 notes  8.9 s  song: LODESTAR
+  #389 PERIHELION   F-sharp major    Lv   1-40  22 notes 10.0 s  song: PERIHELION
+  #390 LYUBOV       E-flat minor     Lv   1-40  21 notes 10.0 s  song: LYUBOV
+  #391 MULTIMAL     A-flat major     Lv   1-21  24 notes 11.1 s  song: MULTIMAL
+  #392 ILLUMINED    A-flat major     Lv  21-41  23 notes 11.8 s  song: MULTIMAL + ILLUMINED
+  #393 LYNX         C major          Lv   1-21  19 notes  8.9 s  song: LYNX
+  #394 BASTET       C major          Lv  21-41  18 notes  9.4 s  song: LYNX + BASTET
+  #395 HANDSHAKE    F-sharp major    Lv   1-21  24 notes 10.0 s  song: HANDSHAKE
+  #396 TETHERING    F-sharp major    Lv  21-41  23 notes 10.6 s  song: HANDSHAKE + TETHERING
+  #397 COROUTINE    F-sharp major    Lv  41-61  24 notes 11.3 s  song: HANDSHAKE + TETHERING + COROUTINE
+  #398 MISSINGNO    F minor          Lv   1-40  22 notes 12.5 s  song: MISSINGNO
