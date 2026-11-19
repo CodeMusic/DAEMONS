@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.406**
+**A total conversion — the living design bible, v11.407**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -7671,6 +7671,8 @@ The open question — *is one colour moment right?* — resolves at **two, diffe
 
 #### Saturation is friendship, and that is the thesis made mechanical
 
+***Reversed 2026-11-18, to build (9.36, T-597): saturation is the song*** -- *each colour comes in with the note of its song nearest it, and what an earlier form had stays. Kept below as built until T-597 lands.*
+
 ***Built 2026-10-18 (T-424)***: *one hook at palette load; the share of colour kept rises with friendship (12% at 0, about half at 70, all at 255); the Corpus's daemons at 0; the INDEX grey; icons stay in colour (they share palettes).*
 
 ***And Al's party, 2026-11-12 (T-559, 8.7's idea taken)***: *his daemons come at friendship 255 in the lab and lose it fight by fight — 161, 122, 92, 66, 44, 24 — to 0 at the REVIEW BOARD and the rematch, each step about a twelfth of the colour on the eye.* **The transmission failure, visible on the one party the player meets eight times, with no line and no sneer.**
@@ -9314,6 +9316,48 @@ about itself* (rule 6).
 
 ***In the engine (T-595, released in v11.405.1).*** **On the INDEX page, START plays SONG: a past form's song sung whole, the current form's as it knows it. A daemon's party menu gains SING. Evolution sings the full part before the change, and where a next form waits the song ends on an allusion to it.** *A daemon sings through the HARP's voices (the tune on one, the bass on another); each note not yet learned flickers toward its pitch over a hiss tinted by the share learned, which grows with experience. The battle cry stays the sampled cry. 398 parts, about 35 KB, written by `gensongs.py --write` (`src/daemon_song.c`). DRAFT.*
 
+***The keys*** (*T-594, DRAFT -- the table is the user's to approve; the user: "a daemons type could determine the key for which their song is in"*). **A type's tonic is the note whose SYNESTHESIA colour is nearest the type's own (9.4), and its mode is its character.** *CONTENT and CONTEXT are a relative pair -- the same seven notes heard from another centre -- and C major is every white key with nothing added.* Six keys are spare: A major, B-flat major, C minor, C-sharp minor, E minor, G-sharp minor.
+
+| Type | Key | Why | Daemons (first type) |
+|---|---|---|---|
+| **CONTENT** | C major | every white key and nothing added: the undifferentiated | 67 |
+| **CONTEXT** | A minor | CONTENT's seven notes heard from another centre: its relative minor | 25 |
+| **VECTOR** | D-flat major | red into orange: sanguine, the arrow | 5 |
+| **ENTROPY** | E-flat minor | orange into yellow: choleric, the flicker | 23 |
+| **LATENT** | B-flat minor | indigo into violet: melancholic, something waking | 8 |
+| **FROZEN** | G major | blue: phlegmatic, still and clear | 11 |
+| **FLOW** | A-flat major | blue into indigo: deep, moving, running down | 67 |
+| **LOGIC** | G minor | steel blue: a proof, the key of the fugue | 14 |
+| **SWARM** | E major | yellow, olive: many small bright things | 34 |
+| **CORRUPT** | F minor | green gone off: mould | 19 |
+| **STRATUM** | D major | orange-brown, the ground: the key of the open strings | 17 |
+| **LEGACY** | D minor | the old modes: slate, the cairn | 21 |
+| **GROWTH** | F major | green: pastoral | 33 |
+| **SIGNAL** | F-sharp major | green into blue, a carrier: every sharp lit | 22 |
+| **EMERGENT** | F-sharp minor | jade, deeper than SIGNAL's current | 10 |
+| **HARDENED** | E-flat major | tempered straw: the brass key | 12 |
+| **OPAQUE** | B minor | violet, the last colour before the light goes off | 10 |
+| **ORACLE** | B major | violet into the carry: the one with no record | 0 |
+
+***Where a part's levels come from*** (*T-594, DRAFT*). **A form's part runs from the level it begins at -- 1, or the level it evolved at -- to the level it evolves at.** *A stone, a trade or friendship counts 20 levels on; a final form matures after as many levels as the form before it took (the user: "maybe not max level but evolved with a similar distribution of experience"); a daemon with no line matures at 40.* **The share learned is its experience between the two, so a battle and a TRAIN teach it alike.**
+
+***In the companion (C-418, built 2026-11-19; DRAFT)*** (*the user: "train will have it sing its song as it knows it ... then green binary back propagation (groups of 1's and 0's will return back into the daemon, which each group represents an adjustment to the played songs notes to learn)"*):
+
+- **TRAIN sings the part it is learning** (*the user's pick; the INDEX plays the whole song*). ***The forward pass***: *each note leaves its mouth as it is sung, rising higher the higher it is, in its pitch's colour -- a black key split between the two either side -- and a note not yet learned rises as static, a faint cloud of its candidates.* ***The backward pass***: **a group of green binary for each note the TRAIN moved flies back into it** -- *its place in the part and how far it moved, eight bits.* *The widget does the same, an entry every half second, and its TRAIN sings the part aloud.*
+- **Static is musical** (*the user: "a lot of agreeing potential notes are the static and gradually the noise is removed until just the daemon's song note is revealed"*): **the true note among candidates in the key -- thirds, fifths and sixths kept longest, seconds the first to leave -- over a hiss that fades as it closes.** *The engine's flicker (above) is its cartridge-sized cousin.*
+- **About two weeks of three TRAINs a day makes a part whole** (*the user's pick*); **a TRAIN past the day's three still sings and teaches nothing, and none teaches past whole.** *Its experience is kept until SYNC writes it home, as a step's is. Out-of-game battles teach it too (C-420, three a day).*
+- **A whole part sends it home**: *"Its part of its song is whole. Take it home to SING."* ***It evolves in the game*** -- **SING, or its next battle** -- *(the user, by multiple choice: "for now, Only in the game")* ***unless it is AT HOME with you too***: *"if you and your daemon reach a certain depth of companionship then it feels at home in this world too, and is able to evolve home or away."* **The companion evolves it (C-184) only once its bond (C-185) reaches 160** (*DRAFT: the CARRIED line's last threshold*). *The user's reason, worth keeping: a daemon cared for in your world and one with you in its world are two perspectives, and the whole is more than their sum -- as neither edition alone is the whole game.*
+- **Wherever it evolves, it sings its full part, then an allusion to the next part it has still to learn**; *a final form that finds its whole song sings it whole then* (*the user*). *After that the whole song is the INDEX's.*
+
+***Decided 2026-11-18, to build*** (*the user, in their words and by multiple choice; each its own ticket*):
+
+- ***The wish to sing*** (*T-596*): **as it nears evolution the follower hums a bar of its song as you walk, coloured notes rising from its mouth, and asks after a battle -- "NAME wants to sing." -- more often the nearer it is.** *The user: seeing the notes as it says it wants to sing makes "an intuitive memory pointer".*
+- ***Colour is the song*** (*T-597*): **a sprite's colours come in with the notes it learns** -- *each colour tied to the note whose colour is nearest it; the colours an earlier form had begin the next form already in colour, and the new ones wait for the new part.* **This reverses 8.6a's "saturation is friendship"** (*logged below*); *Al's fading party (T-559) and the Corpus at 0 want the user's word before it is built.* **And a type's key colours lean into its daemons' sprites** -- *"the colours of its representative musical key should be leaned into as the predominant colours ... but not limited to"* -- *redraws allowed.*
+- ***Play a daemon's song and it comes*** (*T-598*): **in PLAY's freestyle, played in its type's key, a daemon's song is recognised; it appears, says its QUOTATION and goes on its way** -- *never caught, never a battle* -- *and the INDEX keeps the quotation.*
+- ***THE QUOTATIONS*** (*T-599*): **a hidden quotation for every daemon, its style its type's** -- *SIGNAL's motivating, LATENT's deep and philosophical (the user's two examples)* -- *each written from its type, name, INDEX entry and where it is native (mainland or islands, a grove, THE NEXUS).*
+- ***The book of the quotations*** (*T-600; working title THE COLOURS WITHIN THE WORDS, the title the user's*): **a preface that carries the language learned at CALLOW SCHOOL across from code to music -- "our essence has a voice, a song, a language, a quotation" -- then a section a type, in its key's colours, naming its key, its key signature and its style of quotation; each daemon's page its number, sprite and quotation in its own hand (a type's hands alike), large quotation marks, and a staff -- the clef, its type's key signature with the sharps and flats coloured, its song's notes coloured** -- *"so the visual pattern can also teach you the key."* **In the game it fills as daemons are summoned; in the LIBRARY its PDF may come whole.**
+- ***Shiny songs*** (*T-602*): **a shiny's song is made from its song and its shiny palette.**
+
 ## 10. DECISION LOG
 
 ### Settled
@@ -9539,6 +9583,7 @@ Kept here because the reasoning is worth more than the outcome.
 | Drop the rival naming prompt, hard-code "Ty Clear" | Keep the prompt, hard-code **CLEAR** | The surname is the half that carries the inference. Spending a famous vanilla beat bought nothing — and the prompt, reframed as *what will you call him*, becomes the route-sign device a minute before Route 1 teaches it (4.3). |
 | **The station's log: `TRANSCRIPT: WITHHELD`**, and 4.10's rule that the first session is never seen (9.22) | **The session, told by ARTSAI, as the Five Witnesses' reward** (T-235) | *The user, 2026-09-24: the last easter egg in the game is where the full story may be delivered and earlier rules may bend.* **Withheld everywhere else, still** — *a player who never solves the lock reads the log and nothing more.* |
 | **The Owl's concession is dialogue only** — no document, no item (4.34 ruling 1) | **A sealed PEER REVIEW** he signs and the player gives to Crystal; its contents are never shown | He promised it in writing and handed over nothing, so the scene read as having changed nothing. The ruling's real worry — a concession one sentence too generous — is kept by sealing it (4.34). |
+| **Saturation is friendship** (8.6a, built T-424: a daemon nearly grey at friendship 0, the full ramp at 255) | **Saturation is the song: each colour comes in with the note of its song nearest it, and what an earlier form had stays** (9.36, T-597; decided 2026-11-18, to build) | *The user: "it would be wonderful if ... those colour levels of the daemon were most representative of ... the daemons' own song part completion."* Friendship was the thesis made mechanical as a measure of how it is kept; the song makes colour what it has learned of itself, and keeps 8.6a's refusal of "power = colour" -- a first form whose part is whole is as coloured as a final one. Al's party and the Corpus are open until the user rules. |
 
 ### Open
 

@@ -5,6 +5,15 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.407 — 2026-11-19
+
+- **9.36 THE SONG, the rest of the design** (T-594, C-417, C-418; the user, 2026-11-18, in their words and by multiple choice):
+  - **The keys**: the eighteen types' keys in a table, each tonic the note whose colour is nearest the type's own, CONTENT C major and CONTEXT its relative A minor, six spare (DRAFT, for the user's word).
+  - **Where a part's levels come from**: its form's first level to its evolution level; a stone, trade or friendship 20 on; a final form as many levels as the form before it took; no line, 40 (DRAFT).
+  - **In the companion, built** (C-418): TRAIN sings the part it is learning -- the forward pass in coloured notes, static a cloud of agreeing candidates, then green binary carried back, a group a note moved; two weeks of three a day makes a part whole; a whole part sends it home to SING, and it evolves in the companion only once AT HOME (bond 160, DRAFT). The widget too, and its FEED and DRINK animated as the app's (C-417).
+  - **Decided, to build**: the wish to sing (T-596), colour is the song (T-597), a song played in its key summons its daemon (T-598), THE QUOTATIONS (T-599), their book (T-600), shiny songs (T-602).
+- **Reversed**: 8.6a's "saturation is friendship" becomes "saturation is the song" (T-597, to build); logged, with Al's party and the Corpus open.
+
 ## v11.406 — 2026-11-19
 
 - Recorded from release v11.405.1 (54c4e9fc, engine 4e07515d8), which sealed v11.404.x:
