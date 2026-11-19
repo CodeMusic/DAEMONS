@@ -73,3 +73,9 @@ v11.407.1, T-596 (DRAFT): the follower hums a bar of its song with coloured note
 C-421 (DRAFT), on a scratch companion with a synthetic save: a CHALLENGE left for you; BATTLE with one to take and yours to leave; taken, you choose and it fights by itself; its player's replay at the next look, with SKIP.
 
 ![19Nov2026 - C421 - battle challenges - 12](19Nov2026%20-%20C421%20-%20battle%20challenges%20-%2012.png)
+
+### 19Nov2026 - C422 - battles with friends homes - 14
+
+C-422 (DRAFT), on a scratch commons with two scratch homes and synthetic saves: KIT · KIT HOUSE, a player in a friend's home, online to battle; their CHALLENGE open to friends' homes, to TAKE, with ANYONE IN FRIENDS' HOMES beside the other two.
+
+![19Nov2026 - C422 - battles with friends homes - 14](19Nov2026%20-%20C422%20-%20battles%20with%20friends%20homes%20-%2014.png)
