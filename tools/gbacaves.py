@@ -2452,18 +2452,18 @@ def m_glass(X, Y, plane):
 
 #  the floors: a pebble with its long shadow (A), a stair's edge (B), a fracture (C)
 FLOOR_LONG = [[None] * 16 for _ in range(16)]
-for _px, _py, _tail in ((3, 3, 5), (11, 10, 4)):
-    for _dx, _dy, _r in ((0, 0, "hi"), (1, 0, "hi"), (0, 1, "body"), (1, 1, "lo")):
+for _px, _py, _tail in ((3, 3, 2), (11, 10, 2)):          # a short tail: a long one hatched the floor (draft 1)
+    for _dx, _dy, _r in ((0, 0, "hi"), (1, 0, "hi"), (2, 0, "hi"), (0, 1, "body"), (1, 1, "body"), (2, 1, "lo")):
         FLOOR_LONG[(_py + _dy) % 16][(_px + _dx) % 16] = _r
     for _k in range(1, _tail + 1):
-        FLOOR_LONG[(_py + 1 + _k) % 16][(_px + 1 + _k) % 16] = "lo"
+        FLOOR_LONG[(_py + 1 + _k) % 16][(_px + 2 + _k) % 16] = "lo"
 FLOOR_STEP = _marks([(2, 4, 6, 2), (9, 11, 5, 2)])
 
 UMBRAL_OPTIONS = [
     ("A", "PENUMBRA (DRAFT)", "big rough stones under a long diagonal shadow with a soft edge, block after block; "
-                              "last light (the dusk's warm accent) along the brink of every cut; pebbles on the "
-                              "floor each trailing a long shadow -- UMBRA PLATEAU's long shadow, in raw rock",
-     dict(rock=m_penumbra, rim=["accent0"], floor=FLOOR_LONG, field=2, off=MARK_OFF, patch_field=1)),
+                              "pebbles on the floor each with a short shadow -- UMBRA PLATEAU's long shadow, in raw "
+                              "rock (draft 1's last light along the brink read as the stack's gold pins: dropped)",
+     dict(rock=m_penumbra, rim=None, floor=FLOOR_LONG, field=2, off=MARK_OFF, patch_field=1)),
     ("B", "TERRACES (DRAFT)", "every face cut in strata that step up the wall, light on one side of each joint and "
                               "shadow on the other -- a stair of light climbing; the floor in shallow step edges",
      dict(rock=m_terrace, rim=None, floor=FLOOR_STEP, field=2, off=MARK_OFF, patch_field=1)),

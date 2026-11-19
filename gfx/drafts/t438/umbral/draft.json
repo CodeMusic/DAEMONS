@@ -1,0 +1,102 @@
+{
+ "ticket": "T-438 (UMBRAL ASCENT's own tiles)",
+ "status": "DRAFT -- nothing approved (UMBRAL_APPROVED is None)",
+ "palettes": "unchanged: cave/palettes_umbral rows 7..12 (approved 2026-10-23)",
+ "victory_road_tiles": 164,
+ "unchanged_in_every_option": [
+  2,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  17,
+  22,
+  23,
+  24,
+  25,
+  26,
+  27,
+  28,
+  29,
+  32,
+  37,
+  137,
+  139,
+  146,
+  152,
+  154,
+  161,
+  169,
+  171,
+  178,
+  184,
+  186,
+  192,
+  193,
+  201,
+  203,
+  205,
+  207,
+  208,
+  209,
+  216,
+  218,
+  220,
+  222,
+  225,
+  240,
+  252,
+  253,
+  254,
+  255
+ ],
+ "options": {
+  "A": {
+   "title": "PENUMBRA (DRAFT)",
+   "line": "big rough stones under a long diagonal shadow with a soft edge, block after block; pebbles on the floor each with a short shadow -- UMBRA PLATEAU's long shadow, in raw rock (draft 1's last light along the brink read as the stack's gold pins: dropped)",
+   "changed": 175,
+   "changed_on_victory_road": 107,
+   "kinds": {
+    "floor": 24,
+    "T-569's stones, in this grain": 23,
+    "rock": 122,
+    "rung": 1,
+    "hole": 1,
+    "patch": 4
+   }
+  },
+  "B": {
+   "title": "TERRACES (DRAFT)",
+   "line": "every face cut in strata that step up the wall, light on one side of each joint and shadow on the other -- a stair of light climbing; the floor in shallow step edges",
+   "changed": 179,
+   "changed_on_victory_road": 110,
+   "kinds": {
+    "floor": 23,
+    "T-569's stones, in this grain": 23,
+    "rock": 126,
+    "rung": 2,
+    "hole": 1,
+    "patch": 4
+   }
+  },
+  "C": {
+   "title": "DUSK GLASS (DRAFT)",
+   "line": "dark volcanic glass in big facets, each in shadow but for a lit upper-left rim; the floor fractured -- the darkest, value only, no accent",
+   "changed": 183,
+   "changed_on_victory_road": 114,
+   "kinds": {
+    "floor": 28,
+    "T-569's stones, in this grain": 23,
+    "rock": 126,
+    "rung": 2,
+    "hole": 1,
+    "patch": 3
+   }
+  }
+ },
+ "build": "graphics.h: gTilesetTiles_CaveUmbral INCBIN data/tilesets/secondary/cave/umbral/tiles.png (.4bpp.lz); headers.h gTileset_CaveUmbral .tiles = gTilesetTiles_CaveUmbral; about +4.2 KB"
+}
