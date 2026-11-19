@@ -103,3 +103,9 @@ v11.408.1, T-597 colour by song (DRAFT): ROVERCUB on the SUMMARY with its song b
 v11.408.1, T-597 colour by song (DRAFT): ROVERCUB on the SUMMARY with its song barely begun (grey), half, and whole (green); and the draft sheet of the three approaches, A built
 
 ![19Nov2026 - T597 - colour by song - 17](19Nov2026%20-%20T597%20-%20colour%20by%20song%20-%2017.png)
+
+### 19Nov2026 - C426 - Kode Dot den in kode-sim - 18
+
+The Kode Dot's den in kode-sim (C-426), on a scratch companion with a synthetic save: no address yet, then PIP's den, FEED (Thank you. That helps.), SLEEP (Goodnight., and WAKE in its place). Review passed; the companion recorded both cares.
+
+![19Nov2026 - C426 - Kode Dot den in kode-sim - 18](19Nov2026%20-%20C426%20-%20Kode%20Dot%20den%20in%20kode-sim%20-%2018.png)
