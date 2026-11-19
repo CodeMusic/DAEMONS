@@ -85,3 +85,9 @@ The Kode Dot app in kode-sim (C-424, C-425): ROUTINES, LODESTONE chosen, READ MY
 C-422 (DRAFT), on a scratch commons with two scratch homes and synthetic saves: KIT · KIT HOUSE, a player in a friend's home, online to battle; their CHALLENGE open to friends' homes, to TAKE, with ANYONE IN FRIENDS' HOMES beside the other two.
 
 ![19Nov2026 - C422 - battles with friends homes - 14](19Nov2026%20-%20C422%20-%20battles%20with%20friends%20homes%20-%2014.png)
+
+### 19Nov2026 - C419 - the INDEX sings and ITS SONG on staves - 15
+
+C-419 DRAFT: SONG for CRY in the companion -- the INDEX's SONG beside LISTEN and ITS SONG on the daemon's page, every part on its staff in its type's key, notes in their colours, unlearned notes static (a scratch companion on a synthetic save)
+
+![19Nov2026 - C419 - the INDEX sings and ITS SONG on staves - 15](19Nov2026%20-%20C419%20-%20the%20INDEX%20sings%20and%20ITS%20SONG%20on%20staves%20-%2015.png)
