@@ -501,10 +501,12 @@ and ink, routes like a score, and the sea a shuffle of bits and notes.
 
 {{screen sitemap | The SITEMAP, open on your home town.}}
 
-## Colour is friendship {#colour}
+## Colour is the song {#colour}
 
-A daemon's colours fill as it comes to trust you: nearly grey, with a hint of its type, at first; half its colour once
-it is friendly; the whole of it at the most. People keep their colour. Some USERS' daemons never warm to anyone.
+Every daemon has its own song, and learns its part of it as it grows: each battle teaches it a little, and so does a TRAIN in the companion.
+Each of its colours belongs to one note of that part and comes in as the note is learned, so a daemon starts nearly
+grey and is in its whole colour once its part is whole, whatever its form. When it evolves, the colours it already had
+stay; the new ones wait for the new part. People keep their colour. Some USERS' daemons never warm to anyone.
 
 ## Places the game never points to {#hidden}
 
