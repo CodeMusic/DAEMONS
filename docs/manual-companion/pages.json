@@ -6,6 +6,7 @@
   "screens/daemon/Daemon.tsx": "daemon",
   "screens/daemon/Den.tsx": "den",
   "screens/daemon/Provision.tsx": "care",
+  "screens/daemon/OwnSong.tsx": "care",
   "screens/daemon/Routines.tsx": "casino",
   "screens/daemon/Soundings.tsx": "soundings",
   "screens/daemon/Dreams.tsx": "dreams",

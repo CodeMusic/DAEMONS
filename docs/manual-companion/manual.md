@@ -233,11 +233,19 @@ Under the den are four keys, large enough to find without looking:
 |---|---|---|
 | **Feed** | a meal; three a day is enough | *Eaten.* |
 | **Drink** | a drink; three a day | *Drank.* |
-| **Train** | a little exercise | *Trained.* |
+| **Train** | a little exercise, and a lesson in its song | *Trained.* |
 | **Sleep** | to bed. Lit at bedtime | *Asleep.* |
 
 When you feed it, a piece of fruit sits beside it and is eaten in bites; when it drinks, a small glass empties. While
 it sleeps, the card says **ASLEEP** plainly and shows one key, **Wake**.
+
+**Train sings.** Every daemon has a **song** of its own, in its type's key, that it learns as it grows; a TRAIN is a
+lesson in it. It sings the part it is learning, and each note leaves its mouth in its pitch's colour -- C red, D orange,
+E yellow, F green, G blue, A indigo, B violet -- so with the colours learned you could play it on a piano. A note it has
+not learned yet is only a faint cloud of possible notes. Then the lesson comes back into it as small groups of green
+ones and zeros, one for each note it moved closer. Three TRAINs a day teach it, and about two weeks of them make a part
+whole; under the den, **song** says how much of its part it knows. When the part is whole, take it home to the game and
+let it **SING** there.
 
 Put to bed from dusk, six in the evening, it sleeps the night, until you wake it or tend it in the morning, and at noon
 at the latest. Put down in the daytime, it naps for an hour and a half.
