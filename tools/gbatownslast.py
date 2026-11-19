@@ -704,18 +704,84 @@ for _i in range(11, 16):
     FAMILY["trainer_tower"][(9, _i)] = "wall"
 for _i in range(5, 9):
     FAMILY["trainer_tower"][(8, _i)] = "wall"
+def m_ticks(x, y, w, h, X, Y, b):
+    """A's furniture: every grey thing -- the pillars, stairs, machines, the lobby's fittings -- as a vertical progress
+    meter: segments four pixels deep, a lit top edge, the body, a dark gap; pret's own light kept under it a little.
+    A region two pixels wide or less (the rooms' white edge, a rail) is a line, not a thing: kept (draft 1 dotted it)"""
+    if w <= 2:
+        return b
+    yo = Y % 4
+    if yo == 3:
+        return min(1.0, b + 0.5)
+    if yo == 0:
+        return max(0.0, b - 0.35)
+    return b
+
+
+def m_floorbands(x, y, w, h, X, Y, b):
+    """the roof's view of the tower's own face: pret's texture kept, and across it one band a storey (sixteen rows),
+    a lit bar two rows deep over a dark line -- the user's "each floor a band with a teal bar", in the face's own blues"""
+    yo = Y % 16
+    if yo in (6, 7):
+        return 0.0
+    if yo == 8:
+        return 1.0
+    return b
+
+
+KEEP_LIGHT[m_ticks] = 0.0
+KEEP_LIGHT[m_floorbands] = 0.0
+#  the user, 2026-11-18 (by multiple choice): A PROGRESS; put pret's shadow under the walls back; then the furniture
+#  in the same look, sheet first. B THE LEADERBOARD and C THE RUN were not picked (their drafts are in DAEMONS de5b21e9).
 _TOWER_REST = {"orange": T.m_panel, "red": T.m_panel, "*": m_keep}
+_TOWER_A = dict(_TOWER_REST, floor=m_segments, wall=m_wallbar)
 TOWER_OPTIONS = [
-    ("A", "PROGRESS (DRAFT)", "the floors as the lit segments of a progress bar; the walls a band with a lit bar along "
-                              "it -- the user's words for the outside, carried in",
-     dict(_TOWER_REST, floor=m_segments, wall=m_wallbar)),
-    ("B", "THE LEADERBOARD (DRAFT)", "the floors ruled as a table of times; the walls raised panels like a "
-                                     "scoreboard's slats",
-     dict(_TOWER_REST, floor=m_table, wall=T.m_wainscot)),
-    ("C", "THE RUN (DRAFT)", "the floors as running lanes with a dashed line down each; the walls smeared lengthwise "
-                             "(THE STREAK)",
-     dict(_TOWER_REST, floor=m_lanes, wall=T.m_streak)),
+    ("A", "PROGRESS (DRAFT)", "the floors as the lit segments of a progress bar, pret's shadow along the walls' foot "
+                              "kept as the same segments a step or two darker; the walls a band with a lit bar along "
+                              "it -- the user's words for the outside, carried in", _TOWER_A),
+    ("AF", "PROGRESS, FURNISHED (DRAFT)", "A, and the furniture in the same language: every grey thing (pillars, "
+                                          "stairs, machines) a vertical meter of four-pixel segments; the plants in "
+                                          "bold leaves; the roof's view of the tower's own face kept as pret drew it "
+                                          "(the outside is a landmark, the user's)",
+     dict(_TOWER_A, grey=m_ticks, green=T.m_leaf)),
+    ("AFB", "FURNISHED, THE FACE BANDED (DRAFT)", "AF, and the roof's view of the tower's face given one band a "
+                                                  "storey, a lit bar over a dark line, pret's texture kept between",
+     dict(_TOWER_A, grey=m_ticks, green=T.m_leaf, blue=m_floorbands)),
 ]
+#  the shadow (A): pret drew the floor's shadow under a wall as the same tile one rank darker (3/4/19/20 for the
+#  lobby's 1/2/17/18, 191 for the yellow floor's 190, and 206 half of each). Each floor pixel keeps that offset: its
+#  rank in pret's tile minus its rank in the plain floor tile, laid onto the new segments
+TOWER_PLAIN = {8: [190], 10: [1, 2, 17, 18]}
+
+
+def tower_shadow(town, new):
+    M = materials(town)
+    rows = collections.defaultdict(set)
+    for b in range(town.nblocks):
+        for v in T.entries(town.mt, b):
+            if v & 0x3FF >= 640:
+                rows[(v & 0x3FF) - 640].add(v >> 12)
+    n = 0
+    for t in sorted(town.targets):
+        r = next((r for r in sorted(rows[t]) if r in TOWER_PLAIN), None)
+        if r is None:
+            continue
+        lad = ladder(town, r, "floor", M)
+        rk = lambda c: lad.index(c) if c in lad else None
+        best = min(TOWER_PLAIN[r], key=lambda P: sum(abs((rk(a) or 0) - (rk(c) or 0))
+                                                   for a, c in zip(town.van[t], town.van[P])
+                                                   if rk(a) is not None and rk(c) is not None))
+        out = list(new[t])
+        for k, (a, c) in enumerate(zip(town.van[t], town.van[best])):
+            if rk(a) is None or rk(c) is None or rk(out[k]) is None:
+                continue
+            d = rk(a) - rk(c)
+            if d > 0:
+                out[k] = lad[min(len(lad) - 1, rk(out[k]) + d)]
+        if out != new[t]:
+            new[t] = out
+            n += 1
+    return n
 
 
 def tower_town():
@@ -732,6 +798,7 @@ def tower_draw(option):
     town, left, why = tower_town()
     st = [o[3] for o in TOWER_OPTIONS if o[0] == option][0]
     new, what = redraw(town, st)
+    tower_shadow(town, new)
     disk = [list(p) for p in town.disk]
     return town, left, why, {t: new[t] for t in range(len(new)) if new[t] != disk[t]}
 
@@ -759,13 +826,15 @@ def main_tower():
         for t, p in mine.items():
             tl[t] = list(p)
         news.append((o, tl))
-        rep[o] = dict(title=title, line=line, tiles=len(mine))
+        rep[o] = dict(title=title, line=line, tiles=len(mine),
+                      still_pret=sorted(t for t in town.targets if t not in mine))
     pret = sorted(t for t in left if t not in why)
     print("  TRAINER TOWER (%s): %d tiles a reachable map draws are still pret's; excluded %d (%s); targets %d" % (
         TOWER_TS, len(left), len(why), ", ".join("%s %d" % kv for kv in collections.Counter(why.values()).items()),
         len(pret)))
     for o, title, line, _ in TOWER_OPTIONS:
-        print("      %s %-26s %3d tiles redrawn  %s" % (o, title, rep[o]["tiles"], line[:90]))
+        print("      %-2s %-28s %3d tiles redrawn, %3d of the targets still pret's  %s" % (
+            o, title, rep[o]["tiles"], len(rep[o]["still_pret"]), line[:70]))
     if d:
         os.makedirs(os.path.join(d, "sheets"), exist_ok=True)
         town = T.Town(TOWER_TS)
