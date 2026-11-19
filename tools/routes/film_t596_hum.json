@@ -1,0 +1,77 @@
+{
+ "rom": "debug",
+ "about": "T-596 THE WISH TO SING (DRAFT, every word and pixel): a daemon near its evolution hums a bar of its song as it knows it, quietly under ROUTE 1's music, each note a small note rising from its mouth in its pitch's colour (PLAY's colours; a black key split between the white keys either side), a note not yet learned as static that shows its colour only as its true pitch is heard; and after a battle won it asks, 'NAME wants to sing.', and YES sings its song with the notes rising. The lead made ROVERCUB and set 240/255 into its own part (DEBUG -> GAME EVENTS -> FOLLOWER -> LEAD NEAR ITS SONG, which also brings a hum a second later); the ask by ASK TO SING (AS IF A WIN), then by a wild battle won. The theatre's debug scratch save; nothing is saved. Watch held at day, clear weather.",
+ "stops": [
+  {
+   "stop": "standing on ROUTE 1, ROVERCUB near its song: it hums, the notes rise from its mouth",
+   "steps": [
+    "load debug",
+    "finish",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1",
+    "events \"THE ROSTER (SIX, LV50)\"",
+    "flag FLAG_FOLLOWER_OFF 0",
+    "goto Route1 10 29",
+    "wait 60",
+    "finish",
+    "repel 999",
+    "mon 0 species 1",
+    "to 12 29",
+    "finish",
+    "to 14 29",
+    "finish",
+    "wait 40",
+    "follower shown -1 0",
+    "remember hums gFollowerDebugHum 8",
+    "remember notes gFollowerDebugNotes 8",
+    "events \"FOLLOWER >\" \"LEAD NEAR ITS SONG (HUMS)\"",
+    "finish",
+    "wait 40",
+    "burst \"the hum, standing\" 60 4",
+    "moved hums",
+    "moved notes"
+   ]
+  },
+  {
+   "stop": "walking: the notes it hums are left behind in the air, drifting the way it faces",
+   "steps": [
+    "remember hums2 gFollowerDebugHum 8",
+    "events \"FOLLOWER >\" \"LEAD NEAR ITS SONG (HUMS)\"",
+    "finish",
+    "burst \"the hum, walking left\" 40 4 LEFT 88",
+    "moved hums2"
+   ]
+  },
+  {
+   "stop": "the ask, as if a battle were won: 'NAME wants to sing.', YES, and it sings with its notes rising",
+   "steps": [
+    "to 14 29",
+    "remember asks gFollowerDebugAsk 8",
+    "remember sung gFollowerDebugNotes 8",
+    "events \"FOLLOWER >\" \"ASK TO SING (AS IF A WIN)\"",
+    "wait 200",
+    "read",
+    "says \"wants to sing.\"",
+    "shot \"the question\"",
+    "moved asks",
+    "press A",
+    "burst \"its song, asked\" 50 6",
+    "moved sung",
+    "close"
+   ]
+  },
+  {
+   "stop": "after a wild battle won: it may ask (the nearer, the likelier -- about five in six here)",
+   "steps": [
+    "events \"FOLLOWER >\" \"LEAD NEAR ITS SONG (HUMS)\"",
+    "finish",
+    "to 12 34",
+    "repel 1",
+    "remember asks2 gFollowerDebugAsk 8",
+    "wild",
+    "burst \"back in the field\" 30 10",
+    "moved asks2"
+   ]
+  }
+ ]
+}

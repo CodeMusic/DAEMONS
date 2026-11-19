@@ -101,6 +101,10 @@ FIXED = {
     #  THE CREDITS NAME PEOPLE AND WHAT THEY DID. This pass made FireRed's staff "DAEMON Designers" and "INDEX Text"
     #  -- real people credited, in our words, with work that was theirs (T-290). A credits line is never swept.
     r'gCreditsString_\w+\[\] = _\("([^"]*)"\)':           ("credits line", 200),
+    #  T-595/T-596: SING is a daemon singing its own song (the party menu's option, the DEBUG row that asks for it),
+    #  not the move vanilla called SING; the move's rename to LULLABY must not reach them.
+    r'sText_SingOption\[\]\s*=\s*_\("([^"]*)"\)':          ("song action", 12),
+    r'_\("(ASK TO SING[^"]*)"\)':                          ("song action", 30),
 }
 FIXED_RE = [re.compile(p) for p in FIXED]
 
