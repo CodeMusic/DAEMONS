@@ -31,3 +31,21 @@ v11.405.1, T-595 (DRAFT): START SONG on the INDEX, SING in the party menu (ROVER
 v11.405.1, T-595 (DRAFT): START SONG on the INDEX, SING in the party menu (ROVERSEER at half its part), and ROVERCUB singing its part perfectly into its evolution
 
 ![19Nov2026 - T595 - songs in the engine - 5](19Nov2026%20-%20T595%20-%20songs%20in%20the%20engine%20-%205.png)
+
+### 19Nov2026 - C418 - TRAIN sings on the companion site - 6
+
+C-418 DRAFT: TRAIN on the companion site with a scratch ROVERCUB -- the part it is learning leaves its mouth in its pitch colours, static as faint candidate clouds, green binary carried back, song 61% after.
+
+![19Nov2026 - C418 - TRAIN sings on the companion site - 6](19Nov2026%20-%20C418%20-%20TRAIN%20sings%20on%20the%20companion%20site%20-%206.png)
+
+### 19Nov2026 - T594 - a lines song in its colours - 7
+
+T-594 DRAFT: ROVERBYTE's whole song -- ROVERCUB, ROVERSEER and ROVERBYTE's parts in F major, each note in its pitch's colour; and ROVERCUB's part half learned.
+
+![19Nov2026 - T594 - a lines song in its colours - 7](19Nov2026%20-%20T594%20-%20a%20lines%20song%20in%20its%20colours%20-%207.png)
+
+### 19Nov2026 - T594 - a lines song in its colours - 8
+
+T-594 DRAFT: ROVERBYTE's whole song -- ROVERCUB, ROVERSEER and ROVERBYTE's parts in F major, each note in its pitch's colour; and ROVERCUB's part half learned.
+
+![19Nov2026 - T594 - a lines song in its colours - 8](19Nov2026%20-%20T594%20-%20a%20lines%20song%20in%20its%20colours%20-%208.png)
