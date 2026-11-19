@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.406 — 2026-11-19
+
+- Recorded from release v11.405.1 (54c4e9fc, engine 4e07515d8), which sealed v11.404.x:
+  - **T-595, songs in the engine** (DRAFT): SONG on the INDEX, SING in the party menu, evolution sung whole before the change. In 9.36.
+- Section 10: one Settled entry.
+
 ## v11.405 — 2026-11-19
 
 - Recorded from release v11.404.1 (5aa44be7, engine 18c32d360), which sealed v11.403.x:

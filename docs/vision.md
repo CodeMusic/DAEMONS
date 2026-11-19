@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.405**
+**A total conversion — the living design bible, v11.406**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9300,7 +9300,7 @@ about itself* (rule 6).
 
 ***Every page was read by the user before it was built in*** (2026-11-11, *"Yes, push it"*): **twelve chapters, about two thousand words, seventeen passages and fifty-nine spreads**, *its text in `docs/origin-of-a-daemon.md` (tools/gensubtle.py), its emblems in `tools/origin_art.py`.* **Nothing else in the game moves for it.**
 
-### 9.36 THE SONG -- *decided 2026-11-18 (T-594); drafted, not in the engine (T-595); DRAFT*
+### 9.36 THE SONG -- *decided 2026-11-18 (T-594); in the engine, released in v11.405.1 (T-595); DRAFT*
 
 ***Every daemon has its own song, made from what it is: its name, its type, its INDEX entry and its cry*** (*the user: "that is its essence"*). **SONG replaces CRY as the word** (*the user's pick, by multiple choice*).
 
@@ -9312,10 +9312,13 @@ about itself* (rule 6).
 
 *Drafted by `tools/gensongs.py` with previews and sheets in `audio/drafts/t594_songs/` for the user's ear; the companion reads `songs.json` (C-418). The engine's half -- SONG for CRY, SING, the INDEX playing a past form's song as it stands, and evolving by song -- is T-595. Invariant 3 holds: the chart is not touched.*
 
+***In the engine (T-595, released in v11.405.1).*** **On the INDEX page, START plays SONG: a past form's song sung whole, the current form's as it knows it. A daemon's party menu gains SING. Evolution sings the full part before the change, and where a next form waits the song ends on an allusion to it.** *A daemon sings through the HARP's voices (the tune on one, the bass on another); each note not yet learned flickers toward its pitch over a hiss tinted by the share learned, which grows with experience. The battle cry stays the sampled cry. 398 parts, about 35 KB, written by `gensongs.py --write` (`src/daemon_song.c`). DRAFT.*
+
 ## 10. DECISION LOG
 
 ### Settled
 
+- **Released in v11.405.1 (54c4e9fc, 2026-11-19, sealing v11.404.x)** — songs in the engine (T-595, DRAFT): SONG on the INDEX, SING in the party menu, and evolution sung whole before the change; unlearned notes flicker toward their pitch over a hiss; the battle cry is unchanged. 9.36.
 - **Released in v11.404.1 (5aa44be7, 2026-11-19, sealing v11.403.x)** — TRAINER TOWER's interior in A PROGRESS (T-438, the user's pick AF, DRAFT art), its face from the roof kept vanilla for T-601; and THE SONG drafted (T-594): one part a form, each in its type's key, a note not learned is static closing on it, SONG for CRY; the engine's half is T-595. 9.29, 9.36.
 - **Released in v11.403.1 (73d569de, 2026-11-18, sealing v11.402.x)** — T-438's last part, DRAFT art, the user's picks: UMBRAL ASCENT's own tiles as A PENUMBRA, THE DOTS' open door as A SLAB SUNK, the islands' piling cap and the harbours' railing corner, eight slivers retinted and seven left on purpose (six window heads, the harbour's flat black). 9.29.
 - **Released in v11.402.1 (c76a67fa, 2026-11-18, sealing v11.401.x)** — T-565 batch 13 (T-593): pret's last reachable music, fourteen songs in voice C over its slots, so every song a player hears is ours; nine pret's music slots remain, none heard, and 43 sound effects. 9.5.
