@@ -67,3 +67,9 @@ v11.407.1, T-596 (DRAFT): the follower hums a bar of its song with coloured note
 v11.407.1, T-596 (DRAFT): the follower hums a bar of its song with coloured notes rising from its mouth, and asks to sing after a won battle
 
 ![19Nov2026 - T596 - the follower hums - 11](19Nov2026%20-%20T596%20-%20the%20follower%20hums%20-%2011.png)
+
+### 19Nov2026 - C421 - battle challenges - 12
+
+C-421 (DRAFT), on a scratch companion with a synthetic save: a CHALLENGE left for you; BATTLE with one to take and yours to leave; taken, you choose and it fights by itself; its player's replay at the next look, with SKIP.
+
+![19Nov2026 - C421 - battle challenges - 12](19Nov2026%20-%20C421%20-%20battle%20challenges%20-%2012.png)
