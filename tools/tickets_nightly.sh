@@ -62,6 +62,9 @@ commit_push() {   # repo, message, paths...
   local repo=$1 msg=$2; shift 2
   git -C "$repo" add -- "$@"
   if git -C "$repo" diff --cached --quiet -- "$@"; then log "$(basename "$repo"): nothing changed"; return 0; fi
+  if why=$(releasing); then   # a hold that began after the start: leave the commit unmade, the next night makes it
+    git -C "$repo" reset -q -- "$@"; log "skipped: a release began during the run -- $why"; exit 0
+  fi
   git -C "$repo" commit -q -m "$msg" -m "$SIGN" -- "$@" || return 1
   git -C "$repo" push -q origin HEAD:main || return 2
   log "$(basename "$repo"): pushed $(git -C "$repo" rev-parse --short HEAD)"
@@ -71,9 +74,15 @@ log "start (truth: $TRUTH)"
 # A release in progress must not get a ticket commit pushed into the middle of it (The Subtle Layer, 2026-11-17: a
 # HOLD is only a message, and a push during one is not refused). Wait while a release runs or a lane holds the lock
 # file, checking every 5 minutes for up to 3 hours; then skip the night rather than push into it.
+# T-603: a hold is the shared file OR any file in release.hold.d/ (one per owner -- the Subtle Layer's HOLD, a release
+# script's run -- so one owner's exit cannot lift another's hold: release_main.sh's EXIT trap deleted the shared file two
+# minutes into v11.407.1 and this pushed 07f93547 inside it). Checked at the start and again before every push.
 HOLD_FILE="$HOME/.cache/daemons/release.hold"
+HOLD_DIR="$HOME/.cache/daemons/release.hold.d"
 releasing() {
   [ -e "$HOLD_FILE" ] && { echo "the hold file ($(head -c 120 "$HOLD_FILE" 2>/dev/null))"; return 0; }
+  h=$(ls -A "$HOLD_DIR" 2>/dev/null | head -1)
+  [ -n "$h" ] && { echo "a hold in release.hold.d ($h: $(head -c 100 "$HOLD_DIR/$h" 2>/dev/null))"; return 0; }
   p=$(pgrep -fl '^[^ ]*python[0-9.]*( -[^ ]+)* [^ ]*(romrelease|check_fresh_clone|ghrelease|releasedocs)\.py|^[^ ]*make .*(firered|leafgreen)' | head -1)
   [ -n "$p" ] && { echo "a release process (${p:0:80})"; return 0; }
   return 1
