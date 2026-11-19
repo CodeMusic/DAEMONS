@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.409 — 2026-11-19
+
+- Recorded from release v11.408.1 (9adefb20, engine 719ad2dd5), which sealed v11.407.x:
+  - **T-597, colour by song** (DRAFT, the user's A): grey until sung, AL's party and the Corpus still by friendship; T-604 to redraw later forms. In 8.6a, 9.36 and the Reversed table.
+- Section 10: one Settled entry.
+
 ## v11.408 — 2026-11-19
 
 - Recorded from release v11.407.1 (46088e05, engine b469aa716), which sealed v11.405.x:
