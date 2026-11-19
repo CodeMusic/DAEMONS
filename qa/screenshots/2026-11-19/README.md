@@ -74,6 +74,12 @@ C-421 (DRAFT), on a scratch companion with a synthetic save: a CHALLENGE left fo
 
 ![19Nov2026 - C421 - battle challenges - 12](19Nov2026%20-%20C421%20-%20battle%20challenges%20-%2012.png)
 
+### 19Nov2026 - C424 - Kode Dot ROUTINES and LODESTONE in kode-sim - 13
+
+The Kode Dot app in kode-sim (C-424, C-425): ROUTINES, LODESTONE chosen, READ MY TAG listening, no tag heard (the simulator has no 125 kHz front end), and back. Review passed: installs, starts, goes home, no crash, no ID in the log.
+
+![19Nov2026 - C424 - Kode Dot ROUTINES and LODESTONE in kode-sim - 13](19Nov2026%20-%20C424%20-%20Kode%20Dot%20ROUTINES%20and%20LODESTONE%20in%20kode-sim%20-%2013.png)
+
 ### 19Nov2026 - C422 - battles with friends homes - 14
 
 C-422 (DRAFT), on a scratch commons with two scratch homes and synthetic saves: KIT · KIT HOUSE, a player in a friend's home, online to battle; their CHALLENGE open to friends' homes, to TAKE, with ANYONE IN FRIENDS' HOMES beside the other two.
