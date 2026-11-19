@@ -169,3 +169,33 @@ v11.401.1, T-490 step 3: the user's ruling applied -- 67 routines change side, 1
 T-565 batch 13 (T-593) heard on debug ROM 0f950ca9: all fourteen nearest their own draft (DTW over chroma), each one's own song header playing on its own music player.
 
 ![18Nov2026 - T593 - batch 13 heard - 31](18Nov2026%20-%20T593%20-%20batch%2013%20heard%20-%2031.png)
+
+### 18Nov2026 - T438 - umbral ascent and the islands, built - 35
+
+v11.403.1, T-438's last part as built (DRAFT art): UMBRAL ASCENT in A PENUMBRA (three floors), THE DOTS' door shut and open with the islands' piling and railing, and the 15 slivers before and after (8 retinted, 7 left where any change would show)
+
+![18Nov2026 - T438 - umbral ascent and the islands, built - 35](18Nov2026%20-%20T438%20-%20umbral%20ascent%20and%20the%20islands%2C%20built%20-%2035.png)
+
+### 18Nov2026 - T438 - umbral ascent and the islands, built - 36
+
+v11.403.1, T-438's last part as built (DRAFT art): UMBRAL ASCENT in A PENUMBRA (three floors), THE DOTS' door shut and open with the islands' piling and railing, and the 15 slivers before and after (8 retinted, 7 left where any change would show)
+
+![18Nov2026 - T438 - umbral ascent and the islands, built - 36](18Nov2026%20-%20T438%20-%20umbral%20ascent%20and%20the%20islands%2C%20built%20-%2036.png)
+
+### 18Nov2026 - T438 - umbral ascent and the islands, built - 37
+
+v11.403.1, T-438's last part as built (DRAFT art): UMBRAL ASCENT in A PENUMBRA (three floors), THE DOTS' door shut and open with the islands' piling and railing, and the 15 slivers before and after (8 retinted, 7 left where any change would show)
+
+![18Nov2026 - T438 - umbral ascent and the islands, built - 37](18Nov2026%20-%20T438%20-%20umbral%20ascent%20and%20the%20islands%2C%20built%20-%2037.png)
+
+### 18Nov2026 - T438 - umbral ascent and the islands, built - 38
+
+v11.403.1, T-438's last part as built (DRAFT art): UMBRAL ASCENT in A PENUMBRA (three floors), THE DOTS' door shut and open with the islands' piling and railing, and the 15 slivers before and after (8 retinted, 7 left where any change would show)
+
+![18Nov2026 - T438 - umbral ascent and the islands, built - 38](18Nov2026%20-%20T438%20-%20umbral%20ascent%20and%20the%20islands%2C%20built%20-%2038.png)
+
+### 18Nov2026 - T438 - umbral ascent and the islands, built - 39
+
+v11.403.1, T-438's last part as built (DRAFT art): UMBRAL ASCENT in A PENUMBRA (three floors), THE DOTS' door shut and open with the islands' piling and railing, and the 15 slivers before and after (8 retinted, 7 left where any change would show)
+
+![18Nov2026 - T438 - umbral ascent and the islands, built - 39](18Nov2026%20-%20T438%20-%20umbral%20ascent%20and%20the%20islands%2C%20built%20-%2039.png)
