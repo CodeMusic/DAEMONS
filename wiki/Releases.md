@@ -35,8 +35,8 @@ design commits it was built from, and every commit since the release before.
 - **The companion's one app** reads the list of releases and the patches' hashes as data
   (`patches.json` in daemons-companion), so it can patch a player's own ROM on the device and offer each new release
   with one tap ([The one app](https://github.com/CodeMusic/daemons-companion/wiki/The-one-app)).
-- **daemons-playground** always serves the newest release from a local `ROM RELEASE/`, and its WHAT'S NEW tab shows the
-  last twelve releases' notes ([its wiki](https://github.com/CodeMusic/daemons-playground/wiki)).
+- **The playground** in daemons-eudaimonia always serves the newest release from a local `ROM RELEASE/`, and its WHAT'S
+  NEW tab shows the last twelve releases' notes ([its wiki](https://github.com/CodeMusic/daemons-eudaimonia/wiki)).
 
 ## In the repository
 

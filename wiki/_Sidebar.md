@@ -27,4 +27,4 @@
 - [Design bible](https://github.com/CodeMusic/DAEMONS/blob/main/docs/vision.md)
 - [Companion](https://github.com/CodeMusic/daemons-companion) ([wiki](https://github.com/CodeMusic/daemons-companion/wiki))
 - [Engine wiki](https://github.com/CodeMusic/pokefirered-daemons/wiki)
-- [Playground](https://github.com/CodeMusic/daemons-playground) ([wiki](https://github.com/CodeMusic/daemons-playground/wiki))
+- [EUDAIMONIA, and the playground](https://github.com/CodeMusic/daemons-eudaimonia) ([wiki](https://github.com/CodeMusic/daemons-eudaimonia/wiki))

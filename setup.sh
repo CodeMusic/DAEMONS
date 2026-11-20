@@ -130,20 +130,22 @@ fi
 ln -sfn ../daemons-companion companion
 echo "     companion -> ../daemons-companion  ($(git -C ../daemons-companion branch --show-current))"
 
-# ---- 6/7 the playground --------------------------------------------------
+# ---- 6/7 eudaimonia ------------------------------------------------------
 #
-# NOT A FORK EITHER. daemons-playground (2026-10-19, T-428) is the all-in-one harness to demo and beta test the game:
-# the game in a browser, the companion beside it, what's new in each release. It holds no ROM -- it reads them from
+# NOT A FORK EITHER. daemons-eudaimonia (2026-10-19, T-428; renamed 2026-11-20, C-438) is where EUDAIMONIA is to be
+# built, and today the playground: the all-in-one harness to demo and beta test the game -- the game in a browser, the
+# companion beside it, what's new in each release. It holds no ROM -- it reads them from
 # ROM RELEASE/ here, beside it -- so it is public, a plain clone on main and the same gitignored symlink.
-say "6/7  playground"
-if [[ -d ../daemons-playground/.git ]]; then
-  echo "     playground present"
+say "6/7  eudaimonia"
+if [[ -d ../daemons-eudaimonia/.git ]]; then
+  echo "     eudaimonia present"
 else
-  git clone --quiet https://github.com/CodeMusic/daemons-playground.git ../daemons-playground
-  echo "     playground cloned"
+  git clone --quiet https://github.com/CodeMusic/daemons-eudaimonia.git ../daemons-eudaimonia
+  echo "     eudaimonia cloned"
 fi
-ln -sfn ../daemons-playground playground
-echo "     playground -> ../daemons-playground  ($(git -C ../daemons-playground branch --show-current))"
+ln -sfn ../daemons-eudaimonia eudaimonia
+[[ -L playground ]] && rm playground   # its link under its first name, before C-438
+echo "     eudaimonia -> ../daemons-eudaimonia  ($(git -C ../daemons-eudaimonia branch --show-current))"
 
 # ---- 7/7 the model proxy ------------------------------------------------
 #

@@ -88,9 +88,9 @@ are playing (it is in the release's name, like `v11.315.3`).
   the matching patch from the newest release, applies it on the device and checks the result. It plays the game with
   the companion beside it, sharing one save, and offers each new release with one tap. Internal and in testing for
   now; a Mac version is coming ([The one app](https://github.com/CodeMusic/daemons-companion/wiki/The-one-app)).
-- **In a browser, on your own network.** [daemons-playground](https://github.com/CodeMusic/daemons-playground) serves
-  the game from a DAEMONS checkout you built yourself, to this machine, a private network and a tailnet only -- with the
+- **In a browser, on your own network.** The playground in [daemons-eudaimonia](https://github.com/CodeMusic/daemons-eudaimonia)
+  serves the game from a DAEMONS checkout you built yourself, to this machine, a private network and a tailnet only -- with the
   companion and each release's notes in tabs. It is for demos and beta tests, never a public site
-  ([its wiki](https://github.com/CodeMusic/daemons-playground/wiki)).
+  ([its wiki](https://github.com/CodeMusic/daemons-eudaimonia/wiki)).
 
 Rather build it yourself? See [Building](Building).

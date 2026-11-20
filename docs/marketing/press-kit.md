@@ -99,7 +99,7 @@ And until the review's output filter lands, never promote linking an *uncensored
 | **What you need** | A FireRed or LeafGreen you own. **No ROM is distributed** -- a patch is applied to yours |
 | **Current release** | v11.382.1 (17 November 2026) |
 | **Manuals** | MICRO-START (5 pp) · QUICK-START (25 pp, large type) · the player's manual · *Playing together* · *A bigger mind* (Tiiny) · *The Old Word* (why DAY-mons) · *Principles of Mind* (the in-game school's textbook) |
-| **Source** | github.com/CodeMusic -- DAEMONS (design), pokefirered-daemons (the game), daemons-companion (app, server, firmware), daemons-playground (browser) |
+| **Source** | github.com/CodeMusic -- DAEMONS (design), pokefirered-daemons (the game), daemons-companion (app, server, firmware), daemons-eudaimonia (browser) |
 
 # Who it is for {.t-GROWTH}
 

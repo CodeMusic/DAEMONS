@@ -54,8 +54,9 @@ ai/logs/
 engineAi
 # the goal companion (2026-10-03): its own repo, symlinked like the engines
 companion
-# the playground (2026-10-19, T-428): the game in a browser for demos and beta tests, its own repo, symlinked too
-playground
+# daemons-eudaimonia (2026-10-19, T-428; renamed 2026-11-20, C-438): EUDAIMONIA to come, the game in a browser for demos
+# and beta tests today, its own repo, symlinked too
+eudaimonia
 
 # the bridge venv -- rebuilt by ./bindDaemons.sh --ai when absent
 ai/bridgevenv/

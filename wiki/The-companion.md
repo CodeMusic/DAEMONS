@@ -55,8 +55,8 @@ No device waits on it, and when it is busy the talk goes to your own n8n
 plays the game in a GAME tab. **The game's save is the companion's** -- showing the companion pauses the game, SEND
 and SYNC write the save, and the game carries on from it. On an iPad on its side, the game and the companion sit side
 by side, and a NOTEBOOK page just filed or the INDEX card of a daemon just met opens next to the game. A newer release
-is one tap. A Mac version is coming. In a browser, [daemons-playground](https://github.com/CodeMusic/daemons-playground)
-plays the game with the companion in a tab ([The one app](https://github.com/CodeMusic/daemons-companion/wiki/The-one-app)).
+is one tap. A Mac version is coming. In a browser, the playground in
+[daemons-eudaimonia](https://github.com/CodeMusic/daemons-eudaimonia) plays the game with the companion in a tab ([The one app](https://github.com/CodeMusic/daemons-companion/wiki/The-one-app)).
 
 ## What it does with your game
 

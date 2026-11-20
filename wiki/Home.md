@@ -28,8 +28,8 @@ and a glossary, in one PDF. Like this wiki, it says how things work, never where
 > **The game and the companion in one app.** On an iPhone or iPad, the companion's app takes your own *FireRed* or
 > *LeafGreen*, patches it on the device and plays it beside the companion ([The one app](https://github.com/CodeMusic/daemons-companion/wiki/The-one-app);
 > internal and in testing, a Mac version coming). In a browser,
-> [daemons-playground](https://github.com/CodeMusic/daemons-playground) does the same for the people on your own
-> network.
+> the playground in [daemons-eudaimonia](https://github.com/CodeMusic/daemons-eudaimonia) does the same for the people
+> on your own network.
 
 ## Two editions
 
@@ -111,7 +111,7 @@ WALLED GARDEN, and its WARDEN its GATEKEEPER. Next, the SAFARI ZONE becomes THE 
 | [CodeMusic/pokered-daemons](https://github.com/CodeMusic/pokered-daemons) | the Game Boy build, a reference |
 | [CodeMusic/gpt-play-pokemon-firered-daemons](https://github.com/CodeMusic/gpt-play-pokemon-firered-daemons) | the harness that lets a model play it |
 | [CodeMusic/daemons-companion](https://github.com/CodeMusic/daemons-companion) | the companion: app, server and firmware ([its wiki](https://github.com/CodeMusic/daemons-companion/wiki)) |
-| [CodeMusic/daemons-playground](https://github.com/CodeMusic/daemons-playground) | the game in a browser, for demos and beta tests ([its wiki](https://github.com/CodeMusic/daemons-playground/wiki)) |
+| [CodeMusic/daemons-eudaimonia](https://github.com/CodeMusic/daemons-eudaimonia) | EUDAIMONIA to come; today the playground, the game in a browser, for demos and beta tests ([its wiki](https://github.com/CodeMusic/daemons-eudaimonia/wiki)) |
 
 *DAEMONS is a fan project, unaffiliated with and unendorsed by Nintendo, Creatures Inc. or GAME FREAK Inc. Pokémon is
 their trademark. Enormous thanks to [pret](https://github.com/pret), whose decompilations make it possible.*

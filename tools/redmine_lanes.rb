@@ -6,7 +6,7 @@ LANES = {
   'game' => 'engine, maps, mechanics', 'story' => 'writing, books, narrative', 'audio' => 'music and sounds',
   'art' => 'sprites, buildings, covers', 'app' => 'the companion app and site', 'hub' => 'the server, the Tiiny, the mind',
   'esp32' => 'ESP32 boards: T-Watch Ultra, the handhelds', 'pi-zero' => 'Pi Zero devices: the Cardputer Zero',
-  'playground' => 'the game in a browser', 'docs' => 'manuals, READMEs, wikis, release docs',
+  'playground' => 'daemons-eudaimonia: EUDAIMONIA, and the game in a browser', 'docs' => 'manuals, READMEs, wikis, release docs',
   'ops' => 'roverbyteseer, Redmine, backups, the nightly mirror',
 }
 role = Role.find_by!(name: 'Ticket keeper')

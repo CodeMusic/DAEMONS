@@ -62,7 +62,7 @@ DAEMONS/             <- ALWAYS root sessions here (memory lives here)
   engineGba/ ----->  symlink to ../pokefirered-daemons   (GBA, where the game is)
   engineAi/  ----->  symlink to ../gpt-play-pokemon-firered-daemons
   companion/ ----->  symlink to ../daemons-companion   (the goal companion: app, server, devices)
-  playground/ ---->  symlink to ../daemons-playground  (the game in a browser, for demos and beta tests)
+  eudaimonia/ ---->  symlink to ../daemons-eudaimonia  (EUDAIMONIA to come; the game in a browser today)
 ```
 
 `engineAi/` is a fork of Clad3815/gpt-play-pokemon-firered: it drives mGBA over
@@ -80,12 +80,15 @@ goes in it.** `companion/bindCompanion.sh` starts its server and app (a site by 
 **Before adding or moving code there, read `companion/LAYOUT.md`** (C-292): the map of where each kind of code lives,
 kept true in the same commit as any folder change (`companion/CLAUDE.md`; its server test checks it).
 
-`playground/` is **daemons-playground** (2026-10-19, T-428): an all-in-one harness to demo and beta test the game from
-one URL -- the edition, DEBUG or not, a `.sav` or a new game, played in the browser (EmulatorJS's mGBA core, from its
-CDN), the save kept and downloaded, the companion and each release's notes in tabs. `playground/bindPlayground.sh`
-serves it on port 4740 (`--build` for engineGba's build instead of the latest release). It reads the ROMs from
-`ROM RELEASE/` here at the moment they are asked for and answers only this machine, a private network and the
-tailnet; it holds no ROM, so it is public at CodeMusic/daemons-playground -- **nothing personal goes in it either.**
+`eudaimonia/` is **daemons-eudaimonia** (2026-10-19, T-428; renamed 2026-11-20, C-438): where EUDAIMONIA is to be built,
+the site where the companion's PRAXIS and ARETE are used together (C-411's dashboard at its front door, then C-439,
+C-436 and C-437; `companion/docs/PROJECTS.md` section 10). Today it is still **the playground**, an all-in-one harness
+to demo and beta test the game from one URL -- the edition, DEBUG or not, a `.sav` or a new game, played in the browser
+(EmulatorJS's mGBA core, from its CDN), the save kept and downloaded, the companion and each release's notes in tabs.
+`eudaimonia/bindEudaimonia.sh` serves it on port 4740 (`--build` for engineGba's build instead of the latest release),
+kept running by the login agent `ca.codemusic.daemons-eudaimonia`. It reads the ROMs from `ROM RELEASE/` here at the
+moment they are asked for and answers only this machine, a private network and the tailnet; it holds no ROM, so it is
+public at CodeMusic/daemons-eudaimonia -- **nothing personal goes in it either.** Its Redmine lane is still `playground`.
 
 Every one of these symlinks is gitignored and no fork is ever vendored: the engines carry
 Nintendo-derived graphics and this repo promises not to distribute copyrighted

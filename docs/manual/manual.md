@@ -213,7 +213,7 @@ tried with a Taco in hand, so which of its buttons does what may still change.*
 ::: way
 ### The game in a browser, for demos and beta tests
 
-**daemons-playground** plays DAEMONS in a browser from one address: choose an edition (or its DEBUG build), start a new
+**The playground** (in daemons-eudaimonia) plays DAEMONS in a browser from one address: choose an edition (or its DEBUG build), start a new
 game or continue from a `.sav`, and play -- with the keyboard on a computer, or buttons on the screen on a phone. Beside
 the game, in tabs: a companion of its own for the daemons you SEND, each release's notes, and help.
 
@@ -234,8 +234,8 @@ The game keeps its save in the browser, and **a `.sav` can be downloaded** at an
 **To run one**, with DAEMONS and its releases built on the machine, from the DAEMONS folder:
 
 ```
-playground/bindPlayground.sh          # the newest release, on port 4740
-playground/bindPlayground.sh --build  # this machine's own build instead
+eudaimonia/bindEudaimonia.sh          # the newest release, on port 4740
+eudaimonia/bindEudaimonia.sh --build  # this machine's own build instead
 ```
 
 ## The DEBUG builds {#debug}
@@ -1195,4 +1195,4 @@ cartridge's game.
 | the game | github.com/CodeMusic/DAEMONS |
 | its engine | github.com/CodeMusic/pokefirered-daemons |
 | the companion | github.com/CodeMusic/daemons-companion |
-| the playground | github.com/CodeMusic/daemons-playground |
+| the playground | github.com/CodeMusic/daemons-eudaimonia |

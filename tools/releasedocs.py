@@ -70,7 +70,7 @@ def repo(link, name):
 
 
 REPOS = {"DAEMONS": ROOT, "engine": repo("engineGba", "pokefirered-daemons"),
-         "companion": repo("companion", "daemons-companion"), "playground": repo("playground", "daemons-playground"),
+         "companion": repo("companion", "daemons-companion"), "eudaimonia": repo("eudaimonia", "daemons-eudaimonia"),
          "engineAi": repo("engineAi", "gpt-play-pokemon-firered-daemons")}
 
 #  (repository, path prefix a commit touched) -> the surfaces that should then name it
@@ -87,7 +87,7 @@ ROUTES = [
     ("engine", "", ["DAEMONS:docs/manual/manual.md"]),
     ("DAEMONS", "ai/litellm/", ["companion:wiki/The-hub-and-its-AI.md"]),
     ("engineAi", "", ["engineAi:wiki/Home.md"]),
-    ("playground", "", ["playground:README.md"]),
+    ("eudaimonia", "", ["eudaimonia:README.md"]),
 ]
 #  a HOW TO PLAY book as a SET UP entry names it -> manual.py's book
 SETUP_BOOK = {"player": "main", "micro": "micro", "quick": "quick", "companion": "companion", "watch": "watch", "glass": "glass",

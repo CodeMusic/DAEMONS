@@ -41,7 +41,7 @@ WALLED GARDEN, and its WARDEN its GATEKEEPER. Next, the SAFARI ZONE becomes THE 
 *LeafGreen* 1.0 and Rev 1 — and the [**wiki**](https://github.com/CodeMusic/DAEMONS/wiki) walks through playing,
 building and the two editions.
 
-**In a browser:** [daemons-playground](https://github.com/CodeMusic/daemons-playground) serves the game from a DAEMONS
+**In a browser:** the playground in [daemons-eudaimonia](https://github.com/CodeMusic/daemons-eudaimonia) serves the game from a DAEMONS
 checkout to the people on your own network, with the companion in a tab beside it. **On an iPhone or iPad:** the
 companion's [one app](https://github.com/CodeMusic/daemons-companion/wiki/The-one-app) takes your own *FireRed* or
 *LeafGreen*, applies the patch on the device and plays it beside the companion (internal and in testing; a Mac
@@ -59,12 +59,12 @@ A total conversion. It was built first on [pret/pokered](https://github.com/pret
 | [**CodeMusic/pokered-daemons**](https://github.com/CodeMusic/pokered-daemons) | the Game Boy build, where the vertical slice was made. Kept as a reference, not updated further |
 | [**CodeMusic/gpt-play-pokemon-firered-daemons**](https://github.com/CodeMusic/gpt-play-pokemon-firered-daemons) | the harness that lets a **model play it** — fork of [Clad3815](https://github.com/Clad3815/gpt-play-pokemon-firered) |
 | [**CodeMusic/daemons-companion**](https://github.com/CodeMusic/daemons-companion) | the **goal companion** — your phone, a watch or a board hosts a daemon you SEND from your party, one to each device, and it helps you get things done; its app, its server (on a computer or a small hub at home, with an AI board of its own) and firmware. Ours from the first line, no fork |
-| [**CodeMusic/daemons-playground**](https://github.com/CodeMusic/daemons-playground) | the game **in a browser**, for demos and beta tests on your own network, with the companion and each release's notes in tabs. Holds no ROM |
+| [**CodeMusic/daemons-eudaimonia**](https://github.com/CodeMusic/daemons-eudaimonia) | where **EUDAIMONIA** is to be built, the companion's projects and points used together; today the playground, the game **in a browser**, for demos and beta tests on your own network, with the companion and each release's notes in tabs. Holds no ROM |
 
 Each has a wiki: [this one](https://github.com/CodeMusic/DAEMONS/wiki) for the game,
 [the engine's](https://github.com/CodeMusic/pokefirered-daemons/wiki) for the fork,
 [the companion's](https://github.com/CodeMusic/daemons-companion/wiki) and
-[the playground's](https://github.com/CodeMusic/daemons-playground/wiki).
+[daemons-eudaimonia's](https://github.com/CodeMusic/daemons-eudaimonia/wiki).
 
 **Why the move.** A spike was run to answer one question — are abilities, item descriptions and a real scripting language worth rebuilding 334 files for? Gen 1 stores **no item descriptions at all**, which is a writing-led project running on the one generation with nowhere to write. Abilities give the chart a second axis. The Index went from six lines of eighteen characters to three of forty-two.
 
@@ -269,10 +269,10 @@ engine/       -> pokered-daemons        Game Boy, reference
 engineGba/    -> pokefirered-daemons    GBA, where the work happens
 engineAi/     -> gpt-play-...-daemons   the harness that lets a model play it
 companion/    -> daemons-companion      the goal companion: app, server, devices
-playground/   -> daemons-playground     the game in a browser, for demos and beta tests
+eudaimonia/   -> daemons-eudaimonia     EUDAIMONIA to come; the game in a browser today
 ```
 
-The three `engine*` entries, `companion/` and `playground/` are **gitignored symlinks**. Nothing is ever
+The three `engine*` entries, `companion/` and `eudaimonia/` are **gitignored symlinks**. Nothing is ever
 vendored in here.
 
 The bible is [`docs/vision.md`](docs/vision.md). It is the only document that

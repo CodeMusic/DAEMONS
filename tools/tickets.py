@@ -45,7 +45,7 @@ PREFIX = {"daemons": "T", "companion": "C"}
 ROW = re.compile(r"^\| (?P<id>(~~)?\*\*(?P<p>[TC])-(?P<n>\d+)(?P<sfx>[a-z]?)\*\*(~~)?) \| ")
 SEP = re.compile(r"^\|(\s*-+\s*\|)+\s*$")
 SHA = re.compile(r"(?<![0-9A-Za-z/#=-])([0-9a-f]{7,12})(?![0-9A-Za-z])")
-REPO_WORD = re.compile(r"\b(engineGba|engine|companion|playground|engineAi)\b[^|()]{0,12}$")
+REPO_WORD = re.compile(r"\b(engineGba|engine|companion|eudaimonia|playground|engineAi)\b[^|()]{0,12}$")   # playground: eudaimonia's first name (C-438)
 PLACEHOLDER = "@@tickets {}@@"
 TICKET_TABLES = ("what", "ticket")  # the first column a table of tickets is headed by
 
