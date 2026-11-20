@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.410 — 2026-11-19
+
+- Recorded from release v11.409.1 (61bca9d1, engine 958261282), which sealed v11.408.x:
+  - **T-598, play a daemon's song and it comes** (DRAFT): matched against SEEN daemons' openings; it sings and goes; quotations wait for T-599. In 9.36.
+- Section 10: one Settled entry.
+
 ## v11.409 — 2026-11-19
 
 - Recorded from release v11.408.1 (9adefb20, engine 719ad2dd5), which sealed v11.407.x:
