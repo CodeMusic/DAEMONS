@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.411 — 2026-11-20
+
+- Recorded from release v11.410.1 (fd731f7a, engine a4e3cff97), which sealed v11.409.x:
+  - **T-601, TRAINER TOWER's face** (DRAFT art): THE TIME POSTED, the user's AFT -- a storey bar a floor, each window a stopwatch. In 9.29.
+- Section 10: one Settled entry.
+
 ## v11.410 — 2026-11-19
 
 - Recorded from release v11.409.1 (61bca9d1, engine 958261282), which sealed v11.408.x:
