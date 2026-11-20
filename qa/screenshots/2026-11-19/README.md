@@ -109,3 +109,21 @@ v11.408.1, T-597 colour by song (DRAFT): ROVERCUB on the SUMMARY with its song b
 The Kode Dot's den in kode-sim (C-426), on a scratch companion with a synthetic save: no address yet, then PIP's den, FEED (Thank you. That helps.), SLEEP (Goodnight., and WAKE in its place). Review passed; the companion recorded both cares.
 
 ![19Nov2026 - C426 - Kode Dot den in kode-sim - 18](19Nov2026%20-%20C426%20-%20Kode%20Dot%20den%20in%20kode-sim%20-%2018.png)
+
+### 19Nov2026 - T598 - a song played, and it comes - 19
+
+v11.409.1, T-598 (DRAFT): ROVERCUB's opening on F's wheel and it comes, sings and goes; HUNCH (A minor) on C's wheel comes; ROVERCUB on the wrong wheel brings nothing
+
+![19Nov2026 - T598 - a song played, and it comes - 19](19Nov2026%20-%20T598%20-%20a%20song%20played%2C%20and%20it%20comes%20-%2019.png)
+
+### 19Nov2026 - T598 - a song played, and it comes - 20
+
+v11.409.1, T-598 (DRAFT): ROVERCUB's opening on F's wheel and it comes, sings and goes; HUNCH (A minor) on C's wheel comes; ROVERCUB on the wrong wheel brings nothing
+
+![19Nov2026 - T598 - a song played, and it comes - 20](19Nov2026%20-%20T598%20-%20a%20song%20played%2C%20and%20it%20comes%20-%2020.png)
+
+### 19Nov2026 - T598 - a song played, and it comes - 21
+
+v11.409.1, T-598 (DRAFT): ROVERCUB's opening on F's wheel and it comes, sings and goes; HUNCH (A minor) on C's wheel comes; ROVERCUB on the wrong wheel brings nothing
+
+![19Nov2026 - T598 - a song played, and it comes - 21](19Nov2026%20-%20T598%20-%20a%20song%20played%2C%20and%20it%20comes%20-%2021.png)
