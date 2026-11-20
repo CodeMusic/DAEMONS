@@ -747,6 +747,18 @@ TOWER_OPTIONS = [
     ("AFB", "FURNISHED, THE FACE BANDED (DRAFT)", "AF, and the roof's view of the tower's face given one band a "
                                                   "storey, a lit bar over a dark line, pret's texture kept between",
      dict(_TOWER_A, grey=m_ticks, green=T.m_leaf, blue=m_floorbands)),
+    #  T-601 (the user picked it, 2026-11-19): AF everywhere, and the roof's view of the face drawn by tower_face
+    ("AFB2", "FURNISHED, THE FACE IN STOREYS (DRAFT)", "AF, and the face one storey a tile row (eight, the tower's "
+                                                      "floors): vents out, a plain band, a dark rule, lit segments "
+                                                      "over it; the side faces ticked a storey, their edge a meter",
+     dict(_TOWER_A, grey=m_ticks, green=T.m_leaf)),
+    ("AFF", "FURNISHED, THE FACE FILLED (DRAFT)", "AF, and the face one vertical progress bar filled to the top "
+                                                 "(the climb done): the panel lit, a fine tick a storey, a bright "
+                                                 "head under the lip; the windows dark in it",
+     dict(_TOWER_A, grey=m_ticks, green=T.m_leaf)),
+    ("AFT", "FURNISHED, THE TIME POSTED (DRAFT)", "AFB2, and each window a stopwatch: a pale dial ringed dark, its "
+                                                 "hand straight up -- the time posted at the top of the climb",
+     dict(_TOWER_A, grey=m_ticks, green=T.m_leaf)),
 ]
 #  the shadow (A): pret drew the floor's shadow under a wall as the same tile one rank darker (3/4/19/20 for the
 #  lobby's 1/2/17/18, 191 for the yellow floor's 190, and 206 half of each). Each floor pixel keeps that offset: its
@@ -811,13 +823,152 @@ def tower_deck(town, new):
         new[t] = p
 
 
+#  ================================================================ T-601: THE TOWER'S FACE, SEEN FROM ITS ROOF (DRAFT)
+#  The roof map's lower six block rows look down the tower's own south face: a blue panel (vents, two windows) between
+#  two side faces striped green, each edged by a pale line. AF keeps these 25 tiles as pret drew them (the user,
+#  2026-11-19: "we need to return to it later" -- T-601). Every face tile is drawn here from pret's pixels, by role,
+#  in row 7's own colours; nothing else moves (blocks, flips, rows, footprints, the window frames and the dark edges).
+#
+#  WHY EVERY EIGHT ROWS, NOT SIXTEEN: the panel is one pair of tiles (260 / 261, the vents) stacked in every 8-row
+#  tile row of every block, and the side faces' tiles each sit at both halves of a block too (rows 0 and 8 mod 16) --
+#  so whatever a tile carries comes back every eight rows, and a band every sixteen is not drawable in these tiles
+#  (AFB's bands came every eight for this reason). It would need the face blocks' lower halves pointed at new tiles: a
+#  metatile change, a question for the user. What the eight-row period gives instead: the face from the roof shows
+#  eight tile rows of panel (12a..15b), so one storey a tile row is the tower's eight floors.
+TOWER_FACE = (244, 245, 246, 247, 248, 249, 250, 251, 260, 261, 262, 265, 266, 267, 280, 281, 282, 283, 288, 294,
+              295, 296, 298, 304, 305)
+#  the panel's columns run A B B A every 32 pixels (260 261 261 260; 244 245 245 244 at its top); the windows sit in
+#  one such group (246 247 247h 246h ... 294 295 295h 294h)
+_FACE_B = {245, 261, 247, 295}
+_FACE_WEDGE = {248, 249, 264, 265, 280, 281, 296, 297}   # the side faces: green stripes over light blue (7)
+_FACE_RIM = {250, 251, 266, 267, 282, 283, 298}          # the side faces' inner edge: a pale line (e) at x 5
+_FACE_EDGE = {288, 304, 305}                             # the side faces' outer edge
+
+
+#  the window's own tiles, left half (the right is the same tiles flipped): (tile) -> (X, Y) of its corner in the
+#  32x32 window. 263, 278 and 279 hold only glass and a sash -- 263 plain glass, 278 / 279 already AF's (its grey) --
+#  so they are not among the 25; 278's two left columns are the panel, drawn with it in every look. 264 and 297 are
+#  the side faces' solid green (not among the 25 either), ticked with the rest of the green
+_FACE_WIN = {246: (0, 0), 247: (8, 0), 262: (0, 8), 263: (8, 8), 278: (0, 16), 279: (8, 16), 294: (0, 24),
+             295: (8, 24)}
+_FACE_ALSO = (263, 264, 278, 279, 297)
+
+
+def _face_panel(t, x, y, v):
+    """is this pixel the panel's own fill (pret's 8 and its vents' 9), not a window's frame or glass, nor the lip's
+    shadow at the panel's top (244 / 245 rows 0-1)"""
+    if t in (244, 245):
+        return y >= 2
+    if t in (260, 261):
+        return True
+    if t == 246:
+        return y < 2 or x < 2
+    if t == 247:
+        return y < 2
+    if t in (262, 278):
+        return x < 2
+    if t == 294:
+        return x < 2 or y >= 6
+    if t == 295:
+        return y >= 6
+    return False
+
+
+def _face_sides(t, x, y, v, tick):
+    """the side faces in every look: a storey tick one row a tile row -- on the light blue a step darker (7 ->
+    `tick`), on the green stripes a mullion of the darker green (11 -> 12), so the green reads as glass a floor
+    deep; the rim's pale line broken into one segment a storey, so it reads as a meter"""
+    if t in _FACE_RIM and x == 5 and v == 14:
+        return 14 if y <= 5 else 15
+    if y == 7 and v == 7:
+        return tick
+    if y == 7 and v == 11:
+        return 12
+    return v
+
+
+def face_storeys(t, x, y, v):
+    """AFB2 STOREYS: one storey a tile row. The vents taken out; each storey a plain band of the panel's blue with one
+    line at its foot -- dark (9) along the A columns, lit (14) along the B columns: "each floor a band with a teal
+    bar", one line a floor, in the palest blue row 7 has (it has no teal)"""
+    if t in _FACE_WEDGE | _FACE_RIM | _FACE_EDGE:
+        return _face_sides(t, x, y, v, 15)
+    if not _face_panel(t, x, y, v):
+        if t in (294, 295) and v == 3:
+            return 9                                      # the sill's grey band, darkened into the panel
+        if t in (246, 247) and v == 8 and y == 7:
+            return 14 if t in _FACE_B else 9              # the storey's line runs on across the window's top glass
+        return v
+    if y == 7:
+        return 14 if t in _FACE_B else 9
+    return 8
+
+
+def face_fill(t, x, y, v):
+    """AFF THE FILL: the panel is one vertical progress bar, filled to the top -- the climb done, as it is for whoever
+    stands on this roof. The vents taken out; the panel lit (row 7's 15) with a fine tick a storey (8), the fill's
+    head a bright line (14) just under the lip's shadow; the windows' frames kept, dark in the lit bar"""
+    if t in _FACE_WEDGE | _FACE_RIM | _FACE_EDGE:
+        return _face_sides(t, x, y, v, 15)
+    if not _face_panel(t, x, y, v):
+        return v
+    if t in (244, 245) and y == 2:
+        return 14
+    if y == 7:
+        return 8
+    return 15
+
+
+def _stopwatch(X, Y):
+    """the window's glass (X 6..15 of the left half, Y 6..23) as a stopwatch: a pale dial ringed dark, its one hand
+    straight up -- the time posted at the top of the climb -- ticks at the quarters, a crown above. Symmetric about
+    the window's middle, as its tiles are"""
+    cx, cy = 15.5, 15.5
+    d = ((X - cx) ** 2 + (Y - cy) ** 2) ** 0.5
+    if X == 15 and Y in (6, 7):
+        return 10                                         # the crown
+    if d > 7.6:
+        return 15                                         # glass round the dial
+    if d > 6.4:
+        return 10                                         # the dial's rim
+    if X == 15 and 10 <= Y <= 16:
+        return 10                                         # the hand, at the top
+    if (X == 10 and Y in (15, 16)) or (X == 15 and Y == 21):
+        return 9                                          # the quarter ticks (nine, six; three is the mirror)
+    return 14
+
+
+def face_clock(t, x, y, v):
+    """AFT THE POSTED TIME: AFB2's storeys, and each window a stopwatch"""
+    if t in _FACE_WIN:
+        X, Y = _FACE_WIN[t][0] + x, _FACE_WIN[t][1] + y
+        if X >= 6 and 6 <= Y <= 23:
+            return _stopwatch(X, Y)
+    return face_storeys(t, x, y, v)
+
+
+TOWER_FACE_LOOKS = {"AFB2": face_storeys, "AFF": face_fill, "AFT": face_clock}
+
+
+def tower_face(town, new, look):
+    """the 25 face tiles redrawn from pret's pixels with `look`, and the window's three others from AF's"""
+    f = TOWER_FACE_LOOKS[look]
+    for t in TOWER_FACE + _FACE_ALSO:
+        p = list(new[t]) if t in _FACE_ALSO else list(town.van[t])
+        out = [f(t, k % 8, k // 8, v) if v else 0 for k, v in enumerate(p)]
+        assert all((a == 0) == (b == 0) for a, b in zip(out, p)), "face tile %d: footprint moved" % t
+        new[t] = out
+
+
 def tower_draw(option):
     town, left, why = tower_town()
     st = [o[3] for o in TOWER_OPTIONS if o[0] == option][0]
     new, what = redraw(town, st)
     tower_shadow(town, new)
-    if option in ("AF", "AFB"):
+    if option.startswith("AF"):
         tower_deck(town, new)
+    if option in TOWER_FACE_LOOKS:
+        tower_face(town, new, option)
     disk = [list(p) for p in town.disk]
     return town, left, why, {t: new[t] for t in range(len(new)) if new[t] != disk[t]}
 
