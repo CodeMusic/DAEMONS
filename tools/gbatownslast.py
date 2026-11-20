@@ -644,7 +644,7 @@ def check_engine():
 #  over them; the gates' floor-count dots (one to eight, a different block per floor) are kept: they already count.
 TOWER_TS = "trainer_tower"
 TOWER_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t438", "trainer_tower")
-APPROVED_TOWER = "AF"       # the user, 2026-11-19: A PROGRESS, the shadow back, the furniture, the face kept, the roof deck plain
+APPROVED_TOWER = "AFT"      # the user, 2026-11-19: A PROGRESS, the shadow back, the furniture, the roof deck plain; T-601: the face AFT THE TIME POSTED (8 storeys)
 #  the ball emblem's tiles -> the plain floor tile at the same place in the 16x16 floor (block 0x281: 1 2 / 17 18)
 TOWER_EMBLEM = {148: 2, 149: 1, 150: 2, 151: 1, 164: 18, 165: 17, 166: 18, 167: 17}
 
