@@ -121,3 +121,9 @@ C-455 (DRAFT): DAILY MENTIONS on TODAY, the MENTIONS book on the DREAM-BOOKS she
 C-455 (DRAFT): DAILY MENTIONS on TODAY, the MENTIONS book on the DREAM-BOOKS shelf, and the book open -- a scratch companion on a synthetic save, plain letters (no mind there)
 
 ![21Nov2026 - C455 - MENTIONS on TODAY, the shelf and the book - 23](21Nov2026%20-%20C455%20-%20MENTIONS%20on%20TODAY%2C%20the%20shelf%20and%20the%20book%20-%2023.jpg)
+
+### 21Nov2026 - T607 - SONGMUSAI and LANGMUSAI through the seasons - 24
+
+v11.412.3: SONGMUSAI and LANGMUSAI in all four seasons from the build (front, back, icon, follower), each with its seasonal INDEX entry (DRAFT)
+
+![21Nov2026 - T607 - SONGMUSAI and LANGMUSAI through the seasons - 24](21Nov2026%20-%20T607%20-%20SONGMUSAI%20and%20LANGMUSAI%20through%20the%20seasons%20-%2024.png)
