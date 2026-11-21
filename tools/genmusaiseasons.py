@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
-"""T-532: the MUSAI branch keeps the seasons -- 18 picture-only forms, and the tables that point at them.
+"""T-532: the MUSAI branch keeps the seasons -- 24 picture-only forms (18, and T-607's 6), and the tables that point at them.
 
     python3 tools/genmusaiseasons.py              # report: each form's files and table blocks, final or placeholder
     python3 tools/genmusaiseasons.py --write      # write the form folders and the generated blocks into engineGba/
     python3 tools/genmusaiseasons.py --list       # one line per form: its species id, folder and where its art is from
 
 WHAT IT IS (vision 9.34; the user's decisions 2026-11-08). The six MUSAI -- MUSAI, CODEMUSAI, SEEKMUSAI, CAREMUSAI,
-LENSMUSAI, MASKMUSAI (the EEVEE, FLAREON, JOLTEON, VAPOREON, ESPEON and UMBREON slots) -- each wear the season
+LENSMUSAI, MASKMUSAI (the EEVEE, FLAREON, JOLTEON, VAPOREON, ESPEON and UMBREON slots), and since T-607 T-605's
+SONGMUSAI and LANGMUSAI (OLD_UNOWN_N and O, appended) -- each wear the season
 DaemonsSeason() gives them, Unown's way: one species, its PICTURE chosen when it is drawn. The SUMMER form is each
-species' own art (9.21: summer is "the world as drawn"), so 18 picture-only ids are added after SPECIES_UNOWN_QMARK,
+species' own art (9.21: summer is "the world as drawn"), so picture-only ids are added after SPECIES_UNOWN_QMARK (18, then T-607's 6),
 winter, spring and autumn for each. src/daemons_seasons.c's DaemonsSeasonalSpecies() turns a species into its form for
 the pic loaders, the two sprite-palette look-ups and GetIconSpecies; the species never changes, so the save, the INDEX's
 counts, trades, evolution, stats and the companion's ids are untouched. Look only: no stat moves with the season.
@@ -78,7 +79,11 @@ BRANCH = [("MUSAI", "eevee", "EEVEE", "Eevee", "NORMAL"),
           ("SEEKMUSAI", "jolteon", "JOLTEON", "Jolteon", "FLYING"),
           ("CAREMUSAI", "vaporeon", "VAPOREON", "Vaporeon", "PSYCHIC"),
           ("LENSMUSAI", "espeon", "ESPEON", "Espeon", "PSYCHIC"),
-          ("MASKMUSAI", "umbreon", "UMBREON", "Umbreon", "DARK")]
+          ("MASKMUSAI", "umbreon", "UMBREON", "Umbreon", "DARK"),
+          #  T-607: T-605's sixth and seventh forms, in Gen 3's unused OLD_UNOWN_N/O slots -- APPENDED, so no form's id
+          #  moves (theirs are NUM_SPECIES + 46 .. 51). Their summer is T-605's picture, their seasons drawn after it.
+          ("SONGMUSAI", "old_unown_n", "OLD_UNOWN_N", "Songmusai", "ELECTRIC"),
+          ("LANGMUSAI", "old_unown_o", "OLD_UNOWN_O", "Langmusai", "DRAGON")]
 SEASONS = ["winter", "spring", "summer", "autumn"]      # SEASON_WINTER .. SEASON_AUTUMN (daemons_time.h)
 FORM_SEASONS = ["winter", "spring", "autumn"]           # summer is the species' own picture
 FIRST = 28                                              # SPECIES_UNOWN_QMARK is NUM_SPECIES + 27
@@ -121,6 +126,10 @@ APPROVED_FINAL = {
     #  T-553 (the user, 2026-11-14: "Creature first, vehicle in anatomy", "Keep MUSAI's head", "Redraw weak, then build"):
     #  all 24 redrawn as natural creatures under MUSAI's helmet head, from gfx/drafts/t552_t553/ -- MUSAI's own summer now too
     ("MUSAI", "summer"),
+    #  T-607 (DRAFT, for the user's review): SONGMUSAI's and LANGMUSAI's three seasons, from gfx/drafts/t607/ -- their
+    #  summer is T-605's picture, already the species' own art, so it is not listed (nothing is copied over it)
+    ("SONGMUSAI", "winter"), ("SONGMUSAI", "spring"), ("SONGMUSAI", "autumn"),
+    ("LANGMUSAI", "winter"), ("LANGMUSAI", "spring"), ("LANGMUSAI", "autumn"),
 }
 SUMMER_KINDS = ("front", "back", "icon")                # finals/<name>_summer_<kind>.png -> gfx/daemons/<name>_<kind>.png
 
@@ -427,7 +436,7 @@ def main():
         print("  summer %-40s -> gfx/daemons/%-22s %s" % (os.path.basename(s), os.path.basename(d),
               "WOULD CHANGE" if (s, d) in stale_summer else "same"))
     waiting = sorted("%s %s" % (n, se) for n, *_ in BRANCH for se in SEASONS
-                     if (n, se) not in APPROVED_FINAL and not (n == "MUSAI" and se == "summer"))
+                     if (n, se) not in APPROVED_FINAL and not (se == "summer" and n in ("MUSAI", "SONGMUSAI", "LANGMUSAI")))
     print("  not approved, placeholder until redrawn: %s" % ", ".join(waiting))
     tabs = tables({f[6]: files for f, d, files, diff, how in plan})
     tchanged = []
