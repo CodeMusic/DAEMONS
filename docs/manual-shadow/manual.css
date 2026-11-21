@@ -154,3 +154,53 @@ td { border-bottom: .5pt solid var(--rule); padding: 1mm 1.6mm; vertical-align: 
 .gloss p { text-align: left; font-size: 9.6pt; margin-bottom: 1.6mm; }
 .gloss p strong { font-family: "Gill Sans", sans-serif; }
 section.level2 > p:has(> strong:first-child) { text-align: left; }
+
+/* ---- the identity (T-606, ARCHITECTURE.md section 2) ---- */
+/* the hat over every chapter number */
+.chapnum::before { content: ""; display: block; width: 9mm; height: 9mm; margin-bottom: 1.5mm;
+                   background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-24 -44 48 50'><path d='M-22 0 Q0 -6 22 0 Q0 6 -22 0 Z' fill='%232b3a67'/><path d='M-12 -2 Q-2 -30 8 -42 Q4 -20 12 -2 Z' fill='%232b3a67'/><circle cx='-2' cy='-14' r='1.8' fill='%23b8862b'/><circle cx='5' cy='-26' r='1.5' fill='%23b8862b'/></svg>") no-repeat left bottom / contain; }
+/* the Sorcerer's sayings */
+.saying { margin: -2mm 12mm 6mm; text-align: center; font: italic 11.6pt/1.5 "Baskerville", "Hoefler Text", serif; color: #34363e; }
+.saying p { text-align: center; margin: 0 0 1mm; }
+.saying p:last-child em { font: 600 7pt "Gill Sans", sans-serif; letter-spacing: .22em; text-transform: uppercase;
+                          font-style: normal; color: #9a8a5f; }
+.signed { text-align: right; font: italic 11pt "Baskerville", serif; color: #34363e; margin: 4mm 0 2mm; }
+.signed p { text-align: right; }
+/* drop caps, in the virtues' gold */
+#tale > section:first-of-type > p:first-of-type::first-letter, #lesson > section:first-of-type > p:first-of-type::first-letter,
+#seven > p:first-of-type::first-letter, #quills > p:first-of-type::first-letter, #hat > p:first-of-type::first-letter {
+  float: left; font: 600 36pt/0.86 "Baskerville", "Hoefler Text", serif; color: #b8862b; margin: 1.2mm 2mm 0 0; }
+/* the water gauge at each scene, and at the end */
+.ornament.gauge { float: right; width: 12mm; margin: -2mm 0 1mm 4mm; }
+.ornament.gauge-end { width: 15mm; margin: 9mm auto 0; }
+.ornament svg { width: 100%; height: auto; display: block; }
+/* a day's mark: its sign, its light among the seven, its shadow's sign */
+.ornament.daymark { width: 64mm; margin: -1mm 0 3mm; }
+/* the Apprentice's margins */
+.marginal { float: right; clear: right; width: 46mm; margin: 1mm 0 3mm 5mm; padding: 2mm 3mm 1.6mm;
+            font: 11.4pt/1.28 "Bradley Hand", "Segoe Print", "Comic Sans MS", cursive; color: #6b4f2a;
+            background: #fbf6e9; border-left: 1.2pt solid #c9b27a; transform: rotate(-1.2deg); }
+.marginal p { text-align: left; margin: 0; }
+.marginal em { font-style: normal; text-decoration: underline; text-decoration-color: #c9b27a; }
+/* incantations: every spell written out in the book's spell hand */
+div.sourceCode { margin: 3mm 0 4mm; break-inside: avoid; }
+pre.incantation { background: #f7f1e1; border-left: 2.6pt solid #b8862b; border-radius: 1.4mm; padding: 3mm 4.5mm 3.2mm;
+                  margin: 0; font: 8.9pt/1.55 "American Typewriter", "Courier Prime", Menlo, monospace; color: #22305a;
+                  white-space: pre-wrap; box-shadow: inset 0 0 0 .5pt #e2d6b4; }
+pre.incantation::before { content: "INCANTATION"; display: block; font: 600 6.8pt "Gill Sans", sans-serif;
+                          letter-spacing: .26em; color: #b8862b; margin-bottom: 1.6mm; }
+pre.incantation code { font: inherit; color: inherit; }
+pre.incantation .co { color: #a07a3a; font-style: italic; }
+pre.incantation .kw, pre.incantation .cf { color: #6e4590; }
+/* SPELL CHECK */
+.spellcheck { background: #f3efe2; border-left: 3pt solid #b8862b; }
+.spellcheck .bh { color: #8a6418; }
+.spellcheck .bh::before { content: ""; display: inline-block; width: 4.2mm; height: 4.2mm; margin-right: 1.6mm; vertical-align: -0.8mm;
+                          background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-24 -44 48 50'><path d='M-22 0 Q0 -6 22 0 Q0 6 -22 0 Z' fill='%232b3a67'/><path d='M-12 -2 Q-2 -30 8 -42 Q4 -20 12 -2 Z' fill='%232b3a67'/><circle cx='-2' cy='-14' r='1.8' fill='%23b8862b'/><circle cx='5' cy='-26' r='1.5' fill='%23b8862b'/></svg>") no-repeat center / contain; }
+/* the frontispiece */
+.frontis { break-after: page; padding-top: 16mm; }
+.frontis svg { width: 100%; height: auto; display: block; }
+.frontis .cap { text-align: center; font: italic 9pt "Baskerville", serif; color: var(--soft); margin-top: 3mm; }
+/* the colophon */
+.colophon { margin: 6mm 10mm 0; text-align: center; font: italic 10pt/1.6 "Baskerville", serif; color: #3d3f48; }
+.colophon p { text-align: center; }

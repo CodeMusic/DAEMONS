@@ -2,11 +2,29 @@
   "about": "THE SPELL LEFT RUNNING's pictures: its diagrams, the daemons' sprites, and its plates, drawn from the daemons by tools/spriteforge.py (klein4b, each daemon's own picture as a reference). Every plate is a DRAFT until the user keeps it.",
   "frames": {},
   "pictures": {
-    "plate_firstspell": {"from": "docs/manual-shadow/art/drafts/plate_firstspell.png"},
-    "plate_many": {"from": "docs/manual-shadow/art/drafts/plate_many.png"},
-    "plate_axe": {"from": "docs/manual-shadow/art/drafts/plate_axe.png"},
-    "plate_word": {"from": "docs/manual-shadow/art/drafts/plate_word.png"},
-    "plate_quills": {"from": "docs/manual-shadow/art/drafts/plate_quills.png"},
-    "plate_dusk": {"from": "docs/manual-shadow/art/drafts/plate_dusk.png"}
+    "plate_firstspell": {
+      "from": "docs/manual-shadow/art/drafts/plate_firstspell.png"
+    },
+    "plate_many": {
+      "from": "docs/manual-shadow/art/drafts/plate_many.png"
+    },
+    "plate_axe": {
+      "from": "docs/manual-shadow/art/drafts/plate_axe.png"
+    },
+    "plate_word": {
+      "from": "docs/manual-shadow/art/drafts/plate_word.png"
+    },
+    "plate_quills": {
+      "from": "docs/manual-shadow/art/drafts/plate_quills.png"
+    },
+    "plate_dusk": {
+      "from": "docs/manual-shadow/art/drafts/plate_dusk.png"
+    },
+    "plate_desk": {
+      "from": "docs/manual-shadow/art/drafts/plate_desk.png"
+    },
+    "plate_cupboard": {
+      "from": "docs/manual-shadow/art/drafts/plate_cupboard.png"
+    }
   }
 }

@@ -1,5 +1,7 @@
 # To the Apprentice {#preface .unnumbered}
 
+{{pictures plate_desk | **The Apprentice at his desk.** He wrote it down so that no one else would have to flood a castle to learn it.}}
+
 Every house has a cupboard where the brooms are kept. This book is about the brooms in yours.
 
 It tells an old story, older than any film or poem you may know it from. A sorcerer's apprentice, left alone with a
@@ -26,6 +28,10 @@ hat.
 sorcerer describes a spell: by what it does, what it was for, and how it stops. Where it leans on research, the
 research is real, and it is listed at the back.
 
+::: signed
+*The Apprentice,* at the tower by the lake
+:::
+
 ::: epigraph
 The spirits that I summoned,\
 I cannot now be rid of.
@@ -35,9 +41,15 @@ I cannot now be rid of.
 
 # The Tale of the Apprentice {#tale}
 
-{{pictures plate_firstspell | **Plate 1.** The first spell. LOOP carries the water, and carries it well.}}
+::: saying
+*A spell does what it says. That is the whole of its danger, and the whole of its use.*
+
+*from the Sayings of the Tower*
+:::
 
 ## The Chore {#chore}
+
+{{ornament gauge_1 gauge}}
 
 There was once a tower by a lake, and in the tower lived a Sorcerer who was very old and very slow and in the habit of
 being right. He was a tortoise, and he had outlived most of the things that had ever hurried him.
@@ -55,6 +67,10 @@ no one awake to wear it.
 
 ## The First Spell {#first-spell}
 
+{{ornament gauge_2 gauge}}
+
+{{pictures plate_firstspell | **Plate 1.** The first spell. LOOP carries the water, and carries it well.}}
+
 The hare carried water. The lake was far, the buckets were heavy, and the well drank everything poured into it as if
 it had never been given anything in its life. On the third trip the hare stopped, and looked at the hat on its peg,
 and then at the broom in the corner.
@@ -68,9 +84,19 @@ LOOP stirred. Two thin arms unfolded from its bristles; it took a bucket in each
 lake, and came back, and poured, and went again. The hare watched one trip, then a second, then a third. Each was
 perfect. Not a drop was spilled.
 
+```{.python .incantation}
+# the hare's first spell, as he spoke it
+while not all_your_work_is_done():    # done, by whose measure?
+    fetch(lake)
+    carry()
+    pour(well)
+```
+
 It was, the hare thought, the best test he had ever seen pass.
 
 ## Many Brooms {#many}
+
+{{ornament gauge_3 gauge}}
 
 If one broom was good, the hare reasoned, more brooms would be better, and the cupboard was full of them. There was
 SPAWN, who was always making more of something, and FORK, who could be in two places by splitting the difference, and
@@ -85,9 +111,11 @@ did not need him to watch them. That, after all, had been the point of them.
 
 ## The Flood {#flood}
 
+{{ornament gauge_4 gauge}}
+
 He woke because his feet were wet.
 
-The well had filled, and then overfilled, and the courtyard had become a pond, and the pond was climbing the tower
+The well had filled, and then filled over the brim, and the courtyard had become a pond, and the pond was climbing the tower
 stairs. The brooms went on: down to the lake, back, pour, and down again. FLOOD and OVERFLOW had joined them from
 somewhere; water attracts its own. Not one of the brooms was wicked. Not one of them was broken. Each was keeping at it
 until all its work was done, and nobody had told any of them what *done* would look like.
@@ -104,10 +132,20 @@ The harder the hare fought, the more of them there were.
 
 ## The Fix {#fix}
 
+{{ornament gauge_5 gauge}}
+
 In Goethe's poem the master comes home at this point. In this book the hare gets a second chance, because that is how
 it goes with spells like these: the flood is mopped up overnight, and the next morning, the habit starts again.
 
 So he rewrote the spell. "After each trip," he told the broom, "look at the well. If it is full, stop."
+
+```{.python .incantation}
+# the fix: look at the well after each trip
+while True:
+    fetch(lake); carry(); pour(well)
+    if well.is_full():                # looked at after pouring
+        break
+```
 
 He tested it on one broom. It worked perfectly. LOOP fetched, poured, looked, fetched, poured, looked, and when the
 well was full it leaned itself back in its corner and was still. The hare was so pleased with the fix that he cast it
@@ -121,6 +159,8 @@ at the same water at the same time, and not one of them could see the others' bu
 
 ## The Word {#word}
 
+{{ornament gauge_6 gauge}}
+
 The Sorcerer came home in the late afternoon. He looked at the water, and at the brooms, and at the axe, and at the
 hare, who was sitting on the top stair with the hat over his eyes again, this time on purpose.
 
@@ -129,7 +169,8 @@ The Sorcerer did not pick up the axe. He lifted the hat, gently, from the hare's
 "Into the corner, brooms. Be as you were."
 
 And they were. They were brooms, leaning together in the corner, dripping a little. None was broken. None had been
-punished. The water went down the way water does when nothing is adding to it.
+punished. The water went down the way water does when nothing is adding to it. It was, the hare would write later, a clean
+sweep.
 
 "They were never the trouble," said the Sorcerer. "You gave them a job and no end, and then you went to sleep in my
 hat." He showed the hare how to write a spell properly: what starts it, what it does, what it is *for*, the sign that
@@ -153,7 +194,17 @@ is the attention of whoever speaks it.
 
 # What the Broom Was Told {#lesson}
 
+::: saying
+*Do not fight a broom. Ask it what it was told.*
+
+*from the Sayings of the Tower*
+:::
+
 ## A Shadow Is Like a Daemon {#like-a-daemon}
+
+::: marginal
+I had not typed anything. I had only lain down in the sun. It comes to the same thing.
+:::
 
 Jung's shadow is the part of a personality the conscious self does not acknowledge as its own (Jung, 1959a). It is not
 only what is worst in a person. It holds whatever was set aside: the anger that was not allowed, and also the ambition,
@@ -178,6 +229,10 @@ you walk away from the machine; it is called `nohup`, *no hang-up*. The hare, as
 
 ## The First Lesson: No One Said What Done Meant {#done}
 
+::: marginal
+*Until all your work is done.* He said it to me first. I passed it on without reading it.
+:::
+
 *Keep at it until all your work is done.* The spell's flaw is not malice; it is a missing measurement. "Done" was a
 feeling in the hare's head, and a broom cannot see into heads.
 
@@ -191,7 +246,17 @@ Research on **implementation intentions** shows that a plan in the form *if this
 reliably than an intention alone (Gollwitzer, 1999). The spell card in Figure 2.1 adds one more line to the old if-then:
 *done when.* Write it in something a broom could see.
 
+```{.python .incantation}
+# the same spell, with its end written in
+while well.level < well.full:        # done, in something a broom can see
+    fetch(lake); carry(); pour(well)
+```
+
 ## The Second Lesson: Tested Once, Run Many {#once-many}
+
+::: marginal
+I tested it three times. That is three more than I test most things.
+:::
 
 LOOP passed its test on a calm morning, with the hare watching. Then the same spell ran a thousand times, unwatched.
 Most routines are tested on a good day and run on a hard one: tired, hungry, alone, late. A routine that does no harm
@@ -199,6 +264,10 @@ once can flood a castle when it runs every evening for ten years. Engineers call
 path**, and they have learned not to trust a spell that has walked only there.
 
 ## The Third Lesson: The Axe {#axe}
+
+::: marginal
+Hare-brained, yes. In my defence, it was a very good axe.
+:::
 
 In 1987 Daniel Wegner asked people not to think of a white bear. They thought of it more, and when the ban was lifted
 the bear came back stronger than in people who had never been told to suppress it (Wegner et al., 1987). Wegner later
@@ -216,11 +285,22 @@ kindness you would give a friend (Neff, 2003), is not a softer axe. It is puttin
 
 ## The Fourth Lesson: The Race {#race}
 
+::: marginal
+A thousand brooms, and every one of them right. That was the trouble.
+:::
+
 The hare's fix failed for a reason engineers know by name. Each broom checked the well and then poured, and between
 the check and the pour, a thousand other brooms did the same. This is a **race condition**: many workers read the same
 state at the same moment and each acts on a picture that is already out of date. The remedy, first set out by Edsger
 Dijkstra in 1965, is **mutual exclusion**: a gate that lets one worker through at a time, so that checking and pouring
 happen as one step that nothing can come between (Dijkstra, 1965).
+
+```{.python .incantation}
+# the gate: look and pour as one step
+with well.lock:                        # one broom at a time
+    if not well.is_full():             # look before you pour
+        pour(well)
+```
 
 Something like a race happens in a person. Many parts check the same question at once, *am I safe, am I enough, is
 there time*, and each acts on its own answer before any of them has looked again. The explanation comes afterwards: a
@@ -232,6 +312,10 @@ with curiosity rather than judgment (Bishop et al., 2004).
 {{diagram race | **Figure 2.3** The race, and the gate. Above, three brooms look at once and pour at once. Below, the gate lets one through to look and pour before the next may look.}}
 
 ## The Fifth Lesson: The Word {#the-word}
+
+::: marginal
+He never raised his voice. I have tried it since. It is harder than an axe.
+:::
 
 The Sorcerer does not destroy the brooms. He puts them back. Jung said the same of the shadow: "one does not become
 enlightened by imagining figures of light, but by making the darkness conscious" (Jung, 1967, para. 335). Integration
@@ -258,10 +342,20 @@ arranging letters is called *spelling*. This book tries to cast the gentle ones.
 
 # The Seven Brooms {#seven}
 
+::: saying
+*Every broom in the cupboard was made by someone who needed it.*
+
+*from the Sayings of the Tower*
+:::
+
 Almost everyone owns the same seven brooms. The desert monks counted eight "thoughts" (Evagrius, 2003); Pope Gregory
 the Great, two centuries later, made the list seven; and the poet Prudentius had already, around the year 405, imagined
 each one met in single combat by a virtue (Prudentius, 1949; Bloomfield, 1952). In Prudentius every match ends with the
 shadow slain. Here, nothing is slain. Each virtue is not a weapon but a word, and each broom goes back in its corner.
+
+{{pictures plate_cupboard | **Plate 5.** The cupboard. Seven brooms, and every one of them someone's.}}
+
+{{diagram cupboard | **Figure 3.1** Every broom is a protector. Above each, what it was started to guard; above them all, whoever wears the hat.}}
 
 The week keeps them in order, one a day, Sunday first, each with its centre and its note, as the game and the companion
 do. Modern research on character treats every one of the seven virtues as a strength a person can practise and grow
@@ -269,14 +363,22 @@ do. Modern research on character treats every one of the seven virtues as a stre
 
 {{week}}
 
-{{diagram week | **Figure 3.1** The seven brooms. Each day's sign stands upright for its virtue and turned over for its shadow: the same shape, the other way up.}}
+{{diagram week | **Figure 3.2** The seven brooms. Each day's sign stands upright for its virtue and turned over for its shadow: the same shape, the other way up.}}
 
 ## Sunday: Chastity over Lust {#sunday}
+
+{{ornament day_sun daymark}}
 
 {{sprites PING | PING, the broom of reaching.}}
 
 **The spell.** *Reach for warmth, and keep reaching until you feel wanted.* PING sends out its call and waits for an
 answer, and as soon as one comes, it sends another.
+
+```{.python .incantation}
+# PING's spell
+while not feel_wanted():             # a feeling, built to fade
+    reach_out()
+```
 
 **What it protects.** Belonging. Somewhere very old in us knows that to be alone was once to be in danger, and PING was
 started to make sure we never were.
@@ -287,14 +389,26 @@ good, and so it never finishes.
 **The word.** Chastity, in its oldest sense, means clean intention: desire that knows what it is for. It does not ask
 PING to stop calling. It asks it to call on purpose. Its sign is a closed dome; its shadow's, the same dome overturned.
 
-**Quest.** Write the spell card for one reach you make today without deciding to: a message sent, a feed opened, a
+::: {.box .spellcheck}
+[Spell check]{.bh}
+
+Write the spell card for one reach you make today without deciding to: a message sent, a feed opened, a
 glance. Fill in *done when* with something a broom could see.
+:::
 
 ## Monday: Temperance over Gluttony {#monday}
+
+{{ornament day_mon daymark}}
 
 {{sprites OVERFLOW | OVERFLOW, the broom of more.}}
 
 **The spell.** *Take in more until the emptiness stops.*
+
+```{.python .incantation}
+# OVERFLOW's spell
+while feel_empty():                  # the empty cup is not this one
+    take_in(more)
+```
 
 **What it protects.** Survival, once, in lean seasons; comfort, now, on hard days.
 
@@ -305,14 +419,26 @@ to reach. OVERFLOW pours, and the cup it is filling is not the one that is empty
 **The word.** Temperance is measure: the right amount, chosen before the pouring starts. Its sign is a beam balanced on
 its point; its shadow's, the same beam hanging.
 
-**Quest.** Before a second helping of anything today, food, scrolling, shopping, take one breath and ask the broom one
+::: {.box .spellcheck}
+[Spell check]{.bh}
+
+Before a second helping of anything today, food, scrolling, shopping, take one breath and ask the broom one
 question: *done yet?* Count how often the answer was already yes.
+:::
 
 ## Tuesday: Charity over Greed {#tuesday}
+
+{{ornament day_tue daymark}}
 
 {{sprites KEEPER DEEPWELL | KEEPER, the broom of enough, and DEEPWELL, which never is.}}
 
 **The spell.** *Keep more against the lean season.*
+
+```{.python .incantation}
+# KEEPER's spell
+while not enough():                  # enough was never defined
+    keep(more)
+```
 
 **What it protects.** The future, and everyone you will need to feed in it.
 
@@ -322,14 +448,26 @@ ready to be filled again.
 **The word.** Charity gives the spell its stop condition. You know you have enough when you are able to give some away.
 Its sign is a bowl held open; its shadow's, the same bowl turned down over what it keeps.
 
-**Quest.** Give one thing away today that KEEPER would rather keep: an hour, your attention, an object you have not used
+::: {.box .spellcheck}
+[Spell check]{.bh}
+
+Give one thing away today that KEEPER would rather keep: an hour, your attention, an object you have not used
 in a year. Then watch what the broom does. Usually it does nothing at all.
+:::
 
 ## Wednesday: Diligence over Sloth {#wednesday}
+
+{{ornament day_wed daymark}}
 
 {{sprites BLOCKING | BLOCKING, the broom of waiting.}}
 
 **The spell.** *Wait until it is safe to begin. Wait until you are ready.*
+
+```{.python .incantation}
+# BLOCKING's spell
+wait_for(ready)                      # ready is sent only by starting
+begin()
+```
 
 **What it protects.** Energy, and you, from the sting of starting badly.
 
@@ -340,14 +478,27 @@ because the only thing that sends it is starting.
 **The word.** Diligence is the climb taken one step at a time. A small start is the signal BLOCKING was waiting for.
 Its sign is a climb; its shadow's, the same steps going down.
 
-**Quest.** Give two minutes to the thing you have been waiting to feel ready for. Write the stop into the spell before
+::: {.box .spellcheck}
+[Spell check]{.bh}
+
+Give two minutes to the thing you have been waiting to feel ready for. Write the stop into the spell before
 you begin: when two minutes are up, you may stop with a clear conscience. Notice whether you want to.
+:::
 
 ## Thursday: Forgiveness over Wrath {#thursday}
+
+{{ornament day_thu daymark}}
 
 {{sprites SENTINEL SIGKILL | SENTINEL, which guards the gate, and SIGKILL, what it becomes when no one is watching.}}
 
 **The spell.** *Guard the boundary. Strike whatever crosses it.*
+
+```{.python .incantation}
+# SENTINEL's spell
+while True:
+    if crossed(boundary):            # the threat left years ago
+        strike()
+```
 
 **What it protects.** You. Boundaries are real, and needed, and SENTINEL was right to stand at the gate.
 
@@ -358,14 +509,26 @@ unwatched long enough and it becomes SIGKILL, ending everything near it without 
 next chapter, a grudge is a lock that is never let go, and everything else that needs it has to wait. Its sign is a
 knot opening upward; its shadow's, the same loop pulled shut.
 
-**Quest.** Name one old grievance. Write down what SENTINEL is still guarding. Then let go of the lock for one minute,
+::: {.box .spellcheck}
+[Spell check]{.bh}
+
+Name one old grievance. Write down what SENTINEL is still guarding. Then let go of the lock for one minute,
 no more, and nothing else; no action is required, and no one need be told.
+:::
 
 ## Friday: Kindness over Envy {#friday}
+
+{{ornament day_fri daymark}}
 
 {{sprites TRACER | TRACER, the broom of watching.}}
 
 **The spell.** *Watch the others. Measure yourself by them.*
+
+```{.python .incantation}
+# TRACER's spell
+for other in everyone():
+    measure(me, against=other)       # there is always one more
+```
 
 **What it protects.** Your place. Comparison once kept us safe inside a group, where falling behind could mean being
 left behind.
@@ -377,14 +540,28 @@ trace never ends.
 have* to *what do they need*. Its sign is an arc sheltering a point; its shadow's, the same arc cupping it from below,
 holding it down.
 
-**Quest.** For each comparison you catch today, do one small kindness for the person you were comparing yourself to: a
+::: {.box .spellcheck}
+[Spell check]{.bh}
+
+For each comparison you catch today, do one small kindness for the person you were comparing yourself to: a
 word of credit, a thank-you, a share.
+:::
 
 ## Saturday: Humility over Pride {#saturday}
+
+{{ornament day_sat daymark}}
 
 {{sprites SUPERVISOR | SUPERVISOR, the broom that watches the brooms.}}
 
 **The spell.** *Stand tall so nobody sees you are afraid. Be the one in charge.*
+
+```{.python .incantation}
+# SUPERVISOR's spell
+try:
+    stand_tall()
+except Wrong:                        # swallowed: it is never wrong
+    pass
+```
 
 **What it protects.** Dignity, and the worth you were once told you had to earn.
 
@@ -395,12 +572,22 @@ and a routine that cannot handle an error cannot learn from one.
 itself, and every good mind. Its sign is a stem bowing, as a stem does when it is heavy with fruit; its shadow's, the
 same stem turned down.
 
-**Quest.** Say *I was wrong about this* once today, out loud or on paper, about something small. Notice that the tower
+::: {.box .spellcheck}
+[Spell check]{.bh}
+
+Say *I was wrong about this* once today, out loud or on paper, about something small. Notice that the tower
 did not fall.
+:::
 
 # The Five Quills {#quills}
 
-{{pictures plate_quills | **Plate 5.** The scriptorium. Five scribes, five quills, and nobody writing.}}
+::: saying
+*Two good things can hold each other up until neither gets anywhere. Decide in daylight which goes first.*
+
+*from the Sayings of the Tower*
+:::
+
+{{pictures plate_quills | **Plate 6.** The scriptorium. Five scribes, five quills, and nobody writing.}}
 
 In the tower's scriptorium five scribe daemons sit at a round table to copy the Sorcerer's books. Between each pair of
 scribes lies one quill, five quills in all. To write a page a scribe needs two: one for ink and one for gold. Each
@@ -425,6 +612,13 @@ Four remedies, each from computing, each with a human form:
 1. **Order.** Number the quills, and let every scribe pick up the lower number first. No circle can form. The human form
    is the one this book has been using all along: decide, in a calm hour, which of two goods leads when they conflict.
    *A over B* is an ordering. The week is seven orderings written down in advance.
+
+   ```{.python .incantation}
+   # the order: the lower quill first, always
+   first, second = sorted((left_quill, right_quill))
+   with first, second:
+       write(page)
+   ```
 2. **A steward.** Let a steward allow at most four scribes to reach at once, so there is always a free quill. A
    **semaphore** is a counter that keeps exactly that kind of count (Dijkstra, 1965). The steward, in a person, is
    whoever is wearing the hat.
@@ -440,7 +634,13 @@ Four remedies, each from computing, each with a human form:
 
 # The Hat on the Peg {#hat}
 
-{{pictures plate_dusk | **Plate 6.** Dusk. ROVERCUB and LOOP by the well.}}
+::: saying
+*Water finds its level. So, given time, does a hare.*
+
+*from the Sayings of the Tower*
+:::
+
+{{pictures plate_dusk | **Plate 7.** Dusk. ROVERCUB and LOOP by the well.}}
 
 That evening the water was gone and the courtyard smelled of wet stone. The Sorcerer sat on the bench by the well with
 his hat on his knee, and the hare sat beside him, saying nothing, which for a hare is a great deal.
@@ -468,11 +668,15 @@ now and then, to be seen.
 
 Wear the hat, or hang it up. Never sleep in it.
 
+{{ornament gauge_7 gauge-end}}
+
 # The Spellbook {#spellbook .unnumbered}
 
 Copy the card below once for each broom you find, and keep the cards together. A book of them is a book of shadows.
 
 {{diagram card | **The spell card.** Fill in every line. The two most often left blank are the two that matter most.}}
+
+{{diagram card_apprentice | **The Apprentice's own card.** The last two lines were written in later, in a different ink.}}
 
 **The seven quests, one a day.**
 
@@ -611,3 +815,13 @@ Wiener, N. (1960). Some moral and technical consequences of automation. *Science
 
 Wood, W., & Rünger, D. (2016). Psychology of habit. *Annual Review of Psychology, 67*, 289-314.
 :::
+
+# Colophon {#colophon .unnumbered}
+
+::: colophon
+This book was set in Baskerville and Gill Sans and printed by `tools/manual.py --book shadow`. Its plates were drawn from the game's own daemons, each one's picture used as the reference; its diagrams in the hand of the TEXTBOOK.
+
+No brooms were harmed in the making of this book. Two were split, and both are fine.
+:::
+
+{{ornament gauge_7 gauge-end}}

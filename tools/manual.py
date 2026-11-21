@@ -486,6 +486,17 @@ class Build:
         cap = "<figcaption>%s</figcaption>" % caption if caption else ""
         return '<figure class="diagram">%s%s</figure>' % (svg, cap)
 
+    def sc_ornament(self, args, caption):
+        """A small drawing set in the text rather than as a figure (T-606: THE SPELL LEFT RUNNING's water gauges and day
+        marks): an SVG from the book's diagrams/ folder, inline, no caption; any further words are its classes."""
+        path = os.path.join(SRC, "diagrams", args[0] + ".svg")
+        if not os.path.exists(path):
+            raise SystemExit("manual: no ornament %s" % path)
+        svg = open(path, encoding="utf-8").read()
+        self.digest.update(svg.encode())
+        svg = re.sub(r"<\?xml[^>]*>\s*", "", svg)
+        return '<div class="ornament %s">%s</div>' % (" ".join(args[1:]), svg)
+
     def sc_cover(self, args, caption):
         path = os.path.join(ROOT, "wiki/images", {"guide": "guide_cover.png", "subtle": "subtle_cover.png"}[args[0]])
         im = Image.open(path).convert("RGB")

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 246" font-family="Gill Sans, Gill Sans MT, Avenir Next, Helvetica Neue, sans-serif">
+  <!-- THE SPELL LEFT RUNNING: the cupboard: every broom is a protector, and this is what each one guards -->
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1b1c20"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b8862b"/></marker></defs>
+<rect x="34" y="40" width="452" height="196" rx="6" fill="#f6f1e4" stroke="#1b1c20" stroke-width="1.4"/>
+<path d="M34 40 L60 18 H460 L486 40" fill="none" stroke="#1b1c20" stroke-width="1.2"/>
+<g transform="translate(372 31) scale(0.62)"><path d="M-22 0 Q0 -6 22 0 Q0 6 -22 0 Z" fill="#2b3a67"/><path d="M-12 -2 Q-2 -30 8 -42 Q4 -20 12 -2 Z" fill="#2b3a67"/><circle cx="-2" cy="-14" r="1.6" fill="#b8862b"/><circle cx="5" cy="-26" r="1.3" fill="#b8862b"/></g>
+<text x="246" y="16" font-size="9.5" fill="#2b3a67" text-anchor="middle" font-weight="400" font-style="italic">watched by whoever wears the hat</text>
+<text x="70" y="70" font-size="8.5" fill="#5b5d66" text-anchor="middle" font-weight="400" font-style="italic">guards</text>
+<text x="70" y="84" font-size="10" fill="#b8862b" text-anchor="middle" font-weight="600">belonging</text>
+<g transform="translate(70 196) rotate(0) scale(1.05)"><path d="M0 -46 L0 -14" stroke="#1b1c20" stroke-width="2.2"/><path d="M-9 0 L-5 -14 H5 L9 0 Z" fill="#d9c48f" stroke="#1b1c20" stroke-width="1"/><path d="M-5 0 L-3 -12 M0 0 V-12 M5 0 L3 -12" stroke="#1b1c20" stroke-width=".6"/><path d="M0 -30 Q-10 -26 -14 -18 M0 -30 Q10 -26 14 -18" stroke="#1b1c20" stroke-width="1.4" fill="none"/><path d="M-19 -18 h10 l-2 9 h-6 z M9 -18 h10 l-2 9 h-6 z" fill="#3a7ca5" stroke="#1b1c20" stroke-width=".9"/></g>
+<text x="70" y="222" font-size="8.6" fill="#1b1c20" text-anchor="middle" font-weight="600" letter-spacing="0.6">PING</text>
+<text x="133" y="70" font-size="8.5" fill="#5b5d66" text-anchor="middle" font-weight="400" font-style="italic">guards</text>
+<text x="133" y="84" font-size="10" fill="#b8862b" text-anchor="middle" font-weight="600">survival,</text>
+<text x="133" y="96" font-size="10" fill="#b8862b" text-anchor="middle" font-weight="600">and comfort</text>
+<g transform="translate(133 196) rotate(0) scale(1.05)"><path d="M0 -46 L0 -14" stroke="#1b1c20" stroke-width="2.2"/><path d="M-9 0 L-5 -14 H5 L9 0 Z" fill="#d9c48f" stroke="#1b1c20" stroke-width="1"/><path d="M-5 0 L-3 -12 M0 0 V-12 M5 0 L3 -12" stroke="#1b1c20" stroke-width=".6"/><path d="M0 -30 Q-10 -26 -14 -18 M0 -30 Q10 -26 14 -18" stroke="#1b1c20" stroke-width="1.4" fill="none"/><path d="M-19 -18 h10 l-2 9 h-6 z M9 -18 h10 l-2 9 h-6 z" fill="#3a7ca5" stroke="#1b1c20" stroke-width=".9"/></g>
+<text x="133" y="222" font-size="8.6" fill="#1b1c20" text-anchor="middle" font-weight="600" letter-spacing="0.6">OVERFLOW</text>
+<text x="196" y="70" font-size="8.5" fill="#5b5d66" text-anchor="middle" font-weight="400" font-style="italic">guards</text>
+<text x="196" y="84" font-size="10" fill="#b8862b" text-anchor="middle" font-weight="600">the future</text>
+<g transform="translate(196 196) rotate(0) scale(1.05)"><path d="M0 -46 L0 -14" stroke="#1b1c20" stroke-width="2.2"/><path d="M-9 0 L-5 -14 H5 L9 0 Z" fill="#d9c48f" stroke="#1b1c20" stroke-width="1"/><path d="M-5 0 L-3 -12 M0 0 V-12 M5 0 L3 -12" stroke="#1b1c20" stroke-width=".6"/><path d="M0 -30 Q-10 -26 -14 -18 M0 -30 Q10 -26 14 -18" stroke="#1b1c20" stroke-width="1.4" fill="none"/><path d="M-19 -18 h10 l-2 9 h-6 z M9 -18 h10 l-2 9 h-6 z" fill="#3a7ca5" stroke="#1b1c20" stroke-width=".9"/></g>
+<text x="196" y="222" font-size="8.6" fill="#1b1c20" text-anchor="middle" font-weight="600" letter-spacing="0.6">KEEPER</text>
+<text x="259" y="70" font-size="8.5" fill="#5b5d66" text-anchor="middle" font-weight="400" font-style="italic">guards</text>
+<text x="259" y="84" font-size="10" fill="#b8862b" text-anchor="middle" font-weight="600">energy</text>
+<g transform="translate(259 196) rotate(0) scale(1.05)"><path d="M0 -46 L0 -14" stroke="#1b1c20" stroke-width="2.2"/><path d="M-9 0 L-5 -14 H5 L9 0 Z" fill="#d9c48f" stroke="#1b1c20" stroke-width="1"/><path d="M-5 0 L-3 -12 M0 0 V-12 M5 0 L3 -12" stroke="#1b1c20" stroke-width=".6"/><path d="M0 -30 Q-10 -26 -14 -18 M0 -30 Q10 -26 14 -18" stroke="#1b1c20" stroke-width="1.4" fill="none"/><path d="M-19 -18 h10 l-2 9 h-6 z M9 -18 h10 l-2 9 h-6 z" fill="#3a7ca5" stroke="#1b1c20" stroke-width=".9"/></g>
+<text x="259" y="222" font-size="8.6" fill="#1b1c20" text-anchor="middle" font-weight="600" letter-spacing="0.6">BLOCKING</text>
+<text x="322" y="70" font-size="8.5" fill="#5b5d66" text-anchor="middle" font-weight="400" font-style="italic">guards</text>
+<text x="322" y="84" font-size="10" fill="#b8862b" text-anchor="middle" font-weight="600">you</text>
+<g transform="translate(322 196) rotate(0) scale(1.05)"><path d="M0 -46 L0 -14" stroke="#1b1c20" stroke-width="2.2"/><path d="M-9 0 L-5 -14 H5 L9 0 Z" fill="#d9c48f" stroke="#1b1c20" stroke-width="1"/><path d="M-5 0 L-3 -12 M0 0 V-12 M5 0 L3 -12" stroke="#1b1c20" stroke-width=".6"/><path d="M0 -30 Q-10 -26 -14 -18 M0 -30 Q10 -26 14 -18" stroke="#1b1c20" stroke-width="1.4" fill="none"/><path d="M-19 -18 h10 l-2 9 h-6 z M9 -18 h10 l-2 9 h-6 z" fill="#3a7ca5" stroke="#1b1c20" stroke-width=".9"/></g>
+<text x="322" y="222" font-size="8.6" fill="#1b1c20" text-anchor="middle" font-weight="600" letter-spacing="0.6">SENTINEL</text>
+<text x="385" y="70" font-size="8.5" fill="#5b5d66" text-anchor="middle" font-weight="400" font-style="italic">guards</text>
+<text x="385" y="84" font-size="10" fill="#b8862b" text-anchor="middle" font-weight="600">your place</text>
+<g transform="translate(385 196) rotate(0) scale(1.05)"><path d="M0 -46 L0 -14" stroke="#1b1c20" stroke-width="2.2"/><path d="M-9 0 L-5 -14 H5 L9 0 Z" fill="#d9c48f" stroke="#1b1c20" stroke-width="1"/><path d="M-5 0 L-3 -12 M0 0 V-12 M5 0 L3 -12" stroke="#1b1c20" stroke-width=".6"/><path d="M0 -30 Q-10 -26 -14 -18 M0 -30 Q10 -26 14 -18" stroke="#1b1c20" stroke-width="1.4" fill="none"/><path d="M-19 -18 h10 l-2 9 h-6 z M9 -18 h10 l-2 9 h-6 z" fill="#3a7ca5" stroke="#1b1c20" stroke-width=".9"/></g>
+<text x="385" y="222" font-size="8.6" fill="#1b1c20" text-anchor="middle" font-weight="600" letter-spacing="0.6">TRACER</text>
+<text x="448" y="70" font-size="8.5" fill="#5b5d66" text-anchor="middle" font-weight="400" font-style="italic">guards</text>
+<text x="448" y="84" font-size="10" fill="#b8862b" text-anchor="middle" font-weight="600">your worth</text>
+<g transform="translate(448 196) rotate(0) scale(1.05)"><path d="M0 -46 L0 -14" stroke="#1b1c20" stroke-width="2.2"/><path d="M-9 0 L-5 -14 H5 L9 0 Z" fill="#d9c48f" stroke="#1b1c20" stroke-width="1"/><path d="M-5 0 L-3 -12 M0 0 V-12 M5 0 L3 -12" stroke="#1b1c20" stroke-width=".6"/><path d="M0 -30 Q-10 -26 -14 -18 M0 -30 Q10 -26 14 -18" stroke="#1b1c20" stroke-width="1.4" fill="none"/><path d="M-19 -18 h10 l-2 9 h-6 z M9 -18 h10 l-2 9 h-6 z" fill="#3a7ca5" stroke="#1b1c20" stroke-width=".9"/></g>
+<text x="448" y="222" font-size="8.6" fill="#1b1c20" text-anchor="middle" font-weight="600" letter-spacing="0.6">SUPERVISOR</text>
+</svg>

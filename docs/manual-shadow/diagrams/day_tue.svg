@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 44" font-family="Gill Sans, Gill Sans MT, Avenir Next, Helvetica Neue, sans-serif">
+  <!-- THE SPELL LEFT RUNNING: TUE's mark: its sign, its light among the seven, and its shadow's sign -->
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1b1c20"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b8862b"/></marker></defs>
+<g transform="translate(0 2)"><path d="M7 13 Q20 38 33 13" fill="none" stroke="#b8862b" stroke-width="2.4"/><path d="M5 13 H35" stroke="#b8862b" stroke-width="1.2"/></g>
+<circle cx="62" cy="22" r="3.4" fill="#fff" stroke="#8a8d96" stroke-width=".8"/>
+<circle cx="78" cy="22" r="3.4" fill="#fff" stroke="#8a8d96" stroke-width=".8"/>
+<circle cx="94" cy="22" r="4.4" fill="#b8862b" stroke="#b8862b" stroke-width=".8"/>
+<circle cx="94" cy="22" r="9" fill="#b8862b" opacity=".18"/>
+<circle cx="110" cy="22" r="3.4" fill="#fff" stroke="#8a8d96" stroke-width=".8"/>
+<circle cx="126" cy="22" r="3.4" fill="#fff" stroke="#8a8d96" stroke-width=".8"/>
+<circle cx="142" cy="22" r="3.4" fill="#fff" stroke="#8a8d96" stroke-width=".8"/>
+<circle cx="158" cy="22" r="3.4" fill="#fff" stroke="#8a8d96" stroke-width=".8"/>
+<g transform="translate(176 32) rotate(180 13 -10) scale(.65)"><path d="M7 13 Q20 38 33 13" fill="none" stroke="#8a8d96" stroke-width="2.4"/><path d="M5 13 H35" stroke="#8a8d96" stroke-width="1.2"/></g>
+</svg>
