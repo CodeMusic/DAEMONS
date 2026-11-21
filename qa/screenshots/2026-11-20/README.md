@@ -55,3 +55,51 @@ EUDAIMONIA on port 4741 (a throwaway copy): the front page signed in, the forced
 EUDAIMONIA on port 4741 (a throwaway copy): the front page signed in, the forced first password change, ACCOUNTS with a person and an agent, and YOUR ACCOUNT's daemons grouped by type at phone width. Every word DRAFT.
 
 ![20Nov2026 - C436 - EUDAIMONIA sign-in and accounts - 9](20Nov2026%20-%20C436%20-%20EUDAIMONIA%20sign-in%20and%20accounts%20-%209.jpg)
+
+### 20Nov2026 - E3 - THE EASTER EGG, door to play - 10
+
+E-3 THE EASTER EGG on a throwaway copy: the door, which cart you own, the carts turned into CONTENT and CONTEXT, a cart's two ways to play, the cart handed to the playground's player framed over the site and DAEMONS booting in it, then the question and play view at phone width. Every word DRAFT.
+
+![20Nov2026 - E3 - THE EASTER EGG, door to play - 10](20Nov2026%20-%20E3%20-%20THE%20EASTER%20EGG%2C%20door%20to%20play%20-%2010.jpg)
+
+### 20Nov2026 - E3 - THE EASTER EGG, door to play - 11
+
+E-3 THE EASTER EGG on a throwaway copy: the door, which cart you own, the carts turned into CONTENT and CONTEXT, a cart's two ways to play, the cart handed to the playground's player framed over the site and DAEMONS booting in it, then the question and play view at phone width. Every word DRAFT.
+
+![20Nov2026 - E3 - THE EASTER EGG, door to play - 11](20Nov2026%20-%20E3%20-%20THE%20EASTER%20EGG%2C%20door%20to%20play%20-%2011.jpg)
+
+### 20Nov2026 - E3 - THE EASTER EGG, door to play - 12
+
+E-3 THE EASTER EGG on a throwaway copy: the door, which cart you own, the carts turned into CONTENT and CONTEXT, a cart's two ways to play, the cart handed to the playground's player framed over the site and DAEMONS booting in it, then the question and play view at phone width. Every word DRAFT.
+
+![20Nov2026 - E3 - THE EASTER EGG, door to play - 12](20Nov2026%20-%20E3%20-%20THE%20EASTER%20EGG%2C%20door%20to%20play%20-%2012.jpg)
+
+### 20Nov2026 - E3 - THE EASTER EGG, door to play - 13
+
+E-3 THE EASTER EGG on a throwaway copy: the door, which cart you own, the carts turned into CONTENT and CONTEXT, a cart's two ways to play, the cart handed to the playground's player framed over the site and DAEMONS booting in it, then the question and play view at phone width. Every word DRAFT.
+
+![20Nov2026 - E3 - THE EASTER EGG, door to play - 13](20Nov2026%20-%20E3%20-%20THE%20EASTER%20EGG%2C%20door%20to%20play%20-%2013.jpg)
+
+### 20Nov2026 - E3 - THE EASTER EGG, door to play - 14
+
+E-3 THE EASTER EGG on a throwaway copy: the door, which cart you own, the carts turned into CONTENT and CONTEXT, a cart's two ways to play, the cart handed to the playground's player framed over the site and DAEMONS booting in it, then the question and play view at phone width. Every word DRAFT.
+
+![20Nov2026 - E3 - THE EASTER EGG, door to play - 14](20Nov2026%20-%20E3%20-%20THE%20EASTER%20EGG%2C%20door%20to%20play%20-%2014.jpg)
+
+### 20Nov2026 - E3 - THE EASTER EGG, door to play - 15
+
+E-3 THE EASTER EGG on a throwaway copy: the door, which cart you own, the carts turned into CONTENT and CONTEXT, a cart's two ways to play, the cart handed to the playground's player framed over the site and DAEMONS booting in it, then the question and play view at phone width. Every word DRAFT.
+
+![20Nov2026 - E3 - THE EASTER EGG, door to play - 15](20Nov2026%20-%20E3%20-%20THE%20EASTER%20EGG%2C%20door%20to%20play%20-%2015.jpg)
+
+### 20Nov2026 - E3 - THE EASTER EGG, door to play - 16
+
+E-3 THE EASTER EGG on a throwaway copy: the door, which cart you own, the carts turned into CONTENT and CONTEXT, a cart's two ways to play, the cart handed to the playground's player framed over the site and DAEMONS booting in it, then the question and play view at phone width. Every word DRAFT.
+
+![20Nov2026 - E3 - THE EASTER EGG, door to play - 16](20Nov2026%20-%20E3%20-%20THE%20EASTER%20EGG%2C%20door%20to%20play%20-%2016.jpg)
+
+### 20Nov2026 - E3 - THE EASTER EGG, door to play - 17
+
+E-3 THE EASTER EGG on a throwaway copy: the door, which cart you own, the carts turned into CONTENT and CONTEXT, a cart's two ways to play, the cart handed to the playground's player framed over the site and DAEMONS booting in it, then the question and play view at phone width. Every word DRAFT.
+
+![20Nov2026 - E3 - THE EASTER EGG, door to play - 17](20Nov2026%20-%20E3%20-%20THE%20EASTER%20EGG%2C%20door%20to%20play%20-%2017.jpg)
