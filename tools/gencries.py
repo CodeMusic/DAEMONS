@@ -120,9 +120,10 @@ def pret_caps(files):
 def own():
     """T-584: the eleven that borrowed a cry, in the order their own follow CHIMECHO's: (label, file, the daemon's
     name, the cry each borrowed -- whose pret length caps its own). Read from the two tools that made them."""
-    import gbanexus, gbacarried
+    import gbanexus, gbacarried, gbamusaiforms
     return [("Cry_" + ident, ident.lower(), name, cry) for _, name, ident, _, cry in gbanexus.RESIDENTS] + \
-           [("Cry_" + ident, ident.lower(), name, cry) for _, name, ident, cry in gbacarried.LINE]
+           [("Cry_" + ident, ident.lower(), name, cry) for _, name, ident, cry in gbacarried.LINE] + \
+           [("Cry_" + ident, ident.lower(), name, cry) for _, name, ident, cry in gbamusaiforms.LINE]   # T-605
 
 
 def census():
@@ -577,7 +578,7 @@ def rom_check(rom):
     species = {}
     for name, val in re.findall(r"#define SPECIES_(OLD_UNOWN_\w)\s+(\d+)", read("include/constants/species.h")):
         species[name] = int(val)
-    for tab, first, last in (("sNexusCries", "C", "J"), ("sCarriedCries", "K", "M")):
+    for tab, first, last in (("sNexusCries", "C", "J"), ("sCarriedCries", "K", "M"), ("sMusaiFormCries", "N", "O")):
         if tab not in sym:
             bad.append("%s is not in the .elf" % tab)
             continue

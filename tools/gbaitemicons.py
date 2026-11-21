@@ -3558,10 +3558,46 @@ def _png_same(path, im):
         (old.getpalette() or [])[:48] == im.getpalette()[:48]
 
 
+#  ---- T-605 (the user, 2026-11-21): MUSAI's sixth and seventh inputs, the same family as AXIOM, EMBEDDING and AFFECT --
+#  each wears the type its branch becomes. DRAFT: names, words and drawings are the user's to approve.
+def i_waveform():
+    """What you sing back: a sound's shape on a scope's screen, SIGNAL's hue."""
+    c = C()
+    L, M, D = tc("ELECTRIC")
+    c.box(1, 3, 22, 20, G4)
+    c.rect(3, 5, 20, 18, D)
+    for x in range(4, 20, 4):                          # the graticule, faint
+        c.vline(x, 6, 17, M)
+    c.hline(4, 19, 11, M)
+    waves(c, 3, 20, 11.5, 4.6, L, 9.0)                # the wave, and a brighter crest
+    waves(c, 3, 20, 10.5, 4.6, W, 9.0)
+    c.outline()
+    return c
+
+
+def i_utterance():
+    """What you answer: something said, a speech balloon, its words not yet words, EMERGENT's hue."""
+    c = C()
+    L, M, D = tc("DRAGON")
+    c.disc(11.5, 9.5, 8.6, M)
+    c.ring(11.5, 9.5, 7.2, 9.0, lambda a: L if 40 < a < 200 else D)
+    c.ascii(6, 16, ["XXX", "XX ", "X  "], {"X": M})       # the tail, to whoever said it
+    for x, y, n in ((6, 7, 3), (11, 7, 4), (7, 11, 5), (14, 11, 2)):
+        c.hline(x, x + n - 1, y, W)                   # marks, not yet letters
+    c.outline()
+    return c
+
+
+ICONS5 = [
+    ("waveform", "WAVEFORM", ["ITEM_SONG_INPUT"], i_waveform, "own", "a scope's screen, a sound's shape on it; SIGNAL's hue (T-605, DRAFT)"),
+    ("utterance", "UTTERANCE", ["ITEM_LANG_INPUT"], i_utterance, "own", "a speech balloon, marks not yet letters; EMERGENT's hue (T-605, DRAFT)"),
+]
+
+
 def plan(keys):
     """What a write of the named items makes: ({png path: image}, {text path: contents}, [what each is]).
     Nothing is written here, so the report can say whether the engine already holds it."""
-    chosen = [e for e in ICONS + ICONS2 + ICONS3 + ICONS4 if e[0] in keys or e[1] in keys or any(i in keys for i in e[2])]
+    chosen = [e for e in ICONS + ICONS2 + ICONS3 + ICONS4 + ICONS5 if e[0] in keys or e[1] in keys or any(i in keys for i in e[2])]
     pngs, texts, said = {}, {}, []
     items_h, graphics_h, table = open(ITEMS_H).read(), open(GRAPHICS_H).read(), open(TABLE).read()
     for e in chosen:
@@ -3636,7 +3672,7 @@ def main():
         if not A.approved:
             print("  --write refuses without --approved: the user picks from the sheet first (T-525).")
             return 0
-        keys = [e[0] for e in ICONS + ICONS2 + ICONS3 + ICONS4] if A.all else (A.items or APPROVED)
+        keys = [e[0] for e in ICONS + ICONS2 + ICONS3 + ICONS4 + ICONS5] if A.all else (A.items or APPROVED)
         if not keys:
             print("  --write --approved names no items, and none is approved yet: nothing written.")
             return 0

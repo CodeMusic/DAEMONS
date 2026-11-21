@@ -252,6 +252,13 @@ NAMED = {
     # up. Sixteen, not eighteen: ORACLE has none, and CONTENT is super-effective
     # against nothing, so a CONTENT SINK could never fire. The GAIN's last line,
     # turned round. DRAFT, every name and line.
+    #  T-605 (the user, 2026-11-21): MUSAI's sixth and seventh inputs, AXIOM's family -- names and words DRAFT
+    "ITEM_SONG_INPUT":     ("WAVEFORM",     ["Something for a mind to sing",
+                                          "back. Some daemons take a new",
+                                          "form when given one."]),
+    "ITEM_LANG_INPUT":     ("UTTERANCE",    ["Something said, for a mind to",
+                                          "answer. Some daemons take a",
+                                          "new form when given one."]),
     "ITEM_LOGIC_SINK":     ("LOGIC SINK",   ["Halves the first super-effective",
                                           "hit on one channel, then is",
                                           "spent. This one is LOGIC."]),

@@ -1,0 +1,37 @@
+{
+ "mode": "t2i",
+ "out": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/daemons-t605/gfx/drafts/t605/concepts/songmusai_7911",
+ "prompt": "pixel art sprite, chibi, pure white background, pixel art game sprite of a single cute creature, keep exactly the same big round smooth helmet-like head as the creature in the image, no animal ears, with the same dark glossy visor across its face and two small glowing eyes showing through it, and the same two little antennae on top, each antenna ending in a tiny flared horn bell like a trumpet's, below the head a small natural furry fox-kit body sitting up tall with its chest lifted as if singing, soft fur, paws, a long fluffy tail curled into the shape of a treble clef, two tiny musical notes floating beside it, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only small touches of colour, facing left three-quarter view, chibi proportions, big round head, large expressive eyes, soft shading, clean black outline, isolated on white, centered, large in the frame, the whole body inside the picture with white space on every side, no shadow, no text, game asset",
+ "negative": "",
+ "seed": 7911,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "/Users/christopherhicks/Projects/DAEMONS/gfx/drafts/t452/c/armc/src/musai_romfront_512.png"
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 52.7,
+ "comfyui": "0.19.1",
+ "made": "2026-11-21 13:55:19"
+}
