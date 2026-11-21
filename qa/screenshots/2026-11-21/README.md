@@ -55,3 +55,9 @@ E-6: each lane's daemon gets its own page -- where it works, its ARETE and ledge
 E-6: each lane's daemon gets its own page -- where it works, its ARETE and ledger, its work and its history (desktop, history, phone), on a throwaway copy of the site
 
 ![21Nov2026 - E6 - a daemon employees page - 10](21Nov2026%20-%20E6%20-%20a%20daemon%20employees%20page%20-%2010.jpg)
+
+### 21Nov2026 - T452 - arm C verdict, six reverted - 11
+
+v11.412.1: the six arm-C daemons the verdict reverted, decoded from the built ROM beside their pre-arm-C art -- LODESTAR, REFLECTION, BASTET and CANOPY whole, WIRETAP's and MONOLITH's backs; the other 22 keep arm C
+
+![21Nov2026 - T452 - arm C verdict, six reverted - 11](21Nov2026%20-%20T452%20-%20arm%20C%20verdict%2C%20six%20reverted%20-%2011.png)
