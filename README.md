@@ -60,6 +60,7 @@ A total conversion. It was built first on [pret/pokered](https://github.com/pret
 | [**CodeMusic/gpt-play-pokemon-firered-daemons**](https://github.com/CodeMusic/gpt-play-pokemon-firered-daemons) | the harness that lets a **model play it** — fork of [Clad3815](https://github.com/Clad3815/gpt-play-pokemon-firered) |
 | [**CodeMusic/daemons-companion**](https://github.com/CodeMusic/daemons-companion) | the **goal companion** — your phone, a watch or a board hosts a daemon you SEND from your party, one to each device, and it helps you get things done; its app, its server (on a computer or a small hub at home, with an AI board of its own) and firmware. Ours from the first line, no fork |
 | [**CodeMusic/daemons-eudaimonia**](https://github.com/CodeMusic/daemons-eudaimonia) | where **EUDAIMONIA** is to be built, the companion's projects and points used together; today the playground, the game **in a browser**, for demos and beta tests on your own network, with the companion and each release's notes in tabs. Holds no ROM |
+| [**CodeMusic/daemons-praxis**](https://github.com/CodeMusic/daemons-praxis) | **PRAXIS**'s engine, under the companion's goals and, to come, EUDAIMONIA: one log of every change, merged across a phone and a hub, with **ARETE** as its points. Ours from the first line, no fork |
 
 Each has a wiki: [this one](https://github.com/CodeMusic/DAEMONS/wiki) for the game,
 [the engine's](https://github.com/CodeMusic/pokefirered-daemons/wiki) for the fork,

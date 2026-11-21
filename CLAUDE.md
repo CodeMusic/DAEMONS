@@ -90,6 +90,14 @@ kept running by the login agent `ca.codemusic.daemons-eudaimonia`. It reads the 
 moment they are asked for and answers only this machine, a private network and the tailnet; it holds no ROM, so it is
 public at CodeMusic/daemons-eudaimonia -- **nothing personal goes in it either.** Its Redmine lane is still `playground`.
 
+**daemons-praxis** (2026-11-20, C-435) is PRAXIS's engine, out of the companion with its history: the event log, the
+fold, the merge rules and ARETE's ledger, the same code on the phone and the hub. It has **no symlink here and needs
+none**: the companion's server and app pin it by tag (`@daemons/praxis` in their `package.json`), and npm fetches it.
+To change the engine, work in `~/Projects/daemons-praxis` (its `CLAUDE.md`), tag it, then move both of the companion's
+pins in one commit; EUDAIMONIA will pin it the same way. Every event carries its format, so a phone and a hub on
+different builds can still sync. Public at CodeMusic/daemons-praxis -- **nothing personal goes in it.** Its tickets are
+the companion's `C-` ids.
+
 Every one of these symlinks is gitignored and no fork is ever vendored: the engines carry
 Nintendo-derived graphics and this repo promises not to distribute copyrighted
 material. Work in them freely; just don't merge either one in here.
