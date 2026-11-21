@@ -199,8 +199,12 @@ def coords(img):
 #  there into the type ramp -- front, back and party icon. Their built art is taken as reduced (the back already
 #  draws through the front's palette, the icon is icon3's in a shared icon palette); the shiny is genshiny's, as for
 #  every type-ramp daemon. The other five keep their painted art.
+#  REVERTED (the user, 2026-11-21, arm C's trial, gfx/drafts/t452/c/armc_verdict.json): all three go back to their
+#  painted NEXUS art, palettes, coordinates and icon palettes, streaks off -- REDRAWN is empty, so every resident is
+#  painted again. Their arm C drafts were, for a later round: REFLECTION reflection_7102, LODESTAR lodestar_7101,
+#  BASTET bastet_7101, each icon seed 7142 (an entry is ("<key>", <icon seed>)).
 T452 = os.path.join(ROOT, "gfx/drafts/t452/c/armc")
-REDRAWN = {"REFLECTION": ("reflection_7102", 7142), "LODESTAR": ("lodestar_7101", 7142), "BASTET": ("bastet_7101", 7142)}
+REDRAWN = {}
 
 
 def redrawn_art(name):

@@ -24,11 +24,17 @@ SPEC = json.load(open(R + "/companion/server/data/species.json")); BY = {v["name
 REDRAWS = ("broadcast tracer fossilnet rovercub smogstack obsession lodestar reflection bastet stump boosting canopy coinflip "
            "montecarlo lasvegas runoff alluvium delta smudge detour unbranched").split()
 BACKS = "ensemble wiretap manifold monolith outlier heartbeat corefile".split()
+#  REVERTED on the trial (the user, 2026-11-21, gfx/drafts/t452/c/armc_verdict.json): LODESTAR, REFLECTION, BASTET and
+#  CANOPY whole, WIRETAP's and MONOLITH's backs -- their pre-arm-C art is back in gfx/daemons/ and the engine, and a
+#  rerun of install or iconpal must not bring arm C's back. The lists above stay as what arm C drew.
+REVERTED = {"lodestar", "reflection", "bastet", "canopy", "wiretap", "monolith"}
+REDRAWS = [n for n in REDRAWS if n not in REVERTED]
+BACKS = [n for n in BACKS if n not in REVERTED]
 NEXUS = {"lodestar", "reflection", "bastet"}
 HELD = "eclipse crawler overloaded perihelion lyubov multimal lynx illumined heatdeath seethe".split()
 NO_ICON = ("acquire blocking burstmode entrapment epiphany keeper khione lensmusai "
            "circular emergence worm cinder grasp smudge").split()
-ICONS = [n for n in P if "icon_seed" in P[n] and n not in HELD and n not in NO_ICON]
+ICONS = [n for n in P if "icon_seed" in P[n] and n not in HELD and n not in NO_ICON and n not in REVERTED]
 
 
 def install():
