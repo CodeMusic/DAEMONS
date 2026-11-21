@@ -37,3 +37,21 @@ THE DASHBOARD's first slice on a throwaway copy (port 4752): the lanes at their 
 C-444: CAPS on the Cardputer Zero, drawn on the Mac with a pretend CC1101 + NFC, LoRa-1262, and no cap (DRAFT words; not yet on the device)
 
 ![21Nov2026 - C444 - CAPS with a pretend cap - 7](21Nov2026%20-%20C444%20-%20CAPS%20with%20a%20pretend%20cap%20-%207.png)
+
+### 21Nov2026 - E6 - a daemon employees page - 8
+
+E-6: each lane's daemon gets its own page -- where it works, its ARETE and ledger, its work and its history (desktop, history, phone), on a throwaway copy of the site
+
+![21Nov2026 - E6 - a daemon employees page - 8](21Nov2026%20-%20E6%20-%20a%20daemon%20employees%20page%20-%208.jpg)
+
+### 21Nov2026 - E6 - a daemon employees page - 9
+
+E-6: each lane's daemon gets its own page -- where it works, its ARETE and ledger, its work and its history (desktop, history, phone), on a throwaway copy of the site
+
+![21Nov2026 - E6 - a daemon employees page - 9](21Nov2026%20-%20E6%20-%20a%20daemon%20employees%20page%20-%209.jpg)
+
+### 21Nov2026 - E6 - a daemon employees page - 10
+
+E-6: each lane's daemon gets its own page -- where it works, its ARETE and ledger, its work and its history (desktop, history, phone), on a throwaway copy of the site
+
+![21Nov2026 - E6 - a daemon employees page - 10](21Nov2026%20-%20E6%20-%20a%20daemon%20employees%20page%20-%2010.jpg)
