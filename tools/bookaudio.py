@@ -162,6 +162,12 @@ SPOKEN = {"cardputer": [
     (r"\bNFC\b", "N F C"), (r"\bLE\b", "L E"), (r"\bUSB\b", "U S B")]}
 
 
+#  the books whose chapter marks keep the page's own words while the voice says the respelled ones (C-442: THE KODE DOT's
+#  first chapter is "The Kode Dot", said "The Code Dot"). THE CARDPUTERS was recorded with its spoken words as its marks,
+#  and keeps them until it is next recorded, so no recording goes out of date for this
+WRITTEN_MARKS = {"kodedot"}
+
+
 def spoken(book, t):
     for pat, to in SPOKEN.get(book, ()):
         t = re.sub(pat, to, t)
@@ -238,14 +244,15 @@ def manual_script(book):
         if h:
             flush()
             title, attrs = say(h.group(2)), h.group(3) or ""
+            mark = plain(h.group(2)) if book in WRITTEN_MARKS else None   # the page's words, where they are respelled
             if len(h.group(1)) == 1:
                 skip_h1 = bool(SKIP & set(re.findall(r"#([\w-]+)", attrs)))
                 if skip_h1: continue
                 if book == "textbook" and ".unnumbered" not in attrs:
                     chapter += 1; title = f"Chapter {chapter}: {title}"
-                lines.append(("section", title, title.replace(":", ".", 1) + "."))
+                lines.append(("section", mark or title, title.replace(":", ".", 1) + "."))
             elif not skip_h1 and title != "Further Reading":
-                lines.append(("entry", title, re.sub(r"^(\d+\.\d+) ", r"\1, ", title) + "."))
+                lines.append(("entry", mark or title, re.sub(r"^(\d+\.\d+) ", r"\1, ", title) + "."))
             continue
         if skip_h1: continue
         d = re.match(r"^(:{3,})\s*(.*)$", line)

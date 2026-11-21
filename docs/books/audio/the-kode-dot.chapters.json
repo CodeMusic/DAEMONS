@@ -1,0 +1,141 @@
+{
+ "book": "kodedot",
+ "voice": "lodestone",
+ "blend": {
+  "am_onyx": 0.65,
+  "af_nova": 0.35
+ },
+ "speed": 0.97,
+ "sentence": 0.35,
+ "draft": "DRAFT \u00b7 every word, until it is approved",
+ "sources": "0683890f0bbaf4f1",
+ "duration": 885.25,
+ "chapters": [
+  {
+   "kind": "section",
+   "title": "The Kode Dot",
+   "start": 0.0,
+   "end": 9.16
+  },
+  {
+   "kind": "section",
+   "title": "The Kode Dot",
+   "start": 9.16,
+   "end": 123.33
+  },
+  {
+   "kind": "entry",
+   "title": "What you need",
+   "start": 123.33,
+   "end": 156.05
+  },
+  {
+   "kind": "entry",
+   "title": "How it runs",
+   "start": 156.05,
+   "end": 192.48
+  },
+  {
+   "kind": "section",
+   "title": "Setting it up",
+   "start": 192.48,
+   "end": 195.34
+  },
+  {
+   "kind": "entry",
+   "title": "Installing it",
+   "start": 195.34,
+   "end": 229.09
+  },
+  {
+   "kind": "entry",
+   "title": "Telling it where the companion is",
+   "start": 229.09,
+   "end": 292.49
+  },
+  {
+   "kind": "section",
+   "title": "The buttons",
+   "start": 292.49,
+   "end": 340.76
+  },
+  {
+   "kind": "section",
+   "title": "The den",
+   "start": 340.76,
+   "end": 404.92
+  },
+  {
+   "kind": "entry",
+   "title": "Care",
+   "start": 404.92,
+   "end": 457.48
+  },
+  {
+   "kind": "entry",
+   "title": "What the foot says",
+   "start": 457.48,
+   "end": 520.61
+  },
+  {
+   "kind": "section",
+   "title": "Routines",
+   "start": 520.61,
+   "end": 548.59
+  },
+  {
+   "kind": "entry",
+   "title": "LODESTONE: 125 kHz",
+   "start": 548.59,
+   "end": 576.15
+  },
+  {
+   "kind": "entry",
+   "title": "READ MY TAG",
+   "start": 576.15,
+   "end": 633.3
+  },
+  {
+   "kind": "entry",
+   "title": "Only your own tags",
+   "start": 633.3,
+   "end": 661.78
+  },
+  {
+   "kind": "entry",
+   "title": "The other four",
+   "start": 661.78,
+   "end": 712.23
+  },
+  {
+   "kind": "section",
+   "title": "Looking after it",
+   "start": 712.23,
+   "end": 715.37
+  },
+  {
+   "kind": "entry",
+   "title": "The battery",
+   "start": 715.37,
+   "end": 727.07
+  },
+  {
+   "kind": "entry",
+   "title": "Bringing it up to date",
+   "start": 727.07,
+   "end": 742.82
+  },
+  {
+   "kind": "entry",
+   "title": "When something is wrong",
+   "start": 742.82,
+   "end": 810.3
+  },
+  {
+   "kind": "entry",
+   "title": "Still to come",
+   "start": 810.3,
+   "end": 885.25
+  }
+ ]
+}
