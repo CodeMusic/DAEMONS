@@ -31,3 +31,9 @@ THE DASHBOARD's first slice on a throwaway copy (port 4752): the lanes at their 
 THE DASHBOARD's first slice on a throwaway copy (port 4752): the lanes at their keyboards or asleep, WAITING ON YOU with the player, THE RELEASES; a lane's modal; a release's notes; a phone, where WAITING ON YOU comes first. ROVERBYTE and ARTSAI were given to the game and art lanes on the copy only, for the picture
 
 ![21Nov2026 - E1 - THE DASHBOARD, first slice - 5](21Nov2026%20-%20E1%20-%20THE%20DASHBOARD%2C%20first%20slice%20-%205.jpg)
+
+### 21Nov2026 - C444 - CAPS with a pretend cap - 7
+
+C-444: CAPS on the Cardputer Zero, drawn on the Mac with a pretend CC1101 + NFC, LoRa-1262, and no cap (DRAFT words; not yet on the device)
+
+![21Nov2026 - C444 - CAPS with a pretend cap - 7](21Nov2026%20-%20C444%20-%20CAPS%20with%20a%20pretend%20cap%20-%207.png)
