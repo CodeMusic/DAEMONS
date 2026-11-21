@@ -73,3 +73,21 @@ C-457: the GamePi20 build in a window -- GAMES with its hints as the pad's butto
 C-457: the GamePi20 build in a window -- GAMES with its hints as the pad's buttons (A, SELECT, B), and A on HOME opening CARE
 
 ![21Nov2026 - C457 - GamePi20 build on the Mac - 15](21Nov2026%20-%20C457%20-%20GamePi20%20build%20on%20the%20Mac%20-%2015.png)
+
+### 21Nov2026 - E1 - answering what waits on you - 16
+
+E-1's second slice on a throwaway copy, its send stubbed: E-8's choices as buttons with your own words (and the empty-answer refusal), the modal after ANSWER, and the form at phone width
+
+![21Nov2026 - E1 - answering what waits on you - 16](21Nov2026%20-%20E1%20-%20answering%20what%20waits%20on%20you%20-%2016.jpg)
+
+### 21Nov2026 - E1 - answering what waits on you - 17
+
+E-1's second slice on a throwaway copy, its send stubbed: E-8's choices as buttons with your own words (and the empty-answer refusal), the modal after ANSWER, and the form at phone width
+
+![21Nov2026 - E1 - answering what waits on you - 17](21Nov2026%20-%20E1%20-%20answering%20what%20waits%20on%20you%20-%2017.jpg)
+
+### 21Nov2026 - E1 - answering what waits on you - 18
+
+E-1's second slice on a throwaway copy, its send stubbed: E-8's choices as buttons with your own words (and the empty-answer refusal), the modal after ANSWER, and the form at phone width
+
+![21Nov2026 - E1 - answering what waits on you - 18](21Nov2026%20-%20E1%20-%20answering%20what%20waits%20on%20you%20-%2018.jpg)
