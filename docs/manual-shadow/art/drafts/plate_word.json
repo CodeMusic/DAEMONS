@@ -1,0 +1,37 @@
+{
+ "mode": "t2i",
+ "out": "docs/manual-shadow/art/drafts/plate_word",
+ "prompt": "pixel art illustration, storybook plate, detailed, charming, golden late afternoon light through a tower window. An old wise tortoise sorcerer stands wearing a tall blue pointed wizard hat with sewn stars, one hand raised, speaking calmly. In the corner several straw brooms and a small blue curl-tailed chameleon (the reference) lean together, still and dripping. A young brown hare sits on the stairs, ears down, watching. Water draining away across stone floor.",
+ "negative": "",
+ "seed": 1798,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "gfx/daemons/loop_front.png"
+ ],
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 54.0,
+ "comfyui": "0.19.1",
+ "made": "2026-11-21 11:50:07"
+}

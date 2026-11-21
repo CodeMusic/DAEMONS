@@ -1,0 +1,37 @@
+{
+ "mode": "t2i",
+ "out": "docs/manual-shadow/art/drafts/plate_axe",
+ "prompt": "pixel art illustration, storybook plate, detailed, charming, dramatic. A flooded castle courtyard, water up to the steps. a young brown hare wearing an oversized tall blue pointed wizard hat with sewn stars holds a woodcutter's axe, startled. In front of him a split straw broom: both halves have grown arms and are rising, and a small creature (the reference) emerges from the split, grabbing a bucket.",
+ "negative": "",
+ "seed": 1987,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "gfx/daemons/respawn_front.png"
+ ],
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 45.1,
+ "comfyui": "0.19.1",
+ "made": "2026-11-21 11:49:13"
+}

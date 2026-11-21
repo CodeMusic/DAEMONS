@@ -105,6 +105,16 @@ BOOKS = {
                  "subject": "CALLOW SCHOOL's TEXTBOOK as a university textbook: language, attention, memory, categories, "
                             "learning, bias and error",
                  "sprites": ("LABEL", "CLUSTER", "ROVERCUB"), "strip": None},
+    # THE SPELL LEFT RUNNING, a book of shadows (the user, 2026-11-21: "a prestige [book] like the callow school
+    # book ... about Carl Jung's teachings about the Shadow Self ... a shadow part of you is like a daemon. It runs in
+    # the background"; the sorcerer's apprentice, a broom left running, and the seven daily habits). DRAFT: its own
+    # cover and front pages like the TEXTBOOK's, its plates drawn from the daemons by spriteforge (frames.json).
+    "shadow": {"src": "docs/manual-shadow", "out": "docs/DAEMONS-shadow.pdf",
+               "title": "The Spell Left Running: A Book of Shadows", "chapter": "CHAPTER",
+               "sub": "A Book of Shadows, in Seven Brooms", "foot": "the spell left running",
+               "subject": "The shadow as a spell left running: Jung, habit, parts and the seven virtues, told through the "
+                          "sorcerer's apprentice and the daemons of computing",
+               "sprites": ("LOOP", "ROVERCUB", "HAUNTPROC"), "strip": None},
     # the eighth: THE COMPANION, the whole app (C-321; the user, 2026-11-10: "a companion user manual pdf ... for the entire
     # companion functionality -- built in a way as we evolve the app the manual can easily be update and rebuilt"). Its
     # pictures are the site photographed by tools/companion_shots.py from docs/manual-companion/shots.json, so a rerun

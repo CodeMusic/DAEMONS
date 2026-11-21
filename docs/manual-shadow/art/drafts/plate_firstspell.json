@@ -1,0 +1,37 @@
+{
+ "mode": "t2i",
+ "out": "docs/manual-shadow/art/drafts/plate_firstspell",
+ "prompt": "pixel art illustration, storybook plate, soft dusk light, detailed, charming, bright morning. A small blue curl-tailed chameleon (the reference) walks upright on a stone path carrying two wooden buckets of water from a lake toward a castle well, determined and proud. A tall pointed wizard hat with stars rests on a wooden peg by the castle door. Lake and reeds behind, warm morning light.",
+ "negative": "",
+ "seed": 1797,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "gfx/daemons/loop_front.png"
+ ],
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 50.8,
+ "comfyui": "0.19.1",
+ "made": "2026-11-21 11:44:54"
+}

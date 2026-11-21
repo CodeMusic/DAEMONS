@@ -1,0 +1,38 @@
+{
+ "mode": "t2i",
+ "out": "docs/manual-shadow/art/drafts/plate_dusk",
+ "prompt": "pixel art illustration, storybook plate, soft dusk light, detailed, charming. A small grey robot with a television head (the first reference) sits on the stone rim of an old castle well beside a small blue curl-tailed chameleon (the second reference), both resting, quiet, looking at the water. Three wooden buckets stacked beside them, a straw broom leaning against the well. Purple and gold sky at dusk, a castle tower behind, gentle and peaceful.",
+ "negative": "",
+ "seed": 4418,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "gfx/daemons/rovercub_front.png",
+  "gfx/daemons/loop_front.png"
+ ],
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 57.9,
+ "comfyui": "0.19.1",
+ "made": "2026-11-21 11:44:02"
+}

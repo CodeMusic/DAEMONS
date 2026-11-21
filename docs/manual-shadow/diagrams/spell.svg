@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 270" font-family="Gill Sans, Gill Sans MT, Avenir Next, Helvetica Neue, sans-serif">
+  <!-- THE SPELL LEFT RUNNING: the spell card: a routine's loop, its missing stop, and its watcher -->
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1b1c20"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b8862b"/></marker></defs>
+<rect x="40" y="40" width="118" height="40" rx="8" fill="#e9e6dc" stroke="#1b1c20" stroke-width="1.2"/>
+<text x="99" y="65" font-size="12" fill="#1b1c20" text-anchor="middle" font-weight="600" letter-spacing="2">TRIGGER</text>
+<rect x="210" y="120" width="118" height="40" rx="8" fill="#e9e6dc" stroke="#1b1c20" stroke-width="1.2"/>
+<text x="269" y="145" font-size="12" fill="#1b1c20" text-anchor="middle" font-weight="600" letter-spacing="2">TASK</text>
+<rect x="40" y="200" width="118" height="40" rx="8" fill="#e9e6dc" stroke="#1b1c20" stroke-width="1.2"/>
+<text x="99" y="225" font-size="12" fill="#1b1c20" text-anchor="middle" font-weight="600" letter-spacing="2">REWARD</text>
+<path d="M158 66 Q232 70 250 118" stroke="#1b1c20" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<path d="M250 162 Q232 210 160 218" stroke="#1b1c20" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<path d="M60 200 Q24 140 60 82" stroke="#1b1c20" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<text x="24" y="146" font-size="10" fill="#5b5d66" text-anchor="middle" font-weight="400" font-style="italic">again</text>
+<rect x="372" y="196" width="120" height="48" rx="8" fill="#fff" stroke="#b8862b" stroke-width="1.2" stroke-dasharray="5 4"/>
+<text x="432" y="216" font-size="12" fill="#b8862b" text-anchor="middle" font-weight="600" letter-spacing="2">DONE WHEN</text>
+<text x="432" y="234" font-size="10" fill="#5b5d66" text-anchor="middle" font-weight="400" font-style="italic">(left blank)</text>
+<path d="M160 236 L368 226" stroke="#b8862b" stroke-width="1.2" fill="none" stroke-dasharray="5 4" marker-end="url(#ag)"/>
+<g transform="translate(432 92) scale(1.15)"><path d="M-22 0 Q0 -6 22 0 Q0 6 -22 0 Z" fill="#2b3a67"/><path d="M-12 -2 Q-2 -30 8 -42 Q4 -20 12 -2 Z" fill="#2b3a67"/><circle cx="-2" cy="-14" r="1.6" fill="#b8862b"/><circle cx="5" cy="-26" r="1.3" fill="#b8862b"/></g>
+<text x="432" y="120" font-size="12" fill="#2b3a67" text-anchor="middle" font-weight="600" letter-spacing="2">WATCHED BY</text>
+<text x="432" y="136" font-size="10" fill="#5b5d66" text-anchor="middle" font-weight="400" font-style="italic">whoever wears the hat</text>
+<path d="M402 112 Q330 112 300 126" stroke="#2b3a67" stroke-width="1" stroke-dasharray="2 4" fill="none"/>
+<text x="269" y="182" font-size="10.5" fill="#5b5d66" text-anchor="middle" font-weight="400" font-style="italic">FOR: what it protects</text>
+</svg>

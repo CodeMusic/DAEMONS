@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 262" font-family="Gill Sans, Gill Sans MT, Avenir Next, Helvetica Neue, sans-serif">
+  <!-- THE SPELL LEFT RUNNING: two ways to stop a broom: suppression makes two, the word puts one back -->
+<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#1b1c20"/></marker><marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#b8862b"/></marker></defs>
+<text x="20" y="30" font-size="12" fill="#1b1c20" text-anchor="start" font-weight="600" letter-spacing="2">THE AXE</text>
+<g transform="translate(70 110) rotate(0) scale(1.0)"><path d="M0 -46 L0 -14" stroke="#1b1c20" stroke-width="2.2"/><path d="M-9 0 L-5 -14 H5 L9 0 Z" fill="#d9c48f" stroke="#1b1c20" stroke-width="1"/><path d="M-5 0 L-3 -12 M0 0 V-12 M5 0 L3 -12" stroke="#1b1c20" stroke-width=".6"/></g>
+<path d="M100 86 L168 86" stroke="#1b1c20" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<g transform="translate(196 92) rotate(-30)"><path d="M0 -26 V22" stroke="#7a5a3a" stroke-width="2.4"/><path d="M0 -26 q16 2 18 14 q-14 -2 -18 4 z" fill="#5b5d66"/></g>
+<path d="M226 86 L294 86" stroke="#1b1c20" stroke-width="1.2" fill="none" marker-end="url(#ar)"/>
+<g transform="translate(330 110) rotate(0) scale(1.0)"><path d="M0 -46 L0 -14" stroke="#1b1c20" stroke-width="2.2"/><path d="M-9 0 L-5 -14 H5 L9 0 Z" fill="#d9c48f" stroke="#1b1c20" stroke-width="1"/><path d="M-5 0 L-3 -12 M0 0 V-12 M5 0 L3 -12" stroke="#1b1c20" stroke-width=".6"/><path d="M0 -30 Q-10 -26 -14 -18 M0 -30 Q10 -26 14 -18" stroke="#1b1c20" stroke-width="1.4" fill="none"/><path d="M-19 -18 h10 l-2 9 h-6 z M9 -18 h10 l-2 9 h-6 z" fill="#3a7ca5" stroke="#1b1c20" stroke-width=".9"/></g>
+<g transform="translate(392 110) rotate(0) scale(1.0)"><path d="M0 -46 L0 -14" stroke="#1b1c20" stroke-width="2.2"/><path d="M-9 0 L-5 -14 H5 L9 0 Z" fill="#d9c48f" stroke="#1b1c20" stroke-width="1"/><path d="M-5 0 L-3 -12 M0 0 V-12 M5 0 L3 -12" stroke="#1b1c20" stroke-width=".6"/><path d="M0 -30 Q-10 -26 -14 -18 M0 -30 Q10 -26 14 -18" stroke="#1b1c20" stroke-width="1.4" fill="none"/><path d="M-19 -18 h10 l-2 9 h-6 z M9 -18 h10 l-2 9 h-6 z" fill="#3a7ca5" stroke="#1b1c20" stroke-width=".9"/></g>
+<text x="455" y="74" font-size="10.5" fill="#5b5d66" text-anchor="start" font-weight="400" font-style="italic">it comes back,</text>
+<text x="455" y="90" font-size="10.5" fill="#5b5d66" text-anchor="start" font-weight="400" font-style="italic">and brings</text>
+<text x="455" y="106" font-size="10.5" fill="#5b5d66" text-anchor="start" font-weight="400" font-style="italic">a friend</text>
+<path d="M20 132 H500" stroke="#8a8d96" stroke-width=".8" stroke-dasharray="3 4"/>
+<text x="20" y="160" font-size="12" fill="#b8862b" text-anchor="start" font-weight="600" letter-spacing="2">THE WORD</text>
+<g transform="translate(70 240) rotate(0) scale(1.0)"><path d="M0 -46 L0 -14" stroke="#1b1c20" stroke-width="2.2"/><path d="M-9 0 L-5 -14 H5 L9 0 Z" fill="#d9c48f" stroke="#1b1c20" stroke-width="1"/><path d="M-5 0 L-3 -12 M0 0 V-12 M5 0 L3 -12" stroke="#1b1c20" stroke-width=".6"/><path d="M0 -30 Q-10 -26 -14 -18 M0 -30 Q10 -26 14 -18" stroke="#1b1c20" stroke-width="1.4" fill="none"/><path d="M-19 -18 h10 l-2 9 h-6 z M9 -18 h10 l-2 9 h-6 z" fill="#3a7ca5" stroke="#1b1c20" stroke-width=".9"/></g>
+<path d="M100 216 L168 216" stroke="#b8862b" stroke-width="1.2" fill="none" marker-end="url(#ag)"/>
+<text x="232" y="212" font-size="12" fill="#2b3a67" text-anchor="middle" font-weight="400" font-style="italic">“Be as you were.”</text>
+<path d="M296 216 L352 216" stroke="#b8862b" stroke-width="1.2" fill="none" marker-end="url(#ag)"/>
+<path d="M380 244 H440 M440 244 V170" stroke="#1b1c20" stroke-width="1.2"/>
+<g transform="translate(428 244) rotate(12) scale(1.0)"><path d="M0 -46 L0 -14" stroke="#1b1c20" stroke-width="2.2"/><path d="M-9 0 L-5 -14 H5 L9 0 Z" fill="#d9c48f" stroke="#1b1c20" stroke-width="1"/><path d="M-5 0 L-3 -12 M0 0 V-12 M5 0 L3 -12" stroke="#1b1c20" stroke-width=".6"/></g>
+<text x="455" y="204" font-size="10.5" fill="#5b5d66" text-anchor="start" font-weight="400" font-style="italic">seen: it keeps</text>
+<text x="455" y="220" font-size="10.5" fill="#5b5d66" text-anchor="start" font-weight="400" font-style="italic">its gift, and</text>
+<text x="455" y="236" font-size="10.5" fill="#5b5d66" text-anchor="start" font-weight="400" font-style="italic">stops its flood</text>
+</svg>
