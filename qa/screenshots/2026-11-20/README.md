@@ -31,3 +31,27 @@ v11.411.1, T-452's arm-C trial: all 28 changed daemons old beside new (front, ba
 v11.411.1, T-452's arm-C trial: all 28 changed daemons old beside new (front, back, icon at 2x), and the DEBUG viewer ART C: OLD / NEW filmed
 
 ![20Nov2026 - T452 - arm C old and new - 5](20Nov2026%20-%20T452%20-%20arm%20C%20old%20and%20new%20-%205.png)
+
+### 20Nov2026 - C436 - EUDAIMONIA sign-in and accounts - 6
+
+EUDAIMONIA on port 4741 (a throwaway copy): the front page signed in, the forced first password change, ACCOUNTS with a person and an agent, and YOUR ACCOUNT's daemons grouped by type at phone width. Every word DRAFT.
+
+![20Nov2026 - C436 - EUDAIMONIA sign-in and accounts - 6](20Nov2026%20-%20C436%20-%20EUDAIMONIA%20sign-in%20and%20accounts%20-%206.jpg)
+
+### 20Nov2026 - C436 - EUDAIMONIA sign-in and accounts - 7
+
+EUDAIMONIA on port 4741 (a throwaway copy): the front page signed in, the forced first password change, ACCOUNTS with a person and an agent, and YOUR ACCOUNT's daemons grouped by type at phone width. Every word DRAFT.
+
+![20Nov2026 - C436 - EUDAIMONIA sign-in and accounts - 7](20Nov2026%20-%20C436%20-%20EUDAIMONIA%20sign-in%20and%20accounts%20-%207.jpg)
+
+### 20Nov2026 - C436 - EUDAIMONIA sign-in and accounts - 8
+
+EUDAIMONIA on port 4741 (a throwaway copy): the front page signed in, the forced first password change, ACCOUNTS with a person and an agent, and YOUR ACCOUNT's daemons grouped by type at phone width. Every word DRAFT.
+
+![20Nov2026 - C436 - EUDAIMONIA sign-in and accounts - 8](20Nov2026%20-%20C436%20-%20EUDAIMONIA%20sign-in%20and%20accounts%20-%208.jpg)
+
+### 20Nov2026 - C436 - EUDAIMONIA sign-in and accounts - 9
+
+EUDAIMONIA on port 4741 (a throwaway copy): the front page signed in, the forced first password change, ACCOUNTS with a person and an agent, and YOUR ACCOUNT's daemons grouped by type at phone width. Every word DRAFT.
+
+![20Nov2026 - C436 - EUDAIMONIA sign-in and accounts - 9](20Nov2026%20-%20C436%20-%20EUDAIMONIA%20sign-in%20and%20accounts%20-%209.jpg)
