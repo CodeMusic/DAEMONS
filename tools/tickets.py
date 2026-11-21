@@ -21,6 +21,7 @@ payload alone (plus the frame, the prose around the tables) and compared byte fo
     python3 tools/tickets.py assign T-581 --to ops          # give a ticket to a lane
     python3 tools/tickets.py claim T-581 --lane ops --branch main      # after the cut-over only
     python3 tools/tickets.py close T-581 --lane ops --commit DAEMONS@6ff940f9   # after the cut-over only
+    python3 tools/tickets.py ask T-581 --lane ops --question "Which?" --choice "One" --choice "Two"   # to the user
 
 Redmine's address and key come from ~/.redmine.env (0600, outside every repo); the key is never printed. The Redmine
 side is set up by tools/redmine_setup_tickets.rb (statuses, trackers, priorities, fields, projects, membership).
@@ -252,6 +253,7 @@ def round_trip(data):
 # ---- Redmine ---------------------------------------------------------------------------------------------------
 # The key is read from ~/.redmine.env (0600, outside every repo) and sent only as a header; it is never printed, and an
 # error message has it removed before it is shown.
+import time
 import urllib.request
 import urllib.error
 
@@ -686,7 +688,8 @@ def main():
     ex.add_argument("--out", default=str(ROOT / "docs/tickets/redmine-export.json"))
     for name, hlp in (("show", "one ticket, its fields and its last notes"), ("mine", "the open tickets of a lane"),
                       ("assign", "give a ticket to a lane"), ("claim", "take a ticket: In progress, yours, a branch"),
-                      ("close", "close a ticket with the commit that closed it")):
+                      ("close", "close a ticket with the commit that closed it"),
+                      ("ask", "put a question to the user: Needs decision, its choices listed for THE DASHBOARD")):
         x = sub.add_parser(name, help=hlp)
         x.add_argument("--lane", help="work as this lane (its key in ~/.redmine.env): game, story, audio, art, app, "
                                       "hub, esp32, pi-zero, playground, docs, ops")
@@ -702,6 +705,9 @@ def main():
             x.add_argument("--commit", required=True, action="append", help="repo@sha; more than once for several")
         if name in ("assign", "claim", "close"):
             x.add_argument("--note", default="")
+        if name == "ask":
+            x.add_argument("--question", required=True, help="what the user is asked, one line")
+            x.add_argument("--choice", action="append", default=[], help="one choice; again for each (at most eight)")
     # check_generators.py runs every tool bare (and with --write in its sandbox): both are the dry run, which writes
     # nothing -- there is no Redmine write to make from here yet.
     argv = sys.argv[1:]
@@ -719,8 +725,8 @@ def main():
             print(f"\npayload written to {a.json}")
         sys.exit(0 if ok else 1)
 
-    if a.cmd in ("show", "mine", "assign", "claim", "close"):
-        if a.cmd in ("mine", "claim", "close") and not a.lane:
+    if a.cmd in ("show", "mine", "assign", "claim", "close", "ask"):
+        if a.cmd in ("mine", "claim", "close", "ask") and not a.lane:
             ap.error(f"{a.cmd} needs --lane (whose tickets, who is working)")
         rm = Redmine(a.lane)
         if a.cmd == "mine":
@@ -749,6 +755,17 @@ def main():
                              "custom_fields": [{"id": p["fields"]["Branch"], "value": a.branch}]},
                    a.note or f"Claimed by {me['login']} on {a.branch}.")
             print(f"{key}: In progress, {me['login']}, {a.branch}")
+            return
+        if a.cmd == "ask":
+            # EUDAIMONIA's dashboard (E-1) shows WAITING ON YOU, and draws a "Choices:" list as buttons; the user's
+            # answer comes back as a note and the ticket returns to Ready for its lane
+            if "\n" in a.question or any("\n" in c for c in a.choice) or len(a.choice) > 8:
+                raise SystemExit("ask: one line a question and each choice, at most eight choices")
+            note = f"**A question for the user** (*lane {a.lane}, {time.strftime('%Y-%m-%d')}*): {a.question}"
+            if a.choice:
+                note += "\n\nChoices:\n" + "\n".join(f"- {c}" for c in a.choice)
+            update(rm, key, {"status_id": statuses["Needs decision"]}, note)
+            print(f"{key}: Needs decision, asked{f' with {len(a.choice)} choices' if a.choice else ''}: it waits on the user")
             return
         old = [x for x in (cf(i).get("Commits") or "").split("\n") if x]
         commits = old + [c for c in a.commit if c not in old]
