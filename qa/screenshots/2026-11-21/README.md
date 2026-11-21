@@ -103,3 +103,21 @@ v11.412.2: the MUSAI branch from the built ROM, SONGMUSAI and LANGMUSAI at the f
 v11.412.2: WAVEFORM and UTTERANCE and the two INDEX entries in the game's font at 2x (DRAFT)
 
 ![21Nov2026 - T605 - the new words in the games font - 20](21Nov2026%20-%20T605%20-%20the%20new%20words%20in%20the%20games%20font%20-%2020.png)
+
+### 21Nov2026 - C455 - MENTIONS on TODAY, the shelf and the book - 21
+
+C-455 (DRAFT): DAILY MENTIONS on TODAY, the MENTIONS book on the DREAM-BOOKS shelf, and the book open -- a scratch companion on a synthetic save, plain letters (no mind there)
+
+![21Nov2026 - C455 - MENTIONS on TODAY, the shelf and the book - 21](21Nov2026%20-%20C455%20-%20MENTIONS%20on%20TODAY%2C%20the%20shelf%20and%20the%20book%20-%2021.png)
+
+### 21Nov2026 - C455 - MENTIONS on TODAY, the shelf and the book - 22
+
+C-455 (DRAFT): DAILY MENTIONS on TODAY, the MENTIONS book on the DREAM-BOOKS shelf, and the book open -- a scratch companion on a synthetic save, plain letters (no mind there)
+
+![21Nov2026 - C455 - MENTIONS on TODAY, the shelf and the book - 22](21Nov2026%20-%20C455%20-%20MENTIONS%20on%20TODAY%2C%20the%20shelf%20and%20the%20book%20-%2022.jpg)
+
+### 21Nov2026 - C455 - MENTIONS on TODAY, the shelf and the book - 23
+
+C-455 (DRAFT): DAILY MENTIONS on TODAY, the MENTIONS book on the DREAM-BOOKS shelf, and the book open -- a scratch companion on a synthetic save, plain letters (no mind there)
+
+![21Nov2026 - C455 - MENTIONS on TODAY, the shelf and the book - 23](21Nov2026%20-%20C455%20-%20MENTIONS%20on%20TODAY%2C%20the%20shelf%20and%20the%20book%20-%2023.jpg)
