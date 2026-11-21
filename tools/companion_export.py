@@ -1514,6 +1514,8 @@ def events_table():
     opening = re.search(r"VarSet\((VAR_MAP_SCENE_PALLET_TOWN_PROFESSOR_OAKS_LAB), (\d+)\)", read("src/new_game.c"))
     plan = []                                   # (section, name, flags, var, items, note)
     for name, kind, ev, off in rows("sRows_Events"):
+        if kind == "R_SCREEN":                  # T-452: a DEBUG screen (ART C: OLD / NEW), nothing held to read
+            continue
         if kind == "R_PAGE":
             if ev in PAGES_LEFT_OUT:
                 continue
