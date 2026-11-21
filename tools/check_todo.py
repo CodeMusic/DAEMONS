@@ -9,7 +9,10 @@ Fails (exit 1) on any of:
   * a `Reserved: T-a to T-b` block whose ids are all taken (a stale claim);
   * a bible version stated in CLAUDE.md that is not the bible's own;
   * a "newest release" line in README.md or wiki/Home.md naming a release that is
-    not the newest folder under `ROM RELEASE/`.
+    not the newest folder under `ROM RELEASE/`;
+  * in daemons-eudaimonia's TODO.md (E-, 2026-11-20, C-411's first point), where it is linked in
+    as eudaimonia/: a conflict marker, a malformed row, or an id twice;
+  * after the cut-over, any of the three TODO files that is not Redmine's mirror.
 
 Run from the repo root. `--quiet` prints only failures.
 """
@@ -70,6 +73,25 @@ bad = [l[:40] for l in todo if re.match(r"\| (~~)?\*\*T-\d+\*\*(~~)? [^|]", l)]
 if bad:
     fail(f"{len(bad)} ticket row(s) missing the `|` after the id: {bad[0]}...")
 
+# ---- daemons-eudaimonia's TODO.md (E-): one table, mirrored from Redmine like the companion's ------------------------
+etodo = (ROOT / "eudaimonia").resolve() / "TODO.md"
+if not etodo.exists():
+    say("ok    no eudaimonia/TODO.md here (no eudaimonia/ link: a worktree or a fresh clone)")
+else:
+    e = etodo.read_text(encoding="utf-8").split("\n")
+    marks = [i + 1 for i, l in enumerate(e) if re.match(r"^(<<<<<<<|=======|>>>>>>>)( |$)", l)]
+    if marks:
+        fail(f"{len(marks)} conflict-marker line(s) in eudaimonia/TODO.md, first at line {marks[0]}")
+    bad = [l[:40] for l in e if re.match(r"\| (~~)?\*\*E-\d+\*\*(~~)? [^|]", l)]
+    if bad:
+        fail(f"{len(bad)} ticket row(s) missing the `|` after the id in eudaimonia/TODO.md: {bad[0]}...")
+    ids = [m.group(1) for l in e for m in [re.match(r"\| (?:~~)?\*\*(E-\d+)\*\*", l)] if m]
+    twice = sorted({k for k in ids if ids.count(k) > 1})
+    if twice:
+        fail(f"eudaimonia/TODO.md has an id twice: {' '.join(twice)}")
+    elif not marks and not bad:
+        say(f"ok    eudaimonia/TODO.md: {len(ids)} E- ticket(s), each once")
+
 # ---- the bible's version vs CLAUDE.md -------------------------------------------
 vision = (ROOT / "docs/vision.md").read_text(encoding="utf-8")
 vm = re.search(r"living design bible, v(\d+\.\d+)", vision)
@@ -109,7 +131,7 @@ else:
     say("ok    no release folders found (fresh clone?)")
 
 # ---- the tickets' mirror (T-581) ------------------------------------------------------------------------------
-# After the cut-over (the word `redmine` in ~/.local/share/daemons-tickets/truth) the ticket rows in both TODO files
+# After the cut-over (the word `redmine` in ~/.local/share/daemons-tickets/truth) the ticket rows in the TODO files
 # are Redmine's: a row edited by hand here would be overwritten by the nightly mirror, so the push stops on it.
 import subprocess
 truth_file = Path.home() / ".local/share/daemons-tickets/truth"
@@ -127,7 +149,8 @@ else:
         fail("a TODO file is not Redmine's mirror: change tickets with tools/tickets.py, then "
              "`python3 tools/tickets.py mirror --from-redmine --write` (" + (r.stdout + r.stderr).strip()[:200] + ")")
     else:
-        say("ok    both TODO files are Redmine's mirror")
+        n = sum(1 for l in r.stdout.split("\n") if ": current" in l)
+        say(f"ok    all {n} TODO files (DAEMONS, the companion, eudaimonia) are Redmine's mirror")
 
 if failures:
     print(f"\n{len(failures)} failure(s).")

@@ -21,8 +21,9 @@ are daemons and the type chart is an argument about consciousness. **Design is w
   no number is kept here, because this file drifted from it for five weeks) and a decision
   log with a **Reversed** table — check that before re-suggesting something.
 - **`docs/CHANGELOG.md`** is what moved and when.
-- **The tickets live in Redmine** (T-581; the user, 2026-11-17): http://roverbyteseer:3333, projects `daemons` (T-)
-  and `companion` (C-), over the tailnet. **`docs/TODO.md` and the companion's `TODO.md` are its mirror** -- rebuilt
+- **The tickets live in Redmine** (T-581; the user, 2026-11-17): http://roverbyteseer:3333, projects `daemons` (T-),
+  `companion` (C-) and `eudaimonia` (E-, 2026-11-20), over the tailnet. **`docs/TODO.md`, the companion's `TODO.md` and
+  eudaimonia's `TODO.md` are its mirror** -- rebuilt
   from Redmine every night at 04:45 and committed, with every ticket's history in `docs/tickets/redmine-export.json`,
   so a fresh clone or a cloud session can still read every ticket. **Never edit a ticket row in a TODO file by hand**:
   the mirror overwrites it and `check_todo.py` stops the push. The prose around the tables (the rules, the companion's
@@ -90,7 +91,9 @@ and EUDAIMONIA's first pieces beside it on 4741 -- the front page's frame, sign-
 package to install; the first sign-in admin / admin, taken from home only and changed at once) -- both kept running by
 the login agent `ca.codemusic.daemons-eudaimonia`. It reads the ROMs from `ROM RELEASE/` here at the
 moment they are asked for and answers only this machine, a private network and the tailnet; it holds no ROM, so it is
-public at CodeMusic/daemons-eudaimonia -- **nothing personal goes in it either.** Its Redmine lane is still `playground`.
+public at CodeMusic/daemons-eudaimonia -- **nothing personal goes in it either.** Its Redmine lane is still `playground`;
+its tickets are E- (Redmine's `eudaimonia` project, mirrored into its `TODO.md`), C-411, C-436, C-437 and C-439 having
+become E-1 to E-4.
 
 **daemons-praxis** (2026-11-20, C-435) is PRAXIS's engine, out of the companion with its history: the event log, the
 fold, the merge rules and ARETE's ledger, the same code on the phone and the hub. It has **no symlink here and needs

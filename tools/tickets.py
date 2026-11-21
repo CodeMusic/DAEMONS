@@ -3,7 +3,8 @@
 
 The plan (the user, 2026-11-17, by multiple choice): Redmine on roverbyteseer holds the tickets of docs/TODO.md (T-)
 and the companion's TODO.md (C-); the ids stay T-/C- for good, in a Ticket field; both TODO files become a mirror
-generated from Redmine, so a fresh clone or a cloud session can still read them.
+generated from Redmine, so a fresh clone or a cloud session can still read them. A third project since 2026-11-20:
+daemons-eudaimonia's TODO.md (E-, Redmine's `eudaimonia`, C-411's point 1; the prefix the user's, by multiple choice).
 
 This first slice touches nothing on the network. It parses both files into the payload Redmine would be sent --
 subject, description, status, custom fields -- and proves the cut-over loses nothing: the files are rebuilt from that
@@ -39,10 +40,11 @@ ROOT = Path(__file__).resolve().parent.parent
 FILES = {
     "daemons": ROOT / "docs/TODO.md",
     "companion": (ROOT / "companion").resolve() / "TODO.md",
+    "eudaimonia": (ROOT / "eudaimonia").resolve() / "TODO.md",   # ~/Projects/daemons-eudaimonia, one table like the companion's
 }
-PREFIX = {"daemons": "T", "companion": "C"}
+PREFIX = {"daemons": "T", "companion": "C", "eudaimonia": "E"}
 
-ROW = re.compile(r"^\| (?P<id>(~~)?\*\*(?P<p>[TC])-(?P<n>\d+)(?P<sfx>[a-z]?)\*\*(~~)?) \| ")
+ROW = re.compile(r"^\| (?P<id>(~~)?\*\*(?P<p>[TCE])-(?P<n>\d+)(?P<sfx>[a-z]?)\*\*(~~)?) \| ")
 SEP = re.compile(r"^\|(\s*-+\s*\|)+\s*$")
 SHA = re.compile(r"(?<![0-9A-Za-z/#=-])([0-9a-f]{7,12})(?![0-9A-Za-z])")
 REPO_WORD = re.compile(r"\b(engineGba|engine|companion|eudaimonia|playground|engineAi)\b[^|()]{0,12}$")   # playground: eudaimonia's first name (C-438)
@@ -173,7 +175,7 @@ def goals_versions(project, text):
         end = text.find("\n## ", m.end())
         body = text[m.end(): end if end != -1 else len(text)]
         body = body.split("\n| ", 1)[0]
-        ids = sorted({ticket_key(p, n, s) for p, n, s in re.findall(r"\b([TC])-(\d+)([a-z]?)\b", body)},
+        ids = sorted({ticket_key(p, n, s) for p, n, s in re.findall(r"\b([TCE])-(\d+)([a-z]?)\b", body)},
                      key=lambda k: (k[0], int(re.sub(r"\D", "", k))))
         out.append({"name": f"{m.group(1)} {m.group(2)}", "tickets": ids})
     return out
@@ -459,7 +461,7 @@ def from_redmine(rm, project, d, statuses_by_id):
 
 
 def mirror_from_redmine(write, save=None):
-    """Redmine -> both TODO files. Refuses (exit 1) if any ticket in a file is missing from Redmine: an emptied or
+    """Redmine -> every TODO file. Refuses (exit 1) if any ticket in a file is missing from Redmine: an emptied or
     re-created Redmine must never be mirrored over the files and pushed."""
     rm, data = Redmine(), load_all()
     by_id = {v: k for k, v in rm.statuses().items()}
@@ -523,7 +525,7 @@ def export(out):
 
 # ---- lanes: a session works as its lane (the user, 2026-11-17: tickets assigned to lanes, sessions pick them up) ----
 TRUTH = Path.home() / ".local/share/daemons-tickets/truth"
-PROJECT_OF = {"T": "daemons", "C": "companion"}
+PROJECT_OF = {"T": "daemons", "C": "companion", "E": "eudaimonia"}
 
 
 def truth():
@@ -536,9 +538,9 @@ def truth():
 
 
 def norm_key(k):
-    m = re.fullmatch(r"\s*([TCtc])-0*(\d+)([a-z]?)\s*", k)
+    m = re.fullmatch(r"\s*([TCEtce])-0*(\d+)([a-z]?)\s*", k)
     if not m:
-        raise SystemExit(f"not a ticket id: {k!r} (T-581, C-397)")
+        raise SystemExit(f"not a ticket id: {k!r} (T-581, C-397, E-1)")
     return f"{m.group(1).upper()}-{int(m.group(2))}{m.group(3)}"
 
 
@@ -620,21 +622,21 @@ def new_ticket(a):
         if a.to not in ids:
             raise SystemExit(f"no lane {a.to!r}; lanes: {', '.join(sorted(ids))}")
         owner = ids[a.to]
-    # the Ready table: the run of the open tickets (the companion has one table)
+    # the Ready table: the run of the open tickets (the companion and eudaimonia have one table)
     issues = rm.issues(a.project)
     ready = [cf(i) for i in issues if i["status"]["name"] == "Ready"] or [cf(i) for i in issues]
     run = max(int(c["Run"]) for c in ready if c.get("Run"))
     desc = f"**{a.title}** (*{a.source}*)" + (f": {a.body}" if a.body else "")
     for attempt in range(5):
         issues = rm.issues(a.project)
-        nums = [int(m.group(1)) for m in (re.fullmatch(r"[TC]-(\d+)[a-z]?", c.get("Ticket") or "")
+        nums = [int(m.group(1)) for m in (re.fullmatch(r"[TCE]-(\d+)[a-z]?", c.get("Ticket") or "")
                                           for c in map(cf, issues)) if m]
         order = max(int(c["Order"]) for c in map(cf, issues) if c.get("Order")) + 1
         key = f"{prefix}-{max(nums) + 1}"
         vals = {"Ticket": key, "Run": str(run), "Order": str(order)}
         if a.project == "daemons":   # | | what | where | from |
             vals.update({"Where": a.where or EMPTY, "From": a.source})
-        else:                        # | | Ticket | State | See |  (the companion: a state line, then related tickets)
+        else:                        # | | Ticket | State | See |  (companion, eudaimonia: a state line, then related tickets)
             vals.update({"State": EMPTY, "See": a.where or EMPTY})
         made = rm.call("POST", "/issues.json", {"issue": {
             "project_id": p["id"], "tracker_id": next(x["id"] for x in p["trackers"] if x["name"] == "Job"),
@@ -674,10 +676,10 @@ def main():
     sy.add_argument("--create-only", action="store_true", help="after the cut-over: add hand-written rows, touch nothing else")
     nw = sub.add_parser("new", help="a new ticket with the next id (after the cut-over)")
     nw.add_argument("--lane", required=True)
-    nw.add_argument("--project", choices=["daemons", "companion"], required=True)
+    nw.add_argument("--project", choices=list(PREFIX), required=True)
     nw.add_argument("--title", required=True, help="the bold title")
     nw.add_argument("--body", default="", help="the rest of the 'what' cell, one line")
-    nw.add_argument("--where", default="", help="daemons: the where column; companion: the See column")
+    nw.add_argument("--where", default="", help="daemons: the where column; companion, eudaimonia: the See column")
     nw.add_argument("--from", dest="source", required=True, help="who asked and when: the user, 2026-11-17")
     nw.add_argument("--to", help="assign to this lane (default: your own)")
     ex = sub.add_parser("export", help="Redmine -> one JSON file with every ticket's history (for git)")
@@ -736,8 +738,11 @@ def main():
             return
         needs_cutover(a.cmd)
         me = rm.call("GET", "/users/current.json")["user"]
+        p, i = find(rm, key)
+        if i["status"]["name"] == "Superseded":
+            raise SystemExit(f"{key} is Superseded ({cf(i).get('State') or 'see its last note'}): "
+                             f"claim or close the ticket that replaced it")
         if a.cmd == "claim":
-            p, i = find(rm, key)
             if i["status"]["name"] == "In progress" and (i.get("assigned_to") or {}).get("id") != me["id"]:
                 raise SystemExit(f"{key} is already In progress for {i['assigned_to']['name']}")
             update(rm, key, {"status_id": statuses["In progress"], "assigned_to_id": me["id"],
@@ -745,7 +750,6 @@ def main():
                    a.note or f"Claimed by {me['login']} on {a.branch}.")
             print(f"{key}: In progress, {me['login']}, {a.branch}")
             return
-        p, i = find(rm, key)
         old = [x for x in (cf(i).get("Commits") or "").split("\n") if x]
         commits = old + [c for c in a.commit if c not in old]
         update(rm, key, {"status_id": statuses["Closed"],

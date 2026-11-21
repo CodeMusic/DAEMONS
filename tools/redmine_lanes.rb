@@ -10,7 +10,7 @@ LANES = {
   'ops' => 'roverbyteseer, Redmine, backups, the nightly mirror',
 }
 role = Role.find_by!(name: 'Ticket keeper')
-projects = Project.where(identifier: %w[context-content daemons companion]).to_a
+projects = Project.where(identifier: %w[context-content daemons companion eudaimonia]).to_a
 LANES.each do |lane, what|
   login = "lane-#{lane}"
   u = User.find_by_login(login) || User.new

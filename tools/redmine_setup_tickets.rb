@@ -93,7 +93,9 @@ end
 
 top = project('context-content', 'CONTEXT / CONTENT', 'The DAEMONS projects. Its TODO files are mirrors of these tickets (T-581).')
 kids = [project('daemons', 'DAEMONS', 'docs/TODO.md: T- tickets, the game and its docs.', top),
-        project('companion', 'daemons-companion', 'TODO.md: C- tickets, the app, server and devices.', top)]
+        project('companion', 'daemons-companion', 'TODO.md: C- tickets, the app, server and devices.', top),
+        # C-411's point 1 (prefix E: the user, 2026-11-20, by multiple choice): EUDAIMONIA's own tickets, E-1 onward
+        project('eudaimonia', 'daemons-eudaimonia', 'TODO.md: E- tickets, EUDAIMONIA (the site) and the game in a browser.', top)]
 
 u = User.find_by_login('claude-sessions')
 [top, *kids].each do |p|
