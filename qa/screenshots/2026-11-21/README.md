@@ -91,3 +91,15 @@ E-1's second slice on a throwaway copy, its send stubbed: E-8's choices as butto
 E-1's second slice on a throwaway copy, its send stubbed: E-8's choices as buttons with your own words (and the empty-answer refusal), the modal after ANSWER, and the form at phone width
 
 ![21Nov2026 - E1 - answering what waits on you - 18](21Nov2026%20-%20E1%20-%20answering%20what%20waits%20on%20you%20-%2018.jpg)
+
+### 21Nov2026 - T605 - the MUSAI branch, seven forms - 19
+
+v11.412.2: the MUSAI branch from the built ROM, SONGMUSAI and LANGMUSAI at the foot, with both INDEX entries (DRAFT)
+
+![21Nov2026 - T605 - the MUSAI branch, seven forms - 19](21Nov2026%20-%20T605%20-%20the%20MUSAI%20branch%2C%20seven%20forms%20-%2019.png)
+
+### 21Nov2026 - T605 - the new words in the games font - 20
+
+v11.412.2: WAVEFORM and UTTERANCE and the two INDEX entries in the game's font at 2x (DRAFT)
+
+![21Nov2026 - T605 - the new words in the games font - 20](21Nov2026%20-%20T605%20-%20the%20new%20words%20in%20the%20games%20font%20-%2020.png)
