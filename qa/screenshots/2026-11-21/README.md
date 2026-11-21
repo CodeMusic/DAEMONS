@@ -13,3 +13,9 @@ THE KODE DOT, 16 pages, DRAFT: the cover (graphite, the Dot with ANODE on its sc
 DRAFT (branch shadow-book): THE SPELL LEFT RUNNING, a book of shadows -- the cover, the tale's first plate, the spell card, the seven signs, THE FIVE QUILLS and the dusk plate (ROVERCUB and LOOP by the well). Printed by tools/manual.py --book shadow.
 
 ![21Nov2026 - T0 - THE SPELL LEFT RUNNING, first draft, six pages - 2](21Nov2026%20-%20T0%20-%20THE%20SPELL%20LEFT%20RUNNING%2C%20first%20draft%2C%20six%20pages%20-%202.png)
+
+### 21Nov2026 - T606 - THE SPELL LEFT RUNNING, its identity - 3
+
+DRAFT (branch shadow-book): THE SPELL LEFT RUNNING's identity -- the frontispiece map, the tale's opening (the hat over the chapter, the Sorcerer's saying, the gold drop cap, the water gauge), a lesson with the Apprentice's note in the margin, Sunday's incantation and SPELL CHECK, the five quills' incantation, and the Apprentice's own spell card.
+
+![21Nov2026 - T606 - THE SPELL LEFT RUNNING, its identity - 3](21Nov2026%20-%20T606%20-%20THE%20SPELL%20LEFT%20RUNNING%2C%20its%20identity%20-%203.png)
