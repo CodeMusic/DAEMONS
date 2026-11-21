@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.411**
+**A total conversion — the living design bible, v11.412**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9156,6 +9156,7 @@ signatures keep their ink and play soft.** *`tools/gensignature.py`; the looks i
 - ***Followers walk at their own size*** (*T-464, the user: CODEMUSAI "looked odd" beside the player*). **The follower used to draw the party icon, and the new icons fill their cell; now each daemon walks as its own small picture, at most about 22 pixels tall**, *in the icon's palette so its type colours hold.* ***A tool's report fails on any follower that would tower over the player.***
 - ***Rolling out***: **thirteen batches built by 2026-10-28, up to UNBRANCHED (289)**; *the user answers each batch's questions by multiple choice, or the recommended choices are built while they are away and asked after.* **What the batches decide, sprite by sprite, is in T-452; this section holds only the rules.**
 - ***The ROVER line, one flow again (T-552, released in v11.367.1; DRAFT)***: *the user, 2026-11-14, after T-452's cub no longer matched its line* -- **most machine, then a server, then a dog**: ROVERCUB the boxy screen-faced pup with speaker-disc ears and an antenna; **ROVERSEER sitting, its haunches a heavy rack chassis**, a dog's head forming, *it has lost mobility to become a server*; ROVERBYTE a real white-furred dog with one tell of the line, the antenna's tuft and a glowing tag. *Fronts, backs, icons and followers redrawn together.*
+- ***Arm C on trial: old and new side by side (T-452, released in v11.411.1, DEBUG only)***: **the 28 daemons arm C redrew are each to be kept or reverted by the user** -- *DEBUG's GAME EVENTS steps through them, ART C: OLD / NEW, each in a battle-like scene (terrain, its front at the wild spot, its back at the player's, both icons), A switching old and new.* **The release ROMs are unchanged; the verdicts wait in `gfx/drafts/t452/c/armc_verdict.json`.**
 
 ### 9.2 Order of operations
 
@@ -9362,6 +9363,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **Released in v11.411.1 (d010b1ea, 2026-11-20, sealing v11.410.x)** — T-452's arm-C trial viewer, ART C: OLD / NEW, in the DEBUG build only: the 28 daemons arm C redrew, old against new in a battle-like scene, for the user's keep or revert; the release ROMs byte-identical. 9.31.
 - **Released in v11.410.1 (fd731f7a, 2026-11-20, sealing v11.409.x)** — TRAINER TOWER's face from its roof, THE TIME POSTED (T-601, the user's pick AFT, DRAFT art): a storey bar a floor, each window a stopwatch. 9.29.
 - **Released in v11.409.1 (61bca9d1, 2026-11-19, sealing v11.408.x)** — play a daemon's song and it comes (T-598, DRAFT): a SEEN daemon's opening played on PLAY summons it to sing and go, never caught; its quotation waits for T-599, the summon remembered so the INDEX shows it once written. 9.36.
 - **Released in v11.408.1 (9adefb20, 2026-11-19, sealing v11.407.x)** — colour by song (T-597, DRAFT, the user's A): grey until sung, each colour coming in with its note and never greying again; friendship still scales it for AL's party and the Corpus; later forms to be redrawn in stages (T-604). Reverses 8.6a's friendship. 8.6a, 9.36.

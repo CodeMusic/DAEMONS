@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.412 — 2026-11-20
+
+- Recorded from release v11.411.1 (d010b1ea, engine d7c977174), which sealed v11.410.x:
+  - **T-452, arm C on trial** (DEBUG only): ART C: OLD / NEW shows the 28 redrawn daemons old against new for the user's keep or revert; the release ROMs unchanged. In 9.31.
+- Section 10: one Settled entry.
+
 ## v11.411 — 2026-11-20
 
 - Recorded from release v11.410.1 (fd731f7a, engine a4e3cff97), which sealed v11.409.x:
