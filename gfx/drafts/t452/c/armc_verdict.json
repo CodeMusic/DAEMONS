@@ -1,0 +1,288 @@
+{
+ "ticket": "T-452",
+ "about": "Arm C's trial (the user, 2026-11-20): for each daemon arm C redrew (engine a01ea9d67), keep the new art or revert to the old. Seen in the DEBUG build: DEBUG -> GAME EVENTS -> ART C: OLD / NEW (A swaps old/new, B next, SELECT back, START out). verdict: pending | keep | revert; parts: which of front/back/icon the verdict covers (default: everything arm C redrew); note: free text. The old art is in engineGba graphics/daemons_armc_old/<folder>/ (front.png, back.png, icon.png, normal.pal, from a01ea9d67^), with its old y_offsets and icon palette in src/data/daemons_debug_artc.h. A later script applies a revert; nothing reads this file yet.",
+ "old_commit": "a01ea9d67^",
+ "new_commit": "a01ea9d67",
+ "daemons": [
+  {
+   "n": 1,
+   "daemon": "BROADCAST",
+   "species": "SPECIES_PIDGEOT",
+   "folder": "pidgeot",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 2,
+   "daemon": "TRACER",
+   "species": "SPECIES_GOLBAT",
+   "folder": "golbat",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 3,
+   "daemon": "FOSSILNET",
+   "species": "SPECIES_AERODACTYL",
+   "folder": "aerodactyl",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 4,
+   "daemon": "ROVERCUB",
+   "species": "SPECIES_BULBASAUR",
+   "folder": "bulbasaur",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": "NEW is T-552's later redraw (engine d1af1713e), not arm C's"
+  },
+  {
+   "n": 5,
+   "daemon": "SMOGSTACK",
+   "species": "SPECIES_WEEZING",
+   "folder": "weezing",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 6,
+   "daemon": "OBSESSION",
+   "species": "SPECIES_HOUNDOOM",
+   "folder": "houndoom",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 7,
+   "daemon": "LODESTAR",
+   "species": "SPECIES_OLD_UNOWN_D",
+   "folder": "nexus_lodestar",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 8,
+   "daemon": "REFLECTION",
+   "species": "SPECIES_OLD_UNOWN_C",
+   "folder": "nexus_reflection",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 9,
+   "daemon": "BASTET",
+   "species": "SPECIES_OLD_UNOWN_J",
+   "folder": "nexus_bastet",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 10,
+   "daemon": "STUMP",
+   "species": "SPECIES_TREECKO",
+   "folder": "treecko",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 11,
+   "daemon": "BOOSTING",
+   "species": "SPECIES_GROVYLE",
+   "folder": "grovyle",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 12,
+   "daemon": "CANOPY",
+   "species": "SPECIES_SCEPTILE",
+   "folder": "sceptile",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 13,
+   "daemon": "COINFLIP",
+   "species": "SPECIES_TORCHIC",
+   "folder": "torchic",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 14,
+   "daemon": "MONTECARLO",
+   "species": "SPECIES_COMBUSKEN",
+   "folder": "combusken",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 15,
+   "daemon": "LASVEGAS",
+   "species": "SPECIES_BLAZIKEN",
+   "folder": "blaziken",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 16,
+   "daemon": "RUNOFF",
+   "species": "SPECIES_MUDKIP",
+   "folder": "mudkip",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 17,
+   "daemon": "ALLUVIUM",
+   "species": "SPECIES_MARSHTOMP",
+   "folder": "marshtomp",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 18,
+   "daemon": "DELTA",
+   "species": "SPECIES_SWAMPERT",
+   "folder": "swampert",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 19,
+   "daemon": "SMUDGE",
+   "species": "SPECIES_POOCHYENA",
+   "folder": "poochyena",
+   "arm_c_redrew": "front back (ROM icon kept)",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 20,
+   "daemon": "DETOUR",
+   "species": "SPECIES_ZIGZAGOON",
+   "folder": "zigzagoon",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 21,
+   "daemon": "UNBRANCHED",
+   "species": "SPECIES_LINOONE",
+   "folder": "linoone",
+   "arm_c_redrew": "front back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 22,
+   "daemon": "ENSEMBLE",
+   "species": "SPECIES_EXEGGUTOR",
+   "folder": "exeggutor",
+   "arm_c_redrew": "back icon",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 23,
+   "daemon": "WIRETAP",
+   "species": "SPECIES_DUGTRIO",
+   "folder": "dugtrio",
+   "arm_c_redrew": "back",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 24,
+   "daemon": "MANIFOLD",
+   "species": "SPECIES_BLASTOISE",
+   "folder": "blastoise",
+   "arm_c_redrew": "back",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 25,
+   "daemon": "MONOLITH",
+   "species": "SPECIES_GOLEM",
+   "folder": "golem",
+   "arm_c_redrew": "back",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 26,
+   "daemon": "OUTLIER",
+   "species": "SPECIES_CLEFABLE",
+   "folder": "clefable",
+   "arm_c_redrew": "back",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 27,
+   "daemon": "HEARTBEAT",
+   "species": "SPECIES_BLISSEY",
+   "folder": "blissey",
+   "arm_c_redrew": "back",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  },
+  {
+   "n": 28,
+   "daemon": "COREFILE",
+   "species": "SPECIES_MAROWAK",
+   "folder": "marowak",
+   "arm_c_redrew": "back",
+   "verdict": "pending",
+   "parts": null,
+   "note": ""
+  }
+ ]
+}
