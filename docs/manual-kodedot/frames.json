@@ -1,0 +1,87 @@
+{
+ "about": "THE KODE DOT's pictures (C-442): the DAEMONS app in Kode's simulator, kode-sim, which runs the real program on Espressif's emulator of the Dot's chip -- filed in qa/screenshots/2026-11-19 (C-424 ROUTINES and LODESTONE, C-426 the den against a scratch companion's synthetic save), each cropped to one 410x502 screen. Nothing of the Dot itself is captured yet: it comes in December 2026.",
+ "frames": {},
+ "pictures": {
+  "den_none": {
+   "from": "qa/screenshots/2026-11-19/19Nov2026 - C426 - Kode Dot den in kode-sim - 18.png",
+   "crop": [
+    12,
+    12,
+    422,
+    514
+   ]
+  },
+  "den": {
+   "from": "qa/screenshots/2026-11-19/19Nov2026 - C426 - Kode Dot den in kode-sim - 18.png",
+   "crop": [
+    434,
+    12,
+    844,
+    514
+   ]
+  },
+  "den_fed": {
+   "from": "qa/screenshots/2026-11-19/19Nov2026 - C426 - Kode Dot den in kode-sim - 18.png",
+   "crop": [
+    856,
+    12,
+    1266,
+    514
+   ]
+  },
+  "den_asleep": {
+   "from": "qa/screenshots/2026-11-19/19Nov2026 - C426 - Kode Dot den in kode-sim - 18.png",
+   "crop": [
+    1278,
+    12,
+    1688,
+    514
+   ]
+  },
+  "routines": {
+   "from": "qa/screenshots/2026-11-19/19Nov2026 - C424 - Kode Dot ROUTINES and LODESTONE in kode-sim - 13.png",
+   "crop": [
+    12,
+    12,
+    422,
+    514
+   ]
+  },
+  "routines_lode": {
+   "from": "qa/screenshots/2026-11-19/19Nov2026 - C424 - Kode Dot ROUTINES and LODESTONE in kode-sim - 13.png",
+   "crop": [
+    434,
+    12,
+    844,
+    514
+   ]
+  },
+  "lodestone": {
+   "from": "qa/screenshots/2026-11-19/19Nov2026 - C424 - Kode Dot ROUTINES and LODESTONE in kode-sim - 13.png",
+   "crop": [
+    856,
+    12,
+    1266,
+    514
+   ]
+  },
+  "read_listen": {
+   "from": "qa/screenshots/2026-11-19/19Nov2026 - C424 - Kode Dot ROUTINES and LODESTONE in kode-sim - 13.png",
+   "crop": [
+    1278,
+    12,
+    1688,
+    514
+   ]
+  },
+  "read_none": {
+   "from": "qa/screenshots/2026-11-19/19Nov2026 - C424 - Kode Dot ROUTINES and LODESTONE in kode-sim - 13.png",
+   "crop": [
+    1700,
+    12,
+    2110,
+    514
+   ]
+  }
+ }
+}

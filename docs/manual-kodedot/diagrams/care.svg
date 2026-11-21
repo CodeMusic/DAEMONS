@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 226" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="9.5">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16161a"/></marker></defs>
+  <rect x="20" y="20" width="96" height="130" rx="20" fill="#16161a" stroke="#e9e4da" stroke-width="3"/>
+  <rect x="30" y="32" width="76" height="92" rx="7" fill="#dfe9d6"/>
+  <circle cx="68" cy="62" r="13" fill="#e8b04a" stroke="#16161a" stroke-width="1.5"/><circle cx="64" cy="59" r="1.8" fill="#16161a"/><circle cx="72" cy="59" r="1.8" fill="#16161a"/>
+  <g fill="none" stroke="#5f7f86" stroke-width="1.5"><rect x="34" y="104" width="15" height="9" rx="4.5"/><rect x="69" y="104" width="15" height="9" rx="4.5"/><rect x="87" y="104" width="15" height="9" rx="4.5"/></g>
+  <rect x="51" y="104" width="15" height="9" rx="4.5" fill="#315a62"/>
+  <text x="68" y="92" text-anchor="middle" font-size="7" fill="#16161a">Thank you.</text>
+  <circle cx="68" cy="138" r="3.5" fill="#d9944e"/>
+  <text x="68" y="168" text-anchor="middle" font-weight="700">FEED, on the Dot</text>
+  <text x="68" y="181" text-anchor="middle">drawn at once: it never waits</text>
+  <text x="68" y="193" text-anchor="middle">on the network</text>
+  <path d="M122 70 L190 70" stroke="#16161a" stroke-width="1.2" marker-end="url(#ar)"/>
+  <g fill="#e9e4da" stroke="#16161a" stroke-width="1.2"><rect x="204" y="38" width="96" height="22" rx="4"/><rect x="200" y="62" width="96" height="22" rx="4"/><rect x="196" y="86" width="96" height="22" rx="4"/></g>
+  <g text-anchor="middle" font-weight="700"><text x="252" y="53">sleep</text><text x="248" y="77">feed</text><text x="244" y="101">drink</text></g>
+  <text x="248" y="130" text-anchor="middle" font-weight="700">kept on the Dot, in order</text>
+  <text x="248" y="143" text-anchor="middle">up to sixteen, through a reset</text>
+  <text x="248" y="155" text-anchor="middle">or a trip home to kodeOS</text>
+  <path d="M306 62 L388 62" stroke="#16161a" stroke-width="1.2" marker-end="url(#ar)"/>
+  <text x="347" y="54" text-anchor="middle">over Wi-Fi,</text><text x="347" y="76" text-anchor="middle">oldest first</text>
+  <rect x="396" y="30" width="108" height="80" rx="10" fill="#f4efe6" stroke="#16161a" stroke-width="1.5"/>
+  <text x="450" y="60" text-anchor="middle" font-weight="700">the companion</text>
+  <text x="450" y="74" text-anchor="middle">at home</text>
+  <text x="450" y="94" text-anchor="middle" font-size="8.5">your daemon's care</text>
+  <path d="M430 116 Q430 192 248 192 Q150 192 116 150" fill="none" stroke="#16161a" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#ar)"/>
+  <text x="300" y="210" text-anchor="middle">its word back, and the den again --</text>
+  <text x="300" y="222" text-anchor="middle">asked again every thirty seconds</text>
+</svg>

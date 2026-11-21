@@ -17,7 +17,8 @@ evolving by trade, OUT TOGETHER meetings, friends and shared dreams, and friends
 your daemon's care, talk and nights, MEETINGS, JOURNEY, the LIBRARY, the house's mind, the devices and every setting.
 **On a device of its own?** [THE WATCH](docs/DAEMONS-watch-manual.pdf) (26 pages), [THE GLASSES](docs/DAEMONS-glass-manual.pdf)
 (12) and [THE CARDPUTERS](docs/DAEMONS-cardputer-manual.pdf) (24) — the T-Watch, the T-Glass, and M5Stack's Cardputer, ADV
-and Zero, the last of which plays the game itself.
+and Zero, the last of which plays the game itself; and [THE KODE DOT](docs/DAEMONS-kodedot-manual.pdf) (16), Kode's pocket
+device, with every routine in one, LODESTONE's 125 kHz among them.
 
 **Why the name? [THE OLD WORD](docs/DAEMONS-etymology.pdf)** (19 pages) tells how the Greek *daimon* branched, and why it is said *DAY-mons*.
 **From CALLOW SCHOOL: [PRINCIPLES OF MIND](docs/DAEMONS-textbook.pdf)** (82 pages), its TEXTBOOK written out as a university textbook — seven floors, Language to Error, each taught from the research.

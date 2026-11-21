@@ -142,8 +142,28 @@ def cardputer(a, b=None):
 """)
 
 
+def kodedot(a, b=None):
+    """THE KODE DOT: a small slab held upright, nearly all screen, the daemon in its den with its cares under it, two
+    buttons on its edge and its light glowing LODESTONE's colour (C-442). A drawing: where the Dot's own buttons sit is
+    the device's."""
+    cares = "".join('<rect x="%d" y="176" width="26" height="11" rx="5.5" fill="none" stroke="#5f7f86" stroke-width="2"/>'
+                    % (145 + i * 29) for i in range(4))
+    return _svg(f"""
+<rect x="112" y="10" width="176" height="240" rx="34" fill="#e9e4da"/>
+<rect x="118" y="16" width="164" height="228" rx="29" fill="{INK}"/>
+<rect x="288" y="58" width="6" height="30" rx="3" fill="#8a8170"/><rect x="288" y="150" width="6" height="30" rx="3" fill="#8a8170"/>
+<rect x="132" y="32" width="136" height="166" rx="12" fill="{SCREEN}"/>
+<rect x="150" y="40" width="100" height="5" rx="2.5" fill="#9fb09a"/>
+{_sprite(a, 158, 52, 84)}
+<rect x="164" y="146" width="72" height="8" rx="4" fill="#7a8a74"/>
+<rect x="178" y="159" width="44" height="5" rx="2.5" fill="#9fb09a"/>
+{cares}
+<circle cx="200" cy="222" r="6" fill="#d9944e"/><circle cx="200" cy="222" r="11" fill="#d9944e" opacity=".25"/>
+""")
+
+
 KIND = {"gba": gba, "phone": phone, "watch": watch, "glasses": glasses, "link": link, "tiiny": tiiny, "scroll": scroll,
-        "cardputer": cardputer}
+        "cardputer": cardputer, "kodedot": kodedot}
 
 #  the cover's own colour, and what draws its device, for every book tools/manual.py prints with the game's cover
 #  and the daemon(s) on its screen
@@ -151,7 +171,8 @@ COVER = {"main": ("#3b2f66", "gba", ("CLUSTER",)), "quick": ("#6a4f22", "gba", (
          "micro": ("#5e2a40", "gba", ("PING",)), "companion": ("#5e2b24", "phone", ("ROVERBYTE",)),
          "watch": ("#174d4b", "watch", ("ROVERCUB",)), "glass": ("#2e2a52", "glasses", ("PING",)), "social": ("#22395c", "link", ("PENGUIN", "PENPHIN")),
          "tiiny": ("#21463a", "tiiny", ("INFERENCE",)), "etymology": ("#47431c", "scroll", ("GUARDIAN",)),
-         "cardputer": ("#7a3a16", "cardputer", ("PUNCHCARD",))}   # C-393
+         "cardputer": ("#7a3a16", "cardputer", ("PUNCHCARD",)),   # C-393
+         "kodedot": ("#3a3f47", "kodedot", ("ANODE",))}   # C-442: graphite, the one grey cover
 
 #  laid over each book's own manual.css: the cover in its colour, the device large, the small print still readable
 CSS = """.cover[style*="--cbg"] { background: var(--cbg); }

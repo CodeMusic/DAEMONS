@@ -20,6 +20,7 @@
 - [THE WATCH](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-watch-manual.pdf) (PDF, 26 pages) -- the T-Watch Ultra and S3
 - [THE GLASSES](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-glass-manual.pdf) (PDF, 12 pages) -- the T-Glass
 - [THE CARDPUTERS](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-cardputer-manual.pdf) (PDF, 24 pages) -- the Cardputer, the ADV and the Zero
+- [THE KODE DOT](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-kodedot-manual.pdf) (PDF, 16 pages) -- every routine in your pocket
 - [THE OLD WORD](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-etymology.pdf) (PDF, 19 pages) -- why the name
 - [PRINCIPLES OF MIND](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-textbook.pdf) (PDF, 82 pages) -- CALLOW SCHOOL's textbook
 - [Releases page](https://github.com/CodeMusic/DAEMONS/releases)

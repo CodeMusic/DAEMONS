@@ -16,6 +16,7 @@ everything has images from the game and really communicates everthing includes t
     python3 tools/manual.py --book watch --write       # THE WATCH: the T-Watch Ultra and S3 on the wrist (C-326)
     python3 tools/manual.py --book glass --write       # THE GLASSES: the T-Glass before one eye (C-262)
     python3 tools/manual.py --book cardputer --write   # THE CARDPUTERS: the Cardputer, the ADV, the Zero, their caps (C-393)
+    python3 tools/manual.py --book kodedot --write     # THE KODE DOT: every routine in your pocket (C-442)
 
 Rebuild it every release: the version, the patches and every daemon's picture and INDEX entry are read from the
 build, so a release that changes them changes the manual.
@@ -146,6 +147,17 @@ BOOKS = {
                              "the Cardputer Zero, and their caps",
                   "sprites": ("PUNCHCARD", "SHELL", "KERNEL"),
                   "strip": ("FIRMWARE", "BOOTROM", "SAVESTATE", "HANDSHAKE", "DATAGRAM", "TOKENRING", "SYN", "ACK")},
+    # the twelfth: THE KODE DOT, Kode's pocket device, every routine in one (C-442; the user, 2026-11-20: "lets also make
+    # a user manual and recording like others for it"). Read from the companion's docs/KODEDOT.md, CONTEXT.md and
+    # firmware/kodedot/ (C-424, C-426); its pictures are the app in Kode's simulator (qa 19Nov2026 C424, C426), before
+    # the board came, and one drawing (diagrams/)
+    "kodedot": {"src": "docs/manual-kodedot", "out": "docs/DAEMONS-kodedot-manual.pdf",
+                "title": "DAEMONS: the Kode Dot", "tag": "THE KODE DOT",
+                "sub": "Every routine in your pocket: the Kode Dot", "foot": "the kode dot",
+                "subject": "The DAEMONS companion on Kode's Kode Dot: the den, its care, and the routines -- LODESTONE, "
+                           "TOUCHSTONE, FLARE, WHISPER and UPLINK",
+                "sprites": ("ANODE", "BEACON", "CATHODE"),
+                "strip": ("TETHERING", "PILOT", "SOUNDING", "GLIDEPATH", "PERIPHERY", "STANDBY", "POLL", "DUPLEX")},
 }
 BOOK = BOOKS["main"]
 THEATRE = os.path.join(ROOT, ".theatre/routes")
