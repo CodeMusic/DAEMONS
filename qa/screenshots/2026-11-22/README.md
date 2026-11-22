@@ -79,3 +79,9 @@ v11.412.7: THE WALLED GARDEN's gatehouse in LURID with its last Nintendo tiles r
 v11.412.7: THE WALLED GARDEN's gatehouse in LURID with its last Nintendo tiles redrawn -- B THE PALE above, B TENDED BEDS on the low wall, its neighbours matched (DRAFT art); the gate, the SAFARI OFFICE, the SECRET HOUSE and the EAST rest house, 3x
 
 ![22Nov2026 - T445 - LURID gatehouse, THE PALE and TENDED BEDS - 12](22Nov2026%20-%20T445%20-%20LURID%20gatehouse%2C%20THE%20PALE%20and%20TENDED%20BEDS%20-%2012.png)
+
+### 22Nov2026 - C419 - PLAY FREELY summons - 13
+
+C-419 (3): ROVERCUB's opening played in F on the harp in PLAY FREELY -- it came to its song, its notes rising as it sings (scratch site, synthetic save; DRAFT)
+
+![22Nov2026 - C419 - PLAY FREELY summons - 13](22Nov2026%20-%20C419%20-%20PLAY%20FREELY%20summons%20-%2013.jpg)
