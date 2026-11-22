@@ -58,9 +58,18 @@ def icon_species():
     return rows, palidx, paths
 
 
+#  T-604: a later form given a region in its new part's colours keeps its follower as it was -- the follower is reduced
+#  from the clean drawing, which has no region, so it is remapped onto the palette that drawing was reduced to, filed
+#  beside the approved reductions (gfx/daemons/reduced/clean/<folder>.pal and .shiny.pal) by t604_regions.py --install.
+CLEAN = os.path.join(ROOT, "gfx", "daemons", "reduced", "clean")
+
+
 def front_pal_for(icon_path, name="normal.pal"):
     """normal.pal (or shiny.pal) beside the icon, or in the folder above (the UNOWN letters share UNOWN's)."""
     d = os.path.dirname(os.path.join(GBA, icon_path))
+    kept = os.path.join(CLEAN, os.path.basename(d) + (".pal" if name == "normal.pal" else ".shiny.pal"))
+    if os.path.exists(kept):
+        return kept
     for cand in (d, os.path.dirname(d)):
         p = os.path.join(cand, name)
         if os.path.exists(p) and os.path.basename(cand) != "pokemon":

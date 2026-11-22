@@ -5,6 +5,11 @@ drawing already there (ears, crest, tail, drawers, wings), so it visibly colours
     python3 gfx/drafts/t604/scripts/t604_regions.py               # report each form: region, slots, coverage before/after
     python3 gfx/drafts/t604/scripts/t604_regions.py --draft       # write the drafts into gfx/drafts/t604/<NAME>/
     python3 gfx/drafts/t604/scripts/t604_regions.py --sheet DIR   # ... and the contact sheet into DIR
+    python3 gfx/drafts/t604/scripts/t604_regions.py --built --sheet DIR   # the sheet from the engine as BUILT (after
+                                                                  # gbasprite --write), today from <NAME>/base/
+    python3 gfx/drafts/t604/scripts/t604_regions.py --base        # file each form's pre-T-604 art into <NAME>/base/
+    python3 gfx/drafts/t604/scripts/t604_regions.py --install     # APPROVED (the user, 2026-11-22): file each draft as
+                                                                  # gbasprite's approved reduction, gfx/daemons/reduced/
 
 Reads the engine's sprites; never writes the engine. The draft palettes and pictures go in gfx/drafts/t604/<NAME>/
 (front.png, back.png, normal.pal), and the colour maths is tools/gencolourbysong.py's own: each draft is judged by
@@ -23,6 +28,9 @@ import gencolourbysong as g
 from PIL import Image, ImageDraw, ImageFont
 
 OUT = os.path.join(ROOT, "gfx", "drafts", "t604")
+#  TODAY is the art as it stood before T-604 (engine b15b3aff5), filed in <NAME>/base/ by --base: once --install has run
+#  the engine carries the drafts, and a re-run must start from what they were drawn on, never from themselves.
+BASE_COMMIT = "b15b3aff5"
 TYPE = {"SIGNAL": (86, 190, 190), "LATENT": (92, 70, 118), "VECTOR": (206, 70, 70), "LOGIC": (96, 122, 158)}
 
 
@@ -88,10 +96,11 @@ FORMS = {
         slotmap={1: 7, 2: 7, 3: 8, 4: 8}, ramp="two"),
     "HOPE": dict(
         why="TRUST line ('the egg you are handed', 8.5): 4.3% waits; VECTOR is the new type",
-        region="the raised WINGS' shading (their whites kept), in VECTOR", colour="VECTOR, the new type",
-        base=TYPE["VECTOR"],
-        front=R((33, 4, 52, 30), (6, 7, 16, 20), (38, 36, 58, 43)), back=R((12, 4, 30, 30), (46, 7, 60, 22), (6, 36, 26, 43)),
-        slotmap={2: 6, 3: 6, 4: 8}, merge={6: 4}, ramp="hope"),
+        #  the user, 2026-11-22: the red at the WING TIPS and the long TAIL FEATHER only, softer (not the whole wing)
+        region="the WING TIPS and the long TAIL FEATHER, in a soft VECTOR",
+        colour="VECTOR, the new type, softened to coral", base=(226, 96, 90),
+        front=R((43, 3, 53, 13), (5, 5, 12, 13), (38, 36, 58, 43)), back=R((12, 3, 22, 13), (52, 6, 61, 15), (6, 36, 26, 43)),
+        slotmap={1: 6, 2: 6, 3: 8, 4: 8}, merge={6: 4}, ramp="hope"),
 }
 ORDER = list(FORMS)
 
@@ -103,8 +112,9 @@ def pal_of(w, k):
 def make(w, n):
     k = w.by_name[n]
     spec = FORMS[n]
-    pal = pal_of(w, k)
-    sides = {s: Image.open(os.path.join(w.folder(k), s + ".png")) for s in ("front", "back")}
+    with Base(w):
+        pal = pal_of(w, k)
+        sides = {s: Image.open(os.path.join(w.folder(k), s + ".png")) for s in ("front", "back")}
     data = {s: list(im.getdata()) for s, im in sides.items()}
     for a, b in (spec.get("merge") or {}).items():
         for s in data:
@@ -119,7 +129,7 @@ def make(w, n):
     elif spec["ramp"] == "two":         # mid and dark only: the light tone would sit within 80 of an earlier form's
         cols = {new[0]: mid, new[1]: dk}  #   lost accent and be CARRIED by gencolourbysong's "nearest to one"
     elif spec["ramp"] == "hope":        # mid on slot 6, slot 8's own dark red kept as the dark
-        cols = {6: mid, 8: pal[8]}
+        cols = {6: tuple(spec["base"]), 8: pal[8]}
     else:
         tones = [lo, mid, dk]
         cols = {s: tones[min(i, 2)] for i, s in enumerate(new)} if len(new) <= 3 else None
@@ -154,10 +164,14 @@ def make(w, n):
 
 class Draft:
     """gencolourbysong's World, with every stage-1 form read from its draft folder -- all at once, because a drafted
-    earlier form's new colours are a later form's earlier colours (RUBRIC's red is CANON's to carry or not)."""
+    earlier form's new colours are a later form's earlier colours (RUBRIC's red is CANON's to carry or not). Base: the
+    same, from each form's base/ (today, before T-604)."""
+    SUB = ""
+
     def __init__(self, w, n=None):
         self.w = w
-        self.d = {w.by_name[m]: os.path.join(OUT, m) for m in ORDER if os.path.exists(os.path.join(OUT, m, "normal.pal"))}
+        self.d = {w.by_name[m]: os.path.join(OUT, m, self.SUB) for m in ORDER
+                  if os.path.exists(os.path.join(OUT, m, self.SUB, "normal.pal"))}
         self.orig = w.folder
 
     def __enter__(self):
@@ -167,6 +181,26 @@ class Draft:
 
     def __exit__(self, *a):
         self.w.folder = self.orig
+
+
+class Base(Draft):
+    SUB = "base"
+
+
+def file_base(w):
+    """Each form's art before T-604, out of the engine's history (BASE_COMMIT), into <NAME>/base/."""
+    import subprocess
+    for n in ORDER:
+        k = w.by_name[n]
+        rel = \
+            "graphics/pokemon/" + w.sp[k]["constant"].lower()
+        d = os.path.join(OUT, n, "base")
+        os.makedirs(d, exist_ok=True)
+        for f in ("front.png", "back.png", "normal.pal", "shiny.pal"):
+            data = subprocess.run(["git", "-C", g.GBA, "show", "%s:%s/%s" % (BASE_COMMIT, rel, f)],
+                                  capture_output=True, check=True).stdout
+            open(os.path.join(d, f), "wb").write(data)
+        print("t604: base %s from %s" % (n, BASE_COMMIT))
 
 
 def area(w, k, side):
@@ -184,8 +218,9 @@ def slots_used(w, k):
 
 def summary(w, n):
     k = w.by_name[n]
-    before = (area(w, k, "front"), area(w, k, "back"))
-    ub = slots_used(w, k)
+    with Base(w):
+        before = (area(w, k, "front"), area(w, k, "back"))
+        ub = slots_used(w, k)
     with Draft(w, n):
         after = (area(w, k, "front"), area(w, k, "back"))
         pal, t = g.ties(w, k, "A")
@@ -258,10 +293,7 @@ def sheet(w, outdir):
             x = LABEL + ci * (CELL + 8)
             for si, side in enumerate(("front", "back")):
                 yy = y + 22 + si * (CELL + 4)
-                if which == "draft":
-                    with Draft(w, n):
-                        p, m = pic(k, side, share)
-                else:
+                with (Draft(w, n) if which == "draft" else Base(w)):
                     p, m = pic(k, side, share)
                 d.rectangle([x, yy, x + CELL, yy + CELL], fill=(205, 205, 172), outline=(200, 200, 194))
                 im.paste(p, (x + 2, yy + 2), m)
@@ -274,8 +306,33 @@ def sheet(w, outdir):
     print("t604: wrote %s" % path)
 
 
+def install():  # noqa: the World built here reads names only
+    """The user approved all nine (2026-11-22; HOPE's red at the wing tips and the tail feather only): file each as
+    tools/gbasprite.py's approved reduction, read there exactly (its palette the species')."""
+    dst = os.path.join(ROOT, "gfx", "daemons", "reduced")
+    clean = os.path.join(dst, "clean")
+    os.makedirs(clean, exist_ok=True)
+    w = g.World()
+    for n in ORDER:
+        for side in ("front", "back"):
+            shutil.copyfile(os.path.join(OUT, n, side + ".png"), os.path.join(dst, "%s_%s.png" % (n.lower(), side)))
+        #  The follower is reduced from the CLEAN drawing, which has no region (icons and followers unchanged, the
+        #  user's stage 1): tools/gbafollowerpal.py remaps it onto the palette that drawing was reduced to, kept here.
+        folder = w.sp[w.by_name[n]]["constant"].lower()
+        for f, to in (("normal.pal", folder + ".pal"), ("shiny.pal", folder + ".shiny.pal")):
+            shutil.copyfile(os.path.join(OUT, n, "base", f), os.path.join(clean, to))
+        print("t604: filed %s" % n)
+
+
 def main():
     w = g.World()
+    if "--base" in sys.argv:
+        return file_base(w)
+    if "--install" in sys.argv:
+        return install()
+    if "--built" in sys.argv:
+        Draft.SUB = "__built__"        # no such folder: every form is read from the engine as built
+        return sheet(w, sys.argv[sys.argv.index("--sheet") + 1])
     report(w)
     if "--sheet" in sys.argv:
         sheet(w, sys.argv[sys.argv.index("--sheet") + 1])

@@ -114,6 +114,29 @@ def rich_src(ours, kind):
     hits.sort(key=lambda f: (not f.endswith(".png"), f))
     return hits[0] if hits else None
 
+#  T-604: AN APPROVED REDUCTION, taken as it stands. A later form given a region in its new part's colours (T-597's colour
+#  by song) is a recolour of its reduced picture, chosen slot by slot against tools/gencolourbysong.py's carry rule --
+#  colours place_rich would move (shift_off turns an accent within 40 degrees of the type's hue; one under SAT_ACCENT is
+#  body; two within 45 are one). So the approved 64x64 indexed picture is filed in gfx/daemons/reduced/<name>_<view>.png,
+#  its sixteen colours the species' palette, and read here exactly; the clean drawing beside it (gfx/daemons/) stays the
+#  companion's and the follower's. gfx/drafts/t604/scripts/t604_regions.py --install files them.
+REDUCED = "gfx/daemons/reduced"
+
+def reduced_src(ours, kind):
+    p = os.path.join(ROOT, REDUCED, "%s_%s.png" % (GBA_NAME.get(ours, ours).lower(), kind))
+    return p if os.path.exists(p) else None
+
+def place_reduced(path, shared=None):
+    im = Image.open(path)
+    if im.mode != "P" or im.size != (SIZE, SIZE):
+        raise SystemExit("gbasprite: %s is not a %dx%d indexed picture" % (path, SIZE, SIZE))
+    raw = im.getpalette()[:48]
+    pal = [tuple(raw[i * 3:i * 3 + 3]) for i in range(16)]
+    if shared is not None and [tuple(c) for c in shared[:16]] != pal[:len(shared)]:
+        raise SystemExit("gbasprite: %s does not draw through its front's palette" % path)
+    data = list(im.getdata())
+    return [data[y * SIZE:(y + 1) * SIZE] for y in range(SIZE)], pal
+
 def place_rich(path, type_rgb, shared=None):
     """Redrawn art -> a 64x64 index grid and its palette.
 
@@ -481,7 +504,11 @@ for vanilla, ours in sorted(pairs.items()):
     for kind, src in (("front", "gfx/pokemon/front/%s.png" % d.replace("_", "")),
                       ("back",  "gfx/pokemon/back/%sb.png" % d.replace("_", ""))):
         rich = rich_src(ours, kind)
-        if rich:
+        red = reduced_src(ours, kind) if rich else None
+        if red:                                                     # T-604: the approved reduction, exactly
+            grid, palette = place_reduced(red, shared=front_pal if kind == "back" else None)
+            note = "  reduced, approved (%d colours)" % len(palette)
+        elif rich:
             grid, palette = place_rich(rich, TYPE_COLOR[t], shared=front_pal if kind == "back" else None)
             note = "  redrawn (%d colours)" % len(palette)
         else:
