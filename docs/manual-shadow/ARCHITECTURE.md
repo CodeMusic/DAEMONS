@@ -129,10 +129,12 @@ Drawn by `tools/spriteforge.py` (klein4b with the pixel-art LoRA, 512x512, each 
 | many brooms | ch. 1 | the hare asleep in the hat, SPAWN, FORK | drafted (redrawn once: the first try drew people) |
 | the axe | ch. 1 | the hare, RESPAWN | drafted |
 | the word | ch. 1 | the Sorcerer, LOOP and the brooms, the hare on the stairs | drafted |
-| the cupboard | ch. 3 | the week's brooms, crowded and shy | first draft, **to redraw**: charming, but generic animals rather than PING, OVERFLOW, KEEPER, BLOCKING, SENTINEL, TRACER and SUPERVISOR (the redraw timed out while roverbyteseer was busy) |
+| the cupboard | ch. 3 | PING, OVERFLOW, SENTINEL, SUPERVISOR, KEEPER and the rest, crowded and shy | drafted (redrawn 2026-11-22: the first try drew generic animals) |
 | the scriptorium | ch. 4 | DEADLOCK, LIVELOCK, MUTEX with SEMAPHORE's flag | drafted (redrawn once) |
 | dusk | ch. 5 | ROVERCUB and LOOP on the well's rim | drafted |
 | the Apprentice at his desk | the preface | the hare, LOOP | drafted 2026-11-21 |
+| the tower by the lake | the game's THE CHORE | the tower, its courtyard and well | drafted 2026-11-22 |
+| a thousand brooms | the game's THE FIX | THREAD among the brooms round the well | drafted 2026-11-22 |
 
 ## 6. The diagrams
 
@@ -162,9 +164,12 @@ voice.*
   column, nine lines a page, 72 spreads, no entry ending on a stranded line, and its rules checked word by word -- the
   game's craft rules whole, and a fable world's (nobody real named: the PDF's references stay in the PDF). Its page is
   the PDF's parchment with the hat's night for ink and the virtues' gold for the marks; each section opens with a
-  Saying of the Tower in faint ink. **Still to do**: its twenty-four pictures, drawn for the reader's sixteen colours
-  (the plates, the daemons, and the diagrams redrawn small); its cover and bag icon; then `BOOK_SHADOW` in
-  `book_reader.c` and its item -- until then its `--write` refuses.
+  Saying of the Tower in faint ink. **Its pictures are drawn** (2026-11-22, `tools/shadow_art.py`, every pixel one of the book's sixteen
+  roles): the plates dithered into the ramp as two-colour engravings with a hair of gold; the seven brooms of the
+  week in their own pixels with the day's sign and the seven lights; the lessons' diagrams redrawn small and
+  wordless; the cover (the hat hung on its peg over seven lit brooms, lettered in the game's font) and the bag's
+  icon. **Still to do**: `BOOK_SHADOW` in `book_reader.c`, its item, and its place on DAEMON TOWER's top floor --
+  until then `gensubtle --write` refuses for it.
 - **Where it is found: DAEMON TOWER** (*decided by the user, 2026-11-21*). The tale is set in a tower, and HALFTONE's
   tower is where *unattended stops being a description and becomes a fact* (vision 4.5): ORPHAN, the orphaned process
   re-parented to the first one, is how a daemon is made; its stones are TOMBSTONES, deletion records; DEADLOCK and the

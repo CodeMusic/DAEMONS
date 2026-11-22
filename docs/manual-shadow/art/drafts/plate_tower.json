@@ -1,0 +1,35 @@
+{
+ "mode": "t2i",
+ "out": "docs/manual-shadow/art/drafts/plate_tower",
+ "prompt": "pixel art illustration, storybook plate, detailed, charming, no humans, no people, no children, early morning, mist. A tall round stone tower with a pointed slate roof stands beside a calm lake. A small walled courtyard at its foot holds an old stone well with a wooden bucket. A path of flat stones winds from the lake's reeds up to the tower door. One high window glows warm. Quiet, still, storybook.",
+ "negative": "",
+ "seed": 1206,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [],
+ "size": [
+  512,
+  512
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 50.4,
+ "comfyui": "0.19.1",
+ "made": "2026-11-22 00:27:05"
+}

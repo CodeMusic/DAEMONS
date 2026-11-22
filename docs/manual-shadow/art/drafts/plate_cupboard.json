@@ -1,9 +1,9 @@
 {
  "mode": "t2i",
  "out": "docs/manual-shadow/art/drafts/plate_cupboard",
- "prompt": "pixel art illustration, storybook plate, detailed, charming, no humans, no people, no children, warm lantern light. The open doors of an old wooden broom cupboard in a stone castle hall. Inside, seven small creatures stand crowded together among straw brooms like a family portrait, a little shy, each different (the references among them), peeking out at the viewer. A lantern hangs on a hook, a tall blue pointed wizard hat with sewn stars rests on a peg beside the cupboard.",
+ "prompt": "pixel art illustration, storybook plate, detailed, charming, no humans, no people, no children, no clothes, warm lantern light. The open doors of an old wooden broom cupboard in a stone castle hall. Crowded inside among straw brooms, like a shy family portrait, peek out seven small creatures: a tiny blue hummingbird (first reference), a round grey hamster with stuffed pink cheeks (second reference), a round metal sphere with one big blue eye (third reference), a grey owl with green eyes (fourth reference), a small grey bat, a little horned beetle, and a small creature wearing a horned helmet. A tall pointed wizard hat with sewn stars hangs on a peg beside the cupboard.",
  "negative": "",
- "seed": 7007,
+ "seed": 7008,
  "steps": 4,
  "cfg": 1.0,
  "sampler": "euler",
@@ -20,8 +20,8 @@
  "references": [
   "gfx/daemons/ping_front.png",
   "gfx/daemons/overflow_front.png",
-  "gfx/daemons/keeper_front.png",
-  "gfx/daemons/sentinel_front.png"
+  "gfx/daemons/sentinel_front.png",
+  "gfx/daemons/supervisor_front.png"
  ],
  "size": [
   512,
@@ -34,7 +34,7 @@
   "vae": "flux2-vae.safetensors"
  },
  "host": "http://roverbyteseer:8008",
- "seconds": 57.0,
+ "seconds": 46.5,
  "comfyui": "0.19.1",
- "made": "2026-11-21 13:24:50"
+ "made": "2026-11-22 00:28:43"
 }

@@ -59,6 +59,7 @@ sys.path.insert(0, HERE)
 import genguide as g
 import subtle_sprites as sp
 import origin_art as oa
+import shadow_art as sa
 
 ROOT = os.path.dirname(HERE)
 SRC = os.path.join(ROOT, "docs/subtle-layer.md")
@@ -275,7 +276,7 @@ SHADOW_PALETTE = [
     ("C_RING",        (7, 15, 20)),     # the well's water (58 124 165)
     ("C_FRAME",       (2, 2, 3)),
     ("C_SLATE",       (2, 4, 8)),       # the cover's boards: the night (23 32 65)
-    ("C_CHALK",       (30, 29, 27)),    # the cover's lettering
+    ("C_CHALK",       (31, 30, 28)),    # the cover's lettering, a shade over the page so no role shares a colour
     ("C_CHALK_FAINT", (22, 21, 19)),
     ("C_COVER",       (2, 2, 4)),       # the backdrop
 ]
@@ -462,12 +463,12 @@ def check(sections):
                         bad.append("%s: %r is not in the charmap" % (tag, ch))
             if len({spreads(dict(e, text=t)) for t in readings}) > 1:
                 bad.append("%s: its readings take different spreads, so the folios after it would not agree" % e["short"])
-            if BOOK in THIRD_BOOK + ("shadow",):
+            if BOOK in THIRD_BOOK:
                 if not e["sprite"]:
                     bad.append("%s: no @@ SPRITE line" % e["short"])
-            elif e["sprite"] not in (oa.SPRITES if BOOK == "origin" else sp.SPRITES):
-                bad.append("%s: no picture %r in %s" % (e["short"], e["sprite"],
-                                                         "origin_art.py" if BOOK == "origin" else "subtle_sprites.py"))
+            elif e["sprite"] not in {"origin": oa.SPRITES, "shadow": sa.SPRITES}.get(BOOK, sp.SPRITES):
+                bad.append("%s: no picture %r in %s" % (e["short"], e["sprite"], {"origin": "origin_art.py",
+                           "shadow": "shadow_art.py"}.get(BOOK, "subtle_sprites.py")))
             if len(g.reflow(e["caption"], TW, small=True)) > CAPTION_LINES:
                 bad.append("%s: its caption takes more than %d small lines" % (e["short"], CAPTION_LINES))
             for ch in g.c_string(e["caption"]):
@@ -510,6 +511,8 @@ def frames_of(key, letters=True):
     companion holds nothing of Nintendo's, and the font is FireRed's."""
     if BOOK == "origin":
         return oa.SPRITES[key](RGB8)                       # T-533: drawn in code, nothing lettered
+    if BOOK == "shadow":
+        return sa.SPRITES[key](RGB8)                       # T-606: the plates, the brooms and the lessons, unlettered
     fn = sp.SPRITES[key]
     if key == "stairs":
         return fn(text=lambda im, s, x, y, small, fg, shadow: glyphs(im, s, x, y, small, fg)) if letters else fn()
@@ -928,20 +931,10 @@ def run(book):
         inscribe(sections)
         observe(sections)
     bad = check(sections)
-    if book == "shadow":         # T-606: measured and checked only until its pictures are drawn
-        n = sum(len(s["entries"]) for s in sections)
-        total = sum(spreads(e) for s in sections for e in s["entries"])
-        named = sorted({e["sprite"] for s in sections for e in s["entries"]})
-        print("gensubtle shadow: %d sections, %d entries, %d spreads; %d pictures named, none drawn yet"
-              % (len(sections), n, total, len(named)))
-        for note in NOTES:
-            print("  note: " + note)
-        del NOTES[:]
-        if bad:
-            print("\n".join(bad))
-            return False
-        print("  every line fits and every rule holds" + ("; --write refused: its pictures are not drawn (T-606)" if WRITE else ""))
-        return True
+    if book == "shadow" and WRITE:  # T-606: drawn (tools/shadow_art.py), but not yet wired into the reader
+        print("gensubtle shadow: --write refused: BOOK_SHADOW is not in book_reader.c yet (T-606), so nothing would"
+              " read what it wrote")
+        return not bad
     keys = pictures(sections)
     if book in THIRD_BOOK:
         drawn, ic = third_frames(book, keys)
