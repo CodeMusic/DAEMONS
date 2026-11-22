@@ -169,3 +169,9 @@ THE COMPANION reprinted (84 pages): THE WEEK'S BALANCE and MENTIONS FROM YOUR DA
 THE COMPANION reprinted (84 pages): THE WEEK'S BALANCE and MENTIONS FROM YOUR DAEMON on TODAY, the DREAM-BOOKS in the LIBRARY (DRAFT)
 
 ![22Nov2026 - C321 - THE COMPANIONs new pages - 25](22Nov2026%20-%20C321%20-%20THE%20COMPANIONs%20new%20pages%20-%2025.png)
+
+### 22Nov2026 - C434 - BACKUP card off, code once, on - 26
+
+C-434: SETTINGS, BACKUP on the hub's site (DRAFT), on a scratch hub and a scratch vault -- off, turned on with the recovery code shown once, then on. Behind it: a hub restored from the code alone served the same GOALS byte for byte and the same ARETE; the vault's disk held no readable word.
+
+![22Nov2026 - C434 - BACKUP card off, code once, on - 26](22Nov2026%20-%20C434%20-%20BACKUP%20card%20off%2C%20code%20once%2C%20on%20-%2026.png)
