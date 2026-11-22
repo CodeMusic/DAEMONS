@@ -1,0 +1,37 @@
+T-602 SHINY SONGS, DRAFT (tools/genshinysongs.py) -- * marks a note the shiny palette moved
+
+ROVERBYTE  F major  23 notes, opening 8
+  pull: G +0.26, E -0.12, F -0.15
+  kind : A4 C5 A4 G4 F4 D5 D5 C5 Bb4 A4 G4 E4 D4 C4 D4 E4 F4 D4 E4 E4 F4 G4 F4
+  shiny: A4 C5 A4 G4 F4 D5 D5 C5 Bb4 G4* G4 D4* D4 C4 D4 E4 G4* D4 E4 E4 G4* G4 F4
+  moved: 4 -- 9 A4->G4 (+0.26), 11 E4->D4 (+0.12), 16 F4->G4 (+0.41), 20 F4->G4 (+0.41)
+
+BROADCAST  C major  24 notes, opening 8
+  pull: D +0.68, A -0.12, G -0.22, C -0.34
+  kind : D4 G4 C5 G4 C4 G4 D5 C5 A4 G4 A4 G4 A4 C5 D5 D5 E5 D5 D5 E5 C5 B4 B4 C5
+  shiny: D4 G4 C5 G4 C4 G4 D5 C5 B4* F4* B4* F4* A4 B4* D5 D5 E5 D5 D5 E5 D5* B4 B4 C5
+  moved: 6 -- 8 A4->B4 (+0.12), 9 G4->F4 (+0.22), 10 A4->B4 (+0.12), 11 G4->F4 (+0.22), 13 C5->B4 (+0.34), 20 C5->D5 (+1.02)
+
+GRIEVANCE  D minor  20 notes, opening 8
+  pull: G +0.70, A +0.30, D -0.40, E -0.60
+  kind : E4 D4 Bb3 A4 F4 D4 C4 Bb3 A3 G3 A3 C4 D4 C4 Bb3 C4 Bb3 A3 C4 D4
+  shiny: E4 D4 Bb3 A4 F4 D4 C4 Bb3 G3* G3 A3 C4 D4 C4 A3* C4 A3* G3* C4 D4
+  moved: 4 -- 8 A3->G3 (+0.40), 14 Bb3->A3 (+0.30), 16 Bb3->A3 (+0.30), 17 A3->G3 (+0.40)
+
+ELATION  A-flat major  17 notes, opening 7
+  pull: G +0.13, F +0.03, C# -0.03, C -0.06, Ab -0.07
+  kind : F4 Bb3 Ab3 F4 Eb4 C#4 C4 Bb3 Bb3 C4 Bb3 Ab3 G3 F3 Eb3 G3 Ab3
+  shiny: F4 Bb3 Ab3 F4 Eb4 C#4 C4 Bb3 Bb3 C4 Bb3 G3* G3 F3 F3* G3 Ab3
+  moved: 2 -- 11 Ab3->G3 (+0.20), 14 Eb3->F3 (+0.03)
+
+CONJECTURE  A minor  24 notes, opening 8
+  pull: G +0.15, A +0.05, B +0.01, C -0.05, D -0.16
+  kind : A3 C4 F4 C4 F4 C4 G4 F4 E4 F4 G4 A4 G4 F4 F4 G4 E4 F4 G4 F4 E4 D4 B3 A3
+  shiny: A3 C4 F4 C4 F4 C4 G4 F4 E4 G4* G4 A4 G4 G4* F4 G4 E4 G4* G4 F4 E4 E4* B3 A3
+  moved: 4 -- 9 F4->G4 (+0.15), 13 F4->G4 (+0.15), 17 F4->G4 (+0.15), 21 D4->E4 (+0.16)
+
+MULTICAST  F minor  24 notes, opening 8
+  pull: Eb +0.05, G +0.04, Ab +0.02, C -0.02, C# -0.10
+  kind : F3 Ab3 B3 F3 Bb3 Ab3 C4 B3 Ab3 G3 F3 G3 F3 Eb3 G3 Ab3 G3 F3 Eb3 F3 Ab3 G3 G3 F3
+  shiny: F3 Ab3 B3 F3 Bb3 Ab3 C4 B3 Ab3 G3 Eb3* G3 Eb3* Eb3 G3 Ab3 G3 Eb3* Eb3 G3* Ab3 G3 G3 F3
+  moved: 4 -- 10 F3->Eb3 (+0.06), 12 F3->Eb3 (+0.06), 17 F3->Eb3 (+0.06), 19 F3->G3 (+0.04)

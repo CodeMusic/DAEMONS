@@ -1,0 +1,14 @@
+T-602 SHINY SONGS, DRAFT: the sampler, in order -- each daemon's whole line as its kind sings it, then as a shiny does
+
+ROVERBYTE's whole song (ROVERCUB -> ROVERSEER -> ROVERBYTE), its kind           36.8 s
+ROVERBYTE's whole song (ROVERCUB -> ROVERSEER -> ROVERBYTE), SHINY              36.8 s
+BROADCAST's whole song (PACKET -> RELAY -> BROADCAST), its kind                 35.0 s
+BROADCAST's whole song (PACKET -> RELAY -> BROADCAST), SHINY                    35.0 s
+GRIEVANCE's whole song (RUMINATE -> BROODING -> GRIEVANCE), its kind            41.9 s
+GRIEVANCE's whole song (RUMINATE -> BROODING -> GRIEVANCE), SHINY               41.9 s
+ELATION's whole song (VALENCE -> MOOD -> ELATION), its kind                     34.8 s
+ELATION's whole song (VALENCE -> MOOD -> ELATION), SHINY                        34.8 s
+CONJECTURE's whole song (HUNCH -> INFERENCE -> CONJECTURE), its kind            37.3 s
+CONJECTURE's whole song (HUNCH -> INFERENCE -> CONJECTURE), SHINY               37.3 s
+MULTICAST's whole song (ECHO -> TRACER -> MULTICAST), its kind                  41.9 s
+MULTICAST's whole song (ECHO -> TRACER -> MULTICAST), SHINY                     41.9 s

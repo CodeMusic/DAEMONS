@@ -85,3 +85,9 @@ v11.412.7: THE WALLED GARDEN's gatehouse in LURID with its last Nintendo tiles r
 C-419 (3): ROVERCUB's opening played in F on the harp in PLAY FREELY -- it came to its song, its notes rising as it sings (scratch site, synthetic save; DRAFT)
 
 ![22Nov2026 - C419 - PLAY FREELY summons - 13](22Nov2026%20-%20C419%20-%20PLAY%20FREELY%20summons%20-%2013.jpg)
+
+### 22Nov2026 - T602 - shiny songs drafted - 5
+
+T-602 shiny songs (DRAFT): each line's song as its kind sings it, over the shiny's, the notes moved toward the shiny palette's colours
+
+![22Nov2026 - T602 - shiny songs drafted - 5](22Nov2026%20-%20T602%20-%20shiny%20songs%20drafted%20-%205.png)
