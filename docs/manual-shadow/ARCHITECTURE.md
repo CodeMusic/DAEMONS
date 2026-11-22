@@ -165,9 +165,15 @@ voice.*
   Saying of the Tower in faint ink. **Still to do**: its twenty-four pictures, drawn for the reader's sixteen colours
   (the plates, the daemons, and the diagrams redrawn small); its cover and bag icon; then `BOOK_SHADOW` in
   `book_reader.c` and its item -- until then its `--write` refuses.
-- **Where it is found.** *Open, the user's call.* The tale is set in a tower, and the game has DAEMON TOWER, where the
-  books are mended; it could also be the book that arrives once all seven virtues are held, or the one the GUIDE's
-  margin points to.
+- **Where it is found: DAEMON TOWER** (*decided by the user, 2026-11-21*). The tale is set in a tower, and HALFTONE's
+  tower is where *unattended stops being a description and becomes a fact* (vision 4.5): ORPHAN, the orphaned process
+  re-parented to the first one, is how a daemon is made; its stones are TOMBSTONES, deletion records; DEADLOCK and the
+  INTERRUPT are its sleep cluster. The book's lessons answer the tower: a broom put back, not broken, and an orphaned
+  routine adopted by *the first process of all* -- and the old man on the top floor, who takes in every daemon left at
+  his door, is INIT. The book never names him. *The exact spot is the user's call*: left on the top floor where INIT
+  knelt, found once he has gone home (the quietest, and the book's own way); handed over by INIT himself; or on a
+  lectern on the ground floor from the first visit. The third book is mended at the same tower (4.40); the two do not
+  touch, and the Unity Book lane is told.
 - **The companion.** The book on the LIBRARY shelf (its cover by `shelfcovers.py` once it is on `PDFS`), its pages
   exported like the other books. The day's SPELL CHECK beside the day's word on TODAY. And the gamified part not yet
   built: **spell cards in the companion** -- the user writes a card for a routine of their own (trigger, task, *for*,
@@ -192,6 +198,6 @@ voice.*
 1. The title: *The Spell Left Running: A Book of Shadows, in Seven Brooms*, or another.
 2. The hare and the tortoise, or other animals.
 3. Which plates stay, and which are redrawn.
-4. Where the book is found in the game.
+4. ~~Where the book is found in the game.~~ DAEMON TOWER (2026-11-21); the exact spot, still open.
 5. Its voice, from samples.
 6. Whether spell cards become a companion feature (a C- ticket).
