@@ -168,8 +168,8 @@ voice.*
   roles): the plates dithered into the ramp as two-colour engravings with a hair of gold; the seven brooms of the
   week in their own pixels with the day's sign and the seven lights; the lessons' diagrams redrawn small and
   wordless; the cover (the hat hung on its peg over seven lit brooms, lettered in the game's font) and the bag's
-  icon. **Still to do**: `BOOK_SHADOW` in `book_reader.c`, its item, and its place on DAEMON TOWER's top floor --
-  until then `gensubtle --write` refuses for it.
+  icon. **Wired in** (2026-11-22): `BOOK_SHADOW` in `book_reader.c`, the SHADOW BOOK (item 253) and its ball on DAEMON
+  TOWER's top floor, flags + 0x160 .. + 0x16F.
 - **Where it is found: DAEMON TOWER** (*decided by the user, 2026-11-21*). The tale is set in a tower, and HALFTONE's
   tower is where *unattended stops being a description and becomes a fact* (vision 4.5): ORPHAN, the orphaned process
   re-parented to the first one, is how a daemon is made; its stones are TOMBSTONES, deletion records; DEADLOCK and the
