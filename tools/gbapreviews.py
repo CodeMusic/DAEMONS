@@ -325,7 +325,11 @@ def previews():
 
 def names():
     d = json.load(open(os.path.join(GBA, "src/data/region_map/region_map_sections.json")))["map_sections"]
-    return {s["id"]: s.get("name", "") for s in d}
+    out = {s["id"]: s.get("name", "") for s in d}
+    for c in CARDS.values():                            # a NEW card's PROPOSED mapsec (2026-11-22): its proposed name
+        if c and c.get("new") and c["mapsec"] not in out:
+            out[c["mapsec"]] = c["name"]
+    return out
 
 
 def maps_of(mapsec):
@@ -922,7 +926,33 @@ def landmark_drawing(src):
     """(RGBA) the building as the engine draws it now. corpus_tower and daemon_tower: gbalandmarks' 1x drawing (the
     whole tower on one canvas, DAEMON TOWER's dome from ROUTE 10's rows), which this checks against reviewsheet's
     render of the built map, pixel for pixel where the drawing is opaque. The MANSION: cut from that render (its 7x4
-    cells and the three cells of its steps)."""
+    cells and the three cells of its steps). SCORN SOLUTIONS and ERRATA (2026-11-22, NEW cards): cut from it too."""
+    if src == "scorn_solutions":
+        #  CinnabarIsland 7x4 at (5,6) (gbalandmarks' SCORN). The board (cells (9,9)-(10,9), gbaislandsigns' words)
+        #  hangs over the wall's foot: those rows are laid back from the plain wall at x=180, so the card has no words
+        img = RS.render(RS.layout_of("CinnabarIsland")).convert("RGBA").crop((5 * 16, 6 * 16, 12 * 16, 10 * 16))
+        px = img.load()
+        for y in range(56, 64):
+            for x in range(64, 96):
+                px[x, y] = px[100, y]
+        for y in range(64):
+            for x in range(112):
+                r, g, b_, _ = px[x, y]
+                if (g > r + 16 and g > b_) or (y < 8 and r > b_ + 50 and g > b_ + 30):   # the grass, the sand above
+                    px[x, y] = (0, 0, 0, 0)
+        return img
+    if src == "errata":
+        #  PewterCity: the museum (11x6 at (12,0)) and its porch's steps (row 7, cells 16..18); the hedges, the grass,
+        #  the town's trees and the plaque by the steps left out. The annex (23..27) is not on the card: its door
+        #  warps into the same 1F, but the museum is ERRATA's face
+        img = RS.render(RS.layout_of("PewterCity")).convert("RGBA").crop((12 * 16, 0, 23 * 16, 8 * 16))
+        px = img.load()
+        for y in range(128):
+            for x in range(176):
+                r, g, b_, _ = px[x, y]
+                if (y >= 96 and not 64 <= x < 112) or (g > r + 16 and g > b_):
+                    px[x, y] = (0, 0, 0, 0)
+        return img
     if src == "review_board":
         #  T-456: cut from the built map, the 11x7 box at (6,0) and the porch's 3x2 cells below it; the plateau's
         #  grass (under the overhang, at the hall's sides, round the porch) left out, so the scene shows through
@@ -1043,6 +1073,13 @@ def landmark_init(folder):
         b, q = interior_floor(folder), c["floor_tiles"]["quad"]
     else:
         b, q = landmark_drawing(c["source"]), c["quad"]
+    return lay_building(out, b, q, c.get("soften", 2.5))
+
+
+def lay_building(out, b, q, soften):
+    """b (RGBA, 1x) laid into out (RGBA, the painting's size) on the keystone q, given in the card's 240x112 pixels"""
+    from PIL import ImageFilter
+    K = PAINT_SIZE[0] / 240
     W, H = b.size
     quad = [(x * K, y * K) for x, y in q]                            # foot-left, foot-right, crown-right, crown-left
     co = _homography([(0, H), (W, H), (W, 0), (0, 0)], quad)
@@ -1050,7 +1087,7 @@ def landmark_init(folder):
     out.alpha_composite(warped)
     #  softened, so the server paints it rather than sharpening a blown-up 1x drawing (at the painting's size a 1x
     #  pixel is 4.5 wide; the caves' start images were bicubic and came back painted, the hard ones came back blocky)
-    return out.convert("RGB").filter(ImageFilter.GaussianBlur(c.get("soften", 2.5)))
+    return out.convert("RGB").filter(ImageFilter.GaussianBlur(soften))
 
 
 # ================================================================== the landmarks' name cards, re-census (2026-11-11)
@@ -1364,6 +1401,9 @@ def card_init(folder, sec):
     c = CARDS[folder]
     if c["init"] == "graded":
         return paint_init(folder, sec)
+    if c["init"] == "landmark":                         # 2026-11-22: a NEW card's building as built, on its town
+        out = new_card_scene(c).resize(PAINT_SIZE, Image.BICUBIC).convert("RGBA")
+        return lay_building(out, landmark_drawing(c["source"]), c["quad"], c.get("soften", 2.5))
     if c["init"] == "scene":                            # T-540: no vanilla composition to grade -- drawn here
         return GARDEN_SCENES[c["scene"]]().resize(PAINT_SIZE, Image.BICUBIC).filter(ImageFilter.GaussianBlur(2.0))
     return room_scene(c).resize(PAINT_SIZE, Image.BICUBIC).filter(ImageFilter.GaussianBlur(c.get("soften", 2.5)))
@@ -2387,6 +2427,144 @@ CARDS.update({
 })
 
 
+#  SCORN SOLUTIONS and ERRATA (T-445, DRAFT 2026-11-22; the user picked them next). Neither has a card: their insides
+#  (CinnabarIsland_PokemonLab_* and PewterCity_Museum_1F/2F) are their towns' mapsecs, and a card is shown only when a
+#  warp CHANGES the mapsec (fldeff_flash.c, overworld.c, field_fadetransition.c), so each would be a NEW entry (as
+#  T-456's) AND a new mapsec of its own (as THE NEXUS got, T-417) -- or code keyed by map; the report says what each
+#  costs. The start image is the building as it is BUILT (T-447 pairs 1 and 3: cut from reviewsheet's render of the
+#  town map, landmark_drawing) laid in seen from below on a drawn scene of its own town (new_card_scene: QUICKSILVER
+#  IS.'s sea and sand, SLATE CITY's trees and grass, in the colours the town maps draw), then painted on the sprite
+#  server three seeds each. "name" is the proposed mapsec's name, "today" the mapsec its insides print now. The
+#  building's own red is forced an index (SCORN's tick and light are "the only red the new owner's"; ERRATA's caret,
+#  corrections are red). None is approved; --write refuses a NEW card the engine has no entry for.
+NEW_CARD_SCENES = dict(
+    quicksilver=dict(hz=52, sky=[(150, 184, 222), (205, 222, 238), (236, 240, 244)],
+                     sea=[(49, 98, 180), (74, 123, 222), (96, 150, 226)], sea_to=78,
+                     ground=[(213, 197, 131), (172, 222, 164), (124, 192, 104)]),
+    slate=dict(hz=70, sky=[(172, 189, 205), (210, 220, 228), (236, 238, 236)],
+               ground=[(88, 160, 84), (124, 192, 104), (174, 220, 146)],
+               leaf=[(42, 82, 44), (66, 128, 58), (88, 160, 84), (132, 188, 84)], trees=True),
+)
+
+
+def new_card_scene(c):
+    """a NEW card's drawn scene: its town's sky to a horizon, the sea below it where the town is an island, its
+    ground to the foot, and its trees at both sides stepping down towards the middle where the town has them"""
+    s = NEW_CARD_SCENES[c["scene"]]
+    bg = Image.new("RGB", (240, 112))
+    px = bg.load()
+    HZ = s["hz"]
+    for y in range(112):
+        for x in range(240):
+            if y < HZ:
+                px[x, y] = _ramp(s["sky"], y / HZ)
+            elif s.get("sea") and y < s["sea_to"]:
+                px[x, y] = _ramp(s["sea"], (y - HZ) / (s["sea_to"] - HZ) + 0.12 * ((x * 7 + y * 3) % 5 == 0))
+            else:
+                top = s["sea_to"] if s.get("sea") else HZ
+                px[x, y] = _ramp(s["ground"], (y - top) / max(1, 112 - top))
+    if s.get("trees"):
+        import random
+        d = ImageDraw.Draw(bg)
+        rnd = random.Random(445)
+        for side in (0, 1):
+            for k in range(12):
+                cx = rnd.randint(-10, 40)
+                cy = rnd.randint(16, 84) + int(cx * 0.3)
+                r = rnd.randint(11, 20)
+                x = cx if side == 0 else 239 - cx
+                for j, f in enumerate((0.0, 0.4, 0.8)):
+                    rr = r - j * 4
+                    ox = (-3 if side else 3) * j
+                    d.ellipse((x - rr + ox, cy - rr - j * 3, x + rr + ox, cy + rr - j * 3), fill=_ramp(s["leaf"], f))
+    return bg
+
+
+_SCORN_NEW = dict(
+    folder="scorn_solutions", source="scorn_solutions", banner_from="pokemon_tower", init="landmark",
+    new=True, mps="MPS_SCORN_SOLUTIONS", mapsec="MAPSEC_SCORN_SOLUTIONS", type="MPS_TYPE_CAVE",
+    name="SCORN SOLUTIONS", today="MAPSEC_CINNABAR_ISLAND",
+    maps=["CinnabarIsland_PokemonLab_Entrance", "CinnabarIsland_PokemonLab_Lounge",
+          "CinnabarIsland_PokemonLab_ResearchRoom", "CinnabarIsland_PokemonLab_ExperimentRoom"],
+    title="SCORN SOLUTIONS, as built (T-447 pair 1)", scene="quicksilver",
+    quad=((30, 112), (210, 112), (194, 18), (46, 18)), denoise=0.45,
+    force=[(198, 34, 44)],
+    prompt="looking up at a low white stone laboratory building, its flat slate roof ruled like a paper form in a "
+           "few large dark grey boxes with one bold red tick mark in the first box, a band of gold leaf along the "
+           "eave curling at one corner, four windows all with the same pale closed blinds, a narrow metal intake "
+           "slot in the wall, a plain grey steel door with one small red light above it, sand and grass in front, "
+           "a bright blue sea and a pale sky behind, clean and corporate",
+    neg="sign, signboard, lettering, logo, people, trees, red roof, red door, dome, columns")
+_ERRATA_NEW = dict(
+    folder="errata", source="errata", banner_from="pokemon_tower", init="landmark",
+    new=True, mps="MPS_ERRATA", mapsec="MAPSEC_ERRATA", type="MPS_TYPE_CAVE",
+    name="ERRATA", today="MAPSEC_PEWTER_CITY",
+    maps=["PewterCity_Museum_1F", "PewterCity_Museum_2F"],
+    title="ERRATA, as built (T-447 pair 3)", scene="slate",
+    quad=((36, 114), (204, 114), (190, 4), (50, 4)), denoise=0.45,
+    force=[(204, 40, 44)],
+    prompt="looking up at a museum of dark slate grey stone, its roof a huge writing slate in a wooden frame ruled "
+           "with faint chalk lines and wiped almost clean, a small pediment porch over a dark doorway with one small "
+           "red caret mark on it, columns made of stacked old beige computer cases, drives and keyboards like "
+           "fossil strata, dark glass between them, pale stone steps, green trees at the sides, grass, soft grey sky",
+    neg="sign, signboard, lettering, words, letters, people, greek temple, marble, gold, red roof")
+CARDS.update({
+    "scorn_solutions_a": dict(_SCORN_NEW, seed=4621),
+    "scorn_solutions_b": dict(_SCORN_NEW, seed=4622),
+    "scorn_solutions_c": dict(_SCORN_NEW, seed=4623),
+    "errata_a": dict(_ERRATA_NEW, seed=4624),
+    "errata_b": dict(_ERRATA_NEW, seed=4625),
+    "errata_c": dict(_ERRATA_NEW, seed=4626),
+})
+NEW_CARD_FOLDERS = {"scorn_solutions", "errata"}
+
+
+def new_cards_sheet(rows, path):
+    """T-445 (2026-11-22): SCORN SOLUTIONS and ERRATA, a NEW card each -- the building as built, then each candidate
+    at 2x with the proposed mapsec's name, and at 1x beneath it twice: the proposed name, and the name its insides
+    print today (the town's), which is what the window would say if the card were keyed by map instead"""
+    nm = names()
+    by = collections.OrderedDict()
+    for r in rows:
+        by.setdefault(CARDS[r["folder"]]["folder"], []).append(r)
+    cw, ch = 480, 320
+    n = max(len(v) for v in by.values()) + 1
+    W = 16 + n * (cw + 16)
+    RH = 30 + ch + 8 + 160 + 22 + 30
+    out = Image.new("RGB", (W, 64 + len(by) * RH), (34, 34, 40))
+    d = ImageDraw.Draw(out)
+    d.text((12, 10), "T-445 DRAFT (2026-11-22) -- NEW name cards for SCORN SOLUTIONS and ERRATA, painted from the "
+           "buildings as built (T-447): AS BUILT (left), then three seeds each at 2x; 1x below, with the proposed "
+           "name and with the town's name", fill=(235, 235, 235), font=font(14))
+    d.text((12, 30), "Nothing written: neither has an engine entry or a mapsec of its own. The name is printed by the "
+           "game in its window, never painted.", fill=(200, 200, 200), font=font(12))
+    y = 64
+    for folder, rs in by.items():
+        c = CARDS[rs[0]["folder"]]
+        built = Image.new("RGB", (240, 160), (12, 12, 16))
+        b = landmark_drawing(c["source"])
+        built.paste(b.convert("RGB"), ((240 - b.size[0]) // 2, (160 - b.size[1]) // 2), b)
+        cells = [("AS BUILT  %s" % c["source"], built, "cut from the town map, the start image's building",
+                  None)] + \
+                [("%s  %s" % (chr(65 + i), r["folder"]), r["draft"], "%s, %d tiles" % (r["where"], r["tiles"]), r)
+                 for i, r in enumerate(rs)]
+        for k, (label, im, note, r) in enumerate(cells):
+            x = 16 + k * (cw + 16)
+            d.text((x, y), label, fill=(170, 170, 170) if k == 0 else (240, 220, 120), font=font(12))
+            d.text((x, y + 14), note, fill=(200, 200, 200), font=font(10))
+            out.paste(im.resize((cw, ch), Image.NEAREST), (x, y + 30))
+            out.paste(im, (x, y + 30 + ch + 8))
+            if r is not None:
+                today = r["today_img"]
+                out.paste(today, (x + 240 + 8, y + 30 + ch + 8))
+                d.text((x, y + 30 + ch + 8 + 162), "1x: %s (proposed)" % c["name"], fill=(200, 200, 200), font=font(10))
+                d.text((x + 248, y + 30 + ch + 8 + 162), "1x: %s (today's name)" % nm[c["today"]],
+                       fill=(200, 200, 200), font=font(10))
+        y += RH
+    out.save(path)
+    return path
+
+
 #  the engine folders an approved candidate writes, and which candidate: at most one per folder (after every CARDS entry)
 CARDS_TAKEN = {CARDS[c]["folder"]: c for c in sorted(CARDS_APPROVED) if CARDS[c].get("tanoby") != "band"}
 
@@ -2444,6 +2622,8 @@ def entry(by_folder, folder):
     """(MPS key, MAPSEC, type) of a card: sMapPreviewScreenData's, or a NEW card's own (T-456)"""
     c = cfg(folder)
     if folder in CARDS:                                 # a candidate for an engine card: that card's entry
+        if c.get("new") and c["folder"] not in by_folder:   # 2026-11-22: a NEW card (no entry yet): its proposed one
+            return c["mps"], c["mapsec"], c["type"]
         ents = by_folder[c["folder"]]
         if c.get("mapsec"):                             # a TANOBY chamber's own card: its own entry of the seven
             return [e for e in ents if e[1] == c["mapsec"]][0]
@@ -2486,6 +2666,17 @@ def report():
                 print("  %-17s NEW card (%s, no vanilla picture): drafted with --landmarks, waits on the user and on "
                       "T-456's engine entry" % (folder, landmark_source(folder)))
             print("      %-22s %-34s %-16s %3dpx" % (c["mps"], c["mapsec"], n, name_width(n)))
+    seen = set()
+    for cand, c in CARDS.items():                       # 2026-11-22: SCORN SOLUTIONS and ERRATA, NEW with --cards
+        if not (c and c.get("new")) or c["folder"] in by_folder or c["folder"] in seen:
+            continue
+        seen.add(c["folder"])
+        n, t = c["name"], nm.get(c["today"], "?")
+        print("  %-17s NEW card (%s), drafted with --cards; no engine entry and no mapsec of its own: waits on the "
+              "user" % (c["folder"], c["title"]))
+        print("      %-22s %-34s %-16s %3dpx (proposed; today its insides print %s, %dpx)"
+              % (c["mps"], c["mapsec"], n, name_width(n), t, name_width(t)))
+        print("      maps: %s" % ", ".join(c["maps"]))
     return by_folder
 
 
@@ -2519,7 +2710,7 @@ def main():
         if A.write and folder in BATCH_G and folder not in BATCH_G_APPROVED and not A.draft:
             print("  %-17s batch G, not approved (BATCH_G_APPROVED): not written" % folder)
             continue
-        if A.write and cfg(folder).get("new") and folder not in by_folder and not A.draft:
+        if A.write and cfg(folder).get("new") and cfg(folder).get("folder", folder) not in by_folder and not A.draft:
             print("  %-17s a NEW card: the engine has no sMapPreviewScreenData entry for it yet: not written" % folder)
             continue
         if A.landmarks and A.write and folder not in LANDMARK_APPROVED and not A.draft:
@@ -2536,9 +2727,9 @@ def main():
         tiles, m, pal, where, png = made
         vt, vm, vpal = van(folder)
         van_, dra = compose(vt, vm, vpal), compose(tiles, m, pal)
-        if LANDMARK.get(folder, {}).get("new"):             # no vanilla card: the building as the engine draws it
+        if cfg(folder).get("new"):                          # no vanilla card: the building as the engine draws it
             van_ = Image.new("RGB", (240, 160))
-            b = landmark_drawing(LANDMARK[folder]["source"])
+            b = landmark_drawing(cfg(folder)["source"])
             van_.paste(b.convert("RGB"), ((240 - b.size[0]) // 2, (160 - b.size[1]) // 2), b)
         for im in (van_, dra):
             draw_name(im, nm[sec], (vpal if im is van_ else pal))
@@ -2595,6 +2786,9 @@ def main():
             print("      written %s" % d)
         rows.append(dict(folder=folder, name=nm[sec], where=where, vanilla=van_, draft=dra, notes=notes,
                          tiles=len(tiles)))
+        if cfg(folder).get("today"):                        # a NEW card: also with the name its insides print today
+            rows[-1]["today_img"] = compose(tiles, m, pal)
+            draw_name(rows[-1]["today_img"], nm[cfg(folder)["today"]], pal)
         for n, lp in enumerate(lights or []):
             if n == 0:
                 continue
@@ -2608,6 +2802,10 @@ def main():
         os.makedirs(sheets, exist_ok=True)              # T-445's TANOBY chambers; the others' sheets left as they are
         for p in tanoby_sheets(rows, sheets):
             print("  sheet -> %s" % p)
+        return 0
+    if A.draft and A.cards and rows and all(CARDS[r["folder"]]["folder"] in NEW_CARD_FOLDERS for r in rows):
+        os.makedirs(sheets, exist_ok=True)              # SCORN SOLUTIONS' and ERRATA's NEW cards (2026-11-22)
+        print("  sheet -> %s" % new_cards_sheet(rows, os.path.join(sheets, "t445s_new_cards.png")))
         return 0
     if A.draft and A.cards and rows and all(CARDS[r["folder"]]["folder"] == "rock_tunnel" for r in rows):
         os.makedirs(sheets, exist_ok=True)              # T-546's own sheet; the others' left as they are

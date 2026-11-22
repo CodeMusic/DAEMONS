@@ -1,0 +1,6 @@
+{
+ "mapsec": "MAPSEC_ERRATA",
+ "name": "ERRATA",
+ "from": "painted, seed 4624, denoise 0.45",
+ "num_tiles": 324
+}

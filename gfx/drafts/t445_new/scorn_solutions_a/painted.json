@@ -1,0 +1,29 @@
+{
+ "mode": "i2i",
+ "out": "gfx/drafts/t445_new/scorn_solutions_a/painted",
+ "prompt": "pixel art, 16-bit game background, wide scene, looking up at a low white stone laboratory building, its flat slate roof ruled like a paper form in a few large dark grey boxes with one bold red tick mark in the first box, a band of gold leaf along the eave curling at one corner, four windows all with the same pale closed blinds, a narrow metal intake slot in the wall, a plain grey steel door with one small red light above it, sand and grass in front, a bright blue sea and a pale sky behind, clean and corporate, soft clean pixel shading",
+ "negative": "text, letters, words, watermark, signature, logo, person, character, creature, animal, frame, border, blurry, photo, 3d render, ui, slime, neon, oversaturated, sign, signboard, lettering, logo, people, trees, red roof, red door, dome, columns",
+ "seed": 4621,
+ "steps": 28,
+ "cfg": 5.5,
+ "sampler": "dpmpp_2m",
+ "scheduler": "karras",
+ "denoise": 0.45,
+ "stop_at": null,
+ "image": "gfx/drafts/t445_new/scorn_solutions_a/painted_init.png",
+ "size": [
+  1088,
+  512
+ ],
+ "model": "shaper",
+ "loras": [],
+ "references": [],
+ "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors",
+ "model_files": {
+  "checkpoint": "pixelArtDiffusionXL_spriteShaper.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 52.5,
+ "comfyui": "0.19.1",
+ "made": "2026-11-22 00:30:20"
+}
