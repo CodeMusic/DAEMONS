@@ -1,0 +1,53 @@
+{
+ "rom": "debug",
+ "about": "T-445 built (2026-11-22): the NEW name cards for SCORN SOLUTIONS (seed C, its tick laid back crisp) and ERRATA (seed B), each building entered on foot at its door so the game shows the card over the fade (a burst through it), then the room inside. Each building's own world-map flag cleared first, so the card is shown as on a first visit (the long one). The theatre's debug scratch save; nothing is saved. The follower is put away (FLAG_FOLLOWER_OFF) so its bubble does not cover the player.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued",
+   "steps": [
+    "load debug",
+    "flag FLAG_FOLLOWER_OFF 1",
+    "flag FLAG_WORLD_MAP_SCORN_SOLUTIONS 0",
+    "flag FLAG_WORLD_MAP_ERRATA 0"
+   ]
+  },
+  {
+   "stop": "SCORN SOLUTIONS, from QUICKSILVER IS.",
+   "steps": [
+    "goto CinnabarIsland 8 10",
+    "repel 999",
+    "wait 30",
+    "finish",
+    "wait 90",
+    "finish",
+    "to 8 10",
+    "finish",
+    "wait 20",
+    "shot outside",
+    "burst \"SCORN SOLUTIONS card\" 24 10 UP 16",
+    "wait 120",
+    "shot inside",
+    "flagis FLAG_WORLD_MAP_SCORN_SOLUTIONS 1"
+   ]
+  },
+  {
+   "stop": "ERRATA, from SLATE CITY",
+   "steps": [
+    "goto PewterCity 17 7",
+    "repel 999",
+    "wait 30",
+    "finish",
+    "wait 90",
+    "finish",
+    "to 17 7",
+    "finish",
+    "wait 20",
+    "shot outside",
+    "burst \"ERRATA card\" 24 10 UP 16",
+    "wait 120",
+    "shot inside",
+    "flagis FLAG_WORLD_MAP_ERRATA 1"
+   ]
+  }
+ ]
+}

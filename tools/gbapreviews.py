@@ -1119,7 +1119,8 @@ def lay_building(out, b, q, soften):
 CARDS_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t445_landmarks")
 CARDS_APPROVED = {"power_plant_untended_a", "monean_chamber_carved_a", "cerulean_cave_becalmed_a",
                   "rock_tunnel_threads_b",  # the user, 2026-11-11: PLANT A, TANOBY A; DOLDRUM A BECALMED; THE BLACKOUT B only the threads (T-546)
-                  "safari_zone_overwall_b"}  # the user, 2026-11-14: THE WALLED GARDEN, B over the wall (T-540)
+                  "safari_zone_overwall_b",  # the user, 2026-11-14: THE WALLED GARDEN, B over the wall (T-540)
+                  "scorn_solutions_c", "errata_b"}  # the user, 2026-11-22: SCORN C (tick crisp), ERRATA B; NEW cards
 #  the user, 2026-11-21 (multiple choice): the TANOBY chambers get a card each, BAND -- today's picture, each chamber's
 #  own palette (TANOBY_CHAMBERS below; written palette-only, see TANOBY_PAL)
 CARDS_APPROVED |= {"tanoby_%s_band" % n for n in ("monean", "liptoo", "weepth", "dilford", "scufib", "rixy", "viapois")}
@@ -1508,6 +1509,25 @@ def post_redband(im, folder="silph_co"):
                 px[x, y] = red
 
 
+def post_tick(im):
+    """SCORN SOLUTIONS, after the painting (the user, 2026-11-22: seed C "with the built tick laid back crisp", as
+    CORPUS's band): the red tick in the roof form's first box, from the building as built, warped to the card at 1x
+    -- only the tick (the drawing's red above its eave, row < 24); the door's light and the slot's lip stay as painted"""
+    c = CARDS["scorn_solutions_c"]
+    b = landmark_drawing(c["source"])
+    W, H = b.size
+    co = _homography([(0, H), (W, H), (W, 0), (0, 0)], c["quad"])
+    red = (198, 34, 44)
+    mask = Image.new("L", b.size)
+    mask.putdata([255 if p[:3] == red and p[3] == 255 and i // W < 24 else 0 for i, p in enumerate(b.getdata())])
+    w = mask.transform((240, 112), Image.PERSPECTIVE, co, Image.BILINEAR).load()
+    px = im.load()
+    for y in range(112):
+        for x in range(240):
+            if w[x, y] > 80:
+                px[x, y] = red
+
+
 def post_spinfloor(im, folder="rocket_warehouse"):
     """CORPUS WAREHOUSE, after the painting: the spin tiles laid back on the floor from the built map, warped to the
     card at 1x (the server washes a green chevron this small into the olive at any denoise that paints the room)"""
@@ -1566,7 +1586,8 @@ def post_script(im):
                     px[cx + a, cy + b + 1] = _shade(px[cx + a, cy + b + 1], 1.15)
 
 
-POSTS = dict(script=post_script, braille=post_braille, redband=post_redband, spinfloor=post_spinfloor, vessels=post_vessels)
+POSTS = dict(script=post_script, braille=post_braille, redband=post_redband, spinfloor=post_spinfloor, vessels=post_vessels,
+             tick=post_tick)
 
 
 def _in_pool(x, y):
@@ -2436,7 +2457,11 @@ CARDS.update({
 #  IS.'s sea and sand, SLATE CITY's trees and grass, in the colours the town maps draw), then painted on the sprite
 #  server three seeds each. "name" is the proposed mapsec's name, "today" the mapsec its insides print now. The
 #  building's own red is forced an index (SCORN's tick and light are "the only red the new owner's"; ERRATA's caret,
-#  corrections are red). None is approved; --write refuses a NEW card the engine has no entry for.
+#  corrections are red). --write refuses a NEW card the engine has no entry for.
+#  BUILT 2026-11-22 (the user, multiple choice: their own place names, SCORN C with the built tick laid back crisp
+#  -- post_tick, as CORPUS's band -- and ERRATA B; two new flags): MAPSEC_SCORN_SOLUTIONS and MAPSEC_ERRATA, MPS_* and
+#  FLAG_WORLD_MAP_* (DAEMONS_FLAGS_START + 0x2F1/0x2F2) in the engine; SCORN 238 tiles, ERRATA 322; filmed with
+#  tools/routes/t445_new_cards.json.
 NEW_CARD_SCENES = dict(
     quicksilver=dict(hz=52, sky=[(150, 184, 222), (205, 222, 238), (236, 240, 244)],
                      sea=[(49, 98, 180), (74, 123, 222), (96, 150, 226)], sea_to=78,
@@ -2483,7 +2508,7 @@ def new_card_scene(c):
 _SCORN_NEW = dict(
     folder="scorn_solutions", source="scorn_solutions", banner_from="pokemon_tower", init="landmark",
     new=True, mps="MPS_SCORN_SOLUTIONS", mapsec="MAPSEC_SCORN_SOLUTIONS", type="MPS_TYPE_CAVE",
-    name="SCORN SOLUTIONS", today="MAPSEC_CINNABAR_ISLAND",
+    name="SCORN SOLUTIONS", today="MAPSEC_CINNABAR_ISLAND", draft_dir=os.path.join(ROOT, "gfx", "drafts", "t445_new"),
     maps=["CinnabarIsland_PokemonLab_Entrance", "CinnabarIsland_PokemonLab_Lounge",
           "CinnabarIsland_PokemonLab_ResearchRoom", "CinnabarIsland_PokemonLab_ExperimentRoom"],
     title="SCORN SOLUTIONS, as built (T-447 pair 1)", scene="quicksilver",
@@ -2498,7 +2523,7 @@ _SCORN_NEW = dict(
 _ERRATA_NEW = dict(
     folder="errata", source="errata", banner_from="pokemon_tower", init="landmark",
     new=True, mps="MPS_ERRATA", mapsec="MAPSEC_ERRATA", type="MPS_TYPE_CAVE",
-    name="ERRATA", today="MAPSEC_PEWTER_CITY",
+    name="ERRATA", today="MAPSEC_PEWTER_CITY", draft_dir=os.path.join(ROOT, "gfx", "drafts", "t445_new"),
     maps=["PewterCity_Museum_1F", "PewterCity_Museum_2F"],
     title="ERRATA, as built (T-447 pair 3)", scene="slate",
     quad=((36, 114), (204, 114), (190, 4), (50, 4)), denoise=0.45,
@@ -2511,7 +2536,7 @@ _ERRATA_NEW = dict(
 CARDS.update({
     "scorn_solutions_a": dict(_SCORN_NEW, seed=4621),
     "scorn_solutions_b": dict(_SCORN_NEW, seed=4622),
-    "scorn_solutions_c": dict(_SCORN_NEW, seed=4623),
+    "scorn_solutions_c": dict(_SCORN_NEW, seed=4623, post=["tick"]),   # the user: C, its tick laid back crisp
     "errata_a": dict(_ERRATA_NEW, seed=4624),
     "errata_b": dict(_ERRATA_NEW, seed=4625),
     "errata_c": dict(_ERRATA_NEW, seed=4626),
@@ -2648,7 +2673,8 @@ def report():
              ", APPROVED" if folder in LANDMARK_APPROVED else ", waits on the user")) if folder in LANDMARK else \
             ("place (%s): drafted with --places%s" % (PLACES[folder]["what"],
              ", APPROVED" if folder in PLACES_APPROVED else ", waits on the user")) if folder in PLACES else \
-            ("not drafted: " + NOT_DRAFTED.get(folder, "?"))
+            ("NEW card (2026-11-22), drawn with --cards" if folder in NEW_CARD_FOLDERS else
+             "not drafted: " + NOT_DRAFTED.get(folder, "?"))
         if folder in CARDS_TAKEN:
             status += "; SUPERSEDED by --cards' %s (APPROVED)" % CARDS_TAKEN[folder]
         print("  %-17s %s" % (folder, status))
