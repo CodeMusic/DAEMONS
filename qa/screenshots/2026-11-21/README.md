@@ -133,3 +133,21 @@ v11.412.3: SONGMUSAI and LANGMUSAI in all four seasons from the build (front, ba
 C-455 on the hub (companion f25807f2): THE ENGINE ROOM's LATER with the four MENTIONS plans and DREAMS TOLD, each with its cadence; a gate has no NOW
 
 ![21Nov2026 - C455 - ENGINE ROOM LATER on the hub - 25](21Nov2026%20-%20C455%20-%20ENGINE%20ROOM%20LATER%20on%20the%20hub%20-%2025.jpg)
+
+### 21Nov2026 - T605 - play-test, the 4F shop and SONGMUSAI - 26
+
+v11.412.3 play-test in the theatre: the VERDIGRIS 4F clerk sells WAVEFORM and UTTERANCE; a WAVEFORM on a MUSAI evolves it into SONGMUSAI (it learns DISCHARGE)
+
+![21Nov2026 - T605 - play-test, the 4F shop and SONGMUSAI - 26](21Nov2026%20-%20T605%20-%20play-test%2C%20the%204F%20shop%20and%20SONGMUSAI%20-%2026.png)
+
+### 21Nov2026 - T605 - play-test, the 4F shop and SONGMUSAI - 27
+
+v11.412.3 play-test in the theatre: the VERDIGRIS 4F clerk sells WAVEFORM and UTTERANCE; a WAVEFORM on a MUSAI evolves it into SONGMUSAI (it learns DISCHARGE)
+
+![21Nov2026 - T605 - play-test, the 4F shop and SONGMUSAI - 27](21Nov2026%20-%20T605%20-%20play-test%2C%20the%204F%20shop%20and%20SONGMUSAI%20-%2027.png)
+
+### 21Nov2026 - T605 - play-test, LANGMUSAI - 28
+
+v11.412.3 play-test: an UTTERANCE on a MUSAI evolves it into LANGMUSAI, in its autumn coat (T-607)
+
+![21Nov2026 - T605 - play-test, LANGMUSAI - 28](21Nov2026%20-%20T605%20-%20play-test%2C%20LANGMUSAI%20-%2028.png)

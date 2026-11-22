@@ -1,0 +1,64 @@
+{
+ "rom": "debug",
+ "about": "T-605/T-607 play-test (the user, 2026-11-21): MUSAI grows into seven forms. The VERDIGRIS department store's 4F clerk sells WAVEFORM and UTTERANCE beside AXIOM, EMBEDDING and AFFECT; a WAVEFORM used on a MUSAI makes SONGMUSAI, an UTTERANCE makes LANGMUSAI; each new form's INDEX page and SUMMARY. The theatre's debug scratch save; nothing is saved. Watch held at day, clear weather.",
+ "stops": [
+  {
+   "stop": "the 4F clerk's stock: WAVEFORM and UTTERANCE beside the other inputs",
+   "timeout": 600,
+   "steps": [
+    "load debug",
+    "finish",
+    "poke gDaemonsWatchOverride 8 1",
+    "poke gDaemonsWeatherOverride 8 1",
+    "goto CeladonCity_DepartmentStore_4F 3 11",
+    "wait 60",
+    "finish",
+    "talk CeladonCity_DepartmentStore_4F_EventScript_Clerk 1",
+    "press A",
+    "wait 60",
+    "shot \"BUY: the clerk's list\"",
+    "press DOWN 5",
+    "wait 20",
+    "shot \"the list scrolled to its foot\"",
+    "press B 4",
+    "finish"
+   ]
+  },
+  {
+   "stop": "a WAVEFORM on a MUSAI: SONGMUSAI",
+   "timeout": 900,
+   "steps": [
+    "load debug",
+    "finish",
+    "mon 0 species SPECIES_EEVEE",
+    "bag ITEM_SONG_INPUT 1",
+    "useitem ITEM_SONG_INPUT evolve",
+    "burst \"it changes\" 14 60",
+    "press A",
+    "wait 120",
+    "shot \"evolved\"",
+    "press A 3",
+    "wait 120",
+    "shot \"after\""
+   ]
+  },
+  {
+   "stop": "an UTTERANCE on a MUSAI: LANGMUSAI",
+   "timeout": 900,
+   "steps": [
+    "load debug",
+    "finish",
+    "mon 0 species SPECIES_EEVEE",
+    "bag ITEM_LANG_INPUT 1",
+    "useitem ITEM_LANG_INPUT evolve",
+    "burst \"it changes\" 14 60",
+    "press A",
+    "wait 120",
+    "shot \"evolved\"",
+    "press A 3",
+    "wait 120",
+    "shot \"after\""
+   ]
+  }
+ ]
+}
