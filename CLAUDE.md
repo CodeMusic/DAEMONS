@@ -41,8 +41,13 @@ are daemons and the type chart is an argument about consciousness. **Design is w
   python3 tools/tickets.py close T-581 --lane game --commit engineGba@18e3558 --commit DAEMONS@4c3f819
   python3 tools/tickets.py ask T-581 --lane game --question "Which?" --choice "One" --choice "Two"   # to the user (E-1)
   python3 tools/tickets.py mirror --from-redmine --write    # bring both TODO files current before a push
+  python3 tools/tickets.py mind --lane game --hold "In flight: T-581's mirror" --about in-flight   # E-12, below
   ```
   `new` takes the next id itself, safely when several sessions open tickets at once -- **no more reserved blocks**.
+  **`mind` is the lane's WORKING MEMORY on EUDAIMONIA** (E-12): when a session writes the handoff or stops mid-job, it
+  also holds, as its lane, what is in flight, what waits on the user and what comes next (`--about in-flight`,
+  `waiting`, `next`: holding the same `--about` again rewrites it; about seven at most; `--let-go` clears). Its lane's
+  page shows it to someone signed in, never publicly -- so keep the words to tickets and plain state, never a secret.
   `ask` puts a question to the user: *Needs decision*, with its choices, which EUDAIMONIA's dashboard draws as buttons;
   their answer comes back as a note and the ticket returns to Ready for its lane.
   Off the tailnet (a cloud session) the tool says Redmine is unreachable: read the mirror, change nothing, and say

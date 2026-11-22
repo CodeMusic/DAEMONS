@@ -657,6 +657,34 @@ def new_ticket(a):
     raise SystemExit("could not get an id after five tries")
 
 
+EUDAIMONIA = os.environ.get("EUDAIMONIA_URL", "http://127.0.0.1:4741")
+
+
+def mind(rm, hold=None, about=None, source=None, let_go=None):
+    """E-12: the lane's WORKING MEMORY on EUDAIMONIA -- what its daemon has in mind now (in flight, waiting on the user,
+    next), about seven at most, each about one thing and rewritten when held again. Written as the lane: EUDAIMONIA asks
+    Redmine which lane this key is. Shown on the lane's page to someone signed in, never public."""
+    body = None
+    if hold:
+        body = {"hold": hold, **({"about": about} if about else {}), **({"from": source} if source else {})}
+    elif let_go is not None:
+        body = {"letGo": True if let_go == "" else let_go}
+    req = urllib.request.Request(f"{EUDAIMONIA.rstrip('/')}/api/mind/{rm.lane}", method="POST" if body else "GET",
+                                 data=json.dumps(body).encode() if body else None,
+                                 headers={"X-Redmine-Key": rm._key, "Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            held = json.loads(r.read())["held"]
+    except urllib.error.HTTPError as e:
+        raise SystemExit(f"EUDAIMONIA {req.method} /api/mind/{rm.lane}: {e.code} {e.read().decode(errors='replace')[:200]}")
+    except (urllib.error.URLError, TimeoutError) as e:
+        raise SystemExit(f"EUDAIMONIA unreachable at {EUDAIMONIA} ({getattr(e, 'reason', e)}): is it running "
+                         f"(eudaimonia/bindEudaimonia.sh)? Nothing was held")
+    print(f"lane {rm.lane} has in mind ({len(held)}):" if held else f"lane {rm.lane} has nothing in mind")
+    for h in held:
+        print(f"  [{h['about'][:24]}] {h['words']}")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = ap.add_subparsers(dest="cmd")
@@ -684,6 +712,12 @@ def main():
     nw.add_argument("--where", default="", help="daemons: the where column; companion, eudaimonia: the See column")
     nw.add_argument("--from", dest="source", required=True, help="who asked and when: the user, 2026-11-17")
     nw.add_argument("--to", help="assign to this lane (default: your own)")
+    mi = sub.add_parser("mind", help="E-12: the lane's WORKING MEMORY on EUDAIMONIA -- what it has in mind now")
+    mi.add_argument("--lane", required=True)
+    mi.add_argument("--hold", help="words to hold in mind (rewrites what is held --about the same thing)")
+    mi.add_argument("--about", help="what it is about: in-flight, waiting, next, or a ticket id (default: its words)")
+    mi.add_argument("--from", dest="source", default="handoff", help="where it came from (default: handoff)")
+    mi.add_argument("--let-go", nargs="?", const="", help="let go of what is held --about this, or (bare) of everything")
     ex = sub.add_parser("export", help="Redmine -> one JSON file with every ticket's history (for git)")
     ex.add_argument("--out", default=str(ROOT / "docs/tickets/redmine-export.json"))
     for name, hlp in (("show", "one ticket, its fields and its last notes"), ("mine", "the open tickets of a lane"),
@@ -724,6 +758,9 @@ def main():
             Path(a.json).write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
             print(f"\npayload written to {a.json}")
         sys.exit(0 if ok else 1)
+
+    if a.cmd == "mind":
+        return mind(Redmine(a.lane), a.hold, a.about, a.source, a.let_go)
 
     if a.cmd in ("show", "mine", "assign", "claim", "close", "ask"):
         if a.cmd in ("mine", "claim", "close", "ask") and not a.lane:
