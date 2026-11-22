@@ -30,7 +30,7 @@ device, with every routine in one, LODESTONE's 125 kHz among them.
 **From your own cartridge:** download a patch from [Releases](https://github.com/CodeMusic/DAEMONS/releases) and
 apply it to a *FireRed* or *LeafGreen* ROM you backed up yourself. [`ROM RELEASE/HOW_TO_PATCH.md`](ROM%20RELEASE/HOW_TO_PATCH.md)
 walks through it and lists the checksum each patch expects. **From source:** `./setup.sh`, then `./bindDaemons.sh`.
-No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.412.3**
+No ROM is ever distributed here ([why](ROM%20RELEASE/WHERES_THE_ROMS.md)). The newest release is **v11.412.4**
 (2026-11-18), and the newest thing in it that can be told about: every song a player hears is ours now, the
 GAME CORNER's reels and the UPTIME dance among the last. Before it, our own songs came to play on our own
 instruments, sixteen made for them; THE MARGINS had their music, in the two keys the spectrum leaves without a
