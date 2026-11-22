@@ -738,6 +738,10 @@ Each stays hidden until you find it. The game never says where, and neither does
 One more book is not hidden at all: **THE ORIGIN OF A DAEMON** stands on the shelf in your own room from the very
 start. It is told [below](#origin).
 
+And one is found where the story leaves it: **THE SPELL LEFT RUNNING**, a book of shadows -- an apprentice, a borrowed
+hat, brooms that would not stop, and the seven brooms of the week, each day's virtue over its shadow. It is a draft as
+well, and where it lies is the game's to show. The companion's LIBRARY does not hold it yet.
+
 Once your save holds a book, you read it from your POOL's key items, a page at a time -- and the companion's LIBRARY
 opens it too, as a book: its cover, its contents, then each page in turn, with READ ALOUD.
 
