@@ -90,8 +90,10 @@ C-436 and C-437; `companion/docs/PROJECTS.md` section 10). Today it is still **t
 to demo and beta test the game from one URL -- the edition, DEBUG or not, a `.sav` or a new game, played in the browser
 (EmulatorJS's mGBA core, from its CDN), the save kept and downloaded, the companion and each release's notes in tabs.
 `eudaimonia/bindEudaimonia.sh` serves it on port 4740 (`--build` for engineGba's build instead of the latest release)
-and EUDAIMONIA's first pieces beside it on 4741 -- the front page's frame, sign-in and accounts (Node 22.18+, no
-package to install; the first sign-in admin / admin, taken from home only and changed at once) and THE EASTER EGG
+and EUDAIMONIA's first pieces beside it on 4741 -- the front page's frame, sign-in and accounts (Node 22.18+; its one
+package is PRAXIS's engine, fetched by `npm ci`; the first sign-in admin / admin, taken from home only and changed at
+once), THE DASHBOARD and THE SPACES (E-9, E-10: every ticket read from PRAXIS, mirrored from Redmine by the always-on
+replica on roverbyteseer:4742, and spaces of the site's own made and changed there) and THE EASTER EGG
 (C-437: a FireRed or LeafGreen made into CONTENT or CONTEXT, played in the playground's page; its first password taken
 once from `docs/private/eudaimonia-easter-egg.md`, kept only as a hash) -- both kept running by
 the login agent `ca.codemusic.daemons-eudaimonia`. It reads the ROMs from `ROM RELEASE/` here at the

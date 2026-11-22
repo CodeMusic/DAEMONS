@@ -228,6 +228,7 @@ def stale_ours_check():
         "GROWTH": "a TYPE name (2.2). The move GROWTH is SCALE UP",
         "RECOVER": "an ITEM (vanilla's POTION). The move RECOVER is RESTORE",
         "REFLECT": "an UNDERSTANDING (T-252). The move REFLECT is PARAPHRASE",
+        "SING":   "the party menu's command (T-595: a daemon sings its song). The move SING is LULLABY",
     }
     bad = []
     f = os.path.join(AI, "server", "prompts", "game.txt")
