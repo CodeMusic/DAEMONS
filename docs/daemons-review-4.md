@@ -625,7 +625,7 @@ and FEELING the same way, or amend 4.33 and accept its stated cost.**
 ::: {.finding .BREAKf}
 [BREAK]{.tag .BREAK}**With no cartridge clock, the witching hour never comes -- and nothing says so** [4.38 · 4.39 · 9.21 · src/daemons_time.c]{.ref}
 
-The hour is true only when the clock is real (`sWatchFromClock && hour == 3`). 9.21 opens *"FireRed carts have no
+The hour is true only when the clock is real ([private: vision-unredacted 4.39]). 9.21 opens *"FireRed carts have no
 real-time clock"*, and the manual tells those players their play time *is* the clock. On a patched cart, a flash cart
 or an emulator without an RTC, the shimmer, the hour routines, the hatter's line and the thirteenth spell silently
 never happen. **Either say in the manual and on the USER card that the hour needs a real clock, or give play time a
