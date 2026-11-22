@@ -8,7 +8,7 @@ The user, 2026-10-18 (confirmed by phone): the GAME CORNER's reels become the co
 -- "same numbers, so the game and the devices agree". So nothing here is typed: every number is READ from the
 companion (READ ONLY -- this tool never writes there):
 
-  server/src/slots.ts, firmware/common/slots.h   the table (WEIGHTS, PAYS), the return for a luck (90..100 back), the
+  server/src/game/slots.ts, firmware/common/slots.h   the table (WEIGHTS, PAYS), the return for a luck (90..100 back), the
                                                  cat and the string (REACH_SPAN, LEARN, NOISE, TARGET), near misses
   server/src/context.ts                          the luck a holiday, a sky, a watch and a season each add
   firmware/common/tunes.h                        TUNE_SLOTS_*, in semitones over the day's note
@@ -59,7 +59,9 @@ def num(text, name):
 
 
 def engine(comp):
-    ts = open(os.path.join(comp, "server", "src", "slots.ts")).read()
+    # C-428: the companion's game domain holds it now (server/src/game/); a checkout from before the move, where it was
+    here = os.path.join(comp, "server", "src", "game", "slots.ts")
+    ts = open(here if os.path.exists(here) else os.path.join(comp, "server", "src", "slots.ts")).read()
     h = open(os.path.join(comp, "firmware", "common", "slots.h")).read()
     e = {"WEIGHTS": nums(ts, "WEIGHTS"), "PAYS": nums(ts, "PAYS"), "BETS": nums(ts, "BETS"),
          "STRIP": int(num(ts, "STRIP")), "REACH_SPAN": num(ts, "REACH_SPAN"), "LEARN": num(ts, "LEARN"),
