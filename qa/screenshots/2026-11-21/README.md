@@ -157,3 +157,21 @@ v11.412.3 play-test: an UTTERANCE on a MUSAI evolves it into LANGMUSAI, in its a
 C-444 on the Cardputer Zero itself: the CC1101 + NFC cap found (version 0x14), 433 chosen and heard at 433.92 MHz; nothing transmits
 
 ![21Nov2026 - C444 - CAPS on the Zero with the CC1101 cap - 29](21Nov2026%20-%20C444%20-%20CAPS%20on%20the%20Zero%20with%20the%20CC1101%20cap%20-%2029.png)
+
+### 21Nov2026 - T608 - the debug row before and after - 30
+
+v11.412.4: DEBUG GAME EVENTS USE THE ITEM ON SLOT 1 with a WAVEFORM -- before, the screen stays black after the evolution; after, it ends on the field and B works
+
+![21Nov2026 - T608 - the debug row before and after - 30](21Nov2026%20-%20T608%20-%20the%20debug%20row%20before%20and%20after%20-%2030.png)
+
+### 21Nov2026 - T608 - the debug row before and after - 31
+
+v11.412.4: DEBUG GAME EVENTS USE THE ITEM ON SLOT 1 with a WAVEFORM -- before, the screen stays black after the evolution; after, it ends on the field and B works
+
+![21Nov2026 - T608 - the debug row before and after - 31](21Nov2026%20-%20T608%20-%20the%20debug%20row%20before%20and%20after%20-%2031.png)
+
+### 21Nov2026 - T608 - the bags path - 32
+
+v11.412.4: a WAVEFORM used from the bag on a MUSAI evolves it and returns to the overworld (never broken)
+
+![21Nov2026 - T608 - the bags path - 32](21Nov2026%20-%20T608%20-%20the%20bags%20path%20-%2032.png)
