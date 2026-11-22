@@ -110,6 +110,10 @@ C-433 (2): RECIPES -- a BBC Good Food page read into a new recipe (checked befor
 
 ![22Nov2026 - C433 - recipes - 16](22Nov2026%20-%20C433%20-%20recipes%20-%2016.png)
 
+
+
+
+
 ### 22Nov2026 - C433 - learning - 17
 
 C-433 (3): LEARNING -- THE TUTOR's proposed syllabus (TAKE, EDIT, NO, TAKE ALL), the course taken whole, and a card in REVIEW; the syllabus written into a scratch companion with the same call the TUTOR's answer goes through. DRAFT
@@ -127,3 +131,17 @@ C-433 (3): LEARNING -- THE TUTOR's proposed syllabus (TAKE, EDIT, NO, TAKE ALL),
 C-433 (3): LEARNING -- THE TUTOR's proposed syllabus (TAKE, EDIT, NO, TAKE ALL), the course taken whole, and a card in REVIEW; the syllabus written into a scratch companion with the same call the TUTOR's answer goes through. DRAFT
 
 ![22Nov2026 - C433 - learning - 19](22Nov2026%20-%20C433%20-%20learning%20-%2019.png)
+
+
+
+### 22Nov2026 - T606 - THE SPELL LEFT RUNNING found where INIT knelt, in the theatre - 20
+
+Played in the theatre on the release's debug ROM (v11.412.7): DAEMON TOWER's top floor once INIT has gone home and the book is mended -- the ball where he knelt, its line (DRAFT), vanilla's find, the KEY ITEMS pocket, the ball gone.
+
+![22Nov2026 - T606 - THE SPELL LEFT RUNNING found where INIT knelt, in the theatre - 20](22Nov2026%20-%20T606%20-%20THE%20SPELL%20LEFT%20RUNNING%20found%20where%20INIT%20knelt%2C%20in%20the%20theatre%20-%2020.png)
+
+### 22Nov2026 - T606 - THE SPELL LEFT RUNNING from the bag, in the theatre - 21
+
+Played in the theatre (v11.412.7 debug): the SHADOW BOOK from the bag -- its cover, contents, A WORD FIRST's spreads with its picture and folios, THE TALE's contents and THE CHORE (every word DRAFT).
+
+![22Nov2026 - T606 - THE SPELL LEFT RUNNING from the bag, in the theatre - 21](22Nov2026%20-%20T606%20-%20THE%20SPELL%20LEFT%20RUNNING%20from%20the%20bag%2C%20in%20the%20theatre%20-%2021.png)
