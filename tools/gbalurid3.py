@@ -46,7 +46,7 @@ TS = "fuchsia_city"
 TILES = (41, 42, 63)
 ROW = 10
 DRAFT_DEFAULT = os.path.join(ROOT, "gfx", "drafts", "t445_lurid3")
-APPROVED = {}                             # {"pick": "A"} once the user has chosen; empty: --write writes nothing
+APPROVED = {"pick": "B"}                  # the user, 2026-11-22, by multiple choice: B THE PALE
 
 #  every place the three tiles are drawn: (map, x0, y0, w, h, what) -- the box shown on the sheet
 PLACES = [("FuchsiaCity", 16, 0, 16, 7, "THE WALLED GARDEN's gatehouse (FuchsiaCity, warp 24,5)"),
