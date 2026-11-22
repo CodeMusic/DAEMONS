@@ -15,7 +15,8 @@ WHAT IT DOES
   2. Starts a THROWAWAY hub: the companion's server on a free port of its own, a database in a temporary folder, and a
      COPY of a theatre save (.theatre/rom/theatre_debug.sav, the DEBUG build's, never anyone's own) with its trainer
      renamed ROVER. No AI, no save watching. docs/manual-companion/shots.json may "seed" it first ({"post": path,
-     "body": {...}}), so a page that shows the player's own things has something to show.
+     "body": {...}}), so a page that shows the player's own things has something to show, and name party slots "away"
+     (as if SENT, the record's away bit set in the copy), so the pictures carry a daemon.
   3. Opens the site in headless Google Chrome (Playwright) with ?server= naming that hub, and for each shot in
      shots.json runs its steps -- {"tab": "LIBRARY"}, {"click": "exact text"}, {"wait": ms} -- scrolls its "scroll"
      text to the top if it has one, and takes "height" pixels of a 400-wide phone at 2x. Every request the page makes
@@ -71,23 +72,30 @@ def sizes():
     return {0: l["saveblock2_size"], **{i: min(d, l["saveblock1_size"] - (i - 1) * d) for i in range(1, 5)}}
 
 
-def renamed(src, dest, name, rival):
+def renamed(src, dest, name, rival, away=()):
     """A copy of a FireRed-layout save, its trainer and rival renamed: the trainer in section 0's first 8 bytes, the
-    rival in SaveBlock1's rivalName (profile_layout.json; in section 4), each section's checksum redone."""
+    rival in SaveBlock1's rivalName (profile_layout.json; in section 4), each section's checksum redone. The party
+    slots in `away` are marked away, as SEND leaves them: the away bit of the record's flags byte (save_layout.json),
+    outside the record's encrypted part, so the record's own checksum stands (section 1)."""
     SIZES = sizes()
     l = json.load(open(os.path.join(COMPANION, "server", "data", "save_layout.json"), encoding="utf-8"))
     SECTOR = l["sector_data_size"]
     RIVAL_AT = json.load(open(os.path.join(COMPANION, "server", "data", "profile_layout.json"), encoding="utf-8"))["sb1"]["rival_name"]
     assert 3 * SECTOR <= RIVAL_AT < 4 * SECTOR, "the rival's name is not in section 4"
+    FLAGS = [l["party_offset"] + slot * l["pokemon_size"] + l["flags_byte"] for slot in away]
+    assert all(f < SECTOR for f in FLAGS), "the party is not in section 1"
     b = bytearray(open(src, "rb").read())
     enc = lambda n: bytes(0xBB + ord(c) - 65 for c in n.upper()) + b"\xff" * (8 - len(n))
     for sec in range(len(b) // 0x1000):
         o = sec * 0x1000
         sid = struct.unpack_from("<H", b, o + 0xFF4)[0]
-        if struct.unpack_from("<I", b, o + 0xFF8)[0] != 0x08012025 or sid not in (0, 4):
+        if struct.unpack_from("<I", b, o + 0xFF8)[0] != 0x08012025 or sid not in ((0, 1, 4) if FLAGS else (0, 4)):
             continue
         if sid == 0:
             b[o:o + 8] = enc(name)
+        elif sid == 1:
+            for f in FLAGS:
+                b[o + f] |= 1 << l["away_bit"]
         else:
             at = RIVAL_AT - 3 * SECTOR
             b[o + at:o + at + 7] = enc(rival)[:7]
@@ -107,10 +115,10 @@ def free_port():
     raise SystemExit("companion_shots: no free port between 4790 and 4799")
 
 
-def start_hub(tmp):
+def start_hub(tmp, away=()):
     port = free_port()
     save = os.path.join(tmp, "demo.sav")
-    renamed(SAVE, save, NAME, RIVAL)
+    renamed(SAVE, save, NAME, RIVAL, away)
     cfg = {"port": port, "host": "127.0.0.1", "database": os.path.join(tmp, "demo.sqlite"), "edition": "CONTENT",
            "savePath": save, "siteDir": SITE, "ai": {"enabled": False}, "talk": {"url": None}, "watchSave": False}
     path = os.path.join(tmp, "config.json")
@@ -179,12 +187,19 @@ def take(url, shots, view, only):
                         pg.wait_for_timeout(900)
                     elif "wait" in st:
                         pg.wait_for_timeout(st["wait"])
+                pg.wait_for_timeout(800)              # settled first: a card that comes late moves everything under it
                 top = 0
                 if sh.get("scroll"):
+                    # the app scrolls in a pane of its own, under the header: its text is brought to the TOP of that
+                    # pane (Playwright's own scroll centres it, so a picture of a long page began half a card early)
+                    # and then a little back down, so the picture opens just above it and below the header's stripe
                     el = pg.get_by_text(sh["scroll"], exact=True).first
-                    el.scroll_into_view_if_needed()
+                    el.evaluate("""e => { e.scrollIntoView({block: 'start'});
+                        let p = e.parentElement;
+                        while (p && !(p.scrollHeight > p.clientHeight && /auto|scroll/.test(getComputedStyle(p).overflowY))) p = p.parentElement;
+                        if (p) p.scrollBy(0, -40); }""")
+                    pg.wait_for_timeout(300)
                     top = max(0, el.bounding_box()["y"] - 16)
-                pg.wait_for_timeout(800)
                 out = os.path.join(PICS, name + ".png")
                 height = sh.get("height", h)
                 page = pg.evaluate("document.documentElement.scrollHeight")
@@ -216,7 +231,7 @@ def main():
     os.makedirs(PICS, exist_ok=True)
     export_site("--keep-site" in args)
     with tempfile.TemporaryDirectory(prefix="daemons-shots-") as tmp:
-        proc, url = start_hub(tmp)
+        proc, url = start_hub(tmp, spec.get("away", []))
         try:
             seed(url, spec.get("seed", []))
             taken = take(url, shots, view, only)

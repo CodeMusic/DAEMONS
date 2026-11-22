@@ -16,7 +16,7 @@
 - [MICRO-START](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-microstart.pdf) (PDF, 5 pages)
 - [QUICK-START](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-quickstart.pdf) (PDF, 25 pages)
 - [The player's manual](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-manual.pdf) (PDF)
-- [THE COMPANION](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-companion-manual.pdf) (PDF, 76 pages) -- the companion app
+- [THE COMPANION](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-companion-manual.pdf) (PDF, 84 pages) -- the companion app
 - [THE WATCH](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-watch-manual.pdf) (PDF, 26 pages) -- the T-Watch Ultra and S3
 - [THE GLASSES](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-glass-manual.pdf) (PDF, 12 pages) -- the T-Glass
 - [THE CARDPUTERS](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-cardputer-manual.pdf) (PDF, 24 pages) -- the Cardputer, the ADV and the Zero

@@ -3,6 +3,7 @@
  "covered": {
   "screens/today/Today.tsx": "today",
   "screens/today/Calendar.tsx": "calendar",
+  "screens/today/Balance.tsx": "balance",
   "screens/daemon/Daemon.tsx": "daemon",
   "screens/daemon/Den.tsx": "den",
   "screens/daemon/Provision.tsx": "care",
@@ -19,6 +20,8 @@
   "screens/journey/Journal.tsx": "journal",
   "screens/library/Library.tsx": "library",
   "screens/library/Bookcase.tsx": "library",
+  "screens/library/DreamBooks.tsx": "dreambooks",
+  "screens/library/Mentions.tsx": "mentions",
   "screens/library/Manual.tsx": "manuals",
   "screens/library/Play.tsx": "play",
   "screens/library/Subtle.tsx": "found",

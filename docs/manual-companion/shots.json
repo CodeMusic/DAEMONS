@@ -3,9 +3,62 @@
   400,
   860
  ],
+ "away": [
+  3
+ ],
+ "seed": [
+  {
+   "post": "/api/goal",
+   "body": {
+    "title": "Clean the house"
+   }
+  },
+  {
+   "post": "/api/goal/milestone",
+   "body": {
+    "title": "living room"
+   }
+  },
+  {
+   "post": "/api/goal/step",
+   "body": {
+    "text": "wash the windows"
+   }
+  },
+  {
+   "post": "/api/goal/step",
+   "body": {
+    "text": "sweep the floor"
+   }
+  },
+  {
+   "post": "/api/steps/1/done",
+   "body": {}
+  },
+  {
+   "post": "/api/device/interact",
+   "body": {
+    "kind": "night",
+    "detail": "1795147800 1795176300 2 1"
+   }
+  },
+  {
+   "post": "/api/device/interact",
+   "body": {
+    "kind": "night",
+    "detail": "1795236000 1795260000 5 1"
+   }
+  },
+  {
+   "post": "/api/mentions",
+   "body": {
+    "span": "day"
+   }
+  }
+ ],
  "shots": {
   "today": {
-   "about": "TODAY, its top: the day and THE ONE THING",
+   "about": "TODAY, its top: the day, THE DAY'S TENDING and THE WEEK'S BALANCE",
    "steps": [
     {
      "tab": "TODAY"
@@ -28,6 +81,38 @@
    ],
    "height": 900,
    "scroll": "THE ONE THING"
+  },
+  "balance": {
+   "about": "TODAY: THE WEEK'S BALANCE, opened -- today lived, the days ahead faint",
+   "steps": [
+    {
+     "tab": "TODAY"
+    },
+    {
+     "wait": 800
+    },
+    {
+     "click": "THE WEEK'S BALANCE"
+    },
+    {
+     "wait": 600
+    }
+   ],
+   "height": 410,
+   "scroll": "THE WEEK'S BALANCE"
+  },
+  "mentions": {
+   "about": "TODAY: a letter from your daemon, DAILY MENTIONS, its numbers under it",
+   "steps": [
+    {
+     "tab": "TODAY"
+    },
+    {
+     "wait": 1000
+    }
+   ],
+   "height": 300,
+   "scroll": "DAILY MENTIONS"
   },
   "daemon": {
    "about": "DAEMON, Yours: the daemon in its den, its care bars and the care keys",
@@ -173,6 +258,30 @@
     }
    ],
    "height": 1000
+  },
+  "dreambooks": {
+   "about": "LIBRARY, DREAM-BOOKS: a month's book open at a dream, set over its painting",
+   "steps": [
+    {
+     "tab": "LIBRARY"
+    },
+    {
+     "wait": 1500
+    },
+    {
+     "click": "STARR'S DREAMS"
+    },
+    {
+     "wait": 1000
+    },
+    {
+     "click": "NEXT ›"
+    },
+    {
+     "wait": 800
+    }
+   ],
+   "height": 900
   },
   "songbook": {
    "about": "LIBRARY, SONGBOOK: each song learned on its staff, and LISTEN",

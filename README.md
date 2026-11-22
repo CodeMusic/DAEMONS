@@ -13,7 +13,7 @@ world, the daemons and the seventeen types with the chart, the BENCHMARKS, MARKS
 PLAY, the GAME CORNER and the companion, and a glossary, in one PDF. It says how things work, never where.
 **Playing with others? [Playing together](docs/DAEMONS-social-manual.pdf)** — trading, lending and giving daemons,
 evolving by trade, OUT TOGETHER meetings, friends and shared dreams, and friends' homes through THE COMMONS.
-**Carrying them AWAY? [THE COMPANION](docs/DAEMONS-companion-manual.pdf)** (76 pages) — the whole companion app: TODAY,
+**Carrying them AWAY? [THE COMPANION](docs/DAEMONS-companion-manual.pdf)** (84 pages) — the whole companion app: TODAY,
 your daemon's care, talk and nights, MEETINGS, JOURNEY, the LIBRARY, the house's mind, the devices and every setting.
 **On a device of its own?** [THE WATCH](docs/DAEMONS-watch-manual.pdf) (26 pages), [THE GLASSES](docs/DAEMONS-glass-manual.pdf)
 (12) and [THE CARDPUTERS](docs/DAEMONS-cardputer-manual.pdf) (24) — the T-Watch, the T-Glass, and M5Stack's Cardputer, ADV

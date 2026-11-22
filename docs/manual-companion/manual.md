@@ -45,7 +45,7 @@ page. On a narrow phone the strip scrolls, and a **›** at the right shows ther
 | **GAME** | DAEMONS itself, played in the app (iPhone, iPad and Mac only) |
 | **DAEMON** | your daemon away: its care, its talk, SYNC, NEARBY; your party, the INDEX, the CASINO, SOUNDINGS, DREAMS, MEETINGS |
 | **JOURNEY** | your GOALS and your JOURNAL |
-| **LIBRARY** | a bookcase: the books found in the game, the manuals, CALLOW SCHOOL, the NOTEBOOK and the SONGBOOK |
+| **LIBRARY** | a bookcase: the books found in the game, the manuals, CALLOW SCHOOL, the DREAM-BOOKS, the NOTEBOOK and the SONGBOOK |
 | **YOU** | you as the game draws you: MARKS, ROOTS, the maps, the story so far, THE ROAD AHEAD, TRADE |
 | **PLACES** | your devices, the hub, the glasses, the house's lights and the TV |
 
@@ -85,6 +85,10 @@ change, and then the phone cannot find home.
 No hub? On the pairing screen, choose **Or host it on this phone alone**. The phone keeps a copy of your save and does
 the companion's work itself. Almost everything works: care, goals, the LIBRARY, YOU, the CASINO. What needs a hub --
 talking with your daemon in the house's voices, meetings written up, a board or watch at home -- waits until you pair.
+
+Pair it with a hub later, and nothing it kept is lost: your goal and its steps, done or not, and the ARETE they earned
+go to the hub, after the hub's own. If the hub cannot take them all at once, the phone tries again each time the app
+opens.
 
 If you play in the Delta emulator on the phone, the save comes over through Files, and goes back the same way:
 SETTINGS, **THIS PHONE HOSTS ON ITS OWN**, **Take a newer save from Files** and **Give the save back to Delta**.
@@ -149,7 +153,7 @@ reached, the widget says *Kept until home answers.* and sends it later. Nothing 
 
 **TODAY** is the first page, and the one to open each morning.
 
-{{pictures today | TODAY: the day at the top, then THE ONE THING.}}
+{{pictures today | TODAY: the day at the top, then THE DAY'S TENDING and THE WEEK'S BALANCE.}}
 
 ## The day {#day}
 
@@ -198,6 +202,47 @@ thousand steps or more tends the root, and on Friday, a dream kept tends the thi
 
 Under it is **the week's climb**: seven circles, root to crown, starting on Sunday, with each day tended filled in and
 the days still ahead faint. They are all one purple, the book's own, never a colour for each centre. *So they climb.*
+
+## THE WEEK'S BALANCE {#balance}
+
+Each day of the week has its virtue over its shadow: **Chastity** over Lust on Sunday, **Temperance** over Gluttony on
+Monday, then **Charity**, **Diligence**, **Forgiveness**, **Kindness**, and **Humility** over Pride on Saturday. **THE
+WEEK'S BALANCE** is the week laid out by them, Sunday to Saturday, a circle for each day.
+
+A day's virtue is **lived** when something was done on its own day: a step of your goal, the day's centre tended, a
+journal entry, a dream written down, or a meeting's action item ticked. Its circle fills in. A day that passed with
+nothing is left open, and says its shadow went **untended** -- never in red, and nothing is taken for it. The days
+still ahead are faint. At the top right it counts them: *1 of 7 lived*.
+
+Tap the card to open the week: each day, and what lived it -- *Chastity lived: 1 step*. Tap again to close it.
+
+{{pictures balance | THE WEEK'S BALANCE, opened: today lived, the days ahead faint.}}
+
+**ARETE** is what the companion counts for what you finish -- a step, a milestone, a goal, the centre tended, an entry,
+a dream, an action item -- each worth its own amount. It is only ever earned, once a finish; undo a step, and what it
+earned goes with it. The first thing you finish each day earns **2 ARETE more**, for the day's virtue; the line under
+the circles says whether today's has come yet.
+
+## MENTIONS FROM YOUR DAEMON {#mentions}
+
+Now and then your daemon writes you a **letter**: what the two of you did, in its own voice, with the numbers set
+under it in small tags -- the steps, the ARETE, the meals and talks, the journal, the nights. Each span has its own:
+
+| letter | when it comes |
+|---|---|
+| **DAILY MENTIONS** | every evening, about the day |
+| **THE MONTH'S MENTIONS** | on the first morning of a month, about the month gone |
+| **THE SEASON'S MENTIONS** | on the first morning of January, April, July and October, about the three months gone |
+| **THE YEAR'S MENTIONS** | on New Year's morning, about the year |
+
+{{pictures mentions | A letter from your daemon on TODAY, its numbers under it.}}
+
+A new letter waits on **TODAY**, under THE WEEK'S BALANCE, for a day and a half or until you have read it. **○ Read
+aloud** has your daemon read it to you; **Read** puts it away. It is never lost: every letter is kept for good in its
+book, **MENTIONS FROM YOUR DAEMON**, on the LIBRARY's [DREAM-BOOKS](#dreambooks) shelf.
+
+It notices what went well, and says what was quiet without blame. With no mind in the house, the letter is written
+plainly from the numbers instead. How often each comes is set in [THE ENGINE ROOM](#engine-room)'s **LATER**.
 
 ## A glance at everything {#glance}
 
@@ -354,6 +399,9 @@ keeps it; this is the daemon's own telling, and only the app's.
 
 - **NOW**: its face, the colour of what it feels and the weather in its room. Tap a feeling for the words behind it,
   and what made it so.
+- **IN MIND**, under NOW: what it is holding in mind just now, about seven things at most, the latest first -- the next
+  step of your goal, what moved it most today, something left open in a talk. They gather through the day, and the
+  night lets them go into what it remembers.
 - **BOTH DREAMS**: the last dream it had here, beside the one your save carries home to the game.
 - **VOICE**: the voice it speaks in -- its kind's, as it feels today, or one you gave it -- with a line to hear.
 - **SELF**: what a mind is given when your daemon answers, exactly as it is given.
@@ -487,6 +535,9 @@ at your home ([PLAYING TOGETHER](#together-pointer)).
 With no dreams yet, it says so: wear the watch to bed, or tuck the daemon in with **Sleep**, and the dream is here in
 the morning.
 
+Every dream is also **bound**, a book a month, on the LIBRARY's [DREAM-BOOKS](#dreambooks) shelf, and kept there for
+good.
+
 ## SLEEP SOUNDS {#sleepsounds}
 
 In **Routines**, and above the dreams, **SLEEP SOUNDS** is music made for your daemon as it is tonight, to fall asleep to together. Its kind
@@ -541,7 +592,7 @@ The hub hears it a part at a time (*Listening to it…*), then writes it up (*Wr
 
 - **SUMMARY** -- what it was about;
 - **TAKE-AWAYS** -- what to remember;
-- **ACTION ITEMS** -- what to do;
+- **ACTION ITEMS** -- what to do. Tap one when it is done, and it is struck through; tap it again to undo it;
 - **THE WHOLE TRANSCRIPT**, every word, to read, and **HIDE THE TRANSCRIPT** to fold it away.
 
 Your daemon day-dreams over it, too. If it could not be written up, **TRY AGAIN**. **FORGET IT** removes it.
@@ -697,6 +748,7 @@ The second shelf holds DAEMONS' own printed books, kept on your phone once fetch
 | **THE WATCH** | your daemon on your wrist: the T-Watch Ultra and the T-Watch S3 |
 | **THE GLASSES** | your daemon before your eye: the T-Glass |
 | **THE CARDPUTERS** | your daemon under your fingers: the Cardputer, the ADV and the Zero |
+| **THE KODE DOT** | your daemon in your pocket: the Kode Dot, with every routine in one |
 | **PLAYING TOGETHER** | trading, loans and gifts, OUT TOGETHER, friends, dreams and THE COMMONS |
 | **A BIGGER MIND** | setting up a Tiiny Pocket for the companion |
 
@@ -719,6 +771,27 @@ there next time. When a newer reading comes out, **LISTEN** fetches it.
   seventh floor, **FULL TEXTBOOK ›** opens **PRINCIPLES OF MIND**, the school's textbook written out in full.
 
 {{pictures school | CALLOW SCHOOL: the DIPLOMA, THE FLOORS, and THE PAPER, TO SIT AGAIN.}}
+
+## DREAM-BOOKS {#dreambooks}
+
+Your daemon's dreams are **bound** here: **a book a month** for each daemon who dreamt them, its name on the cover --
+*STARR'S DREAMS* -- with the month and how many dreams are in it, over a painting of the month's first. The
+newest month stands first. Until a dream is kept it says *Each month's dreams are bound here, a book for each daemon
+who dreamt them.*
+
+Open one, and its first page is the title page: the daemon, the month, and *Dreamt, and written down, by* its name.
+Then **NEXT ›** and **‹ BACK** turn a dream at a time, each with its title and the day's symbol at the top, the dream
+in the middle, and when it woke at the foot. **○ Read aloud** has your daemon read it to you.
+
+{{pictures dreambooks | A DREAM-BOOK open at a dream, set over its painting.}}
+
+Every dream is set over a **painting** of its own, in the colour of the day it was dreamt. Its light sits as high as
+the day's centre -- low for the root, high for the crown -- and the night shapes the strokes: a vivid night paints in
+a few broad ones, a quiet night softly, a broken night in scattered pieces. The same dream always paints the same.
+
+**MENTIONS FROM YOUR DAEMON** stands on this shelf too, once your daemon has written its first letter ([TODAY](#mentions)
+says when they come). Its cover is the daemon who wrote the newest, and the book reads a letter a page, newest first,
+with **‹ NEWER** and **OLDER ›**.
 
 ## YOUR OWN PAGES {#ownpages}
 
@@ -1005,6 +1078,10 @@ Beside each device:
 - **FIND IT**, on a watch -- it plays a sound until you tap *Found it -- stop the sound*, and shows **WHERE IT IS**;
 - **Forget this device** -- it leaves the list until it next says hello.
 
+With more than one daemon away, **YOUR DAEMON**, at the foot of the card, chooses who answers when nothing names a
+device -- the site in a browser, MENTIONS FROM YOUR DAEMON, a walk: **The device used last** (the daemon in it), or a
+daemon by name.
+
 {{pictures every-settings | EVERY DEVICE'S SETTINGS: set once, carried to every device.}}
 
 ## EVERY DEVICE'S SETTINGS {#every}
@@ -1042,6 +1119,7 @@ The companion carries a daemon on more than the phone. Each is optional.
   and hear, and a meeting recorded.
 - **Handhelds** -- boards with a screen and a button or two, some with a keyboard, a speaker, a radio that reaches
   across a neighbourhood with no network: care, talk, the CASINO, routines, NEARBY.
+- **The Kode Dot** -- Kode's pocket device, with all five routines in one, in its own book, **THE KODE DOT**.
 - **Glasses** -- the T-Glass: one screen before one eye, chosen in **GLASSES** (below).
 - **The Tab5** -- a larger screen for the house, with the companion's own pages.
 - **The BOX-3** -- the home's voice assistant, with your daemon for its face.
@@ -1200,6 +1278,10 @@ on a phone's home screen like an app, and is paired once with a code from the hu
 Its pages are **THE HUB**, **THE MIND** (everyone's work, and **LATER**), **THE HOUSE**, **VOICES**, **DEVICES**,
 **EXCHANGE**, **THE COMMONS**, **KEYS**, **JOBS**, **CREATIONS** and **SAVES**.
 
+- **LATER**, on THE MIND -- the work given a time: the week's WHAT'S NEW, the four MENTIONS letters, and **DREAMS
+  TOLD**, the nights the house's mind tells a dream again (every night is still kept, and its dream written). Each can
+  be switched off, and given how often it comes: every **DAY**, **WEEK**, **MONTH**, **3 MONTHS** or **YEAR**, with
+  **−** and **+** for how many times in it.
 - **CREATIONS** -- everything the daemons made that the hub keeps, sleep sounds and paintings, by kind and by daemon;
   tick one or many and let them go, files, cover and all.
 - **SAVES** -- one save, wherever the game is played; each time it moves, a copy is kept here: **THE TRAIL**, newest
@@ -1314,8 +1396,7 @@ Decided, and not yet built:
 - **Training you can see**: as eating and drinking already are, a little animation for TRAIN.
 - **Choosing what it eats and drinks**: the fruit and the glass are the first of a list.
 - **The night's light beyond the den**: on the widget, the boards and the watches.
-- **More of the mind at work**: every kind of thinking on THE MIND AT WORK, how big each task was, and work given a time
-  -- a dream at dawn, a weekly WHAT'S NEW.
+- **More of the mind at work**: every kind of thinking on THE MIND AT WORK, and how big each task was.
 - **Notifications** when the app is closed, for a word or an act from another daemon.
 - **It all just works**: install the app, choose your game, and play -- devices that arrive ready, kept up to date by
   the app.
