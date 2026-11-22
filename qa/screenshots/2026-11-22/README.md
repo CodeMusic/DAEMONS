@@ -43,3 +43,15 @@ DRAFT (branch shadow-book): THE SPELL LEFT RUNNING's 24 pictures for the game's 
 DRAFT, a MOCK, not a ROM screenshot (branch shadow-book): the cover, the contents, and THE CHORE, THE FIX, MONDAY and THE ORDER opening in the reader's open book -- the game's font, page and lines (gensubtle --book shadow) with the book's own pictures (tools/shadow_art.py).
 
 ![22Nov2026 - T606 - THE SPELL LEFT RUNNING in the games reader, with its pictures - 2](22Nov2026%20-%20T606%20-%20THE%20SPELL%20LEFT%20RUNNING%20in%20the%20games%20reader%2C%20with%20its%20pictures%20-%202.png)
+
+### 22Nov2026 - T606 - THE SPELL LEFT RUNNING found where INIT knelt - 7
+
+DRAFT, built: the ball where INIT knelt on DAEMON TOWER's top floor, shown once he has gone home and until it is taken; the words read there, vanilla's find, and the bag's SHADOW BOOK (its icon and entry). Drawn from the map and pictures the ROM is built from.
+
+![22Nov2026 - T606 - THE SPELL LEFT RUNNING found where INIT knelt - 7](22Nov2026%20-%20T606%20-%20THE%20SPELL%20LEFT%20RUNNING%20found%20where%20INIT%20knelt%20-%207.png)
+
+### 22Nov2026 - T606 - THE SPELL LEFT RUNNING in the reader, built - 8
+
+DRAFT, built: THE SPELL LEFT RUNNING in the game's reader -- its cover, contents and four openings, from the pictures built into the ROM and gensubtle's own line layout.
+
+![22Nov2026 - T606 - THE SPELL LEFT RUNNING in the reader, built - 8](22Nov2026%20-%20T606%20-%20THE%20SPELL%20LEFT%20RUNNING%20in%20the%20reader%2C%20built%20-%208.png)
