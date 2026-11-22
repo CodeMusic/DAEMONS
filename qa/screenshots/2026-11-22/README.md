@@ -109,3 +109,21 @@ C-433 (2): RECIPES -- a BBC Good Food page read into a new recipe (checked befor
 C-433 (2): RECIPES -- a BBC Good Food page read into a new recipe (checked before it is kept); then COOKED, the daemon's own feed line and Cooked today with UNDO; a scratch companion at phone width. DRAFT
 
 ![22Nov2026 - C433 - recipes - 16](22Nov2026%20-%20C433%20-%20recipes%20-%2016.png)
+
+### 22Nov2026 - C433 - learning - 17
+
+C-433 (3): LEARNING -- THE TUTOR's proposed syllabus (TAKE, EDIT, NO, TAKE ALL), the course taken whole, and a card in REVIEW; the syllabus written into a scratch companion with the same call the TUTOR's answer goes through. DRAFT
+
+![22Nov2026 - C433 - learning - 17](22Nov2026%20-%20C433%20-%20learning%20-%2017.png)
+
+### 22Nov2026 - C433 - learning - 18
+
+C-433 (3): LEARNING -- THE TUTOR's proposed syllabus (TAKE, EDIT, NO, TAKE ALL), the course taken whole, and a card in REVIEW; the syllabus written into a scratch companion with the same call the TUTOR's answer goes through. DRAFT
+
+![22Nov2026 - C433 - learning - 18](22Nov2026%20-%20C433%20-%20learning%20-%2018.png)
+
+### 22Nov2026 - C433 - learning - 19
+
+C-433 (3): LEARNING -- THE TUTOR's proposed syllabus (TAKE, EDIT, NO, TAKE ALL), the course taken whole, and a card in REVIEW; the syllabus written into a scratch companion with the same call the TUTOR's answer goes through. DRAFT
+
+![22Nov2026 - C433 - learning - 19](22Nov2026%20-%20C433%20-%20learning%20-%2019.png)
