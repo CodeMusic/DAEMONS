@@ -55,3 +55,27 @@ DRAFT, built: the ball where INIT knelt on DAEMON TOWER's top floor, shown once 
 DRAFT, built: THE SPELL LEFT RUNNING in the game's reader -- its cover, contents and four openings, from the pictures built into the ROM and gensubtle's own line layout.
 
 ![22Nov2026 - T606 - THE SPELL LEFT RUNNING in the reader, built - 8](22Nov2026%20-%20T606%20-%20THE%20SPELL%20LEFT%20RUNNING%20in%20the%20reader%2C%20built%20-%208.png)
+
+### 22Nov2026 - T445 - LURID gatehouse, THE PALE and TENDED BEDS - 9
+
+v11.412.7: THE WALLED GARDEN's gatehouse in LURID with its last Nintendo tiles redrawn -- B THE PALE above, B TENDED BEDS on the low wall, its neighbours matched (DRAFT art); the gate, the SAFARI OFFICE, the SECRET HOUSE and the EAST rest house, 3x
+
+![22Nov2026 - T445 - LURID gatehouse, THE PALE and TENDED BEDS - 9](22Nov2026%20-%20T445%20-%20LURID%20gatehouse%2C%20THE%20PALE%20and%20TENDED%20BEDS%20-%209.png)
+
+### 22Nov2026 - T445 - LURID gatehouse, THE PALE and TENDED BEDS - 10
+
+v11.412.7: THE WALLED GARDEN's gatehouse in LURID with its last Nintendo tiles redrawn -- B THE PALE above, B TENDED BEDS on the low wall, its neighbours matched (DRAFT art); the gate, the SAFARI OFFICE, the SECRET HOUSE and the EAST rest house, 3x
+
+![22Nov2026 - T445 - LURID gatehouse, THE PALE and TENDED BEDS - 10](22Nov2026%20-%20T445%20-%20LURID%20gatehouse%2C%20THE%20PALE%20and%20TENDED%20BEDS%20-%2010.png)
+
+### 22Nov2026 - T445 - LURID gatehouse, THE PALE and TENDED BEDS - 11
+
+v11.412.7: THE WALLED GARDEN's gatehouse in LURID with its last Nintendo tiles redrawn -- B THE PALE above, B TENDED BEDS on the low wall, its neighbours matched (DRAFT art); the gate, the SAFARI OFFICE, the SECRET HOUSE and the EAST rest house, 3x
+
+![22Nov2026 - T445 - LURID gatehouse, THE PALE and TENDED BEDS - 11](22Nov2026%20-%20T445%20-%20LURID%20gatehouse%2C%20THE%20PALE%20and%20TENDED%20BEDS%20-%2011.png)
+
+### 22Nov2026 - T445 - LURID gatehouse, THE PALE and TENDED BEDS - 12
+
+v11.412.7: THE WALLED GARDEN's gatehouse in LURID with its last Nintendo tiles redrawn -- B THE PALE above, B TENDED BEDS on the low wall, its neighbours matched (DRAFT art); the gate, the SAFARI OFFICE, the SECRET HOUSE and the EAST rest house, 3x
+
+![22Nov2026 - T445 - LURID gatehouse, THE PALE and TENDED BEDS - 12](22Nov2026%20-%20T445%20-%20LURID%20gatehouse%2C%20THE%20PALE%20and%20TENDED%20BEDS%20-%2012.png)
