@@ -175,3 +175,21 @@ THE COMPANION reprinted (84 pages): THE WEEK'S BALANCE and MENTIONS FROM YOUR DA
 C-434: SETTINGS, BACKUP on the hub's site (DRAFT), on a scratch hub and a scratch vault -- off, turned on with the recovery code shown once, then on. Behind it: a hub restored from the code alone served the same GOALS byte for byte and the same ARETE; the vault's disk held no readable word.
 
 ![22Nov2026 - C434 - BACKUP card off, code once, on - 26](22Nov2026%20-%20C434%20-%20BACKUP%20card%20off%2C%20code%20once%2C%20on%20-%2026.png)
+
+### 22Nov2026 - C433 - quiz and mine - 27
+
+C-433 (4) and (5): a lesson's QUIZ marked by the words alone (1 of 2, not yet passed); MINE: a Garden form of your own, a space made from it, and a watering kept in it with its Litres; a scratch companion at phone width. DRAFT
+
+![22Nov2026 - C433 - quiz and mine - 27](22Nov2026%20-%20C433%20-%20quiz%20and%20mine%20-%2027.png)
+
+### 22Nov2026 - C433 - quiz and mine - 28
+
+C-433 (4) and (5): a lesson's QUIZ marked by the words alone (1 of 2, not yet passed); MINE: a Garden form of your own, a space made from it, and a watering kept in it with its Litres; a scratch companion at phone width. DRAFT
+
+![22Nov2026 - C433 - quiz and mine - 28](22Nov2026%20-%20C433%20-%20quiz%20and%20mine%20-%2028.png)
+
+### 22Nov2026 - C433 - quiz and mine - 29
+
+C-433 (4) and (5): a lesson's QUIZ marked by the words alone (1 of 2, not yet passed); MINE: a Garden form of your own, a space made from it, and a watering kept in it with its Litres; a scratch companion at phone width. DRAFT
+
+![22Nov2026 - C433 - quiz and mine - 29](22Nov2026%20-%20C433%20-%20quiz%20and%20mine%20-%2029.png)
