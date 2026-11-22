@@ -151,3 +151,9 @@ v11.412.3 play-test in the theatre: the VERDIGRIS 4F clerk sells WAVEFORM and UT
 v11.412.3 play-test: an UTTERANCE on a MUSAI evolves it into LANGMUSAI, in its autumn coat (T-607)
 
 ![21Nov2026 - T605 - play-test, LANGMUSAI - 28](21Nov2026%20-%20T605%20-%20play-test%2C%20LANGMUSAI%20-%2028.png)
+
+### 21Nov2026 - C444 - CAPS on the Zero with the CC1101 cap - 29
+
+C-444 on the Cardputer Zero itself: the CC1101 + NFC cap found (version 0x14), 433 chosen and heard at 433.92 MHz; nothing transmits
+
+![21Nov2026 - C444 - CAPS on the Zero with the CC1101 cap - 29](21Nov2026%20-%20C444%20-%20CAPS%20on%20the%20Zero%20with%20the%20CC1101%20cap%20-%2029.png)
