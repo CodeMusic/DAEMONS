@@ -170,10 +170,12 @@ voice.*
   re-parented to the first one, is how a daemon is made; its stones are TOMBSTONES, deletion records; DEADLOCK and the
   INTERRUPT are its sleep cluster. The book's lessons answer the tower: a broom put back, not broken, and an orphaned
   routine adopted by *the first process of all* -- and the old man on the top floor, who takes in every daemon left at
-  his door, is INIT. The book never names him. *The exact spot is the user's call*: left on the top floor where INIT
-  knelt, found once he has gone home (the quietest, and the book's own way); handed over by INIT himself; or on a
-  lectern on the ground floor from the first visit. The third book is mended at the same tower (4.40); the two do not
-  touch, and the Unity Book lane is told.
+  his door, is INIT. The book never names him. **The spot** (*the user, 2026-11-21, by multiple choice*): **on the top
+  floor, where INIT knelt to calm the spirit, once the tower is cleared and he has gone home** -- found, not given,
+  and never naming him. The third book is mended at the same tower (4.40) and the two do not touch; the Unity Book
+  lane's two cautions for the wiring: the pickup's message must not open during the mending's HALFTONE burst (it
+  fires on the first step inside any floor with both halves held -- test once so), and BOOK_SHADOW carries nothing
+  that reads as a half (the torn-page tint is keyed on the halves' items).
 - **The companion.** The book on the LIBRARY shelf (its cover by `shelfcovers.py` once it is on `PDFS`), its pages
   exported like the other books. The day's SPELL CHECK beside the day's word on TODAY. And the gamified part not yet
   built: **spell cards in the companion** -- the user writes a card for a routine of their own (trigger, task, *for*,
@@ -198,6 +200,6 @@ voice.*
 1. The title: *The Spell Left Running: A Book of Shadows, in Seven Brooms*, or another.
 2. The hare and the tortoise, or other animals.
 3. Which plates stay, and which are redrawn.
-4. ~~Where the book is found in the game.~~ DAEMON TOWER (2026-11-21); the exact spot, still open.
+4. ~~Where the book is found in the game.~~ DAEMON TOWER's top floor, where INIT knelt (2026-11-21).
 5. Its voice, from samples.
 6. Whether spell cards become a companion feature (a C- ticket).
