@@ -181,3 +181,9 @@ v11.412.4: a WAVEFORM used from the bag on a MUSAI evolves it and returns to the
 C-468: the Game HAT build on the Mac -- DOWN then A on HOME opens CARE, its buttons read as the pages' keys
 
 ![21Nov2026 - C468 - Game HAT build on the Mac - 33](21Nov2026%20-%20C468%20-%20Game%20HAT%20build%20on%20the%20Mac%20-%2033.png)
+
+### 21Nov2026 - T445 - the TANOBY chambers cards, built - 34
+
+v11.412.5: the seven TANOBY chambers' cards decoded from the built ROM, each the shared painting with its own band colour (DRAFT)
+
+![21Nov2026 - T445 - the TANOBY chambers cards, built - 34](21Nov2026%20-%20T445%20-%20the%20TANOBY%20chambers%20cards%2C%20built%20-%2034.png)
