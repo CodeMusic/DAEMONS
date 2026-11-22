@@ -325,7 +325,11 @@ def previews():
 
 def names():
     d = json.load(open(os.path.join(GBA, "src/data/region_map/region_map_sections.json")))["map_sections"]
-    return {s["id"]: s.get("name", "") for s in d}
+    out = {s["id"]: s.get("name", "") for s in d}
+    for c in CARDS.values():                            # a NEW card's PROPOSED mapsec (2026-11-22): its proposed name
+        if c and c.get("new") and c["mapsec"] not in out:
+            out[c["mapsec"]] = c["name"]
+    return out
 
 
 def maps_of(mapsec):
@@ -922,7 +926,33 @@ def landmark_drawing(src):
     """(RGBA) the building as the engine draws it now. corpus_tower and daemon_tower: gbalandmarks' 1x drawing (the
     whole tower on one canvas, DAEMON TOWER's dome from ROUTE 10's rows), which this checks against reviewsheet's
     render of the built map, pixel for pixel where the drawing is opaque. The MANSION: cut from that render (its 7x4
-    cells and the three cells of its steps)."""
+    cells and the three cells of its steps). SCORN SOLUTIONS and ERRATA (2026-11-22, NEW cards): cut from it too."""
+    if src == "scorn_solutions":
+        #  CinnabarIsland 7x4 at (5,6) (gbalandmarks' SCORN). The board (cells (9,9)-(10,9), gbaislandsigns' words)
+        #  hangs over the wall's foot: those rows are laid back from the plain wall at x=180, so the card has no words
+        img = RS.render(RS.layout_of("CinnabarIsland")).convert("RGBA").crop((5 * 16, 6 * 16, 12 * 16, 10 * 16))
+        px = img.load()
+        for y in range(56, 64):
+            for x in range(64, 96):
+                px[x, y] = px[100, y]
+        for y in range(64):
+            for x in range(112):
+                r, g, b_, _ = px[x, y]
+                if (g > r + 16 and g > b_) or (y < 8 and r > b_ + 50 and g > b_ + 30):   # the grass, the sand above
+                    px[x, y] = (0, 0, 0, 0)
+        return img
+    if src == "errata":
+        #  PewterCity: the museum (11x6 at (12,0)) and its porch's steps (row 7, cells 16..18); the hedges, the grass,
+        #  the town's trees and the plaque by the steps left out. The annex (23..27) is not on the card: its door
+        #  warps into the same 1F, but the museum is ERRATA's face
+        img = RS.render(RS.layout_of("PewterCity")).convert("RGBA").crop((12 * 16, 0, 23 * 16, 8 * 16))
+        px = img.load()
+        for y in range(128):
+            for x in range(176):
+                r, g, b_, _ = px[x, y]
+                if (y >= 96 and not 64 <= x < 112) or (g > r + 16 and g > b_):
+                    px[x, y] = (0, 0, 0, 0)
+        return img
     if src == "review_board":
         #  T-456: cut from the built map, the 11x7 box at (6,0) and the porch's 3x2 cells below it; the plateau's
         #  grass (under the overhang, at the hall's sides, round the porch) left out, so the scene shows through
@@ -1043,6 +1073,13 @@ def landmark_init(folder):
         b, q = interior_floor(folder), c["floor_tiles"]["quad"]
     else:
         b, q = landmark_drawing(c["source"]), c["quad"]
+    return lay_building(out, b, q, c.get("soften", 2.5))
+
+
+def lay_building(out, b, q, soften):
+    """b (RGBA, 1x) laid into out (RGBA, the painting's size) on the keystone q, given in the card's 240x112 pixels"""
+    from PIL import ImageFilter
+    K = PAINT_SIZE[0] / 240
     W, H = b.size
     quad = [(x * K, y * K) for x, y in q]                            # foot-left, foot-right, crown-right, crown-left
     co = _homography([(0, H), (W, H), (W, 0), (0, 0)], quad)
@@ -1050,7 +1087,7 @@ def landmark_init(folder):
     out.alpha_composite(warped)
     #  softened, so the server paints it rather than sharpening a blown-up 1x drawing (at the painting's size a 1x
     #  pixel is 4.5 wide; the caves' start images were bicubic and came back painted, the hard ones came back blocky)
-    return out.convert("RGB").filter(ImageFilter.GaussianBlur(c.get("soften", 2.5)))
+    return out.convert("RGB").filter(ImageFilter.GaussianBlur(soften))
 
 
 # ================================================================== the landmarks' name cards, re-census (2026-11-11)
@@ -1082,7 +1119,11 @@ def landmark_init(folder):
 CARDS_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t445_landmarks")
 CARDS_APPROVED = {"power_plant_untended_a", "monean_chamber_carved_a", "cerulean_cave_becalmed_a",
                   "rock_tunnel_threads_b",  # the user, 2026-11-11: PLANT A, TANOBY A; DOLDRUM A BECALMED; THE BLACKOUT B only the threads (T-546)
-                  "safari_zone_overwall_b"}  # the user, 2026-11-14: THE WALLED GARDEN, B over the wall (T-540)
+                  "safari_zone_overwall_b",  # the user, 2026-11-14: THE WALLED GARDEN, B over the wall (T-540)
+                  "scorn_solutions_c", "errata_b"}  # the user, 2026-11-22: SCORN C (tick crisp), ERRATA B; NEW cards
+#  the user, 2026-11-21 (multiple choice): the TANOBY chambers get a card each, BAND -- today's picture, each chamber's
+#  own palette (TANOBY_CHAMBERS below; written palette-only, see TANOBY_PAL)
+CARDS_APPROVED |= {"tanoby_%s_band" % n for n in ("monean", "liptoo", "weepth", "dilford", "scufib", "rixy", "viapois")}
 _PLANT_UNTENDED = dict(
     folder="power_plant", banner_from="power_plant", init="graded", title="KEEPALIVE PLANT, growing untended",
     #  pair 5 B's own colours (power_plant row 7's metal, row 8's three greens and moss) -- no status lights
@@ -1095,7 +1136,8 @@ _PLANT_UNTENDED = dict(
     neg="status lights, glowing lights, lamps, screens, people")
 _TANOBY_CARVED = dict(
     folder="monean_chamber", banner_from="monean_chamber", init="graded", title="TANOBY, carved, not lit",
-    #  pair 5 A: tanoby_ruins rows 7/8's pale sandstone and its dark cut; MONEAN's pigment (row 8 slot 14)
+    #  pair 5 A: tanoby_ruins rows 7/8's pale sandstone and its dark cut; VIAPOIS's pigment (row 8 slot 14 -- MONEAN's
+    #  is row 11 slot 15, grey-green): the one painting all seven chambers' cards share, each recoloured by its BAND
     rock=[(24, 18, 18), (70, 54, 44), (130, 102, 72), (180, 150, 104), (204, 176, 124), (236, 214, 164),
           (244, 232, 200)],
     leaf=[(70, 96, 58), (106, 140, 82), (150, 172, 120)], white="keep",
@@ -1144,6 +1186,42 @@ CARDS["pokemon_tower_dotscreen_b"] = dict(CARDS["pokemon_tower_dotscreen_a"], se
 #  the rooms came back at 0.48-0.50 still reading as the map's tiles, so a third of each painted harder
 CARDS["pokemon_mansion_rackhall_c"] = dict(CARDS["pokemon_mansion_rackhall_a"], seed=4510, denoise=0.62)
 CARDS["pokemon_tower_dotscreen_c"] = dict(CARDS["pokemon_tower_dotscreen_a"], seed=4511, denoise=0.62)
+
+#  THE TANOBY CHAMBERS, a card each (T-445, 2026-11-21, the user: "the TANOBY chambers next"). Vanilla's seven
+#  chamber entries (MPS_MONEAN_CHAMBER .. MPS_VIAPOIS_CHAMBER) share ONE picture, monean_chamber -- tiles, tilemap AND
+#  palette -- and so does our build (TANOBY carved, not lit A, engine fc22a68da/ba1c0ac79). But T-447 pair 5 gave
+#  each chamber its own colour, a band of pigment along its back wall (tanoby_ruins rows 8..12, slots 14/15; read off
+#  reviewsheet's render of each chamber, 672 or 612 pixels each), and the shared card's band is ROSE -- VIAPOIS's, not
+#  MONEAN's (the comment on _TANOBY_CARVED said "MONEAN's pigment (row 8 slot 14)"; row 8 slot 14 is VIAPOIS's;
+#  MONEAN's is row 11 slot 15, grey-green; corrected 2026-11-21). Two ways to a card each, beside today's shared card:
+#    BAND  (tanoby_<chamber>_band): today's card exactly -- its painting, tiles and tilemap -- with the band's own
+#          palette index (forced, so it holds the band alone) set to the chamber's colour. In the engine that is
+#          seven palettes over one set of tiles: +64 bytes a chamber, no tiles.
+#    OWN   (tanoby_<chamber>_own): the same start image with the chamber's colour as the band, painted on its own
+#          seed (4611..4617), so each chamber is its own painting of the shrine: seven tiles/tilemap pairs (each about
+#          the size of today's card), seven folders and INCBINs.
+#  The user (2026-11-21) picked BAND: the seven are in CARDS_APPROVED and --cards --write --approved writes each as a
+#  PALETTE ONLY, graphics/map_preview/monean_chamber/<chamber>.pal (palette 13 the chamber's, 14 vanilla's; the build
+#  makes <chamber>.gbapal, which each chamber's sMapPreviewScreenData entry points .palptr at). The tiles and tilemap
+#  stay the one shared set monean_chamber_carved_a writes, and the write refuses a BAND whose tiles or tilemap differ
+#  from it. The OWN candidates stay drafts. `--cards --only tanoby_...` drafts them and the sheets t445t_chambers_*.
+TANOBY_CHAMBERS = [   # (name as the game prints it, mapsec, the band's colour as built, a word for the prompt)
+    ("MONEAN", "MAPSEC_MONEAN_CHAMBER", (139, 148, 139), "faded grey-green"),
+    ("LIPTOO", "MAPSEC_LIPTOO_CHAMBER", (222, 222, 230), "chalk white"),
+    ("WEEPTH", "MAPSEC_WEEPTH_CHAMBER", (213, 148, 74), "faded ochre orange"),
+    ("DILFORD", "MAPSEC_DILFORD_CHAMBER", (156, 197, 213), "faded pale sky blue"),
+    ("SCUFIB", "MAPSEC_SCUFIB_CHAMBER", (230, 213, 82), "faded yellow"),
+    ("RIXY", "MAPSEC_RIXY_CHAMBER", (131, 205, 82), "faded leaf green"),
+    ("VIAPOIS", "MAPSEC_VIAPOIS_CHAMBER", (205, 139, 189), "faded rose"),
+]
+for _i, (_n, _sec, _rgb, _word) in enumerate(TANOBY_CHAMBERS):
+    CARDS["tanoby_%s_band" % _n.lower()] = dict(
+        _TANOBY_CARVED, seed=4504, painting_of="monean_chamber_carved_a", mapsec=_sec, repigment=_rgb, tanoby="band",
+        title="%s: today's card, its band %s" % (_n, _word))
+    CARDS["tanoby_%s_own" % _n.lower()] = dict(
+        _TANOBY_CARVED, seed=4611 + _i, mapsec=_sec, pigment=_rgb, force=[_rgb], tanoby="own",
+        title="%s: its own painting, band %s" % (_n, _word),
+        prompt=_TANOBY_CARVED["prompt"].replace("faded rose pigment", "%s pigment" % _word))
 
 #  DOLDRUM CAVE (cerulean_cave), DRAFT 2026-11-11 (the user picked the job): the last landmark card still Nintendo's
 #  but USER TOWER's. Two things fix what it may be. (1) The cave's own tiles wait on the user (gbacaves.py; T-251:
@@ -1324,6 +1402,9 @@ def card_init(folder, sec):
     c = CARDS[folder]
     if c["init"] == "graded":
         return paint_init(folder, sec)
+    if c["init"] == "landmark":                         # 2026-11-22: a NEW card's building as built, on its town
+        out = new_card_scene(c).resize(PAINT_SIZE, Image.BICUBIC).convert("RGBA")
+        return lay_building(out, landmark_drawing(c["source"]), c["quad"], c.get("soften", 2.5))
     if c["init"] == "scene":                            # T-540: no vanilla composition to grade -- drawn here
         return GARDEN_SCENES[c["scene"]]().resize(PAINT_SIZE, Image.BICUBIC).filter(ImageFilter.GaussianBlur(2.0))
     return room_scene(c).resize(PAINT_SIZE, Image.BICUBIC).filter(ImageFilter.GaussianBlur(c.get("soften", 2.5)))
@@ -1428,6 +1509,25 @@ def post_redband(im, folder="silph_co"):
                 px[x, y] = red
 
 
+def post_tick(im):
+    """SCORN SOLUTIONS, after the painting (the user, 2026-11-22: seed C "with the built tick laid back crisp", as
+    CORPUS's band): the red tick in the roof form's first box, from the building as built, warped to the card at 1x
+    -- only the tick (the drawing's red above its eave, row < 24); the door's light and the slot's lip stay as painted"""
+    c = CARDS["scorn_solutions_c"]
+    b = landmark_drawing(c["source"])
+    W, H = b.size
+    co = _homography([(0, H), (W, H), (W, 0), (0, 0)], c["quad"])
+    red = (198, 34, 44)
+    mask = Image.new("L", b.size)
+    mask.putdata([255 if p[:3] == red and p[3] == 255 and i // W < 24 else 0 for i, p in enumerate(b.getdata())])
+    w = mask.transform((240, 112), Image.PERSPECTIVE, co, Image.BILINEAR).load()
+    px = im.load()
+    for y in range(112):
+        for x in range(240):
+            if w[x, y] > 80:
+                px[x, y] = red
+
+
 def post_spinfloor(im, folder="rocket_warehouse"):
     """CORPUS WAREHOUSE, after the painting: the spin tiles laid back on the floor from the built map, warped to the
     card at 1x (the server washes a green chevron this small into the olive at any denoise that paints the room)"""
@@ -1486,7 +1586,8 @@ def post_script(im):
                     px[cx + a, cy + b + 1] = _shade(px[cx + a, cy + b + 1], 1.15)
 
 
-POSTS = dict(script=post_script, braille=post_braille, redband=post_redband, spinfloor=post_spinfloor, vessels=post_vessels)
+POSTS = dict(script=post_script, braille=post_braille, redband=post_redband, spinfloor=post_spinfloor, vessels=post_vessels,
+             tick=post_tick)
 
 
 def _in_pool(x, y):
@@ -1757,6 +1858,10 @@ def build(folder, sec):
     #  a card laid in a few flat tones (DOLDRUM's drawing) has no accents to keep
     idx, pal13 = reduce(pic, vpal, accents=where.startswith("painted") and c.get("accents", True),
                         force=c.get("force", ()), neutral=c.get("neutral"))
+    if c.get("repigment"):                              # a TANOBY chamber's BAND card: the band's own index recoloured
+        five = lambda rgb: tuple((v >> 3) << 3 for v in rgb)
+        i = pal13.index(five(c["pigment"]))
+        pal13 = pal13[:i] + [five(c["repigment"])] + pal13[i + 1:]
     tiles, seen, m, tpal = [], {}, [0] * 640, []
 
     def add(t, p=14):
@@ -1987,6 +2092,64 @@ def cards_sheet(rows, path):
         y += RH
     out.save(path)
     return path
+
+
+def tanoby_sheets(rows, sheets):
+    """T-445 (2026-11-21): the TANOBY chambers, a card each? -- vanilla's one card and today's one card on top; then a
+    row a chamber: its back wall as built (the band), the BAND candidate and the OWN candidate, each at 2x with 1x
+    below. Two sheets (four chambers, then three)."""
+    nm, by = names(), {}
+    for r in rows:
+        by[(CARDS[r["folder"]]["mapsec"], CARDS[r["folder"]]["tanoby"])] = r
+    vt, vm, vpal = vanilla("monean_chamber")
+    van_ = compose(vt, vm, vpal)
+    draw_name(van_, nm["MAPSEC_MONEAN_CHAMBER"], vpal)
+    now, pal = engine_card("monean_chamber")
+    draw_name(now, nm["MAPSEC_MONEAN_CHAMBER"], pal)
+    cw, ch, ww = 480, 320, 368
+    RH = 30 + ch + 8 + 160 + 24
+    paths = []
+    for part, chunk in enumerate((TANOBY_CHAMBERS[:4], TANOBY_CHAMBERS[4:]), 1):
+        W = 16 + ww + 16 + 2 * (cw + 16)
+        out = Image.new("RGB", (W, 60 + (len(chunk) + (part == 1)) * RH), (34, 34, 40))
+        d = ImageDraw.Draw(out)
+        d.text((12, 10), "T-445 DRAFT (2026-11-21) -- the TANOBY chambers: a card each? Sheet %d of 2. Each card at 2x "
+               "with 1x below; the name is the game's, printed by it. Nothing written." % part, fill=(235, 235, 235),
+               font=font(14))
+        d.text((12, 30), "BAND: today's card, only the band's own palette index set to the chamber's colour (+64 bytes "
+               "a chamber, 0 tiles). OWN: painted afresh with the chamber's band (a tile set a chamber).",
+               fill=(200, 200, 200), font=font(11))
+        y = 60
+        cells = []
+        if part == 1:
+            cells.append([("VANILLA monean_chamber", van_, "Nintendo's: ONE card for all seven entries"),
+                          ("TODAY (ours, carved, not lit A)", now, "ONE card for all seven; its band is ROSE = VIAPOIS's")])
+        for n, sec, rgb, word in chunk:
+            mp = maps_of(sec)[0]
+            wall = render(mp, RS.layout_of(mp)).convert("RGB").crop((0, 0, 368, 48)).resize((368, 96), Image.NEAREST)
+            b, o = by.get((sec, "band")), by.get((sec, "own"))
+            cells.append([("%s CHAMBER as built: its back wall" % n, wall, "band %s %s" % (word, rgb))] +
+                         [(lab, r["draft"], "%s, %d tiles" % (r["where"], r["tiles"])) for lab, r in
+                          (("BAND  " + n, b), ("OWN  " + n, o)) if r])
+        for row in cells:
+            x = 16 + (ww + 16 if part == 1 and row is cells[0] else 0)     # vanilla and today over BAND and OWN
+            for k, (label, im, note) in enumerate(row):
+                d.text((x, y), label, fill=(240, 220, 120) if "BAND" in label or "OWN" in label else (170, 170, 170),
+                       font=font(12))
+                d.text((x, y + 14), note, fill=(200, 200, 200), font=font(10))
+                if im.size == (240, 160):
+                    out.paste(im.resize((cw, ch), Image.NEAREST), (x, y + 30))
+                    out.paste(im, (x, y + 30 + ch + 8))
+                    x += cw + 16
+                else:
+                    out.paste(im, (x, y + 30))
+                    out.paste(im.resize((184, 24), Image.NEAREST), (x, y + 30 + 96 + 8))
+                    x += ww + 16
+            y += RH
+        p = os.path.join(sheets, "t445t_chambers_%d.png" % part)
+        out.save(p)
+        paths.append(p)
+    return paths
 
 
 #  T-546 (the user, 2026-11-11): THE BLACKOUT's card "black with dim green threads, as a player first meets it" --
@@ -2285,9 +2448,157 @@ CARDS.update({
 })
 
 
+#  SCORN SOLUTIONS and ERRATA (T-445, DRAFT 2026-11-22; the user picked them next). Neither has a card: their insides
+#  (CinnabarIsland_PokemonLab_* and PewterCity_Museum_1F/2F) are their towns' mapsecs, and a card is shown only when a
+#  warp CHANGES the mapsec (fldeff_flash.c, overworld.c, field_fadetransition.c), so each would be a NEW entry (as
+#  T-456's) AND a new mapsec of its own (as THE NEXUS got, T-417) -- or code keyed by map; the report says what each
+#  costs. The start image is the building as it is BUILT (T-447 pairs 1 and 3: cut from reviewsheet's render of the
+#  town map, landmark_drawing) laid in seen from below on a drawn scene of its own town (new_card_scene: QUICKSILVER
+#  IS.'s sea and sand, SLATE CITY's trees and grass, in the colours the town maps draw), then painted on the sprite
+#  server three seeds each. "name" is the proposed mapsec's name, "today" the mapsec its insides print now. The
+#  building's own red is forced an index (SCORN's tick and light are "the only red the new owner's"; ERRATA's caret,
+#  corrections are red). --write refuses a NEW card the engine has no entry for.
+#  BUILT 2026-11-22 (the user, multiple choice: their own place names, SCORN C with the built tick laid back crisp
+#  -- post_tick, as CORPUS's band -- and ERRATA B; two new flags): MAPSEC_SCORN_SOLUTIONS and MAPSEC_ERRATA, MPS_* and
+#  FLAG_WORLD_MAP_* (DAEMONS_FLAGS_START + 0x2F1/0x2F2) in the engine; SCORN 238 tiles, ERRATA 322; filmed with
+#  tools/routes/t445_new_cards.json.
+NEW_CARD_SCENES = dict(
+    quicksilver=dict(hz=52, sky=[(150, 184, 222), (205, 222, 238), (236, 240, 244)],
+                     sea=[(49, 98, 180), (74, 123, 222), (96, 150, 226)], sea_to=78,
+                     ground=[(213, 197, 131), (172, 222, 164), (124, 192, 104)]),
+    slate=dict(hz=70, sky=[(172, 189, 205), (210, 220, 228), (236, 238, 236)],
+               ground=[(88, 160, 84), (124, 192, 104), (174, 220, 146)],
+               leaf=[(42, 82, 44), (66, 128, 58), (88, 160, 84), (132, 188, 84)], trees=True),
+)
+
+
+def new_card_scene(c):
+    """a NEW card's drawn scene: its town's sky to a horizon, the sea below it where the town is an island, its
+    ground to the foot, and its trees at both sides stepping down towards the middle where the town has them"""
+    s = NEW_CARD_SCENES[c["scene"]]
+    bg = Image.new("RGB", (240, 112))
+    px = bg.load()
+    HZ = s["hz"]
+    for y in range(112):
+        for x in range(240):
+            if y < HZ:
+                px[x, y] = _ramp(s["sky"], y / HZ)
+            elif s.get("sea") and y < s["sea_to"]:
+                px[x, y] = _ramp(s["sea"], (y - HZ) / (s["sea_to"] - HZ) + 0.12 * ((x * 7 + y * 3) % 5 == 0))
+            else:
+                top = s["sea_to"] if s.get("sea") else HZ
+                px[x, y] = _ramp(s["ground"], (y - top) / max(1, 112 - top))
+    if s.get("trees"):
+        import random
+        d = ImageDraw.Draw(bg)
+        rnd = random.Random(445)
+        for side in (0, 1):
+            for k in range(12):
+                cx = rnd.randint(-10, 40)
+                cy = rnd.randint(16, 84) + int(cx * 0.3)
+                r = rnd.randint(11, 20)
+                x = cx if side == 0 else 239 - cx
+                for j, f in enumerate((0.0, 0.4, 0.8)):
+                    rr = r - j * 4
+                    ox = (-3 if side else 3) * j
+                    d.ellipse((x - rr + ox, cy - rr - j * 3, x + rr + ox, cy + rr - j * 3), fill=_ramp(s["leaf"], f))
+    return bg
+
+
+_SCORN_NEW = dict(
+    folder="scorn_solutions", source="scorn_solutions", banner_from="pokemon_tower", init="landmark",
+    new=True, mps="MPS_SCORN_SOLUTIONS", mapsec="MAPSEC_SCORN_SOLUTIONS", type="MPS_TYPE_CAVE",
+    name="SCORN SOLUTIONS", today="MAPSEC_CINNABAR_ISLAND", draft_dir=os.path.join(ROOT, "gfx", "drafts", "t445_new"),
+    maps=["CinnabarIsland_PokemonLab_Entrance", "CinnabarIsland_PokemonLab_Lounge",
+          "CinnabarIsland_PokemonLab_ResearchRoom", "CinnabarIsland_PokemonLab_ExperimentRoom"],
+    title="SCORN SOLUTIONS, as built (T-447 pair 1)", scene="quicksilver",
+    quad=((30, 112), (210, 112), (194, 18), (46, 18)), denoise=0.45,
+    force=[(198, 34, 44)],
+    prompt="looking up at a low white stone laboratory building, its flat slate roof ruled like a paper form in a "
+           "few large dark grey boxes with one bold red tick mark in the first box, a band of gold leaf along the "
+           "eave curling at one corner, four windows all with the same pale closed blinds, a narrow metal intake "
+           "slot in the wall, a plain grey steel door with one small red light above it, sand and grass in front, "
+           "a bright blue sea and a pale sky behind, clean and corporate",
+    neg="sign, signboard, lettering, logo, people, trees, red roof, red door, dome, columns")
+_ERRATA_NEW = dict(
+    folder="errata", source="errata", banner_from="pokemon_tower", init="landmark",
+    new=True, mps="MPS_ERRATA", mapsec="MAPSEC_ERRATA", type="MPS_TYPE_CAVE",
+    name="ERRATA", today="MAPSEC_PEWTER_CITY", draft_dir=os.path.join(ROOT, "gfx", "drafts", "t445_new"),
+    maps=["PewterCity_Museum_1F", "PewterCity_Museum_2F"],
+    title="ERRATA, as built (T-447 pair 3)", scene="slate",
+    quad=((36, 114), (204, 114), (190, 4), (50, 4)), denoise=0.45,
+    force=[(204, 40, 44)],
+    prompt="looking up at a museum of dark slate grey stone, its roof a huge writing slate in a wooden frame ruled "
+           "with faint chalk lines and wiped almost clean, a small pediment porch over a dark doorway with one small "
+           "red caret mark on it, columns made of stacked old beige computer cases, drives and keyboards like "
+           "fossil strata, dark glass between them, pale stone steps, green trees at the sides, grass, soft grey sky",
+    neg="sign, signboard, lettering, words, letters, people, greek temple, marble, gold, red roof")
+CARDS.update({
+    "scorn_solutions_a": dict(_SCORN_NEW, seed=4621),
+    "scorn_solutions_b": dict(_SCORN_NEW, seed=4622),
+    "scorn_solutions_c": dict(_SCORN_NEW, seed=4623, post=["tick"]),   # the user: C, its tick laid back crisp
+    "errata_a": dict(_ERRATA_NEW, seed=4624),
+    "errata_b": dict(_ERRATA_NEW, seed=4625),
+    "errata_c": dict(_ERRATA_NEW, seed=4626),
+})
+NEW_CARD_FOLDERS = {"scorn_solutions", "errata"}
+
+
+def new_cards_sheet(rows, path):
+    """T-445 (2026-11-22): SCORN SOLUTIONS and ERRATA, a NEW card each -- the building as built, then each candidate
+    at 2x with the proposed mapsec's name, and at 1x beneath it twice: the proposed name, and the name its insides
+    print today (the town's), which is what the window would say if the card were keyed by map instead"""
+    nm = names()
+    by = collections.OrderedDict()
+    for r in rows:
+        by.setdefault(CARDS[r["folder"]]["folder"], []).append(r)
+    cw, ch = 480, 320
+    n = max(len(v) for v in by.values()) + 1
+    W = 16 + n * (cw + 16)
+    RH = 30 + ch + 8 + 160 + 22 + 30
+    out = Image.new("RGB", (W, 64 + len(by) * RH), (34, 34, 40))
+    d = ImageDraw.Draw(out)
+    d.text((12, 10), "T-445 DRAFT (2026-11-22) -- NEW name cards for SCORN SOLUTIONS and ERRATA, painted from the "
+           "buildings as built (T-447): AS BUILT (left), then three seeds each at 2x; 1x below, with the proposed "
+           "name and with the town's name", fill=(235, 235, 235), font=font(14))
+    d.text((12, 30), "Nothing written: neither has an engine entry or a mapsec of its own. The name is printed by the "
+           "game in its window, never painted.", fill=(200, 200, 200), font=font(12))
+    y = 64
+    for folder, rs in by.items():
+        c = CARDS[rs[0]["folder"]]
+        built = Image.new("RGB", (240, 160), (12, 12, 16))
+        b = landmark_drawing(c["source"])
+        built.paste(b.convert("RGB"), ((240 - b.size[0]) // 2, (160 - b.size[1]) // 2), b)
+        cells = [("AS BUILT  %s" % c["source"], built, "cut from the town map, the start image's building",
+                  None)] + \
+                [("%s  %s" % (chr(65 + i), r["folder"]), r["draft"], "%s, %d tiles" % (r["where"], r["tiles"]), r)
+                 for i, r in enumerate(rs)]
+        for k, (label, im, note, r) in enumerate(cells):
+            x = 16 + k * (cw + 16)
+            d.text((x, y), label, fill=(170, 170, 170) if k == 0 else (240, 220, 120), font=font(12))
+            d.text((x, y + 14), note, fill=(200, 200, 200), font=font(10))
+            out.paste(im.resize((cw, ch), Image.NEAREST), (x, y + 30))
+            out.paste(im, (x, y + 30 + ch + 8))
+            if r is not None:
+                today = r["today_img"]
+                out.paste(today, (x + 240 + 8, y + 30 + ch + 8))
+                d.text((x, y + 30 + ch + 8 + 162), "1x: %s (proposed)" % c["name"], fill=(200, 200, 200), font=font(10))
+                d.text((x + 248, y + 30 + ch + 8 + 162), "1x: %s (today's name)" % nm[c["today"]],
+                       fill=(200, 200, 200), font=font(10))
+        y += RH
+    out.save(path)
+    return path
+
+
 #  the engine folders an approved candidate writes, and which candidate: at most one per folder (after every CARDS entry)
-CARDS_TAKEN = {CARDS[c]["folder"]: c for c in sorted(CARDS_APPROVED)}
-assert len(CARDS_TAKEN) == len(CARDS_APPROVED), "two approved CARDS candidates for one engine card"
+CARDS_TAKEN = {CARDS[c]["folder"]: c for c in sorted(CARDS_APPROVED) if CARDS[c].get("tanoby") != "band"}
+
+
+def tanoby_pal_path(folder):
+    """a TANOBY chamber's BAND palette, beside the shared picture: monean_chamber/<chamber>.pal"""
+    return os.path.join(MPS, CARDS[folder]["folder"], "%s.pal" % folder.split("_")[1])
+assert len(CARDS_TAKEN) == len([c for c in CARDS_APPROVED if CARDS[c].get("tanoby") != "band"]), \
+    "two approved CARDS candidates for one engine card"     # a TANOBY BAND writes a palette, never a picture
 
 
 def blackout_card_sheet(rows, path):
@@ -2336,7 +2647,12 @@ def entry(by_folder, folder):
     """(MPS key, MAPSEC, type) of a card: sMapPreviewScreenData's, or a NEW card's own (T-456)"""
     c = cfg(folder)
     if folder in CARDS:                                 # a candidate for an engine card: that card's entry
-        return by_folder[c["folder"]][0]
+        if c.get("new") and c["folder"] not in by_folder:   # 2026-11-22: a NEW card (no entry yet): its proposed one
+            return c["mps"], c["mapsec"], c["type"]
+        ents = by_folder[c["folder"]]
+        if c.get("mapsec"):                             # a TANOBY chamber's own card: its own entry of the seven
+            return [e for e in ents if e[1] == c["mapsec"]][0]
+        return ents[0]
     if folder not in by_folder and c.get("new"):
         return c["mps"], c["mapsec"], c["type"]
     return by_folder[folder][0]
@@ -2357,7 +2673,8 @@ def report():
              ", APPROVED" if folder in LANDMARK_APPROVED else ", waits on the user")) if folder in LANDMARK else \
             ("place (%s): drafted with --places%s" % (PLACES[folder]["what"],
              ", APPROVED" if folder in PLACES_APPROVED else ", waits on the user")) if folder in PLACES else \
-            ("not drafted: " + NOT_DRAFTED.get(folder, "?"))
+            ("NEW card (2026-11-22), drawn with --cards" if folder in NEW_CARD_FOLDERS else
+             "not drafted: " + NOT_DRAFTED.get(folder, "?"))
         if folder in CARDS_TAKEN:
             status += "; SUPERSEDED by --cards' %s (APPROVED)" % CARDS_TAKEN[folder]
         print("  %-17s %s" % (folder, status))
@@ -2375,6 +2692,17 @@ def report():
                 print("  %-17s NEW card (%s, no vanilla picture): drafted with --landmarks, waits on the user and on "
                       "T-456's engine entry" % (folder, landmark_source(folder)))
             print("      %-22s %-34s %-16s %3dpx" % (c["mps"], c["mapsec"], n, name_width(n)))
+    seen = set()
+    for cand, c in CARDS.items():                       # 2026-11-22: SCORN SOLUTIONS and ERRATA, NEW with --cards
+        if not (c and c.get("new")) or c["folder"] in by_folder or c["folder"] in seen:
+            continue
+        seen.add(c["folder"])
+        n, t = c["name"], nm.get(c["today"], "?")
+        print("  %-17s NEW card (%s), drafted with --cards; no engine entry and no mapsec of its own: waits on the "
+              "user" % (c["folder"], c["title"]))
+        print("      %-22s %-34s %-16s %3dpx (proposed; today its insides print %s, %dpx)"
+              % (c["mps"], c["mapsec"], n, name_width(n), t, name_width(t)))
+        print("      maps: %s" % ", ".join(c["maps"]))
     return by_folder
 
 
@@ -2408,7 +2736,7 @@ def main():
         if A.write and folder in BATCH_G and folder not in BATCH_G_APPROVED and not A.draft:
             print("  %-17s batch G, not approved (BATCH_G_APPROVED): not written" % folder)
             continue
-        if A.write and cfg(folder).get("new") and folder not in by_folder and not A.draft:
+        if A.write and cfg(folder).get("new") and cfg(folder).get("folder", folder) not in by_folder and not A.draft:
             print("  %-17s a NEW card: the engine has no sMapPreviewScreenData entry for it yet: not written" % folder)
             continue
         if A.landmarks and A.write and folder not in LANDMARK_APPROVED and not A.draft:
@@ -2425,9 +2753,9 @@ def main():
         tiles, m, pal, where, png = made
         vt, vm, vpal = van(folder)
         van_, dra = compose(vt, vm, vpal), compose(tiles, m, pal)
-        if LANDMARK.get(folder, {}).get("new"):             # no vanilla card: the building as the engine draws it
+        if cfg(folder).get("new"):                          # no vanilla card: the building as the engine draws it
             van_ = Image.new("RGB", (240, 160))
-            b = landmark_drawing(LANDMARK[folder]["source"])
+            b = landmark_drawing(cfg(folder)["source"])
             van_.paste(b.convert("RGB"), ((240 - b.size[0]) // 2, (160 - b.size[1]) // 2), b)
         for im in (van_, dra):
             draw_name(im, nm[sec], (vpal if im is van_ else pal))
@@ -2461,7 +2789,14 @@ def main():
                 li.save(os.path.join(d, "preview_light%d.png" % n))
             json.dump({"mapsec": sec, "name": nm[sec], "from": where, "num_tiles": len(tiles)},
                       open(os.path.join(d, "draft.json"), "w"), indent=1)
-        if A.write and (not A.landmarks or folder in LANDMARK_APPROVED) and (not A.places or folder in PLACES_APPROVED) \
+        if A.write and A.cards and cfg(folder).get("tanoby") == "band" and folder in CARDS_APPROVED:
+            shared = build("monean_chamber_carved_a", sec)         # the one picture all seven show
+            if shared[0] != tiles or shared[1] != m:
+                print("  !! %s: tiles or tilemap differ from the shared picture: not written" % folder)
+                return 1
+            write_pal(pal, tanoby_pal_path(folder))                  # palette only: 13 the chamber's, 14 vanilla's
+            print("      written %s (palette only)" % tanoby_pal_path(folder))
+        elif A.write and (not A.landmarks or folder in LANDMARK_APPROVED) and (not A.places or folder in PLACES_APPROVED) \
                 and (folder not in BATCH_G or folder in BATCH_G_APPROVED) and (not A.cards or folder in CARDS_APPROVED):
             dest = cfg(folder).get("folder", folder)            # a CARDS candidate writes its engine card's folder
             d = os.path.join(MPS, dest)
@@ -2477,6 +2812,9 @@ def main():
             print("      written %s" % d)
         rows.append(dict(folder=folder, name=nm[sec], where=where, vanilla=van_, draft=dra, notes=notes,
                          tiles=len(tiles)))
+        if cfg(folder).get("today"):                        # a NEW card: also with the name its insides print today
+            rows[-1]["today_img"] = compose(tiles, m, pal)
+            draw_name(rows[-1]["today_img"], nm[cfg(folder)["today"]], pal)
         for n, lp in enumerate(lights or []):
             if n == 0:
                 continue
@@ -2486,6 +2824,15 @@ def main():
                              where=where, vanilla=van_, draft=li,
                              notes=["light %d: %s" % (n, LIGHT_NAMES[n]), "the same tiles, palette 13 moved",
                                     "onto this light's rock and crystal", "ramps (palettes_other_%d)" % n]))
+    if A.draft and A.cards and rows and all(CARDS[r["folder"]].get("tanoby") for r in rows):
+        os.makedirs(sheets, exist_ok=True)              # T-445's TANOBY chambers; the others' sheets left as they are
+        for p in tanoby_sheets(rows, sheets):
+            print("  sheet -> %s" % p)
+        return 0
+    if A.draft and A.cards and rows and all(CARDS[r["folder"]]["folder"] in NEW_CARD_FOLDERS for r in rows):
+        os.makedirs(sheets, exist_ok=True)              # SCORN SOLUTIONS' and ERRATA's NEW cards (2026-11-22)
+        print("  sheet -> %s" % new_cards_sheet(rows, os.path.join(sheets, "t445s_new_cards.png")))
+        return 0
     if A.draft and A.cards and rows and all(CARDS[r["folder"]]["folder"] == "rock_tunnel" for r in rows):
         os.makedirs(sheets, exist_ok=True)              # T-546's own sheet; the others' left as they are
         print("  sheet -> %s" % blackout_card_sheet(rows, os.path.join(sheets, "t546_card.png")))

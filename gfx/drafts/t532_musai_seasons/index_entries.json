@@ -1,9 +1,9 @@
 {
- "_": "T-532 DRAFT: one INDEX entry per seasonal form (CONTENT voice), as split and measured (Index line 234px; routine pane 113px); T-534: 17 redrafted by the user's picks 2026-11-09, 7 kept (DRAFT)",
+ "_": "T-532 DRAFT: one INDEX entry per seasonal form (CONTENT voice), as split and measured (Index line 234px; routine pane 113px); T-534: 17 redrafted by the user's picks 2026-11-09, 7 kept (DRAFT); T-607: SONGMUSAI's and LANGMUSAI's eight, DRAFT (2026-11-21)",
  "index": {
   "musai_winter": {
    "lines": [
-    "In winter it keeps all five of its",
+    "In winter it keeps all seven of its",
     "futures folded close, the way a seed",
     "keeps a tree. It is still the whole."
    ],
@@ -287,6 +287,102 @@
     207,
     197,
     94
+   ]
+  },
+  "songmusai_winter": {
+   "lines": [
+    "In winter it hums under the snow, too low",
+    "to hear. In spring the brooks turn out to",
+    "know the tune."
+   ],
+   "px": [
+    228,
+    228,
+    78
+   ]
+  },
+  "songmusai_spring": {
+   "lines": [
+    "Every spring it learns one new song by ear",
+    "from whoever sings nearest. It gets the",
+    "words wrong. Never the time."
+   ],
+   "px": [
+    234,
+    217,
+    157
+   ]
+  },
+  "songmusai_summer": {
+   "lines": [
+    "On long evenings it sings across the",
+    "water. Something far off sings back, a",
+    "beat late. They keep the same time."
+   ],
+   "px": [
+    196,
+    210,
+    199
+   ]
+  },
+  "songmusai_autumn": {
+   "lines": [
+    "In autumn it sings the year's songs over,",
+    "slower each time, until it knows which",
+    "ones it will keep."
+   ],
+   "px": [
+    224,
+    208,
+    97
+   ]
+  },
+  "langmusai_winter": {
+   "lines": [
+    "In winter it says very little. What it says",
+    "is new. By spring the whole burrow is",
+    "saying it too."
+   ],
+   "px": [
+    233,
+    205,
+    75
+   ]
+  },
+  "langmusai_spring": {
+   "lines": [
+    "Each spring it hears a word it never",
+    "heard and uses it right the first time.",
+    "Asked where from, it has no answer."
+   ],
+   "px": [
+    200,
+    212,
+    195
+   ]
+  },
+  "langmusai_summer": {
+   "lines": [
+    "All summer it trades words with one other",
+    "that nobody else can follow. Neither made",
+    "them up. They were just there."
+   ],
+   "px": [
+    228,
+    232,
+    172
+   ]
+  },
+  "langmusai_autumn": {
+   "lines": [
+    "Each autumn the marks on its tail grow a",
+    "line. Nobody can read them. It reads them",
+    "aloud, and the others nod."
+   ],
+   "px": [
+    224,
+    233,
+    147
    ]
   }
  },

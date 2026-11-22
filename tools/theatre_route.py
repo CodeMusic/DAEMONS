@@ -70,8 +70,9 @@ a stop that needs longer than --stop-timeout (T-451):
                                first, in the pocket's top slot, and the bag set to open there with its cursor on it
     open BAG|DAEMON|INDEX|SPELLBOOK|OPTION   T-433: START, then that entry, opened (captured); T-519 the SPELLBOOK, T-523 OPTION
     swap SLOT SLOT             T-433: two party daemons change places (their records swapped whole)
-    useitem ITEM_X             T-433, DEBUG: the item used on party daemon 1 as the party menu would (gSpecialVar_ItemId
-                               poked, then GAME EVENTS -> FEELINGS -> USE THE ITEM ON SLOT 1)
+    useitem ITEM_X [evolve]    T-433, DEBUG: the item used on party daemon 1 as the party menu would (gSpecialVar_ItemId
+                               poked, then GAME EVENTS -> FEELINGS -> USE THE ITEM ON SLOT 1); evolve leaves the menu open
+                               so an evolution item's scene plays (B would cancel it, T-605)
     coins N                    set the TOKEN CASE's count (stored XOR the save's key, src/coins.c)
     keyitem ITEM_X             put a key item in the bag if it is not there (its count stored XOR the save's key), so
                                `register` and `press SELECT` can use it -- the BICYCLE for T-18's follower
@@ -1369,7 +1370,7 @@ class Runner:
         tw.run("hold A 6", "wait 50")
         self.capture("chose " + label)
 
-    def events(self, labels):
+    def events(self, labels, close=True):
         pages, order = self.event_pages()
         S = lambda n: elf_symbol(n, self.release)
         rows_at, scroll_at = S("sRow"), S("sScroll")
@@ -1408,6 +1409,8 @@ class Runner:
             else:
                 cursor = idx
         self.capture("GAME EVENTS: " + " / ".join(labels))
+        if not close:                     # T-605: an evolution item opens the scene; B would cancel it
+            return
         for _ in range(4):
             if self.free():
                 break
@@ -1786,7 +1789,7 @@ class Runner:
             self.capture("START: " + args[0], read_text=False)
         elif op == "useitem":                                               # T-433
             self.poke("gSpecialVar_ItemId", 16, const_item(args[0]))
-            self.events(["FEELINGS >", "USE THE ITEM ON SLOT 1"])
+            self.events(["FEELINGS >", "USE THE ITEM ON SLOT 1"], close=not (len(args) > 1 and args[1] == "evolve"))
         elif op == "coins":
             key = tw.peek([(16, self.addr("*gSaveBlock2Ptr+0xF20"), "k")])["k"]
             self.poke("*gSaveBlock1Ptr+0x294", 16, int(args[0]) ^ key)
@@ -1953,7 +1956,7 @@ SHAPES = {
     "to": "i i", "warp": "s", "edge": "s", "walkto": "s", "talk": "s ?i", "trigger": "i i ?i", "look": "i i ?i",
     "finish": "", "read": "", "press": "s ?i", "hold": "s i", "wait": "i", "shot": "*", "flag": "s i", "trainer": "s i",
     "flagis": "s i", "var": "s n", "repel": "?i", "bump": "s *", "wild": "*", "unsaid": "*", "friendship": "i i",
-    "objectat": "s *", "mon": "i s s", "bag": "s *", "swap": "i i", "open": "s", "useitem": "s", "coins": "i",
+    "objectat": "s *", "mon": "i s s", "bag": "s *", "swap": "i i", "open": "s", "useitem": "s ?s", "coins": "i",
     "keyitem": "s", "follower": "*", "remember": "s s i", "moved": "s", "kept": "s i", "choose": "*", "foe": "s",
     "poke": "s i n", "palettes": "s",
     "register": "s", "play": "*", "fight": "", "win": "", "lose": "", "expect": "s ?i ?i", "music": "?s",

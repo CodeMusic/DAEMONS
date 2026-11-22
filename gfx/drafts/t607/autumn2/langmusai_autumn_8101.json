@@ -1,0 +1,37 @@
+{
+ "mode": "t2i",
+ "out": "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/daemons-t607/gfx/drafts/t607/autumn2/langmusai_autumn_8101",
+ "prompt": "pixel art sprite, chibi, the same creature as in the image, the same round helmet head, the same dark visor with glowing eyes, the same two little antennae, the same small lizard body, the same small folded wings, the same rounded frill round its neck, the same rows of tiny marks like writing along its back and tail, the same body shape and markings, its scales and fur ruff stay GREY exactly as in the image, not orange, not brown, its ruff thick for autumn, three or four small orange autumn leaves caught on it and falling around it, nothing else changed, mostly greyscale, medium grey body with light grey highlights and dark grey shading, only the leaves coloured, facing left three-quarter view, black outline, centered on a plain white background, full body, the whole body inside the picture with white space on every side, no shadow, no text, game asset",
+ "negative": "",
+ "seed": 8101,
+ "steps": 4,
+ "cfg": 1.0,
+ "sampler": "euler",
+ "scheduler": "flux2",
+ "denoise": 1.0,
+ "stop_at": null,
+ "size": [
+  512,
+  512
+ ],
+ "model": "klein4b",
+ "loras": [
+  [
+   "klein4b_pixelart_limbicnation.safetensors",
+   1.0
+  ]
+ ],
+ "references": [
+  "/private/tmp/claude-502/-Users-christopherhicks-Projects-DAEMONS/d99297fc-c29c-48ac-bea7-477ee8d1422e/scratchpad/daemons-t607/gfx/drafts/t605/concepts/langmusai_7901.png"
+ ],
+ "checkpoint": "flux-2-klein-4b.safetensors",
+ "model_files": {
+  "unet": "flux-2-klein-4b.safetensors",
+  "clip": "qwen_3_4b.safetensors",
+  "vae": "flux2-vae.safetensors"
+ },
+ "host": "http://roverbyteseer:8008",
+ "seconds": 27.4,
+ "comfyui": "0.19.1",
+ "made": "2026-11-21 14:57:14"
+}

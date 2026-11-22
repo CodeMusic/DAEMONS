@@ -38,6 +38,8 @@ MISSINGNO has no telling. There was no record to answer, and there is nobody to 
 
 Every daemon with a record of ours: 397, in two batches (the Kanto 151 and the carried line first, the rest the
 same day). The eight NEXUS residents are at the end; they are the ones most the user's own to rewrite.
+SONGMUSAI and LANGMUSAI, MUSAI's sixth and seventh forms (T-605), were told after the carried line on 2026-11-21
+(T-607): 399, and those two are DRAFT.
 
 <!-- tellings -->
 
@@ -502,6 +504,12 @@ That was four hundred and twelve steps. Yesterday was fewer. Can we go again?
 
 ### COROUTINE
 I go a little way and come back to your shoulder. Now, where were we?
+
+### SONGMUSAI
+Hum it once. I have it now. Listen, the rain is keeping time with us.
+
+### LANGMUSAI
+I have a word for this. You have not heard it yet. Say it back to me. There, now it is ours.
 
 ### PRIMER
 I eat what I ate before, a little harder each time. I always know what it will be.

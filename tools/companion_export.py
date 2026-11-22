@@ -299,9 +299,9 @@ def moves_table():
 
 
 def musai_seasons(species):
-    """T-532 (vision 9.34): the MUSAI branch's four seasonal forms. Each of the six gets "seasons": the season's picture
+    """T-532 (vision 9.34): the MUSAI branch's four seasonal forms. Each of the eight (T-607) gets "seasons": the season's picture
     (art/species/<name>_<season>.png, decoded from the built form -- summer is the species' own front) and its INDEX
-    entry (both editions share the 24, src/data/pokemon/pokedex_text_seasons.h). The companion shows the form the
+    entry (both editions share the 32, src/data/pokemon/pokedex_text_seasons.h). The companion shows the form the
     season gives it, by the game's own rule: seasons.json's season(edition, date) with a clock, and without one the
     play-time year, (summer + playTimeHours / 7) % 4 (daemons_time.c). Returns the pictures to write."""
     from PIL import Image
@@ -1076,7 +1076,8 @@ def seasons_table():
             "edition_hemisphere": seasons.EDITION_HEMISPHERE,
             "play_hours_per_season": seasons.PLAY_HOURS_PER_SEASON,
             #  T-532: the MUSAI branch's forms follow this rule too (species.json's "seasons")
-            "forms": "T-532: MUSAI, CODEMUSAI, SEEKMUSAI, CAREMUSAI, LENSMUSAI and MASKMUSAI wear the season's form: "
+            "forms": "T-532: MUSAI, CODEMUSAI, SEEKMUSAI, CAREMUSAI, LENSMUSAI, MASKMUSAI and (T-607) SONGMUSAI and "
+                     "LANGMUSAI wear the season's form: "
                      "season(edition, date) with a clock; with none, the play-time year, order[(2 + playTimeHours // 7) "
                      "% 4] (from summer), then the edition's hemisphere. A battle keeps the season it began in. "
                      "species.json's \"seasons\" holds each form's picture and INDEX entry."}

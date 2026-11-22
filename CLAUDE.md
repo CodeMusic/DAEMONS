@@ -39,9 +39,12 @@ are daemons and the type chart is an argument about consciousness. **Design is w
   python3 tools/tickets.py claim T-581 --lane game --branch main      # replaces the WIP mark
   python3 tools/tickets.py new --lane game --project daemons --title "..." --from "the user, 2026-11-18"
   python3 tools/tickets.py close T-581 --lane game --commit engineGba@18e3558 --commit DAEMONS@4c3f819
+  python3 tools/tickets.py ask T-581 --lane game --question "Which?" --choice "One" --choice "Two"   # to the user (E-1)
   python3 tools/tickets.py mirror --from-redmine --write    # bring both TODO files current before a push
   ```
   `new` takes the next id itself, safely when several sessions open tickets at once -- **no more reserved blocks**.
+  `ask` puts a question to the user: *Needs decision*, with its choices, which EUDAIMONIA's dashboard draws as buttons;
+  their answer comes back as a note and the ticket returns to Ready for its lane.
   Off the tailnet (a cloud session) the tool says Redmine is unreachable: read the mirror, change nothing, and say
   what you would have filed in the handoff.
 - **`docs/lineage.md`** is where the ideas came from — three blogs, 2011–2026.
