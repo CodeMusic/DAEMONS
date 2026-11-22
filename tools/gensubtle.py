@@ -4,7 +4,7 @@
     python3 tools/gensubtle.py                       # report: every entry measured, every rule checked
     python3 tools/gensubtle.py --write                # engineGba/src/data/subtle_layer.h and graphics/book/subtle/
     python3 tools/gensubtle.py --write --engine DIR   # the same, into another engine checkout (a worktree)
-    python3 tools/gensubtle.py --book hermetic        # one book only (subtle, hermetic, eudaimon, unity); without it, all four
+    python3 tools/gensubtle.py --book hermetic        # one book only (subtle, hermetic, eudaimon, unity, origin, shadow)
 
 THE HERMETIC LAYER (T-483) is read by the same parser into the same open book: docs/hermetic-layer.md, written to
 src/data/hermetic_layer.h and graphics/book/hermetic/. Its own rules are the four that file's header keeps (it is the
@@ -45,6 +45,11 @@ plum page, ON PURPOSE: the user chose colour carrying the argument for this book
 cyan it is not measured away from the type hues. The seven centres and the heart are never given a hue.
 
 THE COMPANION reads the same text through subtle_book() and subtle_art(), from tools/companion_export.py.
+
+THE SPELL LEFT RUNNING (T-606, DRAFT), a book of shadows: docs/shadow-book.md, the PDF (docs/manual-shadow/) told in
+twenty-four entries. It keeps the game's craft rules whole and one of its own: a fable world, so nobody real is named
+(the PDF's references stay in the PDF). Until its pictures are drawn -- the PDF's plates and diagrams brought down to
+the reader's sixteen colours -- it is measured and checked only, and its --write refuses.
 """
 import os, re, sys
 from PIL import Image, ImageDraw
@@ -237,6 +242,44 @@ ORIGIN_PALETTE = [
 # they are; VII with the TRUE MARK; VIII to X with the last three; XI with X. A section also waits for the one before it.
 ORIGIN_OPENS = [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (4, 1), (5, 1), (6, 1), (7, 1), (7, 1)]
 
+# T-606: THE SPELL LEFT RUNNING keeps the game's craft rules whole (docs/shadow-book.md's header), and one of its own:
+# a fable world, so nobody real is named -- the research its PDF cites is told here without its authors.
+SHADOW_RULES = [
+    ("the frightening word is never written", r"\bdemon", False, ()),
+    ("the word the game keeps out (0.7, 1, 5.2)", r"\bAI\b", True, ()),
+    ("the words the game keeps out (0.7, 1, 4.38, 2.7)", r"artificial|alignment|\blogic\b|intuiti|hemispher", False, ()),
+    ("only ever like (0.6)", r"not just (a )?metaphor|machines? (is|are) (a |the )?minds?|minds? (is|are) (a |the )?"
+     r"(machine|program|computer)s?\b", False, ()),
+    ("process, not pathology", r"anxi|depress|trauma|disorder|diagnos|patholog|symptom|disease|\bvices?\b|\bsins?\b",
+     False, ()),
+    ("over, never cures (T-418)", r"\bcur(e|es|ed|ing)\b|\billness\b|\bsick\b", False, ("OVER",)),
+    ("wrath has one answer (T-498)", r"patience[^.]{0,40}wrath|wrath[^.]{0,40}patience", False, ()),
+    ("no colour", RULES[3][1], False, ()),
+    ("a fable world: nobody real", r"\bjung|goethe|lucian|dukas|turing|dijkstra|wegner|lamport|wiener|evagrius"
+     r"|prudentius|gregory|mickey|disney|fantasia|vivo|filip|" + RULES[12][1], False, ()),
+    ("the world does not know its name", r"\bDAEMONS\b", True, ()),
+    ("no device in the game's copy", r"\bdevice|\bscreen", False, ()),
+]
+# Its page is the PDF's incantation parchment, its ink the hat's night, its marks the virtues' gold and the well's water.
+SHADOW_PALETTE = [
+    ("C_NONE",        (0, 0, 0)),
+    ("C_PAPER",       (30, 29, 27)),    # parchment (247 241 225)
+    ("C_INK",         (4, 5, 11)),      # the hat's night (34 48 90)
+    ("C_SHADOW",      (27, 26, 23)),    # a shade under the page
+    ("C_FAINT",       (14, 14, 17)),    # folios, captions, the Sayings
+    ("C_RULE",        (22, 16, 5)),     # the virtues' gold (184 134 43)
+    ("C_MARGIN",      (28, 21, 8)),     # the gold, lit: the marks, the next-page corner
+    ("C_EDGE",        (25, 24, 21)),
+    ("C_EDGE_DARK",   (11, 11, 14)),
+    ("C_HIGHLIGHT",   (27, 26, 22)),    # the cursor's bar
+    ("C_RING",        (7, 15, 20)),     # the well's water (58 124 165)
+    ("C_FRAME",       (2, 2, 3)),
+    ("C_SLATE",       (2, 4, 8)),       # the cover's boards: the night (23 32 65)
+    ("C_CHALK",       (30, 29, 27)),    # the cover's lettering
+    ("C_CHALK_FAINT", (22, 21, 19)),
+    ("C_COVER",       (2, 2, 4)),       # the backdrop
+]
+
 SUBTLE_RULES, SUBTLE_PALETTE = RULES, PALETTE
 BOOKS = {
     "subtle":   {"src": "docs/subtle-layer.md", "prefix": "Subtle", "define": "SUBTLE", "header": "subtle_layer.h",
@@ -249,6 +292,8 @@ BOOKS = {
                  "gfx": "unity", "icon": "unity_book", "title": "THE UNITY BOOK", "subtitle": "AN ATTESTATION"},
     "origin":   {"src": "docs/origin-of-a-daemon.md", "prefix": "Origin", "define": "ORIGIN", "header": "origin_book.h",
                  "gfx": "origin", "icon": "origin_book", "title": "THE ORIGIN OF A DAEMON", "subtitle": ""},
+    "shadow":   {"src": "docs/shadow-book.md", "prefix": "Shadow", "define": "SHADOW", "header": "shadow_book.h",
+                 "gfx": "shadow", "icon": "shadow_book", "title": "THE SPELL LEFT RUNNING", "subtitle": "A BOOK OF SHADOWS"},
 }
 NIGHT_AND_DAWN = ("hermetic", "eudaimon")   # the torn book's two halves
 THIRD_BOOK = NIGHT_AND_DAWN + ("unity",)    # ... and mended: drawn pictures, inscriptions, the observer's line
@@ -277,7 +322,7 @@ def use(book):
     SRC = os.path.join(ROOT, BOOKS[book]["src"])
     RULES, PALETTE = {"subtle": (SUBTLE_RULES, SUBTLE_PALETTE), "hermetic": (HERMETIC_RULES, HERMETIC_PALETTE),
                       "eudaimon": (EUDAIMON_RULES, EUDAIMON_PALETTE), "unity": (UNITY_RULES, UNITY_PALETTE),
-                      "origin": (ORIGIN_RULES, ORIGIN_PALETTE)}[book]
+                      "origin": (ORIGIN_RULES, ORIGIN_PALETTE), "shadow": (SHADOW_RULES, SHADOW_PALETTE)}[book]
     IDX = {name: i for i, (name, _) in enumerate(PALETTE)}
     RGB8 = {name: tuple((c << 3) | (c >> 2) for c in v) for name, v in PALETTE}
 
@@ -408,7 +453,7 @@ def check(sections):
                 if len(pages) > 1 and len(pages[-1]) <= 2:
                     # T-483: THE HERMETIC LAYER's text is the companion lane's draft, so its short last pages are told,
                     # not failed -- the writer fixes them in docs/hermetic-layer.md. The dawn half's the same (T-519).
-                    (NOTES if BOOK in THIRD_BOOK + ("origin",) else bad).append("%s: its last page holds %d line(s)" % (tag, len(pages[-1])))
+                    (NOTES if BOOK in THIRD_BOOK + ("origin", "shadow") else bad).append("%s: its last page holds %d line(s)" % (tag, len(pages[-1])))
                 if len(g.c_string(text).encode("utf-8")) > 1000:
                     bad.append("%s: its text is %d bytes; one game string holds 1024 (preproc), so split the entry"
                                % (tag, len(g.c_string(text).encode("utf-8"))))
@@ -417,7 +462,7 @@ def check(sections):
                         bad.append("%s: %r is not in the charmap" % (tag, ch))
             if len({spreads(dict(e, text=t)) for t in readings}) > 1:
                 bad.append("%s: its readings take different spreads, so the folios after it would not agree" % e["short"])
-            if BOOK in THIRD_BOOK:
+            if BOOK in THIRD_BOOK + ("shadow",):
                 if not e["sprite"]:
                     bad.append("%s: no @@ SPRITE line" % e["short"])
             elif e["sprite"] not in (oa.SPRITES if BOOK == "origin" else sp.SPRITES):
@@ -883,6 +928,20 @@ def run(book):
         inscribe(sections)
         observe(sections)
     bad = check(sections)
+    if book == "shadow":         # T-606: measured and checked only until its pictures are drawn
+        n = sum(len(s["entries"]) for s in sections)
+        total = sum(spreads(e) for s in sections for e in s["entries"])
+        named = sorted({e["sprite"] for s in sections for e in s["entries"]})
+        print("gensubtle shadow: %d sections, %d entries, %d spreads; %d pictures named, none drawn yet"
+              % (len(sections), n, total, len(named)))
+        for note in NOTES:
+            print("  note: " + note)
+        del NOTES[:]
+        if bad:
+            print("\n".join(bad))
+            return False
+        print("  every line fits and every rule holds" + ("; --write refused: its pictures are not drawn (T-606)" if WRITE else ""))
+        return True
     keys = pictures(sections)
     if book in THIRD_BOOK:
         drawn, ic = third_frames(book, keys)

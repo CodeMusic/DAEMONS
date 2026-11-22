@@ -156,11 +156,15 @@ Drawn in PRINCIPLES OF MIND's hand (Gill Sans; ink, grey, the hat's night blue, 
 *The user's own rule: every book reaches both the GBA reader and the app's book pages, and every book has its own
 voice.*
 
-- **The game's reader.** Like the GUIDE: about twenty-three entries of a hundred words, measured line by line against
-  the page by a generator of its own (in the manner of `genguide.py`): the preface, the six scenes, the five lessons and
-  *over, never cures*, the seven brooms, the quills, the hat. The craft rules hold as for the GUIDE: only ever *like*;
-  the process, never the pathology; no condition named. Its cover in the reader's sixteen colours: the hat and the
-  seven lights.
+- **The game's reader.** *Drafted 2026-11-21:* `docs/shadow-book.md`, twenty-four entries in seven sections (FIRST, THE
+  TALE, THE LESSONS, SUN TO WED, THU TO SAT, THE QUILLS, THE HAT), read by `tools/gensubtle.py --book shadow` as the
+  sixth open book beside THE SUBTLE LAYER, the third book and ORIGIN: every line measured against the reader's 94px
+  column, nine lines a page, 72 spreads, no entry ending on a stranded line, and its rules checked word by word -- the
+  game's craft rules whole, and a fable world's (nobody real named: the PDF's references stay in the PDF). Its page is
+  the PDF's parchment with the hat's night for ink and the virtues' gold for the marks; each section opens with a
+  Saying of the Tower in faint ink. **Still to do**: its twenty-four pictures, drawn for the reader's sixteen colours
+  (the plates, the daemons, and the diagrams redrawn small); its cover and bag icon; then `BOOK_SHADOW` in
+  `book_reader.c` and its item -- until then its `--write` refuses.
 - **Where it is found.** *Open, the user's call.* The tale is set in a tower, and the game has DAEMON TOWER, where the
   books are mended; it could also be the book that arrives once all seven virtues are held, or the one the GUIDE's
   margin points to.
