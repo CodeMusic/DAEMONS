@@ -127,3 +127,9 @@ C-455 (DRAFT): DAILY MENTIONS on TODAY, the MENTIONS book on the DREAM-BOOKS she
 v11.412.3: SONGMUSAI and LANGMUSAI in all four seasons from the build (front, back, icon, follower), each with its seasonal INDEX entry (DRAFT)
 
 ![21Nov2026 - T607 - SONGMUSAI and LANGMUSAI through the seasons - 24](21Nov2026%20-%20T607%20-%20SONGMUSAI%20and%20LANGMUSAI%20through%20the%20seasons%20-%2024.png)
+
+### 21Nov2026 - C455 - ENGINE ROOM LATER on the hub - 25
+
+C-455 on the hub (companion f25807f2): THE ENGINE ROOM's LATER with the four MENTIONS plans and DREAMS TOLD, each with its cadence; a gate has no NOW
+
+![21Nov2026 - C455 - ENGINE ROOM LATER on the hub - 25](21Nov2026%20-%20C455%20-%20ENGINE%20ROOM%20LATER%20on%20the%20hub%20-%2025.jpg)
