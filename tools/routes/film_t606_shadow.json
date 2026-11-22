@@ -1,0 +1,77 @@
+{
+ "rom": "debug",
+ "about": "T-606 THE SPELL LEFT RUNNING (DRAFT): found where INIT knelt on DAEMON TOWER's top floor once he has gone home -- the first step there with both halves held mends the book (the Unity Book lane's caution: nothing of the pickup may open during that burst) -- then opened from the BAG: its cover, its contents, its spreads.",
+ "stops": [
+  {
+   "stop": "the DEBUG build, continued: INIT gone home, both halves held, the book not yet found",
+   "steps": [
+    "load debug",
+    "repel 999",
+    "flag FLAG_GOT_SHADOW_BOOK 0",
+    "flag FLAG_RESCUED_MR_FUJI 1",
+    "flag FLAG_HIDE_TOWER_FUJI 1",
+    "flag FLAG_HIDE_TOWER_ROCKET_1 1",
+    "flag FLAG_HIDE_TOWER_ROCKET_2 1",
+    "flag FLAG_HIDE_TOWER_ROCKET_3 1",
+    "flag FLAG_UNITY_MENDED 0",
+    "flag FLAG_GOT_HERMETIC_LAYER 1",
+    "flag FLAG_GOT_EUDAIMON_LAYER 1"
+   ]
+  },
+  {
+   "stop": "the top floor: the first step mends the book, and the ball waits where INIT knelt",
+   "steps": [
+    "goto PokemonTower_7F 11 9",
+    "wait 60",
+    "shot arrived, before the first step",
+    "hold UP 16",
+    "finish",
+    "wait 60",
+    "shot after the mending",
+    "flagis FLAG_UNITY_MENDED 1",
+    "to 11 5",
+    "shot below the ball, where INIT knelt",
+    "look 11 4 3",
+    "flagis FLAG_GOT_SHADOW_BOOK 1",
+    "flagis FLAG_HIDE_SHADOW_BOOK 1",
+    "wait 30",
+    "shot the ball taken"
+   ]
+  },
+  {
+   "stop": "the book from the BAG: its cover, its contents and its first spreads",
+   "steps": [
+    "register ITEM_SHADOW_BOOK",
+    "press SELECT 1",
+    "wait 90",
+    "shot the cover",
+    "press A 1",
+    "wait 30",
+    "shot the contents",
+    "press A 1",
+    "press A 1",
+    "wait 30",
+    "shot To the Apprentice, the first spread",
+    "press RIGHT 1",
+    "wait 20",
+    "shot To the Apprentice, the second spread",
+    "press B 1",
+    "wait 20",
+    "press B 1",
+    "wait 20",
+    "press DOWN 1",
+    "wait 20",
+    "shot the contents, THE TALE",
+    "press A 1",
+    "press A 1",
+    "wait 30",
+    "shot THE CHORE",
+    "press B 1",
+    "press B 1",
+    "press B 1",
+    "wait 60",
+    "close"
+   ]
+  }
+ ]
+}
