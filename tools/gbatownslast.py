@@ -109,15 +109,18 @@ PICK_PIN = {"celadon_city": "4b6fa7867"}
 _PIN_TILES = {}
 
 LATER_LANDMARKS = {"celadon_city": [("CeladonCity", 9, 5, 9, 11, "VERDIGRIS DEPT. STORE (T-573)")]}
+#  single tiles of this tool's pick that a later tool redrew, and so owns now: the low wall's 45, 46, 57 and 58 under
+#  THE WALLED GARDEN's gatehouse, redrawn to match B TENDED BEDS (gbalurid3wall's JOIN, T-445; the user, 2026-11-22)
+LATER_TILES = {"fuchsia_city": {45, 46, 57, 58}}
 
 
 def later_landmark_tiles(ts):
-    """the secondary tiles the later landmarks' cells draw in the engine now"""
+    """the secondary tiles the later landmarks' cells draw in the engine now, and LATER_TILES"""
     boxes = LATER_LANDMARKS.get(ts, ())
     if not boxes:
-        return set()
+        return set(LATER_TILES.get(ts, ()))
     town = T.Town(ts)
-    out = set()
+    out = set(LATER_TILES.get(ts, ()))
     for m, x0, y0, w, h, _ in boxes:
         W = T.layouts()[m]["width"]
         for y in range(y0, y0 + h):
