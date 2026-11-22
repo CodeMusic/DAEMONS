@@ -25,3 +25,9 @@ v11.412.6 in the theatre: each building entered at its door, its card shown with
 v11.412.6 in the theatre: each building entered at its door, its card shown with its own name, then the room
 
 ![22Nov2026 - T445 - walking into SCORN SOLUTIONS and ERRATA - 4](22Nov2026%20-%20T445%20-%20walking%20into%20SCORN%20SOLUTIONS%20and%20ERRATA%20-%204.png)
+
+### 22Nov2026 - C432 - the weeks balance - 6
+
+C-432 (1): THE WEEK'S BALANCE on TODAY under the day's centre, opened -- Sunday lived by a step, +2 ARETE for the day's virtue; a scratch companion at phone width. DRAFT
+
+![22Nov2026 - C432 - the weeks balance - 6](22Nov2026%20-%20C432%20-%20the%20weeks%20balance%20-%206.png)
