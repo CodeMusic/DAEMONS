@@ -91,3 +91,9 @@ C-419 (3): ROVERCUB's opening played in F on the harp in PLAY FREELY -- it came 
 T-602 shiny songs (DRAFT): each line's song as its kind sings it, over the shiny's, the notes moved toward the shiny palette's colours
 
 ![22Nov2026 - T602 - shiny songs drafted - 5](22Nov2026%20-%20T602%20-%20shiny%20songs%20drafted%20-%205.png)
+
+### 22Nov2026 - C433 - the reward shelf - 14
+
+C-433 (1): ARETE on JOURNEY and THE REWARD SHELF -- An episode spent, ROVERCUB glad with you, Taken Nov 22 with UNDO; a scratch companion at phone width. DRAFT
+
+![22Nov2026 - C433 - the reward shelf - 14](22Nov2026%20-%20C433%20-%20the%20reward%20shelf%20-%2014.png)
