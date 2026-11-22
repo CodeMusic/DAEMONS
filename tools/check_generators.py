@@ -152,6 +152,7 @@ ARGS = {
     #  T-445: gbapreviews' --write refuses without --approved, so --writes never saw a card written. The user picked
     #  "PLANT A, TANOBY A" on 2026-11-11 (CARDS_APPROVED); `--cards --approved` writes those two into the plant's and
     #  MONEAN's card folders, so a sandboxed write changes nothing when the engine is right. The plain run keeps the report.
+    #  Since 2026-11-21 it also writes the seven TANOBY chambers' palettes beside MONEAN's picture (BAND, palette only).
     "gbapreviews": [[], ["--cards", "--approved"]],
     #  T-546: gbacaves' --write refuses without --approved, so --writes never saw it. The user picked "B LIGHT IN THE
     #  SEAMS" on 2026-11-11 (BLACKOUT_APPROVED); `--approved` writes every approved cave and lays THE BLACKOUT's B over
