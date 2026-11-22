@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""T-604 stage 1 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
+"""T-604 stages 1 and 2 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
 drawing already there (ears, crest, tail, drawers, wings), so it visibly colours in as it learns its part (T-597).
 
     python3 gfx/drafts/t604/scripts/t604_regions.py               # report each form: region, slots, coverage before/after
+    python3 gfx/drafts/t604/scripts/t604_regions.py --stage 2 ...  # the same for STAGE 2's twelve (FORMS2)
     python3 gfx/drafts/t604/scripts/t604_regions.py --draft       # write the drafts into gfx/drafts/t604/<NAME>/
     python3 gfx/drafts/t604/scripts/t604_regions.py --sheet DIR   # ... and the contact sheet into DIR
     python3 gfx/drafts/t604/scripts/t604_regions.py --built --sheet DIR   # the sheet from the engine as BUILT (after
@@ -103,6 +104,93 @@ FORMS = {
         slotmap={1: 6, 2: 6, 3: 8, 4: 8}, merge={6: 4}, ramp="hope"),
 }
 ORDER = list(FORMS)
+STAGE = 1
+
+#  STAGE 2 (the user, 2026-11-22: "T-604 stage 2"; DRAFT): twelve more, the later forms a player meets first or most
+#  -- the early routes' lines (PACKET, NIBBLE, PING, CRAWLER), the gym leaders' signatures (SURGE, SMOGSTACK, STACK's
+#  HEAP for BROCK, SCHEDULER for GIOVANNI), the line the story sells you (STUB at MT. MOON) and MT. MOON's own two.
+#  TODAY for these is the engine as it stands (BASE2, after stage 1): no form here was drawn by stage 1.
+BASE2_COMMIT = "bff3f856b"
+TYPE.update({"STRATUM": (158, 122, 78)})
+FORMS2 = {
+    "RELAY": dict(
+        why="PACKET line, stage 2 (ROUTE 1's bird; the rival's RELAY at CERULEAN): 4.6% waits",
+        region="the NECK, a pigeon's sheen", colour="F, a note its part sings (green sheen)",
+        base=g.pc_rgb(5),
+        front=R((17, 17, 47, 27)), back=R((20, 13, 46, 26)),
+        slotmap={1: 7, 2: 7, 3: 9, 4: 9}, merge={7: 8, 9: 8}, ramp="two"),
+    "BROADCAST": dict(
+        why="PACKET line, stage 3: 0.0% waits -- every colour carried",
+        region="the raised WINGS' flight feathers", colour="E, a note its part sings (gold)", base=g.pc_rgb(4),
+        front=R((3, 8, 14, 37), (36, 8, 60, 33)), back=R((3, 8, 18, 30), (42, 8, 62, 30)),
+        #  its dark moved to bronze: E's own dark sits 80 from PACKET's maroon (100,11,33) and would be CARRIED
+        dark=(120, 94, 20), slotmap={1: 7, 2: 7, 3: 8, 4: 10}, ramp=None),
+    "OVERFLOW": dict(
+        why="NIBBLE line, stage 2 (ROUTE 1's other daemon; the rival's): 3.9% waits",
+        region="a golden hamster's coat: the crown and flanks in front, the shoulders behind",
+        colour="D, a note its part sings (golden)", base=g.pc_rgb(2),
+        front=R((14, 5, 50, 17), (2, 17, 12, 48), (52, 17, 62, 48)), back=R((14, 8, 50, 24)),
+        slotmap={2: 7, 3: 7, 4: 10}, merge={7: 8}, ramp="two"),
+    "FLOOD": dict(
+        why="PING line, stage 2 (ROUTE 22 and 3's bird): 4.8% waits",
+        region="the WINGS, a kingfisher's blue", colour="G, a note its part sings (blue)", base=g.pc_rgb(7),
+        front=R((30, 16, 54, 40)), back=R((8, 12, 26, 30), (38, 12, 58, 30)),
+        slotmap={1: 6, 2: 6, 3: 9, 4: 9}, merge={6: 7}, ramp="two"),
+    "INDEXER": dict(
+        why="CRAWLER line, stage 3 (VIRIDIAN FOREST's): 0.8% waits; VECTOR is the new type",
+        region="the FOREWINGS' pale panels, a cinnabar moth's", colour="VECTOR, the new type, moved to vermilion",
+        #  not HOPE's coral: it sits within 80 of PENDING's dusty rose (192,121,134), which would CARRY it
+        base=(220, 80, 50),
+        front=R((4, 14, 16, 30), (48, 14, 60, 30)), back=R((10, 14, 24, 28), (46, 14, 60, 28)),
+        slotmap={1: 6, 2: 6, 3: 7, 4: 7}, merge={6: 7, 7: 8}, ramp="two"),
+    "SURGE": dict(
+        why="STATIC line, stage 3 (LT. SURGE's own): 2.7% waits",
+        region="the TAIL and the dark SADDLE down its back", colour="C#, a note its part sings, moved to amber",
+        #  C#'s own ember sits 41 from STATIC's red cheek (219,84,84), so it would be CARRIED; amber escapes
+        base=(226, 160, 44),
+        front=R((24, 26, 48, 46)), back=R((20, 16, 44, 40), (44, 20, 62, 40)),
+        slotmap={3: 7, 4: 10}, merge={7: 6}, ramp="two"),
+    "TRACER": dict(
+        why="ECHO line, stage 2 (MT. MOON and every cave after; KOGA's): 0.6% waits",
+        region="the WINGS' membranes, glowing like a tracer round", colour="Eb, a note its part sings (amber)",
+        base=g.pc_rgb(3),
+        front=R((0, 6, 14, 30), (45, 6, 63, 32)), back=R((0, 6, 20, 32), (44, 6, 63, 32)),
+        #  its dark moved off ECHO's olive (84,92,52): E-flat's own dark sits 39 from it, the same colour, and is CARRIED
+        dark=(100, 62, 10), slotmap={2: 9, 3: 9, 4: 10}, ramp="two"),
+    "STACK": dict(
+        why="HEAP line, stage 2 (BROCK's HEAP; ROCK TUNNEL, VICTORY ROAD): 0.8% waits",
+        region="the two BOULDERS at its sides (its arms): a stratum", colour="D, a note its part sings (rust)",
+        base=g.pc_rgb(2),
+        front=R((5, 36, 17, 50), (46, 36, 58, 50)), back=R((5, 36, 18, 50), (45, 36, 58, 50)),
+        slotmap={1: 8, 2: 8, 3: 9, 4: 10}, ramp=None),
+    "SMOGSTACK": dict(
+        why="EXHAUST line, stage 2 (KOGA's own; the MANSION): 4.7% waits",
+        region="the SMOKE above the stack, a yellow smog", colour="Eb, a note its part sings (smog)",
+        base=g.pc_rgb(3),
+        front=R((26, 2, 48, 15)), back=R((26, 2, 48, 15)),
+        slotmap={1: 9, 2: 9, 3: 10, 4: 10}, ramp="lomid"),
+    "ESCALATE": dict(
+        why="STUB line, stage 2 (the STUB sold at MT. MOON; GIOVANNI's; every rod): 4.8% waits; VECTOR is new",
+        region="the BELLY PLATES, the whole length of it (a red-bellied serpent)",
+        colour="VECTOR, the new type, lightened to salmon",
+        #  lighter and pinker than HOPE's coral: a warmer one sits within 80 of STUB's tan (162,135,83), and is CARRIED;
+        #  one slot, the palest of the body's (1), everywhere it is drawn -- a cut region read as a wound
+        base=(240, 110, 120),
+        front=R((0, 0, 63, 63)), back=R((0, 0, 63, 63)),
+        slotmap={1: 9}, ramp="one"),
+    "SCHEDULER": dict(
+        why="FORK line, stage 3 (GIOVANNI's): 2.9% waits; STRATUM is the new type",
+        region="the CHEST PLATE and SHOULDER PADS, in STRATUM", colour="STRATUM, the new type", base=TYPE["STRATUM"],
+        front=R((4, 34, 16, 50), (48, 34, 60, 50), (24, 40, 40, 50)), back=R((6, 20, 20, 36), (44, 20, 58, 36)),
+        #  its dark moved off FORK's olive (84,92,52): STRATUM's own dark sits 31 from it and is CARRIED
+        dark=(96, 56, 28), slotmap={1: 7, 2: 7, 3: 10, 4: 10}, merge={7: 8}, ramp="two"),
+    "ANOMALY": dict(
+        why="RESIDUAL line, stage 2 (MT. MOON's; the GAME CORNER's prize): 3.4% waits",
+        region="the HORNS and the WINGS", colour="E, a note its part sings (gold)", base=g.pc_rgb(4),
+        front=R((14, 6, 26, 18), (38, 6, 50, 18), (6, 24, 18, 44), (46, 24, 58, 44)),
+        back=R((16, 16, 26, 24), (40, 16, 50, 24), (12, 26, 22, 40), (44, 26, 54, 40)),
+        slotmap={1: 9, 2: 9, 3: 8, 4: 8}, merge={9: 10, 8: 7}, ramp="two"),
+}
 
 
 def pal_of(w, k):
@@ -128,6 +216,10 @@ def make(w, n):
         cols = {10: mid}
     elif spec["ramp"] == "two":         # mid and dark only: the light tone would sit within 80 of an earlier form's
         cols = {new[0]: mid, new[1]: dk}  #   lost accent and be CARRIED by gencolourbysong's "nearest to one"
+    elif spec["ramp"] == "one":         # one slot, the colour itself
+        cols = {new[0]: tuple(spec["base"])}
+    elif spec["ramp"] == "lomid":       # light and mid: a pale region (smoke, a belly) keeps its lightness
+        cols = {new[0]: lo, new[1]: mid}
     elif spec["ramp"] == "hope":        # mid on slot 6, slot 8's own dark red kept as the dark
         cols = {6: tuple(spec["base"]), 8: pal[8]}
     else:
@@ -260,7 +352,7 @@ def sheet(w, outdir):
     H = 70 + len(ORDER) * rowh + 30
     im = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(im)
-    d.text((12, 10), "T-604 stage 1 (DRAFT): a region in the new part's colours, recoloured from the drawing",
+    d.text((12, 10), "T-604 stage %d (DRAFT): a region in the new part's colours, recoloured from the drawing" % STAGE,
            fill=(20, 20, 24), font=big)
     d.text((12, 34), "% = share of the form's OWN part learned (gencolourbysong's maths, approach A: what the game shows). "
            "Front above, back below, 2x.", fill=(60, 60, 60), font=font)
@@ -277,13 +369,14 @@ def sheet(w, outdir):
     y = 70
     for n in ORDER:
         k = w.by_name[n]
-        b, a, ns, _, _ = summary(w, n)
+        b, a, ns, gained, freed = summary(w, n)
         f = FORMS[n]
         d.text((12, y), n, fill=(20, 20, 24), font=big)
         txt = ["%s, %s" % ("/".join(w.sp[k]["types"]), w.rows[k]["key"]), f["region"], "colour: " + f["colour"],
                "waits, front: %.0f%% -> %.0f%%" % (100 * b[0], 100 * a[0]),
                "waits, back:  %.0f%% -> %.0f%%" % (100 * b[1], 100 * a[1]),
-               "new slots: " + " ".join(str(i) for i, *_ in ns)]
+               "new slots: " + " ".join(str(i) for i, *_ in ns),
+               "slots: +%s -%s%s" % (gained or "[]", freed or "[]", " merged %s" % f["merge"] if f.get("merge") else "")]
         yy = y + 24
         for t in txt:
             for chunk in [t[i:i + 32] for i in range(0, len(t), 32)]:
@@ -301,7 +394,7 @@ def sheet(w, outdir):
         y += rowh
     d.text((12, H - 24), "Recolours only: the drawing is unchanged; only which palette slot a region's pixels use, and those "
            "slots' colours. Icons and followers: note only.", fill=(80, 80, 80), font=font)
-    path = os.path.join(outdir, "t604_stage1.png")
+    path = os.path.join(outdir, "t604_stage%d.png" % STAGE)
     im.save(path)
     print("t604: wrote %s" % path)
 
@@ -325,6 +418,9 @@ def install():  # noqa: the World built here reads names only
 
 
 def main():
+    global FORMS, ORDER, STAGE, BASE_COMMIT
+    if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "2":
+        FORMS, ORDER, STAGE, BASE_COMMIT = FORMS2, list(FORMS2), 2, BASE2_COMMIT
     w = g.World()
     if "--base" in sys.argv:
         return file_base(w)
