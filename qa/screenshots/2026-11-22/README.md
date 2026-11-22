@@ -145,3 +145,27 @@ Played in the theatre on the release's debug ROM (v11.412.7): DAEMON TOWER's top
 Played in the theatre (v11.412.7 debug): the SHADOW BOOK from the bag -- its cover, contents, A WORD FIRST's spreads with its picture and folios, THE TALE's contents and THE CHORE (every word DRAFT).
 
 ![22Nov2026 - T606 - THE SPELL LEFT RUNNING from the bag, in the theatre - 21](22Nov2026%20-%20T606%20-%20THE%20SPELL%20LEFT%20RUNNING%20from%20the%20bag%2C%20in%20the%20theatre%20-%2021.png)
+
+### 22Nov2026 - C321 - THE COMPANIONs new pages - 22
+
+THE COMPANION reprinted (84 pages): THE WEEK'S BALANCE and MENTIONS FROM YOUR DAEMON on TODAY, the DREAM-BOOKS in the LIBRARY (DRAFT)
+
+![22Nov2026 - C321 - THE COMPANIONs new pages - 22](22Nov2026%20-%20C321%20-%20THE%20COMPANIONs%20new%20pages%20-%2022.png)
+
+### 22Nov2026 - C321 - THE COMPANIONs new pages - 23
+
+THE COMPANION reprinted (84 pages): THE WEEK'S BALANCE and MENTIONS FROM YOUR DAEMON on TODAY, the DREAM-BOOKS in the LIBRARY (DRAFT)
+
+![22Nov2026 - C321 - THE COMPANIONs new pages - 23](22Nov2026%20-%20C321%20-%20THE%20COMPANIONs%20new%20pages%20-%2023.png)
+
+### 22Nov2026 - C321 - THE COMPANIONs new pages - 24
+
+THE COMPANION reprinted (84 pages): THE WEEK'S BALANCE and MENTIONS FROM YOUR DAEMON on TODAY, the DREAM-BOOKS in the LIBRARY (DRAFT)
+
+![22Nov2026 - C321 - THE COMPANIONs new pages - 24](22Nov2026%20-%20C321%20-%20THE%20COMPANIONs%20new%20pages%20-%2024.png)
+
+### 22Nov2026 - C321 - THE COMPANIONs new pages - 25
+
+THE COMPANION reprinted (84 pages): THE WEEK'S BALANCE and MENTIONS FROM YOUR DAEMON on TODAY, the DREAM-BOOKS in the LIBRARY (DRAFT)
+
+![22Nov2026 - C321 - THE COMPANIONs new pages - 25](22Nov2026%20-%20C321%20-%20THE%20COMPANIONs%20new%20pages%20-%2025.png)
