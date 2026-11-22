@@ -193,3 +193,15 @@ C-433 (4) and (5): a lesson's QUIZ marked by the words alone (1 of 2, not yet pa
 C-433 (4) and (5): a lesson's QUIZ marked by the words alone (1 of 2, not yet passed); MINE: a Garden form of your own, a space made from it, and a watering kept in it with its Litres; a scratch companion at phone width. DRAFT
 
 ![22Nov2026 - C433 - quiz and mine - 29](22Nov2026%20-%20C433%20-%20quiz%20and%20mine%20-%2029.png)
+
+### 22Nov2026 - T604 - stage 1, nine later forms, built - 30
+
+v11.412.8: T-604 stage 1 decoded from the built ROM, each at its whole part's colours -- ROVERSEER's gold ears, ROVERBYTE's SIGNAL cap, RUBRIC's red pen, CANON's brass drawers, LOCUS's amber tail, MANIFOLD's mulberry, REFORGE's ember forge, LANGMUSAI's coral, HOPE's wing tips (DRAFT)
+
+![22Nov2026 - T604 - stage 1, nine later forms, built - 30](22Nov2026%20-%20T604%20-%20stage%201%2C%20nine%20later%20forms%2C%20built%20-%2030.png)
+
+### 22Nov2026 - T604 - stage 1, nine later forms, built - 31
+
+v11.412.8: T-604 stage 1 decoded from the built ROM, each at its whole part's colours -- ROVERSEER's gold ears, ROVERBYTE's SIGNAL cap, RUBRIC's red pen, CANON's brass drawers, LOCUS's amber tail, MANIFOLD's mulberry, REFORGE's ember forge, LANGMUSAI's coral, HOPE's wing tips (DRAFT)
+
+![22Nov2026 - T604 - stage 1, nine later forms, built - 31](22Nov2026%20-%20T604%20-%20stage%201%2C%20nine%20later%20forms%2C%20built%20-%2031.png)
