@@ -175,3 +175,9 @@ v11.412.4: DEBUG GAME EVENTS USE THE ITEM ON SLOT 1 with a WAVEFORM -- before, t
 v11.412.4: a WAVEFORM used from the bag on a MUSAI evolves it and returns to the overworld (never broken)
 
 ![21Nov2026 - T608 - the bags path - 32](21Nov2026%20-%20T608%20-%20the%20bags%20path%20-%2032.png)
+
+### 21Nov2026 - C468 - Game HAT build on the Mac - 33
+
+C-468: the Game HAT build on the Mac -- DOWN then A on HOME opens CARE, its buttons read as the pages' keys
+
+![21Nov2026 - C468 - Game HAT build on the Mac - 33](21Nov2026%20-%20C468%20-%20Game%20HAT%20build%20on%20the%20Mac%20-%2033.png)
