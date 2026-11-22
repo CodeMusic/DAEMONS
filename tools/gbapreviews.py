@@ -1083,6 +1083,9 @@ CARDS_DRAFT = os.path.join(ROOT, "gfx", "drafts", "t445_landmarks")
 CARDS_APPROVED = {"power_plant_untended_a", "monean_chamber_carved_a", "cerulean_cave_becalmed_a",
                   "rock_tunnel_threads_b",  # the user, 2026-11-11: PLANT A, TANOBY A; DOLDRUM A BECALMED; THE BLACKOUT B only the threads (T-546)
                   "safari_zone_overwall_b"}  # the user, 2026-11-14: THE WALLED GARDEN, B over the wall (T-540)
+#  the user, 2026-11-21 (multiple choice): the TANOBY chambers get a card each, BAND -- today's picture, each chamber's
+#  own palette (TANOBY_CHAMBERS below; written palette-only, see TANOBY_PAL)
+CARDS_APPROVED |= {"tanoby_%s_band" % n for n in ("monean", "liptoo", "weepth", "dilford", "scufib", "rixy", "viapois")}
 _PLANT_UNTENDED = dict(
     folder="power_plant", banner_from="power_plant", init="graded", title="KEEPALIVE PLANT, growing untended",
     #  pair 5 B's own colours (power_plant row 7's metal, row 8's three greens and moss) -- no status lights
@@ -1095,7 +1098,8 @@ _PLANT_UNTENDED = dict(
     neg="status lights, glowing lights, lamps, screens, people")
 _TANOBY_CARVED = dict(
     folder="monean_chamber", banner_from="monean_chamber", init="graded", title="TANOBY, carved, not lit",
-    #  pair 5 A: tanoby_ruins rows 7/8's pale sandstone and its dark cut; MONEAN's pigment (row 8 slot 14)
+    #  pair 5 A: tanoby_ruins rows 7/8's pale sandstone and its dark cut; VIAPOIS's pigment (row 8 slot 14 -- MONEAN's
+    #  is row 11 slot 15, grey-green): the one painting all seven chambers' cards share, each recoloured by its BAND
     rock=[(24, 18, 18), (70, 54, 44), (130, 102, 72), (180, 150, 104), (204, 176, 124), (236, 214, 164),
           (244, 232, 200)],
     leaf=[(70, 96, 58), (106, 140, 82), (150, 172, 120)], white="keep",
@@ -1145,21 +1149,24 @@ CARDS["pokemon_tower_dotscreen_b"] = dict(CARDS["pokemon_tower_dotscreen_a"], se
 CARDS["pokemon_mansion_rackhall_c"] = dict(CARDS["pokemon_mansion_rackhall_a"], seed=4510, denoise=0.62)
 CARDS["pokemon_tower_dotscreen_c"] = dict(CARDS["pokemon_tower_dotscreen_a"], seed=4511, denoise=0.62)
 
-#  THE TANOBY CHAMBERS, a card each? (T-445 DRAFT 2026-11-21, the user: "the TANOBY chambers next"). Vanilla's seven
+#  THE TANOBY CHAMBERS, a card each (T-445, 2026-11-21, the user: "the TANOBY chambers next"). Vanilla's seven
 #  chamber entries (MPS_MONEAN_CHAMBER .. MPS_VIAPOIS_CHAMBER) share ONE picture, monean_chamber -- tiles, tilemap AND
 #  palette -- and so does our build (TANOBY carved, not lit A, engine fc22a68da/ba1c0ac79). But T-447 pair 5 gave
 #  each chamber its own colour, a band of pigment along its back wall (tanoby_ruins rows 8..12, slots 14/15; read off
 #  reviewsheet's render of each chamber, 672 or 612 pixels each), and the shared card's band is ROSE -- VIAPOIS's, not
-#  MONEAN's (the comment on _TANOBY_CARVED says "MONEAN's pigment (row 8 slot 14)"; row 8 slot 14 is VIAPOIS's;
-#  MONEAN's is row 11 slot 15, grey-green). Two ways to a card each, beside today's shared card:
+#  MONEAN's (the comment on _TANOBY_CARVED said "MONEAN's pigment (row 8 slot 14)"; row 8 slot 14 is VIAPOIS's;
+#  MONEAN's is row 11 slot 15, grey-green; corrected 2026-11-21). Two ways to a card each, beside today's shared card:
 #    BAND  (tanoby_<chamber>_band): today's card exactly -- its painting, tiles and tilemap -- with the band's own
 #          palette index (forced, so it holds the band alone) set to the chamber's colour. In the engine that is
 #          seven palettes over one set of tiles: +64 bytes a chamber, no tiles.
 #    OWN   (tanoby_<chamber>_own): the same start image with the chamber's colour as the band, painted on its own
 #          seed (4611..4617), so each chamber is its own painting of the shrine: seven tiles/tilemap pairs (each about
 #          the size of today's card), seven folders and INCBINs.
-#  Draft only: none is in CARDS_APPROVED, and a chamber's own folder would be a NEW engine folder (the write is not
-#  wired for it). `--cards --only tanoby_...` drafts them and the sheet t445t_chambers.png.
+#  The user (2026-11-21) picked BAND: the seven are in CARDS_APPROVED and --cards --write --approved writes each as a
+#  PALETTE ONLY, graphics/map_preview/monean_chamber/<chamber>.pal (palette 13 the chamber's, 14 vanilla's; the build
+#  makes <chamber>.gbapal, which each chamber's sMapPreviewScreenData entry points .palptr at). The tiles and tilemap
+#  stay the one shared set monean_chamber_carved_a writes, and the write refuses a BAND whose tiles or tilemap differ
+#  from it. The OWN candidates stay drafts. `--cards --only tanoby_...` drafts them and the sheets t445t_chambers_*.
 TANOBY_CHAMBERS = [   # (name as the game prints it, mapsec, the band's colour as built, a word for the prompt)
     ("MONEAN", "MAPSEC_MONEAN_CHAMBER", (139, 148, 139), "faded grey-green"),
     ("LIPTOO", "MAPSEC_LIPTOO_CHAMBER", (222, 222, 230), "chalk white"),
@@ -2381,8 +2388,14 @@ CARDS.update({
 
 
 #  the engine folders an approved candidate writes, and which candidate: at most one per folder (after every CARDS entry)
-CARDS_TAKEN = {CARDS[c]["folder"]: c for c in sorted(CARDS_APPROVED)}
-assert len(CARDS_TAKEN) == len(CARDS_APPROVED), "two approved CARDS candidates for one engine card"
+CARDS_TAKEN = {CARDS[c]["folder"]: c for c in sorted(CARDS_APPROVED) if CARDS[c].get("tanoby") != "band"}
+
+
+def tanoby_pal_path(folder):
+    """a TANOBY chamber's BAND palette, beside the shared picture: monean_chamber/<chamber>.pal"""
+    return os.path.join(MPS, CARDS[folder]["folder"], "%s.pal" % folder.split("_")[1])
+assert len(CARDS_TAKEN) == len([c for c in CARDS_APPROVED if CARDS[c].get("tanoby") != "band"]), \
+    "two approved CARDS candidates for one engine card"     # a TANOBY BAND writes a palette, never a picture
 
 
 def blackout_card_sheet(rows, path):
@@ -2559,7 +2572,14 @@ def main():
                 li.save(os.path.join(d, "preview_light%d.png" % n))
             json.dump({"mapsec": sec, "name": nm[sec], "from": where, "num_tiles": len(tiles)},
                       open(os.path.join(d, "draft.json"), "w"), indent=1)
-        if A.write and (not A.landmarks or folder in LANDMARK_APPROVED) and (not A.places or folder in PLACES_APPROVED) \
+        if A.write and A.cards and cfg(folder).get("tanoby") == "band" and folder in CARDS_APPROVED:
+            shared = build("monean_chamber_carved_a", sec)         # the one picture all seven show
+            if shared[0] != tiles or shared[1] != m:
+                print("  !! %s: tiles or tilemap differ from the shared picture: not written" % folder)
+                return 1
+            write_pal(pal, tanoby_pal_path(folder))                  # palette only: 13 the chamber's, 14 vanilla's
+            print("      written %s (palette only)" % tanoby_pal_path(folder))
+        elif A.write and (not A.landmarks or folder in LANDMARK_APPROVED) and (not A.places or folder in PLACES_APPROVED) \
                 and (folder not in BATCH_G or folder in BATCH_G_APPROVED) and (not A.cards or folder in CARDS_APPROVED):
             dest = cfg(folder).get("folder", folder)            # a CARDS candidate writes its engine card's folder
             d = os.path.join(MPS, dest)
