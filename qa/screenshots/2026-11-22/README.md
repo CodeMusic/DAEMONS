@@ -97,3 +97,15 @@ T-602 shiny songs (DRAFT): each line's song as its kind sings it, over the shiny
 C-433 (1): ARETE on JOURNEY and THE REWARD SHELF -- An episode spent, ROVERCUB glad with you, Taken Nov 22 with UNDO; a scratch companion at phone width. DRAFT
 
 ![22Nov2026 - C433 - the reward shelf - 14](22Nov2026%20-%20C433%20-%20the%20reward%20shelf%20-%2014.png)
+
+### 22Nov2026 - C433 - recipes - 15
+
+C-433 (2): RECIPES -- a BBC Good Food page read into a new recipe (checked before it is kept); then COOKED, the daemon's own feed line and Cooked today with UNDO; a scratch companion at phone width. DRAFT
+
+![22Nov2026 - C433 - recipes - 15](22Nov2026%20-%20C433%20-%20recipes%20-%2015.png)
+
+### 22Nov2026 - C433 - recipes - 16
+
+C-433 (2): RECIPES -- a BBC Good Food page read into a new recipe (checked before it is kept); then COOKED, the daemon's own feed line and Cooked today with UNDO; a scratch companion at phone width. DRAFT
+
+![22Nov2026 - C433 - recipes - 16](22Nov2026%20-%20C433%20-%20recipes%20-%2016.png)
