@@ -19,3 +19,9 @@ DRAFT (branch shadow-book): THE SPELL LEFT RUNNING, a book of shadows -- the cov
 DRAFT (branch shadow-book): THE SPELL LEFT RUNNING's identity -- the frontispiece map, the tale's opening (the hat over the chapter, the Sorcerer's saying, the gold drop cap, the water gauge), a lesson with the Apprentice's note in the margin, Sunday's incantation and SPELL CHECK, the five quills' incantation, and the Apprentice's own spell card.
 
 ![21Nov2026 - T606 - THE SPELL LEFT RUNNING, its identity - 3](21Nov2026%20-%20T606%20-%20THE%20SPELL%20LEFT%20RUNNING%2C%20its%20identity%20-%203.png)
+
+### 21Nov2026 - T606 - THE SPELL LEFT RUNNING in the games reader, a mock - 4
+
+DRAFT, a MOCK, not a ROM screenshot (branch shadow-book): THE SPELL LEFT RUNNING's game version as the reader's open book would draw it -- the contents, THE FIRST SPELL's opening and next spread, SUNDAY's opening and THE HAT ON THE PEG's. The font, the page's sixteen colours and the lines are the game's (gensubtle --book shadow); the pictures are the PDF's plates brought down to the box, to be redrawn for the reader.
+
+![21Nov2026 - T606 - THE SPELL LEFT RUNNING in the games reader, a mock - 4](21Nov2026%20-%20T606%20-%20THE%20SPELL%20LEFT%20RUNNING%20in%20the%20games%20reader%2C%20a%20mock%20-%204.png)
