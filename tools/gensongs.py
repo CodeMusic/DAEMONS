@@ -49,7 +49,7 @@ import genuisounds as gs                                   # PALETTE (read only)
 
 OUT_DIR = os.path.join(ROOT, "audio", "drafts", "t594_songs")
 
-# THE KEYS (T-594, DRAFT -- the key table is the user's to approve): a type's tonic is the note whose colour is
+# THE KEYS (T-594; the key table approved as drafted by the user, 2026-11-23): a type's tonic is the note whose colour is
 # nearest the type's own (tools/gbasprite.py TYPE_COLOR), its mode its character. CONTENT and CONTEXT are a RELATIVE
 # pair -- the same seven notes, another centre -- and C major is every white key with nothing added.
 KEYS = {

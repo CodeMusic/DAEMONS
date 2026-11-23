@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.413 — 2026-11-23
+
+- **9.36 THE SONG -- the keys approved** (T-594; the user, 2026-11-23): the eighteen types' keys as drafted in v11.407 -- each tonic the note whose colour is nearest the type's own, CONTENT C major, CONTEXT its relative A minor, six spare -- are the user's now, no longer DRAFT. Nothing rebuilt: every song is already in them.
+- Section 10: one Settled entry.
+
 ## v11.412 — 2026-11-20
 
 - Recorded from release v11.411.1 (d010b1ea, engine d7c977174), which sealed v11.410.x:

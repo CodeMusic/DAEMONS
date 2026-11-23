@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.412**
+**A total conversion — the living design bible, v11.413**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9317,7 +9317,7 @@ about itself* (rule 6).
 
 ***In the engine (T-595, released in v11.405.1).*** **On the INDEX page, START plays SONG: a past form's song sung whole, the current form's as it knows it. A daemon's party menu gains SING. Evolution sings the full part before the change, and where a next form waits the song ends on an allusion to it.** *A daemon sings through the HARP's voices (the tune on one, the bass on another); each note not yet learned flickers toward its pitch over a hiss tinted by the share learned, which grows with experience. The battle cry stays the sampled cry. 398 parts, about 35 KB, written by `gensongs.py --write` (`src/daemon_song.c`). DRAFT.*
 
-***The keys*** (*T-594, DRAFT -- the table is the user's to approve; the user: "a daemons type could determine the key for which their song is in"*). **A type's tonic is the note whose SYNESTHESIA colour is nearest the type's own (9.4), and its mode is its character.** *CONTENT and CONTEXT are a relative pair -- the same seven notes heard from another centre -- and C major is every white key with nothing added.* Six keys are spare: A major, B-flat major, C minor, C-sharp minor, E minor, G-sharp minor.
+***The keys*** (*T-594; the table approved as drafted by the user, 2026-11-23; the user: "a daemons type could determine the key for which their song is in"*). **A type's tonic is the note whose SYNESTHESIA colour is nearest the type's own (9.4), and its mode is its character.** *CONTENT and CONTEXT are a relative pair -- the same seven notes heard from another centre -- and C major is every white key with nothing added.* Six keys are spare: A major, B-flat major, C minor, C-sharp minor, E minor, G-sharp minor.
 
 | Type | Key | Why | Daemons (first type) |
 |---|---|---|---|
@@ -9363,6 +9363,7 @@ about itself* (rule 6).
 
 ### Settled
 
+- **The eighteen type keys approved (T-594, 2026-11-23)** — the user's yes to 9.36's table as drafted: each type's tonic the note whose SYNESTHESIA colour is nearest its own, its mode its character, CONTENT C major and CONTEXT its relative A minor, six keys spare. Nothing is rebuilt: every song in the game and the companion is already in these keys. 9.36.
 - **Released in v11.411.1 (d010b1ea, 2026-11-20, sealing v11.410.x)** — T-452's arm-C trial viewer, ART C: OLD / NEW, in the DEBUG build only: the 28 daemons arm C redrew, old against new in a battle-like scene, for the user's keep or revert; the release ROMs byte-identical. 9.31.
 - **Released in v11.410.1 (fd731f7a, 2026-11-20, sealing v11.409.x)** — TRAINER TOWER's face from its roof, THE TIME POSTED (T-601, the user's pick AFT, DRAFT art): a storey bar a floor, each window a stopwatch. 9.29.
 - **Released in v11.409.1 (61bca9d1, 2026-11-19, sealing v11.408.x)** — play a daemon's song and it comes (T-598, DRAFT): a SEEN daemon's opening played on PLAY summons it to sing and go, never caught; its quotation waits for T-599, the summon remembered so the INDEX shows it once written. 9.36.
