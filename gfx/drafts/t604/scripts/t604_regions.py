@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""T-604 stages 1, 2 and 3 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
+"""T-604 stages 1 to 4 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
 drawing already there (ears, crest, tail, drawers, wings), so it visibly colours in as it learns its part (T-597).
 
     python3 gfx/drafts/t604/scripts/t604_regions.py               # report each form: region, slots, coverage before/after
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 2 ...  # the same for STAGE 2's twelve (FORMS2)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 3 ...  # ... and STAGE 3's fifteen (FORMS3)
+    python3 gfx/drafts/t604/scripts/t604_regions.py --stage 4 ...  # ... and STAGE 4's fifteen (FORMS4)
     python3 gfx/drafts/t604/scripts/t604_regions.py --draft       # write the drafts into gfx/drafts/t604/<NAME>/
     python3 gfx/drafts/t604/scripts/t604_regions.py --sheet DIR   # ... and the contact sheet into DIR
     python3 gfx/drafts/t604/scripts/t604_regions.py --built --sheet DIR   # the sheet from the engine as BUILT (after
@@ -329,6 +330,135 @@ FORMS3 = {
         cols={9: (150, 125, 220), 10: (80, 55, 150)}),
 }
 
+#  STAGE 4 (the user, 2026-11-22: "T-604 stage 4"; DRAFT): fifteen more, by how often a player meets them -- the water
+#  and fishing lines (SEADRA, TENTACRUEL, SEAKING, GOLDUCK), the common route and cave lines (PERSIAN, SANDSLASH,
+#  PRIMEAPE, PARASECT, HYPNO), the POWER PLANT's two, the trainer-class staples (ARBOK for ROCKET, HITMONCHAN's dojo
+#  line) and the rival's own (KADABRA, EXEGGUTOR). TODAY is the engine after stage 3 (BASE4): no form here was drawn
+#  by stages 1-3. Every colour is given exactly ("cols"), each checked against the carry rule by the report.
+BASE4_COMMIT = "954a6c817"
+FORMS4 = {
+    "BACKPRESS": dict(
+        why="BOTTLENECK line, stage 2 (every rod from the SUPER ROD on; 18 trainers, the swimmers'): 0.0% waits",
+        region="the CREST of spines behind its head and the little fins on top, sea-green",
+        colour="F, a note its part sings (sea-green)", base=g.pc_rgb(5),
+        front=R((6, 4, 19, 38), (22, 1, 46, 10)), back=R((22, 12, 30, 44), (30, 6, 48, 11)),
+        slotmap={1: 8, 2: 8, 3: 9, 4: 10}, ramp="cols",
+        cols={8: (130, 200, 140), 9: (63, 154, 85), 10: (30, 90, 50)}),
+    "DRAGNET": dict(
+        why="DRIFTNET line, stage 2 (the sea routes' commonest: 28 surfing tables): 4.2% waits",
+        region="the BELL's crown, a moon-jelly violet", colour="Bb, a note its part sings (violet)",
+        base=g.pc_rgb(10),
+        front=R((12, 5, 52, 14)), back=R((12, 8, 54, 15)),
+        #  one tan of the rim folded into its neighbour (15 pixels) to free a slot; the navy shading stays
+        slotmap={1: 7, 2: 7, 3: 10}, merge={7: 8}, ramp="cols",
+        #  the light violet pinker than Bb's own: a bluer one sits within 40 of the body's blue (DRIFTNET's), CARRIED
+        cols={7: (190, 135, 230), 10: (110, 75, 180)}),
+    "UPSTREAM": dict(
+        why="SPAWN line, stage 2 (the GOOD ROD's catch everywhere; 22 trainers): 0.0% waits",
+        region="the FINS and the TAIL, a goldfish's orange", colour="C# (D-flat), a note its part sings (orange)",
+        base=g.pc_rgb(1),
+        front=R((46, 10, 62, 38), (20, 39, 34, 54), (18, 6, 40, 13)),
+        back=R((2, 30, 20, 46), (20, 14, 46, 20), (28, 44, 34, 52), (42, 44, 50, 52)),
+        slotmap={1: 7, 2: 7, 3: 10, 4: 10}, ramp="cols",
+        cols={7: (245, 150, 90), 10: (200, 80, 40)}),
+    "HANDLER": dict(
+        why="FAULT line, stage 2 (21 tables, land and water; the SEAFOAM and SAFARI routes): 0.5% waits",
+        region="the WINGS' flight feathers, a mallard's violet speculum", colour="Bb, a note its part sings (violet)",
+        base=g.pc_rgb(10),
+        front=R((2, 17, 19, 36), (37, 17, 62, 36)), back=R((2, 17, 24, 36), (42, 17, 62, 36)),
+        #  the wing-edge mauve (16 pixels) folded into the navy dark to free a slot
+        slotmap={1: 7, 2: 7, 3: 8, 4: 8}, merge={7: 4}, ramp="cols",
+        #  the light violet pinker than Bb's own: a bluer one sits within 40 of the body's blue (FAULT's), CARRIED
+        cols={7: (185, 135, 230), 8: (95, 65, 175)}),
+    "TRACKER": dict(
+        why="COOKIE line, stage 2 (14 route tables; 18 trainers): 1.7% waits",
+        region="a colourpoint cat: the EARS and the TAIL, and its tabby marks, in ginger",
+        colour="D, a note its part sings (ginger)", base=g.pc_rgb(2),
+        front=R((4, 0, 16, 13), (27, 4, 40, 15), (44, 8, 60, 42)),
+        back=R((16, 4, 25, 15), (37, 4, 46, 15), (14, 48, 50, 57)),
+        #  the eyes' brightest green folded into the next (8 pixels); the violet tabby marks (slot 9) turn ginger too
+        slotmap={1: 6, 2: 6, 3: 9, 4: 9}, merge={6: 7}, ramp="cols",
+        cols={6: (225, 150, 85), 9: (160, 85, 35)}),
+    "PARTITION": dict(
+        why="SECTOR line, stage 2 (ROUTE 4 and MT. MOON's side; 16 trainers): 0.0% waits",
+        region="the top row of its ARMOUR PLATES, rust", colour="D, a note its part sings (rust)",
+        base=g.pc_rgb(2),
+        front=R((8, 8, 52, 19), (8, 19, 36, 27)), back=R((10, 4, 58, 22)),
+        slotmap={1: 9, 2: 9, 3: 10}, ramp="cols",
+        cols={9: (225, 150, 95), 10: (170, 85, 40)}),
+    "LIVELOCK": dict(
+        why="PREEMPT line, stage 2 (ROUTE 22 on; 17 trainers, the fighters'): 8.6% waits",
+        region="the TRUNKS, a boxer's violet", colour="Bb, a note its part sings (violet)",
+        base=g.pc_rgb(10),
+        front=R((14, 44, 48, 55)), back=R((14, 34, 50, 47)),
+        #  the gloves' middle red folded into the bright one (a two-tone glove); one violet, the dark stays
+        slotmap={2: 9, 3: 9}, merge={9: 8}, ramp="cols",
+        cols={9: (125, 85, 200)}),
+    "OUTBREAK": dict(
+        why="WORM line, stage 2 (ROCKET's staple: 15 trainers): 1.7% waits",
+        region="the HOOD: its flaps and the crown's bands, a plum marking", colour="C, a note its part sings, moved to plum",
+        base=(150, 70, 150),
+        front=R((2, 24, 16, 52), (48, 24, 62, 52), (18, 0, 46, 12)), back=R((12, 4, 32, 28)),
+        slotmap={2: 10, 3: 10}, ramp="cols", cols={10: (150, 70, 150)}),
+    "QUORUM": dict(
+        why="SENTINEL line, stage 2 (the POWER PLANT's; 10 trainers): 0.0% waits, no accent at all",
+        region="the three EYES' irises in front, the spheres' shadowed sides behind, in brass",
+        colour="D#, a note its part sings, moved to brass",
+        #  D#'s own amber sits within 80 of SENTINEL's pinks, which QUORUM lost: CARRIED. Brighter brass escapes.
+        base=(195, 150, 40),
+        front=R((25, 9, 39, 24), (13, 30, 29, 45), (35, 30, 51, 45)), back=R((0, 0, 63, 63)),
+        #  the light brass drawn in front too (the iris's inner ring): a slot only the back draws is never greyed
+        slotmap={3: 6, 4: 7}, slotmap_back={3: 6, 4: 7}, ramp="cols",
+        cols={6: (235, 200, 90), 7: (195, 150, 40)}),
+    "BREAKER": dict(
+        why="FUSE line, stage 2 (the POWER PLANT's; 14 trainers): 8.3% waits",
+        region="the CAP of its shell, a charge's violet (a two-tone ball)", colour="A#, a note its part sings (violet)",
+        base=(130, 90, 210),
+        front=R((6, 2, 58, 15)), back=R((6, 6, 60, 18)),
+        #  one violet, the dark teal lines (its cracks) kept over it: mapping only the mid tones left it blotched
+        slotmap={1: 10, 2: 10, 3: 10}, ramp="cols", cols={10: (130, 90, 210)}),
+    "BUSYWAIT": dict(
+        why="LULL line, stage 2 (ROUTE 11; 11 trainers, the psychics'): 0.0% waits",
+        region="the EARS and the dark FLANK down its side, a hypnotist's gold", colour="D, a note its part sings, moved to gold",
+        base=g.pc_rgb(4),
+        front=R((12, 8, 25, 54)), back=R((38, 8, 52, 54)),
+        slotmap={3: 7, 4: 9}, ramp="cols",
+        cols={7: (215, 175, 60), 9: (140, 100, 25)}),
+    "ROOTKIT": dict(
+        why="PAYLOAD line, stage 2 (MT. MOON's and the SAFARI ZONE's, 8 tables): 0.0% waits, no accent at all",
+        region="the CAP, a toadstool's amber shading (its pale spots stay)",
+        colour="D#, a note its part sings, moved to amber",
+        #  not PAYLOAD's red (ROOTKIT lost it): a red-orange sits within 80 of it and is CARRIED
+        base=(235, 150, 60),
+        front=R((6, 12, 58, 32)), back=R((4, 8, 60, 33)),
+        slotmap={2: 6, 3: 7}, ramp="cols",
+        cols={6: (235, 150, 60), 7: (175, 110, 30)}),
+    "INFERENCE": dict(
+        why="HUNCH line, stage 2 (the rival's from SS ANNE to SILPH CO.; 17 trainers): 10.0% waits",
+        region="the EARS (inside in front, the tips behind) and the TAIL's brush, gold", colour="E, a note its part sings (gold)",
+        base=g.pc_rgb(4),
+        front=R((13, 11, 22, 21), (34, 11, 42, 21)),
+        back=R((20, 4, 28, 13), (36, 4, 44, 13), (22, 46, 38, 60)),
+        #  the spoon's darkest red folded into the next (12 pixels) to free a slot
+        slotmap={1: 9}, slotmap_back={1: 9, 2: 9, 3: 9}, merge={9: 8}, ramp="cols", cols={9: (215, 170, 60)}),
+    "ENSEMBLE": dict(
+        why="BOOTSTRAP line, stage 2 (the rival's and the CHAMPION's; 10 trainers): 9.5% waits",
+        region="the two side HEADS, coconut brown", colour="D, a note its part sings, moved to coconut",
+        #  BOOTSTRAP's yellows and oranges are lost: a gold or orange is CARRIED. A brown 80 off them escapes.
+        base=(200, 160, 130),
+        front=R((6, 1, 22, 15), (38, 1, 54, 15)), back=R((8, 1, 25, 15), (38, 1, 56, 15)),
+        slotmap={1: 6, 2: 6, 3: 10, 4: 10}, merge={6: 7}, ramp="cols",
+        cols={6: (200, 160, 130), 10: (130, 90, 55)}),
+    "REBUTTAL": dict(
+        why="PREMISE line, stage 2 (the FIGHTING DOJO's prize; 12 trainers): 1.2% waits",
+        region="the GLOVES, a boxer's orange", colour="D, a note its part sings (orange)",
+        base=g.pc_rgb(2),
+        front=R((1, 24, 15, 42), (49, 24, 63, 42)), back=R((2, 30, 14, 44), (50, 24, 63, 42)),
+        #  the two carried tans folded together (15 pixels) to free a slot
+        slotmap={1: 7, 2: 7, 3: 10, 4: 10}, merge={7: 6}, ramp="cols",
+        cols={7: (240, 160, 90), 10: (195, 95, 40)}),
+}
+
 
 def pal_of(w, k):
     return [tuple(c) for c in w.palette(k)]
@@ -562,6 +692,8 @@ def main():
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS2, list(FORMS2), 2, BASE2_COMMIT
     if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "3":
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS3, list(FORMS3), 3, BASE3_COMMIT
+    if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "4":
+        FORMS, ORDER, STAGE, BASE_COMMIT = FORMS4, list(FORMS4), 4, BASE4_COMMIT
     w = g.World()
     if "--base" in sys.argv:
         return file_base(w)
