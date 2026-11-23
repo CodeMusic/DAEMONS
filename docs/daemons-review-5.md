@@ -231,3 +231,27 @@ Everything else, the books, the decks, the devices, the iPad, is 1.x, and the de
 played before it is extended again.
 
 *Checked against design bible v11.338 on 4 November 2026. Read from the documents only; no ROM was built or played.*
+
+# Where it stands, 23 November 2026
+
+Re-read against design bible **v11.412** and release **v11.412.10**, nineteen days and seventy-four bible versions
+after the review. Read from the documents and the ticket mirror only; nothing was played.
+
+| What to do, in order | Stands at |
+|---|---|
+| 1. Write 1.0 into the bible (8.8) | **Not written.** The bible has no 8.8 and no ruling on the Fourth Review's 46 findings. A decision for the author, never ticketed |
+| 2. Play it through, once, each edition | **Not run.** T-50 (read `playtest.json` and act on it) is Ready and assigned to no lane. The AI harness's brief has been kept current to v11.412.6 (T-319) and, from today, knows DURABLE and the cave's second gate |
+| 3. The secrets sweep | **Done** (T-555, v11.365.1). `check_secrets.py` runs on every push; `check_todo.py` is clean on main today |
+| 4. Three small mechanics | **Done**: DURABLE holds from full (T-556); the dream's pointer to the seventh chamber (T-557); the sixty-daemon gate dropped outright, since it had been dead code since T-27 |
+| 5. Rule on the moral | **Not ruled.** No Settled or Reversed row names the mended book, the leaders' pointing or INSIGHT's place; the five places stand as the review found them |
+| 6. The first-screen vanilla | **Moving.** The pixel font is ours (T-437); pret's last music went in v11.402.1 (T-593); the text frames, battle UI, battle backgrounds and menus are ticketed and open (T-523, T-524, T-527, T-530); Corpus's own barks have no ticket |
+| 7. Tidy the record | **Done** (T-558, T-559), and overtaken: the tickets live in Redmine since 2026-11-17 (T-581) and both TODO files are its mirror |
+
+Of the smaller drift: the wiki's Index count, the stale `still-vanilla.md` row, the newest-release lines and the
+release note's one word are fixed; the vault hint in `docs/books/README.md` stands, deliberately. Two of the aide's
+lines in CRYSTAL's lab still call her `PROF. CRYSTAL`, where `port_oak.py`'s rule is *third person, and no title*:
+a voice decision, left to the author.
+
+*The review's verdict holds: the game argues its case and never says so, and the work since has been art and
+music, not the play-through that section 8 makes the gate.*
+
