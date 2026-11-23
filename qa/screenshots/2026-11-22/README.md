@@ -205,3 +205,21 @@ v11.412.8: T-604 stage 1 decoded from the built ROM, each at its whole part's co
 v11.412.8: T-604 stage 1 decoded from the built ROM, each at its whole part's colours -- ROVERSEER's gold ears, ROVERBYTE's SIGNAL cap, RUBRIC's red pen, CANON's brass drawers, LOCUS's amber tail, MANIFOLD's mulberry, REFORGE's ember forge, LANGMUSAI's coral, HOPE's wing tips (DRAFT)
 
 ![22Nov2026 - T604 - stage 1, nine later forms, built - 31](22Nov2026%20-%20T604%20-%20stage%201%2C%20nine%20later%20forms%2C%20built%20-%2031.png)
+
+### 22Nov2026 - T604 - stage 2, twelve later forms, built - 32
+
+v11.412.9: T-604 stage 2 decoded from the built ROM -- RELAY, BROADCAST, OVERFLOW, FLOOD, INDEXER, SURGE, TRACER, STACK, SMOGSTACK, ESCALATE, SCHEDULER, ANOMALY at their whole part's colours (DRAFT)
+
+![22Nov2026 - T604 - stage 2, twelve later forms, built - 32](22Nov2026%20-%20T604%20-%20stage%202%2C%20twelve%20later%20forms%2C%20built%20-%2032.png)
+
+### 22Nov2026 - T604 - stage 2, twelve later forms, built - 33
+
+v11.412.9: T-604 stage 2 decoded from the built ROM -- RELAY, BROADCAST, OVERFLOW, FLOOD, INDEXER, SURGE, TRACER, STACK, SMOGSTACK, ESCALATE, SCHEDULER, ANOMALY at their whole part's colours (DRAFT)
+
+![22Nov2026 - T604 - stage 2, twelve later forms, built - 33](22Nov2026%20-%20T604%20-%20stage%202%2C%20twelve%20later%20forms%2C%20built%20-%2033.png)
+
+### 22Nov2026 - T604 - stage 2, twelve later forms, built - 34
+
+v11.412.9: T-604 stage 2 decoded from the built ROM -- RELAY, BROADCAST, OVERFLOW, FLOOD, INDEXER, SURGE, TRACER, STACK, SMOGSTACK, ESCALATE, SCHEDULER, ANOMALY at their whole part's colours (DRAFT)
+
+![22Nov2026 - T604 - stage 2, twelve later forms, built - 34](22Nov2026%20-%20T604%20-%20stage%202%2C%20twelve%20later%20forms%2C%20built%20-%2034.png)
