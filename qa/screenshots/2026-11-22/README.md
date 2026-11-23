@@ -241,3 +241,21 @@ v11.412.10: T-604 stage 3 decoded from the built ROM -- the gym leaders', rival'
 v11.412.10: T-604 stage 3 decoded from the built ROM -- the gym leaders', rival's and Elite Four's later forms at their whole part's colours (DRAFT)
 
 ![22Nov2026 - T604 - stage 3, fifteen later forms, built - 37](22Nov2026%20-%20T604%20-%20stage%203%2C%20fifteen%20later%20forms%2C%20built%20-%2037.png)
+
+### 22Nov2026 - C474 - THE SPELL LEFT RUNNING on the shelf, its cover and a page - 38
+
+C-474: THE SPELL LEFT RUNNING found in the game, standing on the LIBRARY's shelf, its cover and contents, and THE FIRST SPELL with its plate (scratch companion, synthetic save; DRAFT)
+
+![22Nov2026 - C474 - THE SPELL LEFT RUNNING on the shelf, its cover and a page - 38](22Nov2026%20-%20C474%20-%20THE%20SPELL%20LEFT%20RUNNING%20on%20the%20shelf%2C%20its%20cover%20and%20a%20page%20-%2038.jpg)
+
+### 22Nov2026 - C474 - THE SPELL LEFT RUNNING on the shelf, its cover and a page - 39
+
+C-474: THE SPELL LEFT RUNNING found in the game, standing on the LIBRARY's shelf, its cover and contents, and THE FIRST SPELL with its plate (scratch companion, synthetic save; DRAFT)
+
+![22Nov2026 - C474 - THE SPELL LEFT RUNNING on the shelf, its cover and a page - 39](22Nov2026%20-%20C474%20-%20THE%20SPELL%20LEFT%20RUNNING%20on%20the%20shelf%2C%20its%20cover%20and%20a%20page%20-%2039.jpg)
+
+### 22Nov2026 - C474 - THE SPELL LEFT RUNNING on the shelf, its cover and a page - 40
+
+C-474: THE SPELL LEFT RUNNING found in the game, standing on the LIBRARY's shelf, its cover and contents, and THE FIRST SPELL with its plate (scratch companion, synthetic save; DRAFT)
+
+![22Nov2026 - C474 - THE SPELL LEFT RUNNING on the shelf, its cover and a page - 40](22Nov2026%20-%20C474%20-%20THE%20SPELL%20LEFT%20RUNNING%20on%20the%20shelf%2C%20its%20cover%20and%20a%20page%20-%2040.jpg)
