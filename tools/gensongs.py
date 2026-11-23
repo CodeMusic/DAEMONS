@@ -331,14 +331,14 @@ def build(sp=None):
 def songs_json(sp=None):
     """songs.json as text, one part and one song a line, so a change to one daemon is one line of its diff."""
     t = songs_table(sp)
-    head = {k: v for k, v in t.items() if k not in ("parts", "songs", "summons")}
+    head = {k: v for k, v in t.items() if k not in ("parts", "songs", "summons", "shiny")}
     lines = ["{"] + ['%s: %s,' % (json.dumps(k), json.dumps(v, ensure_ascii=False)) for k, v in head.items()]
-    for name in ("parts", "songs", "summons"):
+    for name in ("parts", "songs", "summons", "shiny"):
         rows = list(t[name].items())
         lines.append('%s: {' % json.dumps(name))
         lines += [' %s: %s%s' % (json.dumps(k), json.dumps(v, separators=(",", ":"), ensure_ascii=False),
                                  "," if i < len(rows) - 1 else "") for i, (k, v) in enumerate(rows)]
-        lines.append("}" if name == "summons" else "},")
+        lines.append("}" if name == "shiny" else "},")
     return "\n".join(lines) + "\n}\n"
 
 
@@ -348,6 +348,11 @@ def songs_table(sp=None):
         sp = {k: v for k, v in sp.items() if v.get("name") and v["name"] != "?"}
     sp, paths, parts = build(sp)
     srows = summon_rows(engine_rows(sp))[0]               # C-419 (3): T-598's openings, as the engine's daemon_summons.h has them
+    import genshinysongs                                  # C-482: T-602's shiny notes, as the engine's daemon_song_shiny.h has them
+    shiny = {}
+    for sid, j, note, *_ in genshinysongs.engine_moves():
+        if str(sid) in parts:
+            shiny.setdefault(str(sid), []).append([j, note])
     return {
         "_about": "T-594 (DAEMONS vision 9.36), written by DAEMONS tools/gensongs.py through companion_export.py -- never "
                   "edit by hand. parts: a form's own part of its line's song (notes [midi, beats, the share of the part "
@@ -357,7 +362,9 @@ def songs_table(sp=None):
                   "steps along the key from the true note, the first kept longest, and its hiss. summons (T-598, C-419): "
                   "each daemon's OPENING as PLAY's freestyle listens for it -- [the key wheel it is played on (a minor song "
                   "on its relative major's), its pitch classes in order, null where any button stands for a note the wheel "
-                  "cannot play]; heard at the end of what was played, octave-blind. Every note DRAFT.",
+                  "cannot play]; heard at the end of what was played, octave-blind. shiny (T-602, C-482): the notes a "
+                  "SHINY sings that its kind does not -- a form's [index into its part's notes, the MIDI note a shiny "
+                  "sings there], from DAEMONS tools/genshinysongs.py; a form not listed sings its kind's part. Every note DRAFT.",
         "window": WINDOW,
         "static": {"candidates": STATIC, "floor": STATIC_FLOOR},
         "keys": {t: {"tonic": v[0], "minor": v[1], "name": key_name(v[0], v[1]), "why": v[2]} for t, v in KEYS.items()},
@@ -368,6 +375,7 @@ def songs_table(sp=None):
         "songs": {k: paths[k] for k in sp},
         "summons": {str(s["id"]): [s["wheel"], [None if x == SUMMON_ANY else (x + s["tonic"]) % 12 for x in s["full"][:s["len"]]]]
                     for s in srows},
+        "shiny": shiny,
     }
 
 
