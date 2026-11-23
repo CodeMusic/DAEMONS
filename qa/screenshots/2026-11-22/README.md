@@ -223,3 +223,21 @@ v11.412.9: T-604 stage 2 decoded from the built ROM -- RELAY, BROADCAST, OVERFLO
 v11.412.9: T-604 stage 2 decoded from the built ROM -- RELAY, BROADCAST, OVERFLOW, FLOOD, INDEXER, SURGE, TRACER, STACK, SMOGSTACK, ESCALATE, SCHEDULER, ANOMALY at their whole part's colours (DRAFT)
 
 ![22Nov2026 - T604 - stage 2, twelve later forms, built - 34](22Nov2026%20-%20T604%20-%20stage%202%2C%20twelve%20later%20forms%2C%20built%20-%2034.png)
+
+### 22Nov2026 - T604 - stage 3, fifteen later forms, built - 35
+
+v11.412.10: T-604 stage 3 decoded from the built ROM -- the gym leaders', rival's and Elite Four's later forms at their whole part's colours (DRAFT)
+
+![22Nov2026 - T604 - stage 3, fifteen later forms, built - 35](22Nov2026%20-%20T604%20-%20stage%203%2C%20fifteen%20later%20forms%2C%20built%20-%2035.png)
+
+### 22Nov2026 - T604 - stage 3, fifteen later forms, built - 36
+
+v11.412.10: T-604 stage 3 decoded from the built ROM -- the gym leaders', rival's and Elite Four's later forms at their whole part's colours (DRAFT)
+
+![22Nov2026 - T604 - stage 3, fifteen later forms, built - 36](22Nov2026%20-%20T604%20-%20stage%203%2C%20fifteen%20later%20forms%2C%20built%20-%2036.png)
+
+### 22Nov2026 - T604 - stage 3, fifteen later forms, built - 37
+
+v11.412.10: T-604 stage 3 decoded from the built ROM -- the gym leaders', rival's and Elite Four's later forms at their whole part's colours (DRAFT)
+
+![22Nov2026 - T604 - stage 3, fifteen later forms, built - 37](22Nov2026%20-%20T604%20-%20stage%203%2C%20fifteen%20later%20forms%2C%20built%20-%2037.png)
