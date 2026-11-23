@@ -932,6 +932,37 @@ def origin_images():
     return out
 
 
+def shadow_book():
+    """C-474: THE SPELL LEFT RUNNING (T-606) for the companion's library, as subtle_book() is: each section in the game's
+    order, each entry's paragraphs plain text (the asking voice marked) and its picture by key and frame count. The
+    whole book comes with FLAG_GOT_SHADOW_BOOK. DRAFT, as in the game."""
+    use("shadow")
+    out = []
+    for s in parse():
+        out.append({"label": s["label"], "heading": s["heading"], "entries": [
+            {"short": e["short"], "title": e["title"], "picture": e["sprite"],
+             "frames": len(frames_of(e["sprite"], letters=False)), "caption": e["caption"],
+             "paragraphs": [{"text": p, "voice": "asking" if k in e["faint"] else "telling"}
+                            for k, p in enumerate(e["paras"])]}
+            for e in s["entries"]]})
+    b = BOOKS["shadow"]
+    use("subtle")
+    return {"title": b["title"], "subtitle": b["subtitle"], "draft": True, "sections": out}
+
+
+def shadow_images():
+    """C-474: {name: picture} for the companion, as subtle_images() is: each plate as the game draws it (RGB, native
+    size, unlettered) and the cover without its title (the app sets its own type)."""
+    use("shadow")
+    out = {}
+    for key in pictures(parse()):
+        for f, fr in enumerate(frames_of(key, letters=False)):
+            out["shadow_%s_%d.png" % (key, f)] = fr
+    out["shadow_cover.png"] = shadow_cover(letters=False)
+    use("subtle")
+    return out
+
+
 # ---------------------------------------------------------------- report, or write
 def run(book):
     use(book)

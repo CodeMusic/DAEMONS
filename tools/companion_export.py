@@ -1452,6 +1452,17 @@ def origin_table():
     return book
 
 
+def shadow_table():
+    """C-474: THE SPELL LEFT RUNNING (T-606) for the companion's LIBRARY -- docs/shadow-book.md read by gensubtle's
+    shadow_book(): its sections in the game's order, each entry's paragraphs and picture. 'flag' is FLAG_GOT_SHADOW_BOOK's
+    number; the companion shows nothing of it until the save holds the book. DRAFT, every word."""
+    import gensubtle
+    book = gensubtle.shadow_book()
+    book["flag"] = flag_values(["FLAG_GOT_SHADOW_BOOK"])["FLAG_GOT_SHADOW_BOOK"]
+    book["cover"] = "art/shadow_cover.png"
+    return book
+
+
 def _c_strings(src):
     """{symbol: text} for every _("...") constant in a C file, the scroll break (\\l) a line break, no $"""
     return {s: gba_string(b).replace("\\l", "\n").rstrip("$")
@@ -2394,6 +2405,7 @@ def main():
              "eudaimon.json": eudaimon_table(),                                 # T-519: the third book's dawn half
              "unity.json": unity_table(),                                       # T-519 item 3: the third book mended
              "origin.json": origin_table(),                                     # T-533: THE ORIGIN OF A DAEMON
+             "shadow.json": shadow_table(),                                     # C-474: THE SPELL LEFT RUNNING (T-606)
              "holidays.json": holidays_table(),                                 # T-416 / C-149
              "play.json": play_table()}                                         # T-426
     season_art = musai_seasons(files["species.json"])                  # T-532: before species.json is written
@@ -2451,6 +2463,7 @@ def main():
     import gensubtle
     subtle = gensubtle.subtle_images()
     subtle.update(gensubtle.origin_images())                           # T-533: THE ORIGIN OF A DAEMON's emblems and cover
+    subtle.update(gensubtle.shadow_images())                           # C-474: THE SPELL LEFT RUNNING's plates and cover
     for name, im in subtle.items():
         buf = io.BytesIO()
         im.save(buf, "PNG", optimize=True)

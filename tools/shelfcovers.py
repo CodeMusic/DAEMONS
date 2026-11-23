@@ -15,6 +15,8 @@ WHERE EACH COMES FROM -- nothing is drawn by hand, so a book reprinted or a cove
                       ON_COVER), lettered where the game letters it (BAND there), in Menlo
   THE ORIGIN OF A DAEMON  the same: its cover (art/origin_cover.png) cut where the book lies, its title's two lines
                       lettered where the game letters them, in Menlo (T-533)
+  THE SPELL LEFT RUNNING  its cover (art/shadow_cover.png) cut around the hat and its brooms, its title lettered
+                      where the game letters it, in Menlo (C-474)
   CALLOW SCHOOL       the TEXTBOOK's own cover (art/textbook_cover.png)
   NOTEBOOK, SONGBOOK, STREAM   cloth boards drawn here around the game's own pictures: the NOTEBOOK's item icon, the
                       SONGBOOK's twelve coloured notes (art/play_notes.png), the eight MARKS (art/mark_N.png)
@@ -127,6 +129,26 @@ def origin():
     d = ImageDraw.Draw(im)
     for y, line in ORIGIN_TITLE:
         spaced(d, line, font(9 * k), (120 - x0) * k, (y - y0) * k, "#F7EFDE", 0.5 * k)
+    return tall(im, smooth=True)
+
+
+#  C-474: THE SPELL LEFT RUNNING (tools/shadow_art.py cover, T-606): the whole window is the picture, so the shelf cuts
+#  the hat over its seven brooms, the title lettered where the game letters it (rows 134 and 148, centred on x 120)
+SHADOW_COVER = (16, 0, 223, 159)
+SHADOW_TITLE = ((136, "THE SPELL LEFT RUNNING", 9, "#F7EFDE"), (149, "A BOOK OF SHADOWS", 7, "#B5AD9D"))
+
+
+def shadow():
+    p = os.path.join(ART, "shadow_cover.png")
+    if not os.path.exists(p):
+        return None
+    x0, y0, x1, y1 = SHADOW_COVER
+    k = 3
+    im = Image.open(p).convert("RGB").crop((x0, y0, x1 + 1, y1 + 1))
+    im = im.resize((im.width * k, im.height * k), Image.NEAREST)
+    d = ImageDraw.Draw(im)
+    for y, line, size, ink in SHADOW_TITLE:
+        spaced(d, line, font(size * k), (120 - x0) * k, (y - y0) * k, ink, 0.3 * k)
     return tall(im, smooth=True)
 
 
@@ -243,6 +265,9 @@ def covers():
     im = origin()                                    # T-533
     if im is not None:
         out["origin"] = im
+    im = shadow()                                    # C-474
+    if im is not None:
+        out["shadow"] = im
     out["school"] = school()
     out["notebook"] = notebook()
     out["songbook"] = songbook()
