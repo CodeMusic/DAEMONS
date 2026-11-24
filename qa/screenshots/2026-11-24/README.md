@@ -91,3 +91,9 @@ T-604 stage 9 (DRAFT): fifteen more wild later forms colour in -- CRYWOLF's tawn
 T-604 stage 9 (DRAFT): fifteen more wild later forms colour in -- CRYWOLF's tawny head, SIGKILL's straw dome, HEARTBEAT's rose, CHECKMATE's LOGIC checkerboard, FORGETTING's dusk hood, MINDWANDER's sky-blue fur, SHIFTLEFT's brass ears, SUBTEXT's teal hood, BIGIRON's steel dome, TRUNKLINE's violet helmet, GESTALT's lilac crown, ENTRAPMENT's gold web, SHALLOWS's sea-glass fins, BLACKWATER's oil-black shell, CADENCE's flowering hat; 126 of about 182 now
 
 ![24Nov2026 - T604 - stage 9, fifteen later forms, built - 20](24Nov2026%20-%20T604%20-%20stage%209%2C%20fifteen%20later%20forms%2C%20built%20-%2020.png)
+
+### 24Nov2026 - C447 - ROLL CALL with a pretend cap - 22
+
+C-447 ROLL CALL on the Mac with a pretend CC1101 cap: an ALL call answered by two pretend devices, then the band resting (DRAFT words; not yet on the air)
+
+![24Nov2026 - C447 - ROLL CALL with a pretend cap - 22](24Nov2026%20-%20C447%20-%20ROLL%20CALL%20with%20a%20pretend%20cap%20-%2022.png)
