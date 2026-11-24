@@ -9,7 +9,7 @@
 
 A workflow already there under the same name is UPDATED in place (its id, and so its webhook, stays); otherwise it is
 created. The servers and their API keys come from docs/private/n8n/keys.env (gitignored): `internal` is roverbyteseer,
-`public` is n8n.codemusic.ca. The keys never leave that file.
+`public` is n8n.daemons.codemusic.ca (C-408: roverbyteseer's n8n itself). The keys never leave that file.
 """
 import json, os, sys, urllib.request
 

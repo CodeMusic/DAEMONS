@@ -2,9 +2,15 @@
 
 Ten files, in the two-tier shape the RealDex workflows already use: an
 **internal** workflow does the work against the model servers, and a **public
-relay** on `n8n.codemusic.ca` forwards to `10.0.0.136:5678` with
+relay** once ran on `n8n.codemusic.ca` and forwarded to `10.0.0.136:5678` with
 `x-dex-secret`, `continueOnFail`, and a shaped fallback so a dead backend
 degrades instead of erroring.
+
+**Since 2026-11-23 (C-408) the public address is `n8n.daemons.codemusic.ca`**: the codemusic.ca web server proxies it
+straight to roverbyteseer's n8n, so the *public relay* workflows are no longer needed -- the same `/webhook/daemon/...`
+paths answer there directly. From outside, every `/webhook/daemon/` call must carry `x-dex-secret` (the shared secret
+is kept privately, never in this repository); without it the web server answers 403 before n8n sees it. The n8n
+editor is reachable there too, behind n8n's own sign-in.
 
 | endpoint | internal | relay | what it does |
 |---|---|---|---|
@@ -87,7 +93,7 @@ same way it already picks the LiteLLM host:
 | | reached as | when |
 |---|---|---|
 | internal | `roverbyteseer:5678` | whenever it answers — **including off the LAN, over Tailscale** |
-| public relay | `n8n.codemusic.ca` | when it does not |
+| public | `n8n.daemons.codemusic.ca` | when it does not |
 
 The tailnet name is the point. `roverbyteseer` resolves to `100.67.234.4`
 from anywhere Tailscale is up, so the internal workflow is not a home-only
@@ -99,7 +105,7 @@ with `daemon/health` rather than `daemon/voice`, because probing the voice
 would generate a clip of speech nobody asked to hear.
 
 ```sh
-export DAEMONS_VOICE_URL=https://n8n.codemusic.ca/webhook/daemon/voice  # force the relay
+export DAEMONS_VOICE_URL=https://n8n.daemons.codemusic.ca/webhook/daemon/voice  # force the public address
 export DAEMONS_VOICE_URL=""                                            # button off
 ```
 
