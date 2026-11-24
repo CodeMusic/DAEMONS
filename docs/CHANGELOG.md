@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.417 — 2026-11-24
+
+- **9.39 THE DAEMICOM, the FAMILIARS and the TALISMANS** (T-622; the user, 2026-11-24): the hardware's words, DRAFT -- the console (DAEMICOM, DCM-001), a controller with a mind (FAMILIAR), the controller, mouse and keyboard (SIGIL, WAND, QUILL; together the TALISMANS), the TV (SHEWSTONE, chosen over PORTAL), everything round one console (CIRCLE); the play (EVOCATION, SCRYING, 1.5's BINDING, INVOCATION) and the loop between them; the software (THRESHOLD, SANCTUM, LITANY, INCANTATION, DEPART). No SPELL; CIRCLE and BINDING kept apart from the third book's hour lines.
+- **Four books to come** (T-622 to T-625; prompts in `docs/daemicom-books.md`): THE LORE OF THE DAEMICOM first, drafted in `docs/lore-of-the-daemicom.md`; then the DAEMICOM USER MANUAL, THE BOOK OF FAMILIARS and THE BOOK OF TALISMANS.
+- Section 10: one Settled entry (the four open points, answered by multiple choice).
+
 ## v11.416 — 2026-11-24
 
 - **9.38 DAEMONS EMBODIED** (T-617; the user, 2026-11-24): a daemon in a robot body -- designed, nothing built, DRAFT. One body program and a wrapper for each kind of body (a sheet and a driver; the PiDog first); actions the only way a daemon moves, through one gate, STOP a reflex outside any model (HANDS, C-462, built as the gate); the answer's actions in braces, performed as beats in order, as RoverByteOS did; actions the body's, the self the daemon's; a body a device that carries (C-80, 9.25, 9.26); three ways to learn a body, the starters' three (8.2); Bluetooth near, Wi-Fi for the rest, Tailscale off; THE BRAIN's regions; its own repository. The game is unchanged.

@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.416**
+**A total conversion — the living design bible, v11.417**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9500,9 +9500,84 @@ never decoration*), **the process is named, never the pathology** (*a body that 
 it yet*), ***and DAEMONS is said DAY-mons by every body that speaks.*** **Twelve questions wait on the user** (*the
 book's Part 15; section 10, Open*).
 
+### 9.39 THE DAEMICOM, the FAMILIARS and the TALISMANS -- the hardware's words -- *named 2026-11-24 (T-622); words only, nothing built; DRAFT*
+
+***The project has hardware now, and the hardware needed names*** (the user, 2026-11-24). **A console of our own, the
+DAEMICOM, and handhelds that are controllers with a mind, the FAMILIARS; plain controllers, mice and keyboards; the
+TV; and the software that greets you on all of them.** *What the devices are and what runs on them is the device
+sessions' work (the companion's tickets); this section keeps only the words, why each was chosen, and the four books
+that will teach them.* **Every word is DRAFT.**
+
+***Every name is from the kit of someone who works with spirits*** -- **and, as 1.5 asked of BIND, the best of them
+pay twice**: *a daemon has been an unseen helper since Socrates' daimonion, and since 1963 the name of the background
+processes a computer keeps running on your behalf, which is where a programmer starts and stops them -- the LITANY.*
+**The game's own play words carry straight across**: *BIND, BINDING, BOUND and UNBOUND are 1.5's, unchanged.*
+
+| Word | What it is | Why this word |
+|---|---|---|
+| **DAEMICOM** | the console (*the DAEMICOM Interactive Computer, model DCM-001; "It's running even when you're not."*) | *daemon + com*: where you commune with your daemon, and a computer at heart |
+| **FAMILIAR** | a controller with its own screen and computer | *familiaris*, of the household: the spirit that lives with its keeper, runs errands and comes home |
+| **SIGIL** | the controller | *sigillum*, a seal; each spirit had its own, drawn to call it, and Spare compressed a wish into one glyph |
+| **WAND** *(spare: PENDULUM)* | the mouse | you point, and the pointing does something |
+| **QUILL** *(spare: SCRIBE)* | the keyboard | how words are written into the system, and what is written is kept |
+| **TALISMANS** | SIGIL, WAND and QUILL together | things charged with one power each and no mind; they work only through a FAMILIAR or the DAEMICOM |
+| **SHEWSTONE** | the TV or monitor | Dee's shew-stone, a stone that shows; a screen switched off looks like his black mirror. *Chosen over PORTAL by the user, 2026-11-24.* |
+| **CIRCLE** | everything gathered round one DAEMICOM | what is inside the circle shares the work; people sitting in a ring |
+| **EVOCATION** | a session of play: the daemons' world appears in the SHEWSTONE | evocation calls a spirit to appear outside you; you stay in your seat |
+| **SCRYING** | watching an EVOCATION without taking part | looking into the stone |
+| **BINDING / BOUND / UNBOUND** | catching a daemon; a caught daemon; a wild one | 1.5, unchanged |
+| **INVOCATION** | your daemon's life with you outside the game: carried on your FAMILIAR, phone or watch, where it walks, trains and keeps your goals with you | invocation calls a spirit into yourself: its qualities become yours |
+| **THRESHOLD** | the launcher, the first thing a device shows | the step between rooms, the line a spirit cannot cross uninvited |
+| **SANCTUM** | the desktop | the magician's own workroom, laid out their way; the WAND's place |
+| **LITANY** | the terminal | call and response, line after line; the QUILL's place |
+| **INCANTATION** | one command typed into the LITANY | an exact form of words that works only when said right; a typo is a wrong incantation |
+| **DEPART** | leave to the device's plain desktop | the licence to depart: the working ends gently and the room is ordinary again |
+
+***The two workings are a mirror, and the loop between them is the companion's whole design*** (9.25):
+
+| | EVOCATION | INVOCATION |
+|---|---|---|
+| Direction | their world appears to you | your daemon comes into your world |
+| Where | in the CIRCLE, on the SHEWSTONE | out in your day, on your FAMILIAR, phone or watch |
+| What you do | explore, battle, BIND | walk, care, TRAIN, keep your goals |
+| What it is | play | practice |
+
+**You EVOKE their world and BIND a daemon; it comes home in your FAMILIAR; you INVOKE it into your days; what it
+learns with you -- its song, its steps, its strength -- goes back with it into the next EVOCATION.** *Each world
+shaping the other, round and round: shown in the game's mechanics and never explained (rule 1).* ***The project had
+already named it without meaning to***: **EUDAIMONIA is *eu* + *daimōn*, having a good daemon** -- *Aristotle's word
+for a life going well -- and PRAXIS and ARETE are INVOCATION words too.*
+
+***How the software greets you***: **THRESHOLD → an EVOCATION, an app, or the SANCTUM; in the SANCTUM the WAND
+arranges, in the LITANY the QUILL speaks INCANTATIONS; DEPART leaves for the plain desktop.** *This is the TALISMANS'
+theme in one line: the QUILL captures words, the WAND channels them.* **Together, a QUILL and a WAND with a DAEMICOM
+or a FAMILIAR give you a full computer on the SHEWSTONE: the SANCTUM** (*the user's pick, 2026-11-24*). ***And
+linked in the app***, **the game's menu shows which DAEMICOM or FAMILIAR is in its SANCTUM, and lets you choose one to
+act as its WAND and QUILL** -- *your handheld points and types on it from wherever you are (the user's pick,
+2026-11-24).*
+
+***Kept apart, deliberately***:
+
+- ***No SPELL, anywhere in it.*** **SPELL and SPELLCRAFT belong to the third book (4.39)**, *which public writing names
+  only as rumour; that is why a command is an INCANTATION.*
+- ***CIRCLE and BINDING already stand in the third book's hour lines*** (*SUN THRALL under CIRCLE, TUE BINDING under
+  OFFERING, 4.39*). **The hardware's CIRCLE is the people and devices round one console, and its BINDING is 1.5's**;
+  *neither book ever glosses the other's sense.*
+- ***DAEMONS is said DAY-mons***, **DAEMICOM DAY-mi-com**; *every voice is respelled first.*
+
+***The four books*** (*T-622 to T-625; the prompts the user wrote, with the open points answered, are
+`docs/daemicom-books.md`*): **THE LORE OF THE DAEMICOM first** -- *what was found was not a machine but a MIRROR, and
+each piece of the kit is what the reflection made of it on the other side; every character an animal; the glossary
+above at its end* -- **then THE DAEMICOM USER MANUAL, THE BOOK OF FAMILIARS and THE BOOK OF TALISMANS**, *each opening
+its chapters with a passage of the lore and then teaching plainly.* **Each reaches the GBA's book reader and the
+app's book pages, and each gets its own voice, chosen with the user from samples (T-543).** *Lineage: THE PAINTED
+MIRROR (`docs/lineage.md`).*
+
 ## 10. DECISION LOG
 
 ### Settled
+
+- **The hardware's words in the bible (9.39, 2026-11-24)** — the user's vocabulary for the console and its kit (T-622): DAEMICOM, FAMILIAR, SIGIL, WAND, QUILL, TALISMANS, SHEWSTONE (over PORTAL), CIRCLE; the play's EVOCATION, SCRYING, BINDING and INVOCATION; the software's THRESHOLD, SANCTUM, LITANY, INCANTATION and DEPART. Four open points answered by multiple choice, every recommendation: SHEWSTONE; a linked handheld acts as a SANCTUM's WAND and QUILL; QUILL and WAND give a full computer on the SHEWSTONE, the SANCTUM; the INVOCATION line as written. No SPELL; CIRCLE and BINDING kept apart from the third book's hour lines. Four books to come, lore first. Every word DRAFT
 
 - **DAEMONS EMBODIED in the bible (9.38, 2026-11-24)** — the user's ask (T-617): a daemon in a robot body, any body by a wrapper, the PiDog first. Researched (the user's own Rover repositories, the companion's seams, the field) and designed as a book for review, `docs/DAEMONS-embodied.pdf`; nothing built, no ticket written beyond the design's own. The game is unchanged.
 
