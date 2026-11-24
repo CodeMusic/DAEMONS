@@ -223,3 +223,15 @@ C-488: TODAY's SPELL CHECK for all seven days, as built (companion 88746698), fr
 C-488: after the fix, every day's SPELL CHECK on TODAY starts with a capital (companion 0c83d650); each line printed by the fixed spellCheckOf (DRAFT)
 
 ![23Nov2026 - C488 - the SPELL CHECK with its capital - 39](23Nov2026%20-%20C488%20-%20the%20SPELL%20CHECK%20with%20its%20capital%20-%2039.png)
+
+### 23Nov2026 - C493 - IN PLAY on PLACES - 40
+
+C-493: IN PLAY on the site's PLACES -- a scratch AI run-through reported to a scratch hub (a book plate standing in for its screen), then ended from the app and listed as PLAYED LATELY (DRAFT)
+
+![23Nov2026 - C493 - IN PLAY on PLACES - 40](23Nov2026%20-%20C493%20-%20IN%20PLAY%20on%20PLACES%20-%2040.jpg)
+
+### 23Nov2026 - C493 - IN PLAY on PLACES - 41
+
+C-493: IN PLAY on the site's PLACES -- a scratch AI run-through reported to a scratch hub (a book plate standing in for its screen), then ended from the app and listed as PLAYED LATELY (DRAFT)
+
+![23Nov2026 - C493 - IN PLAY on PLACES - 41](23Nov2026%20-%20C493%20-%20IN%20PLAY%20on%20PLACES%20-%2041.jpg)
