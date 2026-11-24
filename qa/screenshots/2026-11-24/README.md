@@ -73,3 +73,21 @@ T-617 (DRAFT): the book's drawings -- the whole system, a wrapper and three kind
 T-617 (DRAFT, a design for review, nothing built): DAEMONS EMBODIED as a printed book, docs/DAEMONS-embodied.pdf -- its cover, the whole system, the nine proposals, the Rover line, the performance, PRACTICE, the PiDog and the questions for review
 
 ![24Nov2026 - T617 - EMBODIED the design, cover and seven of its parts - 17](24Nov2026%20-%20T617%20-%20EMBODIED%20the%20design%2C%20cover%20and%20seven%20of%20its%20parts%20-%2017.png)
+
+### 24Nov2026 - T604 - stage 9, fifteen later forms, built - 18
+
+T-604 stage 9 (DRAFT): fifteen more wild later forms colour in -- CRYWOLF's tawny head, SIGKILL's straw dome, HEARTBEAT's rose, CHECKMATE's LOGIC checkerboard, FORGETTING's dusk hood, MINDWANDER's sky-blue fur, SHIFTLEFT's brass ears, SUBTEXT's teal hood, BIGIRON's steel dome, TRUNKLINE's violet helmet, GESTALT's lilac crown, ENTRAPMENT's gold web, SHALLOWS's sea-glass fins, BLACKWATER's oil-black shell, CADENCE's flowering hat; 126 of about 182 now
+
+![24Nov2026 - T604 - stage 9, fifteen later forms, built - 18](24Nov2026%20-%20T604%20-%20stage%209%2C%20fifteen%20later%20forms%2C%20built%20-%2018.png)
+
+### 24Nov2026 - T604 - stage 9, fifteen later forms, built - 19
+
+T-604 stage 9 (DRAFT): fifteen more wild later forms colour in -- CRYWOLF's tawny head, SIGKILL's straw dome, HEARTBEAT's rose, CHECKMATE's LOGIC checkerboard, FORGETTING's dusk hood, MINDWANDER's sky-blue fur, SHIFTLEFT's brass ears, SUBTEXT's teal hood, BIGIRON's steel dome, TRUNKLINE's violet helmet, GESTALT's lilac crown, ENTRAPMENT's gold web, SHALLOWS's sea-glass fins, BLACKWATER's oil-black shell, CADENCE's flowering hat; 126 of about 182 now
+
+![24Nov2026 - T604 - stage 9, fifteen later forms, built - 19](24Nov2026%20-%20T604%20-%20stage%209%2C%20fifteen%20later%20forms%2C%20built%20-%2019.png)
+
+### 24Nov2026 - T604 - stage 9, fifteen later forms, built - 20
+
+T-604 stage 9 (DRAFT): fifteen more wild later forms colour in -- CRYWOLF's tawny head, SIGKILL's straw dome, HEARTBEAT's rose, CHECKMATE's LOGIC checkerboard, FORGETTING's dusk hood, MINDWANDER's sky-blue fur, SHIFTLEFT's brass ears, SUBTEXT's teal hood, BIGIRON's steel dome, TRUNKLINE's violet helmet, GESTALT's lilac crown, ENTRAPMENT's gold web, SHALLOWS's sea-glass fins, BLACKWATER's oil-black shell, CADENCE's flowering hat; 126 of about 182 now
+
+![24Nov2026 - T604 - stage 9, fifteen later forms, built - 20](24Nov2026%20-%20T604%20-%20stage%209%2C%20fifteen%20later%20forms%2C%20built%20-%2020.png)
