@@ -193,3 +193,15 @@ T-613 THE VERSES, DRAFT: six lines composed as verses set to their quotes, each 
 T-613 THE VERSES, DRAFT: six lines composed as verses set to their quotes, each 7-note hook outlined (unique across all 400), the hidden chorus in italics between verses; placeholder words where T-599 has none
 
 ![23Nov2026 - T613 - the verses sampler sheets - 32](23Nov2026%20-%20T613%20-%20the%20verses%20sampler%20sheets%20-%2032.png)
+
+### 23Nov2026 - C488 - the days SPELL CHECK on TODAY - 34
+
+C-488: TODAY with the day's SPELL CHECK under the day's word (Monday: OVERFLOW), and OPEN THE BOOK landing on that broom's page in THE SPELL LEFT RUNNING (scratch companion, the book's preview, DRAFT)
+
+![23Nov2026 - C488 - the days SPELL CHECK on TODAY - 34](23Nov2026%20-%20C488%20-%20the%20days%20SPELL%20CHECK%20on%20TODAY%20-%2034.jpg)
+
+### 23Nov2026 - C488 - the days SPELL CHECK on TODAY - 35
+
+C-488: TODAY with the day's SPELL CHECK under the day's word (Monday: OVERFLOW), and OPEN THE BOOK landing on that broom's page in THE SPELL LEFT RUNNING (scratch companion, the book's preview, DRAFT)
+
+![23Nov2026 - C488 - the days SPELL CHECK on TODAY - 35](23Nov2026%20-%20C488%20-%20the%20days%20SPELL%20CHECK%20on%20TODAY%20-%2035.jpg)
