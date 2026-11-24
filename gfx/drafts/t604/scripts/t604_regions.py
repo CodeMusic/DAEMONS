@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""T-604 stages 1 to 8 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
+"""T-604 stages 1 to 9 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
 drawing already there (ears, crest, tail, drawers, wings), so it visibly colours in as it learns its part (T-597).
 
     python3 gfx/drafts/t604/scripts/t604_regions.py               # report each form: region, slots, coverage before/after
@@ -10,6 +10,7 @@ drawing already there (ears, crest, tail, drawers, wings), so it visibly colours
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 6 ...  # ... and STAGE 6's fifteen (FORMS6)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 7 ...  # ... and STAGE 7's fifteen (FORMS7)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 8 ...  # ... and STAGE 8's fifteen (FORMS8)
+    python3 gfx/drafts/t604/scripts/t604_regions.py --stage 9 ...  # ... and STAGE 9's fifteen (FORMS9)
     python3 gfx/drafts/t604/scripts/t604_regions.py --draft       # write the drafts into gfx/drafts/t604/<NAME>/
     python3 gfx/drafts/t604/scripts/t604_regions.py --sheet DIR   # ... and the contact sheet into DIR
     python3 gfx/drafts/t604/scripts/t604_regions.py --built --sheet DIR   # the sheet from the engine as BUILT (after
@@ -980,6 +981,146 @@ FORMS8 = {
 }
 
 
+#  STAGE 9 (the user, 2026-11-24: "T-604 stage 9"; DRAFT): fifteen more, by how often a player meets them, as stage 8
+#  ranked them. Every later form left under 10% at 10% of a table (the rest of the 10%s: FIVE ISLAND's MEADOW, SIX
+#  ISLAND's PATTERN BUSH and WATER PATH, FIVE ISLAND's LOST CAVE, SEVEN ISLAND's SEVAULT CANYON, MT. EMBER's RUBY PATH),
+#  then the 5%s met in BOTH editions: SIX ISLAND's PATTERN BUSH by land, then the surf, THREE ISLAND's BOND BRIDGE
+#  (reached before the ELITE FOUR) and FIVE ISLAND's. Skipped as before: STEEPEST, the cocoons (IFTRUE, IFFALSE, PENDING,
+#  BUFFER, BROODING), any MUSAI, PENPHIN or UNOWN form. TODAY is the engine after stage 8 (BASE9): no form here was drawn
+#  by stages 1-8. Every colour given exactly ("cols"), each checked against the carry rule by the report.
+BASE9_COMMIT = "0b2411e0f"
+FORMS9 = {
+    "CRYWOLF": dict(
+        why="WARNING line, stage 2 (FIVE ISLAND's MEADOW, 10% in CONTENT): 2.0% waits (only the mouth)",
+        region="the HEAD and its ears, a wolf's tawny coming through the bulldog; behind, the ears and its coat's dapples", colour="E and D, notes its part sings (tawny into umber)",
+        base=g.pc_rgb(4),
+        front=R((12, 2, 60, 22)), back=R((4, 2, 60, 12)),
+        #  the mouth's two pinks (14 and 18 pixels) folded into one, and the ear's two lesser reds into its red, to free 3
+        slotmap={1: 6, 2: 8, 3: 10, 4: 10}, merge={6: 7, 8: 9, 10: 9}, ramp="cols",
+        #  behind, the head is only its ears: the dapples of its coat go umber, a wolf's markings (a band cut straight)
+        extra=[dict(front=R(), back=R((8, 12, 44, 42)), slotmap={4: 10})],
+        #  the light kept 85 off WARNING's lost pink (255,153,205), the mouth's pinks folded: nearer, it is CARRIED
+        cols={6: (235, 215, 150), 8: (210, 160, 90), 10: (140, 95, 50)}),
+    "SIGKILL": dict(
+        why="REAPER line, stage 2 (SIX ISLAND's PATTERN BUSH, 10% in CONTEXT): 2.4% waits (only the eyes); HARDENED is the new type",
+        region="the DOME of its head, and the pincers' light, in HARDENED", colour="HARDENED, the new type: E and Eb (straw into bronze)",
+        base=(196, 170, 96),
+        front=R((18, 6, 44, 26), (2, 10, 18, 34), (44, 10, 62, 34)), back=R((18, 6, 44, 26), (2, 10, 18, 34), (44, 10, 62, 34)),
+        #  the eye's 3-pixel crimson folded into its red, the 7 mauve glints into the pale olive beside them, to free two
+        slotmap={1: 8, 2: 6}, merge={8: 9, 6: 2}, ramp="cols",
+        cols={8: (235, 215, 145), 6: (205, 160, 75)}),
+    "HEARTBEAT": dict(
+        why="UPTIME line, stage 2 (SIX ISLAND's WATER PATH, 10% in CONTENT): 1.1% waits",
+        region="the round LOWER BODY's shading in front, its quilted panels behind, a rose", colour="C and B, notes its part sings (blush into plum-rose)",
+        base=g.pc_rgb(0),
+        front=R((12, 33, 46, 52)), back=R((8, 33, 48, 56)),
+        #  the 2-pixel slate folded into the dark beside it, to free a third slot
+        slotmap={2: 7, 3: 8, 4: 10}, slotmap_back={2: 7, 3: 8}, merge={8: 4}, ramp="cols",
+        #  the blush kept 48 off UPTIME's own greys (219,213,201): within 40 it is the same colour, CARRIED
+        cols={7: (240, 170, 200), 8: (220, 120, 165), 10: (175, 90, 150)}),
+    "CHECKMATE": dict(
+        why="SPARRING line, stage 2 (SIX ISLAND's PATTERN BUSH, 10% in CONTENT): 9.3% waits in front, less behind; LOGIC is the new type",
+        region="the CHEQUERED BOARD at its waist, in LOGIC (its dark squares indigo)", colour="LOGIC, the new type: G, its dark squares Bb",
+        base=TYPE["LOGIC"],
+        front=R((18, 44, 46, 56)), back=R((18, 44, 46, 56)),
+        #  slot 6 (the chest's grey marks, 29 pixels) is recoloured LOGIC's mid and joins the board; 9 is the cuffs' indigo
+        slotmap={1: 10, 2: 6, 4: 9}, ramp="cols",
+        #  LOGIC's own (96,122,158) sits 41 off SPARRING's lost mauve (128,107,137), nearer than any colour left: CARRIED
+        #  and the light kept 54 off SPARRING's white (206,225,207)
+        cols={10: (170, 195, 235), 6: (70, 125, 185)}),
+    "FORGETTING": dict(
+        why="FADING line, stage 2 (FIVE ISLAND's LOST CAVE, 10% in CONTEXT): 0.0% waits, no accent at all",
+        region="the HOOD (the face left bare), a dusk blue", colour="Ab and Bb, notes its part sings (dusk blue into indigo)",
+        base=g.pc_rgb(8),
+        front=R((20, 2, 44, 8), (18, 8, 25, 24), (39, 8, 46, 24)), back=R((18, 2, 46, 16)),
+        slotmap={1: 7, 2: 8, 3: 9, 4: 10}, ramp="cols",
+        cols={7: (170, 185, 240), 8: (120, 135, 215), 9: (80, 70, 175), 10: (45, 40, 105)}),
+    "MINDWANDER": dict(
+        why="DAYDREAM line, stage 3 (SIX ISLAND's WATER PATH, 10% in CONTENT): 0.2% waits",
+        region="the fur of its HEAD drifting into sky blue (the face left bare), and its THOUGHT BUBBLES, lilac",
+        colour="G and B, notes its part sings (sky blue; lilac)", base=g.pc_rgb(7),
+        front=R((16, 4, 48, 30)), back=R((16, 4, 48, 30)),
+        #  the 1-pixel slate folded into the 3-pixel one beside it, to free a slot for the bubbles
+        slotmap={2: 8, 3: 9, 4: 10}, slotmap_back={2: 8, 3: 9}, merge={7: 6}, ramp="cols",
+        extra=[dict(front=R((48, 2, 63, 16)), back=R((0, 2, 16, 16)), slotmap={1: 7})],
+        #  the lilac kept 76 off DAYDREAM's lost pink (250,169,200), farther than the body's white (72): nearer, CARRIED
+        cols={7: (190, 180, 245), 8: (165, 200, 240), 9: (100, 145, 210), 10: (55, 85, 150)}),
+    "SHIFTLEFT": dict(
+        why="LOWBIT line, stage 2 (SIX ISLAND's WATER PATH, 10% in CONTENT): 0.6% waits",
+        region="the great EARS, brass horns", colour="E and D, notes its part sings (brass into bronze)",
+        base=g.pc_rgb(4),
+        front=R((6, 6, 25, 24), (39, 6, 60, 24)), back=R((6, 6, 25, 24), (39, 6, 60, 24)),
+        slotmap={2: 9, 3: 10}, ramp="cols",
+        #  the bronze kept 89 off LOWBIT's lost rose (194,59,76): nearer, it is CARRIED
+        cols={9: (235, 210, 130), 10: (205, 145, 55)}),
+    "SUBTEXT": dict(
+        why="UNSPOKEN line, stage 2 (FIVE ISLAND's LOST CAVE, 10% in CONTEXT): 2.1% waits (only the eyes)",
+        region="the HOOD, the teal of its eyes spreading over it", colour="F# and Ab, notes its part sings (the eyes' teal into ink blue)",
+        base=g.pc_rgb(6),
+        front=R((12, 8, 50, 19)), back=R((12, 8, 50, 19)),
+        #  the hood takes the eyes' own teals (6 and 8), and one new ink blue for its shadow
+        slotmap={1: 6, 2: 6, 3: 8, 4: 9}, ramp="cols",
+        cols={9: (45, 75, 140)}),
+    "BIGIRON": dict(
+        why="BOOTROM line, stage 3 (SEVEN ISLAND's SEVAULT CANYON, 10% in CONTENT): 0.1% waits",
+        region="the great DOME of its back, gone from straw to cold steel", colour="Ab and Bb, notes its part sings (steel into slate violet)",
+        base=g.pc_rgb(8),
+        front=R((18, 8, 44, 30)), back=R((18, 8, 44, 30)),
+        slotmap={1: 7, 2: 8, 3: 9}, ramp="cols",
+        #  no mid blue: anything between sits within 80 of BOOTROM's lost blues (87,147,193), (62,121,148) and is CARRIED
+        cols={7: (205, 212, 240), 8: (175, 180, 230), 9: (60, 45, 110)}),
+    "TRUNKLINE": dict(
+        why="TOKENRING line, stage 2 (MT. EMBER's RUBY PATH, 10% in CONTENT): 4.6% waits (only the claws)",
+        region="the HELMET and its horns, a blue-violet steel", colour="A and Bb, notes its part sings (periwinkle into violet)",
+        base=g.pc_rgb(9),
+        front=R((6, 6, 58, 22)), back=R((6, 6, 58, 22)),
+        slotmap={2: 9, 3: 10}, ramp="cols",
+        #  kept 82 off TOKENRING's lost mint (162,221,186): nearer than the body's white, it is CARRIED
+        cols={9: (150, 150, 225), 10: (95, 65, 170)}),
+    "GESTALT": dict(
+        why="INKLING line, stage 2 (SEVEN ISLAND's SEVAULT CANYON, 10% in CONTEXT): 3.4% waits (only the eyes' rings)",
+        region="the CROWN of its shell, with its hatching, lilac", colour="B and A, notes its part sings (lilac into periwinkle)",
+        base=g.pc_rgb(11),
+        front=R((10, 14, 54, 24)), back=R((10, 14, 54, 24)),
+        slotmap={1: 9, 2: 10}, ramp="cols",
+        cols={9: (200, 170, 235), 10: (130, 125, 210)}),
+    "ENTRAPMENT": dict(
+        why="AMBUSH line, stage 2 (SIX ISLAND's PATTERN BUSH, 5% in CONTENT and 4% in CONTEXT): 2.8% waits (only the eyes)",
+        region="the WEB it sits in, gold silk (behind its body and legs, a few threads stay white)", colour="E, a note its part sings (gold)",
+        base=g.pc_rgb(4),
+        front=R((0, 0, 63, 17), (0, 48, 63, 63), (0, 17, 18, 28), (0, 28, 7, 47), (45, 17, 63, 28), (56, 28, 63, 47)),
+        back=R((0, 0, 63, 17), (0, 48, 63, 63), (0, 17, 18, 28), (0, 28, 7, 47), (45, 17, 63, 28), (56, 28, 63, 47)),
+        slotmap={1: 10}, ramp="cols",
+        #  kept 59 off AMBUSH's lost peach (238,180,143), farther than the eyes' orange (43): nearer, it is CARRIED
+        cols={10: (235, 215, 95)}),
+    "SHALLOWS": dict(
+        why="BIFURCATE line, stage 2 (THREE ISLAND's BOND BRIDGE, surfing 5% in both): 0.0% waits, the one accent carried",
+        region="the FINS and the long TAIL, sea glass", colour="F, a note its part sings (sea glass into sea green)",
+        base=g.pc_rgb(5),
+        front=R((30, 2, 52, 32), (12, 36, 30, 58), (30, 38, 48, 46)), back=R((6, 2, 30, 32), (30, 36, 50, 58), (18, 38, 34, 46)),
+        slotmap={2: 7, 3: 8}, ramp="cols",
+        cols={7: (150, 220, 195), 8: (60, 170, 150)}),
+    "BLACKWATER": dict(
+        why="BACKFLOW line, stage 2 (FIVE ISLAND, surfing 5% in both): 0.0% waits, no accent; OPAQUE is the new type",
+        region="the two halves of its SHELL, gone to an oil-black violet, a sheen at their shoulders", colour="OPAQUE, the new type, its sheen Bb",
+        base=(68, 28, 108),
+        front=R((10, 18, 30, 52), (34, 18, 54, 52)), back=R((10, 18, 30, 52), (34, 18, 54, 52)),
+        slotmap={4: 9}, ramp="cols",
+        #  the sheen on the shoulders of the shell only: all of it is 27% (too much)
+        extra=[dict(front=R((10, 18, 30, 28), (34, 18, 54, 28)), back=R((10, 18, 30, 28), (34, 18, 54, 28)), slotmap={3: 10})],
+        #  the black kept 47 off the body's own navy (36,55,91): within 40 it is the same colour, CARRIED
+        cols={9: (68, 28, 108), 10: (110, 80, 165)}),
+    "CADENCE": dict(
+        why="TEMPO line, stage 2 (FIVE ISLAND's MEADOW, surfing 5% in both): 0.0% waits, every colour carried",
+        region="the lily pad of its HAT (and its shoulders' leaves) coming into flower, and its BELLY blushing",
+        colour="C and Bb, notes its part sings (blossom into plum)", base=g.pc_rgb(0),
+        front=R((0, 0, 63, 63)), back=R((0, 0, 63, 63)),
+        slotmap={6: 9, 7: 10}, ramp="cols",
+        extra=[dict(front=R((24, 30, 40, 46)), back=R((24, 30, 40, 46)), slotmap={1: 9, 2: 9, 3: 10})],
+        cols={9: (245, 170, 200), 10: (165, 80, 165)}),
+}
+
+
 def pal_of(w, k):
     return [tuple(c) for c in w.palette(k)]
 
@@ -1231,6 +1372,8 @@ def main():
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS7, list(FORMS7), 7, BASE7_COMMIT
     if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "8":
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS8, list(FORMS8), 8, BASE8_COMMIT
+    if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "9":
+        FORMS, ORDER, STAGE, BASE_COMMIT = FORMS9, list(FORMS9), 9, BASE9_COMMIT
     w = g.World()
     if "--base" in sys.argv:
         return file_base(w)
