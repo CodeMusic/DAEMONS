@@ -1,6 +1,6 @@
 T-613 THE VERSES, DRAFT: the sampler, in order
 
-0. ROVERCUB -> ROVERSEER -> ROVERBYTE as it is TODAY (T-594)        36.8 s
+0. ROVERCUB -> ROVERSEER -> ROVERBYTE as T-594 had it               36.8 s
 1. ROVERCUB -> ROVERSEER -> ROVERBYTE, with its chorus              43.7 s
 2. TANGENT                                                           9.1 s
 3. GRADIENT                                                         12.7 s
@@ -67,4 +67,4 @@ T-613 THE VERSES -- the sampler, DRAFT (tools/genverses.py)
      BIGIRON   Old is what we call a thing that has outlasted every reason to replace it.
                hook: E-flat A-flat B-flat F G A-flat B-flat  (E-flat major)
 
-HOOKS: 400 forms given a hook (the six lines' words, every other form's INDEX entry standing in), 400 different -- every one unique in shape, none lengthened, none left out.
+HOOKS: 400 forms given a hook (T-599's drafts and the sampler's placeholders, every other form's INDEX entry standing in), 400 different -- every one unique in shape, none lengthened, none left out.

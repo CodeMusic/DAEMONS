@@ -235,3 +235,9 @@ C-493: IN PLAY on the site's PLACES -- a scratch AI run-through reported to a sc
 C-493: IN PLAY on the site's PLACES -- a scratch AI run-through reported to a scratch hub (a book plate standing in for its screen), then ended from the app and listed as PLAYED LATELY (DRAFT)
 
 ![23Nov2026 - C493 - IN PLAY on PLACES - 41](23Nov2026%20-%20C493%20-%20IN%20PLAY%20on%20PLACES%20-%2041.jpg)
+
+### 23Nov2026 - T613 - a stand-in line in the game - 43
+
+T-613 in the game, DRAFT: LABEL, RUBRIC, CANON as verses, each a seven-note hook (outlined) and its INDEX entry cut to a quote's length standing in until T-599 writes its quotation
+
+![23Nov2026 - T613 - a stand-in line in the game - 43](23Nov2026%20-%20T613%20-%20a%20stand-in%20line%20in%20the%20game%20-%2043.png)

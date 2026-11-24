@@ -133,6 +133,26 @@ ROVERCUB line for comparison, a sheet for each, and every hook alone. Every one 
 six lines' quotes, and each other form's INDEX entry standing in for its quote), and all 400 hooks are different. None
 was lengthened, and none was left out.
 
+**Built in the game and the companion, 2026-11-23** (the user: "Good, go on"):
+- **Every daemon's song is now made of verses** (`tools/gensongs.py` builds from `tools/genverses.py`). Each verse uses
+  its T-599 draft quotation where one exists. The sampler's placeholder words stand in for 7 forms, and the INDEX entry
+  stands in for the other 342 until T-599 writes them.
+- **Every summon is the form's seven-note hook.** All 400 are unique; none was lengthened and none was left out.
+- **The hidden chorus** is sung between a final form's verses once a daemon the player holds knows its verse whole. In
+  the game this is SHARE_CHORUS, from `sSongChorusParts`; in the companion it is `withChorus`. Only the five sampler
+  lines have chorus words, all placeholders, so only they have a chorus yet.
+- **A breath after each phrase:** a note sounds for at most 2.5 beats, and the rest of its length is silence.
+- **A summoned daemon sings its whole song.** One the player holds sings it as far as it knows it; one nobody holds
+  sings its own verse as static.
+- **ALMOST:** a hook played in the wrong key comes back flat, followed by PLAY's own ALMOST line.
+- **Re-derived from the new tunes:** the shiny notes (T-602) and the colour ties (T-597).
+
+**Not built yet:**
+- the quotation's words appearing as the daemon sings (T-610 and C-485, which wait on T-599);
+- the cry becoming the hook (gencries);
+- ALMOST in the companion's PLAY FREELY;
+- the out-of-tune chord for an unlearned note (T-611).
+
 Steps 1 and 2 can run side by side. Step 3 follows step 2 a batch behind, so the first types can be heard while the
 last are still being written.
 

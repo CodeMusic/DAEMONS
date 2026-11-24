@@ -38,6 +38,7 @@ QUOTES_MD = os.path.join(ROOT, "docs", "quotations-draft.md")
 HOOK = 7                                                   # the summon's notes (the user, 2026-11-23)
 CANDIDATES = 1500                                          # tunes tried a verse; the best that keeps its hook unique
 RANGE = {1: (0, 9), 2: (-3, 6), 3: (-6, 3)}                # a stage's tune, in scale steps around its tonic
+BASS_FLOOR = 36                                            # C2
 TONIC_STEP = 7 * 5                                         # the tonic's octave (scale steps, C4 = 35)
 
 # The words. Placeholders are marked; T-599's own quotations are read from its draft.
@@ -378,6 +379,8 @@ def bass_notes(seg, chords):
         r = CHORDS[c][0]
         root = g.realise(TONIC_STEP - 14 + r, seg["tonic"], seg["minor"])
         fifth = g.realise(TONIC_STEP - 14 + r + 4, seg["tonic"], seg["minor"])
+        if root < BASS_FLOOR:                              # the harp's lowest that still sounds as a note
+            root, fifth = root + 12, fifth + 12
         out += [(root, 2.0), (fifth, 2.0)]
     return out
 
@@ -385,29 +388,161 @@ def bass_notes(seg, chords):
 # ---------------------------------------------------------------------------------------------------------------------
 # A line
 # ---------------------------------------------------------------------------------------------------------------------
-def line_of(final_name, sp, paths, taken, qs):
-    k = g.by_name(sp, final_name)
+def words_for(s, qs):
+    """(text, kind): T-599's draft quotation, else a placeholder written for the sampler, else its INDEX entry (CONTENT
+    edition) standing in until T-599 writes its quotation."""
+    name = s["name"]
+    if name in qs:
+        return qs[name], "quotation"
+    if name in PLACEHOLDER:
+        return PLACEHOLDER[name], "placeholder"
+    entry = re.sub(r"\s+", " ", (s.get("entry") or {}).get("CONTENT") or "").strip()
+    return (stand_in(entry) or name.capitalize() + "."), "entry"
+
+
+STAND_IN_MAX = 18                                          # a stand-in's syllables: about a quotation's length
+
+
+def stand_in(entry):
+    """An INDEX entry cut to a quotation's length: its sentences while they fit in STAND_IN_MAX syllables (the first
+    one always, cut at a word where it runs over), so a verse sung to it lasts about as long as one sung to a quote."""
+    out, n = [], 0
+    for sentence in re.findall(r"[^.!?]+[.!?]?", entry):
+        words = sentence.split()
+        cost = sum(count_syllables(re.sub(r"[^A-Za-z']", "", w) or "a") for w in words)
+        if out and n + cost > STAND_IN_MAX:
+            break
+        if not out and cost > STAND_IN_MAX:
+            keep, m = [], 0
+            for w in words:
+                c = count_syllables(re.sub(r"[^A-Za-z']", "", w) or "a")
+                if keep and m + c > STAND_IN_MAX:
+                    break
+                keep.append(w); m += c
+            return " ".join(keep).rstrip(",;:") + "."
+        out.append(sentence.strip()); n += cost
+    return " ".join(out)
+
+
+def line_bpm(first_ty):
+    return g.BPM.get(gs.PALETTE[first_ty]["step"], 100) if first_ty in gs.PALETTE else 100
+
+
+def line_of(k, sp, paths, taken, qs):
+    """A final form's whole song: its line's verses, oldest first, and its chorus between them where it has words."""
+    final_name = sp[k]["name"]
     forms = [sp[f] for f in paths[k]]
     first_ty = forms[0]["types"][0]
     tonic0, minor0, _ = g.KEYS[first_ty]
-    bpm = g.BPM.get(gs.PALETTE[first_ty]["step"], 100)
     segs = []
     for i, s in enumerate(forms):
         ty = s["types"][0]
         ty2 = s["types"][1] if len(s["types"]) > 1 else None
         tonic, minor = (tonic0, minor0) if ty == first_ty else g.KEYS[ty][:2]
         name = s["name"]
-        text, placeholder = (qs[name], False) if name in qs else (PLACEHOLDER.get(name), True)
-        if text is None:
-            raise SystemExit("genverses: no words for %s" % name)
+        text, kind = words_for(s, qs)
         verse = taken.get(("verse", name)) or compose(name, ty, ty2, text, i + 1, tonic, minor, taken["hooks"])
         taken[("verse", name)] = verse
-        verse = dict(verse, text=text, placeholder=placeholder)
-        if i > 0:
-            segs.append(chorus(forms[0]["name"], ty, CHORUS.get(final_name, "And on."), tonic, minor, i + 1))
+        verse = dict(verse, text=text, placeholder=kind != "quotation", kind=kind)
+        if i > 0 and final_name in CHORUS:
+            segs.append(chorus(forms[0]["name"], ty, CHORUS[final_name], tonic, minor, i + 1))
         segs.append(verse)
-    return {"final": final_name, "forms": [s["name"] for s in forms], "bpm": bpm, "segs": segs,
+    return {"final": final_name, "forms": [s["name"] for s in forms], "bpm": line_bpm(first_ty), "segs": segs,
             "chorus_words": CHORUS.get(final_name)}
+
+
+def finals(sp, paths):
+    """Every final form (no form continues it), the sampler's lines first so they keep the hooks heard in it."""
+    inner = {f for k in sp for f in paths[k][:-1]}
+    out = [k for k in sp if k not in inner]
+    first = [g.by_name(sp, n) for n in SAMPLE]
+    return first + sorted((k for k in out if k not in first), key=lambda k: sp[k]["national"])
+
+
+_CACHE = {}
+CACHE_DIR = os.path.expanduser("~/.cache/daemons/genverses")
+
+
+def _fingerprint(sp, paths):
+    """What every line is made from: this tool, gensongs, T-599's draft and each form's name, types, entry and line."""
+    import hashlib, json
+    h = hashlib.md5()
+    for f in (__file__, g.__file__, QUOTES_MD):
+        h.update(open(f, "rb").read())
+    h.update(json.dumps([[k, s["name"], s["types"], (s.get("entry") or {}).get("CONTENT"), paths[k], s["national"]]
+                         for k, s in sorted(sp.items())], sort_keys=True).encode())
+    return h.hexdigest()
+
+
+def all_lines(sp, paths):
+    """Every final form's line, composed once (about half a minute) and kept: in this process, and on disk under
+    ~/.cache/daemons/genverses by a fingerprint of everything it is made from."""
+    import pickle
+    key = _fingerprint(sp, paths)
+    if key in _CACHE:
+        return _CACHE[key]
+    path = os.path.join(CACHE_DIR, key + ".pkl")
+    try:
+        with open(path, "rb") as f:
+            _CACHE[key] = pickle.load(f)
+            return _CACHE[key]
+    except (OSError, EOFError, pickle.UnpicklingError):
+        pass
+    qs = quotes()
+    taken = {"hooks": {}}
+    lines = {k: line_of(k, sp, paths, taken, qs) for k in finals(sp, paths)}
+    _CACHE[key] = lines
+    try:
+        os.makedirs(CACHE_DIR, exist_ok=True)
+        tmp = path + ".tmp"
+        with open(tmp, "wb") as f:
+            pickle.dump(lines, f)
+        os.replace(tmp, path)
+    except OSError:
+        pass
+    return lines
+
+
+def parts_for(sp, paths, sp_spans):
+    """gensongs' parts, made of verses: {form: {name, stage, type, key, tonic, minor, bpm, from, to, notes
+    [[midi, beats with the rest after, learn point]], bass [[midi, beats]]}}"""
+    lines = all_lines(sp, paths)
+    by_form = {}
+    for k, line in lines.items():
+        verses = [s for s in line["segs"] if not s.get("chorus")]
+        for f, v in zip(paths[k], verses):
+            by_form.setdefault(f, (v, line["bpm"]))
+    parts = {}
+    for f, (v, bpm) in by_form.items():
+        mids = midi_of(v)
+        while min(mids) < g.LOW:                           # the harp's floor, as T-594 kept it
+            mids = [m + 12 for m in mids]
+        beats = [b + r for b, r in zip(v["beats"], v["rests"])]
+        th = g.thresholds(HOOK, len(mids) - HOOK, v["name"])
+        chords, _ = harmony(v)
+        parts[f] = {"name": v["name"], "stage": v["stage"], "type": v["type"], "key": g.key_name(v["tonic"], v["minor"]),
+                    "tonic": v["tonic"], "minor": v["minor"], "bpm": bpm, "from": sp_spans[f][0], "to": sp_spans[f][1],
+                    "notes": [[m, b, t] for m, b, t in zip(mids, beats, th)],
+                    "bass": [[m, b] for m, b in bass_notes(v, chords)], "words": v["kind"]}
+    return parts
+
+
+def choruses_for(sp, paths):
+    out = {}
+    for k, line in all_lines(sp, paths).items():
+        gaps = []
+        for seg in line["segs"]:
+            if seg.get("chorus"):
+                mids = midi_of(seg)
+                while min(mids) < g.LOW:
+                    mids = [m + 12 for m in mids]
+                chords, _ = harmony(seg)
+                gaps.append({"notes": [[m, b + r] for m, b, r in zip(mids, seg["beats"], seg["rests"])],
+                             "bass": [[m, b] for m, b in bass_notes(seg, chords)], "tonic": seg["tonic"],
+                             "minor": seg["minor"], "bpm": line["bpm"], "words": line["chorus_words"]})
+        if gaps:
+            out[k] = gaps
+    return out
 
 
 def render_line(line, with_chorus=True):
@@ -464,22 +599,14 @@ def render_hooks(lines):
 # ---------------------------------------------------------------------------------------------------------------------
 # Every form's hook, from a stand-in text, checked unique (the check that runs over all 400 once the quotes exist)
 # ---------------------------------------------------------------------------------------------------------------------
-def all_hooks(sp, paths, qs, taken):
-    lines_done = {}
-    for k in sorted(sp, key=lambda k: (len(paths[k]), sp[k]["national"])):
-        s = sp[k]
-        name = s["name"]
-        if ("verse", name) in taken:
-            continue
-        first_ty = sp[paths[k][0]]["types"][0]
-        ty = s["types"][0]
-        tonic, minor = g.KEYS[first_ty][:2] if ty == first_ty else g.KEYS[ty][:2]
-        text = qs.get(name) or PLACEHOLDER.get(name) or re.sub(r"\s+", " ", (s.get("entry") or {}).get("CONTENT") or name)
-        v = compose(name, ty, s["types"][1] if len(s["types"]) > 1 else None, text, len(paths[k]), tonic, minor,
-                    taken["hooks"])
-        taken[("verse", name)] = v
-    hooks = [v["hook"] for key, v in taken.items() if isinstance(key, tuple)]
-    return len(hooks), len(set(hooks))
+def all_hooks(lines_all):
+    """(forms given a hook, how many different): every form's verse, once."""
+    hooks = {}
+    for line in lines_all.values():
+        for seg in line["segs"]:
+            if not seg.get("chorus"):
+                hooks[seg["name"]] = seg["hook"]
+    return len(hooks), len(set(hooks.values()))
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -531,7 +658,8 @@ def sheet(line, path, sp):
                 last_end = x + d.textlength(syl[0], font=f_)
             x += (b + rr) * beat_px
         if not is_ch and seg.get("placeholder"):
-            d.text((160, y0 + rh - 20), "placeholder words, not T-599's", fill=(150, 120, 120), font=font)
+            d.text((160, y0 + rh - 20), "its INDEX entry standing in, until T-599" if seg.get("kind") == "entry"
+                   else "placeholder words, not T-599's", fill=(150, 120, 120), font=font)
         y0 += rh
     d.text((20, im.height - 50), "T-613 DRAFT. A note's colour is its pitch (C red, D orange, E yellow, F green, G blue, "
            "A indigo, B violet; a black key split). The hook (white outline) is the cry and the summon.",
@@ -565,34 +693,35 @@ def text_of(lines, uniq):
                 out.append("     %9s hook: %s  (%s)" % ("", " ".join(note_name(m, seg["tonic"], seg["minor"]) for m in midi_of(seg)[:HOOK]),
                                                         g.key_name(seg["tonic"], seg["minor"])))
         out.append("")
-    out.append("HOOKS: %d forms given a hook (the six lines' words, every other form's INDEX entry standing in), %d "
+    out.append("HOOKS: %d forms given a hook (T-599's drafts and the sampler's placeholders, every other form's INDEX entry standing in), %d "
                "different -- every one unique in shape, none lengthened, none left out." % uniq)
     return "\n".join(out) + "\n"
 
 
 def build_lines():
-    sp, paths, _ = g.build()
+    sp = g.species()
+    _, paths = g.lines(sp)
     qs = quotes()
-    taken = {"hooks": {}}
-    lines = [line_of(n, sp, paths, taken, qs) for n in SAMPLE]
-    return sp, paths, qs, taken, lines
+    lines_all = all_lines(sp, paths)
+    lines = [lines_all[g.by_name(sp, n)] for n in SAMPLE]
+    return sp, paths, qs, lines_all, lines
 
 
 def main():
     import numpy as np
     args = sys.argv[1:]
-    sp, paths, qs, taken, lines = build_lines()
+    sp, paths, qs, lines_all, lines = build_lines()
     if "--sampler" in args:
         i = args.index("--sampler")
         out = args[i + 1] if len(args) > i + 1 and not args[i + 1].startswith("--") else OUT_DIR
         os.makedirs(os.path.join(out, "lines"), exist_ok=True)
         os.makedirs(os.path.join(out, "sheets"), exist_ok=True)
         reel, listing = [], []
-        old = g.build()[2]                                 # today's ROVERCUB line, for comparison
+        old = g.build_t594()[2]                            # the ROVERCUB line as T-594 had it, for comparison
         y = g.render([old[f] for f in paths[g.by_name(sp, "ROVERBYTE")]], [1, 1, 1])
         g.mp3(os.path.join(out, "lines", "00_rovercub_line_today.mp3"), y)
         reel += [y, np.zeros(int(1.5 * g.SR))]
-        listing.append("%-66s %5.1f s" % ("0. ROVERCUB -> ROVERSEER -> ROVERBYTE as it is TODAY (T-594)", len(y) / g.SR))
+        listing.append("%-66s %5.1f s" % ("0. ROVERCUB -> ROVERSEER -> ROVERBYTE as T-594 had it", len(y) / g.SR))
         for n, line in enumerate(lines, 1):
             title = "%d. %s" % (n, " -> ".join(line["forms"]))
             y = render_line(line)
@@ -607,14 +736,14 @@ def main():
         reel += [y]
         listing.append("%-66s %5.1f s" % ("8. Every form's HOOK alone, in order (its cry, and its summon)", len(y) / g.SR))
         g.mp3(os.path.join(out, "sampler.mp3"), np.concatenate(reel))
-        uniq = all_hooks(sp, paths, qs, taken)
+        uniq = all_hooks(lines_all)
         with open(os.path.join(out, "SAMPLER.txt"), "w") as f:
             f.write("T-613 THE VERSES, DRAFT: the sampler, in order\n\n" + "\n".join(listing) + "\n\n" + text_of(lines, uniq))
         print("genverses: %d lines, sampler.mp3, sheets and SAMPLER.txt in %s" % (len(lines), os.path.relpath(out, ROOT)))
         print("genverses: hooks %d given, %d different" % uniq)
         return
     if "--hooks" in args:
-        print("genverses: hooks %d given, %d different" % all_hooks(sp, paths, qs, taken))
+        print("genverses: hooks %d given, %d different" % all_hooks(lines_all))
         return
     uniq = (0, 0)
     print(text_of(lines, uniq))

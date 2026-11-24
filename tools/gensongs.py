@@ -92,6 +92,7 @@ STAGE_DEG = {1: 0, 2: -3, 3: -7}                           # a fourth lower, an 
 BPM = {1: 132, 2: 120, 3: 108, 4: 96, 6: 84}               # the type's palette step, fast to slow
 PENTA_DEG = [0, 1, 2, 4, 5, 7, 8, 9, 11, 12]               # the cry's two-octave pentatonic, as scale steps
 VOWELS = set("AEIOUY")
+NOTE_RING = 2.5                                            # T-613: a note sounds at most this many beats
 LOW, HIGH = 48, 88                                         # a part's notes stay inside C3..E6
 MAX_SYLLABLES = 14
 
@@ -320,7 +321,9 @@ def part(k, s, stage, line, span):
             "bass": bass((s.get("entry") or {}).get("CONTEXT"), sum(beats), tonic, minor)}
 
 
-def build(sp=None):
+def build_t594(sp=None):
+    """The songs as T-594 drafted them: each form's part opening with its line's cry, its tune a walk on its INDEX
+    entry. Kept for comparison (genverses' sampler plays the ROVERCUB line both ways); T-613 replaced it."""
     sp = sp or species()
     parent, paths = lines(sp)
     sp_spans = spans(sp, paths)
@@ -328,17 +331,40 @@ def build(sp=None):
     return sp, paths, parts
 
 
+def build(sp=None):
+    """T-613 THE VERSES (the user, 2026-11-23): each form's part is its VERSE, set to its quote a note a syllable
+    (T-599's draft where it has one, else its INDEX entry standing in), its first seven notes its HOOK -- unique in shape
+    across every form -- and a line in one key and tempo (tools/genverses.py). A note's length here holds the rest after
+    it too; the players sound it at most NOTE_RING beats (the rest is silence)."""
+    import genverses
+    sp = sp or species()
+    parent, paths = lines(sp)
+    sp_spans = spans(sp, paths)
+    return sp, paths, genverses.parts_for(sp, paths, sp_spans)
+
+
+def choruses(sp=None):
+    """T-613: each final form's hidden CHORUS (only where its line has chorus words): one run of notes a gap between
+    its verses, in the key of the verse after the gap. {form: [{"notes": [[midi, beats]], "bass": [[midi, beats]],
+    "tonic", "minor", "bpm"}, ...]}"""
+    import genverses
+    sp = sp or species()
+    parent, paths = lines(sp)
+    return genverses.choruses_for(sp, paths)
+
+
 def songs_json(sp=None):
     """songs.json as text, one part and one song a line, so a change to one daemon is one line of its diff."""
     t = songs_table(sp)
-    head = {k: v for k, v in t.items() if k not in ("parts", "songs", "summons", "shiny")}
+    sections = ("parts", "songs", "summons", "shiny", "chorus")
+    head = {k: v for k, v in t.items() if k not in sections}
     lines = ["{"] + ['%s: %s,' % (json.dumps(k), json.dumps(v, ensure_ascii=False)) for k, v in head.items()]
-    for name in ("parts", "songs", "summons", "shiny"):
+    for name in sections:
         rows = list(t[name].items())
         lines.append('%s: {' % json.dumps(name))
         lines += [' %s: %s%s' % (json.dumps(k), json.dumps(v, separators=(",", ":"), ensure_ascii=False),
                                  "," if i < len(rows) - 1 else "") for i, (k, v) in enumerate(rows)]
-        lines.append("}" if name == "shiny" else "},")
+        lines.append("}" if name == sections[-1] else "},")
     return "\n".join(lines) + "\n}\n"
 
 
@@ -364,7 +390,13 @@ def songs_table(sp=None):
                   "on its relative major's), its pitch classes in order, null where any button stands for a note the wheel "
                   "cannot play]; heard at the end of what was played, octave-blind. shiny (T-602, C-482): the notes a "
                   "SHINY sings that its kind does not -- a form's [index into its part's notes, the MIDI note a shiny "
-                  "sings there], from DAEMONS tools/genshinysongs.py; a form not listed sings its kind's part. Every note DRAFT.",
+                  "sings there], from DAEMONS tools/genshinysongs.py; a form not listed sings its kind's part. T-613 THE "
+                  "VERSES: a part is its form's VERSE, set to its quote a note a syllable (its INDEX entry standing in "
+                  "until T-599 writes it), its first seven notes its HOOK (its summon, unique in shape); a note's beats "
+                  "hold the rest after it, and it sounds at most ring beats. chorus: a final form's hidden CHORUS, one run "
+                  "between each two of its verses (notes [midi, beats], bass, its key), sung only once the final form "
+                  "knows its own verse whole; words, a few words shown in italics between the verses' quotes. Every note DRAFT.",
+        "ring": NOTE_RING,
         "window": WINDOW,
         "static": {"candidates": STATIC, "floor": STATIC_FLOOR},
         "keys": {t: {"tonic": v[0], "minor": v[1], "name": key_name(v[0], v[1]), "why": v[2]} for t, v in KEYS.items()},
@@ -373,6 +405,9 @@ def songs_table(sp=None):
         "binary": BINARY_GREEN,
         "parts": parts,
         "songs": {k: paths[k] for k in sp},
+        "chorus": {k: [{"notes": c["notes"], "bass": c["bass"], "tonic": c["tonic"], "minor": c["minor"],
+                        "key": key_name(c["tonic"], c["minor"]), "bpm": c["bpm"], "words": c["words"]} for c in gaps]
+                   for k, gaps in sorted(choruses(sp).items(), key=lambda kv: int(kv[0]))},
         "summons": {str(s["id"]): [s["wheel"], [None if x == SUMMON_ANY else (x + s["tonic"]) % 12 for x in s["full"][:s["len"]]]]
                     for s in srows},
         "shiny": shiny,
@@ -647,9 +682,10 @@ def engine_rows(sp=None):
 
 
 def engine_header(sp=None):
+    sp = sp or species()
     rows = engine_rows(sp)
     out = ["// T-595: every daemon's SONG for the engine -- each form's own part of its line's song (DAEMONS vision 9.36).",
-           "// GENERATED by DAEMONS tools/gensongs.py --write from T-594's songs -- never edit by hand. DRAFT, every note.",
+           "// GENERATED by DAEMONS tools/gensongs.py --write from T-613's verses (tools/genverses.py) -- never edit by hand. DRAFT.",
            "// src/daemon_song.c plays them; the companion carries the same parts (companion/server/data/songs.json).",
            "",
            "// static closes on a note over this share of its part (of %d), and its candidates, in steps along the key from"
@@ -667,13 +703,47 @@ def engine_header(sp=None):
         r["at"] = pos
         out.append("    %s  // %s" % (" ".join("{%d, %d, %d}," % n for n in r["notes"]), r["name"]))
         pos += len(r["notes"])
-    out += ["};", "", "// the bass, from the CONTEXT entry: a chord root a bar, [MIDI key, half beats]",
+    chorus = []                                            # T-613: each final form's chorus, a run a gap
+    names = {r["id"]: r["name"] for r in rows}
+    for k, gaps in sorted(choruses(sp).items(), key=lambda kv: int(kv[0])):
+        for gi, gap in enumerate(gaps):
+            notes = [(m, int(b * 2), 0) for m, b in gap["notes"]]
+            assert all(1 <= h <= 255 for _, h, _ in notes)
+            chorus.append({"id": int(k), "gap": gi, "notes": notes, "bass": [(m, int(b * 2)) for m, b in gap["bass"]],
+                           "bpm": gap["bpm"], "tonic": gap["tonic"], "minor": gap["minor"], "at": pos})
+            out.append("    %s  // %s's chorus, gap %d" % (" ".join("{%d, %d, %d}," % n for n in notes), names[int(k)], gi + 1))
+            pos += len(notes)
+    out += ["};", "", "// the bass: a chord a bar fitted to the tune, its root then its fifth, [MIDI key, half beats]",
             "static const u8 sSongBass[][2] = {"]
     pos = 0
     for r in rows:
         r["bat"] = pos
         out.append("    %s  // %s" % (" ".join("{%d, %d}," % n for n in r["bass"]), r["name"]))
         pos += len(r["bass"])
+    for c in chorus:
+        c["bat"] = pos
+        out.append("    %s  // %s's chorus, gap %d" % (" ".join("{%d, %d}," % n for n in c["bass"]), names[c["id"]], c["gap"] + 1))
+        pos += len(c["bass"])
+    out += ["};", "",
+            "// T-613: the hidden CHORUS -- a run between each two verses of a final form's song, sung only once that form",
+            "// knows its own verse whole; in the key of the verse after it. Every word of it is a placeholder until T-599.",
+            "static const struct DaemonSongPart sSongChorusParts[] = {"]
+    for c in chorus:
+        out.append("    {%d, %d, 0, %d, %d, 0, %d, %d, %d, 0, 0},   // %s, gap %d"
+                   % (c["at"], c["bat"], len(c["notes"]), len(c["bass"]), c["bpm"], c["tonic"], 1 if c["minor"] else 0,
+                      names[c["id"]], c["gap"] + 1))
+    if not chorus:
+        out.append("    {0},")
+    out += ["};", "", "// a final form and its first run in sSongChorusParts, sorted by form",
+            "static const struct DaemonSongChorus sSongChorus[] = {"]
+    seen = []
+    for i, c in enumerate(chorus):
+        if c["gap"] == 0:
+            seen.append((c["id"], i, sum(1 for d in chorus if d["id"] == c["id"])))
+    for sid, first, count in seen:
+        out.append("    {%d, %d, %d},   // %s" % (sid, first, count, names[sid]))
+    if not seen:
+        out.append("    {0},")
     out += ["};", "",
             "// a form's part: where its notes and bass start, how many, how many open it (its cry), its tempo and key,",
             "// the levels it is learned between, and the form it continues (its line's song is its parents' parts first)",
@@ -766,7 +836,7 @@ def summon_rows(rows=None):
 def summon_header(rows=None):
     srows, accidentals, collisions, dropped = summon_rows(rows)
     out = ["// T-598: the openings PLAY's freestyle listens for -- play a daemon's opening on its key's wheel and it comes.",
-           "// GENERATED by DAEMONS tools/gensongs.py --write from T-594's songs -- never edit by hand. DRAFT, every note.",
+           "// GENERATED by DAEMONS tools/gensongs.py --write from T-613's verses (tools/genverses.py) -- never edit by hand. DRAFT.",
            "// src/daemon_song.c (DaemonSong_Listen) matches the end of what was played against these, octave-blind.",
            "// %d openings; %d with a note the wheel cannot play (SUMMON_ANY: any button stands for it); %d lengthened"
            % (len(srows), len(accidentals), len({a for a, _ in collisions})),
