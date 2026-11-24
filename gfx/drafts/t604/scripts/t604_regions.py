@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""T-604 stages 1 to 7 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
+"""T-604 stages 1 to 8 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
 drawing already there (ears, crest, tail, drawers, wings), so it visibly colours in as it learns its part (T-597).
 
     python3 gfx/drafts/t604/scripts/t604_regions.py               # report each form: region, slots, coverage before/after
@@ -9,6 +9,7 @@ drawing already there (ears, crest, tail, drawers, wings), so it visibly colours
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 5 ...  # ... and STAGE 5's fifteen (FORMS5)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 6 ...  # ... and STAGE 6's fifteen (FORMS6)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 7 ...  # ... and STAGE 7's fifteen (FORMS7)
+    python3 gfx/drafts/t604/scripts/t604_regions.py --stage 8 ...  # ... and STAGE 8's fifteen (FORMS8)
     python3 gfx/drafts/t604/scripts/t604_regions.py --draft       # write the drafts into gfx/drafts/t604/<NAME>/
     python3 gfx/drafts/t604/scripts/t604_regions.py --sheet DIR   # ... and the contact sheet into DIR
     python3 gfx/drafts/t604/scripts/t604_regions.py --built --sheet DIR   # the sheet from the engine as BUILT (after
@@ -24,7 +25,8 @@ pointing gencolourbysong's World at the draft folder for that one form, so what 
 A region is: rectangles (front, back) in the 64x64 frame, the source slots inside them that are recoloured (never the
 ink 5, never the streaks 11-14), and a map from each source slot to a NEW slot whose colour is a ramp of one colour --
 the form's NEW TYPE where it has one (the argument: invariant 5), else a note its own part sings (the key leaned into).
-A slot freed for it by MERGE is a near-duplicate folded into its neighbour first (a handful of pixels).
+A slot freed for it by MERGE is a near-duplicate folded into its neighbour first (a handful of pixels). A region of two
+parts that want different slots (a ring and the coat it rings) gives the second as "extra": [dict(front, back, slotmap)].
 """
 import colorsys, os, sys, shutil
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -846,6 +848,138 @@ FORMS7 = {
 }
 
 
+#  STAGE 8 (the user, 2026-11-23: "T-604 stage 8"; DRAFT): fifteen more, by how often a player meets them. No trainer
+#  fields any of the later forms still under 10%, so it goes by the wild, the highest share of any one table in either
+#  edition: the surf at 30% (SEVEN ISLAND's TRAINER TOWER, FOUR ISLAND's ICEFALL CAVE), then 20% (THREE ISLAND's BERRY
+#  FOREST, FIVE ISLAND's MEADOW, SIX ISLAND's PATTERN BUSH), 15% (the FOUR and FIVE ISLAND groves), and of the 10%s those
+#  met in both editions or on more than one table, then MT. EMBER's (reached before the ELITE FOUR). Skipped: STEEPEST,
+#  the cocoons (IFTRUE, IFFALSE, PENDING, BUFFER, and BROODING, a chrysalis), and any MUSAI, PENPHIN or UNOWN form. TODAY is
+#  the engine after stage 7 (BASE8): no form here was drawn by stages 1-7. Every colour is given exactly ("cols"), each
+#  checked against the carry rule by the report: none may read CARRIED.
+BASE8_COMMIT = "cedc8d360"
+FORMS8 = {
+    "ELATION": dict(
+        why="VALENCE line, stage 3 (SEVEN ISLAND's TRAINER TOWER, surfing 30% in CONTENT): 0.0% waits, every colour carried",
+        region="the round LOWER BODY, lifted into lilac", colour="Bb, a note its part sings (lilac into violet)",
+        base=g.pc_rgb(10),
+        front=R((18, 38, 48, 58)), back=R((15, 38, 45, 58)),
+        slotmap={1: 9, 2: 10}, ramp="cols",
+        cols={9: (180, 150, 235), 10: (120, 85, 195)}),
+    "DELTA": dict(
+        why="RUNOFF line, stage 3 (FOUR ISLAND's ICEFALL CAVE, surfing 30% in CONTENT): 0.0% waits, every colour carried",
+        region="the spiked GILLS at its cheeks, and the cheek below the eye, a river-mouth orange",
+        colour="Eb and C, notes its part sings (amber into rust)", base=g.pc_rgb(3),
+        front=R((42, 12, 60, 36), (4, 28, 22, 34)), back=R((2, 12, 18, 34), (46, 12, 62, 34)),
+        slotmap={1: 8, 2: 9, 3: 10}, merge={7: 6}, ramp="cols",
+        cols={8: (250, 205, 140), 9: (235, 140, 60), 10: (190, 75, 40)}),
+    "SHAPING": dict(
+        why="WARMUP line, stage 2 (SIX ISLAND's PATTERN BUSH, 20% in CONTEXT, 10% in CONTENT): 2.6% waits",
+        region="the great LEAF it carries and the tuft of its crown, turning gold", colour="E and D, notes its part sings (gold into amber)",
+        base=g.pc_rgb(4),
+        front=R((40, 22, 58, 48), (12, 2, 34, 12)), back=R((6, 22, 24, 48), (30, 2, 52, 12)),
+        #  the leaf-pod's two oranges (8 pixels) and its two reds (8) each folded into one, to free two slots
+        slotmap={2: 7, 3: 8, 4: 8}, merge={7: 6, 8: 9}, ramp="cols",
+        #  the amber kept 95 off WARMUP's lost rose-brown (176,130,116): any nearer and it would be CARRIED
+        cols={7: (230, 205, 95), 8: (215, 135, 30)}),
+    "DEFUNCT": dict(
+        why="PREFORK line, stage 2 (THREE ISLAND's BERRY FOREST, 20% in CONTEXT): 0.3% waits; LATENT is the new type",
+        region="the WINGS' panes, in LATENT", colour="LATENT, the new type (lilac, its veins plum): A and B",
+        base=(150, 125, 215),
+        front=R((6, 14, 22, 36), (44, 14, 60, 36)), back=R((6, 14, 22, 36), (44, 14, 60, 36)),
+        slotmap={1: 8, 3: 9}, ramp="cols",
+        cols={8: (150, 125, 215), 9: (95, 55, 135)}),
+    "QUINE": dict(
+        why="LOOPBACK line, stage 2 (FIVE ISLAND's MEADOW, 20% in CONTENT): 2.2% waits",
+        region="the CROWN of its head with the ears, the TAIL and the PAWS, lavender", colour="B and A, notes its part sings (lavender into violet)",
+        base=g.pc_rgb(11),
+        front=R((8, 4, 38, 14), (40, 18, 63, 40), (10, 52, 50, 59)), back=R((26, 4, 56, 14), (0, 18, 24, 40), (14, 52, 54, 59)),
+        slotmap={1: 6, 2: 10, 3: 10}, merge={6: 7}, ramp="cols",
+        cols={6: (205, 180, 235), 10: (130, 120, 205)}),
+    "ZEROSHOT": dict(
+        why="FEWSHOT line, stage 2 (SIX ISLAND's PATTERN BUSH, 20% in CONTENT; BERRY FOREST, 10% in CONTEXT): 3.3% waits",
+        region="the SPINES of its crown and along its tail, in bloom", colour="C and Bb, notes its part sings (blossom pink into violet)",
+        base=(240, 150, 190),
+        front=R((0, 0, 40, 15)), back=R((24, 0, 63, 15)),
+        #  the spines' two lesser teals (13 and 7 pixels) folded into the bright one, to free two slots
+        slotmap={1: 6, 2: 8, 3: 8}, merge={8: 7, 6: 7}, ramp="cols",
+        extra=[dict(front=R((30, 28, 63, 46)), back=R((0, 28, 33, 46)), slotmap={3: 8, 4: 8})],
+        cols={6: (240, 150, 190), 8: (150, 80, 175)}),
+    "BURSTMODE": dict(
+        why="PREFORK line, stage 2 (FOUR ISLAND's grove, 15% in both): 2.4% waits; VECTOR is the new type",
+        region="the WINGS and the top SPEED LINE behind them, an afterburner", colour="E into VECTOR (C#), notes its part sings",
+        base=TYPE["VECTOR"],
+        front=R((6, 12, 24, 24), (38, 12, 56, 24), (0, 29, 21, 32), (43, 29, 63, 32)),
+        back=R((6, 12, 24, 24), (38, 12, 56, 24), (0, 29, 21, 32), (43, 29, 63, 32)),
+        slotmap={1: 7, 2: 10, 3: 10}, ramp="cols",
+        cols={7: (245, 200, 80), 10: (210, 70, 50)}),
+    "PAIRWISE": dict(
+        why="SINGLETON line, stage 2 (FIVE ISLAND's MEADOW grove, 15% in both): 0.1% waits",
+        region="the CLAWS it stands on, in CONTEXT", colour="CONTEXT, its type (magenta), its light a lilac: C and Bb",
+        base=TYPE["CONTEXT"] if "CONTEXT" in TYPE else (176, 86, 158),
+        front=R((6, 40, 60, 50)), back=R((6, 40, 60, 50)),
+        slotmap={1: 6, 2: 6, 3: 10, 4: 10}, merge={6: 1}, ramp="cols",
+        cols={6: (200, 160, 230), 10: (176, 86, 158)}),
+    "SYLLABUS": dict(
+        why="PRIMER line, stage 2 (SIX ISLAND's PATTERN BUSH, 10% in both): 0.0% waits, every colour carried",
+        region="the ANTLERS and the ears' tips, gilded, and the dapples on its flank", colour="E and D, notes its part sings (gold into bronze)",
+        base=g.pc_rgb(4),
+        front=R((10, 4, 46, 20)), back=R((20, 4, 58, 19)),
+        slotmap={1: 9, 2: 9, 3: 9, 4: 10}, merge={6: 7, 8: 7}, ramp="cols",
+        extra=[dict(front=R((22, 30, 50, 46)), back=R((10, 30, 32, 46)), slotmap={1: 9})],
+        cols={9: (235, 205, 95), 10: (170, 105, 40)}),
+    "ECLIPSE": dict(
+        why="SMUDGE line, stage 2 (FIVE ISLAND's LOST CAVE, 10% in both): 0.0% waits, no accent at all",
+        region="the CORONA it stands in, gold, and the coat it shadows, indigo", colour="E and B, notes its part sings (gold; indigo)",
+        base=g.pc_rgb(4),
+        front=R((6, 4, 42, 36)), back=R((28, 4, 64, 36)),
+        slotmap={1: 6, 2: 7}, ramp="cols",
+        extra=[dict(front=R((14, 34, 54, 62)), back=R((8, 34, 48, 62)), slotmap={3: 8})],
+        cols={6: (240, 210, 110), 7: (205, 150, 50), 8: (60, 35, 100)}),
+    "WITHDRAWAL": dict(
+        why="STARTLE line, stage 2 (SIX ISLAND's PATTERN BUSH, 10% in CONTEXT): 0.0% waits, no accent; HARDENED is the new type",
+        region="the shell's PLATES, in HARDENED (the face left bare)", colour="HARDENED, the new type: E and Eb (gold into bronze)",
+        base=(196, 170, 96),
+        front=R((32, 6, 62, 36)), back=R((14, 14, 56, 26)),
+        slotmap={1: 6, 2: 7, 3: 8}, ramp="cols",
+        #  the bronze kept 52 off STARTLE's olive (128,148,72) and 85 off its lost rust (133,51,8): nearer, it is CARRIED
+        cols={6: (235, 215, 145), 7: (205, 160, 75), 8: (165, 118, 50)}),
+    "ATTUNE": dict(
+        why="GUESSWORK line, stage 2 (FIVE ISLAND's MEMORIAL PILLAR, 10% in CONTEXT; ROUTE 25's grove in both): 2.6% waits",
+        region="the TUTU, a spring green", colour="F and G, notes its part sings (mint into sea green)",
+        base=g.pc_rgb(5),
+        front=R((16, 30, 44, 40)), back=R((16, 30, 44, 40)),
+        #  the hair's 13-pixel slate folded into the body's plum, the cheeks' peach into their pink, to free two slots
+        slotmap={2: 6, 3: 8, 4: 8}, merge={8: 4, 6: 7}, ramp="cols",
+        #  both kept 85 or more off GUESSWORK's lost slate (76,93,118) and grey teal (126,143,143), or they are CARRIED
+        cols={6: (140, 230, 150), 8: (40, 160, 170)}),
+    "SEETHE": dict(
+        why="TEPID line, stage 2 (MT. EMBER's SUMMIT PATH, 10% in CONTEXT): 3.6% waits",
+        region="the crest on its CROWN and the length of its TAIL, an ember (behind, the tail alone)", colour="Eb and C#, notes its part sings (amber into ember)",
+        base=g.pc_rgb(1),
+        front=R((46, 12, 62, 50), (36, 40, 62, 52), (14, 4, 36, 14)), back=R((16, 46, 48, 60)),
+        slotmap={1: 7, 2: 7, 3: 9, 4: 10}, ramp="cols",
+        cols={7: (250, 170, 90), 9: (225, 95, 50), 10: (160, 55, 30)}),
+    "HEATDEATH": dict(
+        why="TEPID line, stage 3 (MT. EMBER's SUMMIT PATH, 10% in CONTEXT): 1.2% waits",
+        region="the gold of its BACK and crown gone to a cold violet", colour="B and Bb, notes its part sings (violet into indigo)",
+        base=g.pc_rgb(11),
+        front=R((32, 20, 60, 42)), back=R((28, 10, 50, 32)),
+        #  the eye's 3-pixel blue folded into the navy beside it, to free a slot
+        slotmap={2: 7, 3: 7, 4: 10}, merge={7: 9}, ramp="cols",
+        extra=[dict(front=R((6, 12, 32, 30)), back=R(), slotmap={2: 7, 3: 7})],
+        #  the indigo kept 60 off TEPID's lost navy (28,61,89): nearer, it is CARRIED
+        cols={7: (150, 95, 200), 10: (70, 40, 125)}),
+    "DUSTDEVIL": dict(
+        why="SINKHOLE line, stage 3 (MT. EMBER's RUBY PATH, 10% in CONTENT): 0.0% waits, every colour carried",
+        region="the WINGS' panes, a desert sunset inside their teal rims", colour="D and C#, notes its part sings (peach into coral)",
+        base=g.pc_rgb(1),
+        front=R((6, 4, 34, 20), (34, 2, 58, 22), (40, 30, 58, 48), (34, 36, 40, 48)),
+        back=R((6, 2, 30, 20), (30, 4, 58, 20), (6, 36, 30, 48), (6, 30, 18, 36)),
+        slotmap={1: 9, 2: 10}, ramp="cols",
+        cols={9: (250, 200, 165), 10: (215, 110, 85)}),
+}
+
+
 def pal_of(w, k):
     return [tuple(c) for c in w.palette(k)]
 
@@ -862,7 +996,8 @@ def make(w, n):
             data[s] = [b if v == a else v for v in data[s]]
     lo, mid, dk = ramp3(spec["base"])
     dk = spec.get("dark", dk)          # a dark moved past CARRY_FAR of an earlier form's lost colour
-    new = sorted(set(spec["slotmap"].values()) | set((spec.get("slotmap_back") or {}).values()))
+    new = sorted(set(spec["slotmap"].values()) | set((spec.get("slotmap_back") or {}).values())
+                 | {b for ex in spec.get("extra") or () for b in list(ex["slotmap"].values()) + list((ex.get("slotmap_back") or {}).values())})
     if spec["ramp"] == "keep6":         # slot 6 is already a light SIGNAL-ish cyan: it is the light, 9 and 10 mid and dark
         cols = {6: pal[6], 9: mid, 10: dk}
     elif spec["ramp"] == "mid":         # one slot: the mid tone, shaded by the carried dark already round it
@@ -893,6 +1028,12 @@ def make(w, n):
                 m = {a: b for a, b in m.items() if a in only}
             if v in m and any(x0 <= x <= x1 and y0 <= y <= y1 for x0, y0, x1, y1 in boxes):
                 out.append(m[v])
+                continue
+            for ex in spec.get("extra") or ():      # a second part of the region, with its own slots
+                em = ex.get("slotmap_back", ex["slotmap"]) if side == "back" else ex["slotmap"]
+                if v in em and any(x0 <= x <= x1 and y0 <= y <= y1 for x0, y0, x1, y1 in ex[side]):
+                    out.append(em[v])
+                    break
             else:
                 out.append(v)
         data[side] = out
@@ -973,7 +1114,9 @@ def summary(w, n):
         pal, t = g.ties(w, k, "A")
         ua = slots_used(w, k)
         newslots = [(i, pal[i], g.name(t[i][1]), "CARRIED" if t[i][2] else "%d notes" % len(t[i][3]))
-                    for i in sorted(set(FORMS[n]["slotmap"].values()) | set((FORMS[n].get("slotmap_back") or {}).values()))]
+                    for i in sorted(set(FORMS[n]["slotmap"].values()) | set((FORMS[n].get("slotmap_back") or {}).values())
+                                    | {b for ex in FORMS[n].get("extra") or ()
+                                       for b in list(ex["slotmap"].values()) + list((ex.get("slotmap_back") or {}).values())})]
     return before, after, newslots, sorted(ua - ub), sorted(ub - ua)
 
 
@@ -1086,6 +1229,8 @@ def main():
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS6, list(FORMS6), 6, BASE6_COMMIT
     if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "7":
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS7, list(FORMS7), 7, BASE7_COMMIT
+    if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "8":
+        FORMS, ORDER, STAGE, BASE_COMMIT = FORMS8, list(FORMS8), 8, BASE8_COMMIT
     w = g.World()
     if "--base" in sys.argv:
         return file_base(w)
