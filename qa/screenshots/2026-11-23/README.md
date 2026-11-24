@@ -151,3 +151,21 @@ C-484: inside ROVERCUB's dream book -- the CONTENTS by day (red first), ORANGE's
 C-484: inside ROVERCUB's dream book -- the CONTENTS by day (red first), ORANGE's opening page, a dream dated, and its SIGNS & SYMBOLS beneath (the lexicon's reading; scratch companion, made-up dreams, DRAFT)
 
 ![23Nov2026 - C484 - the seven days and SIGNS AND SYMBOLS - 25](23Nov2026%20-%20C484%20-%20the%20seven%20days%20and%20SIGNS%20AND%20SYMBOLS%20-%2025.jpg)
+
+### 23Nov2026 - T604 - stage 6, fifteen later forms, built - 26
+
+T-604 stage 6 (DRAFT): fifteen more later forms colour in as they learn their part -- TURBULENCE's tail, IMPULSE's mane, MULTICAST's wings, OBSESSION's muzzle and chest, SOUNDING's lantern, HIBERNATE's ears and paws, BUILDUP's wool, RESTLESS's crown and ruff, WIRETAP's crowns, DYNAMO's belly and dome, OUTLIER's iris, MUTEX's trunks, MONOLITH's bowl, PRESCIENCE's flight feathers, ENGRAM's ears; 81 of about 182 now
+
+![23Nov2026 - T604 - stage 6, fifteen later forms, built - 26](23Nov2026%20-%20T604%20-%20stage%206%2C%20fifteen%20later%20forms%2C%20built%20-%2026.png)
+
+### 23Nov2026 - T604 - stage 6, fifteen later forms, built - 27
+
+T-604 stage 6 (DRAFT): fifteen more later forms colour in as they learn their part -- TURBULENCE's tail, IMPULSE's mane, MULTICAST's wings, OBSESSION's muzzle and chest, SOUNDING's lantern, HIBERNATE's ears and paws, BUILDUP's wool, RESTLESS's crown and ruff, WIRETAP's crowns, DYNAMO's belly and dome, OUTLIER's iris, MUTEX's trunks, MONOLITH's bowl, PRESCIENCE's flight feathers, ENGRAM's ears; 81 of about 182 now
+
+![23Nov2026 - T604 - stage 6, fifteen later forms, built - 27](23Nov2026%20-%20T604%20-%20stage%206%2C%20fifteen%20later%20forms%2C%20built%20-%2027.png)
+
+### 23Nov2026 - T604 - stage 6, fifteen later forms, built - 28
+
+T-604 stage 6 (DRAFT): fifteen more later forms colour in as they learn their part -- TURBULENCE's tail, IMPULSE's mane, MULTICAST's wings, OBSESSION's muzzle and chest, SOUNDING's lantern, HIBERNATE's ears and paws, BUILDUP's wool, RESTLESS's crown and ruff, WIRETAP's crowns, DYNAMO's belly and dome, OUTLIER's iris, MUTEX's trunks, MONOLITH's bowl, PRESCIENCE's flight feathers, ENGRAM's ears; 81 of about 182 now
+
+![23Nov2026 - T604 - stage 6, fifteen later forms, built - 28](23Nov2026%20-%20T604%20-%20stage%206%2C%20fifteen%20later%20forms%2C%20built%20-%2028.png)
