@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""T-604 stages 1 to 4 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
+"""T-604 stages 1 to 5 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
 drawing already there (ears, crest, tail, drawers, wings), so it visibly colours in as it learns its part (T-597).
 
     python3 gfx/drafts/t604/scripts/t604_regions.py               # report each form: region, slots, coverage before/after
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 2 ...  # the same for STAGE 2's twelve (FORMS2)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 3 ...  # ... and STAGE 3's fifteen (FORMS3)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 4 ...  # ... and STAGE 4's fifteen (FORMS4)
+    python3 gfx/drafts/t604/scripts/t604_regions.py --stage 5 ...  # ... and STAGE 5's fifteen (FORMS5)
     python3 gfx/drafts/t604/scripts/t604_regions.py --draft       # write the drafts into gfx/drafts/t604/<NAME>/
     python3 gfx/drafts/t604/scripts/t604_regions.py --sheet DIR   # ... and the contact sheet into DIR
     python3 gfx/drafts/t604/scripts/t604_regions.py --built --sheet DIR   # the sheet from the engine as BUILT (after
@@ -460,6 +461,140 @@ FORMS4 = {
 }
 
 
+#  STAGE 5 (the user, 2026-11-23: "T-604 stage 5"; DRAFT): fifteen more, by how often a player meets them -- the
+#  ELITE FOUR's not yet done (LORELEI's CLOYSTER, SLOWBRO and JYNX; BRUNO's HITMONLEE), the trainer staples (NIDORINA,
+#  DODRIO, NINETALES, KINGLER, NIDOKING, BEEDRILL, JIGGLYPUFF, URSARING), CERULEAN CAVE's WOBBUFFET, the CHAMPION
+#  rematch's TYRANITAR and HITMONLEE's sibling HITMONTOP. TODAY is the engine after stage 4 (BASE5): no form here was
+#  drawn by stages 1-4. Every colour is given exactly ("cols"), each checked against the carry rule by the report.
+BASE5_COMMIT = "39093823d"
+FORMS5 = {
+    "THREAD": dict(
+        why="FORK line, stage 2 (the SAFARI ZONE's; 8 trainers): 3.6% waits",
+        region="the long EARS, turning blue", colour="Ab, a note its part sings (blue)",
+        base=g.pc_rgb(8),
+        front=R((4, 11, 15, 38), (46, 9, 58, 42), (38, 8, 46, 12)), back=R((8, 12, 24, 30), (41, 8, 58, 30)),
+        #  the eye's 3-pixel sparkle folded into its green to free a slot
+        #  behind, the outer face only: the ears' insides already wait (their green and grey)
+        slotmap={1: 10, 2: 10, 3: 6}, slotmap_back={1: 10, 2: 10}, merge={6: 7}, ramp="cols",
+        #  the light kept saturated: a paler blue sits nearest FORK's grey-blue (161,164,186), CARRIED
+        cols={10: (125, 155, 240), 6: (64, 95, 175)}),
+    "AXIOMKICK": dict(
+        why="PREMISE line, stage 2 (BRUNO's, both fights; the FIGHTING DOJO's and the CRUSH girls'): 1.5% waits",
+        region="the kicking LEG and the FEET, a fighter's orange wraps", colour="D, a note its part sings (orange)",
+        base=g.pc_rgb(2),
+        front=R((44, 8, 62, 20), (48, 20, 62, 40), (16, 46, 40, 58)), back=R((14, 46, 50, 58), (2, 32, 16, 48), (48, 32, 62, 48)),
+        slotmap={1: 9, 2: 9, 3: 10, 4: 10}, ramp="cols",
+        cols={9: (235, 150, 85), 10: (180, 85, 35)}),
+    "SHELL": dict(
+        why="LATENCY line, stage 2 (LORELEI's, both fights; 9 trainers): 1.4% waits",
+        region="the SHELL on its tail: its pale whorls turn violet, the blue ones stay", colour="Bb, a note its part sings (violet)",
+        base=g.pc_rgb(10),
+        #  the shell's edge in front follows its whorl (a circle round (44,31)): above it, the head runs into the shell
+        front=R((38, 12, 60, 12), (36, 13, 60, 13), (34, 14, 60, 14), (32, 15, 60, 15), (31, 16, 60, 16), (30, 17, 60, 17), (29, 18, 60, 18), (28, 19, 60, 20), (27, 21, 60, 22), (26, 23, 60, 24), (25, 25, 60, 30), (24, 31, 60, 31), (25, 32, 60, 37), (26, 38, 60, 39), (27, 40, 60, 41), (28, 42, 60, 43), (29, 44, 60, 44)),
+        back=R((16, 10, 60, 42)),
+        slotmap={1: 10, 2: 9}, ramp="cols",
+        cols={10: (180, 140, 225), 9: (130, 95, 195)}),
+    "COLDVAULT": dict(
+        why="CAPSULE line, stage 2 (LORELEI's ace; 9 trainers, the swimmers'): 4.6% waits",
+        region="the SHELL's outer plates, a violet clam's", colour="Bb, a note its part sings (violet)",
+        base=g.pc_rgb(10),
+        front=R((0, 2, 63, 27), (0, 27, 15, 47), (49, 27, 63, 47)), back=R((0, 2, 63, 27), (0, 27, 15, 47), (49, 27, 63, 47)),
+        slotmap={3: 7, 4: 9}, ramp="cols",
+        #  the dark kept 40 off the body's navy (36,55,91), which it would otherwise be, and so CARRIED
+        cols={7: (120, 85, 190), 9: (75, 30, 120)}),
+    "TRIPLECORE": dict(
+        why="DUAL line, stage 2 (the BIRD KEEPERS' staple, 8 trainers): 0.0% waits, every colour carried",
+        region="the three BODIES' shaded plumage, a brown bird's", colour="D, a note its part sings (brown)",
+        base=(195, 145, 85),
+        front=R((0, 22, 63, 48)), back=R((8, 26, 58, 50)),
+        #  the back's 5-pixel blue folded into its other blue to free a slot
+        slotmap={3: 10, 4: 8}, slotmap_back={2: 10, 3: 10, 4: 8}, merge={8: 6}, ramp="cols",
+        cols={10: (195, 145, 85), 8: (130, 85, 40)}),
+    "OVERRUN": dict(
+        why="FLICKER line, stage 2 (8 trainers: burglars, cooltrainers): 1.9% waits",
+        region="the TAIL, a foxfire violet", colour="B, a note its part sings (violet)",
+        base=g.pc_rgb(11),
+        front=R((38, 20, 58, 54), (50, 14, 58, 20)), back=R((36, 18, 62, 46)),
+        slotmap={1: 9, 2: 9, 3: 10}, ramp="cols",
+        cols={9: (190, 150, 230), 10: (130, 80, 190)}),
+    "SUSPEND": dict(
+        why="STANDBY line, stage 2 (ROUTE 3's; 5 trainers): 3.1% waits",
+        region="the CURL, the crown of its head and its FEET, a balloon's pink", colour="C, a note its part sings (pink)",
+        base=(253, 161, 179),
+        front=R((8, 4, 34, 15), (10, 15, 54, 21), (8, 45, 56, 56)), back=R((14, 8, 50, 22), (22, 47, 54, 56)),
+        #  the cheeks' own pink (8) and its dark (9) are the ramp's middle and dark: one new slot, the light
+        slotmap={1: 10, 2: 8, 3: 9}, ramp="cols",
+        cols={10: (255, 185, 205)}),
+    "INJECTOR": dict(
+        why="SCRAPER line, stage 3 (the BUG CATCHERS' staple; 6 trainers): 8.8% waits",
+        region="the ABDOMEN, a wasp's gold bands", colour="E, a note its part sings (gold)",
+        base=g.pc_rgb(4),
+        front=R((14, 36, 44, 58)), back=R((29, 30, 45, 48), (31, 26, 41, 30)),
+        #  the darkest navy folded into the next (34 pixels) to free a slot; one gold, the carried olive darks shade it
+        slotmap={1: 10, 2: 10}, slotmap_back={1: 10, 2: 10, 3: 10}, merge={10: 9}, ramp="cols",
+        cols={10: (215, 180, 60)}),
+    "CRAVING": dict(
+        why="COMFORT line, stage 2 (the TAMERS'; SIX ISLAND's WATER PATH): 0.8% waits",
+        region="the RING on its chest and the disc inside it, gold, and its PAWS, honey-dipped",
+        colour="E, a note its part sings (gold)",
+        base=g.pc_rgb(4),
+        front=R((17, 26, 41, 46), (18, 48, 32, 56), (36, 48, 50, 56)), back=R((17, 26, 41, 46), (18, 48, 32, 56), (36, 48, 50, 56)),
+        slotmap={1: 9, 3: 10, 4: 10}, ramp="cols",
+        cols={9: (235, 205, 110), 10: (160, 120, 30)}),
+    "LOCKUP": dict(
+        why="ACQUIRE line, stage 2 (5 trainers, the swimmers' and cooltrainers'): 1.8% waits",
+        region="the PINCERS, a crab's coral", colour="C#, a note its part sings, moved to coral",
+        #  not C#'s own: an orange sits nearer ACQUIRE's tan (192,151,72) than the colour that carries it, CARRIED
+        base=(235, 90, 80),
+        front=R((14, 4, 28, 19), (36, 4, 52, 19), (4, 24, 15, 39), (48, 24, 60, 39)),
+        back=R((8, 6, 23, 30), (8, 30, 18, 42), (42, 16, 60, 30), (50, 30, 60, 40)),
+        #  its own rust cheek (7) is the dark: one new slot
+        slotmap={1: 10, 2: 10, 3: 7, 4: 7}, ramp="cols",
+        cols={10: (235, 90, 80)}),
+    "RESENTMENT": dict(
+        why="RANK line, stage 2 (CERULEAN CAVE, three floors; SIX ISLAND's RUIN VALLEY): 0.0% waits, no accent at all",
+        region="the dome's RIM and its spots, turning blue", colour="G, a note its part sings (blue)",
+        base=g.pc_rgb(7),
+        front=R((0, 0, 63, 44)), back=R((0, 0, 63, 44)),
+        slotmap={3: 7, 4: 8}, ramp="cols",
+        cols={7: (80, 110, 200), 8: (40, 55, 125)}),
+    "PIPELINE": dict(
+        why="BRANCH line, stage 3 (4 trainers, the cooltrainers'): 1.2% waits; STRATUM is the new type",
+        region="the HORN's tip and the EARS in front, the HORN and BACK PLATES behind, in STRATUM", colour="STRATUM, the new type",
+        base=TYPE["STRATUM"],
+        front=R((23, 2, 33, 9), (14, 8, 22, 22), (43, 8, 60, 18)), back=R((32, 2, 56, 22), (40, 22, 58, 32), (20, 12, 40, 22)),
+        #  the eyes' two browns folded together (11 pixels) to free a slot
+        slotmap={1: 7, 2: 7, 3: 10, 4: 9}, merge={9: 8}, ramp="cols",
+        #  the light browner than STRATUM's own: a pinker one sits nearest PREDICTOR's rose (255,134,141), CARRIED
+        cols={7: (185, 165, 105), 10: (158, 122, 78), 9: (96, 56, 28)}),
+    "GRIEVANCE": dict(
+        why="RUMINATE line, stage 3 (the CHAMPION rematch's, every starter; MT. EMBER's RUBY PATH): 0.0% waits",
+        region="the HEAD's armour, crest to jaw, a mountain's green", colour="F, a note its part sings (green)",
+        base=g.pc_rgb(5),
+        front=R((10, 2, 52, 31)), back=R((10, 2, 52, 31)),
+        #  the light kept yellower, a bluer one sits nearest PUPITAR's teal
+        #  (110,165,176), CARRIED
+        slotmap={1: 9, 2: 9, 3: 10}, ramp="cols",
+        cols={9: (150, 210, 110), 10: (63, 154, 85)}),
+    "COLDREAD": dict(
+        why="TELLTALE line, stage 2 (LORELEI's, both fights): 1.0% waits",
+        region="the WINGS and the FACIAL DISCS (behind, the crown), a twilight violet", colour="B, a note its part sings (violet)",
+        base=g.pc_rgb(11),
+        front=R((2, 24, 17, 58), (47, 24, 62, 58), (4, 0, 60, 27)),
+        back=R((4, 24, 26, 50), (16, 2, 52, 22)),
+        #  one violet, the carried ice-blue darks shading it
+        slotmap={1: 10, 2: 10}, ramp="cols",
+        cols={10: (150, 110, 210)}),
+    "CIRCULAR": dict(
+        why="PREMISE line, stage 2 (the CRUSH girls'; SEVAULT CANYON): 1.7% waits",
+        region="the raised LEGS, spun violet", colour="Bb, a note its part sings (violet)",
+        base=g.pc_rgb(10),
+        front=R((16, 6, 46, 34)), back=R((16, 6, 46, 34)),
+        slotmap={1: 7, 2: 9, 3: 10}, ramp="cols",
+        cols={7: (175, 140, 230), 9: (120, 85, 195), 10: (70, 45, 125)}),
+}
+
+
 def pal_of(w, k):
     return [tuple(c) for c in w.palette(k)]
 
@@ -694,6 +829,8 @@ def main():
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS3, list(FORMS3), 3, BASE3_COMMIT
     if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "4":
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS4, list(FORMS4), 4, BASE4_COMMIT
+    if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "5":
+        FORMS, ORDER, STAGE, BASE_COMMIT = FORMS5, list(FORMS5), 5, BASE5_COMMIT
     w = g.World()
     if "--base" in sys.argv:
         return file_base(w)
