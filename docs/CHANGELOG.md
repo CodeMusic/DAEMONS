@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.415 — 2026-11-23
+
+- **0.7 Balance** (T-609; the user, 2026-11-23, by multiple choice, every recommendation): the player's lean is the paired MARKS held minus the understandings held, the TRUE MARK on neither side -- 0 in balance, more MARKS toward REASON, more understandings toward INSTINCT; never a number, only heard and seen (a battle's end song, C-487; a dream's integrated part, C-486); the edition mirrors the sides, never the meaning; HARMONIA in balance, and out of it the title's choice names TECHNE or SOPHROSYNE; each type's side, nine a side (199 daemons against 201). Whether balance is shown is asked again after a field test (T-616).
+- **9.36 A daemon's three notes and colours** (T-612; the same answers): its KEY (its first type's, bright major, dim minor), its DAY (INDEX number mod 7 + 1 on the week's wheel) and its MONTH (mod 12 + 1 on the year's) -- its kind, what it practises, what it brings; a note outside the key its own accidental, never held; a second type adds nothing for now (T-615). What it makes with in the companion (C-490); its song unchanged. The proposals: `docs/three-notes-draft.md`, `docs/balance-draft.md`.
+- Section 10: one Settled entry, two Open questions (T-615, T-616).
+
 ## v11.414 — 2026-11-23
 
 - **9.37 THE SPELL LEFT RUNNING** (T-606; the user, 2026-11-23: "for sure have it in the vision"): the book of shadows told as the sorcerer's apprentice -- a shadow like a broom left running, put back and never broken; the seven brooms the week's virtues over their shadows; THE FIVE QUILLS; found where INIT knelt; in the PDF, the game's reader and the companion's LIBRARY, in the Sorcerer's voice.

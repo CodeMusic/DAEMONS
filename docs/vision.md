@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.414**
+**A total conversion — the living design bible, v11.415**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -411,6 +411,30 @@ map, two the type:*
    ***Rule 2 is amended, not reversed***: **INSIGHT grows one line a pair and is never numbered** — *no "of 7"; its pages stand in the MARKS'
    order, as every NOTEBOOK section keeps its authored order, the way the brain's lobes light without a total.* **What it lists is wisdom, in the player's words;
    the understandings themselves are still never listed.**
+
+#### Balance: how far the MARKS have run ahead of the understandings (decided by the user 2026-11-23, T-609; DRAFT)
+
+**The player's lean is the paired MARKS they hold minus the understandings they hold.** *SCORN's TRUE MARK counts on
+neither side: beating him is already both.* **0 is in balance; more MARKS lean the player toward REASON (left, red),
+more understandings toward INSTINCT (right, blue), and the difference says how far** -- *which pairs are held does not
+move it; whether each pair is complete still decides INSIGHT and the union routines.* **The MARKS come with the story
+and the leaders send the player for each understanding after it, so nearly every player leans REASON through the middle
+of the game and comes back into balance by understanding** -- *the artificial half, felt and never said.*
+
+- **Never a number** (*rule 2*): **it is only heard and seen** -- *a battle's end song leans its way (C-487); a dream's
+  integrated part is named by it (C-486).* **Nothing new in the game yet.** *Whether balance should be shown at all is
+  asked again after a field test (T-616; the Open log)* -- *the user: "balance does represent intelligence (mark) and
+  understanding (root) so we would miss the truth of balance if we hid that."*
+- **The edition mirrors the sides, never the meaning**: *in CONTEXT, REASON is drawn and panned on the right, as the
+  southern year is the northern turned over (T-359); a MARK past the pairs is REASON in both editions.*
+- **In balance the integrated view is HARMONIA; out of balance the title's choice names it** -- **TECHNE** *for a
+  REASON player,* **SOPHROSYNE** *for an INSTINCT player* (*the user's names, from Plato's words beside PRAXIS, ARETE and
+  EUDAIMONIA*); *the lean says only how far, and which way the song tilts.*
+- **Each type has a side** (*C-486; the table approved as drafted*): **nine a side, 199 daemons against 201 by their
+  first type, LOGIC and CONTEXT on opposite sides as the chart's thesis has them.** *REASON:* CONTENT, LOGIC, VECTOR,
+  STRATUM, LEGACY, FROZEN, HARDENED, CORRUPT, GROWTH. *INSTINCT:* CONTEXT, SIGNAL, LATENT, SWARM, ENTROPY, FLOW,
+  EMERGENT, OPAQUE, ORACLE. *Past what a daemon's song knows, its dream's integrated part skews to its type's side.
+  Each side's reason, read from the type's one-clause test (2.6), is in `docs/balance-draft.md` 6.*
 
 ---
 
@@ -9359,6 +9383,18 @@ about itself* (rule 6).
 - ***The book of the quotations*** (*T-600; working title THE COLOURS WITHIN THE WORDS, the title the user's*): **a preface that carries the language learned at CALLOW SCHOOL across from code to music -- "our essence has a voice, a song, a language, a quotation" -- then a section a type, in its key's colours, naming its key, its key signature and its style of quotation; each daemon's page its number, sprite and quotation in its own hand (a type's hands alike), large quotation marks, and a staff -- the clef, its type's key signature with the sharps and flats coloured, its song's notes coloured** -- *"so the visual pattern can also teach you the key."* **In the game it fills as daemons are summoned; in the LIBRARY its PDF may come whole.**
 - ***Shiny songs*** (*T-602*): **a shiny's song is made from its song and its shiny palette.**
 
+***A daemon's three notes and colours*** (*T-612; decided by the user 2026-11-23 by multiple choice, every
+recommendation; `docs/three-notes-draft.md`; DRAFT*). **Each daemon has three: its KEY, its first type's, bright when
+major and dim when minor -- its kind; its DAY, its INDEX number mod 7 + 1 on the week's wheel, always a white key -- the
+day's virtue over its shadow and its chakra, what it practises; and its MONTH, its number mod 12 + 1 on the year's wheel
+-- the month's tone and season, what it brings.** *Nothing new is invented: the keys are the table above, and the two
+wheels are the companion's SYNESTHESIA (C-385). Both wheels give 332 different sets of three for 400 daemons; the week
+alone would give 107.* **A note outside the key is the daemon's own accidental: always at its true pitch and in its true
+colour, used in passing and resolved, never held in a drone** (*245 daemons have one, 61 two*). *A daemon with two types
+keeps its first type's key, as its song does, for now (T-615 asks again after a field test).* **Its song, its summons
+and its verses are unchanged**: *the three notes are what it makes with in the companion -- its art, its songs, its
+sleep sounds -- and DEVELOPER MODE's palette shows them (C-490). Nothing new in the game.*
+
 ### 9.37 THE SPELL LEFT RUNNING -- *asked for 2026-11-21, built 2026-11-22 (T-606), released in v11.412.7; DRAFT*
 
 ***A book of shadows, told as the sorcerer's apprentice*** (the user, 2026-11-21): *a young hare, left alone with a
@@ -9408,6 +9444,8 @@ sweep), the magic only ever a way of speaking about commands given and left runn
 ## 10. DECISION LOG
 
 ### Settled
+
+- **A daemon's three notes and the player's balance (T-612, T-609, 2026-11-23)** — the user's picks, every recommendation: a daemon's KEY, its DAY (its INDEX number on the week's wheel) and its MONTH (on the year's), a note outside the key its own accidental, a second type adding nothing for now (T-615); the lean the paired MARKS held minus the understandings held, never a number, the edition mirroring the sides and never the meaning, HARMONIA in balance and the title's choice naming TECHNE or SOPHROSYNE out of it, each type's side nine a side. Whether balance is shown is asked again (T-616). 0.7, 9.36.
 
 - **THE SPELL LEFT RUNNING in the bible (9.37, 2026-11-23)** — the user's "for sure have it in the vision": the book of shadows (T-606), built and released in v11.412.7 -- found where INIT knelt on DAEMON TOWER's top floor, its seven brooms the week's virtues over their shadows, in the PDF, the game's reader and the companion's LIBRARY (C-474), its voice the Sorcerer's (A).
 - **The eighteen type keys approved (T-594, 2026-11-23)** — the user's yes to 9.36's table as drafted: each type's tonic the note whose SYNESTHESIA colour is nearest its own, its mode its character, CONTENT C major and CONTEXT its relative A minor, six keys spare. Nothing is rebuilt: every song in the game and the companion is already in these keys. 9.36.
@@ -9640,6 +9678,9 @@ Kept here because the reasoning is worth more than the outcome.
 | **Saturation is friendship** (8.6a, built T-424: a daemon nearly grey at friendship 0, the full ramp at 255) | **Saturation is the song: each colour comes in with the note of its song nearest it, and what an earlier form had stays** (9.36, T-597; decided 2026-11-18, released in v11.408.1) | *The user: "it would be wonderful if ... those colour levels of the daemon were most representative of ... the daemons' own song part completion."* Friendship was the thesis made mechanical as a measure of how it is kept; the song makes colour what it has learned of itself, and keeps 8.6a's refusal of "power = colour" -- a first form whose part is whole is as coloured as a final one. AL's party and the Corpus keep friendship over the song (the user, A). |
 
 ### Open
+
+- **Is the player's balance shown, and how?** (*T-616; the user, 2026-11-23, to be asked again 2026-11-24 after a field test: "balance does represent intelligence (mark) and understanding (root) so we would miss the truth of balance if we hid that"*). **0.7's rule 2 keeps ROOTS uncounted**, *so for now the lean is only heard and seen.* 0.7.
+- **What a daemon's second type adds to its three notes** (*T-615; the user, 2026-11-23: for true synesthesia the second type should influence something*). **For now it adds nothing**; *a faint fourth colour or a blend of the two tonics were drafted (`docs/three-notes-draft.md` 5), to be asked again once the user has field tested C-490.* 9.36.
 
 - ~~**Does the player's manual keep the third book's two lines?**~~ ***Decided 2026-11-16 by multiple choice: "Soften to rumour". The manual now says only that nobody agrees how the book is found, or whether it is found at all (DRAFT), and was printed again.*** (*T-506; the user, 2026-10-31: "no it is fine to keep for now, log it as a question later"*) **`docs/manual/manual.md` still gives two lines on how THE HERMETIC LAYER is reached** ([private: vision-unredacted 4.39]). *Everywhere else in public writing the third book is told only as rumour, and since 4.40 one of the two is no longer true; the quick start and micro start carry neither.*
 - ~~**The aurora, and the mended book**~~ ***decided 2026-11-07 by multiple choice (T-528, 4.40)***: *the user, brought by the game lane: "once the unity book is restored it creates some effect surrounding it, and that illumination goes further, the books bind, and each hemisphere sings."* **CONTENT in oxygen's red line, CONTEXT in its green; the mainland the north wind's side and the islands the south's; over the tower every night, elsewhere on some nights picked from the date, spreading grove by grove and across to each grove's conjugate; the dawn chorus; TULIKKO the fox; and the conjugate light, both lines at once, with a duet in PLAY.**
