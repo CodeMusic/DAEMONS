@@ -205,3 +205,9 @@ C-488: TODAY with the day's SPELL CHECK under the day's word (Monday: OVERFLOW),
 C-488: TODAY with the day's SPELL CHECK under the day's word (Monday: OVERFLOW), and OPEN THE BOOK landing on that broom's page in THE SPELL LEFT RUNNING (scratch companion, the book's preview, DRAFT)
 
 ![23Nov2026 - C488 - the days SPELL CHECK on TODAY - 35](23Nov2026%20-%20C488%20-%20the%20days%20SPELL%20CHECK%20on%20TODAY%20-%2035.jpg)
+
+### 23Nov2026 - C454 - RESEARCH a study - 37
+
+C-454 RESEARCH (DRAFT) on a scratch site with a synthetic save: a study's hypothesis, its expert and what it may read (nothing until ticked), sources (pasted text, a PDF read on the hub), the talk (no mind on the scratch server, so the ask fails cleanly), and a finding kept
+
+![23Nov2026 - C454 - RESEARCH a study - 37](23Nov2026%20-%20C454%20-%20RESEARCH%20a%20study%20-%2037.png)
