@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.413**
+**A total conversion — the living design bible, v11.414**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9359,10 +9359,57 @@ about itself* (rule 6).
 - ***The book of the quotations*** (*T-600; working title THE COLOURS WITHIN THE WORDS, the title the user's*): **a preface that carries the language learned at CALLOW SCHOOL across from code to music -- "our essence has a voice, a song, a language, a quotation" -- then a section a type, in its key's colours, naming its key, its key signature and its style of quotation; each daemon's page its number, sprite and quotation in its own hand (a type's hands alike), large quotation marks, and a staff -- the clef, its type's key signature with the sharps and flats coloured, its song's notes coloured** -- *"so the visual pattern can also teach you the key."* **In the game it fills as daemons are summoned; in the LIBRARY its PDF may come whole.**
 - ***Shiny songs*** (*T-602*): **a shiny's song is made from its song and its shiny palette.**
 
+### 9.37 THE SPELL LEFT RUNNING -- *asked for 2026-11-21, built 2026-11-22 (T-606), released in v11.412.7; DRAFT*
+
+***A book of shadows, told as the sorcerer's apprentice*** (the user, 2026-11-21): *a young hare, left alone with a
+chore, borrows his master's hat, tells a broom to fetch water and falls asleep. The broom is not wicked. It is only
+obedient, and nobody told it what done looks like.* **A shadow is like that broom** -- *an automation made once, for a
+reason, and left running long after the reason dried up* -- ***not bad, and not to be broken*** (*the axe only makes
+more brooms*), **but in need of the light of awareness to come back into the house.** *The master does not punish the
+brooms: he puts on the hat and says the word that sends them to the corner -- "Be as you were."* ***Integration, never
+exorcism.***
+
+***It is the Jungian shadow, carried through the project's own frame***: **a shadow part of you is like a daemon** --
+*it runs in the background, it was started for a reason, and it needs the light of your awareness* (the user's words).
+*The game only ever says "like", never "is"* (rule 1). **The apprentice's tale is the old one** (*Lucian's, then Goethe's,
+then the music*), **and the user's own two write-ups of it shaped the lessons**: *a spell with no "done", and the same
+spell run many times at once, racing for one well.* ***THE FIVE QUILLS*** *came from their third* -- **a shared
+resource, everyone holding one and waiting for the next: deadlock, starvation and livelock**, ***and the way out is an
+order, this one over that one*** -- *which is what "over" has meant in this book all along.*
+
+***The seven brooms are the week*** -- **each day's virtue over its shadow** (T-385's order; *over, never cures*, T-418;
+*forgiveness over wrath*, T-498), **each broom a daemon of the roster**: *Sunday PING, the broom of reaching (CHASTITY
+over LUST); Monday OVERFLOW, the broom of more (TEMPERANCE over GLUTTONY); Tuesday KEEPER, and DEEPWELL, which is never
+full (CHARITY over GREED); Wednesday BLOCKING, the broom of waiting (DILIGENCE over SLOTH); Thursday SENTINEL, which
+guards the gate (FORGIVENESS over WRATH); Friday TRACER, the broom of watching (KINDNESS over ENVY); Saturday SUPERVISOR,
+the broom that watches the brooms (HUMILITY over PRIDE).* **Each says what its spell protects, the "done" it was
+never told, and the word that puts it back, with a SPELL CHECK.** *Shadow is the structure word; vice and sin are never
+printed in the game.*
+
+***It is found at DAEMON TOWER*** (the user, 2026-11-21, by multiple choice): **on the top floor, where INIT knelt to calm
+the spirit, once the tower is cleared and he has gone home** -- *found, never given, and never naming him.* *The tower
+is where unattended stops being a description (4.5); ORPHAN is re-parented to the first process of all, and the old man
+who takes in every daemon left at his door is INIT -- the book's lesson, a broom put back and not broken, answers the
+tower.* **The torn book is mended at the same tower (4.40) and the two never touch**: *the step hook takes the mending
+first, and nothing in this book reads as a half.*
+
+***In four places, one book***: **the PDF** (*46 pages, seven diagrams, ten plates drawn with daemons as their models,
+thirty-one references -- the only place a real name appears*); **the game's reader** (*THE SPELL LEFT RUNNING, a key
+item, the SHADOW BOOK: seven sections, twenty-four entries, each picture redrawn in the reader's sixteen colours, read at
+any hour*); **the companion's LIBRARY** (*FOUND IN THE GAME, once the save holds it*, C-474); ***and its voice, the
+Sorcerer's*** -- *low and slow, an old tortoise in the habit of being right* (A, the user's pick from three samples,
+2026-11-22), **recorded at the next minor release.**
+
+***It keeps the craft rules*** -- **fable only** (*the apprentice a hare, the sorcerer a tortoise; no real person is named
+in the game*), **the process, never the pathology** (*a shadow is never an illness*), **never the thesis**, *and DAEMONS
+said DAY-mons.* ***Its subtle identity is the user's ask***: *charismatic, a little poetic, puns kept quiet (a clean
+sweep), the magic only ever a way of speaking about commands given and left running.*
+
 ## 10. DECISION LOG
 
 ### Settled
 
+- **THE SPELL LEFT RUNNING in the bible (9.37, 2026-11-23)** — the user's "for sure have it in the vision": the book of shadows (T-606), built and released in v11.412.7 -- found where INIT knelt on DAEMON TOWER's top floor, its seven brooms the week's virtues over their shadows, in the PDF, the game's reader and the companion's LIBRARY (C-474), its voice the Sorcerer's (A).
 - **The eighteen type keys approved (T-594, 2026-11-23)** — the user's yes to 9.36's table as drafted: each type's tonic the note whose SYNESTHESIA colour is nearest its own, its mode its character, CONTENT C major and CONTEXT its relative A minor, six keys spare. Nothing is rebuilt: every song in the game and the companion is already in these keys. 9.36.
 - **Released in v11.411.1 (d010b1ea, 2026-11-20, sealing v11.410.x)** — T-452's arm-C trial viewer, ART C: OLD / NEW, in the DEBUG build only: the 28 daemons arm C redrew, old against new in a battle-like scene, for the user's keep or revert; the release ROMs byte-identical. 9.31.
 - **Released in v11.410.1 (fd731f7a, 2026-11-20, sealing v11.409.x)** — TRAINER TOWER's face from its roof, THE TIME POSTED (T-601, the user's pick AFT, DRAFT art): a storey bar a floor, each window a stopwatch. 9.29.

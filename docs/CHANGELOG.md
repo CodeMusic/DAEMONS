@@ -5,6 +5,11 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.414 — 2026-11-23
+
+- **9.37 THE SPELL LEFT RUNNING** (T-606; the user, 2026-11-23: "for sure have it in the vision"): the book of shadows told as the sorcerer's apprentice -- a shadow like a broom left running, put back and never broken; the seven brooms the week's virtues over their shadows; THE FIVE QUILLS; found where INIT knelt; in the PDF, the game's reader and the companion's LIBRARY, in the Sorcerer's voice.
+- Section 10: one Settled entry.
+
 ## v11.413 — 2026-11-23
 
 - **9.36 THE SONG -- the keys approved** (T-594; the user, 2026-11-23): the eighteen types' keys as drafted in v11.407 -- each tonic the note whose colour is nearest the type's own, CONTENT C major, CONTEXT its relative A minor, six spare -- are the user's now, no longer DRAFT. Nothing rebuilt: every song is already in them.
