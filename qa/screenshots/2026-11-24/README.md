@@ -97,3 +97,21 @@ T-604 stage 9 (DRAFT): fifteen more wild later forms colour in -- CRYWOLF's tawn
 C-447 ROLL CALL on the Mac with a pretend CC1101 cap: an ALL call answered by two pretend devices, then the band resting (DRAFT words; not yet on the air)
 
 ![24Nov2026 - C447 - ROLL CALL with a pretend cap - 22](24Nov2026%20-%20C447%20-%20ROLL%20CALL%20with%20a%20pretend%20cap%20-%2022.png)
+
+### 24Nov2026 - T604 - stage 10, fifteen later forms, built - 23
+
+T-604 stage 10 (DRAFT): fifteen rare later forms colour in -- CYCLICAL's straw sombrero, CLINGING's blush head, BOOSTING's blossoming crown, LONGJUMP's indigo crest, DEEPWELL's deep-sea glow, FORGE's lit firebox, FLOCKING's banded wings, WARMSTART's apricot petals, GATHERING's ladybird cases, TORPOR's mud, OVERLAY's tinted dome, ALLUVIUM's silted fins, UNBRANCHED's chestnut coat, JACOBIAN's dusk wing, AQUIFER's geode shell; 141 of about 182 now
+
+![24Nov2026 - T604 - stage 10, fifteen later forms, built - 23](24Nov2026%20-%20T604%20-%20stage%2010%2C%20fifteen%20later%20forms%2C%20built%20-%2023.png)
+
+### 24Nov2026 - T604 - stage 10, fifteen later forms, built - 24
+
+T-604 stage 10 (DRAFT): fifteen rare later forms colour in -- CYCLICAL's straw sombrero, CLINGING's blush head, BOOSTING's blossoming crown, LONGJUMP's indigo crest, DEEPWELL's deep-sea glow, FORGE's lit firebox, FLOCKING's banded wings, WARMSTART's apricot petals, GATHERING's ladybird cases, TORPOR's mud, OVERLAY's tinted dome, ALLUVIUM's silted fins, UNBRANCHED's chestnut coat, JACOBIAN's dusk wing, AQUIFER's geode shell; 141 of about 182 now
+
+![24Nov2026 - T604 - stage 10, fifteen later forms, built - 24](24Nov2026%20-%20T604%20-%20stage%2010%2C%20fifteen%20later%20forms%2C%20built%20-%2024.png)
+
+### 24Nov2026 - T604 - stage 10, fifteen later forms, built - 25
+
+T-604 stage 10 (DRAFT): fifteen rare later forms colour in -- CYCLICAL's straw sombrero, CLINGING's blush head, BOOSTING's blossoming crown, LONGJUMP's indigo crest, DEEPWELL's deep-sea glow, FORGE's lit firebox, FLOCKING's banded wings, WARMSTART's apricot petals, GATHERING's ladybird cases, TORPOR's mud, OVERLAY's tinted dome, ALLUVIUM's silted fins, UNBRANCHED's chestnut coat, JACOBIAN's dusk wing, AQUIFER's geode shell; 141 of about 182 now
+
+![24Nov2026 - T604 - stage 10, fifteen later forms, built - 25](24Nov2026%20-%20T604%20-%20stage%2010%2C%20fifteen%20later%20forms%2C%20built%20-%2025.png)
