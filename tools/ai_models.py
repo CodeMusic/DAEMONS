@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# BRAIN: none -- writes LiteLLM's model table from LM Studio's vision models; no fallbacks
 """Regenerate LiteLLM's model_list from what LM Studio actually has.
 
     python3 tools/ai_models.py            # report
