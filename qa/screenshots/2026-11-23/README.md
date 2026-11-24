@@ -127,3 +127,27 @@ C-483: one DAEMON DREAMS book on the LIBRARY's DREAM-BOOKS shelf; inside, a shel
 C-483: one DAEMON DREAMS book on the LIBRARY's DREAM-BOOKS shelf; inside, a shelf for each type, each daemon's own dream book with its count, by MOST DREAMS or MOST RECENT; a daemon's book, its title page and a dream (scratch companion, made-up dreams, DRAFT)
 
 ![23Nov2026 - C483 - DAEMON DREAMS - 21](23Nov2026%20-%20C483%20-%20DAEMON%20DREAMS%20-%2021.jpg)
+
+### 23Nov2026 - C484 - the seven days and SIGNS AND SYMBOLS - 22
+
+C-484: inside ROVERCUB's dream book -- the CONTENTS by day (red first), ORANGE's opening page, a dream dated, and its SIGNS & SYMBOLS beneath (the lexicon's reading; scratch companion, made-up dreams, DRAFT)
+
+![23Nov2026 - C484 - the seven days and SIGNS AND SYMBOLS - 22](23Nov2026%20-%20C484%20-%20the%20seven%20days%20and%20SIGNS%20AND%20SYMBOLS%20-%2022.jpg)
+
+### 23Nov2026 - C484 - the seven days and SIGNS AND SYMBOLS - 23
+
+C-484: inside ROVERCUB's dream book -- the CONTENTS by day (red first), ORANGE's opening page, a dream dated, and its SIGNS & SYMBOLS beneath (the lexicon's reading; scratch companion, made-up dreams, DRAFT)
+
+![23Nov2026 - C484 - the seven days and SIGNS AND SYMBOLS - 23](23Nov2026%20-%20C484%20-%20the%20seven%20days%20and%20SIGNS%20AND%20SYMBOLS%20-%2023.jpg)
+
+### 23Nov2026 - C484 - the seven days and SIGNS AND SYMBOLS - 24
+
+C-484: inside ROVERCUB's dream book -- the CONTENTS by day (red first), ORANGE's opening page, a dream dated, and its SIGNS & SYMBOLS beneath (the lexicon's reading; scratch companion, made-up dreams, DRAFT)
+
+![23Nov2026 - C484 - the seven days and SIGNS AND SYMBOLS - 24](23Nov2026%20-%20C484%20-%20the%20seven%20days%20and%20SIGNS%20AND%20SYMBOLS%20-%2024.jpg)
+
+### 23Nov2026 - C484 - the seven days and SIGNS AND SYMBOLS - 25
+
+C-484: inside ROVERCUB's dream book -- the CONTENTS by day (red first), ORANGE's opening page, a dream dated, and its SIGNS & SYMBOLS beneath (the lexicon's reading; scratch companion, made-up dreams, DRAFT)
+
+![23Nov2026 - C484 - the seven days and SIGNS AND SYMBOLS - 25](23Nov2026%20-%20C484%20-%20the%20seven%20days%20and%20SIGNS%20AND%20SYMBOLS%20-%2025.jpg)
