@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 308" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="8">
+  <text x="6" y="12" font-weight="700" font-size="8" fill="#5a5a64" letter-spacing="1">THE PIDOG, AS ITS SHEET SEES IT</text>
+  <!-- far legs, lighter -->
+  <g stroke="#b9c9bd" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M206 168L196 206L210 244"/><path d="M318 168L308 206L322 244"/>
+  </g>
+  <!-- tail -->
+  <path d="M176 128 Q150 112 152 76" fill="none" stroke="#c98a2b" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="176" cy="128" r="7" fill="#fff" stroke="#c98a2b" stroke-width="2.4"/>
+  <!-- body -->
+  <rect x="172" y="112" width="176" height="56" rx="14" fill="#fff" stroke="#16161a" stroke-width="1.6"/>
+  <rect x="212" y="100" width="96" height="14" rx="3" fill="#16161a"/><text x="260" y="110" text-anchor="middle" fill="#fff" font-size="6.5">Raspberry Pi, Robot HAT</text>
+  <rect x="236" y="150" width="48" height="12" rx="3" fill="#8a8170"/><text x="260" y="159" text-anchor="middle" fill="#fff" font-size="6.5">cell</text>
+  <!-- lights on chest -->
+  <g fill="#3d6a9a"><circle cx="330" cy="150" r="2.4"/><circle cx="337" cy="143" r="2.4"/><circle cx="341" cy="134" r="2.4"/></g>
+  <!-- near legs -->
+  <g stroke="#3f7a52" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" fill="none">
+    <path d="M192 168L180 206L196 244"/><path d="M332 168L320 206L336 244"/>
+  </g>
+  <g fill="#fff" stroke="#3f7a52" stroke-width="2.4">
+    <circle cx="192" cy="168" r="7"/><circle cx="180" cy="206" r="6"/><circle cx="332" cy="168" r="7"/><circle cx="320" cy="206" r="6"/>
+  </g>
+  <g fill="#8a8170"><rect x="186" y="241" width="22" height="7" rx="3.5"/><rect x="326" y="241" width="22" height="7" rx="3.5"/><rect x="200" y="241" width="22" height="7" rx="3.5" opacity=".5"/><rect x="312" y="241" width="22" height="7" rx="3.5" opacity=".5"/></g>
+  <path d="M150 248L380 248" stroke="#d8d6ce"/>
+  <!-- neck and head -->
+  <path d="M340 122L364 84" fill="none" stroke="#6b5aa6" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="342" cy="120" r="7" fill="#fff" stroke="#6b5aa6" stroke-width="2.4"/>
+  <rect x="350" y="46" width="70" height="44" rx="12" fill="#fff" stroke="#16161a" stroke-width="1.6"/>
+  <path d="M358 48L354 30L372 46z" fill="#fff" stroke="#16161a" stroke-width="1.4"/><path d="M388 46L396 28L406 48z" fill="#fff" stroke="#16161a" stroke-width="1.4"/>
+  <circle cx="398" cy="64" r="5" fill="#16161a"/><circle cx="412" cy="64" r="5" fill="#16161a"/>
+  <rect x="414" y="74" width="10" height="8" rx="3" fill="#16161a"/>
+  <rect x="362" y="42" width="34" height="5" rx="2.5" fill="#b8524f"/>
+  <!-- labels, left -->
+  <g font-size="8">
+    <path d="M152 76L118 62" stroke="#c98a2b"/><text x="114" y="58" text-anchor="end" font-weight="700" fill="#8a5a12">TAIL</text><text x="114" y="69" text-anchor="end">1 joint</text>
+    <path d="M214 106L118 100" stroke="#16161a"/><text x="114" y="92" text-anchor="end" font-weight="700">BALANCE</text><text x="114" y="103" text-anchor="end">on the HAT,</text><text x="114" y="114" text-anchor="end">20 times a second</text>
+    <path d="M236 156L118 150" stroke="#8a8170"/><text x="114" y="138" text-anchor="end" font-weight="700">CELL</text><text x="114" y="149" text-anchor="end">8.4 V full;</text><text x="114" y="160" text-anchor="end">a hard cut at 6.0 V</text>
+    <path d="M180 206L118 200" stroke="#3f7a52"/><text x="114" y="188" text-anchor="end" font-weight="700" fill="#2e5a3c">LEGS</text><text x="114" y="199" text-anchor="end">8 joints: an upper and</text><text x="114" y="210" text-anchor="end">a lower on each leg;</text><text x="114" y="221" text-anchor="end">fore and aft only,</text><text x="114" y="232" text-anchor="end">no sideways hip</text>
+  </g>
+  <!-- labels, right -->
+  <g font-size="8">
+    <path d="M380 44L408 26" stroke="#b8524f"/><text x="412" y="22" font-weight="700" fill="#b8524f">TOUCH</text><text x="412" y="33">two pads; they tell</text><text x="412" y="44">a stroke's direction</text>
+    <path d="M420 62L438 62" stroke="#16161a"/><text x="442" y="60" font-weight="700">DISTANCE</text><text x="442" y="71">its two "eyes"</text>
+    <path d="M424 80L438 88" stroke="#16161a"/><text x="442" y="88" font-weight="700">CAMERA</text><text x="442" y="99">in its nose</text>
+    <path d="M362 100L392 118" stroke="#6b5aa6"/><text x="396" y="120" font-weight="700" fill="#4a3d7a">HEAD</text><text x="396" y="131">3 joints: turn, tilt, nod</text>
+    <path d="M343 140L392 152" stroke="#3d6a9a"/><text x="396" y="152" font-weight="700" fill="#2c4f78">LIGHTS</text><text x="396" y="163">11, across its chest</text>
+    <path d="M308 110L392 182" stroke="#16161a" stroke-dasharray="2 2"/><text x="396" y="184" font-weight="700">VOICE, EARS</text><text x="396" y="195">a speaker, a microphone,</text><text x="396" y="206">and three more that tell</text><text x="396" y="217">where a sound came from</text>
+  </g>
+  <!-- channels legend -->
+  <g font-size="8">
+    <rect x="6" y="262" width="508" height="26" rx="6" fill="#fff" stroke="#d8d6ce"/>
+    <text x="16" y="278" font-weight="700">FIVE CHANNELS</text>
+    <circle cx="112" cy="275" r="5" fill="#3f7a52"/><text x="121" y="278">legs</text>
+    <circle cx="160" cy="275" r="5" fill="#6b5aa6"/><text x="169" y="278">head</text>
+    <circle cx="210" cy="275" r="5" fill="#c98a2b"/><text x="219" y="278">tail</text>
+    <circle cx="254" cy="275" r="5" fill="#16161a"/><text x="263" y="278">voice</text>
+    <circle cx="304" cy="275" r="5" fill="#3d6a9a"/><text x="313" y="278">lights</text>
+    <text x="6" y="302" fill="#5a5a64">No joint can say where it is. The body knows only what it was told to do, and what its balance felt.</text>
+  </g>
+</svg>

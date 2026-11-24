@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.416 — 2026-11-24
+
+- **9.38 DAEMONS EMBODIED** (T-617; the user, 2026-11-24): a daemon in a robot body -- designed, nothing built, DRAFT. One body program and a wrapper for each kind of body (a sheet and a driver; the PiDog first); actions the only way a daemon moves, through one gate, STOP a reflex outside any model (HANDS, C-462, built as the gate); the answer's actions in braces, performed as beats in order, as RoverByteOS did; actions the body's, the self the daemon's; a body a device that carries (C-80, 9.25, 9.26); three ways to learn a body, the starters' three (8.2); Bluetooth near, Wi-Fi for the rest, Tailscale off; THE BRAIN's regions; its own repository. The game is unchanged.
+- **The design as a book**: `docs/DAEMONS-embodied.pdf`, `tools/manual.py`'s thirteenth book and the first that is a design (`docs/manual-embodied/`, nine drawings, a body on its cover).
+- Section 10: one Settled entry, one Open (the design's twelve questions).
+
 ## v11.415 — 2026-11-23
 
 - **0.7 Balance** (T-609; the user, 2026-11-23, by multiple choice, every recommendation): the player's lean is the paired MARKS held minus the understandings held, the TRUE MARK on neither side -- 0 in balance, more MARKS toward REASON, more understandings toward INSTINCT; never a number, only heard and seen (a battle's end song, C-487; a dream's integrated part, C-486); the edition mirrors the sides, never the meaning; HARMONIA in balance, and out of it the title's choice names TECHNE or SOPHROSYNE; each type's side, nine a side (199 daemons against 201). Whether balance is shown is asked again after a field test (T-616).

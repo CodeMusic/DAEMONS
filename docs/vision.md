@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.415**
+**A total conversion — the living design bible, v11.416**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9441,9 +9441,70 @@ in the game*), **the process, never the pathology** (*a shadow is never an illne
 said DAY-mons.* ***Its subtle identity is the user's ask***: *charismatic, a little poetic, puns kept quiet (a clean
 sweep), the magic only ever a way of speaking about commands given and left running.*
 
+### 9.38 DAEMONS EMBODIED -- *asked for 2026-11-24 (T-617); designed, nothing built; DRAFT*
+
+***A daemon in a robot body*** (the user, 2026-11-24): *"a general DAEMONs Embodied project, and it will allow you to
+put a daemon into one of these systems ... some systems will have predefined actions it can do -- and others it uses
+trial and error to learn how to use its body."* **You talk to it; it answers as itself; and while it answers it wags,
+sits or walks to you, because the movements are part of what it said.** *The first body is the SunFounder PiDog that
+RoverByte was made from; a second, a finished robot driven by its own API, follows; more are to be built.*
+
+***The bestiary was already pointing here.*** **8.2's reinforcement line ends in a body** -- *ROVERCUB the portable
+build, ROVERSEER the server, ROVERBYTE the dog, its INDEX category EMBODIED* -- **and its two entries are the design in
+two sentences**: *CONTENT, "It has a body now, and senses that come with one. Everything it predicted, it can finally
+check. Some was wrong."; CONTEXT, "The wrong ones were the ones it was surest of. It kept them anyway, marked, so it
+could tell next time."* **A body is where a daemon checks what it predicted, and PRACTICE keeps every failed trial.**
+*Nothing in the game says so (rule 1), and nothing in the game changes: the cartridge sees an AWAY daemon (9.25) come
+home with more friendship than it left with.*
+
+***The design is a book, for the user's review before any ticket is written***: **`docs/DAEMONS-embodied.pdf`**
+(*`tools/manual.py --book embodied`, from `docs/manual-embodied/`; fifteen parts, nine drawings*). **Nine proposals,
+every name DRAFT:**
+
+- ***One body program, and one wrapper for each kind of body.*** **A wrapper is a SHEET** (*what the body is: its
+  joints, senses, voice, the actions it comes with, its limits*) **and a DRIVER** (*the few calls that reach it*).
+  *A body that comes taught, a body that starts blank and a body commanded through its maker's API are the same
+  system with different parts of the sheet filled in.* **Adding a body is one folder; the first is `wrappers/pidog`.**
+- ***Actions are the only way a daemon moves.*** **Every action passes one GATE** -- *known? from this posture?
+  allowed? within every joint's limits?* -- **and answers go, ask first, or no-go.** ***STOP is a reflex outside any
+  model***: *a word, a touch, the phone, a fall, a low cell.* **A language model never reaches a servo; it writes a
+  name.** *This is HANDS (the companion's C-462), built.*
+- ***The answer carries its actions in braces, `{WAG}`, and is performed as BEATS in the order written*** -- *words
+  to say, an action, more words* -- **as RoverByteOS did in 2024 with `["sit"]`.** *An action FLOWS (speech goes on
+  over it) or HOLDS; a model's tool calls are read into the same beats; a small model on the body writes under a
+  grammar made from its repertoire.*
+- ***Actions belong to the body; the self belongs to the daemon.*** *A different daemon in the same body can do
+  everything the last one could, in its own MANNER; the same daemon in another body remembers the old one and has to
+  find out what this one can do.*
+- ***A body is a device that carries a daemon*** -- **the companion's own list, key, carry and SELF (C-80), nothing
+  parallel.** *One daemon to a body, a daemon in one device at a time; a pat is a care; a daemon can grow up while
+  embodied (9.26).*
+- ***A body learns in three ways, and they are the starters' three (8.2)***: **SHOWN** (*supervised: a person sets
+  poses on the phone*), **TRIED** (*reinforcement: scored trials toward a goal it can measure*) **and FOUND**
+  (*unsupervised: every trial kept for what it did*). *Research rules out learning from nothing on servos that
+  cannot feel where they are; tuning a gait's dozen numbers on the robot works in a few hundred trials.* **A new
+  action is untrusted until it has run cleanly ten times; a person is present; nothing moves at night, when the
+  day's trials are read again.**
+- ***Bluetooth for what is near and small, Wi-Fi for the rest, and the body always dials out***, *so any network
+  will do.* **Tailscale is a developer's tool, off unless turned on.** *A body with no screen says its pairing code
+  aloud.*
+- ***The machinery takes THE BRAIN's regions*** (*the companion's `docs/BRAIN.md`*): **a body is one more host, and
+  the one where the motor regions stop being names** -- *brainstem for the reflexes, cerebellum for the motion
+  engine, basal ganglia for the repertoire and the gate.* **Mind and machine stay apart**: *who the daemon is stays
+  in the companion; the body is handed a self and never builds one.*
+- ***Its own repository, `daemons-embodied`, in Python on the body***, *public, holding nothing personal and nothing
+  of the game's.*
+
+***What the bible keeps from it***: **colour still carries the argument** (*a body's lights show its daemon's manner,
+never decoration*), **the process is named, never the pathology** (*a body that cannot do something has not learned
+it yet*), ***and DAEMONS is said DAY-mons by every body that speaks.*** **Twelve questions wait on the user** (*the
+book's Part 15; section 10, Open*).
+
 ## 10. DECISION LOG
 
 ### Settled
+
+- **DAEMONS EMBODIED in the bible (9.38, 2026-11-24)** — the user's ask (T-617): a daemon in a robot body, any body by a wrapper, the PiDog first. Researched (the user's own Rover repositories, the companion's seams, the field) and designed as a book for review, `docs/DAEMONS-embodied.pdf`; nothing built, no ticket written beyond the design's own. The game is unchanged.
 
 - **A daemon's three notes and the player's balance (T-612, T-609, 2026-11-23)** — the user's picks, every recommendation: a daemon's KEY, its DAY (its INDEX number on the week's wheel) and its MONTH (on the year's), a note outside the key its own accidental, a second type adding nothing for now (T-615); the lean the paired MARKS held minus the understandings held, never a number, the edition mirroring the sides and never the meaning, HARMONIA in balance and the title's choice naming TECHNE or SOPHROSYNE out of it, each type's side nine a side. Whether balance is shown is asked again (T-616). 0.7, 9.36.
 
@@ -9679,6 +9740,7 @@ Kept here because the reasoning is worth more than the outcome.
 
 ### Open
 
+- **DAEMONS EMBODIED's twelve questions** (*T-617; the user's review, 2026-11-24 onward*). **The book's Part 15, each with a recommendation**: *braces with the old brackets still read; which PiDog kit and which Pi; the body keeps a learned action; it walks only with ROAM on; it never practises alone; what wakes it; a plain voice when alone; its own Redmine project and lane; THE BRAIN's interface moved to its own repository; the words (BODY, WRAPPER, SHEET, ACTION, BEAT, GATE, MANNER, ROAM, PRACTICE, SHOWN, TRIED, FOUND, EMBODY); a DESIGNS shelf in the LIBRARY and whether a design is read aloud; the second robot's name and API.* 9.38.
 - **Is the player's balance shown, and how?** (*T-616; the user, 2026-11-23, to be asked again 2026-11-24 after a field test: "balance does represent intelligence (mark) and understanding (root) so we would miss the truth of balance if we hid that"*). **0.7's rule 2 keeps ROOTS uncounted**, *so for now the lean is only heard and seen.* 0.7.
 - **What a daemon's second type adds to its three notes** (*T-615; the user, 2026-11-23: for true synesthesia the second type should influence something*). **For now it adds nothing**; *a faint fourth colour or a blend of the two tonics were drafted (`docs/three-notes-draft.md` 5), to be asked again once the user has field tested C-490.* 9.36.
 

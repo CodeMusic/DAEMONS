@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 330" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="9">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16161a"/></marker></defs>
+  <text x="6" y="12" font-weight="700" font-size="8" fill="#5a5a64" letter-spacing="1">A WRAPPER IS ONE FOLDER: A SHEET THAT DESCRIBES THE BODY, AND A DRIVER THAT MOVES IT</text>
+  <!-- the folder -->
+  <rect x="6" y="22" width="150" height="150" rx="8" fill="#fbf1dc" stroke="#c98a2b" stroke-width="1.4"/>
+  <text x="16" y="38" font-family="Menlo, monospace" font-size="8.5" font-weight="700" fill="#8a5a12">wrappers/pidog/</text>
+  <g font-family="Menlo, monospace" font-size="8">
+    <text x="22" y="56" font-weight="700">body.yaml</text><text x="22" y="67" font-family="Avenir Next, sans-serif" fill="#5a5a64" font-size="7.5">the sheet: what this body is</text>
+    <text x="22" y="84" font-weight="700">driver.py</text><text x="22" y="95" font-family="Avenir Next, sans-serif" fill="#5a5a64" font-size="7.5">the few calls that reach it</text>
+    <text x="22" y="112" font-weight="700">actions/</text><text x="22" y="123" font-family="Avenir Next, sans-serif" fill="#5a5a64" font-size="7.5">the actions it comes with</text>
+    <text x="22" y="140" font-weight="700">tests/</text><text x="22" y="151" font-family="Avenir Next, sans-serif" fill="#5a5a64" font-size="7.5">the body check, for this body</text>
+  </g>
+  <text x="81" y="166" text-anchor="middle" font-size="7.5" fill="#8a5a12">nothing else in the system changes</text>
+  <path d="M156 96L176 96" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+  <!-- the sheet -->
+  <rect x="178" y="22" width="336" height="150" rx="8" fill="#fff" stroke="#16161a"/>
+  <text x="190" y="38" font-weight="700">THE SHEET SAYS</text>
+  <g font-size="8">
+    <rect x="188" y="46" width="100" height="56" rx="5" fill="#f0eee6"/><text x="196" y="60" font-weight="700">WHAT IT IS</text><text x="196" y="72">a name and a kind,</text><text x="196" y="83">its shape (four legs,</text><text x="196" y="94">wheels, an arm, a face)</text>
+    <rect x="296" y="46" width="100" height="56" rx="5" fill="#e6f0ea"/><text x="304" y="60" font-weight="700" fill="#2e5a3c">ITS JOINTS</text><text x="304" y="72">each one's range, rest,</text><text x="304" y="83">top speed and channel;</text><text x="304" y="94">whether it can feel itself</text>
+    <rect x="404" y="46" width="100" height="56" rx="5" fill="#e6eef6"/><text x="412" y="60" font-weight="700" fill="#2c4f78">ITS SENSES</text><text x="412" y="72">balance, touch, distance,</text><text x="412" y="83">where a sound came from,</text><text x="412" y="94">sight, its cell and heat</text>
+    <rect x="188" y="108" width="100" height="56" rx="5" fill="#f0eef7"/><text x="196" y="122" font-weight="700" fill="#4a3d7a">ITS VOICE</text><text x="196" y="134">a speaker, a microphone,</text><text x="196" y="145">lights or a face to show</text><text x="196" y="156">a manner with</text>
+    <rect x="296" y="108" width="100" height="56" rx="5" fill="#e6f0ea"/><text x="304" y="122" font-weight="700" fill="#2e5a3c">ITS ACTIONS</text><text x="304" y="134">the ones it comes with,</text><text x="304" y="145">a line each, and the</text><text x="304" y="156">postures between them</text>
+    <rect x="404" y="108" width="100" height="56" rx="5" fill="#f6ecec"/><text x="412" y="122" font-weight="700" fill="#b8524f">ITS LIMITS</text><text x="412" y="134">how far it may tilt, how</text><text x="412" y="145">warm, how low its cell,</text><text x="412" y="156">how it settles on STOP</text>
+  </g>
+  <!-- three bodies -->
+  <text x="6" y="194" font-weight="700" font-size="8" fill="#5a5a64" letter-spacing="1">A BODY FILLS IN WHAT IT HAS. THREE BODIES, THREE DIFFERENT SHEETS</text>
+  <g font-size="8">
+    <rect x="6" y="202" width="164" height="104" rx="8" fill="#fff" stroke="#16161a"/>
+    <text x="16" y="218" font-weight="700" font-size="9">A BODY THAT COMES TAUGHT</text>
+    <text x="16" y="230" fill="#5a5a64">the PiDog, the first wrapper</text>
+    <text x="16" y="246">joints <tspan font-weight="700" fill="#3f7a52">yes</tspan>  ·  senses <tspan font-weight="700" fill="#3f7a52">yes</tspan></text>
+    <text x="16" y="258">actions <tspan font-weight="700" fill="#3f7a52">yes</tspan>: its maker's, and yours</text>
+    <text x="16" y="276">It can act on the first day,</text><text x="16" y="287">and still learn more of its own</text><text x="16" y="298">because its joints are open.</text>
+    <rect x="178" y="202" width="164" height="104" rx="8" fill="#fff" stroke="#16161a"/>
+    <text x="188" y="218" font-weight="700" font-size="9">A BODY YOU COMMAND</text>
+    <text x="188" y="230" fill="#5a5a64">a finished robot with its own API</text>
+    <text x="188" y="246">joints <tspan font-weight="700" fill="#b8524f">no</tspan>  ·  senses <tspan font-weight="700" fill="#c98a2b">what it reports</tspan></text>
+    <text x="188" y="258">actions <tspan font-weight="700" fill="#3f7a52">yes</tspan>: its API's commands</text>
+    <text x="188" y="276">It learns no new movement, but</text><text x="188" y="287">it can string its commands into</text><text x="188" y="298">new named actions.</text>
+    <rect x="350" y="202" width="164" height="104" rx="8" fill="#fff" stroke="#16161a"/>
+    <text x="360" y="218" font-weight="700" font-size="9">A BODY THAT STARTS BLANK</text>
+    <text x="360" y="230" fill="#5a5a64">something you built yourself</text>
+    <text x="360" y="246">joints <tspan font-weight="700" fill="#3f7a52">yes</tspan>  ·  senses <tspan font-weight="700" fill="#3f7a52">yes</tspan></text>
+    <text x="360" y="258">actions <tspan font-weight="700" fill="#b8524f">none</tspan>: only a rest pose</text>
+    <text x="360" y="276">It finds its actions by</text><text x="360" y="287">PRACTICE: trying, being shown,</text><text x="360" y="298">and keeping what works.</text>
+  </g>
+  <text x="6" y="322" font-size="8" fill="#5a5a64">The body program reads the sheet and offers only what the body has. No part of it is written for a dog.</text>
+</svg>

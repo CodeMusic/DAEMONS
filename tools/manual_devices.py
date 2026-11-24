@@ -162,8 +162,37 @@ def kodedot(a, b=None):
 """)
 
 
+def body(a, b=None):
+    """EMBODIED: a four-legged body seen from the side, a servo at each joint, and the daemon in the open panel of its
+    chest -- the one cover whose device has no screen (T-617). A drawing of a kind of body, not of any one kit."""
+    def leg(x, back=False):
+        k = -1 if back else 1
+        return (f'<path d="M{x} 150 L{x - 14 * k} 190 L{x + 4 * k} 232" fill="none" stroke="#e9e4da" stroke-width="13" '
+                f'stroke-linecap="round" stroke-linejoin="round"/>'
+                f'<circle cx="{x}" cy="150" r="11" fill="{INK}" stroke="#e9e4da" stroke-width="3"/>'
+                f'<circle cx="{x - 14 * k}" cy="190" r="8" fill="{INK}" stroke="#e9e4da" stroke-width="3"/>'
+                f'<rect x="{x + 4 * k - 12}" y="228" width="24" height="9" rx="4.5" fill="#8a8170"/>')
+    return _svg(f"""
+<path d="M92 118 Q58 96 66 62" fill="none" stroke="#e9e4da" stroke-width="9" stroke-linecap="round"/>
+<circle cx="92" cy="118" r="8" fill="{INK}" stroke="#e9e4da" stroke-width="3"/>
+{leg(126, True)}{leg(274)}
+<rect x="92" y="92" width="216" height="70" rx="20" fill="#e9e4da"/>
+<rect x="150" y="100" width="100" height="54" rx="8" fill="{INK}"/>
+<rect x="156" y="105" width="88" height="44" rx="4" fill="{SCREEN}"/>
+{_sprite(a, 178, 105, 44)}
+{leg(108, True)}{leg(292)}
+<path d="M296 100 L318 60" fill="none" stroke="#e9e4da" stroke-width="16" stroke-linecap="round"/>
+<circle cx="298" cy="100" r="10" fill="{INK}" stroke="#e9e4da" stroke-width="3"/>
+<rect x="296" y="26" width="76" height="50" rx="16" fill="#e9e4da"/>
+<path d="M306 30 L300 6 L324 26z" fill="#e9e4da"/><path d="M340 26 L350 4 L362 28z" fill="#e9e4da"/>
+<circle cx="346" cy="48" r="7" fill="{INK}"/><circle cx="348" cy="46" r="2.2" fill="#9cc58f"/>
+<rect x="364" y="52" width="14" height="10" rx="5" fill="{INK}"/>
+<g stroke="#9cc58f" stroke-width="3" stroke-linecap="round" fill="none"><path d="M384 34 q8 12 0 26"/><path d="M392 26 q14 20 0 42"/></g>
+""")
+
+
 KIND = {"gba": gba, "phone": phone, "watch": watch, "glasses": glasses, "link": link, "tiiny": tiiny, "scroll": scroll,
-        "cardputer": cardputer, "kodedot": kodedot}
+        "cardputer": cardputer, "kodedot": kodedot, "body": body}
 
 #  the cover's own colour, and what draws its device, for every book tools/manual.py prints with the game's cover
 #  and the daemon(s) on its screen
@@ -172,7 +201,8 @@ COVER = {"main": ("#3b2f66", "gba", ("CLUSTER",)), "quick": ("#6a4f22", "gba", (
          "watch": ("#174d4b", "watch", ("ROVERCUB",)), "glass": ("#2e2a52", "glasses", ("PING",)), "social": ("#22395c", "link", ("PENGUIN", "PENPHIN")),
          "tiiny": ("#21463a", "tiiny", ("INFERENCE",)), "etymology": ("#47431c", "scroll", ("GUARDIAN",)),
          "cardputer": ("#7a3a16", "cardputer", ("PUNCHCARD",)),   # C-393
-         "kodedot": ("#3a3f47", "kodedot", ("ANODE",))}   # C-442: graphite, the one grey cover
+         "kodedot": ("#3a3f47", "kodedot", ("ANODE",)),   # C-442: graphite, the one grey cover
+         "embodied": ("#1f4a3a", "body", ("ROVERBYTE",))}   # T-617: GROWTH's green, the line that ends in a body
 
 #  laid over each book's own manual.css: the cover in its colour, the device large, the small print still readable
 CSS = """.cover[style*="--cbg"] { background: var(--cbg); }

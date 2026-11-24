@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 268" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="9">
+<text x="6" y="12" font-weight="700" font-size="8" fill="#5a5a64" letter-spacing="1">FOUR PLACES A BODY CAN BE, AND WHO ANSWERS IN EACH</text>
+<rect x="6" y="20" width="124" height="226" rx="8" fill="#fff" stroke="#16161a"/>
+<rect x="6" y="20" width="124" height="18" rx="8" fill="#e6f0ea"/><rect x="6" y="30" width="124" height="8" fill="#e6f0ea"/>
+<path d="M6 38L130 38" stroke="#16161a"/>
+<text x="68" y="33" text-anchor="middle" font-weight="700" fill="#2e5a3c" font-size="8.5">AT HOME</text>
+<rect x="43" y="44" width="50" height="28" rx="5" fill="#fff" stroke="#16161a"/><text x="68" y="57" text-anchor="middle" font-weight="700" fill="#16161a" font-size="8">HOUSE</text><text x="68" y="67" text-anchor="middle" fill="#5a5a64" font-size="7">hub, mind</text><path d="M68 72L68 96" stroke="#16161a" stroke-width="1.4" fill="none"/><text x="85" y="87" text-anchor="middle" fill="#16161a" font-size="7" font-weight="700">Wi-Fi</text><rect x="43" y="96" width="50" height="28" rx="5" fill="#16161a" stroke="#16161a"/><text x="68" y="113" text-anchor="middle" font-weight="700" fill="#fff" font-size="8">BODY</text><path d="M68 124L68 146" stroke="#3d6a9a" stroke-width="1.4" fill="none"/><text x="93" y="138" text-anchor="middle" fill="#3d6a9a" font-size="7" font-weight="700">Bluetooth</text><rect x="43" y="146" width="50" height="22" rx="5" fill="#fff" stroke="#16161a"/><text x="68" y="160" text-anchor="middle" font-weight="400" fill="#16161a" font-size="8">phone</text>
+<text x="13" y="188" font-size="7.6">The house hears, thinks and</text>
+<text x="13" y="199" font-size="7.6">speaks: the daemon's whole</text>
+<text x="13" y="210" font-size="7.6">SELF and its own voice.</text>
+<text x="13" y="221" font-size="7.6">The phone is for STOP,</text>
+<text x="13" y="232" font-size="7.6">status and PRACTICE.</text>
+<rect x="135" y="20" width="124" height="226" rx="8" fill="#fff" stroke="#16161a"/>
+<rect x="135" y="20" width="124" height="18" rx="8" fill="#e6eef6"/><rect x="135" y="30" width="124" height="8" fill="#e6eef6"/>
+<path d="M135 38L259 38" stroke="#16161a"/>
+<text x="197" y="33" text-anchor="middle" font-weight="700" fill="#2c4f78" font-size="8.5">OUT, PHONE NEAR</text>
+<rect x="172" y="44" width="50" height="28" rx="5" fill="#fff" stroke="#16161a" stroke-dasharray="3 2"/><text x="197" y="57" text-anchor="middle" font-weight="700" fill="#16161a" font-size="8">HOUSE</text><text x="197" y="67" text-anchor="middle" fill="#5a5a64" font-size="7">by the relay</text><path d="M197 72L197 96" stroke="#16161a" stroke-width="1.4" fill="none" stroke-dasharray="3 2"/><text x="221" y="87" text-anchor="middle" fill="#16161a" font-size="7" font-weight="700">internet</text><rect x="172" y="96" width="50" height="22" rx="5" fill="#fff" stroke="#16161a"/><text x="197" y="110" text-anchor="middle" font-weight="400" fill="#16161a" font-size="8">phone</text><path d="M197 118L197 140" stroke="#3d6a9a" stroke-width="1.4" fill="none"/><text x="222" y="132" text-anchor="middle" fill="#3d6a9a" font-size="7" font-weight="700">Bluetooth</text><rect x="172" y="140" width="50" height="28" rx="5" fill="#16161a" stroke="#16161a"/><text x="197" y="157" text-anchor="middle" font-weight="700" fill="#fff" font-size="8">BODY</text>
+<text x="142" y="188" font-size="7.6">The phone is its way out:</text>
+<text x="142" y="199" font-size="7.6">its hotspot gives Wi-Fi, or</text>
+<text x="142" y="210" font-size="7.6">the turn goes over Bluetooth,</text>
+<text x="142" y="221" font-size="7.6">slower. A body with its own</text>
+<text x="142" y="232" font-size="7.6">models needs neither.</text>
+<rect x="264" y="20" width="124" height="226" rx="8" fill="#fff" stroke="#16161a"/>
+<rect x="264" y="20" width="124" height="18" rx="8" fill="#fbf1dc"/><rect x="264" y="30" width="124" height="8" fill="#fbf1dc"/>
+<path d="M264 38L388 38" stroke="#16161a"/>
+<text x="326" y="33" text-anchor="middle" font-weight="700" fill="#8a5a12" font-size="8.5">WI-FI ONLY</text>
+<rect x="270" y="44" width="52" height="28" rx="5" fill="#fff" stroke="#16161a" stroke-dasharray="3 2"/><text x="296" y="57" text-anchor="middle" font-weight="700" fill="#16161a" font-size="8">HOUSE</text><text x="296" y="67" text-anchor="middle" fill="#5a5a64" font-size="7">home, relay</text><rect x="330" y="44" width="52" height="28" rx="5" fill="#fff" stroke="#16161a" stroke-dasharray="3 2"/><text x="356" y="57" text-anchor="middle" font-weight="700" fill="#16161a" font-size="8">A MODEL</text><text x="356" y="67" text-anchor="middle" fill="#5a5a64" font-size="7">you name</text><path d="M296 72L318 110" stroke="#16161a" stroke-width="1.4" fill="none" stroke-dasharray="3 2"/><path d="M356 72L334 110" stroke="#16161a" stroke-width="1.4" fill="none" stroke-dasharray="3 2"/><text x="326" y="94" text-anchor="middle" font-size="7" font-weight="700">Wi-Fi</text><rect x="301" y="110" width="50" height="28" rx="5" fill="#16161a" stroke="#16161a"/><text x="326" y="127" text-anchor="middle" font-weight="700" fill="#fff" font-size="8">BODY</text>
+<text x="271" y="188" font-size="7.6">No phone at all. It dials out</text>
+<text x="271" y="199" font-size="7.6">on Wi-Fi to the house, the</text>
+<text x="271" y="210" font-size="7.6">relay, or an endpoint you</text>
+<text x="271" y="221" font-size="7.6">gave it. Nothing has to dial</text>
+<text x="271" y="232" font-size="7.6">in, so any network will do.</text>
+<rect x="393" y="20" width="124" height="226" rx="8" fill="#fff" stroke="#16161a"/>
+<rect x="393" y="20" width="124" height="18" rx="8" fill="#f0eee6"/><rect x="393" y="30" width="124" height="8" fill="#f0eee6"/>
+<path d="M393 38L517 38" stroke="#16161a"/>
+<text x="455" y="33" text-anchor="middle" font-weight="700" fill="#16161a" font-size="8.5">NOTHING AT ALL</text>
+<rect x="423" y="84" width="64" height="34" rx="5" fill="#16161a" stroke="#16161a"/><text x="455" y="97" text-anchor="middle" font-weight="700" fill="#fff" font-size="8">BODY</text><text x="455" y="107" text-anchor="middle" fill="#d9d4c4" font-size="7">alone</text>
+<text x="400" y="188" font-size="7.6">A Pi 5 still holds a small</text>
+<text x="400" y="199" font-size="7.6">turn of its own. A Zero keeps</text>
+<text x="400" y="210" font-size="7.6">its reflexes, its few direct</text>
+<text x="400" y="221" font-size="7.6">words, its touches and its</text>
+<text x="400" y="232" font-size="7.6">actions: quieter, not broken.</text>
+<text x="6" y="262" font-size="8" fill="#5a5a64">Tailscale is not on this page. It is a tool for building the body, switched off unless you turn it on (Part 8).</text>
+</svg>

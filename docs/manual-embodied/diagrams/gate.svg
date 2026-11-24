@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 292" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="9">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16161a"/></marker>
+    <marker id="rr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#b8524f"/></marker>
+  </defs>
+  <!-- the beat -->
+  <rect x="6" y="46" width="62" height="40" rx="6" fill="#e6f0ea" stroke="#3f7a52"/>
+  <text x="37" y="62" text-anchor="middle" font-weight="700" fill="#2e5a3c">DO</text><text x="37" y="76" text-anchor="middle" font-size="8">a beat</text>
+  <path d="M68 66L84 66" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+  <!-- four questions -->
+  <g font-size="8">
+    <rect x="86" y="34" width="88" height="64" rx="6" fill="#fff" stroke="#16161a"/>
+    <text x="130" y="50" text-anchor="middle" font-weight="700" font-size="9">1  KNOWN?</text>
+    <text x="130" y="64" text-anchor="middle">is it in the</text><text x="130" y="75" text-anchor="middle">repertoire, with</text><text x="130" y="86" text-anchor="middle">arguments that fit?</text>
+    <path d="M174 66L190 66" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+    <rect x="192" y="34" width="88" height="64" rx="6" fill="#fff" stroke="#16161a"/>
+    <text x="236" y="50" text-anchor="middle" font-weight="700" font-size="9">2  FROM HERE?</text>
+    <text x="236" y="64" text-anchor="middle">is the body in the</text><text x="236" y="75" text-anchor="middle">posture it starts</text><text x="236" y="86" text-anchor="middle">from? if not, get there</text>
+    <path d="M280 66L296 66" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+    <rect x="298" y="34" width="88" height="64" rx="6" fill="#fff" stroke="#16161a"/>
+    <text x="342" y="50" text-anchor="middle" font-weight="700" font-size="9">3  ALLOWED?</text>
+    <text x="342" y="64" text-anchor="middle">its class against</text><text x="342" y="75" text-anchor="middle">where the body is</text><text x="342" y="86" text-anchor="middle">and the hour</text>
+    <path d="M386 66L402 66" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+    <rect x="404" y="34" width="110" height="64" rx="6" fill="#16161a"/>
+    <text x="459" y="50" text-anchor="middle" font-weight="700" font-size="9" fill="#fff">4  WITHIN LIMITS</text>
+    <text x="459" y="64" text-anchor="middle" fill="#d9d4c4">every joint's range,</text><text x="459" y="75" text-anchor="middle" fill="#d9d4c4">speed and rest, held by</text><text x="459" y="86" text-anchor="middle" fill="#d9d4c4">the motion engine</text>
+  </g>
+  <!-- outcomes of 1 -->
+  <path d="M130 98L130 118" stroke="#b8524f" fill="none" marker-end="url(#rr)"/>
+  <text x="130" y="130" text-anchor="middle" font-size="8" fill="#b8524f" font-weight="700">NO-GO</text>
+  <text x="130" y="141" text-anchor="middle" font-size="7.5" fill="#b8524f">dropped, logged</text>
+  <!-- outcomes of 3 -->
+  <path d="M342 98L342 112" stroke="#16161a" fill="none"/>
+  <g font-size="8">
+    <rect x="214" y="112" width="76" height="46" rx="6" fill="#e6f0ea" stroke="#3f7a52"/>
+    <text x="252" y="126" text-anchor="middle" font-weight="700" fill="#2e5a3c" font-size="9">GO</text>
+    <text x="252" y="138" text-anchor="middle">a gesture in place;</text><text x="252" y="149" text-anchor="middle">a sound, by day</text>
+    <rect x="296" y="112" width="92" height="46" rx="6" fill="#fbf1dc" stroke="#c98a2b"/>
+    <text x="342" y="126" text-anchor="middle" font-weight="700" fill="#8a5a12" font-size="9">ASK FIRST</text>
+    <text x="342" y="138" text-anchor="middle">travel with no room;</text><text x="342" y="149" text-anchor="middle">a new, untrusted action</text>
+    <rect x="394" y="112" width="84" height="46" rx="6" fill="#f6ecec" stroke="#b8524f"/>
+    <text x="436" y="126" text-anchor="middle" font-weight="700" fill="#b8524f" font-size="9">NO-GO</text>
+    <text x="436" y="138" text-anchor="middle">travel off the floor;</text><text x="436" y="149" text-anchor="middle">loud in quiet hours</text>
+  </g>
+  <path d="M252 112L252 106L436 106L436 112" stroke="#16161a" fill="none"/>
+  <!-- STOP -->
+  <rect x="6" y="182" width="508" height="76" rx="8" fill="#f6ecec" stroke="#b8524f" stroke-width="1.6"/>
+  <text x="18" y="200" font-weight="700" fill="#b8524f" font-size="10">STOP goes round the gate, not through it</text>
+  <g font-size="8">
+    <rect x="18" y="210" width="74" height="38" rx="5" fill="#fff" stroke="#b8524f"/><text x="55" y="225" text-anchor="middle" font-weight="700">a word</text><text x="55" y="238" text-anchor="middle">"stop", by ear</text>
+    <rect x="98" y="210" width="74" height="38" rx="5" fill="#fff" stroke="#b8524f"/><text x="135" y="225" text-anchor="middle" font-weight="700">a touch</text><text x="135" y="238" text-anchor="middle">a hand on it</text>
+    <rect x="178" y="210" width="74" height="38" rx="5" fill="#fff" stroke="#b8524f"/><text x="215" y="225" text-anchor="middle" font-weight="700">the phone</text><text x="215" y="238" text-anchor="middle">its STOP button</text>
+    <rect x="258" y="210" width="74" height="38" rx="5" fill="#fff" stroke="#b8524f"/><text x="295" y="225" text-anchor="middle" font-weight="700">a fall</text><text x="295" y="238" text-anchor="middle">tilt past its edge</text>
+    <rect x="338" y="210" width="74" height="38" rx="5" fill="#fff" stroke="#b8524f"/><text x="375" y="225" text-anchor="middle" font-weight="700">its cell or heat</text><text x="375" y="238" text-anchor="middle">low, or too warm</text>
+    <text x="55" y="244" text-anchor="middle" font-size="7" fill="#5a5a64"></text>
+  </g>
+  <path d="M414 229L430 229" stroke="#b8524f" stroke-width="1.6" fill="none" marker-end="url(#rr)"/>
+  <rect x="432" y="206" width="74" height="46" rx="6" fill="#b8524f"/>
+  <text x="469" y="222" text-anchor="middle" fill="#fff" font-weight="700">THE REFLEX</text><text x="469" y="234" text-anchor="middle" fill="#fff" font-size="8">every channel halts,</text><text x="469" y="245" text-anchor="middle" fill="#fff" font-size="8">the body settles</text>
+  <text x="6" y="274" font-size="8" fill="#5a5a64">The reflex runs on the body, uses no model and no network, and is the one thing a wrapper must prove before anything else is built on it.</text>
+  <text x="6" y="14" font-weight="700" font-size="8" fill="#5a5a64" letter-spacing="1">EVERY ACTION, GIVEN OR LEARNED, PASSES THE SAME FOUR QUESTIONS</text>
+</svg>

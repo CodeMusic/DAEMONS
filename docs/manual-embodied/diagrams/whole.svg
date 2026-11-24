@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 318" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="9">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16161a"/></marker>
+    <marker id="as" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0L0 5L10 10z" fill="#16161a"/></marker>
+    <marker id="br" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#3d6a9a"/></marker>
+    <marker id="bs" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M10 0L0 5L10 10z" fill="#3d6a9a"/></marker>
+  </defs>
+  <!-- the phone -->
+  <rect x="6" y="64" width="92" height="120" rx="10" fill="#fff" stroke="#16161a"/>
+  <text x="52" y="82" text-anchor="middle" font-weight="700">THE PHONE</text>
+  <text x="52" y="95" text-anchor="middle" fill="#5a5a64" font-size="8">the companion app</text>
+  <text x="16" y="114" font-size="8">shows the body</text>
+  <text x="16" y="126" font-size="8">EMBODY a daemon</text>
+  <text x="16" y="138" font-size="8">gives it the Wi-Fi</text>
+  <text x="16" y="150" font-size="8">PRACTICE, show me</text>
+  <rect x="16" y="160" width="72" height="16" rx="8" fill="#b8524f"/><text x="52" y="171" text-anchor="middle" fill="#fff" font-weight="700" font-size="8">STOP</text>
+  <!-- bluetooth -->
+  <path d="M98 124L148 124" stroke="#3d6a9a" stroke-width="1.6" fill="none" marker-end="url(#br)" marker-start="url(#bs)"/>
+  <text x="123" y="116" text-anchor="middle" fill="#3d6a9a" font-weight="700" font-size="8">Bluetooth</text>
+  <text x="123" y="138" text-anchor="middle" fill="#3d6a9a" font-size="7">small and</text>
+  <text x="123" y="147" text-anchor="middle" fill="#3d6a9a" font-size="7">near</text>
+  <!-- the body -->
+  <rect x="150" y="14" width="212" height="262" rx="12" fill="#16161a"/>
+  <text x="256" y="32" text-anchor="middle" fill="#fff" font-weight="700" font-size="10">THE BODY</text>
+  <text x="256" y="44" text-anchor="middle" fill="#d9d4c4" font-size="8">a Raspberry Pi, or whatever the robot runs</text>
+  <rect x="162" y="54" width="188" height="56" rx="6" fill="#f0eef7" stroke="#6b5aa6" stroke-width="1.4"/>
+  <text x="256" y="69" text-anchor="middle" font-weight="700" fill="#4a3d7a">THE DAEMON'S TURN</text>
+  <text x="256" y="83" text-anchor="middle" font-size="8">hear  ·  think as the daemon  ·  answer</text>
+  <text x="256" y="96" text-anchor="middle" font-size="8">the answer performed: speech and actions</text>
+  <rect x="162" y="118" width="188" height="68" rx="6" fill="#e6f0ea" stroke="#3f7a52" stroke-width="1.4"/>
+  <text x="256" y="133" text-anchor="middle" font-weight="700" fill="#2e5a3c">THE BODY PROGRAM</text>
+  <text x="256" y="147" text-anchor="middle" font-size="8">REPERTOIRE: every action, given or learned</text>
+  <text x="256" y="159" text-anchor="middle" font-size="8">the gate  ·  the motion engine  ·  the senses</text>
+  <text x="256" y="171" text-anchor="middle" font-size="8">reflexes and STOP: no model, never off</text>
+  <text x="256" y="181" text-anchor="middle" font-size="7" fill="#5a5a64">the same on every body</text>
+  <rect x="162" y="194" width="188" height="36" rx="6" fill="#fbf1dc" stroke="#c98a2b" stroke-width="1.4"/>
+  <text x="256" y="209" text-anchor="middle" font-weight="700" fill="#8a5a12">THE WRAPPER</text>
+  <text x="256" y="222" text-anchor="middle" font-size="8">one small folder for each kind of body</text>
+  <rect x="162" y="238" width="188" height="28" rx="6" fill="#2c2b33" stroke="#5a5a64"/>
+  <text x="256" y="250" text-anchor="middle" fill="#d9d4c4" font-size="8">servos  ·  IMU, touch, distance, camera</text>
+  <text x="256" y="261" text-anchor="middle" fill="#d9d4c4" font-size="8">microphone  ·  speaker  ·  lights</text>
+  <path d="M256 110L256 118M256 186L256 194M256 230L256 238" stroke="#fff" stroke-width="1.2" fill="none"/>
+  <!-- wifi -->
+  <path d="M362 96L412 96" stroke="#16161a" stroke-width="1.6" fill="none" marker-end="url(#ar)" marker-start="url(#as)"/>
+  <text x="387" y="88" text-anchor="middle" font-weight="700" font-size="8">Wi-Fi</text>
+  <path d="M362 214L412 214" stroke="#16161a" stroke-dasharray="4 3" fill="none" marker-end="url(#ar)" marker-start="url(#as)"/>
+  <text x="387" y="206" text-anchor="middle" font-size="8">Wi-Fi</text>
+  <!-- the house -->
+  <rect x="414" y="40" width="100" height="118" rx="10" fill="#fff" stroke="#16161a"/>
+  <text x="464" y="58" text-anchor="middle" font-weight="700">THE HOUSE</text>
+  <text x="464" y="71" text-anchor="middle" fill="#5a5a64" font-size="8">the hub and its mind</text>
+  <text x="424" y="90" font-size="8">who the daemon is</text>
+  <text x="424" y="102" font-size="8">(its SELF, its voice)</text>
+  <text x="424" y="116" font-size="8">hearing, thinking,</text>
+  <text x="424" y="128" font-size="8">speaking, when the</text>
+  <text x="424" y="140" font-size="8">body cannot alone</text>
+  <text x="424" y="152" font-size="8">its memory</text>
+  <!-- the world -->
+  <rect x="414" y="176" width="100" height="76" rx="10" fill="#fff" stroke="#16161a" stroke-dasharray="4 3"/>
+  <text x="464" y="194" text-anchor="middle" font-weight="700">AWAY</text>
+  <text x="424" y="210" font-size="8">the relay home, or</text>
+  <text x="424" y="222" font-size="8">a model you name</text>
+  <text x="424" y="238" font-size="8" fill="#5a5a64">only what you allow</text>
+  <!-- foot -->
+  <text x="256" y="294" text-anchor="middle" font-size="8.5" font-weight="700">With no phone and no network, everything in the dark box still runs.</text>
+  <text x="256" y="307" text-anchor="middle" font-size="8" fill="#5a5a64">How much of the turn it can do alone depends on the computer in it (Part 9).</text>
+</svg>

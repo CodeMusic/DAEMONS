@@ -78,7 +78,10 @@ FILE = {"guide": "guide", "subtle": "the-subtle-layer", "hermetic": "the-vault-a
         "glass": "the-glasses", "cardputer": "the-cardputers", "kodedot": "the-kode-dot",
         "shadow": "the-spell-left-running"}
 #  a book with no voice on purpose; --check names any other book that has none (T-543: a new book is never left silent)
-UNVOICED = {"micro": "MICRO-START, the quick start in five pages, is not on the LIBRARY's shelf"}
+UNVOICED = {"micro": "MICRO-START, the quick start in five pages, is not on the LIBRARY's shelf",
+            #  T-617, C-549: a design for the user's review, mostly tables and drawings. Whether a design is read aloud at
+            #  all, and in which voice, is the book's own question 11: the user's to answer, then it leaves this list
+            "embodied": "EMBODIED is a design under review; whether it is read aloud is the user's to say (T-617, question 11)"}
 RATE = {"textbook": "48k"}       # a long book a little lighter, under GitHub's 50 MB; the rest 64k
 SEALED = {"hermetic", "eudaimon", "unity",   # the torn book's three readings (the user, 2026-11-05: "Sealed, like the night")
           "origin"}                          # T-533 (the user, 2026-11-11): played whole only once every chapter is back

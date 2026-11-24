@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 300" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="9">
+  <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16161a"/></marker></defs>
+  <!-- 1 the reply -->
+  <text x="6" y="12" font-weight="700" font-size="8" fill="#5a5a64" letter-spacing="1">1  WHAT THE MODEL WRITES</text>
+  <rect x="6" y="18" width="508" height="34" rx="6" fill="#fff" stroke="#16161a"/>
+  <text x="16" y="39" font-family="Menlo, monospace" font-size="8.6">You're home! <tspan fill="#3f7a52" font-weight="700">{WAG}</tspan> I waited by the door. <tspan fill="#3f7a52" font-weight="700">{SIT}</tspan> Did you bring the ball? <tspan fill="#b8524f" font-weight="700">{FLY}</tspan> <tspan fill="#3f7a52" font-weight="700">{BARK}</tspan></text>
+  <path d="M260 52L260 70" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+  <!-- 2 the beats -->
+  <text x="6" y="82" font-weight="700" font-size="8" fill="#5a5a64" letter-spacing="1">2  THE PERFORMANCE: BEATS, IN ORDER</text>
+  <g font-size="8">
+    <rect x="6" y="88" width="72" height="34" rx="5" fill="#f0eef7" stroke="#6b5aa6"/><text x="42" y="102" text-anchor="middle" font-weight="700" fill="#4a3d7a">SAY</text><text x="42" y="114" text-anchor="middle">You're home!</text>
+    <rect x="84" y="88" width="50" height="34" rx="5" fill="#e6f0ea" stroke="#3f7a52"/><text x="109" y="102" text-anchor="middle" font-weight="700" fill="#2e5a3c">DO</text><text x="109" y="114" text-anchor="middle">WAG</text>
+    <rect x="140" y="88" width="104" height="34" rx="5" fill="#f0eef7" stroke="#6b5aa6"/><text x="192" y="102" text-anchor="middle" font-weight="700" fill="#4a3d7a">SAY</text><text x="192" y="114" text-anchor="middle">I waited by the door.</text>
+    <rect x="250" y="88" width="50" height="34" rx="5" fill="#e6f0ea" stroke="#3f7a52"/><text x="275" y="102" text-anchor="middle" font-weight="700" fill="#2e5a3c">DO</text><text x="275" y="114" text-anchor="middle">SIT</text>
+    <rect x="306" y="88" width="112" height="34" rx="5" fill="#f0eef7" stroke="#6b5aa6"/><text x="362" y="102" text-anchor="middle" font-weight="700" fill="#4a3d7a">SAY</text><text x="362" y="114" text-anchor="middle">Did you bring the ball?</text>
+    <rect x="424" y="88" width="40" height="34" rx="5" fill="#f6ecec" stroke="#b8524f" stroke-dasharray="3 2"/><text x="444" y="102" text-anchor="middle" font-weight="700" fill="#b8524f">DO</text><text x="444" y="114" text-anchor="middle" fill="#b8524f" text-decoration="line-through">FLY</text>
+    <rect x="470" y="88" width="44" height="34" rx="5" fill="#e6f0ea" stroke="#3f7a52"/><text x="492" y="102" text-anchor="middle" font-weight="700" fill="#2e5a3c">DO</text><text x="492" y="114" text-anchor="middle">BARK</text>
+  </g>
+  <text x="444" y="134" text-anchor="middle" font-size="7.5" fill="#b8524f">not in the repertoire:</text>
+  <text x="444" y="143" text-anchor="middle" font-size="7.5" fill="#b8524f">dropped, logged, never said</text>
+  <path d="M260 126L260 156" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+  <!-- 3 the channels -->
+  <text x="6" y="168" font-weight="700" font-size="8" fill="#5a5a64" letter-spacing="1">3  WHAT THE BODY DOES, ON ITS CHANNELS</text>
+  <rect x="6" y="174" width="508" height="100" rx="6" fill="#fff" stroke="#16161a"/>
+  <g font-size="8" font-weight="700"><text x="16" y="194">voice</text><text x="16" y="216">tail</text><text x="16" y="238">legs</text><text x="16" y="260">head</text></g>
+  <g stroke="#d8d6ce" stroke-width=".6"><path d="M52 202L506 202M52 224L506 224M52 246L506 246"/></g>
+  <!-- voice -->
+  <rect x="56" y="183" width="62" height="14" rx="3" fill="#6b5aa6"/><text x="87" y="193" text-anchor="middle" fill="#fff" font-size="7.5">You're home!</text>
+  <rect x="122" y="183" width="92" height="14" rx="3" fill="#6b5aa6"/><text x="168" y="193" text-anchor="middle" fill="#fff" font-size="7.5">I waited by the door.</text>
+  <rect x="292" y="183" width="104" height="14" rx="3" fill="#6b5aa6"/><text x="344" y="193" text-anchor="middle" fill="#fff" font-size="7.5">Did you bring the ball?</text>
+  <rect x="400" y="183" width="48" height="14" rx="3" fill="#3f7a52"/><text x="424" y="193" text-anchor="middle" fill="#fff" font-size="7.5">BARK</text>
+  <!-- tail: WAG flows under the speech -->
+  <rect x="122" y="205" width="150" height="14" rx="3" fill="#3f7a52"/><text x="197" y="215" text-anchor="middle" fill="#fff" font-size="7.5">WAG  (flows: speech goes on over it)</text>
+  <!-- legs: SIT holds the speech -->
+  <rect x="218" y="227" width="70" height="14" rx="3" fill="#3f7a52"/><text x="253" y="237" text-anchor="middle" fill="#fff" font-size="7.5">SIT  (holds)</text>
+  <!-- head with bark -->
+  <rect x="400" y="249" width="48" height="14" rx="3" fill="#3f7a52"/><text x="424" y="259" text-anchor="middle" fill="#fff" font-size="7.5">head up</text>
+  <path d="M290 178L290 270" stroke="#b8524f" stroke-dasharray="2 2" stroke-width=".8"/>
+  <text x="294" y="270" font-size="7" fill="#b8524f">speech waits for SIT to end</text>
+  <text x="506" y="286" text-anchor="end" font-size="7.5" fill="#5a5a64">time</text><path d="M440 283L480 283" stroke="#5a5a64" fill="none" marker-end="url(#ar)"/>
+  <text x="6" y="296" font-size="8" fill="#5a5a64">Beats keep the order the daemon wrote. Two beats overlap only when the first one FLOWS and they use different channels.</text>
+</svg>

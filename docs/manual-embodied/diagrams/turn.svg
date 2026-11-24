@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 320" font-family="Avenir Next, Helvetica Neue, Helvetica, sans-serif" font-size="9">
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#16161a"/></marker>
+    <marker id="rr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#b8524f"/></marker>
+    <marker id="gr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#5a5a64"/></marker>
+  </defs>
+  <text x="6" y="12" font-weight="700" font-size="8" fill="#5a5a64" letter-spacing="1">ONE TURN, FROM A WORD TO A WAG</text>
+  <!-- row 1 -->
+  <g font-size="8">
+    <rect x="6" y="22" width="78" height="62" rx="6" fill="#fff" stroke="#16161a"/>
+    <text x="45" y="37" text-anchor="middle" font-weight="700" font-size="9">1  WAKE</text>
+    <text x="45" y="50" text-anchor="middle">its name, a touch,</text><text x="45" y="61" text-anchor="middle">or the phone;</text><text x="45" y="72" text-anchor="middle">it shows it listens</text>
+    <path d="M84 53L98 53" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+    <rect x="100" y="22" width="78" height="62" rx="6" fill="#fff" stroke="#16161a"/>
+    <text x="139" y="37" text-anchor="middle" font-weight="700" font-size="9">2  HEAR</text>
+    <text x="139" y="50" text-anchor="middle">the end of speech</text><text x="139" y="61" text-anchor="middle">found on the body;</text><text x="139" y="72" text-anchor="middle">sound made words</text>
+    <path d="M178 53L192 53" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+    <rect x="194" y="22" width="86" height="62" rx="6" fill="#fbf1dc" stroke="#c98a2b"/>
+    <text x="237" y="37" text-anchor="middle" font-weight="700" font-size="9" fill="#8a5a12">3  THE LOW ROAD</text>
+    <text x="237" y="50" text-anchor="middle">"stop", "sit", "quiet":</text><text x="237" y="61" text-anchor="middle">a few words act at</text><text x="237" y="72" text-anchor="middle">once, with no model</text>
+    <path d="M280 53L294 53" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+    <rect x="296" y="14" width="218" height="78" rx="6" fill="#f0eef7" stroke="#6b5aa6" stroke-width="1.4"/>
+    <text x="405" y="29" text-anchor="middle" font-weight="700" font-size="9" fill="#4a3d7a">4  THINK, AS THE DAEMON</text>
+    <rect x="304" y="36" width="64" height="48" rx="4" fill="#fff" stroke="#6b5aa6"/><text x="336" y="49" text-anchor="middle" font-weight="700">its SELF</text><text x="336" y="60" text-anchor="middle" font-size="7.5">who it is, how</text><text x="336" y="70" text-anchor="middle" font-size="7.5">it feels, its day</text><text x="336" y="80" text-anchor="middle" font-size="7.5" fill="#5a5a64">from the hub</text>
+    <rect x="373" y="36" width="64" height="48" rx="4" fill="#fff" stroke="#6b5aa6"/><text x="405" y="49" text-anchor="middle" font-weight="700">its BODY</text><text x="405" y="60" text-anchor="middle" font-size="7.5">what it is in,</text><text x="405" y="70" text-anchor="middle" font-size="7.5">its posture, what</text><text x="405" y="80" text-anchor="middle" font-size="7.5">it senses now</text>
+    <rect x="442" y="36" width="64" height="48" rx="4" fill="#fff" stroke="#6b5aa6"/><text x="474" y="49" text-anchor="middle" font-weight="700">its ACTIONS</text><text x="474" y="60" text-anchor="middle" font-size="7.5">the repertoire,</text><text x="474" y="70" text-anchor="middle" font-size="7.5">a line each, and</text><text x="474" y="80" text-anchor="middle" font-size="7.5">how to write one</text>
+  </g>
+  <!-- low road shortcut -->
+  <path d="M237 84L237 186L262 186" stroke="#c98a2b" stroke-width="1.4" stroke-dasharray="4 3" fill="none" marker-end="url(#ar)"/>
+  <text x="243" y="104" font-size="7.5" fill="#8a5a12">straight to</text><text x="243" y="114" font-size="7.5" fill="#8a5a12">the body</text>
+  <!-- think down to answer -->
+  <path d="M405 92L405 112" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+  <g font-size="8">
+    <rect x="296" y="114" width="218" height="34" rx="6" fill="#fff" stroke="#16161a"/>
+    <text x="405" y="128" text-anchor="middle" font-weight="700" font-size="9">5  THE ANSWER, AS IT ARRIVES</text>
+    <text x="405" y="140" text-anchor="middle" font-family="Menlo, monospace" font-size="7.6">Good morning! {STRETCH} Shall we walk?</text>
+    <path d="M405 148L405 166" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+    <rect x="264" y="168" width="250" height="64" rx="6" fill="#e6f0ea" stroke="#3f7a52" stroke-width="1.4"/>
+    <text x="389" y="183" text-anchor="middle" font-weight="700" font-size="9" fill="#2e5a3c">6  PERFORM</text>
+    <text x="389" y="196" text-anchor="middle">cut into beats as each sentence or {ACTION} completes;</text>
+    <text x="389" y="207" text-anchor="middle">each DO through the gate; each SAY to the voice;</text>
+    <text x="389" y="218" text-anchor="middle">the body starts moving before the model has finished</text>
+  </g>
+  <!-- asking action loop -->
+  <path d="M264 212L106 212L106 162" stroke="#5a5a64" stroke-dasharray="3 2" fill="none" marker-end="url(#gr)"/>
+  <rect x="6" y="112" width="200" height="48" rx="6" fill="#fff" stroke="#5a5a64" stroke-dasharray="3 2"/>
+  <text x="106" y="127" text-anchor="middle" font-weight="700" font-size="8">an action that ASKS</text>
+  <text x="106" y="139" text-anchor="middle" font-size="7.5">{LOOK}, {MEASURE}: the body answers it,</text>
+  <text x="106" y="150" text-anchor="middle" font-size="7.5">the result goes back, and it thinks again</text>
+  <!-- after -->
+  <path d="M389 232L389 248" stroke="#16161a" fill="none" marker-end="url(#ar)"/>
+  <rect x="264" y="250" width="250" height="34" rx="6" fill="#fff" stroke="#16161a"/>
+  <text x="389" y="264" text-anchor="middle" font-weight="700" font-size="9">7  REMEMBER</text>
+  <text x="389" y="276" text-anchor="middle" font-size="8">what was said, done and felt, kept for the hub and the night</text>
+  <!-- barge-in -->
+  <rect x="6" y="232" width="214" height="56" rx="6" fill="#f6ecec" stroke="#b8524f"/>
+  <text x="16" y="246" font-weight="700" fill="#b8524f">SPOKEN OVER</text>
+  <text x="16" y="258" font-size="8">Speak while it performs and it stops talking,</text>
+  <text x="16" y="269" font-size="8">settles the movement it is in, and listens.</text>
+  <text x="16" y="280" font-size="8">"Stop" is the reflex: everything halts.</text>
+  <path d="M220 246L262 226" stroke="#b8524f" stroke-width="1.4" fill="none" marker-end="url(#rr)"/>
+  <text x="6" y="304" font-size="8" fill="#5a5a64">Steps 1, 3, 6 and 7 always run on the body. Steps 2 and 4 and the voice run on the body, in the house,</text>
+  <text x="6" y="315" font-size="8" fill="#5a5a64">or on a model you name: whichever answers (Part 9).</text>
+</svg>

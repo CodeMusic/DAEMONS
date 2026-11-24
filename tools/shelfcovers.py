@@ -42,7 +42,8 @@ PDFS = {"player": "DAEMONS-manual.pdf", "quick": "DAEMONS-quickstart.pdf", "soci
         "companion": "DAEMONS-companion-manual.pdf", "watch": "DAEMONS-watch-manual.pdf",
         "glass": "DAEMONS-glass-manual.pdf",   # C-262
         "cardputer": "DAEMONS-cardputer-manual.pdf",   # C-393
-        "kodedot": "DAEMONS-kodedot-manual.pdf"}   # C-442
+        "kodedot": "DAEMONS-kodedot-manual.pdf",   # C-442
+        "embodied": "DAEMONS-embodied.pdf"}   # T-617, C-549: the first design on the shelf
 # the third book on the game's screen (app/ui/bookPicture.tsx ON_COVER and BAND, measured 2026-11-05/06)
 ON_COVER = {"hermetic": (50, 4, 188, 152), "eudaimon": (50, 4, 193, 154), "unity": (6, 4, 191, 154)}
 BAND = {"hermetic": (118, 18.5, 34, "#FFF7F7", "#846B94"), "eudaimon": (117, 18.5, 34, "#FFF7DE", "#8CADEF"),

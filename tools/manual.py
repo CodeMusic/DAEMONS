@@ -17,6 +17,7 @@ everything has images from the game and really communicates everthing includes t
     python3 tools/manual.py --book glass --write       # THE GLASSES: the T-Glass before one eye (C-262)
     python3 tools/manual.py --book cardputer --write   # THE CARDPUTERS: the Cardputer, the ADV, the Zero, their caps (C-393)
     python3 tools/manual.py --book kodedot --write     # THE KODE DOT: every routine in your pocket (C-442)
+    python3 tools/manual.py --book embodied --write    # EMBODIED: a daemon in a robot body, the design (T-617)
 
 Rebuild it every release: the version, the patches and every daemon's picture and INDEX entry are read from the
 build, so a release that changes them changes the manual.
@@ -168,6 +169,18 @@ BOOKS = {
                            "TOUCHSTONE, FLARE, WHISPER and UPLINK",
                 "sprites": ("ANODE", "BEACON", "CATHODE"),
                 "strip": ("TETHERING", "PILOT", "SOUNDING", "GLIDEPATH", "PERIPHERY", "STANDBY", "POLL", "DUPLEX")},
+    # the thirteenth, and the first that is a DESIGN rather than a manual: DAEMONS EMBODIED, a daemon in a robot body
+    # (T-617; the user, 2026-11-24: "a formal PDF design doc for this abstract generalized system that we can simply add
+    # wrapper to support new creations ... with diagrams and on the library like the others"). Nothing in it is built:
+    # it is the design the user reviews before its tickets are written. Its pictures are all drawings (diagrams/).
+    "embodied": {"src": "docs/manual-embodied", "out": "docs/DAEMONS-embodied.pdf",
+                 "title": "DAEMONS: embodied", "tag": "EMBODIED", "chapter": "PART",
+                 "sub": "A daemon in a body: the design", "foot": "embodied, the design",
+                 "subject": "DAEMONS EMBODIED, the design: a daemon carried into a robot body -- the wrapper each body "
+                            "needs, the line of speech and movement, how a body is learned, and the links to the phone "
+                            "and the house",
+                 "sprites": ("ROVERCUB", "ROVERSEER", "ROVERBYTE"),
+                 "strip": ("ROVERCUB", "ROVERSEER", "ROVERBYTE", "HANDSHAKE", "TETHERING", "COROUTINE", "PING", "INFERENCE")},
 }
 BOOK = BOOKS["main"]
 THEATRE = os.path.join(ROOT, ".theatre/routes")
