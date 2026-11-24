@@ -133,3 +133,9 @@ T-604 stage 11, the last (DRAFT): the final sixteen later forms colour in -- MEN
 T-604 stage 11, the last (DRAFT): the final sixteen later forms colour in -- MENTALIZE's periwinkle skirt, LOOKOUT's sable coat, STALEMATE's frosted wing, GUTFEEL's honey belly, MINDSIGHT's CONTEXT crown, WRAPAROUND's lilac ears, FEDERATED's steel pods, CURRICULUM's blossom saddle, MOMENTUM's dusk back, RELEASE's violet body, ABANDON's gold crown, DEDUCTION's lilac waistcoat, FIRMWARE's rust coat, EPIPHANY's gold wings, and the fossils MAINFRAME and PUNCHCARD in FLOW blue
 
 ![24Nov2026 - T604 - stage 11, the last sixteen later forms, built - 28](24Nov2026%20-%20T604%20-%20stage%2011%2C%20the%20last%20sixteen%20later%20forms%2C%20built%20-%2028.png)
+
+### 24Nov2026 - C447 - ROLL CALL on the Zero over the air - 29
+
+C-447 on the Cardputer Zero: a real ALL call at -10 dBm on 433.92 MHz, 3 of 3 packets sent, nobody to answer yet (DRAFT words)
+
+![24Nov2026 - C447 - ROLL CALL on the Zero over the air - 29](24Nov2026%20-%20C447%20-%20ROLL%20CALL%20on%20the%20Zero%20over%20the%20air%20-%2029.png)
