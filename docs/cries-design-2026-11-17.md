@@ -6,6 +6,18 @@ Every example below is a DRAFT.*
 **Picked (the user, 2026-11-17): A, shaped by B** -- the type's motif, its order and rhythm from the name, a line
 sharing a contour, lower and slower as it evolves. All 388 to be drafted by `tools/gencries.py`, DRAFT.
 
+**Since T-613 (the user, 2026-11-23: "the cry is the hook"; 1.5 s each, 2026-11-24): every cry plays its form's own
+HOOK** -- the first seven notes of its verse (`tools/genverses.py`), which the player plays on the harp to summon it.
+The notes are the verse's own pitches and its rhythm is kept, quickened to fill 1.5 s (about 2.3 times its song's
+pace; a hook at its song's pace lasts 2.3 to 5 s, and the cry player stops a cry at 2.3 s). Pret's per-species cap is
+gone: every cry is 1.5 s, about 3.2 MB of ROM against pret's 1.6 MB. The type's voice stays (the harp or a thin
+pluck, the click, the noise texture), and a second type, or a type that holds, ends on the flute -- on the hook's own
+last note, so the notes never move. Two touches keep the three checks: the first note moves on within a beat (a
+doubles cut hears two notes) and the last rings a beat and a half, the harp's at most 0.36 s (played backwards, the
+cry starts loud). All 401 pass; the hooks are unique, so no two cries play one score. Pret's two unused slots keep the
+shape below. Draft listening: `audio/drafts/t613_cries/` (`cry_then_hook.mp3` plays six cries, each followed by its
+hook at its song's pace). DRAFT.
+
 The census (`docs/sound-census-2026-11-16.md`) left the cries for last: **388 of them, every one still pret's**, heard
 at least twice a battle, at every switch-in, on every INDEX page and party screen. A cry is the one sound that belongs
 to a single daemon, so it is a design question before it is an audio one: *what does a daemon say when it arrives?*

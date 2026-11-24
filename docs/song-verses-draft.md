@@ -146,10 +146,12 @@ was lengthened, and none was left out.
   sings its own verse as static.
 - **ALMOST:** a hook played in the wrong key comes back flat, followed by PLAY's own ALMOST line.
 - **Re-derived from the new tunes:** the shiny notes (T-602) and the colour ties (T-597).
+- **The cry is the hook** (2026-11-24): every cry plays its form's seven-note hook, 1.5 s long (the user's pick), at
+  the verse's pitches with its rhythm kept, about 2.3 times its song's pace. The type's voice stays; a second type ends
+  on the flute, on the hook's own last note. `tools/gencries.py`; `docs/cries-design-2026-11-17.md` has the rest.
 
 **Not built yet:**
 - the quotation's words appearing as the daemon sings (T-610 and C-485, which wait on T-599);
-- the cry becoming the hook (gencries);
 - ALMOST in the companion's PLAY FREELY;
 - the out-of-tune chord for an unlearned note (T-611).
 

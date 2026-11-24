@@ -31,7 +31,16 @@ lines that turn the motif alike, names of the same consonant-vowel shape and ini
 later in the cry table takes a tie: the notes its name's initial and last letter choose (the pickup and the note
 before the held one) each step to the next choice, until it is heard as its own.
 
-THE SHAPE, per cry (events()):
+T-613, THE CRY IS THE HOOK (the user, 2026-11-23: "the cry is the hook"; 2026-11-24: 1.5 s each): a cry plays its
+form's own HOOK -- the first seven notes of its verse (tools/genverses.py), the notes and rhythm a player plays to call
+it -- at the verse's pitches, its rhythm kept and its pace quickened to fill CRY_S. Hear it in a battle, play it to
+summon. The type's voice stays: the harp or a thin pluck, the click, the noise texture, and a second type (or a type
+that holds) ending on the FLUTE -- on the hook's own last note, so the notes never move. Every cry is CRY_S long
+(about 2.3 times its song's pace); pret's own length is kept only to report against. The hooks are unique across all
+400, so no two cries play one score and THE NO-TWINS RULE has nothing left to move. A cry with no verse (pret's two
+unused slots) keeps the shape below.
+
+THE SHAPE, before T-613 (events_named(), kept for a cry with no verse):
     the TYPE      its first type's batch-10 PALETTE (genuisounds.py): the motif, the harp or a thin pluck, a square
                   click under each note, the type's noise texture. A second type holds the last note on the FLUTE, on
                   its own motif's last note (a type with "hold" holds its own).
@@ -68,11 +77,18 @@ FRAME = 1 / 59.7275
 DOUBLES_S, GROWL_S, HOLD_FRAMES, FAINT_SEMIS = 20 * FRAME, 15 * FRAME, 140, (15360 - 14440) / 256
 
 # The user's picks: {"*": "A+B"} for all, or {"Cry_Bulbasaur": "A+B", ...}. --write refuses while it is empty.
-APPROVED = {"*": "A+B"}   # the user, 2026-11-17, by multiple choice: all 388, A shaped by B (DRAFT)
+APPROVED = {"*": "A+B"}   # the user, 2026-11-17, by multiple choice: all 388, A shaped by B (DRAFT); since T-613
+                          # (2026-11-23, 1.5 s on 2026-11-24) A is the hook: every cry its form's first seven notes
 
 STAGE_DROP = {1: 0, 2: -5, 3: -12}
 PENTA = [0, 2, 4, 7, 9, 12, 14, 16, 19, 21]                # Blanche's C pentatonic, two octaves: a letter's degree
 VOWELS = set("AEIOUY")
+CRY_S = 1.5                                                # T-613: every cry's length (the user, 2026-11-24)
+RING = 2.5                                                 # a note sounds at most this many beats (gensongs.NOTE_RING)
+FIRST_STEP, LAST_RING, LAST_S = 1.0, 1.5, 0.36                          # T-613 in a cry: the first note moves on within a beat (a
+                                                           # doubles cut hears two notes) and the last rings a beat and
+                                                           # a half, the harp's at most LAST_S (played
+                                                           # backwards, the cry starts loud: the harp fades as it rings)
 FLOOR, CEIL = 45, 96                                       # the register: A2 to C7 before any mode moves it
 SIX = ["HEAP", "STACK", "MONOLITH", "SPIKE", "DANGLING", "SINGULAR"]   # the design doc's six
 LINES = ["HEAP", "CRAWLER", "CANARY"]                      # the sampler's three whole lines, by their first daemon
@@ -157,8 +173,20 @@ def census():
         ty = tuple(dict.fromkeys(gs.TYPE_OF_VANILLA[t] for t in types.get(sp, ("NORMAL", "NORMAL"))))
         name = names[sp] if sp else label[4:].upper()
         cries.append(dict(i=i, label=label, file=files[label], species=sp, name=name, types=ty,
-                          stage=min(stage, 3), line=names[root] if sp else name, cap=caps[files[label]]))
+                          stage=min(stage, 3), line=names[root] if sp else name, pret=caps[files[label]],
+                          cap=caps[files[label]]))
+    hooks = verse_hooks()
+    for c in cries:                                         # T-613: a cry with a verse plays its hook, CRY_S long
+        if c["name"] in hooks:
+            c["hook"], c["cap"] = hooks[c["name"]], CRY_S
     return cries
+
+
+def verse_hooks():
+    """T-613: {daemon's name: its hook, [(midi, beats with the rest after)] * 7}, from the verses gensongs builds."""
+    import gensongs, genverses
+    _, _, parts = gensongs.build()
+    return {p["name"]: [(m, b) for m, b, _ in p["notes"][:genverses.HOOK]] for p in parts.values()}
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -241,7 +269,35 @@ def noise(dur, vel, decay, seed, color=1.0):
 # THE SHAPE: A (the type's motif) shaped by B (the name)
 # ---------------------------------------------------------------------------------------------------------------------
 def events(c):
-    """The notes of one cry: [(start s, length s, voice, key, velocity)], and the texture it lays under them."""
+    """The notes of one cry: [(start s, length s, voice, key, velocity)], and the texture it lays under them. T-613:
+    its form's hook, quickened to fill the cry; a cry with no verse keeps the shape it had (events_named)."""
+    if not c.get("hook"):
+        return events_named(c)
+    pal = gs.PALETTE[c["types"][0]]
+    keys = [k for k, _ in c["hook"]]
+    beats = [b for _, b in c["hook"]]
+    beats[0] = min(beats[0], FIRST_STEP)
+    sound = [min(b, RING) for b in beats]
+    sound[-1] = min(sound[-1], LAST_RING)
+    unit = (c["cap"] - 0.08) / (sum(beats[:-1]) + sound[-1])    # the hook's rhythm, quickened to fill the cry
+    two = len(c["types"]) > 1
+    out, t = [], 0.0
+    for j, (k, b, d) in enumerate(zip(keys, beats, sound)):
+        a = 1.0 if j in (0, len(keys) - 1) else 0.82        # struck first, and the last held full
+        if j == len(keys) - 1 and (pal["hold"] or two):   # the second type shades the last note: the flute, same key
+            kk = k
+            while kk < 52:
+                kk += 12
+            out.append((t, unit * d, "daemons_flute", kk, 0.45 * a))
+        else:
+            out.append((t, min(unit * d, LAST_S) if j == len(keys) - 1 else unit * d, "daemons_harp", k,
+                        (0.6 if pal["art"] == "^" else 0.9) * a))
+        t += unit * b
+    return out, pal, unit
+
+
+def events_named(c):
+    """Before T-613: the type's motif shaped by the name (A shaped by B), for a cry with no verse."""
     pal = gs.PALETTE[c["types"][0]]
     m = [midi(n) for n in pal["m"]]
     rot = h(c["line"], len(m))                              # the LINE's contour
@@ -605,8 +661,8 @@ def run_all(cries, measure=False, wav_dir=None):
 def summary(rows):
     fails = [r for r in rows if r["bad"]]
     ours = sum(len(r["y"]) for r in rows) / SR
-    pret = sum(r["c"]["cap"] for r in rows)
-    print("gencries: %d cries, A shaped by B (DRAFT); ours %.1f s against pret's %.1f s" % (len(rows), ours, pret))
+    pret = sum(r["c"]["pret"] for r in rows)
+    print("gencries: %d cries, each its form's hook (T-613, DRAFT); ours %.1f s against pret's %.1f s" % (len(rows), ours, pret))
     if rows[0]["bytes"] is not None:
         print("  ROM bytes (wav2agb, as built): ours %d, pret's 1,630,415" % sum(r["bytes"] for r in rows))
     else:
@@ -643,7 +699,7 @@ def sheet_text(rows):
     for r in rows:
         c = r["c"]
         lines.append("%-4d %-16s %-11s %-19s %-2d %-11s %6.3f %6.3f %6s  %s" % (
-            c["i"], c["label"][4:], c["name"], "/".join(c["types"]), c["stage"], c["line"], c["cap"],
+            c["i"], c["label"][4:], c["name"], "/".join(c["types"]), c["stage"], c["line"], c["pret"],
             len(r["y"]) / SR, r["bytes"] if r["bytes"] is not None else "-",
             "; ".join(r["bad"]) or ("ok" + (" (%s)" % r["note"] if r["note"] else ""))))
     return "\n".join(lines) + "\n"
