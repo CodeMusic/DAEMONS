@@ -43,3 +43,15 @@ T-604 stage 8 (DRAFT): fifteen more wild later forms colour in -- ELATION's lowe
 DAEMONS Server's proof: paired with daemons-hearth, joined THE MESH as a processing node, idle and plugged in (DRAFT)
 
 ![24Nov2026 - C539 - DAEMONS Server dashboard - 13](24Nov2026%20-%20C539%20-%20DAEMONS%20Server%20dashboard%20-%2013.jpg)
+
+### 24Nov2026 - T617 - EMBODIED the design, its nine drawings - 16
+
+T-617 (DRAFT): the book's drawings -- the whole system, a wrapper and three kinds of body, the gate and STOP, an answer performed as beats, one turn, EMBODY between phone, body and hub, four places a body can be, PRACTICE, and the PiDog as its sheet sees it
+
+![24Nov2026 - T617 - EMBODIED the design, its nine drawings - 16](24Nov2026%20-%20T617%20-%20EMBODIED%20the%20design%2C%20its%20nine%20drawings%20-%2016.png)
+
+### 24Nov2026 - T617 - EMBODIED the design, cover and seven of its parts - 17
+
+T-617 (DRAFT, a design for review, nothing built): DAEMONS EMBODIED as a printed book, docs/DAEMONS-embodied.pdf -- its cover, the whole system, the nine proposals, the Rover line, the performance, PRACTICE, the PiDog and the questions for review
+
+![24Nov2026 - T617 - EMBODIED the design, cover and seven of its parts - 17](24Nov2026%20-%20T617%20-%20EMBODIED%20the%20design%2C%20cover%20and%20seven%20of%20its%20parts%20-%2017.png)
