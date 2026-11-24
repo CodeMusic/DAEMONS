@@ -1,0 +1,70 @@
+T-613 THE VERSES, DRAFT: the sampler, in order
+
+0. ROVERCUB -> ROVERSEER -> ROVERBYTE as it is TODAY (T-594)        36.8 s
+1. ROVERCUB -> ROVERSEER -> ROVERBYTE, with its chorus              43.7 s
+2. TANGENT                                                           9.1 s
+3. GRADIENT                                                         12.7 s
+4. DOLPHIN -> PENPHIN, with its chorus                              18.7 s
+5. HASHSEED -> IFTRUE -> THENCASE, with its chorus                  28.5 s
+6. HASHSEED -> IFFALSE -> OTHERWISE, with its chorus                32.2 s
+7. BOOTROM -> FIRMWARE -> BIGIRON, with its chorus                  36.8 s
+8. Every form's HOOK alone, in order (its cry, and its summon)      70.3 s
+
+T-613 THE VERSES -- the sampler, DRAFT (tools/genverses.py)
+
+1. ROVERCUB -> ROVERSEER -> ROVERBYTE  (F major, 96 bpm)
+     ROVERCUB  Mind what you carry the small ones past. They are keeping all of it.
+               hook: F G F A G A C  (F major)
+     chorus   *From the arms, to the window, to the door.*  (placeholder)
+     ROVERSEER A thing kept indoors grows toward the window.
+               hook: C D D B-flat A C A  (F major)
+     chorus   *From the arms, to the window, to the door.*  (placeholder)
+     ROVERBYTE Go outside and check. The things you were surest of are the first that need it.
+               hook: C D F E F G C  (F major)
+
+2. TANGENT  (A-flat major, 108 bpm)
+     TANGENT   Go the way the ground falls from here. Tomorrow will have a slope of its own.  (placeholder)
+               hook: A-flat B-flat A-flat B-flat C A-flat E-flat  (A-flat major)
+
+3. GRADIENT  (D minor, 96 bpm)
+     GRADIENT  Every hill is going somewhere, slowly. Face the way it goes.
+               hook: D F E G A B-flat A  (D minor)
+
+4. DOLPHIN -> PENPHIN  (D-flat major, 120 bpm)
+     DOLPHIN   Pick your heading before the wave, not on it.
+               hook: A-flat D-flat C E-flat E-flat F A-flat  (D-flat major)
+     chorus   *Count the waves, then count to two.*  (placeholder)
+     PENPHIN   Wait until both of you agree. Then let the water carry you.  (placeholder)
+               hook: E A G B A G E  (A minor)
+
+5. HASHSEED -> IFTRUE -> THENCASE  (E major, 132 bpm)
+     HASHSEED  We all began from a number nobody chose. Look how differently we grew.
+               hook: E F-sharp G-sharp C-sharp B G-sharp B  (E major)
+     chorus   *Pale silk, and what follows.*  (placeholder)
+     IFTRUE    What held inside you decides the shape you come out in.  (placeholder)
+               hook: B C-sharp B E D-sharp E G-sharp  (E major)
+     chorus   *Pale silk, and what follows.*  (placeholder)
+     THENCASE  Fly the path that was expected of you, and fly it bright.  (placeholder)
+               hook: E D-sharp C-sharp B C-sharp E B  (E major)
+
+6. HASHSEED -> IFFALSE -> OTHERWISE  (E major, 132 bpm)
+     HASHSEED  We all began from a number nobody chose. Look how differently we grew.
+               hook: E F-sharp G-sharp C-sharp B G-sharp B  (E major)
+     chorus   *Dark silk, and what follows anyway.*  (placeholder)
+     IFFALSE   Failing inside is not finishing. Go on the other way.  (placeholder)
+               hook: B A G-sharp F-sharp B A B  (E major)
+     chorus   *Dark silk, and what follows anyway.*  (placeholder)
+     OTHERWISE Not every road was written down. Some are only flown at night.  (placeholder)
+               hook: G-sharp F-sharp G-sharp E B C-sharp B  (E major)
+
+7. BOOTROM -> FIRMWARE -> BIGIRON  (E-flat major, 108 bpm)
+     BOOTROM   Begin the same way every morning, and the rest of the day can be anything.
+               hook: E-flat B-flat A-flat G A-flat B-flat G  (E-flat major)
+     chorus   *The same, the same, and running still.*  (placeholder)
+     FIRMWARE  Wear a thing long enough and it becomes the shape of you.  (placeholder)
+               hook: B-flat F E-flat F E-flat D B-flat  (E-flat major)
+     chorus   *The same, the same, and running still.*  (placeholder)
+     BIGIRON   Old is what we call a thing that has outlasted every reason to replace it.
+               hook: E-flat A-flat B-flat F G A-flat B-flat  (E-flat major)
+
+HOOKS: 400 forms given a hook (the six lines' words, every other form's INDEX entry standing in), 400 different -- every one unique in shape, none lengthened, none left out.

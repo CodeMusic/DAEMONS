@@ -169,3 +169,27 @@ T-604 stage 6 (DRAFT): fifteen more later forms colour in as they learn their pa
 T-604 stage 6 (DRAFT): fifteen more later forms colour in as they learn their part -- TURBULENCE's tail, IMPULSE's mane, MULTICAST's wings, OBSESSION's muzzle and chest, SOUNDING's lantern, HIBERNATE's ears and paws, BUILDUP's wool, RESTLESS's crown and ruff, WIRETAP's crowns, DYNAMO's belly and dome, OUTLIER's iris, MUTEX's trunks, MONOLITH's bowl, PRESCIENCE's flight feathers, ENGRAM's ears; 81 of about 182 now
 
 ![23Nov2026 - T604 - stage 6, fifteen later forms, built - 28](23Nov2026%20-%20T604%20-%20stage%206%2C%20fifteen%20later%20forms%2C%20built%20-%2028.png)
+
+### 23Nov2026 - T613 - the verses sampler sheets - 29
+
+T-613 THE VERSES, DRAFT: six lines composed as verses set to their quotes, each 7-note hook outlined (unique across all 400), the hidden chorus in italics between verses; placeholder words where T-599 has none
+
+![23Nov2026 - T613 - the verses sampler sheets - 29](23Nov2026%20-%20T613%20-%20the%20verses%20sampler%20sheets%20-%2029.png)
+
+### 23Nov2026 - T613 - the verses sampler sheets - 30
+
+T-613 THE VERSES, DRAFT: six lines composed as verses set to their quotes, each 7-note hook outlined (unique across all 400), the hidden chorus in italics between verses; placeholder words where T-599 has none
+
+![23Nov2026 - T613 - the verses sampler sheets - 30](23Nov2026%20-%20T613%20-%20the%20verses%20sampler%20sheets%20-%2030.png)
+
+### 23Nov2026 - T613 - the verses sampler sheets - 31
+
+T-613 THE VERSES, DRAFT: six lines composed as verses set to their quotes, each 7-note hook outlined (unique across all 400), the hidden chorus in italics between verses; placeholder words where T-599 has none
+
+![23Nov2026 - T613 - the verses sampler sheets - 31](23Nov2026%20-%20T613%20-%20the%20verses%20sampler%20sheets%20-%2031.png)
+
+### 23Nov2026 - T613 - the verses sampler sheets - 32
+
+T-613 THE VERSES, DRAFT: six lines composed as verses set to their quotes, each 7-note hook outlined (unique across all 400), the hidden chorus in italics between verses; placeholder words where T-599 has none
+
+![23Nov2026 - T613 - the verses sampler sheets - 32](23Nov2026%20-%20T613%20-%20the%20verses%20sampler%20sheets%20-%2032.png)

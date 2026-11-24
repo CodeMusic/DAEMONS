@@ -128,6 +128,11 @@ sound like three songs and also like one song.
 | 5 | **The companion**: songs.json's chorus and word timings, ITS SONG, the summon (C-485), and the book (T-600) | app | a day or two |
 | 6 | **Re-derived**: colours (T-597), shiny notes (T-602), summons; then the push routine, with picture sheets and a sampler of every type | audio | a day |
 
+**Step 1 drafted, 2026-11-23** (`tools/genverses.py --sampler`, `audio/drafts/t613_verses/`): six lines plus today's
+ROVERCUB line for comparison, a sheet for each, and every hook alone. Every one of the 400 forms was given a hook (the
+six lines' quotes, and each other form's INDEX entry standing in for its quote), and all 400 hooks are different. None
+was lengthened, and none was left out.
+
 Steps 1 and 2 can run side by side. Step 3 follows step 2 a batch behind, so the first types can be heard while the
 last are still being written.
 
