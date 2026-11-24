@@ -38,6 +38,24 @@ T-604 stage 8 (DRAFT): fifteen more wild later forms colour in -- ELATION's lowe
 
 ![24Nov2026 - T604 - stage 8, fifteen later forms, built - 8](24Nov2026%20-%20T604%20-%20stage%208%2C%20fifteen%20later%20forms%2C%20built%20-%208.png)
 
+### 24Nov2026 - C511 - DASHBOARD on the Zero - 10
+
+C-511: EUDAIMONIA's DASHBOARD as an app -- WAITING, LANES with each lane's daemon, PROJECTS, and a ticket opened (Mac build, the live site, read only)
+
+![24Nov2026 - C511 - DASHBOARD on the Zero - 10](24Nov2026%20-%20C511%20-%20DASHBOARD%20on%20the%20Zero%20-%2010.png)
+
+### 24Nov2026 - C511 - DASHBOARD on the Zero - 11
+
+C-511: EUDAIMONIA's DASHBOARD as an app -- WAITING, LANES with each lane's daemon, PROJECTS, and a ticket opened (Mac build, the live site, read only)
+
+![24Nov2026 - C511 - DASHBOARD on the Zero - 11](24Nov2026%20-%20C511%20-%20DASHBOARD%20on%20the%20Zero%20-%2011.png)
+
+### 24Nov2026 - C513 - ACCOUNT joining a profile - 12
+
+C-513: ACCOUNT -- the guardian's eight-letter code typed to open this device on a profile; the commons learned from the hub (Mac build)
+
+![24Nov2026 - C513 - ACCOUNT joining a profile - 12](24Nov2026%20-%20C513%20-%20ACCOUNT%20joining%20a%20profile%20-%2012.png)
+
 ### 24Nov2026 - C539 - DAEMONS Server dashboard - 13
 
 DAEMONS Server's proof: paired with daemons-hearth, joined THE MESH as a processing node, idle and plugged in (DRAFT)
