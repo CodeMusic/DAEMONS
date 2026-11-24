@@ -79,3 +79,21 @@ E-13: a space wears a town's palette -- a kitchen QUICKSILVER by itself, EUDAIMO
 E-14: with DOWNLOAD IT chosen, THE EASTER EGG's made cart is saved as a .gba file for your own emulator
 
 ![23Nov2026 - E14 - the egg downloaded - 13](23Nov2026%20-%20E14%20-%20the%20egg%20downloaded%20-%2013.jpg)
+
+### 23Nov2026 - T604 - stage 5, fifteen later forms, built - 14
+
+T-604 stage 5 (DRAFT): fifteen more later forms colour in as they learn their part -- THREAD's ears, AXIOMKICK's kicking leg, SHELL's whorls, COLDVAULT's plates, TRIPLECORE's plumage, OVERRUN's tail, SUSPEND's curl, INJECTOR's abdomen, CRAVING's ring and paws, LOCKUP's claws, RESENTMENT's rim, PIPELINE's horn, GRIEVANCE's head, COLDREAD's wings, CIRCULAR's legs; 66 of about 182 now
+
+![23Nov2026 - T604 - stage 5, fifteen later forms, built - 14](23Nov2026%20-%20T604%20-%20stage%205%2C%20fifteen%20later%20forms%2C%20built%20-%2014.png)
+
+### 23Nov2026 - T604 - stage 5, fifteen later forms, built - 15
+
+T-604 stage 5 (DRAFT): fifteen more later forms colour in as they learn their part -- THREAD's ears, AXIOMKICK's kicking leg, SHELL's whorls, COLDVAULT's plates, TRIPLECORE's plumage, OVERRUN's tail, SUSPEND's curl, INJECTOR's abdomen, CRAVING's ring and paws, LOCKUP's claws, RESENTMENT's rim, PIPELINE's horn, GRIEVANCE's head, COLDREAD's wings, CIRCULAR's legs; 66 of about 182 now
+
+![23Nov2026 - T604 - stage 5, fifteen later forms, built - 15](23Nov2026%20-%20T604%20-%20stage%205%2C%20fifteen%20later%20forms%2C%20built%20-%2015.png)
+
+### 23Nov2026 - T604 - stage 5, fifteen later forms, built - 16
+
+T-604 stage 5 (DRAFT): fifteen more later forms colour in as they learn their part -- THREAD's ears, AXIOMKICK's kicking leg, SHELL's whorls, COLDVAULT's plates, TRIPLECORE's plumage, OVERRUN's tail, SUSPEND's curl, INJECTOR's abdomen, CRAVING's ring and paws, LOCKUP's claws, RESENTMENT's rim, PIPELINE's horn, GRIEVANCE's head, COLDREAD's wings, CIRCULAR's legs; 66 of about 182 now
+
+![23Nov2026 - T604 - stage 5, fifteen later forms, built - 16](23Nov2026%20-%20T604%20-%20stage%205%2C%20fifteen%20later%20forms%2C%20built%20-%2016.png)
