@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""T-604 stages 1 to 5 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
+"""T-604 stages 1 to 6 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
 drawing already there (ears, crest, tail, drawers, wings), so it visibly colours in as it learns its part (T-597).
 
     python3 gfx/drafts/t604/scripts/t604_regions.py               # report each form: region, slots, coverage before/after
@@ -7,6 +7,7 @@ drawing already there (ears, crest, tail, drawers, wings), so it visibly colours
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 3 ...  # ... and STAGE 3's fifteen (FORMS3)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 4 ...  # ... and STAGE 4's fifteen (FORMS4)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 5 ...  # ... and STAGE 5's fifteen (FORMS5)
+    python3 gfx/drafts/t604/scripts/t604_regions.py --stage 6 ...  # ... and STAGE 6's fifteen (FORMS6)
     python3 gfx/drafts/t604/scripts/t604_regions.py --draft       # write the drafts into gfx/drafts/t604/<NAME>/
     python3 gfx/drafts/t604/scripts/t604_regions.py --sheet DIR   # ... and the contact sheet into DIR
     python3 gfx/drafts/t604/scripts/t604_regions.py --built --sheet DIR   # the sheet from the engine as BUILT (after
@@ -595,6 +596,127 @@ FORMS5 = {
 }
 
 
+#  STAGE 6 (the user, 2026-11-23: "T-604 stage 6"; DRAFT): fifteen more, by how often a player meets them -- the
+#  ELITE FOUR rematch's not yet done (LORELEI's PILOSWINE, AGATHA's CROBAT, LANCE's KINGDRA), the ROCKET ADMIN's
+#  HOUNDOOM, Kanto's own wild later forms (DIGLETT'S CAVE's DUGTRIO, the POWER PLANT's ELECTABUZZ, ROUTE 11's VIGOROTH),
+#  the trainer staples (WIGGLYTUFF, LANTURN, FLAAFFY, CLEFABLE, POLIWRATH, GOLEM, XATU) and MT. EMBER's DONPHAN.
+#  TODAY is the engine after stage 5 (BASE6): no form here was drawn by stages 1-5. Every colour is given exactly
+#  ("cols"), each checked against the carry rule by the report: none may read CARRIED.
+BASE6_COMMIT = "ac21d422e"
+FORMS6 = {
+    "TURBULENCE": dict(
+        why="BOTTLENECK line, stage 3 (LANCE's rematch ace; TANOBY's water, 30%): 0.0% waits",
+        region="the curled TAIL, a deep-sea violet", colour="Bb, a note its part sings (violet)",
+        #  not EMERGENT's jade: BACKPRESS's lost greens (63,154,85) would CARRY it from 40
+        base=g.pc_rgb(10),
+        front=R((29, 33, 54, 55)), back=R((8, 40, 40, 58)),
+        slotmap={1: 7, 2: 9, 3: 9, 4: 10}, ramp="cols",
+        cols={7: (185, 140, 230), 9: (120, 90, 190), 10: (80, 30, 120)}),
+    "IMPULSE": dict(
+        why="INSTINCT line, stage 2 (LORELEI's rematch; ICEFALL CAVE, 10%): 0.1% waits; STRATUM is the new type",
+        region="the shaggy MANE over its head and back, in STRATUM", colour="STRATUM, the new type",
+        base=TYPE["STRATUM"],
+        front=R((14, 4, 58, 17), (2, 14, 16, 28)), back=R((16, 4, 50, 30)),
+        slotmap={1: 8, 2: 8, 3: 9, 4: 10}, slotmap_back={2: 8, 3: 9, 4: 10}, ramp="cols",
+        cols={8: (210, 180, 125), 9: (155, 125, 75), 10: (96, 70, 40)}),
+    "MULTICAST": dict(
+        why="ECHO line, stage 3 (AGATHA's rematch): 0.0% waits",
+        region="the upper pair of WINGS, a night blue", colour="G, a note its part sings (blue)",
+        base=g.pc_rgb(7),
+        front=R((0, 8, 17, 30), (47, 8, 63, 30), (0, 30, 12, 54), (52, 30, 63, 54)), back=R((0, 8, 17, 30), (47, 8, 63, 30), (0, 30, 12, 54), (52, 30, 63, 54)),
+        slotmap={3: 6, 4: 10}, merge={6: 1}, ramp="cols",
+        cols={6: (60, 110, 185), 10: (30, 55, 110)}),
+    "OBSESSION": dict(
+        why="FIXATION line, stage 2 (the ROCKET ADMIN's, SEVII): 4.8% waits",
+        region="the MUZZLE and CHEST, an ember's amber", colour="D, a note its part sings (an ember amber, vanilla's tan moved off FIXATION's)",
+        #  kept 83 off FIXATION's lost tan (220,172,106), which the horns' brown carries from 71
+        base=(215, 120, 30),
+        front=R((0, 0, 63, 50)), back=R((0, 0, 63, 32), (48, 30, 63, 52)),
+        slotmap={1: 8, 2: 9}, ramp="cols",
+        cols={8: (255, 205, 30), 9: (215, 120, 30)}),
+    "SOUNDING": dict(
+        why="PILOT line, stage 2 (a swimmer's; ICEFALL CAVE's water, 30%): 5.2% waits; SIGNAL is the new type",
+        region="the LANTERN and the TAIL fin, lit in SIGNAL", colour="SIGNAL, the new type",
+        base=TYPE["SIGNAL"],
+        front=R((2, 25, 15, 41), (48, 38, 63, 52)), back=R((52, 25, 63, 41), (0, 38, 16, 52)),
+        slotmap={1: 6, 2: 6, 3: 8, 4: 8}, merge={6: 7, 8: 7}, ramp="cols",
+        cols={6: (130, 225, 210), 8: (40, 140, 140)}),
+    "HIBERNATE": dict(
+        why="STANDBY line, stage 3 (two BEAUTIES'): 0.0% waits",
+        region="the long lop EARS and the PAWS (a colourpoint), a twilight lilac", colour="B, a note its part sings (lilac)",
+        base=g.pc_rgb(11),
+        front=R((4, 12, 19, 35), (44, 12, 60, 35), (16, 31, 48, 39)), back=R((8, 14, 23, 50), (41, 14, 56, 50)),
+        slotmap={1: 8, 2: 8, 3: 9, 4: 10}, slotmap_back={2: 8, 3: 9, 4: 10}, ramp="cols",
+        cols={8: (200, 170, 235), 9: (150, 110, 205), 10: (90, 60, 150)}),
+    "BUILDUP": dict(
+        why="TENSION line, stage 2 (a LADY's; SIX ISLAND's WATER PATH): 2.2% waits",
+        region="the WOOL on its head and the TAIL's ball, charged gold", colour="Eb, a note its part sings (gold)",
+        base=g.pc_rgb(3),
+        front=R((3, 5, 40, 12), (3, 12, 24, 17), (34, 12, 40, 17), (44, 22, 58, 34)), back=R((24, 5, 61, 12), (39, 12, 61, 17), (23, 12, 29, 17), (5, 22, 19, 34)),
+        slotmap={1: 8, 2: 10, 3: 10}, ramp="cols",
+        cols={8: (250, 215, 110), 10: (215, 160, 50)}),
+    "RESTLESS": dict(
+        why="DAYDREAM line, stage 2 (ROUTE 11's grove; FIVE ISLAND's MEADOW): 0.0% waits, no accent at all",
+        region="the CROWN of its head and the RUFF round its face, a restless orange", colour="D, a note its part sings (orange)",
+        base=g.pc_rgb(2),
+        front=R((20, 3, 46, 13), (24, 18, 44, 23)), back=R((20, 3, 46, 19)),
+        slotmap={1: 6, 2: 6, 3: 7, 4: 8}, ramp="cols",
+        cols={6: (245, 175, 115), 7: (210, 115, 50), 8: (130, 65, 25)}),
+    "WIRETAP": dict(
+        why="TAPPOINT line, stage 2 (DIGLETT'S CAVE): 8.2% waits",
+        region="the FUR on the crowns of its heads, a clay terracotta", colour="C#, a note its part sings (terracotta)",
+        base=g.pc_rgb(1),
+        #  the pinks folded together to free two slots: 7 into 6 (9 pixels), 9 into 8 (16 pixels)
+        front=R((26, 8, 42, 13), (20, 12, 46, 16)), back=R((10, 18, 62, 29)),
+        slotmap={2: 7, 3: 9, 4: 9}, slotmap_back={1: 7, 3: 7, 4: 9}, merge={7: 6, 9: 8}, ramp="cols",
+        #  the dark kept 75 off TAPPOINT's lost wine (125,14,37), which the body's dark carries from 65
+        cols={7: (195, 100, 55), 9: (160, 75, 40)}),
+    "DYNAMO": dict(
+        why="CRANK line, stage 2 (the POWER PLANT): 2.1% waits",
+        region="the BELLY and the head's DOME, a cold blue charge", colour="Ab, a note its part sings (blue)",
+        base=g.pc_rgb(8),
+        front=R((20, 38, 44, 52), (18, 10, 46, 20)), back=R((24, 16, 46, 30), (24, 34, 44, 52)),
+        slotmap={1: 10}, ramp="cols",
+        cols={10: (140, 165, 240)}),
+    "OUTLIER": dict(
+        why="RESIDUAL line, stage 3 (a BREEDER's): 0.0% waits, no accent at all",
+        region="the great EYE's iris in front, the HEM behind, violet", colour="B, a note its part sings (violet)",
+        base=g.pc_rgb(11),
+        front=R((18, 15, 41, 36), (4, 46, 60, 58)),
+        back=R((4, 40, 60, 58)),
+        slotmap={3: 6, 4: 7}, slotmap_back={2: 6, 3: 7, 4: 7}, ramp="cols",
+        cols={6: (138, 76, 174), 7: (95, 30, 95)}),
+    "MUTEX": dict(
+        why="LOOP line, stage 3 (a SWIMMER's): 0.0% waits; LOGIC is the new type, but its steel sits on the body's blue",
+        region="a boxer's TRUNKS, violet", colour="Bb, a note its part sings (violet)",
+        base=g.pc_rgb(10),
+        front=R((18, 36, 46, 48)), back=R((20, 40, 48, 56)),
+        slotmap={1: 7, 2: 7, 3: 10, 4: 10}, merge={7: 6}, ramp="cols",
+        cols={7: (170, 140, 225), 10: (75, 30, 115)}),
+    "MONOLITH": dict(
+        why="HEAP line, stage 3 (a RUIN MANIAC's): 6.0% waits; the cyan underside behind now shows in front too",
+        region="the BOWL of its underside, in front as behind", colour="G, the note its underside already sings (cyan)",
+        base=(64, 178, 186),
+        front=R((6, 40, 58, 60)), back=R((0, 0, 0, 0)),
+        slotmap={2: 7, 3: 8, 4: 8}, ramp="cols",
+        cols={}),
+    "PRESCIENCE": dict(
+        why="VIGILANCE line, stage 2 (a PSYCHIC's): 1.6% waits; VECTOR is the new type",
+        region="the WING's flight feathers, in a soft VECTOR", colour="VECTOR, the new type, moved to coral",
+        base=(225, 85, 95),
+        front=R((36, 30, 58, 50)), back=R((6, 30, 28, 50)),
+        slotmap={2: 7, 3: 10}, merge={7: 8}, ramp="cols",
+        cols={7: (245, 150, 150), 10: (225, 85, 95)}),
+    "ENGRAM": dict(
+        why="RECALL line, stage 2 (MT. EMBER's RUBY PATH, 20%): 9.5% waits",
+        region="the great EARS' inner faces, a remembered gold", colour="E, a note its part sings (gold)",
+        base=g.pc_rgb(4),
+        front=R((2, 6, 13, 32), (37, 6, 54, 34)), back=R((10, 6, 27, 34), (50, 6, 62, 32)),
+        slotmap={2: 10, 3: 10}, ramp="cols",
+        cols={10: (207, 174, 52)}),
+}
+
+
 def pal_of(w, k):
     return [tuple(c) for c in w.palette(k)]
 
@@ -831,6 +953,8 @@ def main():
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS4, list(FORMS4), 4, BASE4_COMMIT
     if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "5":
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS5, list(FORMS5), 5, BASE5_COMMIT
+    if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "6":
+        FORMS, ORDER, STAGE, BASE_COMMIT = FORMS6, list(FORMS6), 6, BASE6_COMMIT
     w = g.World()
     if "--base" in sys.argv:
         return file_base(w)
