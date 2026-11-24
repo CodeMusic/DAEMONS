@@ -97,3 +97,33 @@ T-604 stage 5 (DRAFT): fifteen more later forms colour in as they learn their pa
 T-604 stage 5 (DRAFT): fifteen more later forms colour in as they learn their part -- THREAD's ears, AXIOMKICK's kicking leg, SHELL's whorls, COLDVAULT's plates, TRIPLECORE's plumage, OVERRUN's tail, SUSPEND's curl, INJECTOR's abdomen, CRAVING's ring and paws, LOCKUP's claws, RESENTMENT's rim, PIPELINE's horn, GRIEVANCE's head, COLDREAD's wings, CIRCULAR's legs; 66 of about 182 now
 
 ![23Nov2026 - T604 - stage 5, fifteen later forms, built - 16](23Nov2026%20-%20T604%20-%20stage%205%2C%20fifteen%20later%20forms%2C%20built%20-%2016.png)
+
+### 23Nov2026 - C483 - DAEMON DREAMS - 17
+
+C-483: one DAEMON DREAMS book on the LIBRARY's DREAM-BOOKS shelf; inside, a shelf for each type, each daemon's own dream book with its count, by MOST DREAMS or MOST RECENT; a daemon's book, its title page and a dream (scratch companion, made-up dreams, DRAFT)
+
+![23Nov2026 - C483 - DAEMON DREAMS - 17](23Nov2026%20-%20C483%20-%20DAEMON%20DREAMS%20-%2017.png)
+
+### 23Nov2026 - C483 - DAEMON DREAMS - 18
+
+C-483: one DAEMON DREAMS book on the LIBRARY's DREAM-BOOKS shelf; inside, a shelf for each type, each daemon's own dream book with its count, by MOST DREAMS or MOST RECENT; a daemon's book, its title page and a dream (scratch companion, made-up dreams, DRAFT)
+
+![23Nov2026 - C483 - DAEMON DREAMS - 18](23Nov2026%20-%20C483%20-%20DAEMON%20DREAMS%20-%2018.jpg)
+
+### 23Nov2026 - C483 - DAEMON DREAMS - 19
+
+C-483: one DAEMON DREAMS book on the LIBRARY's DREAM-BOOKS shelf; inside, a shelf for each type, each daemon's own dream book with its count, by MOST DREAMS or MOST RECENT; a daemon's book, its title page and a dream (scratch companion, made-up dreams, DRAFT)
+
+![23Nov2026 - C483 - DAEMON DREAMS - 19](23Nov2026%20-%20C483%20-%20DAEMON%20DREAMS%20-%2019.jpg)
+
+### 23Nov2026 - C483 - DAEMON DREAMS - 20
+
+C-483: one DAEMON DREAMS book on the LIBRARY's DREAM-BOOKS shelf; inside, a shelf for each type, each daemon's own dream book with its count, by MOST DREAMS or MOST RECENT; a daemon's book, its title page and a dream (scratch companion, made-up dreams, DRAFT)
+
+![23Nov2026 - C483 - DAEMON DREAMS - 20](23Nov2026%20-%20C483%20-%20DAEMON%20DREAMS%20-%2020.jpg)
+
+### 23Nov2026 - C483 - DAEMON DREAMS - 21
+
+C-483: one DAEMON DREAMS book on the LIBRARY's DREAM-BOOKS shelf; inside, a shelf for each type, each daemon's own dream book with its count, by MOST DREAMS or MOST RECENT; a daemon's book, its title page and a dream (scratch companion, made-up dreams, DRAFT)
+
+![23Nov2026 - C483 - DAEMON DREAMS - 21](23Nov2026%20-%20C483%20-%20DAEMON%20DREAMS%20-%2021.jpg)
