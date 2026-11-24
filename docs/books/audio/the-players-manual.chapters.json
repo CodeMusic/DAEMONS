@@ -8,8 +8,8 @@
  "speed": 1.0,
  "tone": "alimiter=limit=0.89:level=disabled",
  "draft": "DRAFT \u00b7 every word, until it is approved",
- "sources": "9845878024908b66",
- "duration": 3368.22,
+ "sources": "b986537443f2f9ee",
+ "duration": 3386.23,
  "chapters": [
   {
    "kind": "section",
@@ -435,199 +435,199 @@
    "kind": "section",
    "title": "The books",
    "start": 1992.23,
-   "end": 2094.1
+   "end": 2112.11
   },
   {
    "kind": "entry",
    "title": "THE PROGRAMMER'S GUIDE TO THE HUMAN MIND",
-   "start": 2094.1,
-   "end": 2125.0
+   "start": 2112.11,
+   "end": 2143.0
   },
   {
    "kind": "entry",
    "title": "Carrying it: the margins",
-   "start": 2125.0,
-   "end": 2145.98
+   "start": 2143.0,
+   "end": 2163.98
   },
   {
    "kind": "entry",
    "title": "ASK THE GUIDE: REASON",
-   "start": 2145.98,
-   "end": 2167.49
+   "start": 2163.98,
+   "end": 2185.5
   },
   {
    "kind": "entry",
    "title": "THE SUBTLE LAYER",
-   "start": 2167.49,
-   "end": 2203.19
+   "start": 2185.5,
+   "end": 2221.19
   },
   {
    "kind": "entry",
    "title": "ASK THE SUBTLE LAYER: INSTINCT",
-   "start": 2203.19,
-   "end": 2237.86
+   "start": 2221.19,
+   "end": 2255.87
   },
   {
    "kind": "entry",
    "title": "TODAY'S QUESTION, and THE JOURNAL",
-   "start": 2237.86,
-   "end": 2258.1
+   "start": 2255.87,
+   "end": 2276.1
   },
   {
    "kind": "entry",
    "title": "THE SUBTLE LAYER's cards",
-   "start": 2258.1,
-   "end": 2364.07
+   "start": 2276.1,
+   "end": 2382.07
   },
   {
    "kind": "entry",
    "title": "THE ORIGIN OF A DAEMON",
-   "start": 2364.07,
-   "end": 2413.74
+   "start": 2382.07,
+   "end": 2431.75
   },
   {
    "kind": "entry",
    "title": "THE HERMETIC LAYER, a rumour",
-   "start": 2413.74,
-   "end": 2453.68
+   "start": 2431.75,
+   "end": 2471.69
   },
   {
    "kind": "entry",
    "title": "Where the story comes from",
-   "start": 2453.68,
-   "end": 2559.54
+   "start": 2471.69,
+   "end": 2577.55
   },
   {
    "kind": "section",
    "title": "The subtle layer, in play",
-   "start": 2559.54,
-   "end": 2576.83
+   "start": 2577.55,
+   "end": 2594.84
   },
   {
    "kind": "entry",
    "title": "The daemon notices first",
-   "start": 2576.83,
-   "end": 2594.85
+   "start": 2594.84,
+   "end": 2612.86
   },
   {
    "kind": "entry",
    "title": "Reads",
-   "start": 2594.85,
-   "end": 2611.09
+   "start": 2612.86,
+   "end": 2629.1
   },
   {
    "kind": "entry",
    "title": "Leans",
-   "start": 2611.09,
-   "end": 2626.36
+   "start": 2629.1,
+   "end": 2644.36
   },
   {
    "kind": "entry",
    "title": "Words under words",
-   "start": 2626.36,
-   "end": 2637.63
+   "start": 2644.36,
+   "end": 2655.64
   },
   {
    "kind": "entry",
    "title": "Out here too",
-   "start": 2637.63,
-   "end": 2674.58
+   "start": 2655.64,
+   "end": 2692.59
   },
   {
    "kind": "section",
    "title": "PLAY: the HARP and the FLUTE",
-   "start": 2674.58,
-   "end": 2714.07
+   "start": 2692.59,
+   "end": 2732.08
   },
   {
    "kind": "entry",
    "title": "Seven songs",
-   "start": 2714.07,
-   "end": 2743.69
+   "start": 2732.08,
+   "end": 2761.7
   },
   {
    "kind": "section",
    "title": "The GAME CORNER and the CASINO",
-   "start": 2743.69,
-   "end": 2746.98
+   "start": 2761.7,
+   "end": 2764.99
   },
   {
    "kind": "entry",
    "title": "The GAME CORNER",
-   "start": 2746.98,
-   "end": 2769.33
+   "start": 2764.99,
+   "end": 2787.34
   },
   {
    "kind": "entry",
    "title": "The CASINO",
-   "start": 2769.33,
-   "end": 2799.47
+   "start": 2787.34,
+   "end": 2817.48
   },
   {
    "kind": "section",
    "title": "The companion",
-   "start": 2799.47,
-   "end": 2829.33
+   "start": 2817.48,
+   "end": 2847.34
   },
   {
    "kind": "entry",
    "title": "SEND, AWAY and home",
-   "start": 2829.33,
-   "end": 2899.89
+   "start": 2847.34,
+   "end": 2917.9
   },
   {
    "kind": "entry",
    "title": "Where a daemon can live",
-   "start": 2899.89,
-   "end": 2992.42
+   "start": 2917.9,
+   "end": 3010.43
   },
   {
    "kind": "entry",
    "title": "What it shows of your game",
-   "start": 2992.42,
-   "end": 3064.91
+   "start": 3010.43,
+   "end": 3082.92
   },
   {
    "kind": "entry",
    "title": "Nights and dreams",
-   "start": 3064.91,
-   "end": 3086.25
+   "start": 3082.92,
+   "end": 3104.26
   },
   {
    "kind": "entry",
    "title": "Running it",
-   "start": 3086.25,
-   "end": 3116.3
+   "start": 3104.26,
+   "end": 3134.31
   },
   {
    "kind": "section",
    "title": "Help",
-   "start": 3116.3,
-   "end": 3118.53
+   "start": 3134.31,
+   "end": 3136.54
   },
   {
    "kind": "entry",
    "title": "Something went wrong",
-   "start": 3118.53,
-   "end": 3195.97
+   "start": 3136.54,
+   "end": 3213.98
   },
   {
    "kind": "entry",
    "title": "Updating to a new release",
-   "start": 3195.97,
-   "end": 3214.97
+   "start": 3213.98,
+   "end": 3232.98
   },
   {
    "kind": "entry",
    "title": "Reporting a bug",
-   "start": 3214.97,
-   "end": 3232.36
+   "start": 3232.98,
+   "end": 3250.37
   },
   {
    "kind": "section",
    "title": "Glossary",
-   "start": 3232.36,
-   "end": 3368.22
+   "start": 3250.37,
+   "end": 3386.23
   }
  ]
 }
