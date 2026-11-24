@@ -84,16 +84,17 @@ start() {
   EMU_PID=$(lsof -nP -t -iTCP:8888 -sTCP:LISTEN 2>/dev/null | head -1 || true)
   [[ -n $EMU_PID ]] || { say "mGBA did not open the bridge's port 8888 (see the mGBA window)"; exit 1; }
   echo "$EMU_PID mgba" >> "$PIDS"
-  ( cd "$HARNESS" && exec "$BRIDGE_PY" firered_mgba_bridge.py ) > "$ROOT/ai/logs/airun-bridge.log" 2>&1 &
+  ( cd "$HARNESS" && exec "$BRIDGE_PY" firered_mgba_bridge.py ) > "$ROOT/ai/logs/airun-bridge.log" 2>&1 < /dev/null &
   echo "$! bridge" >> "$PIDS"
-  ( cd "$HARNESS/server" && exec npm start ) > "$ROOT/ai/logs/airun-agent.log" 2>&1 &
+  ( cd "$HARNESS/server" && exec npm start ) > "$ROOT/ai/logs/airun-agent.log" 2>&1 < /dev/null &
   echo "$! agent" >> "$PIDS"
   ID="ai-$(date +%Y%m%d-%H%M%S)"
   # the reporter; when the hub asks the run to end (exit 3), the whole run is stopped
   ( "$PY" "$ROOT/ai/inplay_beat.py" --hub "$HUB" --key "$KEY" --id "$ID" --save "$AI_DIR/daemonsAI.sav" \
         --frame "$HARNESS/tmp_screenshots/gba_raw.png" --device "$(scutil --get ComputerName 2>/dev/null || hostname)" \
       > "$ROOT/ai/logs/airun-report.log" 2>&1 || rc=$?
-    [[ ${rc:-0} -eq 3 ]] && AIRUN_FROM_REPORTER=1 "$ROOT/ai/airun.sh" stop >> "$ROOT/ai/logs/airun-report.log" 2>&1 || true ) &
+    [[ ${rc:-0} -eq 3 ]] && AIRUN_FROM_REPORTER=1 "$ROOT/ai/airun.sh" stop >> "$ROOT/ai/logs/airun-report.log" 2>&1 || true ) \
+    >> "$ROOT/ai/logs/airun-report.log" 2>&1 < /dev/null &   # nothing of the job's own output held open: it ends at once
   echo "$! reporter" >> "$PIDS"
   disown -a
   say "started $ID on $DAEMONS_MIND: mGBA $EMU_PID, logs in ai/logs/airun-*.log"
