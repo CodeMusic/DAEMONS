@@ -43,3 +43,39 @@ T-604 stage 4 (DRAFT): fifteen more later forms colour in as they learn their pa
 T-604 stage 4 (DRAFT): fifteen more later forms colour in as they learn their part -- BACKPRESS's crest, DRAGNET's bell, UPSTREAM's fins, HANDLER's wings, TRACKER's points, PARTITION's plates, LIVELOCK's trunks, OUTBREAK's hood, QUORUM's brass, BREAKER's cap, BUSYWAIT's gold, ROOTKIT's cap, INFERENCE's ears, ENSEMBLE's side heads, REBUTTAL's gloves; 51 of about 182 now
 
 ![23Nov2026 - T604 - stage 4, fifteen later forms, built - 7](23Nov2026%20-%20T604%20-%20stage%204%2C%20fifteen%20later%20forms%2C%20built%20-%207.png)
+
+### 23Nov2026 - E1 - THE CHANGES - 8
+
+E-1: THE CHANGES, what was pushed lately in each repository (and open pull requests, each with its lane's daemon to review it)
+
+![23Nov2026 - E1 - THE CHANGES - 8](23Nov2026%20-%20E1%20-%20THE%20CHANGES%20-%208.jpg)
+
+### 23Nov2026 - E4 - a space made public - 9
+
+E-4: PUBLIC in a space's modal, off unless chosen, by its maker or an admin (a test copy)
+
+![23Nov2026 - E4 - a space made public - 9](23Nov2026%20-%20E4%20-%20a%20space%20made%20public%20-%209.png)
+
+### 23Nov2026 - E13 - town palettes - 10
+
+E-13: a space wears a town's palette -- a kitchen QUICKSILVER by itself, EUDAIMONIA LURID in full view, SETTINGS choosing another
+
+![23Nov2026 - E13 - town palettes - 10](23Nov2026%20-%20E13%20-%20town%20palettes%20-%2010.jpg)
+
+### 23Nov2026 - E13 - town palettes - 11
+
+E-13: a space wears a town's palette -- a kitchen QUICKSILVER by itself, EUDAIMONIA LURID in full view, SETTINGS choosing another
+
+![23Nov2026 - E13 - town palettes - 11](23Nov2026%20-%20E13%20-%20town%20palettes%20-%2011.jpg)
+
+### 23Nov2026 - E13 - town palettes - 12
+
+E-13: a space wears a town's palette -- a kitchen QUICKSILVER by itself, EUDAIMONIA LURID in full view, SETTINGS choosing another
+
+![23Nov2026 - E13 - town palettes - 12](23Nov2026%20-%20E13%20-%20town%20palettes%20-%2012.jpg)
+
+### 23Nov2026 - E14 - the egg downloaded - 13
+
+E-14: with DOWNLOAD IT chosen, THE EASTER EGG's made cart is saved as a .gba file for your own emulator
+
+![23Nov2026 - E14 - the egg downloaded - 13](23Nov2026%20-%20E14%20-%20the%20egg%20downloaded%20-%2013.jpg)
