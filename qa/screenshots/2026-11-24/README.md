@@ -115,3 +115,21 @@ T-604 stage 10 (DRAFT): fifteen rare later forms colour in -- CYCLICAL's straw s
 T-604 stage 10 (DRAFT): fifteen rare later forms colour in -- CYCLICAL's straw sombrero, CLINGING's blush head, BOOSTING's blossoming crown, LONGJUMP's indigo crest, DEEPWELL's deep-sea glow, FORGE's lit firebox, FLOCKING's banded wings, WARMSTART's apricot petals, GATHERING's ladybird cases, TORPOR's mud, OVERLAY's tinted dome, ALLUVIUM's silted fins, UNBRANCHED's chestnut coat, JACOBIAN's dusk wing, AQUIFER's geode shell; 141 of about 182 now
 
 ![24Nov2026 - T604 - stage 10, fifteen later forms, built - 25](24Nov2026%20-%20T604%20-%20stage%2010%2C%20fifteen%20later%20forms%2C%20built%20-%2025.png)
+
+### 24Nov2026 - T604 - stage 11, the last sixteen later forms, built - 26
+
+T-604 stage 11, the last (DRAFT): the final sixteen later forms colour in -- MENTALIZE's periwinkle skirt, LOOKOUT's sable coat, STALEMATE's frosted wing, GUTFEEL's honey belly, MINDSIGHT's CONTEXT crown, WRAPAROUND's lilac ears, FEDERATED's steel pods, CURRICULUM's blossom saddle, MOMENTUM's dusk back, RELEASE's violet body, ABANDON's gold crown, DEDUCTION's lilac waistcoat, FIRMWARE's rust coat, EPIPHANY's gold wings, and the fossils MAINFRAME and PUNCHCARD in FLOW blue
+
+![24Nov2026 - T604 - stage 11, the last sixteen later forms, built - 26](24Nov2026%20-%20T604%20-%20stage%2011%2C%20the%20last%20sixteen%20later%20forms%2C%20built%20-%2026.png)
+
+### 24Nov2026 - T604 - stage 11, the last sixteen later forms, built - 27
+
+T-604 stage 11, the last (DRAFT): the final sixteen later forms colour in -- MENTALIZE's periwinkle skirt, LOOKOUT's sable coat, STALEMATE's frosted wing, GUTFEEL's honey belly, MINDSIGHT's CONTEXT crown, WRAPAROUND's lilac ears, FEDERATED's steel pods, CURRICULUM's blossom saddle, MOMENTUM's dusk back, RELEASE's violet body, ABANDON's gold crown, DEDUCTION's lilac waistcoat, FIRMWARE's rust coat, EPIPHANY's gold wings, and the fossils MAINFRAME and PUNCHCARD in FLOW blue
+
+![24Nov2026 - T604 - stage 11, the last sixteen later forms, built - 27](24Nov2026%20-%20T604%20-%20stage%2011%2C%20the%20last%20sixteen%20later%20forms%2C%20built%20-%2027.png)
+
+### 24Nov2026 - T604 - stage 11, the last sixteen later forms, built - 28
+
+T-604 stage 11, the last (DRAFT): the final sixteen later forms colour in -- MENTALIZE's periwinkle skirt, LOOKOUT's sable coat, STALEMATE's frosted wing, GUTFEEL's honey belly, MINDSIGHT's CONTEXT crown, WRAPAROUND's lilac ears, FEDERATED's steel pods, CURRICULUM's blossom saddle, MOMENTUM's dusk back, RELEASE's violet body, ABANDON's gold crown, DEDUCTION's lilac waistcoat, FIRMWARE's rust coat, EPIPHANY's gold wings, and the fossils MAINFRAME and PUNCHCARD in FLOW blue
+
+![24Nov2026 - T604 - stage 11, the last sixteen later forms, built - 28](24Nov2026%20-%20T604%20-%20stage%2011%2C%20the%20last%20sixteen%20later%20forms%2C%20built%20-%2028.png)
