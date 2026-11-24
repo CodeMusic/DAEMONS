@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""T-604 stages 1 to 6 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
+"""T-604 stages 1 to 7 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
 drawing already there (ears, crest, tail, drawers, wings), so it visibly colours in as it learns its part (T-597).
 
     python3 gfx/drafts/t604/scripts/t604_regions.py               # report each form: region, slots, coverage before/after
@@ -8,6 +8,7 @@ drawing already there (ears, crest, tail, drawers, wings), so it visibly colours
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 4 ...  # ... and STAGE 4's fifteen (FORMS4)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 5 ...  # ... and STAGE 5's fifteen (FORMS5)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 6 ...  # ... and STAGE 6's fifteen (FORMS6)
+    python3 gfx/drafts/t604/scripts/t604_regions.py --stage 7 ...  # ... and STAGE 7's fifteen (FORMS7)
     python3 gfx/drafts/t604/scripts/t604_regions.py --draft       # write the drafts into gfx/drafts/t604/<NAME>/
     python3 gfx/drafts/t604/scripts/t604_regions.py --sheet DIR   # ... and the contact sheet into DIR
     python3 gfx/drafts/t604/scripts/t604_regions.py --built --sheet DIR   # the sheet from the engine as BUILT (after
@@ -717,6 +718,134 @@ FORMS6 = {
 }
 
 
+#  STAGE 7 (the user, 2026-11-23: "T-604 stage 7"; DRAFT): fifteen more, by how often a player meets them. No trainer
+#  fields any of the later forms still under 10%, so it goes by the wild: first the SEVII ISLANDS a player reaches before
+#  the ELITE FOUR (ONE ISLAND's TREASURE BEACH and its water, THREE ISLAND's BERRY FOREST, MT. EMBER's SUMMIT PATH and
+#  RUBY PATH), then the post-game's commonest tables (the surf at 30% on SIX ISLAND's WATER PATH, GREEN PATH and OUTCAST
+#  ISLAND, the WATER PATH's grass at 20%, SEVEN ISLAND's grove at 15%). TODAY is the engine after stage 6 (BASE7): no
+#  form here was drawn by stages 1-6. Every colour is given exactly ("cols"), each checked against the carry rule by the
+#  report: none may read CARRIED.
+BASE7_COMMIT = "e2d65ea7d"
+FORMS7 = {
+    "SEMAPHORE": dict(
+        why="SPINLOCK line, stage 3 (ONE ISLAND's TREASURE BEACH, surfing 30% in both editions): 8.2% waits",
+        region="the BELLY, a frog's pale gold", colour="Eb, a note its part sings (pale gold)",
+        base=g.pc_rgb(3),
+        front=R((21, 42, 38, 54)), back=R((25, 42, 42, 54)),
+        #  the flag's 3-pixel coral folded into its red, the feet's light lime (6 pixels) into the bright one, to free two slots
+        slotmap={1: 7}, merge={7: 6, 8: 10}, ramp="cols",
+        cols={7: (245, 228, 140)}),
+    "KERNEL": dict(
+        why="LATENCY line, stage 2 (ONE ISLAND's water, surfing 30% in CONTEXT): 7.8% waits",
+        region="the ROBE below its head and the curled TAIL, a king's rose", colour="C, a note its part sings (rose)",
+        base=(215, 110, 135),
+        front=R((19, 44, 53, 54)), back=R((10, 44, 44, 54)),
+        slotmap={1: 9, 2: 10}, ramp="cols",
+        cols={9: (245, 170, 185), 10: (215, 110, 135)}),
+    "POLICY": dict(
+        why="SHAPING line, stage 3 (THREE ISLAND's BERRY FOREST, 10% and 20%): 7.6% waits",
+        region="the far half of the TAIL's great crescent, an autumn rose", colour="C, a note its part sings (rose)",
+        base=(235, 150, 180),
+        front=R((44, 2, 63, 9), (42, 10, 63, 31)), back=R((0, 2, 19, 9), (0, 10, 21, 31)),
+        #  the leaf-fans' darkest brown (25 pixels) folded into the next to free a slot
+        slotmap={2: 9}, merge={9: 8}, ramp="cols",
+        cols={9: (235, 150, 180)}),
+    "CANOPY": dict(
+        why="BOOSTING line, stage 3 (THREE ISLAND's BERRY FOREST, 10% in both): 4.9% waits",
+        region="the CANOPY's leaves, in blossom", colour="C, a note its part sings (blossom pink)",
+        base=(240, 150, 210),
+        front=R((4, 0, 59, 38)), back=R((4, 0, 59, 38)),
+        #  kept 86 off BOOSTING's lost cream (223,186,134): a paler pink would be the nearest to it, and CARRIED
+        slotmap={2: 10}, ramp="cols",
+        cols={10: (240, 150, 210)}),
+    "LASVEGAS": dict(
+        why="COINFLIP line, stage 3 (MT. EMBER's SUMMIT PATH, 10% in both): 0.2% waits",
+        region="the WINGS, a neon violet", colour="Bb and B, notes its part sings (lilac into violet)",
+        base=g.pc_rgb(11),
+        front=R((40, 17, 58, 36), (5, 32, 20, 46)), back=R((5, 17, 22, 33), (42, 17, 61, 30)),
+        slotmap={2: 8, 3: 9, 4: 10}, ramp="cols",
+        cols={8: (175, 150, 235), 9: (138, 76, 174), 10: (80, 35, 110)}),
+    "MONTECARLO": dict(
+        why="COINFLIP line, stage 2 (MT. EMBER's SUMMIT PATH, 10% in both): 0.0% waits, no accent at all",
+        region="the WINGS, the FEET and the crest's tuft, an ember", colour="C#, a note its part sings (ember)",
+        base=g.pc_rgb(1),
+        front=R((11, 31, 27, 47), (40, 32, 55, 47), (20, 53, 40, 59), (28, 3, 42, 8)), back=R((11, 31, 26, 50), (43, 32, 54, 43), (18, 53, 40, 59), (19, 3, 41, 6)),
+        slotmap={2: 6, 3: 7}, ramp="cols",
+        cols={6: (240, 130, 80), 7: (185, 80, 35)}),
+    "CALLOUS": dict(
+        why="SIMMER line, stage 2 (MT. EMBER's RUBY PATH, ROCK SMASH 10% in both): 0.6% waits",
+        region="the SHELL's grooves, glowing like magma", colour="C#, a note its part sings (ember)",
+        base=g.pc_rgb(1),
+        front=R((10, 8, 56, 32), (10, 32, 30, 42)), back=R((34, 9, 58, 44)),
+        #  the shell's 3-pixel lilac glint folded into the cream to free a slot
+        slotmap={3: 6, 4: 9}, merge={6: 1}, ramp="cols",
+        cols={6: (230, 120, 70), 9: (160, 60, 30)}),
+    "SHIMMER": dict(
+        why="SINKHOLE line, stage 2 (MT. EMBER's RUBY PATH, 20% in CONTENT): 5.4% waits",
+        region="the WINGS' lower panels, iridescent periwinkle", colour="A, a note its part sings (periwinkle)",
+        base=(120, 125, 215),
+        front=R((7, 11, 23, 34), (34, 11, 52, 34)), back=R((11, 11, 30, 33), (41, 11, 57, 33)),
+        slotmap={2: 10}, ramp="cols",
+        cols={10: (120, 125, 215)}),
+    "THENCASE": dict(
+        why="IFTRUE line, stage 3 (ONE ISLAND's grove, 8% in both): 0.7% waits",
+        region="the upper WINGS, violet", colour="B, a note its part sings (violet)",
+        base=(160, 110, 225),
+        #  behind, the wings run into the body without a line: the rectangles follow where the wing's outline would be
+        front=R((5, 15, 23, 36), (38, 15, 58, 36)), back=R((5, 15, 24, 25), (5, 26, 20, 36), (40, 15, 58, 25), (44, 26, 58, 36)),
+        #  the 3-pixel peach folded into the orange beside it to free a slot
+        slotmap={1: 6}, merge={6: 7}, ramp="cols",
+        #  kept 87 off IFTRUE's lost pink (228,152,191): a paler violet would be the nearest to it, and CARRIED
+        cols={6: (160, 110, 225)}),
+    "BLOATWARE": dict(
+        why="GREEDY line, stage 2 (THREE ISLAND's BERRY FOREST grove, 15% in both): 0.0% waits, no accent at all",
+        region="the DOME of its head and its flanks, a bloated violet", colour="G, the note nearest violet its part sings",
+        base=(107, 75, 174),
+        front=R((12, 4, 52, 13), (8, 14, 19, 27), (45, 14, 56, 27)), back=R((12, 4, 52, 15), (8, 16, 17, 19), (46, 16, 56, 19), (6, 20, 13, 26), (50, 20, 58, 26)),
+        slotmap={1: 6, 2: 7, 3: 8}, ramp="cols",
+        cols={6: (160, 130, 215), 7: (107, 75, 174), 8: (60, 35, 105)}),
+    "PERMAFROST": dict(
+        why="STOPGRAD line, stage 2 (SIX ISLAND's WATER PATH, surfing 30% in both): 3.5% waits",
+        region="the WOOL on its crown, a mammoth's gold and russet", colour="E and D, notes its part sings (gold into russet)",
+        base=g.pc_rgb(2),
+        front=R((19, 2, 45, 13)), back=R((18, 2, 44, 13)),
+        slotmap={1: 8, 2: 9, 3: 9, 4: 10}, ramp="cols",
+        cols={8: (230, 200, 120), 9: (170, 105, 55), 10: (100, 60, 35)}),
+    "RIPTIDE": dict(
+        why="UNDERTOW line, stage 2 (SIX ISLAND's GREEN PATH, surfing 30% in both): 5.9% waits",
+        region="the FINS, violet, and the BELLY, lilac", colour="Bb, a note its part sings (violet)",
+        base=g.pc_rgb(10),
+        front=R((19, 14, 31, 25), (29, 44, 38, 49), (8, 39, 40, 44)), back=R((32, 14, 44, 25), (24, 44, 34, 49), (24, 39, 55, 45)),
+        #  the 8-pixel plum folded into the violet beside it to free a slot; the fins take the form's own waiting violet
+        slotmap={4: 7, 1: 8, 3: 8}, merge={8: 7}, ramp="cols",
+        cols={8: (190, 165, 230)}),
+    "ARCFLASH": dict(
+        why="CRACKLE line, stage 2 (SIX ISLAND's WATER PATH, 20% and 10%): 0.3% waits",
+        region="the crest of SPIKES on its head and the MANE down its back, an arc's violet", colour="B, a note its part sings (violet)",
+        base=g.pc_rgb(11),
+        front=R((7, 3, 35, 13), (35, 17, 58, 33), (48, 26, 58, 45)), back=R((28, 3, 56, 13), (5, 17, 28, 33), (5, 26, 15, 45)),
+        #  the 5-pixel grey folded into the pale cyan to free a slot
+        slotmap={2: 7, 3: 7, 4: 10}, merge={7: 2}, ramp="cols",
+        cols={7: (200, 150, 240), 10: (138, 76, 174)}),
+    "POSTERIOR": dict(
+        why="LIKELIHOOD line, stage 2 (SEVEN ISLAND's grove, 15% in both): 0.9% waits",
+        region="the CAP on its head and the knobs of its shoulders, fired terracotta", colour="C# and D, notes its part sings (terracotta, its light a clay orange)",
+        base=g.pc_rgb(1),
+        front=R((25, 4, 42, 17), (8, 26, 14, 29), (50, 26, 57, 29)), back=R((22, 4, 39, 17), (6, 26, 13, 29), (49, 26, 56, 29)),
+        #  the eyes' single-pixel cyan folded into the next
+        slotmap={1: 6, 2: 8, 3: 8, 4: 10}, merge={6: 7}, ramp="cols",
+        cols={6: (240, 175, 135), 8: (200, 105, 65), 10: (125, 55, 30)}),
+    "OPTIMUM": dict(
+        why="SADDLE line, stage 2 (SIX ISLAND's OUTCAST ISLAND, surfing 30% in both): 5.2% waits",
+        region="the FEELERS and the CREST over its head, and the TAIL's curled end, a rose", colour="C, a note its part sings (rose)",
+        base=(180, 75, 130),
+        front=R((8, 2, 56, 9), (4, 42, 24, 58)), back=R((8, 2, 56, 9), (35, 42, 59, 58)),
+        #  the 9-pixel light tan folded into the next
+        slotmap={1: 6, 3: 6, 4: 10}, merge={6: 7}, ramp="cols",
+        cols={6: (240, 140, 165), 10: (180, 75, 130)}),
+}
+
+
 def pal_of(w, k):
     return [tuple(c) for c in w.palette(k)]
 
@@ -955,6 +1084,8 @@ def main():
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS5, list(FORMS5), 5, BASE5_COMMIT
     if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "6":
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS6, list(FORMS6), 6, BASE6_COMMIT
+    if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "7":
+        FORMS, ORDER, STAGE, BASE_COMMIT = FORMS7, list(FORMS7), 7, BASE7_COMMIT
     w = g.World()
     if "--base" in sys.argv:
         return file_base(w)
