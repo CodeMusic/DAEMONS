@@ -1,3 +1,4 @@
+# BRAIN: none -- LiteLLM's proxy: model names to local backends, /v1/responses to chat; no fallback, by design
 # LiteLLM proxy — the translation layer between the harness and a local model.
 #
 # WHY THIS EXISTS. gameLoop.js calls openai.responses.create() at four sites:

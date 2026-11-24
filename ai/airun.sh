@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# BRAIN: none -- a launcher: starts and stops a run-through's processes; refuses any mind that is not local
 # C-496 (the user, 2026-11-23, by multiple choice): AN AI RUN-THROUGH, started and ended from THE ENGINE ROOM's IN PLAY
 # (THE HANDS run this on the computer: companion server/src/jobs.ts, ai-start and ai-stop). It is `bindDaemons.sh --ai`
 # made safe to start from anywhere:

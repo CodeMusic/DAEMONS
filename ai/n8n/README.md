@@ -12,14 +12,17 @@ paths answer there directly. From outside, every `/webhook/daemon/` call must ca
 is kept privately, never in this repository); without it the web server answers 403 before n8n sees it. The n8n
 editor is reachable there too, behind n8n's own sign-in.
 
-| endpoint | internal | relay | what it does |
-|---|---|---|---|
-| `daemon/health` | ✅ | ✅ | probes text, vision, image and TTS and says which are ready |
-| `daemon/look` | ✅ | ✅ | describes a screenshot, on request only |
-| `daemon/sprite` | ✅ | ✅ | a draft to draw from: a daemon in §9.4's neutral greys, a person or overworld figure, or (`kind: environment`) a building, a room or (`view: terrain`) a patch of ground, with no lettering |
-| `daemon/voice` | ✅ | ✅ | speaks one line of inner voice in the INDEX voice |
-| `daemon/chat` | ⚠️ inactive | ⚠️ inactive | OpenAI chat-completions + thought extraction + TTS |
-| `daemon/talk` | ✅ | ✅ | **the companion's push to talk** (companion C-64, C-66): text or recorded audio in -> speech to text -> the carried daemon answers in character (local model, or OpenRouter) -> the INDEX voice -> `{answer, heard, provider, audioBase64}` |
+| endpoint | internal | relay | what it does | BRAIN |
+|---|---|---|---|---|
+| `daemon/health` | ✅ | ✅ | probes text, vision, image and TTS and says which are ready | `brainstem (vitals)` |
+| `daemon/look` | ✅ | ✅ | describes a screenshot, on request only | `cortex.visual (see)` |
+| `daemon/sprite` | ✅ | ✅ | a draft to draw from: a daemon in §9.4's neutral greys, a person or overworld figure, or (`kind: environment`) a building, a room or (`view: terrain`) a patch of ground, with no lettering | `cortex.visual (imagine)` |
+| `daemon/voice` | ✅ | ✅ | speaks one line of inner voice in the INDEX voice | `cortex.motor (voice)` |
+| `daemon/chat` | ⚠️ inactive | ⚠️ inactive | OpenAI chat-completions + thought extraction + TTS | `none` (a pass-through shim) |
+| `daemon/talk` | moved | moved | **moved to the companion** (C-340): `seer/n8n` in daemons-companion, its push to talk (C-64, C-66) | `pathway` (there) |
+
+**BRAIN** (companion docs/BRAIN.md, night 2, 2026-11-24): the region each workflow does the work of; the five `public-relay/`
+workflows are `none` (forwarders), superseded since C-408.
 
 Reuses `DEX_SHARED_SECRET`, `DEX_KEY`, `MLX_VLM_URL`, `DEX_LLM_URL`,
 `BONSAI_URL` and `DEXTER_TTS_URL`, with `DAEMONS_*` overrides where a separate

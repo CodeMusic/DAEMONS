@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# BRAIN: none -- a presence beat to the hub: the run's save and screen when changed; exits when the hub says end
 """C-496: an AI run-through, reported to the companion's hub as a game in play (companion C-478's API).
 
 Every BEAT seconds: a heartbeat to the hub with the run's save when it has changed, and the emulator's screen when it
