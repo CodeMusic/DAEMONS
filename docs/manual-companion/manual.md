@@ -550,9 +550,22 @@ fading away over the last ten. **MAKE ANOTHER** makes a new one, still in the mo
 daemon is tonight -- its own telling, last night's dream, your goals, what you have been writing -- and **CREATIONS ›** holds the ones before
 ([CREATIONS](#creations)).
 
-**DRIFT DOWN** is for headphones: a slow beat between your ears under the music, easing from alpha to theta to delta
-as you fall asleep. The tone it rides on is the month's note, and the day sets each beat: the slowest of each stage on
-a Sunday, quicker through the week to the quickest on a Saturday. Without headphones the music plays alone until they are on.
+**DRIFT DOWN** is for headphones: a slow beat between your ears under the music. Each ear hears a slightly different
+tone, and the beat forms between them, so on a speaker it waits until headphones are in.
+
+**THE DRIFT ›**, under DRIFT DOWN, chooses which drift plays: each one a path of its own, held in REVERIE's four kinds --
+**SLEEP** (down toward sleep), **MEDITATION** (into stillness), **NATURE** (rain, wind, a tide, a forest at dusk) and
+**TINCTURES** (a state taken on for a while, each named for how it feels). The first is **THE LONG FALL**, the drift as it
+always was: alpha to theta to delta, on the month's note, each beat set by the day -- slowest on a Sunday, quickest on a
+Saturday. A drift with a noise bed plays it with or without headphones. The hub keeps the whole library; the phone carries
+three of each kind for when it is away. A drift marked **STRENGTH** is a strong one: begin with another.
+
+While it plays, your daemon stands still in its den with spirals turning in its eyes, in the drift's colour -- winding
+down while the beat falls, up while it rises.
+
+TINCTURES are sounds, not substances: nothing is taken, and nothing lingers when they end. All of it is for rest and
+play, not medicine -- people feel it differently, and some not at all. Never listen while driving, or while doing anything
+that needs your full attention.
 
 ## The dream goes home {#dream-home}
 
