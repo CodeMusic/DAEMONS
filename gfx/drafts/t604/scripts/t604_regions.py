@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""T-604 stages 1 to 9 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
+"""T-604 stages 1 to 10 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
 drawing already there (ears, crest, tail, drawers, wings), so it visibly colours in as it learns its part (T-597).
 
     python3 gfx/drafts/t604/scripts/t604_regions.py               # report each form: region, slots, coverage before/after
@@ -11,6 +11,7 @@ drawing already there (ears, crest, tail, drawers, wings), so it visibly colours
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 7 ...  # ... and STAGE 7's fifteen (FORMS7)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 8 ...  # ... and STAGE 8's fifteen (FORMS8)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 9 ...  # ... and STAGE 9's fifteen (FORMS9)
+    python3 gfx/drafts/t604/scripts/t604_regions.py --stage 10 ... # ... and STAGE 10's fifteen (FORMS10)
     python3 gfx/drafts/t604/scripts/t604_regions.py --draft       # write the drafts into gfx/drafts/t604/<NAME>/
     python3 gfx/drafts/t604/scripts/t604_regions.py --sheet DIR   # ... and the contact sheet into DIR
     python3 gfx/drafts/t604/scripts/t604_regions.py --built --sheet DIR   # the sheet from the engine as BUILT (after
@@ -453,7 +454,7 @@ FORMS4 = {
         #  BOOTSTRAP's yellows and oranges are lost: a gold or orange is CARRIED. A brown 80 off them escapes.
         base=(200, 160, 130),
         front=R((6, 1, 22, 15), (38, 1, 54, 15)), back=R((8, 1, 25, 15), (38, 1, 56, 15)),
-        slotmap={1: 6, 2: 6, 3: 10, 4: 10}, merge={6: 7}, ramp="cols",
+        slotmap={1: 6, 2: 6, 3: 6, 4: 10}, merge={6: 7}, ramp="cols",
         cols={6: (200, 160, 130), 10: (130, 90, 55)}),
     "REBUTTAL": dict(
         why="PREMISE line, stage 2 (the FIGHTING DOJO's prize; 12 trainers): 1.2% waits",
@@ -1120,6 +1121,141 @@ FORMS9 = {
         cols={9: (245, 170, 200), 10: (165, 80, 165)}),
 }
 
+#  STAGE 10 (the user, 2026-11-24: "T-604 stage 10"; DRAFT): fifteen more, by how often a player meets them, as stages 8
+#  and 9 ranked them. No later form left under 10% is met at more than 5% of a table, so: first the 5%s met in BOTH
+#  editions (FOUR ISLAND's ICEFALL CAVE and FIVE ISLAND's RESORT GORGEOUS by surf; SIX ISLAND's PATTERN BUSH and WATER
+#  PATH and THREE ISLAND's BERRY FOREST at 5% in one edition and 1% in the other), then the 5%s a player reaches before
+#  the ELITE FOUR (MT. EMBER's slopes and RUBY PATH, THREE ISLAND's BERRY FOREST), then the rest of the 5%s, one edition
+#  each. Left for stage 11: MENTALIZE (SIX ISLAND's RUIN VALLEY, the last of the 5%s, with GUTFEEL from the same table).
+#  Skipped as before: STEEPEST, the cocoons (IFTRUE, IFFALSE, PENDING, BUFFER, BROODING), any MUSAI, PENPHIN or UNOWN
+#  form (TETHERING, COROUTINE). TODAY is the engine after stage 9 (BASE10): no form here was drawn by stages 1-9. Every
+#  colour given exactly ("cols"), each checked against the carry rule by the report: none may read CARRIED.
+BASE10_COMMIT = "7dc39e511"
+FORMS10 = {
+    "CYCLICAL": dict(
+        why="TEMPO line, stage 3 (FOUR ISLAND's ICEFALL CAVE, surfing 5% in both): 0.3% waits, every colour but one carried",
+        region="the SOMBRERO, woven straw", colour="Eb and C#, notes its part sings (straw into burnt sienna)",
+        base=g.pc_rgb(3),
+        front=R((0, 8, 63, 16), (0, 17, 22, 20), (44, 17, 63, 20)), back=R((0, 8, 63, 16), (0, 17, 22, 20), (44, 17, 63, 20)),
+        #  the 3-pixel light green folded into the green beside it, to free a second slot
+        slotmap={1: 6, 2: 6, 3: 6, 4: 10}, merge={6: 7}, ramp="cols",
+        #  the straw kept 81 off CADENCE's blossom (245,170,200): nearer, it is CARRIED
+        cols={6: (240, 210, 130), 10: (175, 95, 50)}),
+    "CLINGING": dict(
+        why="ATTACHMENT line, stage 2 (FIVE ISLAND's RESORT GORGEOUS, surfing 5% in both): 3.2% waits (only the rocks' shells)",
+        region="the great DOME of its head, flushing as an octopus does: blush pink, its shade violet (the navy kept)",
+        colour="C and Bb, notes its part sings (blush; violet)", base=g.pc_rgb(0),
+        front=R((12, 0, 48, 22)), back=R((0, 0, 63, 24)),
+        slotmap={1: 9, 2: 10}, ramp="cols",
+        #  the blush kept 61 off ATTACHMENT's pale blue (199,210,231), the violet 52 off its mid blue: within 40, CARRIED
+        cols={9: (240, 170, 210), 10: (140, 110, 205)}),
+    "BOOSTING": dict(
+        why="STUMP line, stage 2 (SIX ISLAND's PATTERN BUSH, 5% in CONTEXT, 1% in CONTENT): 0.9% waits",
+        region="the leafy CROWN coming into blossom (its leaf shadows kept green)", colour="C and Bb, notes its part sings (blossom pink into plum)",
+        base=g.pc_rgb(0),
+        front=R((0, 0, 63, 17)), back=R((0, 0, 63, 17)),
+        slotmap={2: 9, 3: 10}, ramp="cols",
+        cols={9: (245, 185, 205), 10: (170, 95, 165)}),
+    "LONGJUMP": dict(
+        why="SHORTJUMP line, stage 2 (SIX ISLAND's WATER PATH, 5% in CONTENT, 1% in CONTEXT): 5.4% waits (the eyes' blues)",
+        region="the CREST, indigo and steel blue, and both WINGS, the eyes' own sky and steel blue spreading (their dark edge kept)",
+        colour="G and A, notes its part sings (the eyes' sky and steel blue; indigo)", base=g.pc_rgb(7),
+        front=R((36, 8, 56, 26)), back=R((6, 8, 28, 26)),
+        #  the eye's 5-pixel pale blue folded into the pale blue beside it, to free a slot for the indigo
+        slotmap={3: 8, 4: 7}, merge={7: 6}, ramp="cols",
+        #  the wings take the eyes' sky and steel blue, their dark grey edge kept: with it the region is 28% of the front
+        extra=[dict(front=R((4, 30, 22, 40), (34, 36, 54, 48)), back=R((40, 30, 60, 40), (8, 36, 30, 48)), slotmap={2: 6, 3: 8})],
+        cols={7: (70, 60, 150)}),
+    "DEEPWELL": dict(
+        why="BIFURCATE line, stage 2 (THREE ISLAND's BERRY FOREST, surfing 5% in CONTENT, 1% in CONTEXT): 0.2% waits",
+        region="the cap of its BACK and its TAIL FIN, a deep-sea glow", colour="F and G, notes its part sings (glow green into deep teal)",
+        base=g.pc_rgb(5),
+        front=R((8, 16, 44, 30), (44, 24, 63, 48)), back=R((14, 16, 56, 30), (0, 24, 20, 48)),
+        #  the lure's 1-pixel cream folded into the gold beside it, to free a second slot
+        slotmap={2: 6, 3: 6, 4: 10}, merge={6: 7}, ramp="cols",
+        #  the deep teal kept 53 off BIFURCATE's navy (36,55,91): within 40 it is the same colour, CARRIED
+        cols={6: (60, 170, 130), 10: (20, 105, 100)}),
+    "FORGE": dict(
+        why="CINDER line, stage 2 (MT. EMBER's slopes, 5% in CONTEXT, reached before the ELITE FOUR): 8.5% waits (the violet trim)",
+        region="the FIREBOX, lit: white-hot flame into ember", colour="Eb and C#, notes its part sings (flame; ember)",
+        base=g.pc_rgb(1),
+        front=R((20, 34, 38, 47)), back=R((20, 34, 38, 47)),
+        slotmap={1: 9, 2: 9, 3: 10}, ramp="cols",
+        #  the flame kept 103 off CINDER's lost cream (245,225,192), whose cream it takes: nearer, it is CARRIED; the ember
+        #  kept 125 off CINDER's dark red (117,10,22) -- an ember, not a wound
+        cols={9: (255, 215, 90), 10: (215, 85, 40)}),
+    "FLOCKING": dict(
+        why="PARTICLE line, stage 2 (THREE ISLAND's BERRY FOREST, 5% in CONTEXT, reached before the ELITE FOUR): 0.3% waits; VECTOR is the new type",
+        region="the two FOREWINGS, a moth's gold panels banded in VECTOR", colour="VECTOR, the new type (C#), on E's gold",
+        base=TYPE["VECTOR"],
+        front=R((0, 14, 24, 30), (40, 14, 63, 30)), back=R((0, 14, 24, 30), (40, 14, 63, 30)),
+        slotmap={1: 9, 3: 10}, ramp="cols",
+        cols={9: (240, 205, 120), 10: (206, 70, 70)}),
+    "WARMSTART": dict(
+        why="SAVESTATE line, stage 2 (MT. EMBER's RUBY PATH, 5% in CONTENT, reached before the ELITE FOUR): 6.7% waits (the red roots)",
+        region="the FLOWER's petals warming from the shade in: gold into apricot (the white of each petal kept)",
+        colour="E and D, notes its part sings (gold; its own apricot)", base=g.pc_rgb(4),
+        front=R((8, 0, 52, 24)), back=R((8, 0, 52, 28)),
+        #  slot 7 is already an apricot that waits on D (3 pixels): the petals' shade takes it
+        slotmap={2: 10, 3: 7}, ramp="cols",
+        cols={10: (240, 215, 140)}),
+    "GATHERING": dict(
+        why="HUDDLE line, stage 2 (SIX ISLAND's PATTERN BUSH, 5% in CONTEXT): 0.0% waits, no accent at all; VECTOR is the new type",
+        region="the WING CASES, a ladybird's: VECTOR with its dark spots (behind, below the shoulders)",
+        colour="VECTOR, the new type, moved to orange-red (C#)", base=(225, 95, 55),
+        front=R((16, 22, 48, 48)), back=R((18, 26, 46, 48)),
+        slotmap={1: 6}, ramp="cols",
+        #  VECTOR moved to orange-red: its own (206,70,70) and any darker red sit within 80 of HUDDLE's lost reds
+        #  (252,13,2), (196,9,13), and gencolourbysong's "nearest to one" would CARRY it. 94 off both.
+        cols={6: (225, 95, 55)}),
+    "TORPOR": dict(
+        why="APATHY line, stage 2 (FOUR ISLAND, surfing 5% in CONTENT): 0.2% waits; STRATUM is the new type",
+        region="the BELLY, HANDS and FEET, caked in mud", colour="STRATUM, the new type: Eb and C (sand into red clay)",
+        base=TYPE["STRATUM"],
+        front=R((16, 30, 46, 46), (2, 26, 15, 52), (47, 26, 62, 52)), back=R((16, 30, 46, 46), (2, 26, 15, 52), (47, 26, 62, 52)),
+        slotmap={1: 7, 2: 8}, ramp="cols",
+        cols={7: (220, 190, 140), 8: (160, 95, 70)}),
+    "OVERLAY": dict(
+        why="SUBSTRATE line, stage 2 (FIVE ISLAND's MEADOW, 5% in CONTENT): 3.0% waits in front, none behind",
+        region="the DOME, a tinted glass (its white highlight kept)", colour="G and A, notes its part sings (sky glass into lavender)",
+        base=g.pc_rgb(7),
+        front=R((12, 12, 52, 30)), back=R((20, 12, 46, 30)),
+        slotmap={2: 8, 3: 10}, ramp="cols",
+        cols={8: (175, 205, 240), 10: (150, 130, 215)}),
+    "ALLUVIUM": dict(
+        why="RUNOFF line, stage 2 (FIVE ISLAND's WATER LABYRINTH, surfing 5% in CONTENT): 0.2% waits; STRATUM is the new type",
+        region="the head's FIN and the TAIL FIN, silted", colour="STRATUM, the new type: Eb and C# (sand, silt, umber)",
+        base=TYPE["STRATUM"],
+        front=R((16, 2, 48, 16), (44, 38, 54, 52)), back=R((14, 2, 48, 16), (42, 38, 52, 52)),
+        slotmap={2: 8, 3: 9, 4: 10}, ramp="cols",
+        cols={8: (215, 190, 140), 9: (160, 120, 75), 10: (105, 65, 45)}),
+    "UNBRANCHED": dict(
+        why="DETOUR line, stage 2 (FIVE ISLAND's MEADOW, 5% in CONTENT): 0.1% waits",
+        region="the COAT's markings, tan into chestnut (the white kept; the legs' dark kept)", colour="E and C, notes its part sings (tan; chestnut)",
+        base=g.pc_rgb(4),
+        front=R((0, 0, 63, 63)), back=R((0, 0, 63, 63)),
+        slotmap={3: 9}, ramp="cols",
+        #  the chestnut on the upper body only: the legs keep DETOUR's dark grey, which would otherwise be lost and CARRY it
+        extra=[dict(front=R((0, 0, 63, 39)), back=R((0, 0, 63, 39)), slotmap={4: 10})],
+        cols={9: (215, 180, 120), 10: (140, 70, 55)}),
+    "JACOBIAN": dict(
+        why="TANGENT line, stage 2 (FOUR ISLAND, surfing 5% in CONTEXT): 1.1% waits; VECTOR is the new type",
+        region="the folded WING, a dusk violet (its shade and light kept)", colour="Bb, a note its part sings (VECTOR's red is TANGENT's, carried)",
+        base=g.pc_rgb(10),
+        front=R((26, 28, 58, 46)), back=R((6, 28, 38, 46)),
+        slotmap={2: 10}, ramp="cols",
+        cols={10: (115, 85, 185)}),
+    "AQUIFER": dict(
+        why="SEEPAGE line, stage 2 (FIVE ISLAND's MEMORIAL PILLAR, surfing 5% in CONTENT): 0.6% waits; STRATUM is the new type",
+        region="the SHELL's plates, a geode: rose quartz into amethyst (the highlights kept)",
+        colour="C and Bb, notes its part sings (rose quartz; amethyst)", base=g.pc_rgb(10),
+        front=R((4, 4, 60, 30)), back=R((4, 4, 60, 30)),
+        #  the eye's 1-pixel yellow and 2-pixel red-orange folded into its orange, to free two slots
+        slotmap={2: 6, 3: 9}, merge={6: 8, 9: 8}, ramp="cols",
+        #  STRATUM's browns all sit within 80 of SEEPAGE's lost peach and coral and would be CARRIED: the stone is a geode
+        cols={6: (240, 175, 215), 9: (120, 85, 190)}),
+}
+
 
 def pal_of(w, k):
     return [tuple(c) for c in w.palette(k)]
@@ -1374,6 +1510,8 @@ def main():
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS8, list(FORMS8), 8, BASE8_COMMIT
     if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "9":
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS9, list(FORMS9), 9, BASE9_COMMIT
+    if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "10":
+        FORMS, ORDER, STAGE, BASE_COMMIT = FORMS10, list(FORMS10), 10, BASE10_COMMIT
     w = g.World()
     if "--base" in sys.argv:
         return file_base(w)
