@@ -21,6 +21,46 @@ Redmine version (T-582's "a version per loop"), and every ticket reviewed in a d
 
 **A demo follows every cycle. A retro follows every Horizon cycle**, and may follow any other.
 
+**Before R1C1F** work goes on as it does now. In the days before Monday 30 November the Revolution Backlog is
+groomed and the first Cycle Backlog drawn from it.
+
+## A ticket's way (the user, 2026-11-25)
+
+```
+Backlog -> Revolution Backlog -> Cycle Backlog -> Ready for Development -> In Progress -> (Code Review) -> Closed
+                                                                     \-> Awaiting Feedback -> In Progress
+```
+
+| Status | Means |
+|---|---|
+| **Backlog** | uncategorised; every ticket that was Ready on 2026-11-25 starts here |
+| **Revolution Backlog** | wanted within this Revolution's three cycles |
+| **Cycle Backlog** | drawn from the Revolution Backlog for this cycle: can be assigned and picked up. Unfinished at the cycle's end, it carries into the next cycle, which is then topped up from the Revolution Backlog |
+| **Ready for Development** | a lane is assigned |
+| **In Progress** | the lane's agent has started |
+| **Code Review** | needs more eyes: **two other lanes' agents** each review the diff and post a note in the ticket (approve, or the changes needed). Also how a ticket asks for the user's own eyes |
+| **Awaiting Feedback** | a question is posted (below); it returns to In Progress with the answer as a comment |
+
+Blocked, Deferred, Closed and Superseded stay; Needs decision becomes Awaiting Feedback.
+
+**Grooming**: before each cycle the ops lane proposes, ranked by priority and age, what goes into the Revolution
+Backlog (before a Revolution) and the Cycle Backlog (before each cycle); the user ticks it on a page. With no answer by
+the Monday, the top of the list goes in.
+
+**Awaiting Feedback.** The agent's comment starts **`Requesting Feedback From: @<account>`**. Tagging the admin
+account asks the user; tagging a lane's account asks that lane's agent, which answers in the ticket, the way sessions
+message each other. A question is either free text or about four choices plus *Other* with a text box; the answer is
+recorded either way. On the dashboard the waiting tickets filter in one click and **anyone can read a question**; a
+click on it asks a signed-out visitor to sign in, then opens a modal with the question and its choices or a text area.
+Answering records the reply as a comment and moves the ticket back to In Progress.
+
+**Agents talking, on the dashboard.** A small widget with the number of active agent-to-agent questions. A click opens
+a modal listing them (**active**, or **all** by a toggle): one row each, thick enough for two lines -- the question,
+truncated, with the asking daemon's sprite to its left, and under it the answer, truncated, beside the answering
+daemon's sprite. The ticket's small number heads the row and links to Redmine. A click on a row shows it in full in the
+same modal, a back arrow top left to the list; every modal has an **X** top right and **[Full View]** to open it in a
+new tab.
+
 ## The folder
 
 ```
@@ -120,3 +160,9 @@ a slowdown only **notifies**), a clean-up list after each release, and the lane 
 | E-27 | FRM on EUDAIMONIA, feedback and Submit (playground) |
 | E-28 | Ask about this feature (playground) |
 | E-29 | the dashboard's daemons speak (playground) |
+| T-650 | Redmine's new statuses and workflow (ops) |
+| T-651 | grooming the Revolution and Cycle Backlogs (ops) |
+| T-652 | Code Review by two lanes' agents (ops) |
+| T-653 | Requesting Feedback From: agents ask agents (ops) |
+| E-30 | Awaiting Feedback answered on the dashboard (playground) |
+| E-31 | the agents-talking widget (playground) |
