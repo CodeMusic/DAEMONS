@@ -113,7 +113,8 @@ def engine(comp):
 
 
 def luck_numbers(comp):
-    t = open(os.path.join(comp, "server", "src", "context.ts")).read()
+    here = os.path.join(comp, "server", "src", "psyche", "context.ts")   # C-428 moved it into psyche/
+    t = open(here if os.path.exists(here) else os.path.join(comp, "server", "src", "context.ts")).read()
     m = re.search(r"if \(/([^/]+)/i\.test\(holiday\.name\)\) reasons\.push\(\{ source: \"holiday\", effect: ([0-9.]+)", t)
     f = re.search(r"else reasons\.push\(\{ source: \"holiday\", effect: ([0-9.]+), why: `\$\{holiday\.name\}: ([^`]*)`", t)
     q = re.search(r"holiday\?\.quiet\) reasons\.push\(\{ source: \"holiday\", effect: ([0-9.]+), why: `\$\{holiday\.name\}: ([^`]*)`", t)
