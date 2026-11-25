@@ -125,6 +125,13 @@ pins in one commit; EUDAIMONIA will pin it the same way. Every event carries its
 different builds can still sync. Public at CodeMusic/daemons-praxis -- **nothing personal goes in it.** Its tickets are
 the companion's `C-` ids.
 
+**A new repo goes into GitHub Desktop on both machines** (the user, 2026-11-25: they review changes and branches
+there). Whichever session creates a GitHub repo, in the same turn: clone it into `~/Projects/<name>` on this laptop
+**and** on roverbyteseer (`ssh roverbyte@roverbyteseer`; public repos clone over https, it has no GitHub login), then
+add it to GitHub Desktop on both with `open "x-github-client://openLocalRepo/$HOME/Projects/<name>"` (over ssh on
+roverbyteseer, which needs its console login), and tell the user the repo's name. Build-only working copies (e.g.
+roverbyteseer's `~/Projects/game-build/`) are not added.
+
 Every one of these symlinks is gitignored and no fork is ever vendored: the engines carry
 Nintendo-derived graphics and this repo promises not to distribute copyrighted
 material. Work in them freely; just don't merge either one in here.
