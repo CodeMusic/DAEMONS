@@ -35,10 +35,10 @@
 <path d="M393 38L517 38" stroke="#16161a"/>
 <text x="455" y="33" text-anchor="middle" font-weight="700" fill="#16161a" font-size="8.5">NOTHING AT ALL</text>
 <rect x="423" y="84" width="64" height="34" rx="5" fill="#16161a" stroke="#16161a"/><text x="455" y="97" text-anchor="middle" font-weight="700" fill="#fff" font-size="8">BODY</text><text x="455" y="107" text-anchor="middle" fill="#d9d4c4" font-size="7">alone</text>
-<text x="400" y="188" font-size="7.6">A Pi 5 still holds a small</text>
-<text x="400" y="199" font-size="7.6">turn of its own. A Zero keeps</text>
-<text x="400" y="210" font-size="7.6">its reflexes, its few direct</text>
-<text x="400" y="221" font-size="7.6">words, its touches and its</text>
+<text x="400" y="188" font-size="7.6">With a kit or a Pi 5 it still</text>
+<text x="400" y="199" font-size="7.6">holds a small turn of its own.</text>
+<text x="400" y="210" font-size="7.6">A Zero alone keeps reflexes,</text>
+<text x="400" y="221" font-size="7.6">direct words, touches and</text>
 <text x="400" y="232" font-size="7.6">actions: quieter, not broken.</text>
 <text x="6" y="262" font-size="8" fill="#5a5a64">Tailscale is not on this page. It is a tool for building the body, switched off unless you turn it on (Part 8).</text>
 </svg>

@@ -5,6 +5,12 @@ the PDFs are snapshots cut with `./docs/build-pdf.sh <version>`.
 
 ---
 
+## v11.418 — 2026-11-24
+
+- **9.38 DAEMONS EMBODIED, reviewed** (T-617; the user, 2026-11-24, by multiple choice): the twelve questions answered -- braces; the first build a Pi Zero 2 W with an LLM630 Compute Kit as its brain; the body keeps a learned action; ROAM; no practice alone; one wake word of our own and a touch; tickets B- in a project and lane of their own, BODIES; THE BRAIN's interface to its own repository; the DESIGNS shelf, read aloud. **Two additions**: where a body thinks is a setting (ON BOARD, MESH, HYBRID, a frontier model only on request and approval), and a body learns to speak as it learns to move (words that start few and grow, each kept in its daemon's own voice). To EMBODY is 9.39's INVOCATION.
+- **The book reprinted** with them (`docs/DAEMONS-embodied.pdf`, 62 pages): Part 9's four computers and the mind setting, Part 10's Learning to speak, Part 12's Zero and kit with five bench questions, phases A to L, Part 15 as what was decided and what is open.
+- Section 10: one Settled entry; the twelve questions struck from Open, five smaller ones in their place.
+
 ## v11.417 — 2026-11-24
 
 - **9.39 THE DAEMICOM, the FAMILIARS and the TALISMANS** (T-622; the user, 2026-11-24): the hardware's words, DRAFT -- the console (DAEMICOM, DCM-001), a controller with a mind (FAMILIAR), the controller, mouse and keyboard (SIGIL, WAND, QUILL; together the TALISMANS), the TV (SHEWSTONE, chosen over PORTAL), everything round one console (CIRCLE); the play (EVOCATION, SCRYING, 1.5's BINDING, INVOCATION) and the loop between them; the software (THRESHOLD, SANCTUM, LITANY, INCANTATION, DEPART). No SPELL; CIRCLE and BINDING kept apart from the third book's hour lines.

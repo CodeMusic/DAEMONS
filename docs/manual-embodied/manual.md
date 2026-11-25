@@ -8,9 +8,9 @@ It is one system for many bodies. Some bodies arrive knowing how to move. Some h
 writing one small folder, and nothing else changes.
 
 ::: note
-**This is a design for review. Nothing in it is built.** Every name in capitals is DRAFT and yours to change. Part 15
-lists the questions it needs you to answer. After your review it becomes a series of tickets, and the building starts
-with the first wrapper: the PiDog, the body RoverByte was made from.
+**This is a design, reviewed and not yet built.** You answered its twelve questions on 2026-11-24, and Part 15
+records each answer and what is still open. Every name in capitals is still DRAFT and yours to change. Next come its
+tickets, B-1 onward, and the first wrapper: the PiDog, the body RoverByte was made from.
 :::
 
 {{diagram whole | The whole of it. The phone finds the body and puts a daemon in it. The house tells the body who the daemon is and helps it hear, think and speak. The body program is the same on every body; only the wrapper under it differs.}}
@@ -42,10 +42,10 @@ Your request, 2026-11-24, as ten requirements. The rest of the book refers to th
 - **Not a safety-rated machine.** It is a hobby robot under a person's eye. Part 11 says what the design does about
   that, and what it cannot.
 
-## The nine proposals, on one page {#decisions}
+## The design, on one page {#decisions}
 
 | | The proposal | Why | Part |
-|------|---------------------------------------|---------------------------------------|---------|
+|---------|---------------------------------------|---------------------------------------|---------|
 | **D1** | **One body program, and one wrapper for each kind of body.** A wrapper is a sheet that describes the body and a driver that moves it. | Everything hard is written once. A new body is a day's work, and the dog's code never leaks into the rest. | 4 |
 | **D2** | **Actions are the only way a daemon moves.** Every action passes one gate. STOP is a reflex outside any model. | A language model must never reach a servo. It names an action, and the body decides. | 5 |
 | **D3** | **The answer is words with `{ACTIONS}` in braces**, performed as beats in the order written. A model's tool calls are read into the same beats. | It is what RoverByteOS already did, it streams, and small models write it more reliably than JSON. | 6 |
@@ -55,6 +55,8 @@ Your request, 2026-11-24, as ten requirements. The rest of the book refers to th
 | **D7** | **Bluetooth for what is near and small, Wi-Fi for the rest, and the body always dials out.** Tailscale is off unless you turn it on. | Any network works when nothing has to reach in. | 8 |
 | **D8** | **The machinery takes THE BRAIN's regions.** A body is one more host. | THE BRAIN was decided on 2026-11-24 for every AI harness. A body is where its motor half becomes real. | 3 |
 | **D9** | **Its own repository, `daemons-embodied`, in Python on the body.** | Every robot's own library is Python. It holds nothing personal and nothing of the game's. | 14 |
+| **D10** | **Where a body thinks is a setting: ON BOARD, MESH or HYBRID.** A frontier model only when you ask for it and approve it. | Yours, in review. One body should work alone, use the fastest mind in the house, or share the work between them. | 9 |
+| **D11** | **A body learns to speak as it learns to move.** Its words start few and grow from talking with you, and each is kept in its daemon's own voice. | Yours, in review. It is meant to learn from you, and a small vocabulary can be made ready in its own voice ahead of time. | 10 |
 
 # Where it comes from {#lineage .t-LEGACY}
 
@@ -218,7 +220,8 @@ host, and it is the one where the motor regions stop being names.**
 ::: note
 **This makes the body the second user of THE BRAIN's interface**, which is the moment `docs/BRAIN.md` 9 says the
 interface moves out of the companion into a repository of its own, pinned by tag. Whether that move happens before the
-body program is written, or the body starts from a copy of one file, is question 9 in Part 15.
+body program is written was question 9, and you decided it: **it moves now**, and the body pins it by tag as the
+companion pins PRAXIS.
 :::
 
 # The wrapper {#wrapper .t-HARDENED}
@@ -548,7 +551,8 @@ Every word of blocks 2 and 4 is DRAFT.
 
 **The list in block 3 is chosen, not dumped.** A large model is given the whole repertoire. A small one is given
 about fifteen: the pinned ones, the ones that fit the body's posture, and the ones most used. Published tests agree
-that a small model's accuracy falls as its list of tools grows.
+that a small model's accuracy falls as its list of tools grows. The AX630 kit's prompt is shorter than any of these
+and holds fewer still (Part 9).
 
 ## Three dialects, one performance {#dialects}
 
@@ -636,6 +640,7 @@ Any daemon can be embodied in any body. A ROVERBYTE in a dog's body is only the 
 | its own voice | its repertoire, learned actions included |
 | its memories, and its bond with you | its calibration: where each joint's true middle is |
 | its manner | what it has measured about each action |
+| the words it has learned, and its lines kept in its own voice (Part 10) | its settings: where it thinks, whether it may ROAM |
 | what it remembers of being in this body | its trials, and what it has learned about itself |
 
 **A different daemon in the same body can do everything the last one could**, and does it in its own manner. **The
@@ -691,7 +696,7 @@ a Raspberry Pi, through BlueZ and the `bluez-peripheral` library. The app needs 
 | `SHEET` | body to phone | the sheet in short: what it is, what it has, how many actions |
 | `NETWORKS` | phone to body | the shared list of Wi-Fi networks (C-93) |
 | `HUB` | phone to body | the hub's address and a one-time pairing code |
-| `STATE` | both | cell, posture, who is in it, whether ROAM is on |
+| `STATE` | both | cell, posture, who is in it, whether ROAM is on, where it thinks |
 | `STOP` | phone to body | the reflex |
 | `DO`, `SAY` | phone to body | one action, or a line to speak: for the body's page in the app |
 | `PRACTICE` | both | a pose to hold, a trial's result, a yes or a no (Part 10) |
@@ -767,52 +772,91 @@ folder, readable by it alone, and the repository's tests fail on anything that l
 # Which computer {#tiers .t-VECTOR}
 
 **The body's computer decides how much of a turn it can do alone.** Everything else in this book is the same on all
-three.
+of them.
 
-| | **Pi Zero 2 W** | **Pi 4** | **Pi 5** |
-|------------------------------|------------------------|------------------------|------------------------|
-| Reflexes, STOP, the gate, movement | on the body | on the body | on the body |
-| Its name, and the stop word | on the body | on the body | on the body |
-| Finding the end of speech | on the body | on the body | on the body |
-| **Hearing** (speech to words) | elsewhere | on the body | on the body |
-| **Thinking** | elsewhere | elsewhere | a small model on the body; better elsewhere |
-| **The voice** | elsewhere | a plain voice on the body | a plain voice on the body |
-| The daemon's *own* voice | the house | the house | the house |
-| Alone, with no network | reflexes, its direct words, its actions by touch, a few kept lines | hears and speaks plainly; cannot think | a whole small turn |
+::: tip
+**Decided, 2026-11-24: the first build keeps the Pi Zero 2 W that is in the dog now and adds an AX630 board, the
+LLM630 Compute Kit, as its brain.** It is supported on your kit as it stands, it draws the least power of the choices
+that have a mind of their own, and the pair is the one the companion already designed for the Cardputer Zero. *If it
+works, the same two boards go into every creature you build.*
+:::
+
+| | **Zero 2 W alone** | **Zero 2 W + AX630 kit** | **Pi 4** | **Pi 5** |
+|------------------------|------------------|------------------|------------------|------------------|
+| Reflexes, STOP, the gate, movement | on the body | on the body | on the body | on the body |
+| Its name, and the stop word | on the body | on the body | on the body | on the body |
+| **Hearing** | elsewhere | on the kit | on the body | on the body |
+| **Seeing** what is around it | elsewhere | on the kit | elsewhere | on the body, slowly |
+| **Thinking** | elsewhere | small, on the kit | elsewhere | small, on the body |
+| **The voice** | lines it has kept | kept lines; the kit's plain voice | kept lines; a plain voice | kept lines; a plain voice |
+| Alone, with no network | reflexes, direct words, kept lines | a whole small turn | hears and speaks; cannot think | a whole small turn |
+| Power | least | a little more | more | most |
+| On your kit (Robot HAT V4) | yes | yes | yes | no: it needs the newer HAT |
 
 **What stands behind each cell** (every number is published, and none was measured here):
 
 - **Its name and the stop word.** Small always-on models of the kind Home Assistant's voice project runs; one
-  measured about 5 percent of a single Zero 2 W core. The ready-made ones answer to fixed words, and a
-  word of our own has to be trained, a few hours on the house's GPU for each (question 6).
-- **The end of speech.** Silero's detector (MIT licence, about 2 MB), with a small turn-taking model on a Pi 5 that
-  can tell a pause from the end.
-- **Hearing.** Moonshine's streaming models (MIT). Its maker reports 237 ms on a Pi 5 for the smallest, against
-  nearly six seconds for Whisper's smallest. Nothing is published for a Zero 2 W, and its 512 MB leaves little room.
-- **Thinking on a Pi 5.** A model of half a billion to one and a half billion parameters runs at 10 to 25 tokens
-  a second under llama.cpp, quicker than speech, with its answers held to the grammar of Part 6. Models of three billion and more
-  are too slow to talk with. The persona and the list of actions are kept loaded, because re-reading 500 words of
-  prompt costs seconds.
-- **The voice.** Piper, at about a fifth of real time on a Pi 5 and a third on a Pi 4. Its maintained version is
-  under the GPL, so the body runs it as a separate program and does not link it. On a Zero 2 W it would run at about
-  real time, which is too slow to speak live and good enough to prepare a few lines.
+  measured about 5 percent of a single Zero 2 W core. The ready-made ones answer to fixed words, and a word of our
+  own has to be trained, a few hours on the house's GPU. You chose one word of our own for every body, and a touch.
+- **The end of speech.** Silero's detector (MIT licence, about 2 MB).
+- **The AX630 kit.** M5Stack publishes 10.3 tokens a second on this chip for a model of half a billion parameters,
+  with its first word after about a third of a second, and 3.6 tokens a second at one and a half billion. **Its
+  prompt is short: 128 to 256 tokens.** So ON BOARD the daemon's SELF is two lines and its list of actions is brief.
+  It hears with Whisper and speaks in one stock voice; neither has a published speed, and timing them is the first
+  bench job. It draws about one and a half watts while it works.
+- **Hearing on a Pi.** Moonshine's streaming models (MIT). Its maker reports 237 ms on a Pi 5 for the smallest,
+  against nearly six seconds for Whisper's smallest.
+- **Thinking on a Pi 5.** A model of half a billion to one and a half billion parameters runs at 10 to 25 tokens a
+  second under llama.cpp: about twice the kit's speed, with room for a long prompt, at several times the power.
+  Models of three billion and more are too slow to talk with.
+- **A plain voice on a Pi.** Piper, at about a fifth of real time on a Pi 5 and a third on a Pi 4. Its maintained
+  version is under the GPL, so a body runs it as a separate program and does not link it.
 - **The Raspberry Pi AI HAT+ 2** was measured by two reviewers as slower than the Pi 5's own processor for language
   models. It is not part of this design.
-- **An AX630C board** (the LLM630 Kit, the Module LLM) is. You already own them, the companion already speaks to
-  them, and one riding on a body would hear, think in a small way and speak for about three watts. It is a later
-  option, and it changes no interface: it is one more host the thalamus may ask.
 
 ::: note
-**The daemon's own voice is the house's.** A daemon's voice is made from its recipe by a large model in the house. No
-Pi can make it. So a body alone speaks in a plain voice, and the design says so honestly: *at home it sounds like
-itself; alone it sounds like its body.* A handful of short lines (*"yes?"*, *"ow"*, its greeting) can be kept in its
-own voice from the last time it was home.
+**The daemon's own voice is made in the house**, by a large model, from its recipe. No board on a body can make it.
+What a body can do is *keep* it: every line the daemon speaks at home is kept on the body as sound, and each night
+the house prepares the words it is learning (Part 10). So alone it says what it has learned in its own voice, and
+anything new in the kit's plain one.
 :::
 
-**For the PiDog**, the kit's version decides (question 2). The newer kit, with Robot HAT V5, supports a Pi 5 and
-feeds it 5 amps. The first kit does not support the Pi 5 at all: users report the Pi resetting when several servos
-move. A larger Pi also shortens the cell's life, which on this kit is somewhere between twenty minutes of hard
-movement and an hour and a half of light use.
+## Where it thinks {#mind}
+
+**Where a body thinks is a setting**, on the body's page in the app, beside which daemon it hosts and whether it may
+ROAM. You asked for three. Each is a different way of setting the body's thalamus (Part 3).
+
+| | **ON BOARD** | **MESH** | **HYBRID** |
+|------------------------|------------------|------------------|------------------------|
+| In a line | everything on the body | the fastest mind in the house | each thing where it is done best |
+| Reflexes, STOP, direct words | the body | the body | the body |
+| Hearing | the kit | the house; the kit if none answers | the kit |
+| Seeing what is around it | the kit | the house | the kit |
+| A short, simple turn | the kit | the house | the kit |
+| A turn that needs depth | the kit, as best it can | the house | the house |
+| The voice | kept lines; the kit's for the rest | its own, from the house | kept lines at once; its own from the house for new ones |
+| What leaves the body | nothing | what was said | only what is sent on |
+
+- **ON BOARD** is private and whole, and it works anywhere. Its limits are the kit's small model and short prompt.
+- **MESH** is what your other devices do today: THE MESH picks the fastest mind that answers, the Tiiny when it is
+  awake. It gives the best answers and the daemon's own voice, and it needs the house or the relay.
+- **HYBRID** is THE BRAIN's two roads on one body. The kit is the low road. It hears and sees, and before anything
+  else it answers a few typed questions about what was said: *is this a direct word? a care? small talk? does it
+  need the house?* What it can answer, it answers at once. What needs depth goes to the house, with the kit having
+  already said how much of the SELF to send. If the house does not answer in time, the kit's own answer is used.
+
+**HYBRID is the setting a body starts with** (decided). It is also the last of the three to be built, so until it
+exists a new body starts on MESH. A body that loses its network behaves as ON BOARD whatever its setting, and goes
+back when the network does.
+
+**A frontier model, only when you ask and approve.** A hard task can go to a large model outside the house, each
+time on your request and with your yes. It is the gate's ASK FIRST (Part 5) applied to thinking, and THE BRAIN's
+`world` ring. A setting on the daemon can switch even the asking off. Nothing a person said goes with the task
+unless you say so.
+
+**A body lends its mind.** Resting on its charger, the kit joins THE MESH as a small node and takes hearing,
+speaking and seeing jobs from the rest of the house (the companion's C-466). It stops the moment its own daemon is
+spoken to.
 
 # Learning the body {#practice .t-EMERGENT}
 
@@ -929,6 +973,32 @@ afford: tens of cells, not thousands.
 inside its limits and records how its balance answers. From that it learns which poses are steady and which are
 not, and that makes every later proposal safer. It is not how it learns to walk.
 
+## Learning to speak {#speak}
+
+**You added this in review: a body learns to speak as it learns to move.** In your words: *"its vocabulary can start
+simple, but it is meant to learn from you, so as you talk to it, what it says grows."*
+
+- **Its words start few.** In a body, a daemon begins with a small set: its name and yours, yes and no, the names of
+  its actions, a few feelings, and its sounds. It speaks in short sentences made mostly of words it has.
+- **It learns them from you, in the same three ways.** SHOWN: you teach it a word (*"say ball"*). FOUND: a word you
+  use with it on several days becomes one of its own. TRIED: it tries a word it has just heard, and your answer (a
+  yes, a pat, a correction) keeps it or drops it.
+- **Its sentences grow with its words.** First words and sounds, then short phrases, then talk. Where those lines
+  fall is DRAFT. They are counted in words learned, not in days.
+- **Every word is kept in its own voice.** Each line it speaks at home is kept on the body as sound. And each night
+  the house says the words and short phrases it is learning, in its voice, and sends them over. A small vocabulary
+  can be made ready ahead of time, and that is what lets a body speak as itself with no network: **alone, what it can
+  say in its own voice is exactly what it has learned so far.**
+- **Its words are the daemon's, not the body's.** Actions stay with the body (Part 7). Words go with the daemon to
+  its next body, and home to the companion, which keeps the list as part of who the daemon is.
+
+**How the model is held to it.** A large model is steered by a line in its SELF: *you are still learning to speak;
+use short sentences, mostly from the words you know; you may try one word you have just heard* (DRAFT). The words
+follow it. The small model on the kit is given the same list and little else, which suits its short prompt.
+
+**Two things this leaves open**: whether a daemon's speech also starts small on the phone and the watch, where
+today it speaks freely; and how fast it should grow.
+
 ## The night {#night}
 
 No servo moves at night. **The day's trials are read again**: the search's picture is redrawn from all of them, the
@@ -937,7 +1007,8 @@ a short list of what to try tomorrow, which a person may accept or ignore.
 
 It is the same night THE BRAIN gives the hippocampus, and the one RoverByte's notes asked for in 2025: *the AI dreams
 by updating itself based on past experiences.* The daemon's own dream that night is made by the companion, as ever,
-and it may now have the day's practice in it.
+and it may now have the day's practice in it. And the house says the words the daemon is learning, in its own voice,
+and sends them to the body for the morning.
 
 ## Rules of practice {#rules}
 
@@ -1006,6 +1077,28 @@ Safety is in every part of this book. This part gathers it, so that it can be re
 | **Lights** | a strip of 11 on the chest | its manner; listening, thinking |
 | **Speaker and microphone** | on the newer HAT; the first kit has a USB microphone | the voice channel |
 | **Cell** | two 18650s, 8.4 V full, cut off hard at 6.0 V | the cell sense, and an early, clean shutdown |
+
+## Its brain: a Zero and a kit {#pibrain}
+
+**Decided: the Pi Zero 2 W that is in it now, with an LLM630 Compute Kit on its back.** The Zero runs the body
+program: servos, senses, reflexes, the gate, Bluetooth. The kit hears, sees, thinks in a small way and speaks
+(Part 9).
+
+**Your kit is the first PiDog kit.** Your code for it dates from October 2024, and the second kit went on sale in
+July 2025. Its Robot HAT gives 5 volts at 3 amps, and SunFounder does not support a Pi 5 on it. To be sure, look at
+the HAT: its version is printed on it, and only the newer one has a ZERO button and a microphone on the board. A
+Pi 5 with the newer HAT stays possible later, and nothing in the design changes if it comes.
+
+**Five things to settle on the bench before the pair is trusted:**
+
+1. **The Zero has one USB port for data.** The kit's link and the first kit's USB microphone both want it. A small
+   hub, or the kit reached over Wi-Fi or the serial pins instead.
+2. **Power for the kit**: from the HAT's 5 volt rail, beside twelve servos, or a cell of its own. The companion's
+   bench list for the Cardputer Zero and its kit asks the same (C-458, C-459).
+3. **How fast it hears and speaks.** Whisper and the kit's voice have no published speed on this chip.
+4. **How much of a daemon fits in 128 to 256 tokens**, with a list of actions beside it.
+5. **Where it sits**, under the fur, without overheating. The kit is about 90 by 32 by 12 mm, and it warms as it
+   works.
 
 ## Its given actions {#given}
 
@@ -1108,9 +1201,8 @@ daemons-embodied/
     psychic/             Bluetooth, Wi-Fi, the body's door
     hippocampus/         events, kept and sent
     sheet.py             the sheet, read and checked
-    signal.py            THE BRAIN's signal
   turn/                  the daemon's turn: a client of the body program
-    ears/  thinker/  voice/  performance/
+    ears/  thinker/  voice/  words/  performance/
   practice/              the harness; shown, tried, found; the night
   wrappers/
     _template/           copy this to add a body
@@ -1130,33 +1222,39 @@ over SSH, as the companion's Pi devices are. A third, the developer's Tailscale,
 **Public, at CodeMusic/daemons-embodied, with nothing personal in it**: no key, no network name, no daemon's SELF, no
 recording.
 
+**Its tickets are B-1 onward**, in a Redmine project and a lane of their own, BODIES (decided). **THE BRAIN's
+interface is not kept here**: it is pinned by tag from a repository of its own (decided), as PRAXIS is.
+
 ## Phases {#phases}
 
-Each phase ends in something that can be seen working. They become the tickets, after your review.
+Each phase ends in something that can be seen working. They are the outline of its tickets, B-1 onward.
 
 | | Phase | Done when |
 |------|------------------------------------------------------|------------------------------------------|
 | **A** | **Foundations.** The repository, the sheet, the driver's calls, the simulated body, the body check. | the simulated body passes the check on any computer |
 | **B** | **The performance.** The format's reader, the beats, the gate, the motion engine, channels. | a typed line with braces is performed by the simulated body, in order, with STOP working |
-| **C** | **The PiDog's wrapper.** Its sheet, its 48 actions, its senses and reflexes, its traps. | the real dog passes the check, live, and performs a typed line |
-| **D** | **The daemon's turn, thin.** Its name, the stop word, hearing and thinking and the voice through the house, the SELF, speaking over it. | you talk to a daemon in the dog, at home |
-| **E** | **Bluetooth and the app.** The link on a Pi, the spoken code, Wi-Fi handed over, the body in YOUR DEVICES with its page, EMBODY, STOP. | a new body is paired and a daemon put in it from the phone alone |
-| **F** | **Alone.** Hearing, a plain voice and a small model on a Pi 5; the order of who answers; the relay; a model you name. | it holds a turn with the house switched off |
-| **G** | **PRACTICE, shown.** The trial harness, the pose page, naming, trust. | you teach it an action from the phone and the daemon uses it |
-| **H** | **PRACTICE, tried and found.** The search, the measures, the grid, the night. | its walk is measurably better than the kit's, on your floor |
-| **I** | **A body you command.** Your second robot's wrapper. | the same daemon moves from the dog to it |
-| **J** | **Later.** Sight; an AX630C on board; THE BRAIN's signals end to end; sharing actions between bodies of one kind. | |
+| **C** | **The PiDog's wrapper**, on its Zero 2 W. Its sheet, its 48 actions, its senses and reflexes, its traps. | the real dog passes the check, live, and performs a typed line |
+| **D** | **The daemon's turn, on the MESH.** Its name, the stop word, hearing and thinking and the voice through the house, the SELF, speaking over it. | you talk to a daemon in the dog, at home |
+| **E** | **Bluetooth and the app.** The link on a Pi, the spoken code, Wi-Fi handed over, the body in YOUR DEVICES with its page and its settings, EMBODY, STOP. | a new body is paired and a daemon put in it from the phone alone |
+| **F** | **ON BOARD.** The kit on the bench (Part 12), its link to the Zero, hearing, a small turn and a plain voice on it, kept lines. | it holds a small turn with the house switched off |
+| **G** | **HYBRID.** The low road on the kit, depth from the house, sight on the kit. A frontier model on request. | one conversation uses both, and you cannot hear the join |
+| **H** | **Learning to speak.** Its words, its lines kept in its own voice, the night's phrases. | alone, it says a word you taught it, as itself |
+| **I** | **PRACTICE, shown.** The trial harness, the pose page, naming, trust. | you teach it an action from the phone and the daemon uses it |
+| **J** | **PRACTICE, tried and found.** The search, the measures, the grid, the night. | its walk is measurably better than the kit's, on your floor |
+| **K** | **A body you command.** Your second robot's wrapper. | the same daemon moves from the dog to it |
+| **L** | **Later.** A Pi 5 and the newer HAT; THE BRAIN's signals end to end; sharing actions between bodies of one kind. | |
 
-**A, B and most of D need no robot.** C needs the dog on the bench. E needs the phone. That lets three of them move
+**A, B and most of D need no robot.** C needs the dog on the bench, E the phone, F the kit. That lets several move
 at once.
 
 ## What changes elsewhere {#elsewhere}
 
 | Where | What |
 |------------------|------------------------------------------------------|
-| **The companion's hub** | The SELF and a turn of talk reachable with a body's own key. A body's picture and name. Later, a turn that streams. |
-| **The companion's app** | More than one linked device. A body's page: status, STOP, ROAM, its repertoire, the pose page, PRACTICE. |
-| **THE BRAIN** | Its interface gains its second user, and a Python file. The body fills in the motor regions. |
+| **The companion's hub** | The SELF and a turn of talk reachable with a body's own key. A body's picture and name. The words a daemon has learned, kept with its SELF, and its lines made ready at night. Later, a turn that streams. |
+| **The companion's app** | More than one linked device. A body's page: which daemon, status, STOP, ROAM, where it thinks, its repertoire, its words, the pose page, PRACTICE. |
+| **THE BRAIN** | Its interface moves to a repository of its own, now, with a Python file beside the TypeScript. The body fills in the motor regions. |
+| **The Zero and its kit** (C-453 to C-466) | Reused: the kit's software, its link and its place in THE MESH were written for the Cardputer Zero. |
 | **HANDS (C-462)** | Built, as the gate. Its classes for actions that reach outside are the gate's last row. |
 | **The game** | Nothing. |
 
@@ -1171,105 +1269,46 @@ at once.
 | **The Pi resets when many servos move** | known on the first kit | the motion engine limits how many accelerate together; the kit's version decides the Pi |
 | **Bluetooth on a Pi is fiddly** | fair | it carries only small things; everything else has a second road |
 | **Learning to walk better takes too long to be fun** | fair | SHOWN gives a new action in minutes; TRIED is the long game and is not on the first path |
+| **The kit's prompt is too short for a daemon** | likely | ON BOARD carries a two-line self and a short list; HYBRID sends depth to the house |
+| **The Zero has one USB port** | certain | settled on the bench before anything is mounted (Part 12) |
 | **The design is larger than the first build** | certain | phases A to D are a daemon in a dog, and they need nothing from Part 10 |
 
-# For your review {#review .t-CONTEXT}
+# What you decided {#review .t-CONTEXT}
 
-## Questions {#questions}
+You read the design on 2026-11-24 and answered its twelve questions by choice. Two of your answers added to the
+design, and five things are still open.
 
-Each has a recommendation. They will be put to you as choices; this is the list to think over.
+## The twelve answers {#questions}
 
-::: way
-### 1. Braces, and the old brackets
+| | The question | Decided |
+|------|---------------------|---------------------------------------------|
+| **1** | Braces, or the old brackets | **Braces**, `{SIT}`. The old `["sit"]` and `<"mood">` are still read. |
+| **2** | Which kit, and which computer | Yours is the first kit (Robot HAT V4). **The Zero 2 W stays in it, with an LLM630 Compute Kit as its brain.** A Pi 5 with the newer HAT may follow. |
+| **3** | Who keeps a learned action | **The body.** |
+| **4** | May it walk | **Only with ROAM on.** |
+| **5** | May it practise alone | **No.** A person is present. |
+| **6** | What wakes it | **One word of our own, and a touch.** The word itself is still to be chosen. |
+| **7** | Its voice alone | **Its own voice, kept, and words that grow** (Part 10). |
+| **8** | Where its tickets live | **A Redmine project and a lane of its own, BODIES.** Its tickets are B-1 onward. |
+| **9** | THE BRAIN's interface | **A repository of its own, now.** |
+| **10** | The words | **All kept**, DRAFT as ever. |
+| **11** | Where this book stands | **On the DESIGNS shelf, and read aloud**, in a voice you pick from three samples. |
+| **12** | The second robot | Its name and its API, when you have them. |
 
-RoverByteOS used `["sit"]`. You described `{SIT}`.
+## Two things you added {#added}
 
-**Recommended: braces, with the old forms still read.** Speech engines have taken square brackets for themselves.
-:::
+- **Where it thinks** (Part 9). A setting on every body: ON BOARD, MESH or HYBRID, with HYBRID the one a body
+  starts on. A frontier model only when you ask for it and approve it.
+- **Learning to speak** (Part 10). Its words start few and grow from talking with you, and each is kept in its
+  daemon's own voice.
 
-::: way
-### 2. Which PiDog kit, and which Pi
+## Still open {#open}
 
-The first kit (Robot HAT V4) does not support a Pi 5. The newer one (V5) does.
-
-**Recommended: a Pi 5 if the kit is the newer one, a Pi 4 if it is the first**, for the first build. The Zero 2 W is
-supported as the thin tier and tested after.
-:::
-
-::: way
-### 3. Who keeps a learned action
-
-**Recommended: the body** (D4). The alternative, that each daemon must learn each body afresh, is charming and would
-mean every hour of PRACTICE is spent again for the next daemon.
-:::
-
-::: way
-### 4. May it walk
-
-**Recommended: only with ROAM on**, set by a person, and off again whenever it is lifted. The alternative is to let
-it walk whenever its distance sense shows room, which a table edge defeats.
-:::
-
-::: way
-### 5. May it practise alone
-
-**Recommended: no.** PRACTICE needs the phone linked and ends when it is not. The night's work moves no servo.
-:::
-
-::: way
-### 6. What wakes it
-
-Its own daemon's name would be best, and each new word has to be trained: a few hours on the house's GPU. A word for
-every daemon is not practical.
-
-**Recommended: one word of our own for every body, and a touch.** Which word is yours to choose. RoverByteOS
-used "hey rover".
-:::
-
-::: way
-### 7. Its voice alone
-
-**Recommended: a plain voice when the house cannot be reached**, with a few short lines kept in its own.
-:::
-
-::: way
-### 8. Where its tickets live
-
-It is a fourth project beside DAEMONS (T-), the companion (C-) and EUDAIMONIA (E-).
-
-**Recommended: its own Redmine project and its own lane**, with a prefix of your choosing. Until then its design is
-T-617.
-:::
-
-::: way
-### 9. THE BRAIN's interface
-
-**Recommended: move it to its own repository now**, since the body is its second user, and have the body pin it by
-tag as the companion pins PRAXIS. The quicker alternative is a copied file and a test that keeps the two alike.
-:::
-
-::: way
-### 10. The words
-
-BODY, WRAPPER, SHEET, ACTION, BEAT, PERFORMANCE, GATE, MANNER, ROAM, PRACTICE, SHOWN, TRIED, FOUND, EMBODY, COME OUT.
-
-**All DRAFT.** Two were avoided on purpose: PLAY is the game's instruments, and SCORE would have meant two things.
-:::
-
-::: way
-### 11. Where this book stands
-
-It is the first design on the LIBRARY's shelves, which so far hold manuals and study.
-
-**Recommended: a shelf of its own, DESIGNS**, so a design is never taken for a manual of something that exists. A
-book read aloud also needs its own voice, chosen by you from samples; a design may not need reading aloud at all.
-:::
-
-::: way
-### 12. The second robot
-
-Its name and its API, when you have them to hand.
-:::
+1. **The wake word itself.** RoverByteOS used "hey rover".
+2. **The kit on the bench**: five questions (Part 12).
+3. **This book's voice**: three samples for you to choose from.
+4. **Whether a daemon's speech also starts small on the phone and the watch.**
+5. **The second robot's name and API.**
 
 ## Sources {#sources}
 

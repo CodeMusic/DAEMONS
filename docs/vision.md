@@ -1,6 +1,6 @@
 # PROJECT: CONTEXT / CONTENT
 
-**A total conversion — the living design bible, v11.417**
+**A total conversion — the living design bible, v11.418**
 
 Machines that evolved into creatures. A theory of mind hidden in a type chart.
 
@@ -9441,7 +9441,7 @@ in the game*), **the process, never the pathology** (*a shadow is never an illne
 said DAY-mons.* ***Its subtle identity is the user's ask***: *charismatic, a little poetic, puns kept quiet (a clean
 sweep), the magic only ever a way of speaking about commands given and left running.*
 
-### 9.38 DAEMONS EMBODIED -- *asked for 2026-11-24 (T-617); designed, nothing built; DRAFT*
+### 9.38 DAEMONS EMBODIED -- *asked for, designed and reviewed 2026-11-24 (T-617); nothing built; DRAFT*
 
 ***A daemon in a robot body*** (the user, 2026-11-24): *"a general DAEMONs Embodied project, and it will allow you to
 put a daemon into one of these systems ... some systems will have predefined actions it can do -- and others it uses
@@ -9457,9 +9457,9 @@ could tell next time."* **A body is where a daemon checks what it predicted, and
 *Nothing in the game says so (rule 1), and nothing in the game changes: the cartridge sees an AWAY daemon (9.25) come
 home with more friendship than it left with.*
 
-***The design is a book, for the user's review before any ticket is written***: **`docs/DAEMONS-embodied.pdf`**
-(*`tools/manual.py --book embodied`, from `docs/manual-embodied/`; fifteen parts, nine drawings*). **Nine proposals,
-every name DRAFT:**
+***The design is a book, reviewed by the user before any ticket was written***: **`docs/DAEMONS-embodied.pdf`**
+(*`tools/manual.py --book embodied`, from `docs/manual-embodied/`; fifteen parts, nine drawings*). **Nine proposals as
+first drafted, every name DRAFT:**
 
 - ***One body program, and one wrapper for each kind of body.*** **A wrapper is a SHEET** (*what the body is: its
   joints, senses, voice, the actions it comes with, its limits*) **and a DRIVER** (*the few calls that reach it*).
@@ -9495,10 +9495,36 @@ every name DRAFT:**
 - ***Its own repository, `daemons-embodied`, in Python on the body***, *public, holding nothing personal and nothing
   of the game's.*
 
+***Reviewed by the user the same day, by multiple choice (2026-11-24); every recommendation taken but two, and two
+things added***:
+
+- ***Braces***, *`{SIT}`, the old `["sit"]` and `<"mood">` still read.* ***The body keeps a learned action. It walks
+  only with ROAM on. It never practises alone. One wake word of our own, and a touch*** (*the word still to be
+  chosen*). ***The words are all kept*** (*DRAFT as ever*).
+- ***The first build keeps the Pi Zero 2 W that is in the dog and adds an AX630 board, the LLM630 Compute Kit, as its
+  brain*** -- *the pair the companion designed for the Cardputer Zero (C-453); the user: "if this works it allows me
+  to make new creatures using the same component."* **The kit is the first PiDog kit (Robot HAT V4), on which a Pi 5
+  is not supported**; *a Pi 5 with the newer HAT may follow, and nothing in the design changes if it does.*
+- ***Added by the user: where a body thinks is a setting on its page in the app*** -- **ON BOARD** (*everything on
+  the kit*), **MESH** (*the fastest mind in the house, the Tiiny included*) **or HYBRID** (*the kit as THE BRAIN's low
+  road: hearing, sight and short turns at once, depth from the house*). **A body starts on HYBRID**, *on MESH until
+  HYBRID is built, and falls back to ON BOARD whenever its network goes.* ***A frontier model only when the user
+  asks for it and approves it, each time.***
+- ***Added by the user: a body learns to speak as it learns to move*** -- *"its vocabulary can start simple, but it
+  is meant to learn from you, so as you talk to it, what it says grows."* **Its words start few, grow from the words
+  used with it (SHOWN, TRIED and FOUND again), and each is kept in its daemon's own voice**: *every line spoken at
+  home is kept on the body, and each night the house says the words it is learning and sends them over, so alone it
+  speaks as itself in exactly what it has learned.* **Words are the daemon's and travel with it; actions stay with
+  the body.**
+- ***Its tickets are B-1 onward, in a Redmine project and a lane of their own, BODIES. THE BRAIN's interface moves to
+  a repository of its own now*** (*the body is its second user*). ***The book stands on the LIBRARY's DESIGNS shelf
+  and is read aloud***, *in a voice the user picks from three samples (T-543).*
+
 ***What the bible keeps from it***: **colour still carries the argument** (*a body's lights show its daemon's manner,
 never decoration*), **the process is named, never the pathology** (*a body that cannot do something has not learned
-it yet*), ***and DAEMONS is said DAY-mons by every body that speaks.*** **Twelve questions wait on the user** (*the
-book's Part 15; section 10, Open*).
+it yet*), ***and DAEMONS is said DAY-mons by every body that speaks.*** **In 9.39's words, to EMBODY a daemon is an
+INVOCATION**: *it comes into your world, here with a body of its own.* **Five things are still open** (*the book's
+Part 15; section 10, Open*).
 
 ### 9.39 THE DAEMICOM, the FAMILIARS and the TALISMANS -- the hardware's words -- *named 2026-11-24 (T-622); words only, nothing built; DRAFT*
 
@@ -9576,6 +9602,8 @@ MIRROR (`docs/lineage.md`).*
 ## 10. DECISION LOG
 
 ### Settled
+
+- **DAEMONS EMBODIED reviewed (T-617, 2026-11-24)** — the user's answers to the design's twelve questions, by multiple choice: braces, the old brackets still read; the first build a Pi Zero 2 W with an LLM630 Compute Kit as its brain (the first PiDog kit, Robot HAT V4; a Pi 5 with the newer HAT later, perhaps); the body keeps a learned action; ROAM; no practice alone; one wake word of our own and a touch; its own voice kept and words that grow; a Redmine project and lane of its own, BODIES, tickets B-; THE BRAIN's interface to its own repository now; every word kept; the DESIGNS shelf, read aloud. **Two additions of the user's**: where a body thinks is a setting (ON BOARD, MESH, HYBRID; a frontier model only on request and approval), and a body learns to speak as it learns to move. 9.38.
 
 - **The hardware's words in the bible (9.39, 2026-11-24)** — the user's vocabulary for the console and its kit (T-622): DAEMICOM, FAMILIAR, SIGIL, WAND, QUILL, TALISMANS, SHEWSTONE (over PORTAL), CIRCLE; the play's EVOCATION, SCRYING, BINDING and INVOCATION; the software's THRESHOLD, SANCTUM, LITANY, INCANTATION and DEPART. Four open points answered by multiple choice, every recommendation: SHEWSTONE; a linked handheld acts as a SANCTUM's WAND and QUILL; QUILL and WAND give a full computer on the SHEWSTONE, the SANCTUM; the INVOCATION line as written. No SPELL; CIRCLE and BINDING kept apart from the third book's hour lines. Four books to come, lore first. Every word DRAFT
 
@@ -9815,7 +9843,8 @@ Kept here because the reasoning is worth more than the outcome.
 
 ### Open
 
-- **DAEMONS EMBODIED's twelve questions** (*T-617; the user's review, 2026-11-24 onward*). **The book's Part 15, each with a recommendation**: *braces with the old brackets still read; which PiDog kit and which Pi; the body keeps a learned action; it walks only with ROAM on; it never practises alone; what wakes it; a plain voice when alone; its own Redmine project and lane; THE BRAIN's interface moved to its own repository; the words (BODY, WRAPPER, SHEET, ACTION, BEAT, GATE, MANNER, ROAM, PRACTICE, SHOWN, TRIED, FOUND, EMBODY); a DESIGNS shelf in the LIBRARY and whether a design is read aloud; the second robot's name and API.* 9.38.
+- **What DAEMONS EMBODIED still leaves open** (*T-617, after the user's review of 2026-11-24*): **the wake word itself** (*RoverByteOS used "hey rover"*); **the kit on the bench** (*the Zero's one USB port, the kit's power, how fast it hears and speaks, how much of a daemon fits in 128 to 256 tokens, where it sits under the fur*); **the book's voice** (*three samples for the user*); **whether a daemon's speech also starts small on the phone and the watch**; **the second robot's name and API.** 9.38.
+- ~~**DAEMONS EMBODIED's twelve questions** (*T-617; the user's review, 2026-11-24 onward*). **The book's Part 15, each with a recommendation**: *braces with the old brackets still read; which PiDog kit and which Pi; the body keeps a learned action; it walks only with ROAM on; it never practises alone; what wakes it; a plain voice when alone; its own Redmine project and lane; THE BRAIN's interface moved to its own repository; the words (BODY, WRAPPER, SHEET, ACTION, BEAT, GATE, MANNER, ROAM, PRACTICE, SHOWN, TRIED, FOUND, EMBODY); a DESIGNS shelf in the LIBRARY and whether a design is read aloud; the second robot's name and API.* 9.38.~~ ***Answered 2026-11-24 by multiple choice; see Settled.***
 - **Is the player's balance shown, and how?** (*T-616; the user, 2026-11-23, to be asked again 2026-11-24 after a field test: "balance does represent intelligence (mark) and understanding (root) so we would miss the truth of balance if we hid that"*). **0.7's rule 2 keeps ROOTS uncounted**, *so for now the lean is only heard and seen.* 0.7.
 - **What a daemon's second type adds to its three notes** (*T-615; the user, 2026-11-23: for true synesthesia the second type should influence something*). **For now it adds nothing**; *a faint fourth colour or a blend of the two tonics were drafted (`docs/three-notes-draft.md` 5), to be asked again once the user has field tested C-490.* 9.36.
 
