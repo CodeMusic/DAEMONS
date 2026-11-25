@@ -7,10 +7,11 @@ LANES = {
   'art' => 'sprites, buildings, covers', 'app' => 'the companion app and site', 'hub' => 'the server, the Tiiny, the mind',
   'esp32' => 'ESP32 boards: T-Watch Ultra, the handhelds', 'pi-zero' => 'Pi Zero devices: the Cardputer Zero',
   'playground' => 'daemons-eudaimonia: EUDAIMONIA, and the game in a browser', 'docs' => 'manuals, READMEs, wikis, release docs',
+  'body' => 'daemons-embodied: a daemon in a robot body, the wrappers and the body program',   # T-617's question 8, 2026-11-25
   'ops' => 'roverbyteseer, Redmine, backups, the nightly mirror',
 }
 role = Role.find_by!(name: 'Ticket keeper')
-projects = Project.where(identifier: %w[context-content daemons companion eudaimonia]).to_a
+projects = Project.where(identifier: %w[context-content daemons companion eudaimonia embodied]).to_a
 LANES.each do |lane, what|
   login = "lane-#{lane}"
   u = User.find_by_login(login) || User.new

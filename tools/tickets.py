@@ -5,6 +5,9 @@ The plan (the user, 2026-11-17, by multiple choice): Redmine on roverbyteseer ho
 and the companion's TODO.md (C-); the ids stay T-/C- for good, in a Ticket field; both TODO files become a mirror
 generated from Redmine, so a fresh clone or a cloud session can still read them. A third project since 2026-11-20:
 daemons-eudaimonia's TODO.md (E-, Redmine's `eudaimonia`, C-411's point 1; the prefix the user's, by multiple choice).
+A fourth since 2026-11-25: daemons-embodied's TODO.md (B- for BODIES, Redmine's `embodied`, worked as the lane `body`;
+T-617's question 8, the user's by multiple choice). A project whose repository is not linked in beside this one (a
+worktree, a fresh clone) is left out of what the files are read for, with a line saying so.
 
 This first slice touches nothing on the network. It parses both files into the payload Redmine would be sent --
 subject, description, status, custom fields -- and proves the cut-over loses nothing: the files are rebuilt from that
@@ -42,13 +45,14 @@ FILES = {
     "daemons": ROOT / "docs/TODO.md",
     "companion": (ROOT / "companion").resolve() / "TODO.md",
     "eudaimonia": (ROOT / "eudaimonia").resolve() / "TODO.md",   # ~/Projects/daemons-eudaimonia, one table like the companion's
+    "embodied": (ROOT / "embodied").resolve() / "TODO.md",       # ~/Projects/daemons-embodied (2026-11-25), one table too
 }
-PREFIX = {"daemons": "T", "companion": "C", "eudaimonia": "E"}
+PREFIX = {"daemons": "T", "companion": "C", "eudaimonia": "E", "embodied": "B"}
 
-ROW = re.compile(r"^\| (?P<id>(~~)?\*\*(?P<p>[TCE])-(?P<n>\d+)(?P<sfx>[a-z]?)\*\*(~~)?) \| ")
+ROW = re.compile(r"^\| (?P<id>(~~)?\*\*(?P<p>[TCEB])-(?P<n>\d+)(?P<sfx>[a-z]?)\*\*(~~)?) \| ")
 SEP = re.compile(r"^\|(\s*-+\s*\|)+\s*$")
 SHA = re.compile(r"(?<![0-9A-Za-z/#=-])([0-9a-f]{7,12})(?![0-9A-Za-z])")
-REPO_WORD = re.compile(r"\b(engineGba|engine|companion|eudaimonia|playground|engineAi)\b[^|()]{0,12}$")   # playground: eudaimonia's first name (C-438)
+REPO_WORD = re.compile(r"\b(engineGba|engine|companion|eudaimonia|playground|embodied|engineAi)\b[^|()]{0,12}$")   # playground: eudaimonia's first name (C-438)
 PLACEHOLDER = "@@tickets {}@@"
 TICKET_TABLES = ("what", "ticket")  # the first column a table of tickets is headed by
 
@@ -176,7 +180,7 @@ def goals_versions(project, text):
         end = text.find("\n## ", m.end())
         body = text[m.end(): end if end != -1 else len(text)]
         body = body.split("\n| ", 1)[0]
-        ids = sorted({ticket_key(p, n, s) for p, n, s in re.findall(r"\b([TCE])-(\d+)([a-z]?)\b", body)},
+        ids = sorted({ticket_key(p, n, s) for p, n, s in re.findall(r"\b([TCEB])-(\d+)([a-z]?)\b", body)},
                      key=lambda k: (k[0], int(re.sub(r"\D", "", k))))
         out.append({"name": f"{m.group(1)} {m.group(2)}", "tickets": ids})
     return out
@@ -185,6 +189,9 @@ def goals_versions(project, text):
 def load_all():
     data = {}
     for project, path in FILES.items():
+        if project != "daemons" and not path.exists():   # its repository is not linked in here: leave it out
+            print(f"{project}: no {path.parent.name}/TODO.md here (not linked in); left out", file=sys.stderr)
+            continue
         text = path.read_text(encoding="utf-8")
         frame, tickets, notes = parse(project, text)
         data[project] = {"path": str(path), "frame": frame, "tickets": tickets, "notes": notes,
@@ -527,7 +534,7 @@ def export(out):
 
 # ---- lanes: a session works as its lane (the user, 2026-11-17: tickets assigned to lanes, sessions pick them up) ----
 TRUTH = Path.home() / ".local/share/daemons-tickets/truth"
-PROJECT_OF = {"T": "daemons", "C": "companion", "E": "eudaimonia"}
+PROJECT_OF = {"T": "daemons", "C": "companion", "E": "eudaimonia", "B": "embodied"}
 
 
 def truth():
@@ -540,9 +547,9 @@ def truth():
 
 
 def norm_key(k):
-    m = re.fullmatch(r"\s*([TCEtce])-0*(\d+)([a-z]?)\s*", k)
+    m = re.fullmatch(r"\s*([TCEBtceb])-0*(\d+)([a-z]?)\s*", k)
     if not m:
-        raise SystemExit(f"not a ticket id: {k!r} (T-581, C-397, E-1)")
+        raise SystemExit(f"not a ticket id: {k!r} (T-581, C-397, E-1, B-2)")
     return f"{m.group(1).upper()}-{int(m.group(2))}{m.group(3)}"
 
 
@@ -624,21 +631,21 @@ def new_ticket(a):
         if a.to not in ids:
             raise SystemExit(f"no lane {a.to!r}; lanes: {', '.join(sorted(ids))}")
         owner = ids[a.to]
-    # the Ready table: the run of the open tickets (the companion and eudaimonia have one table)
+    # the Ready table: the run of the open tickets (the companion, eudaimonia and embodied have one table)
     issues = rm.issues(a.project)
     ready = [cf(i) for i in issues if i["status"]["name"] == "Ready"] or [cf(i) for i in issues]
     run = max(int(c["Run"]) for c in ready if c.get("Run"))
     desc = f"**{a.title}** (*{a.source}*)" + (f": {a.body}" if a.body else "")
     for attempt in range(5):
         issues = rm.issues(a.project)
-        nums = [int(m.group(1)) for m in (re.fullmatch(r"[TCE]-(\d+)[a-z]?", c.get("Ticket") or "")
+        nums = [int(m.group(1)) for m in (re.fullmatch(r"[TCEB]-(\d+)[a-z]?", c.get("Ticket") or "")
                                           for c in map(cf, issues)) if m]
         order = max(int(c["Order"]) for c in map(cf, issues) if c.get("Order")) + 1
         key = f"{prefix}-{max(nums) + 1}"
         vals = {"Ticket": key, "Run": str(run), "Order": str(order)}
         if a.project == "daemons":   # | | what | where | from |
             vals.update({"Where": a.where or EMPTY, "From": a.source})
-        else:                        # | | Ticket | State | See |  (companion, eudaimonia: a state line, then related tickets)
+        else:                        # | | Ticket | State | See |  (companion, eudaimonia, embodied: a state line, then related tickets)
             vals.update({"State": EMPTY, "See": a.where or EMPTY})
         made = rm.call("POST", "/issues.json", {"issue": {
             "project_id": p["id"], "tracker_id": next(x["id"] for x in p["trackers"] if x["name"] == "Job"),
@@ -709,7 +716,7 @@ def main():
     nw.add_argument("--project", choices=list(PREFIX), required=True)
     nw.add_argument("--title", required=True, help="the bold title")
     nw.add_argument("--body", default="", help="the rest of the 'what' cell, one line")
-    nw.add_argument("--where", default="", help="daemons: the where column; companion, eudaimonia: the See column")
+    nw.add_argument("--where", default="", help="daemons: the where column; companion, eudaimonia, embodied: the See column")
     nw.add_argument("--from", dest="source", required=True, help="who asked and when: the user, 2026-11-17")
     nw.add_argument("--to", help="assign to this lane (default: your own)")
     mi = sub.add_parser("mind", help="E-12: the lane's WORKING MEMORY on EUDAIMONIA -- what it has in mind now")
@@ -726,7 +733,7 @@ def main():
                       ("ask", "put a question to the user: Needs decision, its choices listed for THE DASHBOARD")):
         x = sub.add_parser(name, help=hlp)
         x.add_argument("--lane", help="work as this lane (its key in ~/.redmine.env): game, story, audio, art, app, "
-                                      "hub, esp32, pi-zero, playground, docs, ops")
+                                      "hub, esp32, pi-zero, playground, body, docs, ops")
         if name != "mine":
             x.add_argument("ticket")
         else:

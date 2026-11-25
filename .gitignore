@@ -57,6 +57,8 @@ companion
 # daemons-eudaimonia (2026-10-19, T-428; renamed 2026-11-20, C-438): EUDAIMONIA to come, the game in a browser for demos
 # and beta tests today, its own repo, symlinked too
 eudaimonia
+# daemons-embodied (2026-11-25, T-617): a daemon in a robot body, its own repo, symlinked too
+embodied
 
 # the bridge venv -- rebuilt by ./bindDaemons.sh --ai when absent
 ai/bridgevenv/

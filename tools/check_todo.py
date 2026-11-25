@@ -12,7 +12,9 @@ Fails (exit 1) on any of:
     not the newest folder under `ROM RELEASE/`;
   * in daemons-eudaimonia's TODO.md (E-, 2026-11-20, C-411's first point), where it is linked in
     as eudaimonia/: a conflict marker, a malformed row, or an id twice;
-  * after the cut-over, any of the three TODO files that is not Redmine's mirror.
+  * in daemons-embodied's TODO.md (B-, 2026-11-25, T-617's question 8), where it is linked in as embodied/: the
+    same three;
+  * after the cut-over, any of the TODO files linked in here that is not Redmine's mirror.
 
 Run from the repo root. `--quiet` prints only failures.
 """
@@ -92,6 +94,25 @@ else:
     elif not marks and not bad:
         say(f"ok    eudaimonia/TODO.md: {len(ids)} E- ticket(s), each once")
 
+# ---- daemons-embodied's TODO.md (B-, 2026-11-25): one table, mirrored from Redmine like eudaimonia's -----------------
+btodo = (ROOT / "embodied").resolve() / "TODO.md"
+if not btodo.exists():
+    say("ok    no embodied/TODO.md here (no embodied/ link: a worktree or a fresh clone)")
+else:
+    b = btodo.read_text(encoding="utf-8").split("\n")
+    marks = [i + 1 for i, l in enumerate(b) if re.match(r"^(<<<<<<<|=======|>>>>>>>)( |$)", l)]
+    if marks:
+        fail(f"{len(marks)} conflict-marker line(s) in embodied/TODO.md, first at line {marks[0]}")
+    bad = [l[:40] for l in b if re.match(r"\| (~~)?\*\*B-\d+\*\*(~~)? [^|]", l)]
+    if bad:
+        fail(f"{len(bad)} ticket row(s) missing the `|` after the id in embodied/TODO.md: {bad[0]}...")
+    ids = [m.group(1) for l in b for m in [re.match(r"\| (?:~~)?\*\*(B-\d+)\*\*", l)] if m]
+    twice = sorted({k for k in ids if ids.count(k) > 1})
+    if twice:
+        fail(f"embodied/TODO.md has an id twice: {' '.join(twice)}")
+    elif not marks and not bad:
+        say(f"ok    embodied/TODO.md: {len(ids)} B- ticket(s), each once")
+
 # ---- the bible's version vs CLAUDE.md -------------------------------------------
 vision = (ROOT / "docs/vision.md").read_text(encoding="utf-8")
 vm = re.search(r"living design bible, v(\d+\.\d+)", vision)
@@ -150,7 +171,7 @@ else:
              "`python3 tools/tickets.py mirror --from-redmine --write` (" + (r.stdout + r.stderr).strip()[:200] + ")")
     else:
         n = sum(1 for l in r.stdout.split("\n") if ": current" in l)
-        say(f"ok    all {n} TODO files (DAEMONS, the companion, eudaimonia) are Redmine's mirror")
+        say(f"ok    all {n} TODO files linked in here (of DAEMONS, the companion, eudaimonia, embodied) are Redmine's mirror")
 
 if failures:
     print(f"\n{len(failures)} failure(s).")

@@ -7,9 +7,10 @@
 # so it cannot take another session's work into its commit.
 #
 #   truth = files    (until the cut-over): files -> Redmine (`sync`), then prove Redmine rebuilds the files exactly.
-#   truth = redmine  (after it): Redmine -> all three TODO files (`mirror`, which refuses to drop any ticket):
-#                    DAEMONS' docs/TODO.md (T-), the companion's TODO.md (C-) and daemons-eudaimonia's TODO.md (E-,
-#                    since 2026-11-20, C-411's first point), each committed in its own repository.
+#   truth = redmine  (after it): Redmine -> all four TODO files (`mirror`, which refuses to drop any ticket):
+#                    DAEMONS' docs/TODO.md (T-), the companion's TODO.md (C-), daemons-eudaimonia's TODO.md (E-,
+#                    since 2026-11-20, C-411's first point) and daemons-embodied's TODO.md (B-, since 2026-11-25,
+#                    T-617's question 8), each committed in its own repository.
 #   Either way: `export` writes every ticket with its history to docs/tickets/redmine-export.json, the secrets check
 #   runs, and only the TODO files and the export are committed (by path) and pushed. The raw database dump never is:
 #   it holds keys and password hashes, and stays on roverbyteseer and in ~/Backups/redmine-roverbyteseer.
@@ -22,6 +23,7 @@ BASE="$HOME/.local/share/daemons-tickets"
 D="$BASE/DAEMONS"
 C="$BASE/daemons-companion"
 E="$BASE/daemons-eudaimonia"            # only its TODO.md is checked out
+B="$BASE/daemons-embodied"              # only its TODO.md is checked out
 MAIN="$HOME/Projects/DAEMONS"           # only for docs/private (the secrets patterns), linked in, never written
 PY=/usr/bin/python3
 TRUTH=$(tr -d '[:space:]' < "$BASE/truth" 2>/dev/null || true); TRUTH=${TRUTH:-files}
@@ -42,22 +44,27 @@ setup() {   # first run only: slim clones, and the links tickets.py and check_se
     git clone -q --depth 1 --filter=blob:none --sparse https://github.com/CodeMusic/daemons-eudaimonia.git "$E" || return 1
     git -C "$E" sparse-checkout set --no-cone /TODO.md || return 1
   fi
+  if [ ! -d "$B/.git" ]; then
+    git clone -q --depth 1 --filter=blob:none --sparse https://github.com/CodeMusic/daemons-embodied.git "$B" || return 1
+    git -C "$B" sparse-checkout set --no-cone /TODO.md || return 1
+  fi
   ln -sfn "$C" "$D/companion"
   ln -sfn "$E" "$D/eudaimonia"
+  ln -sfn "$B" "$D/embodied"
   [ -d "$MAIN/docs/private" ] && ln -sfn "$MAIN/docs/private" "$D/docs/private"
   return 0
 }
 
 fresh() { git -C "$1" fetch -q --depth 1 origin main && git -C "$1" reset -q --hard origin/main; }
 
-secrets_ok() {   # the DAEMONS clone through check_secrets.py; the companion's and eudaimonia's TODO through the same patterns
+secrets_ok() {   # the DAEMONS clone through check_secrets.py; the other three TODO files through the same patterns
   ( cd "$D" && $PY tools/check_secrets.py --quiet ) || return 1
-  $PY - "$D/docs/private/secrets_patterns.txt" "$C/TODO.md" "$E/TODO.md" <<'EOF'
+  $PY - "$D/docs/private/secrets_patterns.txt" "$C/TODO.md" "$E/TODO.md" "$B/TODO.md" <<'EOF'
 import re, sys
 from pathlib import Path
 pat = Path(sys.argv[1])
 if not pat.exists():
-    print("secrets: no patterns here; the companion's and eudaimonia's TODO not checked"); sys.exit(0)
+    print("secrets: no patterns here; the companion's, eudaimonia's and embodied's TODO not checked"); sys.exit(0)
 rx = [re.compile(l.strip()) for l in pat.read_text().splitlines()
       if l.strip() and not l.strip().startswith("#")]
 for f in sys.argv[2:]:
@@ -104,7 +111,7 @@ for wait in $(seq 1 36); do
 done
 setup || fail "could not clone"
 for attempt in 1 2 3; do
-  fresh "$D" && fresh "$C" && fresh "$E" || fail "could not fetch"
+  fresh "$D" && fresh "$C" && fresh "$E" && fresh "$B" || fail "could not fetch"
   cd "$D" || fail "no clone"
   if [ "$TRUTH" = redmine ]; then
     # a row someone wrote or changed in a TODO file by hand since the last mirror is carried into Redmine first, so
@@ -125,6 +132,9 @@ for attempt in 1 2 3; do
   fi
   if [ $r -eq 0 ] && [ "$TRUTH" = redmine ]; then
     commit_push "$E" "Tickets nightly $day: TODO.md mirrored from Redmine (T-581)" TODO.md; r=$?
+  fi
+  if [ $r -eq 0 ] && [ "$TRUTH" = redmine ]; then
+    commit_push "$B" "Tickets nightly $day: TODO.md mirrored from Redmine (T-581)" TODO.md; r=$?
   fi
   [ $r -eq 0 ] && { log "done"; exit 0; }
   [ $r -eq 1 ] && fail "commit"

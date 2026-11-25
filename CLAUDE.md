@@ -22,8 +22,8 @@ are daemons and the type chart is an argument about consciousness. **Design is w
   log with a **Reversed** table — check that before re-suggesting something.
 - **`docs/CHANGELOG.md`** is what moved and when.
 - **The tickets live in Redmine** (T-581; the user, 2026-11-17): http://roverbyteseer:3333, projects `daemons` (T-),
-  `companion` (C-) and `eudaimonia` (E-, 2026-11-20), over the tailnet. **`docs/TODO.md`, the companion's `TODO.md` and
-  eudaimonia's `TODO.md` are its mirror** -- rebuilt
+  `companion` (C-), `eudaimonia` (E-, 2026-11-20) and `embodied` (B- for BODIES, 2026-11-25), over the tailnet.
+  **`docs/TODO.md`, the companion's `TODO.md`, eudaimonia's `TODO.md` and embodied's `TODO.md` are its mirror** -- rebuilt
   from Redmine every night at 04:45 and committed, with every ticket's history in `docs/tickets/redmine-export.json`,
   so a fresh clone or a cloud session can still read every ticket. **Never edit a ticket row in a TODO file by hand**:
   the mirror overwrites it and `check_todo.py` stops the push. The prose around the tables (the rules, the companion's
@@ -31,7 +31,7 @@ are daemons and the type chart is an argument about consciousness. **Design is w
   A ticket is still work that has been **decided and not done** -- *the Open log holds a **question**, a ticket holds
   a **job***, and an item moves across the moment it stops being a decision. **A request becomes a ticket the moment
   it would otherwise live only in a conversation.** Ids are permanent; a closed ticket keeps its commit, never deleted.
-  **Every session works as its lane** (game, story, audio, art, app, hub, esp32, pi-zero, playground, docs, ops; the
+  **Every session works as its lane** (game, story, audio, art, app, hub, esp32, pi-zero, playground, body, docs, ops; the
   keys are in `~/.redmine.env`):
   ```sh
   python3 tools/tickets.py mine --lane game                 # your lane's open tickets, most important first
@@ -72,6 +72,7 @@ DAEMONS/             <- ALWAYS root sessions here (memory lives here)
   engineAi/  ----->  symlink to ../gpt-play-pokemon-firered-daemons
   companion/ ----->  symlink to ../daemons-companion   (the goal companion: app, server, devices)
   eudaimonia/ ---->  symlink to ../daemons-eudaimonia  (EUDAIMONIA to come; the game in a browser today)
+  embodied/ ----->  symlink to ../daemons-embodied    (a daemon in a robot body; designed, nothing built yet)
 ```
 
 `engineAi/` is a fork of Clad3815/gpt-play-pokemon-firered: it drives mGBA over
@@ -106,6 +107,15 @@ moment they are asked for and answers only this machine, a private network and t
 public at CodeMusic/daemons-eudaimonia -- **nothing personal goes in it either.** Its Redmine lane is still `playground`;
 its tickets are E- (Redmine's `eudaimonia` project, mirrored into its `TODO.md`), C-411, C-436, C-437 and C-439 having
 become E-1 to E-4.
+
+`embodied/` is **daemons-embodied** (2026-11-25, T-617): DAEMONS EMBODIED, a daemon in a robot body -- one body program
+and a wrapper for each kind of body, the SunFounder PiDog first (a Pi Zero 2 W with an LLM630 Compute Kit as its brain).
+**Nothing in it is built yet.** Its design is a book here, `docs/DAEMONS-embodied.pdf` (`docs/manual-embodied/`,
+`python3 tools/manual.py --book embodied --write`), and bible 9.38, reviewed by the user on 2026-11-24; read the part a
+ticket names before writing its code. Python on the body. Public at CodeMusic/daemons-embodied -- **nothing personal
+goes in it, and no key.** Its Redmine lane is `body`; its tickets are B- (Redmine's `embodied` project, mirrored into
+its `TODO.md`), B-1 the design and B-2 its first code. Its own `CLAUDE.md` holds the rules the design fixes (nothing a
+model wrote reaches a driver; every action through the gate; STOP a reflex outside any model).
 
 **daemons-praxis** (2026-11-20, C-435) is PRAXIS's engine, out of the companion with its history: the event log, the
 fold, the merge rules and ARETE's ledger, the same code on the phone and the hub. It has **no symlink here and needs
