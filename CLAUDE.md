@@ -128,8 +128,8 @@ the companion's `C-` ids.
 **A new repo goes into GitHub Desktop on both machines** (the user, 2026-11-25: they review changes and branches
 there). Whichever session creates a GitHub repo, in the same turn: clone it into `~/Projects/<name>` on this laptop
 **and** on roverbyteseer (`ssh roverbyte@roverbyteseer`; public repos clone over https, it has no GitHub login), then
-add it to GitHub Desktop on both with `open "x-github-client://openLocalRepo/$HOME/Projects/<name>"` (over ssh on
-roverbyteseer, which needs its console login), and tell the user the repo's name. Build-only working copies (e.g.
+add it to GitHub Desktop on both with `open -a "GitHub Desktop" "$HOME/Projects/<name>"` (over ssh on
+roverbyteseer, which needs its console login; the `x-github-client://openLocalRepo/` link silently does nothing), and tell the user the repo's name. Build-only working copies (e.g.
 roverbyteseer's `~/Projects/game-build/`) are not added.
 
 Every one of these symlinks is gitignored and no fork is ever vendored: the engines carry
