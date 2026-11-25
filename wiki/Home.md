@@ -77,7 +77,7 @@ follows the real calendar's holidays, and gives each edition an instrument to pl
 daemons have all been drawn again, in a style of their own.
 
 Releases come often, each one named for the version of the design bible it was built against
-(see [Releases](Releases)); the newest is **v11.418.1**, from 2026-11-25, and
+(see [Releases](Releases)); the newest is **v11.418.2**, from 2026-11-25, and
 the newest thing in it that can be told about: MUSAI grows into seven forms now, SONGMUSAI and LANGMUSAI joining
 the five, and both of them change with the seasons as the others do. Before it, after a trial of new drawings, six daemons went back to the art
 they had (LODESTAR, REFLECTION and BASTET their painted look, CANOPY its old tree, WIRETAP's and MONOLITH's backs)
