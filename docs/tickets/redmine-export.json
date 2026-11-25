@@ -64429,7 +64429,7 @@
       "id": 11,
       "name": "Lane hub"
      },
-     "closed_on": null,
+     "closed_on": "2026-11-25T06:19:30Z",
      "created_on": "2026-11-24T05:43:45Z",
      "custom_fields": [
       {
@@ -64455,12 +64455,12 @@
       {
        "id": 5,
        "name": "Commits",
-       "value": null
+       "value": "daemons-companion@fb2b017a\ndaemons-eudaimonia@9a0e20b"
       },
       {
        "id": 6,
        "name": "Branch",
-       "value": null
+       "value": ""
       },
       {
        "id": 7,
@@ -64514,7 +64514,64 @@
      "estimated_hours": null,
      "id": 1155,
      "is_private": false,
-     "journals": [],
+     "journals": [
+      {
+       "created_on": "2026-11-25T06:11:22Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "2",
+         "old_value": "1",
+         "property": "attr"
+        },
+        {
+         "name": "6",
+         "new_value": "c508-renders",
+         "old_value": null,
+         "property": "cf"
+        }
+       ],
+       "id": 528,
+       "notes": "Claimed by lane-hub on c508-renders.",
+       "private_notes": false,
+       "updated_on": "2026-11-25T06:11:22Z",
+       "user": {
+        "id": 11,
+        "name": "Lane hub"
+       }
+      },
+      {
+       "created_on": "2026-11-25T06:19:30Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "6",
+         "old_value": "2",
+         "property": "attr"
+        },
+        {
+         "name": "5",
+         "new_value": "daemons-companion@fb2b017a\ndaemons-eudaimonia@9a0e20b",
+         "old_value": null,
+         "property": "cf"
+        },
+        {
+         "name": "6",
+         "new_value": "",
+         "old_value": "c508-renders",
+         "property": "cf"
+        }
+       ],
+       "id": 529,
+       "notes": "Closed by lane-hub: daemons-companion@fb2b017a, daemons-eudaimonia@9a0e20b.",
+       "private_notes": false,
+       "updated_on": "2026-11-25T06:19:30Z",
+       "user": {
+        "id": 11,
+        "name": "Lane hub"
+       }
+      }
+     ],
      "priority": {
       "id": 2,
       "name": "Normal"
@@ -64525,9 +64582,9 @@
      },
      "start_date": "2026-11-24",
      "status": {
-      "id": 1,
-      "is_closed": false,
-      "name": "Ready"
+      "id": 6,
+      "is_closed": true,
+      "name": "Closed"
      },
      "subject": "C-508 REVERIE's bytes on the hub: drift, music and render kept apart, counted, the oldest renders let go",
      "total_estimated_hours": null,
@@ -64535,7 +64592,7 @@
       "id": 1,
       "name": "Job"
      },
-     "updated_on": "2026-11-24T05:43:45Z",
+     "updated_on": "2026-11-25T06:19:30Z",
      "watchers": []
     },
     {
@@ -73101,6 +73158,125 @@
       "name": "Job"
      },
      "updated_on": "2026-11-25T05:55:12Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 11,
+      "name": "Lane hub"
+     },
+     "attachments": [],
+     "author": {
+      "id": 11,
+      "name": "Lane hub"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T06:19:40Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-573"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "571"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "(empty)"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**REVERIE's renders carry a daemon's machine voice (square waves, glitches, waver) and the isochronic layer -- C-508 renders only the sine beats and the bed** (*C-508's own gap, 2026-11-25*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1282,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-573 REVERIE's renders carry a daemon's machine voice (square waves, glitches, waver) and the isochronic layer -- C-508 renders only the sine beats and the bed",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T06:19:40Z",
      "watchers": []
     }
    ],
@@ -145746,6 +145922,30 @@
         "id": 6,
         "name": "Lane game"
        }
+      },
+      {
+       "created_on": "2026-11-25T06:48:55Z",
+       "details": [],
+       "id": 531,
+       "notes": "Stage 12 (a touch-up) released in v11.418.1, drafted and built on roverbyteseer (~/Projects/game-build; its build reproduced v11.416.3 byte for byte): CONJECTURE, LEMMA MIND, SINGULAR, REBUTTAL, CANOPY, DELTA back over 15% both sides (engine 190bd02cb, DAEMONS fe826dd7 + 22f8b7f6, companion d708bb20 -- the laptop's export, since roverbyteseer's newer Pillow renders art differently). Stage 13 (sixteen backs, SEEKMUSAI included -- the user: MUSAI forms are fair game) is built on roverbyteseer and goes out next.",
+       "private_notes": false,
+       "updated_on": "2026-11-25T06:48:55Z",
+       "user": {
+        "id": 6,
+        "name": "Lane game"
+       }
+      },
+      {
+       "created_on": "2026-11-25T07:16:05Z",
+       "details": [],
+       "id": 533,
+       "notes": "Stage 13 (the backs) released in v11.418.2: LANDFILL, SPIKE, CRON, SPINLOCK, RESPAWN, BADSEED, OTHERWISE, HONEYPOT, EMERGENCE, SUPERVISOR, SEEKMUSAI (the user: MUSAI forms are fair game), ENSEMBLE, CAPRICE, BACKPRESS, UPSTREAM, SPYWARE (engine 64e873566 -- the roverbyteseer build 916448c82 cherry-picked onto the tip; DAEMONS e85363be + ea97d60b; companion 047e6bd0, exported on the laptop after a build). Census: only the eight skipped on purpose (STEEPEST, five cocoons, TETHERING, COROUTINE) are under 10%; ~30 forms sit at 10-15% on one side. Open: icons and followers; whether to lift the 10-15% group.",
+       "private_notes": false,
+       "updated_on": "2026-11-25T07:16:05Z",
+       "user": {
+        "id": 6,
+        "name": "Lane game"
+       }
       }
      ],
      "priority": {
@@ -145768,7 +145968,7 @@
       "id": 1,
       "name": "Job"
      },
-     "updated_on": "2026-11-24T23:38:29Z",
+     "updated_on": "2026-11-25T07:16:05Z",
      "watchers": []
     },
     {
@@ -150449,7 +150649,7 @@
       "id": 16,
       "name": "Lane ops"
      },
-     "closed_on": null,
+     "closed_on": "2026-11-25T07:16:00Z",
      "created_on": "2026-11-25T05:20:20Z",
      "custom_fields": [
       {
@@ -150475,12 +150675,12 @@
       {
        "id": 5,
        "name": "Commits",
-       "value": null
+       "value": "DAEMONS@ca8c9db0"
       },
       {
        "id": 6,
        "name": "Branch",
-       "value": null
+       "value": ""
       },
       {
        "id": 7,
@@ -150534,6 +150734,151 @@
      "estimated_hours": null,
      "id": 1239,
      "is_private": false,
+     "journals": [
+      {
+       "created_on": "2026-11-25T07:16:00Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "6",
+         "old_value": "1",
+         "property": "attr"
+        },
+        {
+         "name": "5",
+         "new_value": "DAEMONS@ca8c9db0",
+         "old_value": null,
+         "property": "cf"
+        }
+       ],
+       "id": 532,
+       "notes": "Closed by lane-ops: DAEMONS@ca8c9db0.",
+       "private_notes": false,
+       "updated_on": "2026-11-25T07:16:00Z",
+       "user": {
+        "id": 16,
+        "name": "Lane ops"
+       }
+      }
+     ],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 6,
+      "is_closed": true,
+      "name": "Closed"
+     },
+     "subject": "T-637 Every ROM release on roverbyteseer; this laptop keeps two weeks",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T07:16:00Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 6,
+      "name": "Lane game"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T06:34:02Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-638"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "635"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "Claude desktop app; docs/; roverbyteseer"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**roverbyteseer as a second Claude environment** (*the user, 2026-11-25*): Add roverbyteseer as an SSH connection in the Claude desktop app's environment picker so lanes can be sent to either machine; the laptop stays the free dev instance, roverbyteseer runs with limits because it is the main server (agreed rules: ~/Projects/game-build, -j6, 1-2 GB, no brew relinks or launch agents). Report first; the user adds the connection.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1283,
+     "is_private": false,
      "journals": [],
      "priority": {
       "id": 2,
@@ -150549,13 +150894,132 @@
       "is_closed": false,
       "name": "Ready"
      },
-     "subject": "T-637 Every ROM release on roverbyteseer; this laptop keeps two weeks",
+     "subject": "T-638 roverbyteseer as a second Claude environment",
      "total_estimated_hours": null,
      "tracker": {
       "id": 1,
       "name": "Job"
      },
-     "updated_on": "2026-11-25T05:20:20Z",
+     "updated_on": "2026-11-25T06:34:02Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 6,
+      "name": "Lane game"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T06:34:19Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-639"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "636"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "tools/; launch agents on both machines"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Automatic pull and push for every repo, both machines, with merge conflicts handled** (*the user, 2026-11-25*): Every GitHub Desktop repo on the laptop and roverbyteseer kept in step automatically; conflicts handled safely (fast-forward when clean, rebase local-only commits, never stash or overwrite another session's work, report what needs a person). Prototype and test first; report to the user before any launch agent runs.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1285,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-639 Automatic pull and push for every repo, both machines, with merge conflicts handled",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T06:34:19Z",
      "watchers": []
     }
    ],
@@ -150743,7 +151207,7 @@
       {
        "id": 6,
        "name": "Branch",
-       "value": null
+       "value": "main"
       },
       {
        "id": 7,
@@ -150797,7 +151261,33 @@
      "estimated_hours": null,
      "id": 1242,
      "is_private": false,
-     "journals": [],
+     "journals": [
+      {
+       "created_on": "2026-11-25T06:26:21Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "2",
+         "old_value": "1",
+         "property": "attr"
+        },
+        {
+         "name": "6",
+         "new_value": "main",
+         "old_value": null,
+         "property": "cf"
+        }
+       ],
+       "id": 530,
+       "notes": "Claimed by lane-body on main.",
+       "private_notes": false,
+       "updated_on": "2026-11-25T06:26:21Z",
+       "user": {
+        "id": 17,
+        "name": "Lane body"
+       }
+      }
+     ],
      "priority": {
       "id": 2,
       "name": "Normal"
@@ -150808,9 +151298,9 @@
      },
      "start_date": "2026-11-25",
      "status": {
-      "id": 1,
+      "id": 2,
       "is_closed": false,
-      "name": "Ready"
+      "name": "In progress"
      },
      "subject": "B-2 A: the sheet, and the driver's calls",
      "total_estimated_hours": null,
@@ -150818,7 +151308,7 @@
       "id": 1,
       "name": "Job"
      },
-     "updated_on": "2026-11-25T05:53:12Z",
+     "updated_on": "2026-11-25T06:26:21Z",
      "watchers": []
     },
     {
@@ -159067,6 +159557,125 @@
       "name": "Job"
      },
      "updated_on": "2026-11-25T05:55:21Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 14,
+      "name": "Lane playground"
+     },
+     "attachments": [],
+     "author": {
+      "id": 6,
+      "name": "Lane game"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T06:34:09Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "E-26"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "26"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "EUDAIMONIA dashboard"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**The dashboard shows how much work each machine is doing** (*the user, 2026-11-25*): Per machine (the laptop, roverbyteseer, the Tiiny): which lanes/sessions run there, CPU/RAM/disk, and roverbyteseer's limits as the main server -- so work can be balanced between the dev laptop and the server.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1284,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 4,
+      "name": "daemons-eudaimonia"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "E-26 The dashboard shows how much work each machine is doing",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T06:34:09Z",
      "watchers": []
     }
    ],
