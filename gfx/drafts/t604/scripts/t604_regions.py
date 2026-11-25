@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""T-604 stages 1 to 11 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
+"""T-604 stages 1 to 13 (DRAFT): give a later form a REGION in its new part's colours, by RECOLOURING a natural part of the
 drawing already there (ears, crest, tail, drawers, wings), so it visibly colours in as it learns its part (T-597).
 
     python3 gfx/drafts/t604/scripts/t604_regions.py               # report each form: region, slots, coverage before/after
@@ -15,6 +15,9 @@ drawing already there (ears, crest, tail, drawers, wings), so it visibly colours
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 11 ... # ... and STAGE 11's sixteen, the last (FORMS11)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 12 ... # ... and STAGE 12's touch-up of six (FORMS12): a
                                                                   # change on the APPROVED art, <NAME>/approved/ (--base)
+    python3 gfx/drafts/t604/scripts/t604_regions.py --stage 13 ... # ... and STAGE 13's sixteen BACKS (FORMS13): a region
+                                                                  # on the back to match the front's, on the APPROVED art;
+                                                                  # --base also files base/ (before T-604) where missing
     python3 gfx/drafts/t604/scripts/t604_regions.py --draft       # write the drafts into gfx/drafts/t604/<NAME>/
     python3 gfx/drafts/t604/scripts/t604_regions.py --sheet DIR   # ... and the contact sheet into DIR
     python3 gfx/drafts/t604/scripts/t604_regions.py --built --sheet DIR   # the sheet from the engine as BUILT (after
@@ -44,6 +47,7 @@ OUT = os.path.join(ROOT, "gfx", "drafts", "t604")
 #  TODAY is the art as it stood before T-604 (engine b15b3aff5), filed in <NAME>/base/ by --base: once --install has run
 #  the engine carries the drafts, and a re-run must start from what they were drawn on, never from themselves.
 BASE_COMMIT = "b15b3aff5"
+BASE0_COMMIT = BASE_COMMIT          # kept: stage 13 files base/ from it for the forms T-604 never drafted
 TYPE = {"SIGNAL": (86, 190, 190), "LATENT": (92, 70, 118), "VECTOR": (206, 70, 70), "LOGIC": (96, 122, 158)}
 
 
@@ -1468,6 +1472,135 @@ FORMS12 = {
 }
 
 
+#  STAGE 13 (the user, 2026-11-25: "Yes, a stage 13 for the backs"; DRAFT): sixteen later forms waited under 10% on
+#  their BACK sprite only, because their region was drawn on the front (or, for the ten T-604 never drafted, their T-452
+#  colours sit on the front alone). Each back gets a region to match its front's: the same part of the body, in the
+#  same colours and slots, as the back view shows it; and a front under 15% is brought up with the same region.
+#  TODAY (APPROVED) is the engine at its tip after stage 12 (BASE13): each form's art as approved, in <NAME>/approved/
+#  (--stage 13 --base, which also files base/ from before T-604 for the ten never drafted). An entry is a change ON the
+#  approved art: its slotmap remaps only what is new (most into slots the front already waits on), "cols" re-tints.
+BASE13_COMMIT = "190bd02cb"
+FORMS13 = {
+    "LANDFILL": dict(
+        why="DEADLETTER line, stage 2 (T-452's art; never drafted by T-604): 13.0/0.0% waits -- its blues all in front",
+        region="the ARMS and the LEGS in the sludge's blues, both sides (the front's blue hands and feet, carried round)",
+        colour="G and Ab, notes its part sings (the front's blues)",
+        base=(51, 82, 122),
+        front=R((11, 26, 20, 45), (44, 33, 52, 46), (24, 46, 36, 50)),
+        back=R((13, 28, 21, 38), (42, 28, 50, 38), (20, 44, 30, 55), (34, 44, 44, 55)),
+        slotmap={1: 6, 2: 7, 3: 8, 4: 10}, ramp="cols", cols={}),
+    "SPIKE": dict(
+        why="STATIC line, stage 2 (T-452's art; never drafted by T-604): 11.1/0.1% waits -- the pink ears are front only",
+        region="the EARS pink behind as in front, the belt, toes and the pale diamond on the back lilac; in front the bolt TAIL pink and lilac",
+        colour="B and Ab, notes its part sings (the ears' pinks, the belt's lilac)",
+        base=(252, 181, 228),
+        front=R((41, 15, 52, 25)), back=R((16, 9, 23, 19), (40, 9, 47, 19)),
+        slotmap={1: 6, 2: 6, 3: 8, 4: 8}, ramp="cols", cols={},
+        extra=[dict(front=R((41, 26, 46, 47)), back=R((26, 26, 41, 27), (16, 52, 47, 53)), slotmap={1: 7, 2: 7, 3: 7, 4: 7}),
+               dict(front=R(), back=R((27, 29, 38, 38)), slotmap={1: 7})]),
+    "CRON": dict(
+        why="BEACON line, stage 2 (T-452's art; never drafted by T-604): 12.0/0.4% waits -- the gem is front only",
+        region="the CORE's back in the gem's aqua, and every ray's TIP aqua both sides",
+        colour="F, a note its part sings (the gem's aqua and teal)",
+        base=(194, 255, 246),
+        front=R((26, 8, 33, 13), (5, 28, 11, 35), (52, 28, 58, 35), (11, 39, 17, 46), (46, 39, 52, 46), (28, 47, 34, 54)),
+        back=R((29, 24, 35, 24), (27, 25, 37, 26), (26, 27, 38, 33), (27, 34, 37, 35), (29, 36, 35, 36), (14, 5, 21, 9), (40, 5, 46, 9), (4, 30, 9, 36), (54, 30, 59, 36), (16, 49, 22, 57), (38, 49, 44, 54)),
+        slotmap={1: 6, 2: 8, 3: 8}, ramp="cols", cols={}),
+    "SPINLOCK": dict(
+        why="LOOP line, stage 2 (T-452's art; never drafted by T-604): 11.1/0.4% waits -- gloves, feet and eyes all in front",
+        region="the GLOVES and the arms green, both sides (behind, the arms reach out to the gloves)",
+        colour="F, a note its part sings (the gloves' greens)",
+        base=(51, 226, 100),
+        front=R((7, 30, 17, 50), (9, 48, 17, 56), (41, 46, 48, 57)), back=R((5, 31, 21, 38), (42, 31, 58, 38), (21, 41, 42, 48)),
+        slotmap={1: 6, 2: 7, 3: 8, 4: 9}, ramp="cols", cols={}),
+    "RESPAWN": dict(
+        why="DANGLING line, stage 3 (stage 3's, approved): 20.6/4.0% waits -- the gold hands are big in front, small behind",
+        region="behind, the robe's two SIDE DRAPES gold, as the sleeves the gold hands come out of",
+        colour="Eb, a note its part sings (the hands' golds)",
+        base=(230, 175, 80),
+        front=R(), back=R((14, 11, 22, 32), (38, 11, 40, 21), (41, 11, 49, 32)),
+        slotmap={1: 7, 2: 8, 3: 8, 4: 8}, ramp="cols", cols={}),
+    "BADSEED": dict(
+        why="SKEW line, stage 2 (T-452's art; never drafted by T-604): 10.4/4.7% waits",
+        region="the SEED HEADS pink in front (their knobs behind already are), the flaps and the waist pink, the stalks and the leaves below brown behind",
+        colour="Bb and C, notes its part sings",
+        base=(232, 157, 227),
+        front=R((5, 38, 12, 45), (44, 38, 52, 45), (14, 5, 27, 13), (37, 5, 50, 13)), back=R((13, 38, 18, 48), (45, 38, 49, 48), (43, 39, 44, 40), (18, 21, 21, 25), (42, 21, 45, 25), (26, 32, 38, 32)),
+        slotmap={1: 6, 2: 6, 3: 7, 4: 7}, ramp="cols", cols={},
+        extra=[dict(front=R(), back=R((10, 8, 24, 18), (37, 8, 49, 18), (10, 48, 16, 55), (44, 48, 53, 55)), slotmap={4: 9, 3: 9, 2: 9})]),
+    "OTHERWISE": dict(
+        why="IFFALSE line, stage 3 (T-452's art; never drafted by T-604): 10.3/7.0% waits -- the face is front only",
+        region="the HIND WINGS an underwing's tan and red, both sides (the red antennae and legs carried in)",
+        colour="C# and B, notes its part sings",
+        base=(150, 38, 29),
+        front=R((10, 37, 21, 46), (37, 37, 49, 46)), back=R((10, 37, 21, 46), (37, 37, 49, 46)),
+        slotmap={2: 7, 3: 9, 4: 8}, ramp="cols", cols={}),
+    "HONEYPOT": dict(
+        why="SNARE line, stage 2 (T-452's art; never drafted by T-604): 12.8/7.0% waits -- the rim is all it has",
+        region="the POT's pale glaze the rim's honey yellow, both sides; behind, the leaves' pale veins too (yellow in front)",
+        colour="D, a note its part sings (the rim's honey)",
+        base=(194, 222, 105),
+        front=R((22, 36, 38, 44)), back=R((12, 33, 29, 47), (10, 12, 22, 27), (33, 12, 53, 27)),
+        slotmap={1: 7}, ramp="cols", cols={}),
+    "EMERGENCE": dict(
+        why="CANARY line, stage 2 (stage 3's, approved): 11.0/7.5% waits -- the violet tail tip is small behind",
+        region="the violet runs further up the TAIL, both sides",
+        colour="B, a note its part sings (the tail's violets)",
+        base=(170, 120, 215),
+        front=R((30, 42, 41, 53)), back=R((15, 40, 37, 55)),
+        slotmap={1: 9, 2: 9, 3: 10, 4: 10}, ramp="cols", cols={}),
+    "SUPERVISOR": dict(
+        why="POLL line, stage 2 (T-452's art; never drafted by T-604): 11.3/8.2% waits",
+        region="the WINGS' long feathers a pale blue, shaded in the chevrons' blues, both sides",
+        colour="G, a note its part sings (the chevrons' blues, and a paler one)",
+        base=(175, 205, 230),
+        front=R((6, 34, 16, 45), (48, 31, 57, 46)), back=R((0, 27, 12, 46), (40, 27, 57, 45)),
+        slotmap={1: 10, 2: 7, 3: 7, 4: 8}, ramp="cols", cols={10: (175, 205, 230)}),
+    "SEEKMUSAI": dict(
+        why="MUSAI branch (T-552's art; never drafted by T-604 -- a MUSAI form, FLAGGED): 13.6/8.4% waits",
+        region="the antennae, the helmet's lower band and the suit in VECTOR's red, both sides",
+        colour="VECTOR, the new type (the body's own red, slot 3)",
+        base=(206, 70, 70),
+        front=R((11, 8, 40, 12), (18, 38, 47, 47)), back=R((15, 9, 46, 13), (15, 26, 47, 28), (15, 37, 47, 49)),
+        slotmap={2: 3}, ramp="cols", cols={}),
+    "ENSEMBLE": dict(
+        why="BOOTSTRAP line, stage 2 (stage 4's, approved): 16.9/8.5% waits -- the violet leaves are front only",
+        region="behind, the palm's LEAVES violet, as the leaf crown is in front",
+        colour="Bb, a note its part sings (the leaves' violets)",
+        base=(170, 70, 163),
+        front=R(), back=R((8, 16, 20, 29), (43, 16, 55, 29), (28, 5, 35, 15)),
+        slotmap={2: 7, 3: 8, 4: 9}, ramp="cols", cols={}),
+    "CAPRICE": dict(
+        why="WHIM line, stage 2 (T-452's art; never drafted by T-604): 10.1/8.9% waits",
+        region="the PETALS' pale fill a pale pink, and the BUD on top pink, both sides (the petals' rims were all it had)",
+        colour="C, a note its part sings (the petals' pinks, and a pale one in 8, its 7 pixels a side merged into 6)",
+        base=(255, 111, 144),
+        front=R((15, 6, 31, 12)), back=R((26, 6, 40, 12)),
+        slotmap={2: 6, 3: 9, 4: 10}, merge={8: 6}, ramp="cols", cols={8: (255, 190, 205)},
+        extra=[dict(front=R((5, 13, 37, 26)), back=R((8, 13, 50, 26)), slotmap={1: 8})]),
+    "BACKPRESS": dict(
+        why="BOTTLENECK line, stage 2 (stage 4's, approved): 15.7/9.1% waits -- the fins show more in front",
+        region="behind, the fin MANE runs on down the back of the neck",
+        colour="F, a note its part sings (the fins' greens)",
+        base=(63, 154, 85),
+        front=R(), back=R((21, 12, 31, 14), (29, 15, 35, 38)),
+        slotmap={1: 8, 2: 9, 3: 9, 4: 10}, ramp="cols", cols={}),
+    "UPSTREAM": dict(
+        why="SPAWN line, stage 2 (stage 4's, approved): 13.3/9.3% waits -- the orange fins show more in front",
+        region="the dorsal fin's base and the tail's root orange in front; behind, the side fins and the tail",
+        colour="C#, a note its part sings (the fins' oranges)",
+        base=(245, 150, 90),
+        front=R((22, 13, 36, 16), (50, 38, 58, 42)), back=R((29, 34, 40, 36), (7, 34, 20, 46), (17, 16, 47, 22), (33, 42, 37, 46)),
+        slotmap={1: 7, 2: 7, 3: 10, 4: 10}, ramp="cols", cols={}),
+    "SPYWARE": dict(
+        why="RESIDENT line, stage 2 (stage 3's, approved): 22.3/9.7% waits -- the violet wings are big in front, small behind",
+        region="behind, the HIND WINGS violet too, as the wings are whole in front",
+        colour="B, a note its part sings (the wings' violet)",
+        base=(195, 105, 205),
+        front=R(), back=R((4, 35, 21, 40), (41, 35, 60, 40), (3, 19, 20, 34), (46, 19, 60, 34)),
+        slotmap={1: 10, 2: 10, 3: 9, 4: 9}, ramp="cols", cols={}),
+}
+
 
 def pal_of(w, k):
     return [tuple(c) for c in w.palette(k)]
@@ -1583,6 +1716,14 @@ def file_base(w):
                                   capture_output=True, check=True).stdout
             open(os.path.join(d, f), "wb").write(data)
         print("t604: base %s from %s" % (n, BASE_COMMIT))
+        orig = os.path.join(OUT, n, "base")
+        if STAGE == 13 and not os.path.exists(os.path.join(orig, "normal.pal")):
+            os.makedirs(orig, exist_ok=True)       # stage 13: a form T-604 never drafted gets its clean drawing too
+            for f in ("front.png", "back.png", "normal.pal", "shiny.pal"):
+                data = subprocess.run(["git", "-C", g.GBA, "show", "%s:%s/%s" % (BASE0_COMMIT, rel, f)],
+                                      capture_output=True, check=True).stdout
+                open(os.path.join(orig, f), "wb").write(data)
+            print("t604: base %s (before T-604) from %s" % (n, BASE0_COMMIT))
 
 
 def area(w, k, side):
@@ -1611,7 +1752,7 @@ def summary(w, n):
                     for i in sorted(set(FORMS[n]["slotmap"].values()) | set((FORMS[n].get("slotmap_back") or {}).values())
                                     | {b for ex in FORMS[n].get("extra") or ()
                                        for b in list(ex["slotmap"].values()) + list((ex.get("slotmap_back") or {}).values())}
-                                    | (set(FORMS[n].get("cols") or {}) if STAGE == 12 else set()))]   # stage 12 re-tints
+                                    | (set(FORMS[n].get("cols") or {}) if STAGE >= 12 else set()))]   # stage 12 re-tints
     return before, after, newslots, sorted(ua - ub), sorted(ub - ua)
 
 
@@ -1630,6 +1771,20 @@ def report(w):
 
 
 def sheet(w, outdir):
+    global ORDER
+    if STAGE == 13:     # sixteen rows is too tall for one sheet: two of eight
+        allf = ORDER
+        try:
+            for part, sl in (("a", allf[:8]), ("b", allf[8:])):
+                ORDER = sl
+                sheet1(w, outdir, part)
+        finally:
+            ORDER = allf
+        return
+    sheet1(w, outdir, "")
+
+
+def sheet1(w, outdir, part):
     os.makedirs(outdir, exist_ok=True)
     try:
         font = ImageFont.truetype("/System/Library/Fonts/Menlo.ttc", 12)
@@ -1637,9 +1792,11 @@ def sheet(w, outdir):
     except OSError:
         font = big = ImageFont.load_default()
     SC, CELL, LABEL = 2, 132, 250
+    if STAGE == 13:
+        LABEL = 310     # room for the BACK label beside the back row
     cols = [("TODAY", "today", None), ("today 0%", "today", 0), ("DRAFT 0%", "draft", 0),
             ("DRAFT 50%", "draft", 128), ("DRAFT 100%", "draft", 255)]
-    if STAGE == 12:     # TODAY is the approved art; beside it, the art before T-604, and the approved at 0% then and now
+    if STAGE >= 12:     # TODAY is the approved art; beside it, the art before T-604, and the approved at 0% then and now
         cols = [("BEFORE T-604", "orig", None), ("APPROVED", "today", None), ("APPROVED 0%", "today", 0),
                 ("DRAFT 0%", "draft", 0), ("DRAFT 50%", "draft", 128), ("DRAFT 100%", "draft", 255)]
     BG = (236, 236, 230)
@@ -1650,6 +1807,8 @@ def sheet(w, outdir):
     d = ImageDraw.Draw(im)
     d.text((12, 10), ("T-604 stage 12 (DRAFT): a touch-up -- six forms back over 15% waits, changed on the APPROVED art"
                       if STAGE == 12 else
+                      "T-604 stage 13 (DRAFT, sheet %s of 2): the BACKS -- a region on the back to match the front's"
+                      % ("1" if part == "a" else "2") if STAGE == 13 else
                       "T-604 stage %d (DRAFT): a region in the new part's colours, recoloured from the drawing" % STAGE),
            fill=(20, 20, 24), font=big)
     d.text((12, 34), "% = share of the form's OWN part learned (gencolourbysong's maths, approach A: what the game shows). "
@@ -1687,12 +1846,16 @@ def sheet(w, outdir):
                 with (Draft(w, n) if which == "draft" else Orig(w) if which == "orig" else Base(w)):
                     p, m = pic(k, side, share)
                 d.rectangle([x, yy, x + CELL, yy + CELL], fill=(205, 205, 172), outline=(200, 200, 194))
+                if STAGE == 13 and side == "back":     # the back is what stage 13 changes: framed in orange
+                    d.rectangle([x - 3, yy - 3, x + CELL + 3, yy + CELL + 3], outline=(230, 120, 20), width=2)
                 im.paste(p, (x + 2, yy + 2), m)
             d.text((x + 2, y + 4), title, fill=(70, 70, 70), font=font)
+        if STAGE == 13:
+            d.text((LABEL - 50, y + 22 + CELL + 4 + CELL // 2 - 8), "BACK", fill=(200, 90, 10), font=big)
         y += rowh
     d.text((12, H - 24), "Recolours only: the drawing is unchanged; only which palette slot a region's pixels use, and those "
            "slots' colours. Icons and followers: note only.", fill=(80, 80, 80), font=font)
-    path = os.path.join(outdir, "t604_stage%d.png" % STAGE)
+    path = os.path.join(outdir, "t604_stage%d%s.png" % (STAGE, part))
     im.save(path)
     print("t604: wrote %s" % path)
 
@@ -1740,6 +1903,9 @@ def main():
     if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "12":
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS12, list(FORMS12), 12, BASE12_COMMIT
         Base.SUB = "approved"       # the touch-up starts from the approved art, never from base/ (before T-604)
+    if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "13":
+        FORMS, ORDER, STAGE, BASE_COMMIT = FORMS13, list(FORMS13), 13, BASE13_COMMIT
+        Base.SUB = "approved"       # the backs start from the approved art (the engine's tip), as stage 12's did
     w = g.World()
     if "--base" in sys.argv:
         return file_base(w)
