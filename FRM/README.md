@@ -5,7 +5,7 @@ yet; the tickets that build it are listed at the end. Shown on EUDAIMONIA (the d
 
 ## Cycles and Revolutions
 
-Work runs in **cycles** of **one week** (the user's pick, 2026-11-25). Two **Forward** cycles of momentum are followed
+Work runs in **cycles** of **one week** (the user's pick, 2026-11-25), Monday to Sunday. **R1C1F starts Monday 30 November 2026**: R1C1F 30 Nov-6 Dec, R1C2F 7-13 Dec, R1C3H 14-20 Dec. Two **Forward** cycles of momentum are followed
 by a **Horizon** cycle: polish, bugs, documentation and tech debt first (new features allowed, refinement the focus).
 The three together are a **Revolution**.
 
