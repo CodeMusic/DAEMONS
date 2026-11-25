@@ -13,6 +13,8 @@ drawing already there (ears, crest, tail, drawers, wings), so it visibly colours
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 9 ...  # ... and STAGE 9's fifteen (FORMS9)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 10 ... # ... and STAGE 10's fifteen (FORMS10)
     python3 gfx/drafts/t604/scripts/t604_regions.py --stage 11 ... # ... and STAGE 11's sixteen, the last (FORMS11)
+    python3 gfx/drafts/t604/scripts/t604_regions.py --stage 12 ... # ... and STAGE 12's touch-up of six (FORMS12): a
+                                                                  # change on the APPROVED art, <NAME>/approved/ (--base)
     python3 gfx/drafts/t604/scripts/t604_regions.py --draft       # write the drafts into gfx/drafts/t604/<NAME>/
     python3 gfx/drafts/t604/scripts/t604_regions.py --sheet DIR   # ... and the contact sheet into DIR
     python3 gfx/drafts/t604/scripts/t604_regions.py --built --sheet DIR   # the sheet from the engine as BUILT (after
@@ -1391,6 +1393,81 @@ FORMS11 = {
         cols={8: (140, 170, 225), 9: (70, 106, 176), 10: (50, 45, 130)}),
 }
 
+#  STAGE 12 (the user, 2026-11-24: "T-604 stage 12", a TOUCH-UP; DRAFT): six forms from earlier stages fell back under
+#  10% waits after later stages, because a colour drawn for a later stage's EARLIER form now carries into them (INFERENCE's
+#  gold into CONJECTURE's tail, BOOSTING's blossom into CANOPY's leaves, ALLUVIUM's silt into DELTA's gills), or because
+#  their region was only ever about 10% (LEMMA MIND, SINGULAR, REBUTTAL). Each brought to 15-25% waits on both sides:
+#  first re-tint the region away from what carries it, then widen it into a natural neighbour, then an "extra" region.
+#  TODAY (APPROVED) is the engine at its tip after stage 11 (BASE12): each form's art as the user approved it in its own
+#  stage, filed in <NAME>/approved/ by --stage 12 --base; base/ stays the art before T-604 (the follower's clean drawing).
+#  A stage-12 entry is a change ON the approved art: its slotmap remaps only what is new, and "cols" re-tints slots.
+BASE12_COMMIT = "641be6567"
+FORMS12 = {
+    "CONJECTURE": dict(
+        why="HUNCH line, stage 3 (stage 3's, approved): 3.4% waits -- INFERENCE's gold (stage 4) now carries the tail's",
+        region="the TAIL and the ears, a paler gold; behind, the EARS' backs gold too (they are gold whole in front)",
+        colour="E, a note its part sings (gold), moved paler",
+        base=(250, 220, 110),
+        front=R(), back=R(),
+        #  the light gold kept 79 off INFERENCE's gold (215,170,60): CONJECTURE's own salmon (6) is 64 from it and carried,
+        #  so any new colour nearer than 64 becomes INFERENCE's "nearest" and is CARRIED; and 70 off INFERENCE's tan
+        slotmap={}, ramp="cols",
+        extra=[dict(front=R(), back=R((16, 7, 25, 13), (26, 7, 38, 13)), slotmap={1: 8, 2: 8, 4: 9})],
+        cols={8: (250, 220, 110)}),
+    "LEMMA MIND": dict(
+        why="PROOF line, stage 3 (stage 3's, approved): 9.6% waits -- the gold fists were only ever 9%",
+        region="all four FISTS gold whole: their steel shading now a dark amber (gloves, not gilded knuckles)",
+        colour="Eb, a note its part sings (gold into amber)",
+        base=(214, 160, 60),
+        front=R((4, 2, 22, 20), (42, 2, 60, 20), (2, 34, 14, 48), (50, 34, 62, 48)),
+        back=R((4, 2, 22, 22), (42, 2, 60, 22), (2, 40, 14, 52), (50, 40, 62, 52)),
+        #  the 31-pixel tan (6) folded into the gold beside it, to free a slot for the amber; the amber kept 77 off
+        #  PROOF's lost brown (123,93,53), whose nearest is the mauve (7) at 74: any nearer and the amber is CARRIED
+        #  and the gold moved a little deeper (214,160,60 -> 225,165,45): the tan folded away was what carried PROOF's
+        #  lost tan (180,150,109); the gold, 60 off it, became its nearest and was CARRIED. At 80 off, the mauve (7, 68,
+        #  carried already) is its nearest again
+        slotmap={3: 6}, merge={6: 10}, ramp="cols",
+        cols={6: (190, 110, 20), 10: (225, 165, 45)}),
+    "SINGULAR": dict(
+        why="CANARY line, stage 3 (stage 3's, approved): 9.5% waits -- the wings, horns and tail were only ever 10%",
+        region="the wings, BOTH horns and the WHOLE tail in flame orange, and the BELLY a pale flame (VECTOR's)",
+        colour="VECTOR, the new type, moved to flame orange: C# and D, with a peach",
+        base=(240, 120, 60),
+        front=R((8, 5, 13, 15), (39, 44, 49, 53)), back=R(),
+        slotmap={1: 8, 2: 8, 3: 9, 4: 9}, ramp="cols",
+        extra=[dict(front=R((14, 42, 40, 50)), back=R((20, 42, 50, 50)), slotmap={1: 10, 2: 8, 3: 9})],
+        cols={10: (250, 200, 160)}),
+    "REBUTTAL": dict(
+        why="PREMISE line, stage 2 (stage 4's, approved): 9.6% waits -- the gloves were only ever 10%",
+        region="the gloves, and a HEADGUARD to match them (the crown of the head), a boxer's orange",
+        colour="D, a note its part sings (orange)",
+        base=g.pc_rgb(2),
+        front=R(), back=R(), slotmap={}, ramp="cols",
+        #  behind, the guard runs down the back of the head too, under the seam (row 13), as a boxer's headgear does
+        extra=[dict(front=R((19, 6, 45, 12)), back=R((22, 6, 47, 12), (21, 14, 46, 16)), slotmap={1: 7, 2: 7, 3: 10, 4: 10})],
+        cols={}),
+    "CANOPY": dict(
+        why="BOOSTING line, stage 3 (stage 7's, approved): 4.9% waits -- BOOSTING's blossom (stage 10) now carries it",
+        region="the CANOPY's blossom, deepened to cerise", colour="C, a note its part sings (blossom, deepened)",
+        base=(250, 125, 195),
+        front=R(), back=R(),
+        #  66 off BOOSTING's blossom (245,185,205), whose nearest is CANOPY's pale leaf (56); 91 off its lost cream
+        #  (223,186,134) and 87 off its plum (170,95,165) -- any nearer and the blossom is CARRIED again
+        slotmap={}, ramp="cols",
+        cols={10: (250, 125, 195)}),
+    "DELTA": dict(
+        why="RUNOFF line, stage 3 (stage 8's, approved): 8.0% waits -- ALLUVIUM's silt (stage 10) now carries the gills' light and dark",
+        region="the spiked GILLS and the cheek, re-tinted brighter: a yellow-gold, an orange, a burnt orange",
+        colour="Eb and C#, notes its part sings (gold into burnt orange)",
+        base=g.pc_rgb(3),
+        front=R(), back=R(),
+        #  each kept past 80 off ALLUVIUM's silt (215,190,140), clay (160,120,75) and loam (105,65,45), nearer than
+        #  anything else DELTA has: within 80 and they are CARRIED
+        slotmap={}, ramp="cols",
+        cols={8: (255, 205, 60), 9: (240, 140, 50), 10: (205, 65, 30)}),
+}
+
+
 
 def pal_of(w, k):
     return [tuple(c) for c in w.palette(k)]
@@ -1487,6 +1564,11 @@ class Base(Draft):
     SUB = "base"
 
 
+class Orig(Draft):
+    """Stage 12: the art before T-604 (base/), shown beside the approved (Base, approved/ there)."""
+    SUB = "base"
+
+
 def file_base(w):
     """Each form's art before T-604, out of the engine's history (BASE_COMMIT), into <NAME>/base/."""
     import subprocess
@@ -1494,7 +1576,7 @@ def file_base(w):
         k = w.by_name[n]
         rel = \
             "graphics/pokemon/" + w.sp[k]["constant"].lower()
-        d = os.path.join(OUT, n, "base")
+        d = os.path.join(OUT, n, Base.SUB)          # stage 12: approved/, the art as approved (base/ is kept)
         os.makedirs(d, exist_ok=True)
         for f in ("front.png", "back.png", "normal.pal", "shiny.pal"):
             data = subprocess.run(["git", "-C", g.GBA, "show", "%s:%s/%s" % (BASE_COMMIT, rel, f)],
@@ -1528,7 +1610,8 @@ def summary(w, n):
         newslots = [(i, pal[i], g.name(t[i][1]), "CARRIED" if t[i][2] else "%d notes" % len(t[i][3]))
                     for i in sorted(set(FORMS[n]["slotmap"].values()) | set((FORMS[n].get("slotmap_back") or {}).values())
                                     | {b for ex in FORMS[n].get("extra") or ()
-                                       for b in list(ex["slotmap"].values()) + list((ex.get("slotmap_back") or {}).values())})]
+                                       for b in list(ex["slotmap"].values()) + list((ex.get("slotmap_back") or {}).values())}
+                                    | (set(FORMS[n].get("cols") or {}) if STAGE == 12 else set()))]   # stage 12 re-tints
     return before, after, newslots, sorted(ua - ub), sorted(ub - ua)
 
 
@@ -1556,13 +1639,18 @@ def sheet(w, outdir):
     SC, CELL, LABEL = 2, 132, 250
     cols = [("TODAY", "today", None), ("today 0%", "today", 0), ("DRAFT 0%", "draft", 0),
             ("DRAFT 50%", "draft", 128), ("DRAFT 100%", "draft", 255)]
+    if STAGE == 12:     # TODAY is the approved art; beside it, the art before T-604, and the approved at 0% then and now
+        cols = [("BEFORE T-604", "orig", None), ("APPROVED", "today", None), ("APPROVED 0%", "today", 0),
+                ("DRAFT 0%", "draft", 0), ("DRAFT 50%", "draft", 128), ("DRAFT 100%", "draft", 255)]
     BG = (236, 236, 230)
     rowh = 2 * (CELL + 4) + 34
     W = LABEL + len(cols) * (CELL + 8) + 12
     H = 70 + len(ORDER) * rowh + 30
     im = Image.new("RGB", (W, H), BG)
     d = ImageDraw.Draw(im)
-    d.text((12, 10), "T-604 stage %d (DRAFT): a region in the new part's colours, recoloured from the drawing" % STAGE,
+    d.text((12, 10), ("T-604 stage 12 (DRAFT): a touch-up -- six forms back over 15% waits, changed on the APPROVED art"
+                      if STAGE == 12 else
+                      "T-604 stage %d (DRAFT): a region in the new part's colours, recoloured from the drawing" % STAGE),
            fill=(20, 20, 24), font=big)
     d.text((12, 34), "% = share of the form's OWN part learned (gencolourbysong's maths, approach A: what the game shows). "
            "Front above, back below, 2x.", fill=(60, 60, 60), font=font)
@@ -1596,7 +1684,7 @@ def sheet(w, outdir):
             x = LABEL + ci * (CELL + 8)
             for si, side in enumerate(("front", "back")):
                 yy = y + 22 + si * (CELL + 4)
-                with (Draft(w, n) if which == "draft" else Base(w)):
+                with (Draft(w, n) if which == "draft" else Orig(w) if which == "orig" else Base(w)):
                     p, m = pic(k, side, share)
                 d.rectangle([x, yy, x + CELL, yy + CELL], fill=(205, 205, 172), outline=(200, 200, 194))
                 im.paste(p, (x + 2, yy + 2), m)
@@ -1649,6 +1737,9 @@ def main():
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS10, list(FORMS10), 10, BASE10_COMMIT
     if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "11":
         FORMS, ORDER, STAGE, BASE_COMMIT = FORMS11, list(FORMS11), 11, BASE11_COMMIT
+    if "--stage" in sys.argv and sys.argv[sys.argv.index("--stage") + 1] == "12":
+        FORMS, ORDER, STAGE, BASE_COMMIT = FORMS12, list(FORMS12), 12, BASE12_COMMIT
+        Base.SUB = "approved"       # the touch-up starts from the approved art, never from base/ (before T-604)
     w = g.World()
     if "--base" in sys.argv:
         return file_base(w)
