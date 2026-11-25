@@ -79,3 +79,8 @@ gfx/drafts/crystal_back_*
 
 # the vault (docs/books/the-vault.zip) unzipped beside itself: the sealed third book, never committed (the user, 2026-10-31)
 /docs/books/sealed.pdf
+
+# T-636: Syncthing shares the private, git-ignored files between the two machines; its own files stay out of git
+.stignore
+.stfolder/
+.stversions/
