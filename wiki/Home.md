@@ -115,6 +115,7 @@ WALLED GARDEN, and its WARDEN its GATEKEEPER. Next, the SAFARI ZONE becomes THE 
 | [CodeMusic/gpt-play-pokemon-firered-daemons](https://github.com/CodeMusic/gpt-play-pokemon-firered-daemons) | the harness that lets a model play it |
 | [CodeMusic/daemons-companion](https://github.com/CodeMusic/daemons-companion) | the companion: app, server and firmware ([its wiki](https://github.com/CodeMusic/daemons-companion/wiki)) |
 | [CodeMusic/daemons-eudaimonia](https://github.com/CodeMusic/daemons-eudaimonia) | EUDAIMONIA to come; today the playground, the game in a browser, for demos and beta tests ([its wiki](https://github.com/CodeMusic/daemons-eudaimonia/wiki)) |
+| [CodeMusic/daemons-embodied](https://github.com/CodeMusic/daemons-embodied) | DAEMONS EMBODIED: a daemon in a robot body, the PiDog first. Designed and reviewed, nothing built yet ([the design, a PDF](https://github.com/CodeMusic/DAEMONS/blob/main/docs/DAEMONS-embodied.pdf)) |
 
 *DAEMONS is a fan project, unaffiliated with and unendorsed by Nintendo, Creatures Inc. or GAME FREAK Inc. Pokémon is
 their trademark. Enormous thanks to [pret](https://github.com/pret), whose decompilations make it possible.*

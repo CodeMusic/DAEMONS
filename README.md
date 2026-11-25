@@ -62,6 +62,7 @@ A total conversion. It was built first on [pret/pokered](https://github.com/pret
 | [**CodeMusic/daemons-companion**](https://github.com/CodeMusic/daemons-companion) | the **goal companion** — your phone, a watch or a board hosts a daemon you SEND from your party, one to each device, and it helps you get things done; its app, its server (on a computer or a small hub at home, with an AI board of its own) and firmware. Ours from the first line, no fork |
 | [**CodeMusic/daemons-eudaimonia**](https://github.com/CodeMusic/daemons-eudaimonia) | where **EUDAIMONIA** is to be built, the companion's projects and points used together; today the playground, the game **in a browser**, for demos and beta tests on your own network, with the companion and each release's notes in tabs. Holds no ROM |
 | [**CodeMusic/daemons-praxis**](https://github.com/CodeMusic/daemons-praxis) | **PRAXIS**'s engine, under the companion's goals and, to come, EUDAIMONIA: one log of every change, merged across a phone and a hub, with **ARETE** as its points. Ours from the first line, no fork |
+| [**CodeMusic/daemons-embodied**](https://github.com/CodeMusic/daemons-embodied) | **DAEMONS EMBODIED**: a daemon in a robot body -- one body program and a wrapper for each kind of body, the SunFounder PiDog first. **Designed and reviewed, nothing built yet**: its design is [a book here](docs/DAEMONS-embodied.pdf) (62 pages, DRAFT) and its tickets are B-1 onward. Ours from the first line; it holds nothing of Nintendo's |
 
 Each has a wiki: [this one](https://github.com/CodeMusic/DAEMONS/wiki) for the game,
 [the engine's](https://github.com/CodeMusic/pokefirered-daemons/wiki) for the fork,
@@ -272,9 +273,10 @@ engineGba/    -> pokefirered-daemons    GBA, where the work happens
 engineAi/     -> gpt-play-...-daemons   the harness that lets a model play it
 companion/    -> daemons-companion      the goal companion: app, server, devices
 eudaimonia/   -> daemons-eudaimonia     EUDAIMONIA to come; the game in a browser today
+embodied/     -> daemons-embodied       a daemon in a robot body; designed, nothing built yet
 ```
 
-The three `engine*` entries, `companion/` and `eudaimonia/` are **gitignored symlinks**. Nothing is ever
+The three `engine*` entries, `companion/`, `eudaimonia/` and `embodied/` are **gitignored symlinks**. Nothing is ever
 vendored in here.
 
 The bible is [`docs/vision.md`](docs/vision.md). It is the only document that
