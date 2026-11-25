@@ -64,6 +64,10 @@ VOICES = {  # picked with the user from samples, 2026-11-01
     #  of being right; picked by the user from three samples, 2026-11-22 ("A for the voice")
     "sorcerer": {"blend": {"bm_lewis": 0.6, "am_onyx": 0.4}, "speed": 0.88, "sentence": 0.45, "pitch": -1.0,
                  "tone": "bass=g=2:f=150"},
+    #  EMBODIED, the design (T-617, T-634): a man at a bench, plain, warm and practical -- someone who builds the thing he
+    #  is describing; picked by the user from three samples, 2026-11-24 ("A: workshop"). Not in BOOK_VOICE until the book
+    #  is recorded (UNVOICED, below)
+    "workshop": {"blend": {"am_adam": 0.6, "am_michael": 0.4}, "speed": 0.97, "sentence": 0.35},
 }
 BOOK_VOICE = {"guide": "reason", "subtle": "instinct", "hermetic": "night", "eudaimon": "dawn", "unity": "whole",
               "textbook": "professor", "quick": "patient", "manual": "adventure", "companion": "friend",
@@ -79,9 +83,10 @@ FILE = {"guide": "guide", "subtle": "the-subtle-layer", "hermetic": "the-vault-a
         "shadow": "the-spell-left-running"}
 #  a book with no voice on purpose; --check names any other book that has none (T-543: a new book is never left silent)
 UNVOICED = {"micro": "MICRO-START, the quick start in five pages, is not on the LIBRARY's shelf",
-            #  T-617, C-549: a design for the user's review, mostly tables and drawings. Whether a design is read aloud at
-            #  all, and in which voice, is the book's own question 11: the user's to answer, then it leaves this list
-            "embodied": "EMBODIED is a design under review; whether it is read aloud is the user's to say (T-617, question 11)"}
+            #  T-634: read aloud, the user's choice (T-617's question 11), in the voice they picked, "workshop". It stays
+            #  here until it is recorded -- on roverbyteseer, after the plan is shown to the user (about an hour and a
+            #  half of tables) -- so the audio gate passes meanwhile; then it moves to BOOK_VOICE and FILE
+            "embodied": "EMBODIED's voice is chosen (workshop) and its recording is planned with the user first (T-634)"}
 RATE = {"textbook": "48k"}       # a long book a little lighter, under GitHub's 50 MB; the rest 64k
 SEALED = {"hermetic", "eudaimon", "unity",   # the torn book's three readings (the user, 2026-11-05: "Sealed, like the night")
           "origin"}                          # T-533 (the user, 2026-11-11): played whole only once every chapter is back
