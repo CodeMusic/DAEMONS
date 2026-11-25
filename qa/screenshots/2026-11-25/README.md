@@ -25,3 +25,27 @@ T-604 stage 12 (DRAFT): six earlier forms back over 15% on both sides -- CONJECT
 T-604 stage 12 (DRAFT): six earlier forms back over 15% on both sides -- CONJECTURE's paler gold tail and ears, LEMMA MIND's amber fists, SINGULAR's flame tail, horns and peach belly, REBUTTAL's orange headguard, CANOPY's cerise blossom, DELTA's flame gills; built on roverbyteseer
 
 ![25Nov2026 - T604 - stage 12, a touch-up of six, built - 4](25Nov2026%20-%20T604%20-%20stage%2012%2C%20a%20touch-up%20of%20six%2C%20built%20-%204.png)
+
+### 25Nov2026 - T604 - stage 13, the backs, built - 5
+
+T-604 stage 13 (DRAFT): sixteen later forms given a region on the back to match the front's -- LANDFILL, SPIKE, CRON, SPINLOCK, RESPAWN, BADSEED, OTHERWISE, HONEYPOT, EMERGENCE, SUPERVISOR, SEEKMUSAI, ENSEMBLE, CAPRICE, BACKPRESS, UPSTREAM, SPYWARE; every later form but the eight skipped now 15-25% on both sides
+
+![25Nov2026 - T604 - stage 13, the backs, built - 5](25Nov2026%20-%20T604%20-%20stage%2013%2C%20the%20backs%2C%20built%20-%205.png)
+
+### 25Nov2026 - T604 - stage 13, the backs, built - 6
+
+T-604 stage 13 (DRAFT): sixteen later forms given a region on the back to match the front's -- LANDFILL, SPIKE, CRON, SPINLOCK, RESPAWN, BADSEED, OTHERWISE, HONEYPOT, EMERGENCE, SUPERVISOR, SEEKMUSAI, ENSEMBLE, CAPRICE, BACKPRESS, UPSTREAM, SPYWARE; every later form but the eight skipped now 15-25% on both sides
+
+![25Nov2026 - T604 - stage 13, the backs, built - 6](25Nov2026%20-%20T604%20-%20stage%2013%2C%20the%20backs%2C%20built%20-%206.png)
+
+### 25Nov2026 - T604 - stage 13, the backs, built - 7
+
+T-604 stage 13 (DRAFT): sixteen later forms given a region on the back to match the front's -- LANDFILL, SPIKE, CRON, SPINLOCK, RESPAWN, BADSEED, OTHERWISE, HONEYPOT, EMERGENCE, SUPERVISOR, SEEKMUSAI, ENSEMBLE, CAPRICE, BACKPRESS, UPSTREAM, SPYWARE; every later form but the eight skipped now 15-25% on both sides
+
+![25Nov2026 - T604 - stage 13, the backs, built - 7](25Nov2026%20-%20T604%20-%20stage%2013%2C%20the%20backs%2C%20built%20-%207.png)
+
+### 25Nov2026 - T604 - stage 13, the backs, built - 8
+
+T-604 stage 13 (DRAFT): sixteen later forms given a region on the back to match the front's -- LANDFILL, SPIKE, CRON, SPINLOCK, RESPAWN, BADSEED, OTHERWISE, HONEYPOT, EMERGENCE, SUPERVISOR, SEEKMUSAI, ENSEMBLE, CAPRICE, BACKPRESS, UPSTREAM, SPYWARE; every later form but the eight skipped now 15-25% on both sides
+
+![25Nov2026 - T604 - stage 13, the backs, built - 8](25Nov2026%20-%20T604%20-%20stage%2013%2C%20the%20backs%2C%20built%20-%208.png)
