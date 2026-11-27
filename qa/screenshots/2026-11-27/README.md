@@ -19,3 +19,33 @@ Read from the handheld's framebuffer (720x720) with DAEMONS started at boot: HOM
 The key path on the handheld, with a test keyboard made in the kernel sending the codes its BlackBerry keyboard's chip sends: LINK; an address typed with its marks; the back key to HOME; ENTER into CARE; the left aA key with delete back to HOME; and after the keyboard left and came back, CARE again with the delete key alone doing nothing. Not pressed by a thumb yet. (companion acccbeaf)
 
 ![27Nov2026 - C593 - the HackberryPi key test - 3](27Nov2026%20-%20C593%20-%20the%20HackberryPi%20key%20test%20-%203.png)
+
+### 27Nov2026 - T660 - CodeMusic-Daemons theme draft - 4
+
+CodeMusic-Daemons theme, DRAFT, on a throwaway copy of the Redmine: sign-in, loading screen, agile board, a ticket, My page
+
+![27Nov2026 - T660 - CodeMusic-Daemons theme draft - 4](27Nov2026%20-%20T660%20-%20CodeMusic-Daemons%20theme%20draft%20-%204.jpg)
+
+### 27Nov2026 - T660 - CodeMusic-Daemons theme draft - 5
+
+CodeMusic-Daemons theme, DRAFT, on a throwaway copy of the Redmine: sign-in, loading screen, agile board, a ticket, My page
+
+![27Nov2026 - T660 - CodeMusic-Daemons theme draft - 5](27Nov2026%20-%20T660%20-%20CodeMusic-Daemons%20theme%20draft%20-%205.jpg)
+
+### 27Nov2026 - T660 - CodeMusic-Daemons theme draft - 6
+
+CodeMusic-Daemons theme, DRAFT, on a throwaway copy of the Redmine: sign-in, loading screen, agile board, a ticket, My page
+
+![27Nov2026 - T660 - CodeMusic-Daemons theme draft - 6](27Nov2026%20-%20T660%20-%20CodeMusic-Daemons%20theme%20draft%20-%206.jpg)
+
+### 27Nov2026 - T660 - CodeMusic-Daemons theme draft - 7
+
+CodeMusic-Daemons theme, DRAFT, on a throwaway copy of the Redmine: sign-in, loading screen, agile board, a ticket, My page
+
+![27Nov2026 - T660 - CodeMusic-Daemons theme draft - 7](27Nov2026%20-%20T660%20-%20CodeMusic-Daemons%20theme%20draft%20-%207.jpg)
+
+### 27Nov2026 - T660 - CodeMusic-Daemons theme draft - 8
+
+CodeMusic-Daemons theme, DRAFT, on a throwaway copy of the Redmine: sign-in, loading screen, agile board, a ticket, My page
+
+![27Nov2026 - T660 - CodeMusic-Daemons theme draft - 8](27Nov2026%20-%20T660%20-%20CodeMusic-Daemons%20theme%20draft%20-%208.jpg)
