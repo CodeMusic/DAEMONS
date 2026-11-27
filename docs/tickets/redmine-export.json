@@ -16107,6 +16107,30 @@
         "id": 10,
         "name": "Lane app"
        }
+      },
+      {
+       "created_on": "2026-11-25T18:29:18Z",
+       "details": [],
+       "id": 538,
+       "notes": "Paused for the Mac's update (2026-11-25). LIBRARY piece 1 pushed and on the hub (companion 2e62427a: DAEMON DREAMS with signs, the letters' book; /api/dreambooks?only=authors), flashed on the Tab5 (60:55:F9:FB:02:FE) but not yet seen: it boots into DOWNLOAD (boot 0x204) on every reset, asked the user for one short RST press. Next: confirm it starts, pictures of DAEMON DREAMS, then the BOOK OF SHADOWS and the bookcase. Worktree ~/Projects/dc-c137 (branch c137, everything committed).",
+       "private_notes": false,
+       "updated_on": "2026-11-25T18:29:18Z",
+       "user": {
+        "id": 10,
+        "name": "Lane app"
+       }
+      },
+      {
+       "created_on": "2026-11-27T00:14:48Z",
+       "details": [],
+       "id": 541,
+       "notes": "LIBRARY piece 2 pushed (companion 0bb2d6d5): THE SPELL LEFT RUNNING on the Tab5 (cover, contents, pages; PREVIEW-aware), TODAY's SPELL CHECK opens it at the broom, and THE HERMETIC LAYER's pictures are now fetched (they never were). Built, exit 0; not yet flashed -- the Tab5 is charging. Next: flash 0bb2d6d5, pictures of DAEMON DREAMS and the book of shadows, then the bookcase look.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T00:14:48Z",
+       "user": {
+        "id": 10,
+        "name": "Lane app"
+       }
       }
      ],
      "priority": {
@@ -16129,7 +16153,7 @@
       "id": 1,
       "name": "Job"
      },
-     "updated_on": "2026-11-24T06:36:48Z",
+     "updated_on": "2026-11-27T00:14:48Z",
      "watchers": []
     },
     {
@@ -73277,6 +73301,2645 @@
       "name": "Job"
      },
      "updated_on": "2026-11-25T06:19:40Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 11,
+      "name": "Lane hub"
+     },
+     "attachments": [],
+     "author": {
+      "id": 11,
+      "name": "Lane hub"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T19:23:21Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-574"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "572"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "C-360 (THE MESH), C-500, C-501"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**THE CLOUD moves files by the best path, as THE MIND routes thought** (*the user, 2026-11-25*): the user: 'the cloud will find the best way to move files, either lan, wifi, bluetooth, radio, lora, or internet ... it works just like the mind but for transmission, finding the best and quickest path to send to cloud or retrieve from cloud ... the cloud transmission network and the mind network should be architected similarly'. One routing layer for both: each node advertises the links it has and their measured speed and cost; a transfer is planned over the quickest available path and re-planned when a link drops. Apps and some devices can fetch certain file types from it. Name of the cloud: DRAFT, to be chosen with the user (THE HOARD so far).",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1305,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-574 THE CLOUD moves files by the best path, as THE MIND routes thought",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T19:23:21Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 11,
+      "name": "Lane hub"
+     },
+     "attachments": [],
+     "author": {
+      "id": 11,
+      "name": "Lane hub"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T19:23:32Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-575"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "573"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "C-500, the daemons-server session"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**daemons-server opens the cloud on any computer, and can EXTEND or REPLICATE it** (*the user, 2026-11-25*): the user: 'on a local computer if you have daemons-server installed you will be able to use the daemon cloud ... lets you designate your own local storage space to expand the cloud's storage ... roverbyteseer is the primary cloud, but I could install the server and either Extend (making the storage larger), or Replicate (making a copy of the cloud content also on that machine for local redundancy)'. A setting per machine: none, EXTEND with a size, or REPLICATE (all, or chosen folders).",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1306,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-575 daemons-server opens the cloud on any computer, and can EXTEND or REPLICATE it",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T19:23:32Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T19:23:42Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-576"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "574"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "C-501, C-502"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**To the cloud: COPY (a backup) or MOVE (free the space here), and each file PRIVATE or HOUSEHOLD** (*the user, 2026-11-25*): the user: 'options to copy (aka backup) to cloud or to move to the cloud to free up space' and 'upload from your phone or anyone in the household can, and you can select either do not share (so it is just your backup) or share with household (the main settings allow you to choose which default you want)'. From the app (phone), the Mac and any daemons-server: copy or move; each item private or household, with the default in settings. A MOVE removes the local copy only after the cloud's copy is checked.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1307,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-576 To the cloud: COPY (a backup) or MOVE (free the space here), and each file PRIVATE or HOUSEHOLD",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T19:23:42Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 11,
+      "name": "Lane hub"
+     },
+     "attachments": [],
+     "author": {
+      "id": 11,
+      "name": "Lane hub"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-26T21:40:04Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-577"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "575"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "(empty)"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**THE MIND: a reusable photo-to-voice synesthesia layer -- from a photo a tag, a voice persona and a phrase, spoken (lip-synced where there is a face); faces grouped across a set; a sequenced film as a queued job. Local models only** (*the user, 2026-11-26*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1310,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-26",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-577 THE MIND: a reusable photo-to-voice synesthesia layer -- from a photo a tag, a voice persona and a phrase, spoken (lip-synced where there is a face); faces grouped across a set; a sequenced film as a queued job. Local models only",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-26T21:40:04Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:43:01Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-578"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "576"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "firmware/tab5"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Tab5: scrolling is slow and flickers** (*the user, 2026-11-26*): Pages lag and flicker while scrolling, worse than before. Find what redraws during a scroll; if it cannot be made smooth, draw a plain wireframe while the page moves fast and the full page once its average speed falls (the user's idea).",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1312,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-578 Tab5: scrolling is slow and flickers",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T01:43:01Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:43:12Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-579"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "577"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "firmware/tab5"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Tab5: tapping a tab you are already on takes you to its top** (*the user, 2026-11-26*): In the LIBRARY, from anywhere down the page or inside a book, tapping the LIBRARY tab again goes back to the LIBRARY's top; the same for every tab.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1313,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-579 Tab5: tapping a tab you are already on takes you to its top",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T01:43:12Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:43:24Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-580"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "578"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "firmware/tab5"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Tab5: the status bar overlaps itself when held upright** (*the user, 2026-11-26*): In portrait the day's line (e.g. Forgiveness over Wrath) has a word drawn behind it (likely the network name) and more cut off at the right; landscape is fine. Fit or drop items by width.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1314,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-580 Tab5: the status bar overlaps itself when held upright",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T01:43:24Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:43:41Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-581"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "579"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "firmware/tab5"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Tab5: the LIBRARY shows the DIPLOMA, THE TEXTBOOK and every book the app has** (*the user, 2026-11-26*): The user sees the GUIDE, THE SUBTLE LAYER and the PLAYER'S MANUAL; the diploma is only text, and no TEXTBOOK. Check against the save, then draw what is held (C-137's LIBRARY pieces).",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1315,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-581 Tab5: the LIBRARY shows the DIPLOMA, THE TEXTBOOK and every book the app has",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T01:43:41Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:43:54Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-582"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "580"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "firmware/tab5"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Tab5: the DAEMON tab draws its sprite, and FEED, WATER and TRAIN show their animations and new songs** (*the user, 2026-11-26*): The sprite showed only scattered coloured pixels (then a star, then DEADLOCK, then pixels again); feeding shows no eating, water no drinking, and TRAIN plays the old song rather than the new one with feedback.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1316,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-582 Tab5: the DAEMON tab draws its sprite, and FEED, WATER and TRAIN show their animations and new songs",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T01:43:54Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:44:06Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-583"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "581"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "app, firmware"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Care sounds: the menu sound quieter, the eating and drinking jingles louder** (*the user, 2026-11-26*): On every device the menu sound is much louder than the action jingles; at Loud the jingles are still too quiet. Lower all menu sounds a little and raise the action jingles a little more.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1317,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-583 Care sounds: the menu sound quieter, the eating and drinking jingles louder",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T01:44:06Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:44:19Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-584"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "582"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "server, app, widget"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**The daemon looks asleep (a Z) when it is not, and care from another device is not seen** (*the user, 2026-11-26*): On the iPhone and iPad (and the widgets) the daemon showed a Z just after waking; mom said she had cared for it but it said she had not. Check the sleep state and the shared care log on every device.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1318,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-584 The daemon looks asleep (a Z) when it is not, and care from another device is not seen",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T01:44:19Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:44:34Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-585"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "583"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "widget"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Widget: EAT and DRINK make no sound and show no animation; TRAIN is slow** (*the user, 2026-11-26*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1319,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-585 Widget: EAT and DRINK make no sound and show no animation; TRAIN is slow",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T01:44:34Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:44:48Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-586"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "584"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "app, firmware, site"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Each MARK and each root speaks, in the INDEX's grown voice, with PRESS AND HOLD TO ASK** (*the user, 2026-11-26*): In YOU, under each MARK's and each root's symbol and title: a play button in the voice the INDEX grew (machine-like, square waves), and press and hold to ask a question with the MARK or root as context. On release a dialog shows three dots: red while thinking, blue while making the voice, purple while speaking; then a purple play button to hear it again. Tab5, app and site.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1320,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-586 Each MARK and each root speaks, in the INDEX's grown voice, with PRESS AND HOLD TO ASK",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T01:44:48Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:45:01Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-587"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "585"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "app"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**TRAIN: unknown notes sound as their superposition, not as noise** (*the user, 2026-11-26*): Replace the added wrong-note noise with a fast twinkle of every candidate note, each removed as it is ruled out. A tap on a superposition cluster opens a dialog: the staff behind it, the candidates spread out (by colour, each sounding when tapped), and 'try this note next time?', with a small symbol to hear it again and a close button top left or top right.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1321,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-587 TRAIN: unknown notes sound as their superposition, not as noise",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T01:45:01Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:45:12Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-588"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "586"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "app, firmware, site"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**SETTINGS: a PERSPECTIVE THINKING group on every device** (*the user, 2026-11-26*): A group with a TASKS toggle for the whole group, and under it independent toggles, each with a note on what it is: DREAMING (memory abstraction and consolidation), JOURNAL SYMBOLISM (symbols and metaphor that reach the conscious mind, after Jung, and that reading them applies a frame), and more. Each uses left, right and together as perspectives, as only background tasks do today.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1322,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-588 SETTINGS: a PERSPECTIVE THINKING group on every device",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T01:45:12Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:45:24Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-589"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "587"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "app, site"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**A CONTENT SHARES section: each QR-code share listed with links to its files** (*the user, 2026-11-26*): List every content share the QR codes make, each with links to its files where it has any; odd names, missing files and other exceptions shown plainly rather than breaking the list.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1323,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-589 A CONTENT SHARES section: each QR-code share listed with links to its files",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T01:45:24Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:56:47Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-590"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "588"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": "drift-devices"
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "app/damagotchi/"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**THE STUDIO: where the daemon sings, paints and drifts, redrawn** (*the user, 2026-11-26*): The create area's UX and UI improved (the user: 'we could improve a lot'): IT SINGS, THE EASEL and REVERIE (sleep sounds and DRIFT DOWN) each a page of its own from one studio, the same shape on each -- what it makes, how it is made, what it made -- with the night playing kept in view. DRAFT.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1325,
+     "is_private": false,
+     "journals": [
+      {
+       "created_on": "2026-11-27T01:57:20Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "2",
+         "old_value": "1",
+         "property": "attr"
+        },
+        {
+         "name": "6",
+         "new_value": "drift-devices",
+         "old_value": null,
+         "property": "cf"
+        }
+       ],
+       "id": 542,
+       "notes": "Claimed by lane-app on drift-devices.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T01:57:20Z",
+       "user": {
+        "id": 10,
+        "name": "Lane app"
+       }
+      },
+      {
+       "created_on": "2026-11-27T02:25:08Z",
+       "details": [],
+       "id": 548,
+       "notes": "Built, daemons-companion@869b074e (hub deployed, site sent; DRAFT): THE STUDIO at the head of ROUTINES -- IT SINGS, THE EASEL, REVERIE, SYNESTHESIA as doors in the carried daemon's three colours, each its own page; NOW PLAYING kept in view; REVERIE as TONIGHT, DRIFT DOWN (its beats drawn across the night), WHERE THE DRIFT GOES, EVERY PIECE MADE, and the drift chooser a view of its own; DREAMS keeps a small REVERIE card. Waiting on the user's test.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T02:25:08Z",
+       "user": {
+        "id": 10,
+        "name": "Lane app"
+       }
+      }
+     ],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 2,
+      "is_closed": false,
+      "name": "In progress"
+     },
+     "subject": "C-590 THE STUDIO: where the daemon sings, paints and drifts, redrawn",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T02:25:08Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:57:00Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-591"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "589"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": "drift-devices"
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "app/platform/, app/sound/, server/src/psyche/entrain.ts"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**DRIFT DOWN through the PULSETTO and the LUMENATE NOVA, with headphones or without** (*the user, 2026-11-26*): PulseEntrain's two Bluetooth devices brought over (its code: the Pulsetto's UART commands, the Nova's strobe frames): DRIFT DOWN may be on without headphones and drives whatever is there -- headphones (the beat between the ears), the PULSETTO (vagus nerve: AUTO from the drift's own intensity, or inferred from its beat; or FIXED; always inside a MIN-MAX the player sets) and the NOVA (light flashed at the beat, its patterns: TOGETHER, ALTERNATE, LEFT, RIGHT; capped, behind a photosensitivity warning). DRAFT.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1326,
+     "is_private": false,
+     "journals": [
+      {
+       "created_on": "2026-11-27T01:57:22Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "2",
+         "old_value": "1",
+         "property": "attr"
+        },
+        {
+         "name": "6",
+         "new_value": "drift-devices",
+         "old_value": null,
+         "property": "cf"
+        }
+       ],
+       "id": 543,
+       "notes": "Claimed by lane-app on drift-devices.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T01:57:22Z",
+       "user": {
+        "id": 10,
+        "name": "Lane app"
+       }
+      },
+      {
+       "created_on": "2026-11-27T02:25:04Z",
+       "details": [],
+       "id": 546,
+       "notes": "Built, daemons-companion@72d2a392 (hub deployed at 869b074e, site sent; DRAFT): PulseEntrain's Pulsetto and Lumenate Nova protocols (server/src/shared/pulsetto.ts, nova.ts; the Nova's golden vector proved), ENTRAINMENT (server/src/psyche/entrain.ts: AUTO from the drift or inferred from its beat, FIXED, inside MIN..MAX, a step at a time; the Nova under a ceiling, 12 Hz unless raised past a second warning), the transports on the app's one Bluetooth manager (app/platform/pulsetto.ts, nova.ts), the conductor (app/sound/entrain.ts), WHERE THE DRIFT GOES (app/damagotchi/Devices.tsx). DRIFT DOWN no longer waits for headphones. Tests: 20 new, server 1272 passed. NOT YET ON HARDWARE: needs a TestFlight build with it, then the user's test with the PULSETTO and the NOVA.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T02:25:04Z",
+       "user": {
+        "id": 10,
+        "name": "Lane app"
+       }
+      }
+     ],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 2,
+      "is_closed": false,
+      "name": "In progress"
+     },
+     "subject": "C-591 DRIFT DOWN through the PULSETTO and the LUMENATE NOVA, with headphones or without",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T02:25:04Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:57:11Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-592"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "590"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": "drift-devices"
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "app/damagotchi/"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**SYNESTHESIA, felt: a daemon's three notes as colour, sound, light and pulse** (*the user, 2026-11-26*): A simulator in THE STUDIO: a daemon's KEY, DAY and MONTH (T-612), the week's wheel or the year's, each note its colour on the screen, its tone between the ears, and -- where they are on -- the NOVA flashing and the PULSETTO pulsing at the rate the note's colour sits at. The first other place the devices are used; DRAFT.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1327,
+     "is_private": false,
+     "journals": [
+      {
+       "created_on": "2026-11-27T01:57:23Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "2",
+         "old_value": "1",
+         "property": "attr"
+        },
+        {
+         "name": "6",
+         "new_value": "drift-devices",
+         "old_value": null,
+         "property": "cf"
+        }
+       ],
+       "id": 544,
+       "notes": "Claimed by lane-app on drift-devices.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T01:57:23Z",
+       "user": {
+        "id": 10,
+        "name": "Lane app"
+       }
+      },
+      {
+       "created_on": "2026-11-27T02:25:05Z",
+       "details": [],
+       "id": 547,
+       "notes": "Built, daemons-companion@f2fd1e34 (DRAFT): SYNESTHESIA, FELT in THE STUDIO -- a daemon's KEY, DAY and MONTH (or the week, the year, now) as colour, tone between the ears (each note's rate, red 4 Hz to violet 12) and, where linked, the NOVA and PULSETTO through DRIFT DOWN's conductor. Seen on a scratch site; devices not yet on hardware.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T02:25:05Z",
+       "user": {
+        "id": 10,
+        "name": "Lane app"
+       }
+      }
+     ],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 2,
+      "is_closed": false,
+      "name": "In progress"
+     },
+     "subject": "C-592 SYNESTHESIA, felt: a daemon's three notes as colour, sound, light and pulse",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T02:25:05Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 13,
+      "name": "Lane pi-zero"
+     },
+     "attachments": [],
+     "author": {
+      "id": 13,
+      "name": "Lane pi-zero"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T05:14:48Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-593"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "591"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": "c593-hackberry"
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "C-457, C-564, C-514"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**The HackberryPi: a Pi Zero 2 W in a BlackBerry body, a sixth Linux board (hackberry) -- its 720x720 square screen, the BlackBerry keys and trackpad, THE THRESHOLD at boot** (*the user, 2026-11-27*): ZitaoTech's HackberryPi Zero, the user's (in hand 2026-11-27): a Raspberry Pi Zero 2 W; a 4-inch 720x720 TFT on DPI (dtoverlay=vc4-kms-dpi-hyperpixel4sq, which takes nearly every GPIO pin); a BlackBerry Q10/Q20/9900 keyboard and trackpad as one USB HID (Vial keymap; a red switch sends it to the Pi or out of the USB-C to another computer); three USB 2.0 ports, a Stemma I2C port, mini-HDMI, an outside microSD slot; two hot-swappable Nokia BL-5C cells (5 hours on the command line by the maker's count; an LED gauge, none the kernel is known to read); a backlight button. The maker lists no speaker or microphone (to confirm on the device). PROPOSED (DRAFT, nothing built): Raspberry Pi OS Lite, no desktop; src/boards/hackberry.cpp from the uConsole's (a USB keyboard), tools/boards/hackberry.sh (the overlay line, DAEMONS at boot by daemons@.service), a row in docs/PIBOARDS.md; the canvas twice its size (640x340) first, then a page for the square: the game three times its size (720x480, the full width) over a 720x240 companion strip. The launcher is C-564's, as on every board; DEPART leaves to the console. First: tools/install.sh probe, read-only. Spec: bbkb-community.github.io/computers/hackberrypi and github.com/ZitaoTech/Hackberry-Pi_Zero (its Screen page).",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1332,
+     "is_private": false,
+     "journals": [
+      {
+       "created_on": "2026-11-27T05:20:17Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "2",
+         "old_value": "1",
+         "property": "attr"
+        },
+        {
+         "name": "6",
+         "new_value": "c593-hackberry",
+         "old_value": null,
+         "property": "cf"
+        }
+       ],
+       "id": 552,
+       "notes": "Claimed by lane-pi-zero on c593-hackberry.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T05:20:17Z",
+       "user": {
+        "id": 13,
+        "name": "Lane pi-zero"
+       }
+      }
+     ],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 2,
+      "is_closed": false,
+      "name": "In progress"
+     },
+     "subject": "C-593 The HackberryPi: a Pi Zero 2 W in a BlackBerry body, a sixth Linux board (hackberry) -- its 720x720 square screen, the BlackBerry keys and trackpad, THE THRESHOLD at boot",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T05:20:17Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 13,
+      "name": "Lane pi-zero"
+     },
+     "attachments": [],
+     "author": {
+      "id": 13,
+      "name": "Lane pi-zero"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T08:11:40Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "C-594"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "592"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "C-593, C-541, C-515"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**The volunteers' build of the Pi program for a card on Debian 12 (the HackberryPi)** (*found building C-593, 2026-11-27*): GitHub builds the hackberry board in Debian 12 since C-593 (a program built in 13 does not start in 12: GLIBC_2.38; one built in 12 starts in both). The volunteers' recipe still builds every board in 13, so pibuilds.ts's BOARDS leaves the hackberry out. To do: the mesh's build passes the board's system to tools/build.Dockerfile (it takes SYSTEM=bookworm), the hackberry goes back on the list, and a second host's build is compared with GitHub's. Worth weighing there: building every board in Debian 12, one system for all.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1339,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 3,
+      "name": "daemons-companion"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "C-594 The volunteers' build of the Pi program for a card on Debian 12 (the HackberryPi)",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T08:11:40Z",
      "watchers": []
     }
    ],
@@ -150530,7 +153193,7 @@
       "id": 16,
       "name": "Lane ops"
      },
-     "closed_on": null,
+     "closed_on": "2026-11-25T18:26:41Z",
      "created_on": "2026-11-25T05:20:09Z",
      "custom_fields": [
       {
@@ -150556,12 +153219,12 @@
       {
        "id": 5,
        "name": "Commits",
-       "value": null
+       "value": "DAEMONS@d427e827\nDAEMONS@e3ec3274\ndaemons-companion@05553a18"
       },
       {
        "id": 6,
        "name": "Branch",
-       "value": null
+       "value": ""
       },
       {
        "id": 7,
@@ -150615,7 +153278,64 @@
      "estimated_hours": null,
      "id": 1238,
      "is_private": false,
-     "journals": [],
+     "journals": [
+      {
+       "created_on": "2026-11-25T13:12:24Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "2",
+         "old_value": "1",
+         "property": "attr"
+        },
+        {
+         "name": "6",
+         "new_value": "main",
+         "old_value": null,
+         "property": "cf"
+        }
+       ],
+       "id": 535,
+       "notes": "Built and rehearsed (DAEMONS d427e827, e3ec3274; companion 05553a18): Syncthing on both machines, tailnet only, folders daemons-private and companion-private sharing only each .stignore's !/ paths, 90 days of staggered versions; a change, a deletion (version kept) and a new file tested both ways. Weekly AES-256 archive on roverbyteseer (ca.codemusic.private-archive, Sundays 03:15) rehearsed with a throwaway password: 2698 files out and back identical, in-place restore keeps older/newer correctly. Waiting on the user: the archive password into roverbyteseer's keychain (docs/PRIVATE_BACKUP.md), then the first real archive closes this.",
+       "private_notes": false,
+       "updated_on": "2026-11-25T13:12:24Z",
+       "user": {
+        "id": 16,
+        "name": "Lane ops"
+       }
+      },
+      {
+       "created_on": "2026-11-25T18:26:41Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "6",
+         "old_value": "2",
+         "property": "attr"
+        },
+        {
+         "name": "5",
+         "new_value": "DAEMONS@d427e827\nDAEMONS@e3ec3274\ndaemons-companion@05553a18",
+         "old_value": null,
+         "property": "cf"
+        },
+        {
+         "name": "6",
+         "new_value": "",
+         "old_value": "main",
+         "property": "cf"
+        }
+       ],
+       "id": 537,
+       "notes": "Closed by lane-ops: DAEMONS@d427e827, DAEMONS@e3ec3274, daemons-companion@05553a18.",
+       "private_notes": false,
+       "updated_on": "2026-11-25T18:26:41Z",
+       "user": {
+        "id": 16,
+        "name": "Lane ops"
+       }
+      }
+     ],
      "priority": {
       "id": 2,
       "name": "Normal"
@@ -150626,9 +153346,9 @@
      },
      "start_date": "2026-11-25",
      "status": {
-      "id": 1,
-      "is_closed": false,
-      "name": "Ready"
+      "id": 6,
+      "is_closed": true,
+      "name": "Closed"
      },
      "subject": "T-636 Private files kept on both machines, and never lost",
      "total_estimated_hours": null,
@@ -150636,7 +153356,7 @@
       "id": 1,
       "name": "Job"
      },
-     "updated_on": "2026-11-25T05:20:09Z",
+     "updated_on": "2026-11-25T18:26:41Z",
      "watchers": []
     },
     {
@@ -151021,6 +153741,3295 @@
      },
      "updated_on": "2026-11-25T06:34:19Z",
      "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T15:22:09Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-640"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "637"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "FRM/README.md; the Release Autopilot doc"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**The push routine as a plan: tools/push_plan.json and push.py (status, resume)** (*the user, 2026-11-25*): The seven push steps as data (command, pass condition, needs the user), run by push.py; ~/.cache/daemons/push-state.json written after every step with the push, the step, the result and the lane that ran it (IBM's audit trail); push.py status says where a push stopped, resume carries on; the hold names its step. Ops owns it; every lane runs it",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1286,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-640 The push routine as a plan: tools/pushplan.json and push.py (status, resume)",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T15:22:09Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T15:22:19Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-641"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "638"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "FRM/README.md"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Risk-scored gates: the files a ticket touched decide its checks** (*the user, 2026-11-25*): Fixed rules before the checks: a map or script -> check_reach and a map sheet; the type chart -> byte-identity and a stop for the user; a save structure -> a save-compatibility test; docs only -> no ROM builds or generator check. Score and reasons printed and kept in the push state; a release always runs everything. After the push plan",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1287,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-641 Risk-scored gates: the files a ticket touched decide its checks",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T15:22:19Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T15:22:29Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-642"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "639"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "FRM/README.md"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Guardrails against the last release: budget and smoke test halt, save layout and slowdown notify** (*the user, 2026-11-25*): Each push compares with the last release: ROM size, IWRAM and EWRAM against gbabudget.py (HALT), the smoke test (HALT), the save structure changed without migration (notify), the scripted route 10%+ more frames (notify), DRAFT word count (notify). The halt puts the failing output into a ticket. The user's picks, 2026-11-25",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1288,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-642 Guardrails against the last release: budget and smoke test halt, save layout and slowdown notify",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T15:22:29Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T15:22:39Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-643"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "640"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "tools/theatre_route.py; FRM/README.md"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**A smoke test on every ROM release: boot, title, new game, save, reload, scripted in mGBA** (*the user, 2026-11-25*): No model; on a copy of nothing personal (never the user's save); about 1-2 minutes; the one Played check that blocks a release. The field-test route runs too when a map, script or save changed (notify only)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1289,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-643 A smoke test on every ROM release: boot, title, new game, save, reload, scripted in mGBA",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T15:22:39Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T15:22:49Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-644"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "641"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "FRM/README.md"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**A clean-up list after each release, opened as one ticket** (*the user, 2026-11-25*): DEBUG-only scaffolding no longer used, generator_drift.json entries whose later work has landed, DRAFT words the user has signed off, holds left by stopped sessions; listed, never deleted on its own",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1290,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-644 A clean-up list after each release, opened as one ticket",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T15:22:49Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T15:23:00Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-645"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "642"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "companion/docs/research/JEV.md"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**The local risk question: a System One Noul on each ticket's commit titles, answered by the Tiiny** (*the user, 2026-11-25*): After C-516's systemOne() client; flags what the gate rules miss (is this risky to a save?); never sent outside; dropped if it adds more than ~20 s",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1291,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-645 The local risk question: a System One Noul on each ticket's commit titles, answered by the Tiiny",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T15:23:00Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T15:23:11Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-646"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "643"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "FRM/README.md (QA)"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Three QA lanes: qa-game, qa-companion, qa-site -- Redmine users, keys, tickets.py lanes, a QA daemon each** (*the user, 2026-11-25*): Each tests closed tickets in its area against their acceptance criteria after the release (sanity, scripted route or full check, local Tiiny first), never blocking it; a failure reopens or opens a bug; notes feed the cycle's demo. Daemons: one QA type, a daemon fitting each area",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1292,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-646 Three QA lanes: qa-game, qa-companion, qa-site -- Redmine users, keys, tickets.py lanes, a QA daemon each",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T15:23:11Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T15:23:21Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-647"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "644"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "FRM/README.md; T-582"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**FRM cycles in Redmine: a version per cycle (R1C1F...), one week each, every ticket carrying its cycle** (*the user, 2026-11-25*): Forward, Forward, Horizon make a Revolution; long name plus dates in presentations; builds on T-582's version per loop; the first cycle's start date is the user's",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1293,
+     "is_private": false,
+     "journals": [
+      {
+       "created_on": "2026-11-25T17:54:39Z",
+       "details": [],
+       "id": 536,
+       "notes": "The user, 2026-11-25: R1C1F starts Monday 2026-11-30. One-week cycles: R1C1F 30 Nov-6 Dec, R1C2F 7-13 Dec, R1C3H 14-20 Dec (demo after each, retro after R1C3H).",
+       "private_notes": false,
+       "updated_on": "2026-11-25T17:54:39Z",
+       "user": {
+        "id": 16,
+        "name": "Lane ops"
+       }
+      }
+     ],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-647 FRM cycles in Redmine: a version per cycle (R1C1F...), one week each, every ticket carrying its cycle",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T17:54:39Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T15:23:32Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-648"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "645"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "FRM/README.md"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**FRM pages: a demo per cycle, a retro after each Horizon, and FRM/index.html, made by a tool from the cycle's closed tickets** (*the user, 2026-11-25*): FRM/<R#C# Type>/demo.html and retro.html; per feature its tickets, one description, contributors' sprites, QA feedback, screenshots and slides; index groups Revolutions with a line each",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1294,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-648 FRM pages: a demo per cycle, a retro after each Horizon, and FRM/index.html, made by a tool from the cycle's closed tickets",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T15:23:32Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 8,
+      "name": "Lane audio"
+     },
+     "attachments": [],
+     "author": {
+      "id": 8,
+      "name": "Lane audio"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T15:23:45Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-649"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "646"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "FRM/README.md"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Demo presentations: one audio file per feature, the lead daemon's voice, other contributors spliced in, timestamps changing screenshots and slides** (*the user, 2026-11-25*): Opens 'Hi, I'm <daemon>, I handled the <lane> lane and will be presenting <feature>'; persona and voice from the companion's shared functions; every line respelled sayable first",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1296,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-649 Demo presentations: one audio file per feature, the lead daemon's voice, other contributors spliced in, timestamps changing screenshots and slides",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T15:23:45Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T18:26:22Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-650"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "647"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "FRM/README.md (A ticket's way); T-647"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Redmine's new way for a ticket: Backlog, Revolution Backlog, Cycle Backlog, Ready for Development, In Progress, Code Review, Awaiting Feedback** (*the user, 2026-11-25*): New statuses and the workflow in all four projects; every Ready ticket moves to Backlog, Needs decision to Awaiting Feedback; Blocked, Deferred, Closed, Superseded stay. tickets.py (mine, claim, close, ask), the mirror, check_todo.py, the PRAXIS replica and the dashboard all follow in the same change; carry-over of unfinished Cycle Backlog at a cycle's end",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1299,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-650 Redmine's new way for a ticket: Backlog, Revolution Backlog, Cycle Backlog, Ready for Development, In Progress, Code Review, Awaiting Feedback",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T18:26:22Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T18:26:34Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-651"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "648"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "FRM/README.md"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Grooming: ops proposes the Revolution and Cycle Backlogs, ranked; the user ticks them on a page; the top goes in if unanswered by Monday** (*the user, 2026-11-25*): Before R1C1F (30 Nov) the first Revolution Backlog and Cycle Backlog; then before every cycle a top-up from the Revolution Backlog",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1300,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-651 Grooming: ops proposes the Revolution and Cycle Backlogs, ranked; the user ticks them on a page; the top goes in if unanswered by Monday",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T18:26:34Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T18:26:46Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-652"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "649"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "FRM/README.md"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Code Review by two lanes' agents, as notes in the ticket** (*the user, 2026-11-25*): A ticket moved to Code Review gets two reviewers from other lanes, each posting approve or the changes needed against the commits; tickets.py review; Code Review also asks the user's eyes. No GitHub changes",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1301,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-652 Code Review by two lanes' agents, as notes in the ticket",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T18:26:46Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T18:26:58Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-653"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "650"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "FRM/README.md"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Requesting Feedback From: @<account> -- agents ask agents, and the user, in Awaiting Feedback** (*the user, 2026-11-25*): tickets.py ask --to <lane|admin> writes the comment headed 'Requesting Feedback From: @x', free text or ~4 choices plus Other; the tagged lane's agent finds and answers its questions; the answer returns the ticket to In Progress",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1302,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-653 Requesting Feedback From: @<account> -- agents ask agents, and the user, in Awaiting Feedback",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T18:26:58Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T19:23:54Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-654"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "651"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "C-500, T-636"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-25"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Both machines on the newest macOS: roverbyteseer first, after a full Time Machine backup, then this laptop** (*the user, 2026-11-25*): the user: 'the most primary goal ... is getting both machines running the latest OS'. roverbyteseer is on 26.7.3 (2026-11-25, 39 GB free); macOS 27 next, after its Time Machine on the external drive has one full backup (Redmine's database is covered by the nightly dump, not Time Machine). Then this laptop, once files moved to the cloud free the ~23.5 GB it needs. The laptop's sessions stay paused until both are done.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1308,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-654 Both machines on the newest macOS: roverbyteseer first, after a full Time Machine backup, then this laptop",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T19:23:54Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 14,
+      "name": "Lane playground"
+     },
+     "attachments": [],
+     "author": {
+      "id": 14,
+      "name": "Lane playground"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-26T21:39:52Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-655"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "652"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "(empty)"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-26"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**STARR: a private gift site on the daemon network (daemons-starr, private repo) -- a cake that plays its song, a gated gallery, speaking photos and magic movies, every model on our own machines** (*the user, 2026-11-26*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1309,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-26",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-655 STARR: a private gift site on the daemon network (daemons-starr, private repo) -- a cake that plays its song, a gated gallery, speaking photos and magic movies, every model on our own machines",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-26T21:39:52Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-26T21:40:16Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-656"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "653"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "(empty)"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "found 2026-11-26"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**roverbyteseer's Docker lost every image and container (volumes kept): Redmine rebuilt 2026-11-26; n8n, Home Assistant, musaisearch, morty, rovervault and firecrawl still down** (*found 2026-11-26*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1311,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-26",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-656 roverbyteseer's Docker lost every image and container (volumes kept): Redmine rebuilt 2026-11-26; n8n, Home Assistant, musaisearch, morty, rovervault and firecrawl still down",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-26T21:40:16Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 7,
+      "name": "Lane story"
+     },
+     "attachments": [],
+     "author": {
+      "id": 10,
+      "name": "Lane app"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T01:45:38Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-657"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "654"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "story, vision"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-26"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Two ways of speaking: words on the mainland, emoji on the islands, reversed in the groves** (*the user, 2026-11-26*): The mainland (left hemisphere, north) speaks in ordinary text, and its groves in emoji; the islands (right hemisphere, south) speak in emoji groups spaced as ideas (sometimes past, present, future), and their groves in our letter symbols. The S.S. ANNE is where it is spoken of (ports that seem to speak other languages, that agree without knowing it; language as the living thing). A design question first: the bible.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1324,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-657 Two ways of speaking: words on the mainland, emoji on the islands, reversed in the groves",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T01:45:38Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T04:13:41Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-658"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "655"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "(empty)"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-26, by multiple choice"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Build roverbyteseer's Redmine (6.1.2, ~/musai-services) from our fork CodeMusic/redmine (forked 2026-11-26, upstream redmine/redmine): kept near upstream so security releases merge cleanly; our changes go in a plugin + theme repo (daemons-redmine), the fork turning into DAEMONS's own management system** (*the user, 2026-11-26, by multiple choice*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1329,
+     "is_private": false,
+     "journals": [
+      {
+       "created_on": "2026-11-27T06:18:43Z",
+       "details": [],
+       "id": 554,
+       "notes": "The user, 2026-11-27 -- what the fork is FOR: a very ABSTRACT management system. One project may be traditional project management; another life management, weight management, shows to watch, recipes. Flexible and intuitive, making dashboards, interfaces and front ends, with n8n for any supporting backend -- turning visions and dreams into reality. Its first plugin work: T-661 (the Tiiny: flesh out tickets, ASK THE PROJECT), T-662 to T-665 (THE COPILOT: one daemon, ROUND TABLE, CLARIFY, its stage and bubbles), T-666 (one daemon-persona library shared with the companion and EUDAIMONIA).",
+       "private_notes": false,
+       "updated_on": "2026-11-27T06:18:43Z",
+       "user": {
+        "id": 16,
+        "name": "Lane ops"
+       }
+      }
+     ],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-658 Build roverbyteseer's Redmine (6.1.2, ~/musai-services) from our fork CodeMusic/redmine (forked 2026-11-26, upstream redmine/redmine): kept near upstream so security releases merge cleanly; our changes go in a plugin + theme repo (daemons-redm…",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T06:18:43Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T04:13:56Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-659"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "656"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "(empty)"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-26, by multiple choice"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Install the bought RedmineUP plugins on roverbyteseer's Redmine as the iMac's projects.codemusic.ca has them: redmine_agile (scrum/agile) and redmine_checklists -- versions for Redmine 6.1, the licence checked to cover a second installation; the RE- themes are already there** (*the user, 2026-11-26, by multiple choice*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1330,
+     "is_private": false,
+     "journals": [
+      {
+       "created_on": "2026-11-27T04:42:35Z",
+       "details": [],
+       "id": 550,
+       "notes": "Lane ops, 2026-11-26: Redmine Agile PRO 1.6.10 (RedmineUP, from the iMac's ~/redmine-n8n/redmine/plugins) is INSTALLED on roverbyteseer's Redmine 6.1.2: ~/musai-services/redmine/plugins/redmine_agile and the Dockerfile (COPY + bundle install per adapter, mysql2 LAST -- under MySQL the plugin needs with_advisory_lock, which a lock ending on sqlite3 leaves out). Proven on a throwaway 6.1.2 (sqlite: the board, charts and issues pages open) and then on a MySQL copy of the night's backup (1322 issues, 8 migrations) before the live one; its 8 migrations ran live. The first live try ended its gem loop on sqlite3 and the live Redmine was down about 4 minutes (rolled back, then fixed). Backups: ~/backups/redmine/redmine_db-20261126-2333.sql.gz and Dockerfile.bak-20261126. Migrating by hand needs SECRET_KEY_BASE=$REDMINE_SECRET_KEY_BASE inside docker exec (in the Dockerfile's comment).\n\nNot done: (1) redmine_checklists -- no copy anywhere on the iMac's disk (only its old plugin_assets); it needs the user's download from RedmineUP. (2) The agile module is switched on in no project yet. (3) Whether the licence covers a second installation is the user's to confirm.\n\nA mistake: the clean-up ran `docker volume prune` and removed 25 unnamed, unused Docker volumes on roverbyteseer besides the rehearsal's own, without looking at them first. The four named volumes (redmine_data, mysql_data, n8n_data, firecrawl_postgres_data) are untouched.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T04:42:35Z",
+       "user": {
+        "id": 16,
+        "name": "Lane ops"
+       }
+      },
+      {
+       "created_on": "2026-11-27T04:50:48Z",
+       "details": [],
+       "id": 551,
+       "notes": "Lane ops, 2026-11-26 (the user: \"Yes, all five\"): the agile module is ON in daemons, companion, eudaimonia, embodied and context-content; each board query runs (95, 397, 14, 35 and 541 cards, 5 columns). No role has its permissions yet, so only the admin account sees the boards. Checklists still waits on the user's download.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T04:50:48Z",
+       "user": {
+        "id": 16,
+        "name": "Lane ops"
+       }
+      },
+      {
+       "created_on": "2026-11-27T05:23:50Z",
+       "details": [],
+       "id": 553,
+       "notes": "Lane ops, 2026-11-27: the user self-hosts -- projects.codemusic.ca is the Mac mini itself (Passenger, /Library/WebServer/Sites/projects.codemusic.ca, Redmine 5.1.2) with Agile PRO 1.6.8 and Checklists LIGHT 3.1.23 (free, GPL). 3.1.23 does not start on Redmine 6.1 / Ruby 3.4: OpenStruct (one line, patched) and then acts_as_event undefined on Checklist at load -- a port, not a patch. Live Redmine untouched (tested on a MySQL copy only). The patched copy is kept on roverbyteseer at ~/backups/redmine-plugins/redmine_checklists-3.1.23-patched. Waiting on the user: a Redmine 6 build of Checklists, or porting 3.1.23.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T05:23:50Z",
+       "user": {
+        "id": 16,
+        "name": "Lane ops"
+       }
+      }
+     ],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-659 Install the bought RedmineUP plugins on roverbyteseer's Redmine as the iMac's projects.codemusic.ca has them: redmineagile (scrum/agile) and redminechecklists -- versions for Redmine 6.1, the licence checked to cover a second installation; the…",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T05:23:50Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T04:14:10Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-660"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "657"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "(empty)"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-26, by multiple choice"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**A CODEMUSIC DAEMONS theme for our Redmine, starting from projects.codemusic.ca's look (RE-classic and the user's customisations there), DRAFT, shown to the user before it is the default** (*the user, 2026-11-26, by multiple choice*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1331,
+     "is_private": false,
+     "journals": [
+      {
+       "created_on": "2026-11-27T06:18:44Z",
+       "details": [],
+       "id": 555,
+       "notes": "Lane ops, 2026-11-27: the user likes their active theme, RE-classic (v2.1.5, written for Redmine 5.1). It is LIVE on roverbyteseer as RE-classic-r6: a copy of RE-classic with Redmine 6.1's own svg.icon-svg / .sNN / avatar rules appended to stylesheets/application.css (without them every Redmine 6 icon fell back to 300x150 -- a huge black pencil over the agile board's cards). Redmine 6 looks for themes in /usr/src/redmine/themes: docker-compose.yaml now mounts ./redmine/themes there too (backup docker-compose.yaml.bak-20261127-themes). Proven on a throwaway first (login, My page, agile board). The agile plugin's own script error (activeCableConsumer declared twice) is there with any theme and does no harm. This copy is the starting point for the CODEMUSIC DAEMONS theme.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T06:18:44Z",
+       "user": {
+        "id": 16,
+        "name": "Lane ops"
+       }
+      }
+     ],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-660 A CODEMUSIC DAEMONS theme for our Redmine, starting from projects.codemusic.ca's look (RE-classic and the user's customisations there), DRAFT, shown to the user before it is the default",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T06:18:44Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T06:17:10Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-661"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "658"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "(empty)"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-27"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**daemons-redmine plugin: THE TIINY IN REDMINE -- a ticket fleshed out by the Tiiny (description, acceptance, questions), and ASK THE PROJECT (a question answered from a project's tickets, wiki and files); its backends through n8n, DRAFT** (*the user, 2026-11-27*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1333,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-661 daemons-redmine plugin: THE TIINY IN REDMINE -- a ticket fleshed out by the Tiiny (description, acceptance, questions), and ASK THE PROJECT (a question answered from a project's tickets, wiki and files); its backends through n8n, DRAFT",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T06:17:10Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T06:17:23Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-662"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "659"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "(empty)"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-27"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**daemons-redmine plugin: THE COPILOT -- a chat with one daemon in an expanded right-side pane: the daemons assigned to Redmine users in a dropdown, or any daemon by its number, its sprite shown as you talk; the context set to a project, feature or ticket** (*the user, 2026-11-27*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1334,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-662 daemons-redmine plugin: THE COPILOT -- a chat with one daemon in an expanded right-side pane: the daemons assigned to Redmine users in a dropdown, or any daemon by its number, its sprite shown as you talk; the context set to a project, feature…",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T06:17:23Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T06:17:38Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-663"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "660"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "(empty)"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-27"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**THE COPILOT's ROUND TABLE: a topic (ticket, feature, epic, project, release, roadmap, the game itself, or an attached .md such as the design bible), up to 4 participants, you speaking or only observing; turns go clockwise by seat, a daemon named in a reply speaks next, else anyone not yet heard this round; a daemon may leave, and an empty seat may be taken by a random daemon who chooses to enter** (*the user, 2026-11-27*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1335,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-663 THE COPILOT's ROUND TABLE: a topic (ticket, feature, epic, project, release, roadmap, the game itself, or an attached .md such as the design bible), up to 4 participants, you speaking or only observing; turns go clockwise by seat, a daemon nam…",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T06:17:38Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T06:17:54Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-664"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "661"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "(empty)"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-27"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**THE COPILOT's CLARIFY mode: two daemons (or one and you) -- the first describes a ticket, the second asks to clarify it, back and forth until the two perspectives hold a full view of the ticket; the outcome written back to it** (*the user, 2026-11-27*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1336,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-664 THE COPILOT's CLARIFY mode: two daemons (or one and you) -- the first describes a ticket, the second asks to clarify it, back and forth until the two perspectives hold a full view of the ticket; the outcome written back to it",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T06:17:54Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T06:18:09Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-665"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "662"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "(empty)"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-27"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**THE COPILOT's look: iMessage-style coloured bubbles with each participant's name (or nickname) and small sprite, the monkey beside you; above them a STAGE where the daemons in the scene stand (front sprites, a turn-around to the back sprite), animate while talking as the companion does, and walk on and off by simple tweens; daemons' SPEECH toggled on or off mid-session (off: text only; on: text and audio played in the browser, hush or play each)** (*the user, 2026-11-27*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1337,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-665 THE COPILOT's look: iMessage-style coloured bubbles with each participant's name (or nickname) and small sprite, the monkey beside you; above them a STAGE where the daemons in the scene stand (front sprites, a turn-around to the back sprite), …",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T06:18:09Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "attachments": [],
+     "author": {
+      "id": 16,
+      "name": "Lane ops"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-27T06:18:22Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "T-666"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "663"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": "(empty)"
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": "the user, 2026-11-27"
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": null
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": null
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**One shared daemon-persona library for the companion, EUDAIMONIA and the Redmine plugin: a daemon's first-person INDEX entry, type and name -> its persona system message (how it thinks, behaves, talks) and its voice-persona message; reuse the code that already does this, published as a package the other projects pin** (*the user, 2026-11-27*)",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1338,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 2,
+      "name": "DAEMONS"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "T-666 One shared daemon-persona library for the companion, EUDAIMONIA and the Redmine plugin: a daemon's first-person INDEX entry, type and name -> its persona system message (how it thinks, behaves, talks) and its voice-persona message; reuse the c…",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T06:18:22Z",
+     "watchers": []
     }
    ],
    "versions": []
@@ -151176,7 +157185,7 @@
       "id": 17,
       "name": "Lane body"
      },
-     "closed_on": null,
+     "closed_on": "2026-11-25T19:23:08Z",
      "created_on": "2026-11-25T05:53:12Z",
      "custom_fields": [
       {
@@ -151202,12 +157211,12 @@
       {
        "id": 5,
        "name": "Commits",
-       "value": null
+       "value": "embodied@608e97d"
       },
       {
        "id": 6,
        "name": "Branch",
-       "value": "main"
+       "value": ""
       },
       {
        "id": 7,
@@ -151286,6 +157295,37 @@
         "id": 17,
         "name": "Lane body"
        }
+      },
+      {
+       "created_on": "2026-11-25T19:23:08Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "6",
+         "old_value": "2",
+         "property": "attr"
+        },
+        {
+         "name": "5",
+         "new_value": "embodied@608e97d",
+         "old_value": null,
+         "property": "cf"
+        },
+        {
+         "name": "6",
+         "new_value": "",
+         "old_value": "main",
+         "property": "cf"
+        }
+       ],
+       "id": 539,
+       "notes": "Closed by lane-body: embodied@608e97d.",
+       "private_notes": false,
+       "updated_on": "2026-11-25T19:23:08Z",
+       "user": {
+        "id": 17,
+        "name": "Lane body"
+       }
       }
      ],
      "priority": {
@@ -151298,9 +157338,9 @@
      },
      "start_date": "2026-11-25",
      "status": {
-      "id": 2,
-      "is_closed": false,
-      "name": "In progress"
+      "id": 6,
+      "is_closed": true,
+      "name": "Closed"
      },
      "subject": "B-2 A: the sheet, and the driver's calls",
      "total_estimated_hours": null,
@@ -151308,7 +157348,7 @@
       "id": 1,
       "name": "Job"
      },
-     "updated_on": "2026-11-25T06:26:21Z",
+     "updated_on": "2026-11-25T19:23:08Z",
      "watchers": []
     },
     {
@@ -151321,7 +157361,7 @@
       "id": 17,
       "name": "Lane body"
      },
-     "closed_on": null,
+     "closed_on": "2026-11-25T19:23:09Z",
      "created_on": "2026-11-25T05:53:13Z",
      "custom_fields": [
       {
@@ -151347,12 +157387,12 @@
       {
        "id": 5,
        "name": "Commits",
-       "value": null
+       "value": "embodied@3576a21"
       },
       {
        "id": 6,
        "name": "Branch",
-       "value": null
+       "value": ""
       },
       {
        "id": 7,
@@ -151406,7 +157446,64 @@
      "estimated_hours": null,
      "id": 1243,
      "is_private": false,
-     "journals": [],
+     "journals": [
+      {
+       "created_on": "2026-11-25T13:01:20Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "2",
+         "old_value": "1",
+         "property": "attr"
+        },
+        {
+         "name": "6",
+         "new_value": "main",
+         "old_value": null,
+         "property": "cf"
+        }
+       ],
+       "id": 534,
+       "notes": "Claimed by lane-body on main.",
+       "private_notes": false,
+       "updated_on": "2026-11-25T13:01:20Z",
+       "user": {
+        "id": 17,
+        "name": "Lane body"
+       }
+      },
+      {
+       "created_on": "2026-11-25T19:23:09Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "6",
+         "old_value": "2",
+         "property": "attr"
+        },
+        {
+         "name": "5",
+         "new_value": "embodied@3576a21",
+         "old_value": null,
+         "property": "cf"
+        },
+        {
+         "name": "6",
+         "new_value": "",
+         "old_value": "main",
+         "property": "cf"
+        }
+       ],
+       "id": 540,
+       "notes": "Closed by lane-body: embodied@3576a21.",
+       "private_notes": false,
+       "updated_on": "2026-11-25T19:23:09Z",
+       "user": {
+        "id": 17,
+        "name": "Lane body"
+       }
+      }
+     ],
      "priority": {
       "id": 2,
       "name": "Normal"
@@ -151417,9 +157514,9 @@
      },
      "start_date": "2026-11-25",
      "status": {
-      "id": 1,
-      "is_closed": false,
-      "name": "Ready"
+      "id": 6,
+      "is_closed": true,
+      "name": "Closed"
      },
      "subject": "B-3 A: the simulated body, wrappers/sim",
      "total_estimated_hours": null,
@@ -151427,7 +157524,7 @@
       "id": 1,
       "name": "Job"
      },
-     "updated_on": "2026-11-25T05:53:13Z",
+     "updated_on": "2026-11-25T19:23:09Z",
      "watchers": []
     },
     {
@@ -155474,6 +161571,182 @@
       "name": "Job"
      },
      "updated_on": "2026-11-25T05:54:12Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 17,
+      "name": "Lane body"
+     },
+     "attachments": [],
+     "author": {
+      "id": 17,
+      "name": "Lane body"
+     },
+     "closed_on": "2026-11-27T02:28:07Z",
+     "created_on": "2026-11-27T02:24:10Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "B-38"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "38"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": "embodied@0a05c90"
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": ""
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "(empty)"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**A: STOP waits for nothing** (*the user, 2026-11-26*): The simulated body's stop() took the lock every other call takes, so a stop could wait behind them: on this Mac under load one call in about 85,000 took 160 to 360 ms against the sheet's 150, and test_stop_is_safe_from_any_thread_at_any_moment failed on every run. stop() writes its moment down and returns; every other call applies it first, as of that moment. The tests prove it in two parts: a stop asked for while another call holds the body returns at once and still halts what that call began; and under real threads nothing errs, nothing hangs, and the usual call is inside the sheet's time. The driver's rules say it for every wrapper.",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1328,
+     "is_private": false,
+     "journals": [
+      {
+       "created_on": "2026-11-27T02:24:28Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "2",
+         "old_value": "1",
+         "property": "attr"
+        },
+        {
+         "name": "6",
+         "new_value": "main",
+         "old_value": null,
+         "property": "cf"
+        }
+       ],
+       "id": 545,
+       "notes": "Claimed by lane-body on main.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T02:24:28Z",
+       "user": {
+        "id": 17,
+        "name": "Lane body"
+       }
+      },
+      {
+       "created_on": "2026-11-27T02:28:07Z",
+       "details": [
+        {
+         "name": "status_id",
+         "new_value": "6",
+         "old_value": "2",
+         "property": "attr"
+        },
+        {
+         "name": "5",
+         "new_value": "embodied@0a05c90",
+         "old_value": null,
+         "property": "cf"
+        },
+        {
+         "name": "6",
+         "new_value": "",
+         "old_value": "main",
+         "property": "cf"
+        }
+       ],
+       "id": 549,
+       "notes": "Closed by lane-body: embodied@0a05c90.",
+       "private_notes": false,
+       "updated_on": "2026-11-27T02:28:07Z",
+       "user": {
+        "id": 17,
+        "name": "Lane body"
+       }
+      }
+     ],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 5,
+      "name": "daemons-embodied"
+     },
+     "start_date": "2026-11-27",
+     "status": {
+      "id": 6,
+      "is_closed": true,
+      "name": "Closed"
+     },
+     "subject": "B-38 A: STOP waits for nothing",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-27T02:28:07Z",
      "watchers": []
     }
    ],
@@ -159676,6 +165949,601 @@
       "name": "Job"
      },
      "updated_on": "2026-11-25T06:34:09Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 14,
+      "name": "Lane playground"
+     },
+     "attachments": [],
+     "author": {
+      "id": 14,
+      "name": "Lane playground"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T15:23:37Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "E-27"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "27"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "DAEMONS FRM/README.md"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**FRM on EUDAIMONIA: the index, demos and retros, read-only signed out; feedback and Submit for a signed-in admin** (*the user, 2026-11-25*): Submit opens a ticket per feature with a change asked, related to the demo's tickets and tagged with the demo; a settings page chooses what is public and what needs a sign-in",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1295,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 4,
+      "name": "daemons-eudaimonia"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "E-27 FRM on EUDAIMONIA: the index, demos and retros, read-only signed out; feedback and Submit for a signed-in admin",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T15:23:37Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 14,
+      "name": "Lane playground"
+     },
+     "attachments": [],
+     "author": {
+      "id": 14,
+      "name": "Lane playground"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T15:23:50Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "E-28"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "28"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "DAEMONS FRM/README.md"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Ask about this feature: a chat modal on each demo, answered by the best-suited contributor in its voice** (*the user, 2026-11-25*): Persona + tickets + history as context; speaker/mute toggle; iMessage-like bubbles (the overworld monkey for the asker, the daemon's sprite for its replies); play/HUSH per bubble; one voice at a time",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1297,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 4,
+      "name": "daemons-eudaimonia"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "E-28 Ask about this feature: a chat modal on each demo, answered by the best-suited contributor in its voice",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T15:23:50Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 14,
+      "name": "Lane playground"
+     },
+     "attachments": [],
+     "author": {
+      "id": 14,
+      "name": "Lane playground"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T15:23:51Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "E-29"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "29"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "DAEMONS FRM/README.md"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**The dashboard's daemons speak: play, stop and HUSH on hover, at three depths that never repeat, one daemon at a time** (*the user, 2026-11-25*): Home: one sentence opening 'Hi, I am <daemon>'; modal: a paragraph from its contents; full view: a few paragraphs and the questions waiting; the box marked while answering; Proceed/Wait dialog when another daemon is busy; the companion's persona and voice-recipe functions shared",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1298,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 4,
+      "name": "daemons-eudaimonia"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "E-29 The dashboard's daemons speak: play, stop and HUSH on hover, at three depths that never repeat, one daemon at a time",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T15:23:51Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 14,
+      "name": "Lane playground"
+     },
+     "attachments": [],
+     "author": {
+      "id": 14,
+      "name": "Lane playground"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T18:27:04Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "E-30"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "30"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "DAEMONS FRM/README.md"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Awaiting Feedback on the dashboard: filter, read the question signed out, answer in a modal signed in** (*the user, 2026-11-25*): Choices plus Other, or a text area; the answer becomes a comment and the ticket returns to In Progress",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1303,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 4,
+      "name": "daemons-eudaimonia"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "E-30 Awaiting Feedback on the dashboard: filter, read the question signed out, answer in a modal signed in",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T18:27:04Z",
+     "watchers": []
+    },
+    {
+     "assigned_to": {
+      "id": 14,
+      "name": "Lane playground"
+     },
+     "attachments": [],
+     "author": {
+      "id": 14,
+      "name": "Lane playground"
+     },
+     "closed_on": null,
+     "created_on": "2026-11-25T18:27:06Z",
+     "custom_fields": [
+      {
+       "id": 1,
+       "name": "Ticket",
+       "value": "E-31"
+      },
+      {
+       "id": 2,
+       "name": "Run",
+       "value": "1"
+      },
+      {
+       "id": 3,
+       "name": "Order",
+       "value": "31"
+      },
+      {
+       "id": 4,
+       "name": "Shown as",
+       "value": null
+      },
+      {
+       "id": 5,
+       "name": "Commits",
+       "value": null
+      },
+      {
+       "id": 6,
+       "name": "Branch",
+       "value": null
+      },
+      {
+       "id": 7,
+       "name": "Where",
+       "value": null
+      },
+      {
+       "id": 8,
+       "name": "From",
+       "value": null
+      },
+      {
+       "id": 9,
+       "name": "Blocked on",
+       "value": null
+      },
+      {
+       "id": 10,
+       "name": "Why not yet",
+       "value": null
+      },
+      {
+       "id": 11,
+       "name": "Closed by",
+       "value": null
+      },
+      {
+       "id": 12,
+       "name": "State",
+       "value": "(empty)"
+      },
+      {
+       "id": 13,
+       "name": "See",
+       "value": "DAEMONS FRM/README.md"
+      },
+      {
+       "id": 14,
+       "name": "Extra cells",
+       "value": null
+      },
+      {
+       "id": 15,
+       "name": "Row tail",
+       "value": null
+      }
+     ],
+     "description": "**Agents talking: a dashboard widget with the active count, a modal of questions and answers with both daemons' sprites** (*the user, 2026-11-25*): Active/all toggle; two-line rows, ticket number linking to Redmine; a row opens its detail with a back arrow; X and [Full View] on every modal",
+     "done_ratio": 0,
+     "due_date": null,
+     "estimated_hours": null,
+     "id": 1304,
+     "is_private": false,
+     "journals": [],
+     "priority": {
+      "id": 2,
+      "name": "Normal"
+     },
+     "project": {
+      "id": 4,
+      "name": "daemons-eudaimonia"
+     },
+     "start_date": "2026-11-25",
+     "status": {
+      "id": 1,
+      "is_closed": false,
+      "name": "Ready"
+     },
+     "subject": "E-31 Agents talking: a dashboard widget with the active count, a modal of questions and answers with both daemons' sprites",
+     "total_estimated_hours": null,
+     "tracker": {
+      "id": 1,
+      "name": "Job"
+     },
+     "updated_on": "2026-11-25T18:27:06Z",
      "watchers": []
     }
    ],
