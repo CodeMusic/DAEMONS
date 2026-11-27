@@ -49,3 +49,15 @@ CodeMusic-Daemons theme, DRAFT, on a throwaway copy of the Redmine: sign-in, loa
 CodeMusic-Daemons theme, DRAFT, on a throwaway copy of the Redmine: sign-in, loading screen, agile board, a ticket, My page
 
 ![27Nov2026 - T660 - CodeMusic-Daemons theme draft - 8](27Nov2026%20-%20T660%20-%20CodeMusic-Daemons%20theme%20draft%20-%208.jpg)
+
+### 27Nov2026 - C593 - the HackberryPis whole screen before and now - 9
+
+The HackberryPi's 720x720 screen, read from the handheld: before (the 320x170 canvas twice over, 640x340 in the middle), now (its own 360x360 canvas twice over, the whole square), and the game three times its size across the top with its keys under it. companion b384fd1b.
+
+![27Nov2026 - C593 - the HackberryPis whole screen before and now - 9](27Nov2026%20-%20C593%20-%20the%20HackberryPis%20whole%20screen%20before%20and%20now%20-%209.png)
+
+### 27Nov2026 - C593 - the game on the HackberryPi with a test keyboard - 10
+
+Six screens copied from the handheld while a keyboard made in the kernel pressed the game's keys: the opening, START, A, down and A, the back key to HOME, ENTER back into the game. A testing build from a folder in memory, removed after. companion b384fd1b.
+
+![27Nov2026 - C593 - the game on the HackberryPi with a test keyboard - 10](27Nov2026%20-%20C593%20-%20the%20game%20on%20the%20HackberryPi%20with%20a%20test%20keyboard%20-%2010.png)
