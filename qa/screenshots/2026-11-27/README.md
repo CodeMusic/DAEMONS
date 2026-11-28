@@ -61,3 +61,45 @@ The HackberryPi's 720x720 screen, read from the handheld: before (the 320x170 ca
 Six screens copied from the handheld while a keyboard made in the kernel pressed the game's keys: the opening, START, A, down and A, the back key to HOME, ENTER back into the game. A testing build from a folder in memory, removed after. companion b384fd1b.
 
 ![27Nov2026 - C593 - the game on the HackberryPi with a test keyboard - 10](27Nov2026%20-%20C593%20-%20the%20game%20on%20the%20HackberryPi%20with%20a%20test%20keyboard%20-%2010.png)
+
+### 27Nov2026 - C600 - THE ENGINE ROOMs HOARD - 12
+
+THE ENGINE ROOM's HOARD on a scratch hub: the hub's 4 MB and a second computer's 20 MB EXTEND make 24 MB, the attic's REPLICA adds none and holds all nine files; each file with its owner, kind and share
+
+![27Nov2026 - C600 - THE ENGINE ROOMs HOARD - 12](27Nov2026%20-%20C600%20-%20THE%20ENGINE%20ROOMs%20HOARD%20-%2012.png)
+
+### 27Nov2026 - C575 - the standalone servers HOARD card - 13
+
+The standalone server's THE HOARD card: EXTEND or REPLICA, its WHEN (any time, only on Wi-Fi, only while plugged in), and what it holds and kept lately
+
+![27Nov2026 - C575 - the standalone servers HOARD card - 13](27Nov2026%20-%20C575%20-%20the%20standalone%20servers%20HOARD%20card%20-%2013.png)
+
+### 27Nov2026 - C606 - ASK IT and a photo that speaks - 14
+
+ASK IT: a typed question, the three dots, the answer playing aloud and earlier answers; and A PHOTO THAT SPEAKS playing as a video in the app
+
+![27Nov2026 - C606 - ASK IT and a photo that speaks - 14](27Nov2026%20-%20C606%20-%20ASK%20IT%20and%20a%20photo%20that%20speaks%20-%2014.png)
+
+### 27Nov2026 - C605 - CREATIONS and JOBS - 15
+
+CREATIONS (texts read aloud, photos that speak, answers) and JOBS in the app
+
+![27Nov2026 - C605 - CREATIONS and JOBS - 15](27Nov2026%20-%20C605%20-%20CREATIONS%20and%20JOBS%20-%2015.png)
+
+### 27Nov2026 - C577 - a drawn test fox speaking, the households own models - 16
+
+Made on the real hub with the household's own models: a drawn test fox given a line and a voice, six frames of the 9-second video -- its mouth where the seeing model said, moving with the voice
+
+![27Nov2026 - C577 - a drawn test fox speaking, the households own models - 16](27Nov2026%20-%20C577%20-%20a%20drawn%20test%20fox%20speaking%2C%20the%20households%20own%20models%20-%2016.png)
+
+### 27Nov2026 - C577 - a drawn test fox speaking, the households own models - 17
+
+Made on the real hub with the household's own models: a drawn test fox given a line and a voice, six frames of the 9-second video -- its mouth where the seeing model said, moving with the voice
+
+![27Nov2026 - C577 - a drawn test fox speaking, the households own models - 17](27Nov2026%20-%20C577%20-%20a%20drawn%20test%20fox%20speaking%2C%20the%20households%20own%20models%20-%2017.png)
+
+### 27Nov2026 - C602 - THE HOARD in the app, files and a file - 20
+
+THE HOARD in the app (the site, on a scratch hub): FILES with each file's share, and a picture's own view -- shown, where it came from, SAVE THE ORIGINAL, MAKE IT SPEAK
+
+![27Nov2026 - C602 - THE HOARD in the app, files and a file - 20](27Nov2026%20-%20C602%20-%20THE%20HOARD%20in%20the%20app%2C%20files%20and%20a%20file%20-%2020.png)
